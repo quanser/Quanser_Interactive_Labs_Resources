@@ -27,6 +27,10 @@ class comm_modular_container:
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS = 18
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK = 19
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET = 20
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK = 21
+    
+    
     
     ID_UE4_SYSTEM = 1000
     
@@ -281,6 +285,27 @@ class quanser_interactive_labs:
             return True
         else:
             return False 
+            
+    def spawn_widget(self, widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, properties, wait_for_confirmation=True):
+        c = comm_modular_container()
+        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
+        c.device_number = 0
+        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
+        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, 0))
+        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if wait_for_confirmation:
+            self.flush_receive()        
+                
+        if (self.send_container(c)):
+        
+            if wait_for_confirmation:
+                c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
+                return c
+            
+            return True
+        else:
+            return False             
             
     def ping(self):
         c = comm_modular_container()
