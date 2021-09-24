@@ -291,7 +291,9 @@ class quanser_interactive_labs:
         c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
         c.device_number = 0
         c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
-        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, 0))
+        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, len(properties)))
+        c.payload = c.payload + bytearray(properties.encode('utf-8'))
+        
         c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if wait_for_confirmation:

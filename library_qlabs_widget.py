@@ -9,6 +9,10 @@ import struct
 
 class qlab_widget:
 
+    CUBE = 0
+    CYLINDER = 1
+    SPHERE = 2
+    AUTOCLAVE_CAGE = 3
         
     # Initilize class
     def __init__(self):
