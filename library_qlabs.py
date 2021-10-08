@@ -76,22 +76,29 @@ class quanser_interactive_labs:
     def __init__(self):
         pass
     
-    def open(self, uri):
+    def open(self, uri, timeout=10):
         
         self._stream = Stream()
 
-        self._stream.connect(uri, True, self._BUFFER_SIZE, self._BUFFER_SIZE)
+        result = self._stream.connect(uri, True, self._BUFFER_SIZE, self._BUFFER_SIZE)
+        if ((result < 0) and (result != -34)): # QERR_WOULD_BLOCK
+            print("Connection failure.")
+            return False
 
         poll_result = self._stream.poll(Timeout(1), PollFlag.CONNECT)
 
-        while poll_result & PollFlag.CONNECT != PollFlag.CONNECT:
+        while (((poll_result & PollFlag.CONNECT) != PollFlag.CONNECT) and (timeout > 0)):
             poll_result = self._stream.poll(Timeout(1), PollFlag.CONNECT)
+            timeout = timeout - 1
 
 
         if poll_result & PollFlag.CONNECT == PollFlag.CONNECT:
             #print("Connection accepted")
             pass
         else:
+            if (timeout == 0):
+                print("Connection timeout")
+        
             return False
         
         

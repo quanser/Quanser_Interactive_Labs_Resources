@@ -19,8 +19,11 @@ class qlab_qbot:
        
     ID_QBOT = 20
     
+    FCN_QBOT_COMMAND_AND_REQUEST_STATE = 10
+    FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE = 11
     FCN_QBOT_POSSESS = 20
     FCN_QBOT_POSSESS_ACK = 21
+    
     
     VIEWPOINT_RGB = 0
     VIEWPOINT_DEPTH = 1
@@ -57,4 +60,21 @@ class qlab_qbot:
                     
             return True
         else:
-            return False   
+            return False
+            
+    def commandAndRequestState(self, qlabs, device_num, forward, turn):
+        c = comm_modular_container()
+        c.class_id = self.ID_QBOT
+        c.device_number = device_num
+        c.device_function = self.FCN_QBOT_COMMAND_AND_REQUEST_STATE
+        c.payload = bytearray(struct.pack(">ff", forward, turn))
+        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        qlabs.flush_receive()  
+        
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_QBOT, device_num, self.FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE)
+                    
+            return True
+        else:
+            return False
