@@ -134,4 +134,4 @@ class qlab_basic_shape:
         rotation[1] = rotation[1]/180*math.pi
         rotation[2] = rotation[2]/180*math.pi
     
-        return set_transform(self, qlabs, device_num, location, rotation, scale, wait_for_confirmation)   
+        return self.set_transform(qlabs, device_num, location, rotation, scale, wait_for_confirmation)   
