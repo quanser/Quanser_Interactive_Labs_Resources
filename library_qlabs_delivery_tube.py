@@ -27,6 +27,7 @@ class qlab_delivery_tube:
     BLOCK_CUBE = 0
     BLOCK_CYLINDER = 1
     BLOCK_SPHERE = 2
+    BLOCK_GEOSPHERE = 3
     
     CONFIG_HOVER = 0
     CONFIG_NO_HOVER = 1
