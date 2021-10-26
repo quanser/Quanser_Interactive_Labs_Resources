@@ -29,6 +29,8 @@ class comm_modular_container:
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK = 19
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET = 20
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK = 21
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
     
     
     
@@ -272,12 +274,12 @@ class quanser_interactive_labs:
         else:
             return False            
             
-    def spawn(self, device_num, ID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, wait_for_confirmation=True):
+    def spawn(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, wait_for_confirmation=True):
         c = comm_modular_container()
         c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
         c.device_number = 0
         c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
-        c.payload = bytearray(struct.pack(">IIfffffffffI", ID, device_num, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration))
+        c.payload = bytearray(struct.pack(">IIfffffffffI", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration))
         c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if wait_for_confirmation:
@@ -292,6 +294,27 @@ class quanser_interactive_labs:
             return True
         else:
             return False 
+            
+    def spawnAndParentWithRelativeTransform(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent, wait_for_confirmation=True):
+        c = comm_modular_container()
+        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
+        c.device_number = 0
+        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE
+        c.payload = bytearray(struct.pack(">IIfffffffffIIII", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent))
+        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if wait_for_confirmation:
+            self.flush_receive()        
+                
+        if (self.send_container(c)):
+        
+            if wait_for_confirmation:
+                c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
+                return c
+            
+            return True
+        else:
+            return False            
             
     def spawn_widget(self, widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, properties, wait_for_confirmation=True):
         c = comm_modular_container()

@@ -62,12 +62,12 @@ class qlab_qbot:
         else:
             return False
             
-    def commandAndRequestState(self, qlabs, device_num, forward, turn):
+    def commandAndRequestState(self, qlabs, device_num, rightWheelSpeed, leftWheelSpeed):
         c = comm_modular_container()
         c.class_id = self.ID_QBOT
         c.device_number = device_num
         c.device_function = self.FCN_QBOT_COMMAND_AND_REQUEST_STATE
-        c.payload = bytearray(struct.pack(">ff", forward, turn))
+        c.payload = bytearray(struct.pack(">ff", rightWheelSpeed, leftWheelSpeed))
         c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         qlabs.flush_receive()  
