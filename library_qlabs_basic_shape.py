@@ -46,7 +46,9 @@ class qlab_basic_shape:
     
         return qlabs.spawn(device_num, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, wait_for_confirmation)
  
- 
+    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, scale, configuration, parentClass, parentDeviceNum, parentComponent, wait_for_confirmation=True):
+        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, parentClass, parentDeviceNum, parentComponent, wait_for_confirmation)
+   
     def set_material_properties(self, qlabs, device_num, color, roughness=0.4, metallic=False, wait_for_confirmation=True):
         c = comm_modular_container()
         c.class_id = self.ID_BASIC_SHAPE
