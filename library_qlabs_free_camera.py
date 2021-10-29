@@ -12,8 +12,10 @@ class QLabsFreeCamera:
     ID_FREE_CAMERA = 170
     FCN_FREE_CAMERA_POSSESS = 10
     FCN_FREE_CAMERA_POSSESS_ACK = 11
-    FCN_FREE_CAMERA_SET_CAMERA_FEATURES = 12
-    FCN_FREE_CAMERA_SET_CAMERA_FEATURES_ACK = 13
+    FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES = 12
+    FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK = 13
+    FCN_FREE_CAMERA_SET_TRANSFORM = 14
+    FCN_FREE_CAMERA_SET_TRANSFORM_ACK = 15
 
     
     # Initialize class
@@ -47,6 +49,38 @@ class QLabsFreeCamera:
                     
             return True
         else:
-            return False   
+            return False  
+
+    def setCameraProperties(self, qlabs, deviceNumber, fieldOfView, depthOfField, aperature, focusDistance):
+        c = CommModularContainer()
+        c.classID = self.ID_FREE_CAMERA
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES
+        c.payload = bytearray(struct.pack(">fBff", fieldOfView, depthOfField, aperature, focusDistance))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
+        qlabs.flushReceive()  
         
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK)
+                    
+            return True
+        else:
+            return False
+        
+    def setTransform(self, qlabs, deviceNumber, location, rotation):
+        c = CommModularContainer()
+        c.classID = self.ID_FREE_CAMERA
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_FREE_CAMERA_SET_TRANSFORM
+        c.payload = bytearray(struct.pack(">ffffff", location[0], location[1], location[2], rotation[0], rotation[1], rotation[2]))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        qlabs.flushReceive()  
+        
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK)
+                    
+            return True
+        else:
+            return False     
