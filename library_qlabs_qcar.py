@@ -1,4 +1,4 @@
-from library_qlabs import quanser_interactive_labs, comm_modular_container
+from library_qlabs import QuanserInteractiveLabs, CommModularContainer
 from quanser.common import GenericError
 import math
 
@@ -9,14 +9,8 @@ import numpy as np
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class qlab_qcar:
+class QLabsQCar:
 
-    # Define class-level variables   
-    container_size = 0
-    class_id = 0       # What device type is this?
-    device_number = 0   # Increment if there are more than one of the same device ID
-    device_function = 0 # Command/reponse
-    payload = bytearray()
     
     _jpg_buffer = bytearray()
     
@@ -40,92 +34,92 @@ class qlab_qcar:
     CAMERA_OVERHEAD = 6
     CAMERA_TRAILING = 7
     
-    # Initilize class
+    # Initialize class
     def __init__(self):
 
        return
        
-    def spawn(self, qlabs, device_num, location, rotation, configuration=0, wait_for_confirmation=True):
-        return qlabs.spawn(device_num, self.ID_QCAR, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, wait_for_confirmation)
+    def spawn(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
+        return qlabs.spawn(deviceNumber, self.ID_QCAR, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
     
-    def spawn_degrees(self, qlabs, device_num, location, rotation, configuration=0, wait_for_confirmation=True):
+    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
         rotation[0] = rotation[0]/180*math.pi
         rotation[1] = rotation[1]/180*math.pi
         rotation[2] = rotation[2]/180*math.pi
         
-        return qlabs.spawn(device_num, self.ID_QCAR, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, wait_for_confirmation)
+        return qlabs.spawn(deviceNumber, self.ID_QCAR, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
     
     
-    def set_transform_and_request_state(self, qlabs, device_num, x, y, z, roll, pitch, yaw, enable_dynamics, headlights, left_turn, right_turn, brake, honk, wait_for_confirmation=True):
-        c = comm_modular_container()
-        c.class_id = self.ID_QCAR
-        c.device_number = device_num
-        c.device_function = self.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
-        c.payload = bytearray(struct.pack(">ffffffBBBBBB", x, y, z, roll, pitch, yaw, enable_dynamics, headlights, left_turn, right_turn, brake, honk))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+    def setTransformAndRequestState(self, qlabs, deviceNumber, x, y, z, roll, pitch, yaw, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brake, honk, waitForConfirmation=True):
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
+        c.payload = bytearray(struct.pack(">ffffffBBBBBB", x, y, z, roll, pitch, yaw, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brake, honk))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            qlabs.flush_receive()  
+        if waitForConfirmation:
+            qlabs.flushReceive()  
         
-        if (qlabs.send_container(c)):
-            if wait_for_confirmation:
-                c = qlabs.wait_for_container(self.ID_QCAR, device_num, self.FCN_QCAR_TRANSFORM_STATE_RESPONSE)
+        if (qlabs.sendContainer(c)):
+            if waitForConfirmation:
+                c = qlabs.waitForContainer(self.ID_QCAR, deviceNumber, self.FCN_QCAR_TRANSFORM_STATE_RESPONSE)
                 return c
                     
             return True
         else:
             return False    
             
-    def set_velocity_and_request_state(self, qlabs, device_num, forward, turn, headlights, left_turn, right_turn, brake, honk, wait_for_confirmation=True):
-        c = comm_modular_container()
-        c.class_id = self.ID_QCAR
-        c.device_number = device_num
-        c.device_function = self.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
-        c.payload = bytearray(struct.pack(">ffBBBBB", forward, turn, headlights, left_turn, right_turn, brake, honk))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+    def setVelocityAndRequestState(self, qlabs, deviceNumber, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brake, honk, waitForConfirmation=True):
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
+        c.payload = bytearray(struct.pack(">ffBBBBB", forward, turn, headlights, leftTurnSignal, rightTurnSignal, brake, honk))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            qlabs.flush_receive()  
+        if waitForConfirmation:
+            qlabs.flushReceive()  
         
-        if (qlabs.send_container(c)):
-            if wait_for_confirmation:
-                c = qlabs.wait_for_container(self.ID_QCAR, device_num, self.FCN_QCAR_VELOCITY_STATE_RESPONSE)
+        if (qlabs.sendContainer(c)):
+            if waitForConfirmation:
+                c = qlabs.waitForContainer(self.ID_QCAR, deviceNumber, self.FCN_QCAR_VELOCITY_STATE_RESPONSE)
                 return c
                     
             return True
         else:
             return False             
             
-    def possess(self, qlabs, device_num, camera):
-        c = comm_modular_container()
-        c.class_id = self.ID_QCAR
-        c.device_number = device_num
-        c.device_function = self.FCN_QCAR_POSSESS
+    def possess(self, qlabs, deviceNumber, camera):
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_QCAR_POSSESS
         c.payload = bytearray(struct.pack(">B", camera))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        qlabs.flushReceive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, device_num, self.FCN_QCAR_POSSESS_ACK)
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_QCAR, deviceNumber, self.FCN_QCAR_POSSESS_ACK)
                     
             return True
         else:
             return False              
 
-    def get_camera_data(self, qlabs, device_num, camera):   
+    def getCameraData(self, qlabs, deviceNumber, camera):   
     
-        c = comm_modular_container()
-        c.class_id = self.ID_QCAR
-        c.device_number = device_num
-        c.device_function = self.FCN_QCAR_CAMERA_DATA_REQUEST
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_QCAR_CAMERA_DATA_REQUEST
         c.payload = bytearray(struct.pack(">I", camera))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        qlabs.flushReceive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, device_num, self.FCN_QCAR_CAMERA_DATA_RESPONSE)
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_QCAR, deviceNumber, self.FCN_QCAR_CAMERA_DATA_RESPONSE)
             self._jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
             
             

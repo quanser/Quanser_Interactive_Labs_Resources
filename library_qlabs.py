@@ -6,13 +6,13 @@ import struct
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class comm_modular_container:
+class CommModularContainer:
 
     # Define class-level variables   
-    container_size = 0
-    class_id = 0       # What device type is this?
-    device_number = 0   # Increment if there are more than one of the same device ID
-    device_function = 0 # Command/reponse
+    containerSize = 0
+    classID = 0       # What device type is this?
+    deviceNumber = 0   # Increment if there are more than one of the same device ID
+    deviceFunction = 0 # Command/reponse
     payload = bytearray()
     
        
@@ -21,8 +21,8 @@ class comm_modular_container:
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK = 11
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR = 12
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK = 13
-    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS = 14
-    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK = 15
+    FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors = 14
+    FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors_ACK = 15
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST = 16
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS = 18
@@ -61,18 +61,18 @@ class comm_modular_container:
 
 ######################### COMMUNICATIONS #########################        
        
-class quanser_interactive_labs:
+class QuanserInteractiveLabs:
 
     _stream = None
     #_client_connection = None
     _BUFFER_SIZE = 65537
         
-    _read_buffer = bytearray(_BUFFER_SIZE)
-    _send_buffer = bytearray()
+    _readBuffer = bytearray(_BUFFER_SIZE)
+    _sendBuffer = bytearray()
 
-    _receive_packet_buffer = bytearray()
-    _receive_packet_size = 0
-    _receive_packet_container_index = 0   
+    _receivePacketBuffer = bytearray()
+    _receivePacketSize = 0
+    _receivePacketContainerIndex = 0   
 
     # Initilize QLabs
     def __init__(self):
@@ -114,11 +114,11 @@ class quanser_interactive_labs:
             pass
             
     # Pack data and send immediately
-    def send_container (self, container):
+    def sendContainer (self, container):
         try:
-            data = bytearray(struct.pack("<i", 1+container.container_size)) + bytearray(struct.pack(">BiiiB", 123, container.container_size, container.class_id, container.device_number, container.device_function)) + container.payload
-            num_bytes = len(data)
-            bytes_written = self._stream.send(data, num_bytes)
+            data = bytearray(struct.pack("<i", 1+container.containerSize)) + bytearray(struct.pack(">BiiiB", 123, container.containerSize, container.classID, container.deviceNumber, container.deviceFunction)) + container.payload
+            numBytes = len(data)
+            bytesWritten = self._stream.send(data, numBytes)
             self._stream.flush()
             return True
         except:
@@ -126,148 +126,148 @@ class quanser_interactive_labs:
 
 
     # Check if new data is available.  Returns true if a complete packet has been received.
-    def receive_new_data(self):    
-        bytes_read = 0
+    def receiveNewData(self):    
+        bytesRead = 0
         
         try:
-            bytes_read = self._stream.receive(self._read_buffer, self._BUFFER_SIZE)
+            bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
         except StreamError as e:
             if e.error_code == -34:
                 # would block
-                bytes_read = 0
-        #print("Bytes read: {}".format(bytes_read))
+                bytesRead = 0
+        #print("Bytes read: {}".format(bytesRead))
             
         new_data = False
 
     
-        while bytes_read > 0:
-            #print("Received {} bytes".format(bytes_read))
-            self._receive_packet_buffer += bytearray(self._read_buffer[0:(bytes_read)])
+        while bytesRead > 0:
+            #print("Received {} bytes".format(bytesRead))
+            self._receivePacketBuffer += bytearray(self._readBuffer[0:(bytesRead)])
 
             #while we're here, check if there are any more bytes in the receive buffer
             try:
-                bytes_read = self._stream.receive(self._read_buffer, self._BUFFER_SIZE)
+                bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
             except StreamError as e:
                 if e.error_code == -34:
                     # would block
-                    bytes_read = 0
+                    bytesRead = 0
                     
         # check if we already have data in the receive buffer that was unprocessed (multiple packets in a single receive)
-        if len(self._receive_packet_buffer) > 5:
-            if (self._receive_packet_buffer[4] == 123):
+        if len(self._receivePacketBuffer) > 5:
+            if (self._receivePacketBuffer[4] == 123):
                 
                 # packet size
-                self._receive_packet_size, = struct.unpack("<I", self._receive_packet_buffer[0:4])
+                self._receivePacketSize, = struct.unpack("<I", self._receivePacketBuffer[0:4])
                 # add the 4 bytes for the size to the packet size
-                self._receive_packet_size = self._receive_packet_size + 4
+                self._receivePacketSize = self._receivePacketSize + 4
             
             
-                if len(self._receive_packet_buffer) >= self._receive_packet_size:
+                if len(self._receivePacketBuffer) >= self._receivePacketSize:
                     
-                    self._receive_packet_container_index = 5
+                    self._receivePacketContainerIndex = 5
                     new_data = True
                    
             else:
                 print("Error parsing multiple packets in receive buffer.  Clearing internal buffers.")
-                _receive_packet_buffer = bytearray()
+                _receivePacketBuffer = bytearray()
                 
         return new_data
 
 
 
     # Parse out received containers
-    def get_next_container(self):
-        c = comm_modular_container()
-        is_more_containers = False
+    def getNextContainer(self):
+        c = CommModularContainer()
+        isMoreContainers = False
     
-        if (self._receive_packet_container_index > 0):
-            c.container_size, = struct.unpack(">I", self._receive_packet_buffer[self._receive_packet_container_index:(self._receive_packet_container_index+4)])
-            c.class_id, = struct.unpack(">I", self._receive_packet_buffer[(self._receive_packet_container_index+4):(self._receive_packet_container_index+8)])
-            c.device_number, = struct.unpack(">I", self._receive_packet_buffer[(self._receive_packet_container_index+8):(self._receive_packet_container_index+12)])
-            c.device_function = self._receive_packet_buffer[self._receive_packet_container_index+12]
-            c.payload = bytearray(self._receive_packet_buffer[(self._receive_packet_container_index+c.BASE_CONTAINER_SIZE):(self._receive_packet_container_index+c.container_size)])
+        if (self._receivePacketContainerIndex > 0):
+            c.containerSize, = struct.unpack(">I", self._receivePacketBuffer[self._receivePacketContainerIndex:(self._receivePacketContainerIndex+4)])
+            c.classID, = struct.unpack(">I", self._receivePacketBuffer[(self._receivePacketContainerIndex+4):(self._receivePacketContainerIndex+8)])
+            c.deviceNumber, = struct.unpack(">I", self._receivePacketBuffer[(self._receivePacketContainerIndex+8):(self._receivePacketContainerIndex+12)])
+            c.deviceFunction = self._receivePacketBuffer[self._receivePacketContainerIndex+12]
+            c.payload = bytearray(self._receivePacketBuffer[(self._receivePacketContainerIndex+c.BASE_CONTAINER_SIZE):(self._receivePacketContainerIndex+c.containerSize)])
             
-            self._receive_packet_container_index = self._receive_packet_container_index + c.container_size
+            self._receivePacketContainerIndex = self._receivePacketContainerIndex + c.containerSize
             
-            if (self._receive_packet_container_index >= self._receive_packet_size):
+            if (self._receivePacketContainerIndex >= self._receivePacketSize):
                 
-                is_more_containers = False
+                isMoreContainers = False
                 
-                if len(self._receive_packet_buffer) == self._receive_packet_size:
+                if len(self._receivePacketBuffer) == self._receivePacketSize:
                     # The data buffer contains only the one packet.  Clear the buffer.
-                    self._receive_packet_buffer = bytearray()
+                    self._receivePacketBuffer = bytearray()
                 else:
                     # Remove the packet from the data buffer.  There is another packet in the buffer already.
-                    self._receive_packet_buffer = self._receive_packet_buffer[(self._receive_packet_container_index):(len(self._receive_packet_buffer))]
+                    self._receivePacketBuffer = self._receivePacketBuffer[(self._receivePacketContainerIndex):(len(self._receivePacketBuffer))]
                     
-                self._receive_packet_container_index = 0
+                self._receivePacketContainerIndex = 0
                 
             else:
-                is_more_containers = True
+                isMoreContainers = True
                 
     
-        return c, is_more_containers   
+        return c, isMoreContainers   
 
 
-    def wait_for_container(self, class_id, device_num, function_num):
+    def waitForContainer(self, classID, deviceNumber, functionNumber):
        while(True):
-            while (self.receive_new_data() == False):
+            while (self.receiveNewData() == False):
                 pass
                 
-            #print("DEBUG: Data received. Looking for class {}, device {}, function {}".format(class_id, device_num, function_num))
+            #print("DEBUG: Data received. Looking for class {}, device {}, function {}".format(classID, deviceNumber, functionNumber))
                 
             more_containers = True
             
             while (more_containers):
-                c, more_containers = self.get_next_container()
+                c, more_containers = self.getNextContainer()
                 
-                #print("DEBUG: Container class {}, device {}, function {}".format(c.class_id, c.device_number, c.device_function))
+                #print("DEBUG: Container class {}, device {}, function {}".format(c.classID, c.deviceNumber, c.deviceFunction))
                 
-                if c.class_id == class_id:
-                    if c.device_number == device_num:
-                        if c.device_function == function_num:
+                if c.classID == classID:
+                    if c.deviceNumber == deviceNumber:
+                        if c.deviceFunction == functionNumber:
                             return c
                             
-    def flush_receive(self):
+    def flushReceive(self):
         try:
-            bytes_read = self._stream.receive(self._read_buffer, self._BUFFER_SIZE)
+            bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
         except StreamError as e:
             if e.error_code == -34:
                 # would block
-                bytes_read = 0
+                bytesRead = 0
             
-    def destroy_all_spawned_actors(self):
-        device_num = 0
-        c = comm_modular_container()
+    def destroyAllSpawnedActors(self):
+        deviceNumber = 0
+        c = CommModularContainer()
         
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = device_num
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors
         c.payload = bytearray()
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)        
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.send_container(c)):
+        if (self.sendContainer(c)):
             #print("DEBUG: Container sent")
-            c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, device_num, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors_ACK)
             
             return True
         
         else:
             return False
             
-    def destroy_spawned_actor(self, ID, device_num):
-        device_num = 0
-        c = comm_modular_container()
+    def destroySpawnedActor(self, ID, deviceNumber):
+        deviceNumber = 0
+        c = CommModularContainer()
         
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = device_num
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR
-        c.payload = bytearray(struct.pack(">II", ID, device_num))
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR
+        c.payload = bytearray(struct.pack(">II", ID, deviceNumber))
         
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)        
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.send_container(c)):
-            c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, device_num, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
+        if (self.sendContainer(c)):
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
             
             return True
         
@@ -275,20 +275,20 @@ class quanser_interactive_labs:
             return False            
             
     def spawn(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, wait_for_confirmation=True):
-        c = comm_modular_container()
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = 0
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
         c.payload = bytearray(struct.pack(">IIfffffffffI", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if wait_for_confirmation:
-            self.flush_receive()        
+            self.flushReceive()        
                 
-        if (self.send_container(c)):
+        if (self.sendContainer(c)):
         
             if wait_for_confirmation:
-                c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
+                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
                 return c
             
             return True
@@ -296,43 +296,43 @@ class quanser_interactive_labs:
             return False 
             
     def spawnAndParentWithRelativeTransform(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent, wait_for_confirmation=True):
-        c = comm_modular_container()
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = 0
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE
         c.payload = bytearray(struct.pack(">IIfffffffffIIII", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent))
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if wait_for_confirmation:
-            self.flush_receive()        
+            self.flushReceive()        
                 
-        if (self.send_container(c)):
+        if (self.sendContainer(c)):
         
             if wait_for_confirmation:
-                c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
+                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
                 return c
             
             return True
         else:
             return False            
             
-    def spawn_widget(self, widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, properties, wait_for_confirmation=True):
-        c = comm_modular_container()
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = 0
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
-        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widget_type, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, len(properties)))
+    def spawnWidget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, properties, wait_for_confirmation=True):
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
+        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, len(properties)))
         c.payload = c.payload + bytearray(properties.encode('utf-8'))
         
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if wait_for_confirmation:
-            self.flush_receive()        
+            self.flushReceive()        
                 
-        if (self.send_container(c)):
+        if (self.sendContainer(c)):
         
             if wait_for_confirmation:
-                c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
+                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
                 return c
             
             return True
@@ -340,50 +340,50 @@ class quanser_interactive_labs:
             return False             
             
     def ping(self):
-        c = comm_modular_container()
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = 0
-        c.device_function = comm_modular_container.FCN_REQUEST_PING
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_REQUEST_PING
         c.payload = bytearray()
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        self.flush_receive()        
+        self.flushReceive()        
                 
-        if (self.send_container(c)):
+        if (self.sendContainer(c)):
         
-            c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, 0, comm_modular_container.FCN_RESPONSE_PING)
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_RESPONSE_PING)
             return True
         else:
             return False 
     
-    def regenerate_cache_list(self):
-        c = comm_modular_container()
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = 0
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST
+    def regenerateCacheList(self):
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST
         c.payload = bytearray()
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
-        if (self.send_container(c)):
-            c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, c.device_number, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK)
+        if (self.sendContainer(c)):
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, c.deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK)
             
             return True
         
         else:
             return False
     
-    def destroy_all_spawned_widgets(self):
-        device_num = 0
-        c = comm_modular_container()
+    def destroyAllSpawnedWidgets(self):
+        deviceNumber = 0
+        c = CommModularContainer()
         
-        c.class_id = comm_modular_container.ID_GENERIC_ACTOR_SPAWNER
-        c.device_number = device_num
-        c.device_function = comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS
         c.payload = bytearray()
-        c.container_size = c.BASE_CONTAINER_SIZE + len(c.payload)        
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.send_container(c)):
-            c = self.wait_for_container(comm_modular_container.ID_GENERIC_ACTOR_SPAWNER, device_num, comm_modular_container.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
+        if (self.sendContainer(c)):
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
             
             return True
         
