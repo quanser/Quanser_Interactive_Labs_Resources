@@ -13,6 +13,8 @@ class QLabsWidget:
     CYLINDER = 1
     SPHERE = 2
     AUTOCLAVE_CAGE = 3
+    PLASTIC_BOTTLE = 4
+    METAL_CAN = 5
         
     # Initialize class
     def __init__(self):
