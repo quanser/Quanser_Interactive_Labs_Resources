@@ -2,6 +2,7 @@ from quanser.communications import Stream, StreamError, PollFlag, Timeout
 from quanser.common import GenericError
 
 import struct
+import os
         
         
 ######################### MODULAR CONTAINER CLASS #########################
@@ -389,6 +390,11 @@ class QuanserInteractiveLabs:
         
         else:
             return False   
+
+    def terminate_RT_models(self, RT_hostname):
+        cmd_string=f'start "QLabs_Spawn_Model" "%QUARC_DIR%\quarc_run" -q -t tcpip://{RT_hostname}:17000 *.rt-win64'
+        os.system(cmd_string)
+        return cmd_string
    
     def __del__(self):
         self.close()
