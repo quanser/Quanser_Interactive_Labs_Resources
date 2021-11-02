@@ -12,6 +12,9 @@ class QLabsBottleTableAttachment:
        
     ID_BOTTLE_TABLE_ATTACHMENT = 101
     
+    FCN_BOTTLE_TABLE_ATTACHMENT_REQUEST_LOAD_MASS = 91
+    FCN_BOTTLE_TABLE_ATTACHMENT_RESPONSE_LOAD_MASS = 92
+    
     # Initialize class
     def __init__(self):
 
@@ -30,7 +33,27 @@ class QLabsBottleTableAttachment:
     def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
         return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_ATTACHMENT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
            
- 
+    def getMeasuredMass(self, qlabs, deviceNumber):
+        c = CommModularContainer()
+        c.classID = self.ID_BOTTLE_TABLE_ATTACHMENT
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_BOTTLE_TABLE_ATTACHMENT_REQUEST_LOAD_MASS
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        qlabs.flushReceive()  
+        
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_BOTTLE_TABLE_ATTACHMENT, deviceNumber, self.FCN_BOTTLE_TABLE_ATTACHMENT_RESPONSE_LOAD_MASS)
+            
+            if (len(c.payload) == 4):
+                mass,  = struct.unpack(">f", c.payload)
+                return mass
+            else:
+                return -1.0
+            
+        else:
+            return -1.0
 
 class QLabsBottleTableSupport:
 
