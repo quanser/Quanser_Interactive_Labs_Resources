@@ -32,6 +32,8 @@ class CommModularContainer:
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK = 21
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
+    FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION = 100
+    FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK = 101
     
     
     
@@ -390,7 +392,26 @@ class QuanserInteractiveLabs:
         
         else:
             return False   
+            
 
+    def widgetSpawnConfiguration(self, EnableShadow=True):
+        deviceNumber = 0
+        c = CommModularContainer()
+        
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION
+        c.payload = bytearray(struct.pack(">B", EnableShadow))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
+
+        if (self.sendContainer(c)):
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
+            
+            return True
+        
+        else:
+            return False   
+          
     def terminate_RT_models(self, RT_hostname):
         cmd_string=f'start "QLabs_Spawn_Model" "%QUARC_DIR%\quarc_run" -q -t tcpip://{RT_hostname}:17000 *.rt-win64'
         os.system(cmd_string)
