@@ -17,6 +17,24 @@ def rotateVector2DDegrees(vector, angle):
     return result
 
 
+def spawnBoxWallsFromEndPoints(qlabs, deviceNumber, startLocation, endLocation, height, wallThickness, wallColor=[1,1,1], waitForConfirmation=True):
+    length = math.sqrt(pow(startLocation[0] - endLocation[0],2) + pow(startLocation[1] - endLocation[1],2) + pow(startLocation[2] - endLocation[2],2))
+    location = [(startLocation[0] + endLocation[0])/2, (startLocation[1] + endLocation[1])/2, (startLocation[2] + endLocation[2])/2]
+    
+    yRotation = -math.asin( (endLocation[2] - startLocation[2])/(length) )
+    zRotation = math.atan2( (endLocation[1] - startLocation[1]), (endLocation[0] - startLocation[0]))
+    
+    shiftedLocation = [location[0]+math.sin(yRotation)*math.cos(zRotation)*height/2, location[1]+math.sin(yRotation)*math.sin(zRotation)*height/2, location[2]+math.cos(yRotation)*height/2]
+    
+    #print(location)
+    #QLabsBasicShape().spawn(qlabs, deviceNumber*10+500, location, [0, 0, 0], [0.1, 0.1, 0.1], QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    #QLabsBasicShape().spawn(qlabs, deviceNumber*10+501, startLocation, [0, 0, 0], [0.1, 0.1, 0.1], QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    #QLabsBasicShape().spawn(qlabs, deviceNumber*10+502, endLocation, [0, 0, 0], [0.1, 0.1, 0.1], QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    
+    QLabsBasicShape().spawn(qlabs, deviceNumber, shiftedLocation, [0, yRotation, zRotation], [length, wallThickness, height], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().setMaterialProperties(qlabs, deviceNumber, wallColor, 1, False, waitForConfirmation)
+    
+
 def spawnBoxWallsFromCenterDegrees(qlabs, deviceNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
     spawnBoxWallsFromCenter(qlabs, deviceNumberStart, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
 
