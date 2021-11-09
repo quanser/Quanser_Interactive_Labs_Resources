@@ -38,6 +38,8 @@ class CommModularContainer:
     
     
     ID_UE4_SYSTEM = 1000
+    FCN_UE4_SYSTEM_SET_TITLE_STRING = 10
+    FCN_UE4_SYSTEM_SET_TITLE_STRING_ACK = 11
     
     ID_SIMULATION_CODE = 1001
     FCN_SIMULATION_CODE_RESET = 200
@@ -340,7 +342,30 @@ class QuanserInteractiveLabs:
             
             return True
         else:
-            return False             
+            return False      
+
+    def setTitleString(self, titleString, wait_for_confirmation=True):
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_UE4_SYSTEM
+        c.deviceNumber = 0
+        c.deviceFunction = CommModularContainer.FCN_UE4_SYSTEM_SET_TITLE_STRING
+        c.payload = bytearray(struct.pack(">I", len(titleString)))
+        c.payload = c.payload + bytearray(titleString.encode('utf-8'))
+        
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if wait_for_confirmation:
+            self.flushReceive()        
+                
+        if (self.sendContainer(c)):
+        
+            if wait_for_confirmation:
+                c = self.waitForContainer(CommModularContainer.ID_UE4_SYSTEM, 0, CommModularContainer.FCN_UE4_SYSTEM_SET_TITLE_STRING_ACK)
+                return c
+            
+            return True
+        else:
+            return False                  
             
     def ping(self):
         c = CommModularContainer()
