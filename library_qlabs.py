@@ -261,18 +261,17 @@ class QuanserInteractiveLabs:
             return False
             
     def destroySpawnedActor(self, ID, deviceNumber):
-        deviceNumber = 0
         c = CommModularContainer()
         
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.deviceNumber = deviceNumber
+        c.deviceNumber = 0
         c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR
         c.payload = bytearray(struct.pack(">II", ID, deviceNumber))
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
         if (self.sendContainer(c)):
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
+            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
             
             return True
         

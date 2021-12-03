@@ -33,6 +33,16 @@ class QLabsFreeCamera:
         
         return qlabs.spawn(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, True)
     
+    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
+        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
+   
+    def spawnAndParentWithRelativeTransformDegrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
+        rotation[0] = rotation[0]/180*math.pi
+        rotation[1] = rotation[1]/180*math.pi
+        rotation[2] = rotation[2]/180*math.pi
+        
+        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
+   
     
     def possess(self, qlabs, deviceNumber):
         c = CommModularContainer()
