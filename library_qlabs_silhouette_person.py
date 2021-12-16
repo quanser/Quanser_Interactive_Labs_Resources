@@ -24,12 +24,9 @@ class QLabsSilhouettePerson:
         return qlabs.spawn(deviceNumber, self.ID_SILHOUETTE_PERSON, location[0], location[1], location[2]+1.0, rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
 
     def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        rotation[0] = rotation[0]/180*math.pi
-        rotation[1] = rotation[1]/180*math.pi
-        rotation[2] = rotation[2]/180*math.pi    
     
         # To put the spawn point at the feet, offset z by 1m
-        return qlabs.spawn(deviceNumber, self.ID_SILHOUETTE_PERSON, location[0], location[1], location[2]+1.0, rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
+        return qlabs.spawn(deviceNumber, self.ID_SILHOUETTE_PERSON, location[0], location[1], location[2]+1.0, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
     
 
         

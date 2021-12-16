@@ -24,10 +24,8 @@ class QLabsQArm:
         return qlabs.spawn(deviceNumber, self.ID_QARM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
    
     def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
-        rotation[0] = rotation[0]/180*math.pi
-        rotation[1] = rotation[1]/180*math.pi
-        rotation[2] = rotation[2]/180*math.pi 
-        return qlabs.spawn(deviceNumber, self.ID_QARM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
+        
+        return qlabs.spawn(deviceNumber, self.ID_QARM, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
  
     def start_RT_model(self, device_num=0, RT_hostname='localhost', UE_hostname='localhost'):
         cmd_string=f'start "QArm_Spawn_Model" "%QUARC_DIR%\quarc_run" -D -r -t tcpip://{RT_hostname}:17000 QArm_Spawn.rt-win64 -hostname {UE_hostname} -devicenum {device_num}'

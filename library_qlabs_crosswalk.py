@@ -22,9 +22,6 @@ class QLabsCrosswalk:
         return qlabs.spawn(deviceNumber, self.ID_CROSSWALK,location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  
     def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        rotation[0] = rotation[0]/180*math.pi
-        rotation[1] = rotation[1]/180*math.pi
-        rotation[2] = rotation[2]/180*math.pi
     
-        return qlabs.spawn(deviceNumber, self.ID_CROSSWALK,location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
+        return qlabs.spawn(deviceNumber, self.ID_CROSSWALK,location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  

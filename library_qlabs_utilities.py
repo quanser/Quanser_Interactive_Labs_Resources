@@ -76,11 +76,7 @@ def spawnSplineCircleFromCenter(qlabs, deviceNumber, centerLocation, rotation, r
         
 def spawnSplineCircleFromCenterDegrees(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
-    rotation[0] = rotation[0]/180*math.pi
-    rotation[1] = rotation[1]/180*math.pi
-    rotation[2] = rotation[2]/180*math.pi
-
-    spawnSplineCircleFromCenter(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth, color, numSplinePoints, waitForConfirmation)
+    spawnSplineCircleFromCenter(qlabs, deviceNumber, centerLocation, [x/180*math.pi for x in rotation], radius, lineWidth, color, numSplinePoints, waitForConfirmation)
         
 def spawnSplineRoundedRectangleFromCenter(qlabs, deviceNumber, centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1, color=[1,0,0], waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points

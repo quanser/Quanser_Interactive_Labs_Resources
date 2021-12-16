@@ -33,11 +33,8 @@ class QLabsBasicShape:
         return qlabs.spawn(deviceNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  
     def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
-        rotation[0] = rotation[0]/180*math.pi
-        rotation[1] = rotation[1]/180*math.pi
-        rotation[2] = rotation[2]/180*math.pi
     
-        return qlabs.spawn(deviceNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
+        return qlabs.spawn(deviceNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  
     def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, scale, configuration, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
         return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
@@ -125,8 +122,4 @@ class QLabsBasicShape:
 
     def setTransformDegrees(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
     
-        rotation[0] = rotation[0]/180*math.pi
-        rotation[1] = rotation[1]/180*math.pi
-        rotation[2] = rotation[2]/180*math.pi
-    
-        return self.set_transform(qlabs, deviceNumber, location, rotation, scale, waitForConfirmation)   
+        return self.set_transform(qlabs, deviceNumber, location, [x/180*math.pi for x in rotation], scale, waitForConfirmation)   
