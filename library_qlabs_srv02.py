@@ -1,6 +1,7 @@
 from library_qlabs import QuanserInteractiveLabs, CommModularContainer
 from quanser.common import GenericError
 import math
+import os
 
 import struct
         
@@ -51,3 +52,12 @@ class QLabsSRV02:
     
         return self.commandAndRequestState(qlabs, deviceNum, angle/180*math.pi, waitForConfirmation)
     
+    def startRTModel(self, device_num=0, QLabs_hostname='localhost'):
+        cmd_string="quarc_run -D -r -t tcpip://localhost:17000 Turntable_Spawn.rt-linux_pi_3 -uri tcpip://localhost:17004 -hostname {} -devicenum {}".format(QLabs_hostname, device_num)
+        os.system(cmd_string)
+        return cmd_string
+        
+    def terminateRTModel(self):
+        cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 Turntable_Spawn.rt-linux_pi_3"
+        os.system(cmd_string)
+        return cmd_string    

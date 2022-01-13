@@ -437,6 +437,7 @@ class QuanserInteractiveLabs:
             return False   
           
     def terminate_RT_models(self, RT_hostname):
+        #cmd_string="quarc_run -q *.rt-linux_pi_3"
         cmd_string=f'start "QLabs_Spawn_Model" "%QUARC_DIR%\quarc_run" -q -t tcpip://{RT_hostname}:17000 *.rt-win64'
         os.system(cmd_string)
         return cmd_string
