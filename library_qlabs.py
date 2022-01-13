@@ -3,6 +3,7 @@ from quanser.common import GenericError
 
 import struct
 import os
+import platform
         
         
 ######################### MODULAR CONTAINER CLASS #########################
@@ -77,7 +78,9 @@ class QuanserInteractiveLabs:
 
     _receivePacketBuffer = bytearray()
     _receivePacketSize = 0
-    _receivePacketContainerIndex = 0   
+    _receivePacketContainerIndex = 0  
+
+    _URIPort = 17001
 
     # Initilize QLabs
     def __init__(self):
@@ -435,12 +438,59 @@ class QuanserInteractiveLabs:
         
         else:
             return False   
+            
+    def startRealTimeModel(self, modelName, deviceNum=0, QLabsHostName='localhost', additionalArguments=""):
+        if platform.system() == "Windows":
+            cmd_string="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 {}.rt-win64 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, deviceNum, modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
+        elif platform.system() == "Linux":
+            if platform.machine() == "armv7l":
+                #Raspberry Pi 3, 4
+                cmd_string="quarc_run -D -r -t tcpip://localhost:17000 {}.rt-linux_pi_3 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
+            else:
+                print("This Linux machine not supported for real-time model execution")
+                return
+        else:
+            print("Platform not supported for real-time model execution")
+            return
+            
+        os.system(cmd_string)
+        
+        self._URIPort = self._URIPort + 1
+        return cmd_string            
           
-    def terminate_RT_models(self, RT_hostname):
-        #cmd_string="quarc_run -q *.rt-linux_pi_3"
-        cmd_string=f'start "QLabs_Spawn_Model" "%QUARC_DIR%\quarc_run" -q -t tcpip://{RT_hostname}:17000 *.rt-win64'
+    def terminateRealTimeModel(self, modelName, additionalArguments=""):
+        if platform.system() == "Windows":
+            cmd_string="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 {}.rt-win64 {}".format(modelName, additionalArguments)
+        elif platform.system() == "Linux":
+            if platform.machine() == "armv7l":
+                cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 {}.rt-linux_pi_3 {}".format(modelName, additionalArguments)
+            else:
+                print("This Linux machine not supported for real-time model execution")
+                return
+            
+        else:
+            print("Platform not supported for real-time model execution")
+            return
+                    
         os.system(cmd_string)
         return cmd_string
+        
+    def terminateAllRealTimeModels(self, additionalArguments=""):
+        if platform.system() == "Windows":
+            cmd_string="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 *.rt-win64 {}".format(additionalArguments)
+        elif platform.system() == "Linux":
+            if platform.machine() == "armv7l":
+                cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 *.rt-linux_pi_3 {}".format(additionalArguments)
+            else:
+                print("This Linux machine not supported for real-time model execution")
+                return
+            
+        else:
+            print("Platform not supported for real-time model execution")
+            return
+                    
+        os.system(cmd_string)
+        return cmd_string        
    
     def __del__(self):
         self.close()

@@ -69,13 +69,3 @@ class QLabsQBot2e:
         else:
             return False
             
-    def startRTModel(self, device_num=0, QLabs_hostname='localhost'):
-        cmd_string="quarc_run -D -r -t tcpip://localhost:17000 QBot2e_Spawn.rt-linux_pi_3 -uri tcpip://localhost:17003 -hostname {} -devicenum {}".format(QLabs_hostname, device_num)
-        os.system(cmd_string)
-        return cmd_string
-        
-    def terminateRTModel(self):
-        cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 QBot2e_Spawn.rt-linux_pi_3"
-        os.system(cmd_string)
-        return cmd_string
-            
