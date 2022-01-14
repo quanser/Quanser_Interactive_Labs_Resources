@@ -14,6 +14,8 @@ class QLabsQBot2e:
     
     FCN_QBOT_COMMAND_AND_REQUEST_STATE = 10
     FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE = 11
+    FCN_QBOT_SET_CAMERA_ANGLE = 12
+    FCN_QBOT_SET_CAMERA_ANGLE_ACK = 13
     FCN_QBOT_POSSESS = 20
     FCN_QBOT_POSSESS_ACK = 21
     
@@ -33,6 +35,24 @@ class QLabsQBot2e:
     def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
+   
+    
+    def setCameraAngle(self, qlabs, deviceNumber, angle):
+        c = CommModularContainer()
+        c.classID = self.ID_QBOT
+        c.deviceNumber = deviceNumber
+        c.deviceFunction = self.FCN_QBOT_SET_CAMERA_ANGLE
+        c.payload = bytearray(struct.pack(">f", angle))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        qlabs.flushReceive()  
+        
+        if (qlabs.sendContainer(c)):
+            c = qlabs.waitForContainer(self.ID_QBOT, deviceNumber, self.FCN_QBOT_SET_CAMERA_ANGLE_ACK)
+                    
+            return True
+        else:
+            return False
    
    
     def possess(self, qlabs, deviceNumber, camera):
