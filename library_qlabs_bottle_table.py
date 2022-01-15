@@ -1,4 +1,5 @@
 from library_qlabs import QuanserInteractiveLabs, CommModularContainer
+from library_qlabs_widget import QLabsWidget
 from quanser.common import GenericError
 import math
 
@@ -209,4 +210,4 @@ class QLabsBottleTableSensorTowerTall:
                 
                 
         return tof_distance
-    
+ 
