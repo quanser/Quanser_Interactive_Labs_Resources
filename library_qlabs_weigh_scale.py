@@ -1,9 +1,6 @@
-from library_qlabs import QuanserInteractiveLabs, CommModularContainer
-from quanser.common import GenericError
+from library_qlabs import CommModularContainer
 import math
-
-import struct
-        
+import struct      
         
 ######################### MODULAR CONTAINER CLASS #########################
 
@@ -23,14 +20,14 @@ class QLabsWeighScale:
     def spawn(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_WEIGH_SCALE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_WEIGH_SCALE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, waitForConfirmation)
         
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_WEIGH_SCALE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_WEIGH_SCALE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
            
-    def getMeasuredMass(self, qlabs, deviceNumber):
+    def get_measured_mass(self, qlabs, deviceNumber):
         c = CommModularContainer()
         c.classID = self.ID_WEIGH_SCALE
         c.deviceNumber = deviceNumber
@@ -38,16 +35,15 @@ class QLabsWeighScale:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_WEIGH_SCALE, deviceNumber, self.FCN_WEIGH_SCALE_RESPONSE_LOAD_MASS)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_WEIGH_SCALE, deviceNumber, self.FCN_WEIGH_SCALE_RESPONSE_LOAD_MASS)
             
             if (len(c.payload) == 4):
                 mass,  = struct.unpack(">f", c.payload)
                 return mass
             else:
                 return -1.0
-            
         else:
             return -1.0

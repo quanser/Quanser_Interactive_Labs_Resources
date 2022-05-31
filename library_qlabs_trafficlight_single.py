@@ -27,11 +27,11 @@ class QLabsTrafficLightSingle:
     def spawn(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_TRAFFIC_LIGHT_SINGLE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
         
         return qlabs.spawn(deviceNumber, self.ID_TRAFFIC_LIGHT_SINGLE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], 0, waitForConfirmation)
  
-    def setState(self, qlabs, deviceNumber, state, waitForConfirmation=True):
+    def set_state(self, qlabs, deviceNumber, state, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = self.ID_TRAFFIC_LIGHT_SINGLE
         c.deviceNumber = deviceNumber
@@ -40,11 +40,11 @@ class QLabsTrafficLightSingle:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flushReceive()  
+            qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
+        if (qlabs.send_container(c)):
             if waitForConfirmation:
-                c = qlabs.waitForContainer(self.ID_TRAFFIC_LIGHT_SINGLE, deviceNumber, self.FCN_TRAFFIC_LIGHT_SINGLE_SET_STATE_ACK)
+                c = qlabs.wait_for_container(self.ID_TRAFFIC_LIGHT_SINGLE, deviceNumber, self.FCN_TRAFFIC_LIGHT_SINGLE_SET_STATE_ACK)
                     
             return True
         else:

@@ -33,13 +33,11 @@ class QLabsDeliveryTube:
     def spawn(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_DELIVERY_TUBE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, configuration, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_DELIVERY_TUBE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
   
-    
-    
-    def spawnBlock(self, qlabs, deviceNumber, blockType, mass, yawRotation, color):
+    def spawn_block(self, qlabs, deviceNumber, blockType, mass, yawRotation, color):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE
         c.deviceNumber = deviceNumber
@@ -47,16 +45,16 @@ class QLabsDeliveryTube:
         c.payload = bytearray(struct.pack(">Ifffff", blockType, mass, yawRotation, color[0], color[1], color[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_DELIVERY_TUBE, deviceNumber, self.FCN_DELIVERY_TUBE_SPAWN_BLOCK_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_DELIVERY_TUBE, deviceNumber, self.FCN_DELIVERY_TUBE_SPAWN_BLOCK_ACK)
                     
             return True
         else:
             return False 
             
-    def setHeight(self, qlabs, deviceNumber, height):
+    def set_height(self, qlabs, deviceNumber, height):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE
         c.deviceNumber = deviceNumber
@@ -64,10 +62,10 @@ class QLabsDeliveryTube:
         c.payload = bytearray(struct.pack(">f", height))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_DELIVERY_TUBE, deviceNumber, self.FCN_DELIVERY_TUBE_SET_HEIGHT_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_DELIVERY_TUBE, deviceNumber, self.FCN_DELIVERY_TUBE_SET_HEIGHT_ACK)
                     
             return True
         else:
@@ -98,13 +96,13 @@ class QLabsDeliveryTubeBottles:
     def spawn(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_DELIVERY_TUBE_BOTTLES, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, configuration, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_DELIVERY_TUBE_BOTTLES, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
   
     
     
-    def spawnContainer(self, qlabs, deviceNumber, metallic, color, mass, propertyString="", height = 0.1, diameter = 0.65, roughness = 0.65):
+    def spawn_container(self, qlabs, deviceNumber, metallic, color, mass, propertyString="", height = 0.1, diameter = 0.65, roughness = 0.65):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE_BOTTLES
         c.deviceNumber = deviceNumber
@@ -113,10 +111,10 @@ class QLabsDeliveryTubeBottles:
         c.payload = c.payload + bytearray(propertyString.encode('utf-8'))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_DELIVERY_TUBE_BOTTLES, deviceNumber, self.FCN_DELIVERY_TUBE_SPAWN_CONTAINER_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_DELIVERY_TUBE_BOTTLES, deviceNumber, self.FCN_DELIVERY_TUBE_SPAWN_CONTAINER_ACK)
                     
             return True
         else:
@@ -124,7 +122,7 @@ class QLabsDeliveryTubeBottles:
             
                       
             
-    def setHeight(self, qlabs, deviceNumber, height):
+    def set_height(self, qlabs, deviceNumber, height):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE_BOTTLES
         c.deviceNumber = deviceNumber
@@ -132,10 +130,10 @@ class QLabsDeliveryTubeBottles:
         c.payload = bytearray(struct.pack(">f", height))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_DELIVERY_TUBE_BOTTLES, deviceNumber, self.FCN_DELIVERY_TUBE_SET_HEIGHT_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_DELIVERY_TUBE_BOTTLES, deviceNumber, self.FCN_DELIVERY_TUBE_SET_HEIGHT_ACK)
                     
             return True
         else:

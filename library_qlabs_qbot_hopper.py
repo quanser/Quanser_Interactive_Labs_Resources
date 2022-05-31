@@ -28,10 +28,10 @@ class QLabsQBotHopper:
     def spawn(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_QBOT_DUMPING_MECHANISM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
         
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_QBOT_DUMPING_MECHANISM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_QBOT_DUMPING_MECHANISM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
    
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_QBOT_DUMPING_MECHANISM, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
    
@@ -44,14 +44,14 @@ class QLabsQBotHopper:
         c.payload = bytearray(struct.pack(">f", angle))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_QBOT_DUMPING_MECHANISM, deviceNumber, self.FCN_QBOT_DUMPING_MECHANISM_COMMAND_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_QBOT_DUMPING_MECHANISM, deviceNumber, self.FCN_QBOT_DUMPING_MECHANISM_COMMAND_ACK)
                     
             return True
         else:
             return False
             
-    def commandDegrees(self, qlabs, deviceNumber, angle):
+    def command_degrees(self, qlabs, deviceNumber, angle):
         self.command(qlabs, deviceNumber, angle/180*math.pi)

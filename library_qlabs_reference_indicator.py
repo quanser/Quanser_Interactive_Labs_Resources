@@ -24,13 +24,13 @@ class QLabsReferenceIndicator:
     def spawn(self, qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_REF_IND, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         
         return qlabs.spawn(deviceNumber, self.ID_REF_IND, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
  
  
  
-    def setTransformAndColor(self, qlabs, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, r, g, b, waitForConfirmation=True):
+    def set_transform_and_color(self, qlabs, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, r, g, b, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = self.ID_REF_IND
         c.deviceNumber = deviceNumber
@@ -39,11 +39,11 @@ class QLabsReferenceIndicator:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flushReceive()  
+            qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
+        if (qlabs.send_container(c)):
             if waitForConfirmation:
-                c = qlabs.waitForContainer(self.FCN_REF_IND_SET_TRANSFORM_AND_COLOR, deviceNumber, self.FCN_REF_IND_SET_TRANSFORM_AND_COLOR_ACK)
+                c = qlabs.wait_for_container(self.FCN_REF_IND_SET_TRANSFORM_AND_COLOR, deviceNumber, self.FCN_REF_IND_SET_TRANSFORM_AND_COLOR_ACK)
                 return c
                     
             return True

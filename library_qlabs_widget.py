@@ -1,10 +1,5 @@
-from library_qlabs import QuanserInteractiveLabs, CommModularContainer
-from quanser.common import GenericError
-import math
-
-import struct
-        
-        
+import math      
+       
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsWidget:
@@ -22,8 +17,8 @@ class QLabsWidget:
        return
        
     def spawn(self, qlabs, widgetType, location, rotation, scale, color, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
-        return qlabs.spawnWidget(widgetType, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
+        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, widgetType, location, rotation, scale, color, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
-        return qlabs.spawnWidget(widgetType, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
+    def spawn_degrees(self, qlabs, widgetType, location, rotation, scale, color, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
  

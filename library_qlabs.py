@@ -1,5 +1,4 @@
 from quanser.communications import Stream, StreamError, PollFlag, Timeout
-from quanser.common import GenericError
 
 import struct
 import os
@@ -16,15 +15,14 @@ class CommModularContainer:
     deviceNumber = 0   # Increment if there are more than one of the same device ID
     deviceFunction = 0 # Command/reponse
     payload = bytearray()
-    
        
     ID_GENERIC_ACTOR_SPAWNER = 135
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN = 10
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK = 11
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR = 12
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK = 13
-    FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors = 14
-    FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors_ACK = 15
+    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS = 14
+    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK = 15
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST = 16
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS = 18
@@ -35,8 +33,6 @@ class CommModularContainer:
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
     FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION = 100
     FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK = 101
-    
-    
     
     ID_UE4_SYSTEM = 1000
     FCN_UE4_SYSTEM_SET_TITLE_STRING = 10
@@ -55,15 +51,11 @@ class CommModularContainer:
     FCN_RESPONSE_WORLD_TRANSFORM = 4
     
     BASE_CONTAINER_SIZE = 13
-
     
     # Initilize class
     def __init__(self):
 
        return
-       
-
-
 
 ######################### COMMUNICATIONS #########################        
        
@@ -95,22 +87,20 @@ class QuanserInteractiveLabs:
             print("Connection failure.")
             return False
 
-        poll_result = self._stream.poll(Timeout(1), PollFlag.CONNECT)
+        pollResult = self._stream.poll(Timeout(1), PollFlag.CONNECT)
 
-        while (((poll_result & PollFlag.CONNECT) != PollFlag.CONNECT) and (timeout > 0)):
-            poll_result = self._stream.poll(Timeout(1), PollFlag.CONNECT)
+        while (((pollResult & PollFlag.CONNECT) != PollFlag.CONNECT) and (timeout > 0)):
+            pollResult = self._stream.poll(Timeout(1), PollFlag.CONNECT)
             timeout = timeout - 1
 
-
-        if poll_result & PollFlag.CONNECT == PollFlag.CONNECT:
+        if pollResult & PollFlag.CONNECT == PollFlag.CONNECT:
             #print("Connection accepted")
             pass
         else:
             if (timeout == 0):
                 print("Connection timeout")
         
-            return False
-        
+            return False       
         
         return True
         
@@ -122,7 +112,7 @@ class QuanserInteractiveLabs:
             pass
             
     # Pack data and send immediately
-    def sendContainer (self, container):
+    def send_container (self, container):
         try:
             data = bytearray(struct.pack("<i", 1+container.containerSize)) + bytearray(struct.pack(">BiiiB", 123, container.containerSize, container.classID, container.deviceNumber, container.deviceFunction)) + container.payload
             numBytes = len(data)
@@ -132,9 +122,8 @@ class QuanserInteractiveLabs:
         except:
             return False      
 
-
     # Check if new data is available.  Returns true if a complete packet has been received.
-    def receiveNewData(self):    
+    def receive_new_data(self):    
         bytesRead = 0
         
         try:
@@ -145,8 +134,7 @@ class QuanserInteractiveLabs:
                 bytesRead = 0
         #print("Bytes read: {}".format(bytesRead))
             
-        new_data = False
-
+        newData = False
     
         while bytesRead > 0:
             #print("Received {} bytes".format(bytesRead))
@@ -167,24 +155,21 @@ class QuanserInteractiveLabs:
                 # packet size
                 self._receivePacketSize, = struct.unpack("<I", self._receivePacketBuffer[0:4])
                 # add the 4 bytes for the size to the packet size
-                self._receivePacketSize = self._receivePacketSize + 4
-            
+                self._receivePacketSize = self._receivePacketSize + 4          
             
                 if len(self._receivePacketBuffer) >= self._receivePacketSize:
                     
                     self._receivePacketContainerIndex = 5
-                    new_data = True
+                    newData = True
                    
             else:
                 print("Error parsing multiple packets in receive buffer.  Clearing internal buffers.")
                 _receivePacketBuffer = bytearray()
                 
-        return new_data
-
-
+        return newData
 
     # Parse out received containers
-    def getNextContainer(self):
+    def get_next_container(self):
         c = CommModularContainer()
         isMoreContainers = False
     
@@ -216,18 +201,17 @@ class QuanserInteractiveLabs:
     
         return c, isMoreContainers   
 
-
-    def waitForContainer(self, classID, deviceNumber, functionNumber):
+    def wait_for_container(self, classID, deviceNumber, functionNumber):
        while(True):
-            while (self.receiveNewData() == False):
+            while (self.receive_new_data() == False):
                 pass
                 
             #print("DEBUG: Data received. Looking for class {}, device {}, function {}".format(classID, deviceNumber, functionNumber))
                 
-            more_containers = True
+            moreContainers = True
             
-            while (more_containers):
-                c, more_containers = self.getNextContainer()
+            while (moreContainers):
+                c, moreContainers = self.get_next_container()
                 
                 #print("DEBUG: Container class {}, device {}, function {}".format(c.classID, c.deviceNumber, c.deviceFunction))
                 
@@ -236,7 +220,7 @@ class QuanserInteractiveLabs:
                         if c.deviceFunction == functionNumber:
                             return c
                             
-    def flushReceive(self):
+    def flush_receive(self):
         try:
             bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
         except StreamError as e:
@@ -244,26 +228,26 @@ class QuanserInteractiveLabs:
                 # would block
                 bytesRead = 0
             
-    def destroyAllSpawnedActors(self):
+    def destroy_all_spawned_actors(self):
         deviceNumber = 0
         c = CommModularContainer()
         
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.deviceNumber = deviceNumber
-        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors
+        c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
             #print("DEBUG: Container sent")
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_destoryAllSpawnedActors_ACK)
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
             
             return True
         
         else:
             return False
             
-    def destroySpawnedActor(self, ID, deviceNumber):
+    def destroy_spawned_actor(self, ID, deviceNumber):
         c = CommModularContainer()
         
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
@@ -273,15 +257,15 @@ class QuanserInteractiveLabs:
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.sendContainer(c)):
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
+        if (self.send_container(c)):
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
             
             return True
         
         else:
             return False            
             
-    def spawn(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, wait_for_confirmation=True):
+    def spawn(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.deviceNumber = 0
@@ -289,20 +273,20 @@ class QuanserInteractiveLabs:
         c.payload = bytearray(struct.pack(">IIfffffffffI", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            self.flushReceive()        
+        if waitForConfirmation:
+            self.flush_receive()        
                 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
         
-            if wait_for_confirmation:
-                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
+            if waitForConfirmation:
+                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
                 return c
             
             return True
         else:
             return False 
             
-    def spawnAndParentWithRelativeTransform(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent, wait_for_confirmation=True):
+    def spawn_and_parent_with_relative_transform(self, deviceNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.deviceNumber = 0
@@ -310,43 +294,43 @@ class QuanserInteractiveLabs:
         c.payload = bytearray(struct.pack(">IIfffffffffIIII", classID, deviceNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClass, parentDeviceNum, parentComponent))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            self.flushReceive()        
+        if waitForConfirmation:
+            self.flush_receive()        
                 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
         
-            if wait_for_confirmation:
-                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
+            if waitForConfirmation:
+                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
                 return c
             
             return True
         else:
             return False            
             
-    def spawnWidget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, properties, wait_for_confirmation=True):
+    def spawn_widget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, properties, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.deviceNumber = 0
         c.deviceFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
-        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, color_r, color_g, color_b, measured_mass, ID_tag, len(properties)))
+        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, len(properties)))
         c.payload = c.payload + bytearray(properties.encode('utf-8'))
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            self.flushReceive()        
+        if waitForConfirmation:
+            self.flush_receive()        
                 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
         
-            if wait_for_confirmation:
-                c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
+            if waitForConfirmation:
+                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
                 return c
             
             return True
         else:
             return False      
 
-    def setTitleString(self, titleString, wait_for_confirmation=True):
+    def set_title_string(self, titleString, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_UE4_SYSTEM
         c.deviceNumber = 0
@@ -356,13 +340,13 @@ class QuanserInteractiveLabs:
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        if wait_for_confirmation:
-            self.flushReceive()        
+        if waitForConfirmation:
+            self.flush_receive()        
                 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
         
-            if wait_for_confirmation:
-                c = self.waitForContainer(CommModularContainer.ID_UE4_SYSTEM, 0, CommModularContainer.FCN_UE4_SYSTEM_SET_TITLE_STRING_ACK)
+            if waitForConfirmation:
+                c = self.wait_for_container(CommModularContainer.ID_UE4_SYSTEM, 0, CommModularContainer.FCN_UE4_SYSTEM_SET_TITLE_STRING_ACK)
                 return c
             
             return True
@@ -377,16 +361,16 @@ class QuanserInteractiveLabs:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        self.flushReceive()        
+        self.flush_receive()        
                 
-        if (self.sendContainer(c)):
+        if (self.send_container(c)):
         
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_RESPONSE_PING)
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_RESPONSE_PING)
             return True
         else:
             return False 
     
-    def regenerateCacheList(self):
+    def regenerate_cache_list(self):
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.deviceNumber = 0
@@ -394,15 +378,15 @@ class QuanserInteractiveLabs:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
-        if (self.sendContainer(c)):
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, c.deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK)
+        if (self.send_container(c)):
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, c.deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK)
             
             return True
         
         else:
             return False
     
-    def destroyAllSpawnedWidgets(self):
+    def destroy_all_spawned_widgets(self):
         deviceNumber = 0
         c = CommModularContainer()
         
@@ -412,16 +396,15 @@ class QuanserInteractiveLabs:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.sendContainer(c)):
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
+        if (self.send_container(c)):
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
             
             return True
         
         else:
             return False   
             
-
-    def widgetSpawnConfiguration(self, EnableShadow=True):
+    def widget_spawn_configuration(self, EnableShadow=True):
         deviceNumber = 0
         c = CommModularContainer()
         
@@ -431,21 +414,21 @@ class QuanserInteractiveLabs:
         c.payload = bytearray(struct.pack(">B", EnableShadow))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (self.sendContainer(c)):
-            c = self.waitForContainer(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
+        if (self.send_container(c)):
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, deviceNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
             
             return True
         
         else:
             return False   
             
-    def startRealTimeModel(self, modelName, deviceNum=0, QLabsHostName='localhost', additionalArguments=""):
+    def start_real_time_model(self, modelName, deviceNum=0, QLabsHostName='localhost', additionalArguments=""):
         if platform.system() == "Windows":
-            cmd_string="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 {}.rt-win64 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, deviceNum, modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
+            cmdString="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 {}.rt-win64 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, deviceNum, modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
         elif platform.system() == "Linux":
             if platform.machine() == "armv7l":
                 #Raspberry Pi 3, 4
-                cmd_string="quarc_run -D -r -t tcpip://localhost:17000 {}.rt-linux_pi_3 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
+                cmdString="quarc_run -D -r -t tcpip://localhost:17000 {}.rt-linux_pi_3 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, self._URIPort, QLabsHostName, deviceNum, additionalArguments)
             else:
                 print("This Linux machine not supported for real-time model execution")
                 return
@@ -453,17 +436,17 @@ class QuanserInteractiveLabs:
             print("Platform not supported for real-time model execution")
             return
             
-        os.system(cmd_string)
+        os.system(cmdString)
         
         self._URIPort = self._URIPort + 1
-        return cmd_string            
+        return cmdString            
           
-    def terminateRealTimeModel(self, modelName, additionalArguments=""):
+    def terminate_real_time_model(self, modelName, additionalArguments=""):
         if platform.system() == "Windows":
-            cmd_string="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 {}.rt-win64 {}".format(modelName, additionalArguments)
+            cmdString="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 {}.rt-win64 {}".format(modelName, additionalArguments)
         elif platform.system() == "Linux":
             if platform.machine() == "armv7l":
-                cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 {}.rt-linux_pi_3 {}".format(modelName, additionalArguments)
+                cmdString="quarc_run -q -Q -t tcpip://localhost:17000 {}.rt-linux_pi_3 {}".format(modelName, additionalArguments)
             else:
                 print("This Linux machine not supported for real-time model execution")
                 return
@@ -472,15 +455,15 @@ class QuanserInteractiveLabs:
             print("Platform not supported for real-time model execution")
             return
                     
-        os.system(cmd_string)
-        return cmd_string
+        os.system(cmdString)
+        return cmdString
         
-    def terminateAllRealTimeModels(self, additionalArguments=""):
+    def terminate_all_real_time_models(self, additionalArguments=""):
         if platform.system() == "Windows":
-            cmd_string="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 *.rt-win64 {}".format(additionalArguments)
+            cmdString="start \"QLabs_Spawn_Model\" \"%QUARC_DIR%\quarc_run\" -q -Q -t tcpip://localhost:17000 *.rt-win64 {}".format(additionalArguments)
         elif platform.system() == "Linux":
             if platform.machine() == "armv7l":
-                cmd_string="quarc_run -q -Q -t tcpip://localhost:17000 *.rt-linux_pi_3 {}".format(additionalArguments)
+                cmdString="quarc_run -q -Q -t tcpip://localhost:17000 *.rt-linux_pi_3 {}".format(additionalArguments)
             else:
                 print("This Linux machine not supported for real-time model execution")
                 return
@@ -489,8 +472,8 @@ class QuanserInteractiveLabs:
             print("Platform not supported for real-time model execution")
             return
                     
-        os.system(cmd_string)
-        return cmd_string        
+        os.system(cmdString)
+        return cmdString        
    
     def __del__(self):
         self.close()

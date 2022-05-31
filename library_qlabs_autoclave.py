@@ -27,12 +27,12 @@ class QLabsAutoclave:
     def spawn(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_AUTOCLAVE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, configuration, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, configuration=0, waitForConfirmation=True):
                 
         return qlabs.spawn(deviceNumber, self.ID_AUTOCLAVE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
  
  
-    def setDrawer(self, qlabs, deviceNumber, open_drawer, waitForConfirmation=True):
+    def set_drawer(self, qlabs, deviceNumber, open_drawer, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = self.ID_AUTOCLAVE
         c.deviceNumber = deviceNumber
@@ -41,11 +41,11 @@ class QLabsAutoclave:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flushReceive()  
+            qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
+        if (qlabs.send_container(c)):
             if waitForConfirmation:
-                c = qlabs.waitForContainer(self.ID_AUTOCLAVE, deviceNumber, self.FCN_AUTOCLAVE_SET_DRAWER_ACK)
+                c = qlabs.wait_for_container(self.ID_AUTOCLAVE, deviceNumber, self.FCN_AUTOCLAVE_SET_DRAWER_ACK)
                 return c
                     
             return True

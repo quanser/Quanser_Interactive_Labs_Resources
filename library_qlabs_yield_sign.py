@@ -1,9 +1,4 @@
-from library_qlabs import QuanserInteractiveLabs, CommModularContainer
-from quanser.common import GenericError
-import math
-
-import struct
-        
+import math     
         
 ######################### MODULAR CONTAINER CLASS #########################
 
@@ -20,7 +15,7 @@ class QLabsYieldSign:
     def spawn(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_YIELD_SIGN, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, scale, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_YIELD_SIGN, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], 0, waitForConfirmation)
  

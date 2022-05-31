@@ -24,14 +24,14 @@ class QLabsBottleTableAttachment:
     def spawn(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_ATTACHMENT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_ATTACHMENT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, waitForConfirmation)
         
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_ATTACHMENT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_ATTACHMENT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
            
-    def getMeasuredMass(self, qlabs, deviceNumber):
+    def get_measured_mass(self, qlabs, deviceNumber):
         c = CommModularContainer()
         c.classID = self.ID_BOTTLE_TABLE_ATTACHMENT
         c.deviceNumber = deviceNumber
@@ -39,10 +39,10 @@ class QLabsBottleTableAttachment:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_BOTTLE_TABLE_ATTACHMENT, deviceNumber, self.FCN_BOTTLE_TABLE_ATTACHMENT_RESPONSE_LOAD_MASS)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_BOTTLE_TABLE_ATTACHMENT, deviceNumber, self.FCN_BOTTLE_TABLE_ATTACHMENT_RESPONSE_LOAD_MASS)
             
             if (len(c.payload) == 4):
                 mass,  = struct.unpack(">f", c.payload)
@@ -68,12 +68,12 @@ class QLabsBottleTableSupport:
     def spawn(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SUPPORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
     
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SUPPORT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_SUPPORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_SUPPORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
     
 
 class QLabsBottleTableSensorTowerShort:
@@ -92,18 +92,18 @@ class QLabsBottleTableSensorTowerShort:
     def spawn(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
 
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
     
-    def spawnAndParentWithRelativeTransformDegrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+    def spawn_and_parent_with_relative_transform_degrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
         
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
     
-    def GetProximity(self, qlabs, deviceNumber):
+    def get_proximity(self, qlabs, deviceNumber):
         c = CommModularContainer()
         c.classID = self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT
         c.deviceNumber = deviceNumber
@@ -111,7 +111,7 @@ class QLabsBottleTableSensorTowerShort:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
         relative_x = 0.0
         relative_y = 0.0
@@ -119,8 +119,8 @@ class QLabsBottleTableSensorTowerShort:
         properties = ""
         properties_size = 0
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_SHORT_RESPONSE_PROXIMITY)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_BOTTLE_TABLE_SENSOR_TOWER_SHORT, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_SHORT_RESPONSE_PROXIMITY)
             
             if (len(c.payload) >= 16):
                 relative_x, relative_y, relative_z, properties_size, = struct.unpack(">fffI", c.payload[0:16])
@@ -150,18 +150,18 @@ class QLabsBottleTableSensorTowerTall:
     def spawn(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, waitForConfirmation=True):
         
         return qlabs.spawn(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, waitForConfirmation)
  
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
     
-    def spawnAndParentWithRelativeTransformDegrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
+    def spawn_and_parent_with_relative_transform_degrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNum, parentComponent, waitForConfirmation=True):
         
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNum, parentComponent, waitForConfirmation)
     
-    def GetProximity(self, qlabs, deviceNumber):
+    def get_proximity(self, qlabs, deviceNumber):
         c = CommModularContainer()
         c.classID = self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL
         c.deviceNumber = deviceNumber
@@ -169,7 +169,7 @@ class QLabsBottleTableSensorTowerTall:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
         relative_x = 0.0
         relative_y = 0.0
@@ -177,8 +177,8 @@ class QLabsBottleTableSensorTowerTall:
         properties = ""
         properties_size = 0
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_TALL_RESPONSE_PROXIMITY)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_TALL_RESPONSE_PROXIMITY)
             
             if (len(c.payload) >= 16):
                 relative_x, relative_y, relative_z, properties_size, = struct.unpack(">fffI", c.payload[0:16])
@@ -190,7 +190,7 @@ class QLabsBottleTableSensorTowerTall:
         
         
         
-    def GetTOF(self, qlabs, deviceNumber):
+    def get_tof(self, qlabs, deviceNumber):
         c = CommModularContainer()
         c.classID = self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL
         c.deviceNumber = deviceNumber
@@ -198,12 +198,12 @@ class QLabsBottleTableSensorTowerTall:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
         tof_distance = 0.0
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_TALL_RESPONSE_TOF)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_BOTTLE_TABLE_SENSOR_TOWER_TALL, deviceNumber, self.FCN_BOTTLE_TABLE_SENSOR_TOWER_TALL_RESPONSE_TOF)
             
             if (len(c.payload) == 4):
                 tof_distance, = struct.unpack(">f", c.payload[0:4])

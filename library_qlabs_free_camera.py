@@ -26,16 +26,16 @@ class QLabsFreeCamera:
     def spawn(self, qlabs, deviceNumber, location, rotation):
         return qlabs.spawn(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, True)
            
-    def spawnDegrees(self, qlabs, deviceNumber, location, rotation):
+    def spawn_degrees(self, qlabs, deviceNumber, location, rotation):
         
         return qlabs.spawn(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, True)
     
-    def spawnAndParentWithRelativeTransform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
+    def spawn_and_parent_with_relative_transform(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
    
-    def spawnAndParentWithRelativeTransformDegrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
+    def spawn_and_parent_with_relative_transform_degrees(self, qlabs, deviceNumber, location, rotation, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation=True):
         
-        return qlabs.spawnAndParentWithRelativeTransform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
+        return qlabs.spawn_and_parent_with_relative_transform(deviceNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, 0, parentClass, parentDeviceNumber, parentComponent, waitForConfirmation)
    
     
     def possess(self, qlabs, deviceNumber):
@@ -46,16 +46,16 @@ class QLabsFreeCamera:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_POSSESS_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_POSSESS_ACK)
                     
             return True
         else:
             return False  
 
-    def setCameraProperties(self, qlabs, deviceNumber, fieldOfView, depthOfField, aperature, focusDistance):
+    def set_camera_properties(self, qlabs, deviceNumber, fieldOfView, depthOfField, aperature, focusDistance):
         c = CommModularContainer()
         c.classID = self.ID_FREE_CAMERA
         c.deviceNumber = deviceNumber
@@ -63,16 +63,16 @@ class QLabsFreeCamera:
         c.payload = bytearray(struct.pack(">fBff", fieldOfView, depthOfField, aperature, focusDistance))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK)
                     
             return True
         else:
             return False
         
-    def setTransform(self, qlabs, deviceNumber, location, rotation):
+    def set_transform(self, qlabs, deviceNumber, location, rotation):
         c = CommModularContainer()
         c.classID = self.ID_FREE_CAMERA
         c.deviceNumber = deviceNumber
@@ -80,10 +80,10 @@ class QLabsFreeCamera:
         c.payload = bytearray(struct.pack(">ffffff", location[0], location[1], location[2], rotation[0], rotation[1], rotation[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flushReceive()  
+        qlabs.flush_receive()  
         
-        if (qlabs.sendContainer(c)):
-            c = qlabs.waitForContainer(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK)
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_FREE_CAMERA, deviceNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK)
                     
             return True
         else:
