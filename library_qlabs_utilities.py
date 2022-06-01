@@ -76,7 +76,7 @@ def spawn_spline_arc_from_center(qlabs, deviceNumber, centerLocation, rotation, 
         
     QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=False, pointList=points)
     
-def spawn_spline_arc_from_centerDegrees(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle=0, endAngle=90, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_arc_from_center_degrees(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle=0, endAngle=90, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
     spawn_spline_arc_from_center(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, color, numSplinePoints, waitForConfirmation)
 
