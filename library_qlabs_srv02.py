@@ -48,7 +48,7 @@ class QLabsSRV02:
         else:
             return False
             
-    def command_and_request_stateDegrees(self, qlabs, deviceNum, angle, waitForConfirmation=True):
+    def command_and_request_state_degrees(self, qlabs, deviceNum, angle, waitForConfirmation=True):
     
         return self.command_and_request_state(qlabs, deviceNum, angle/180*math.pi, waitForConfirmation)
     

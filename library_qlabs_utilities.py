@@ -61,7 +61,7 @@ def spawn_spline_circle_from_center(qlabs, deviceNumber, centerLocation, rotatio
     
     QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=True, pointList=points)
         
-def spawn_spline_circle_from_centerDegrees(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_circle_from_center_degrees(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
     spawn_spline_circle_from_center(qlabs, deviceNumber, centerLocation, [x/180*math.pi for x in rotation], radius, lineWidth, color, numSplinePoints, waitForConfirmation)
      
