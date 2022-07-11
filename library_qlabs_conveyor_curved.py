@@ -22,24 +22,24 @@ class QLabsConveyorCurved:
        return
        
        
-    def spawn(self, qlabs, deviceNumber, location, rotation, sections=0, waitForConfirmation=True):
-        return qlabs.spawn(deviceNumber, self.ID_CONVEYOR_CURVED, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, sections, waitForConfirmation)
+    def spawn(self, qlabs, actorNumber, location, rotation, sections=0, waitForConfirmation=True):
+        return qlabs.spawn(actorNumber, self.ID_CONVEYOR_CURVED, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, sections, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, deviceNumber, location, rotation, sections=0, waitForConfirmation=True):
-        return qlabs.spawn(deviceNumber, self.ID_CONVEYOR_CURVED, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, sections, waitForConfirmation)
+    def spawn_degrees(self, qlabs, actorNumber, location, rotation, sections=0, waitForConfirmation=True):
+        return qlabs.spawn(actorNumber, self.ID_CONVEYOR_CURVED, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, sections, waitForConfirmation)
  
-    def set_speed(self, qlabs, deviceNumber, speed):
+    def set_speed(self, qlabs, actorNumber, speed):
         c = CommModularContainer()
         c.classID = self.ID_CONVEYOR_CURVED
-        c.deviceNumber = deviceNumber
-        c.deviceFunction = self.FCN_CONVEYOR_CURVED_SET_SPEED
+        c.actorNumber = actorNumber
+        c.actorFunction = self.FCN_CONVEYOR_CURVED_SET_SPEED
         c.payload = bytearray(struct.pack(">f", speed))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         qlabs.flush_receive()  
         
         if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_CONVEYOR_CURVED, deviceNumber, self.FCN_CONVEYOR_CURVED_SET_SPEED_ACK)
+            c = qlabs.wait_for_container(self.ID_CONVEYOR_CURVED, actorNumber, self.FCN_CONVEYOR_CURVED_SET_SPEED_ACK)
                     
             return True
         else:

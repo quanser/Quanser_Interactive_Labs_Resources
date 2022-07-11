@@ -11,7 +11,7 @@ def rotate_vector_2d_degrees(vector, angle):
     
     return result
 
-def spawn_box_walls_from_end_points(qlabs, deviceNumber, startLocation, endLocation, height, wallThickness, wallColor=[1,1,1], waitForConfirmation=True):
+def spawn_box_walls_from_end_points(qlabs, actorNumber, startLocation, endLocation, height, wallThickness, wallColor=[1,1,1], waitForConfirmation=True):
     length = math.sqrt(pow(startLocation[0] - endLocation[0],2) + pow(startLocation[1] - endLocation[1],2) + pow(startLocation[2] - endLocation[2],2))
     location = [(startLocation[0] + endLocation[0])/2, (startLocation[1] + endLocation[1])/2, (startLocation[2] + endLocation[2])/2]
     
@@ -20,37 +20,37 @@ def spawn_box_walls_from_end_points(qlabs, deviceNumber, startLocation, endLocat
     
     shiftedLocation = [location[0]+math.sin(yRotation)*math.cos(zRotation)*height/2, location[1]+math.sin(yRotation)*math.sin(zRotation)*height/2, location[2]+math.cos(yRotation)*height/2]
     
-    QLabsBasicShape().spawn(qlabs, deviceNumber, shiftedLocation, [0, yRotation, zRotation], [length, wallThickness, height], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, deviceNumber, wallColor, 1, False, waitForConfirmation)
+    QLabsBasicShape().spawn(qlabs, actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, wallThickness, height], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().set_material_properties(qlabs, actorNumber, wallColor, 1, False, waitForConfirmation)
     
-def spawn_box_walls_from_center_degrees(qlabs, deviceNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
-    spawn_box_walls_from_center(qlabs, deviceNumberStart, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
+def spawn_box_walls_from_center_degrees(qlabs, actorNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
+    spawn_box_walls_from_center(qlabs, actorNumberStart, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
 
-def spawn_box_walls_from_center(qlabs, deviceNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
+def spawn_box_walls_from_center(qlabs, actorNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
 
     location = rotate_vector_2d_degrees([centerLocation[0] + xSize/2 + wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, deviceNumberStart+0, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, deviceNumberStart+0, wallColor, 1, False, waitForConfirmation)
+    QLabsBasicShape().spawn(qlabs, actorNumberStart+0, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+0, wallColor, 1, False, waitForConfirmation)
     
     location = rotate_vector_2d_degrees([centerLocation[0] - xSize/2 - wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, deviceNumberStart+1, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, deviceNumberStart+1, wallColor, 1, False, waitForConfirmation)
+    QLabsBasicShape().spawn(qlabs, actorNumberStart+1, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+1, wallColor, 1, False, waitForConfirmation)
     
     location = rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] + ySize/2 + wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, deviceNumberStart+2, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, deviceNumberStart+2, wallColor, 1, False, waitForConfirmation)
+    QLabsBasicShape().spawn(qlabs, actorNumberStart+2, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+2, wallColor, 1, False, waitForConfirmation)
     
     location = rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] - ySize/2 - wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, deviceNumberStart+3, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, deviceNumberStart+3, wallColor, 1, False, waitForConfirmation)
+    QLabsBasicShape().spawn(qlabs, actorNumberStart+3, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+3, wallColor, 1, False, waitForConfirmation)
         
     if (floorThickness > 0):
-        QLabsBasicShape().spawn(qlabs, deviceNumberStart+4, [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-        QLabsBasicShape().set_material_properties(qlabs, deviceNumberStart+4, floorColor, 1, False, waitForConfirmation)
+        QLabsBasicShape().spawn(qlabs, actorNumberStart+4, [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
+        QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+4, floorColor, 1, False, waitForConfirmation)
         
-def spawn_spline_circle_from_center(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_circle_from_center(qlabs, actorNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-    QLabsSplineLine().spawn(qlabs, deviceNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
+    QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
 
     points = []
 
@@ -59,42 +59,42 @@ def spawn_spline_circle_from_center(qlabs, deviceNumber, centerLocation, rotatio
         
     points.append(points[0])
     
-    QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=True, pointList=points)
+    QLabsSplineLine().set_points(qlabs, actorNumber, color, alignEndPointTangents=True, pointList=points)
         
-def spawn_spline_circle_from_center_degrees(qlabs, deviceNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_circle_from_center_degrees(qlabs, actorNumber, centerLocation, rotation, radius, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
-    spawn_spline_circle_from_center(qlabs, deviceNumber, centerLocation, [x/180*math.pi for x in rotation], radius, lineWidth, color, numSplinePoints, waitForConfirmation)
+    spawn_spline_circle_from_center(qlabs, actorNumber, centerLocation, [x/180*math.pi for x in rotation], radius, lineWidth, color, numSplinePoints, waitForConfirmation)
      
-def spawn_spline_arc_from_center(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_arc_from_center(qlabs, actorNumber, centerLocation, rotation, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-    QLabsSplineLine().spawn(qlabs, deviceNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
+    QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
 
     points = []
 
     for angle in range(0, numSplinePoints+1):
         points.append([radius*math.sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*math.cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth])
         
-    QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=False, pointList=points)
+    QLabsSplineLine().set_points(qlabs, actorNumber, color, alignEndPointTangents=False, pointList=points)
     
-def spawn_spline_arc_from_center_degrees(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle=0, endAngle=90, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+def spawn_spline_arc_from_center_degrees(qlabs, actorNumber, centerLocation, rotation, radius, startAngle=0, endAngle=90, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
-    spawn_spline_arc_from_center(qlabs, deviceNumber, centerLocation, rotation, radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, color, numSplinePoints, waitForConfirmation)
+    spawn_spline_arc_from_center(qlabs, actorNumber, centerLocation, rotation, radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, color, numSplinePoints, waitForConfirmation)
 
-def spawn_spline_line_two_point(qlabs, deviceNumber, p1, p2, lineWidth=1, color=[1,0,0], waitForConfirmation=True):
+def spawn_spline_line_two_point(qlabs, actorNumber, p1, p2, lineWidth=1, color=[1,0,0], waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-    QLabsSplineLine().spawn(qlabs, deviceNumber, [0,0,0], [0,0,0], [1, 1, 1], 0, waitForConfirmation)
+    QLabsSplineLine().spawn(qlabs, actorNumber, [0,0,0], [0,0,0], [1, 1, 1], 0, waitForConfirmation)
 
     points = [[p1[0], p1[1], p1[2], lineWidth], [p2[0], p2[1], p2[2], lineWidth]]
         
-    QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=False, pointList=points)
+    QLabsSplineLine().set_points(qlabs, actorNumber, color, alignEndPointTangents=False, pointList=points)
         
-def spawn_spline_rounded_rectangle_from_center(qlabs, deviceNumber, centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1, color=[1,0,0], waitForConfirmation=True):
+def spawn_spline_rounded_rectangle_from_center(qlabs, actorNumber, centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1, color=[1,0,0], waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-    QLabsSplineLine().spawn(qlabs, deviceNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
+    QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
 
     points = spawn_spline_rounded_rectangle_from_center_point_list(centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth)
         
-    QLabsSplineLine().set_points(qlabs, deviceNumber, color, alignEndPointTangents=True, pointList=points)
+    QLabsSplineLine().set_points(qlabs, actorNumber, color, alignEndPointTangents=True, pointList=points)
     
     
     # index = 2000

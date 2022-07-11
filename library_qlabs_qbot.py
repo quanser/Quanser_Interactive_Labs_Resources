@@ -12,8 +12,8 @@ class qlab_qbot:
     # Define class-level variables   
     containerSize = 0
     classID = 0       # What device type is this?
-    deviceNumber = 0   # Increment if there are more than one of the same device ID
-    deviceFunction = 0 # Command/reponse
+    actorNumber = 0   # Increment if there are more than one of the same device ID
+    actorFunction = 0 # Command/reponse
     payload = bytearray()
     
        
@@ -34,33 +34,33 @@ class qlab_qbot:
 
        return
        
-    def spawn(self, qlabs, deviceNum, location, rotation, configuration=0, waitForConfirmation=True):
-        return qlabs.spawn(deviceNum, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
+    def spawn(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
+        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
    
-    def spawn_degrees(self, qlabs, deviceNum, location, rotation, configuration=0, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
     
-        return qlabs.spawn(deviceNum, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
+        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
    
    
-    def possess(self, qlabs, deviceNum, camera):
+    def possess(self, qlabs, actorNumber, camera):
         c = CommModularContainer()
         c.classID = self.ID_QBOT
-        c.deviceNumber = deviceNum
-        c.deviceFunction = self.FCN_QBOT_POSSESS
+        c.actorNumber = actorNumber
+        c.actorFunction = self.FCN_QBOT_POSSESS
         c.payload = bytearray(struct.pack(">B", camera))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         qlabs.flush_receive()  
         
         if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QBOT, deviceNum, self.FCN_QBOT_POSSESS_ACK)
+            c = qlabs.wait_for_container(self.ID_QBOT, actorNumber, self.FCN_QBOT_POSSESS_ACK)
                     
             return True
         else:
             return False
             
-    def start_RT_model(self, deviceNum=0, QLabsHostname='localhost'):
-        cmdString="quarc_run -D -r -t tcpip://{}:17000 QBot2e_Spawn.rt-win64 -hostname localhost -devicenum {}".format(QLabsHostname, deviceNum)
+    def start_RT_model(self, actorNumber=0, QLabsHostname='localhost'):
+        cmdString="quarc_run -D -r -t tcpip://{}:17000 QBot2e_Spawn.rt-win64 -hostname localhost -devicenum {}".format(QLabsHostname, actorNumber)
         os.system(cmdString)
         return cmdString
         
