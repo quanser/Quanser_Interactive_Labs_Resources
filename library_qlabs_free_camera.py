@@ -8,7 +8,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsFreeCamera:
-    """ This class documents the QLabs Free Camera."""
+    """ This class documents the Free Camera."""
 
     ID_FREE_CAMERA = 170 
     """ """
@@ -38,18 +38,13 @@ class QLabsFreeCamera:
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
-        :param rotation: An array of floats for the roll, pitch, yaw
+        :param rotation: An array of floats for the roll, pitch, and yaw
         :type qlabs: object
         :type actorNumber: uint32
-        :type location: array[3]
-        :type rotation: array[3]
+        :type location: float array[3]
+        :type rotation: float array[3]
         :return: `True` if spawn was successful, `False` otherwise
         :rtype: boolean
-
-        .. caution::
-
-            No two actor numbers can be the same for the same class!
-
         """
         return qlabs.spawn(actorNumber, self.ID_FREE_CAMERA, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, True)
            
@@ -60,11 +55,11 @@ class QLabsFreeCamera:
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
-        :param rotation: An array of floats for the roll, pitch, yaw
+        :param rotation: An array of floats for the roll, pitch, and yaw
         :type qlabs: object
         :type actorNumber: uint32
-        :type location: array[3]
-        :type rotation: array[3]
+        :type location: float array[3]
+        :type rotation: float array[3]
         :return: `True` if spawn was successful, `False` otherwise
         :rtype: boolean
         """
