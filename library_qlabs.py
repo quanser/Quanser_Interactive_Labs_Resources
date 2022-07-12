@@ -9,7 +9,7 @@ import platform
 
 class CommModularContainer:
 
-    """This class documents the Container used to send packets. This class is not typically used directly."""
+    """The CommModularContainer is a collection of data used to communicate with actors. Multiple containers can be packaged into a single packet. This class is not typically used directly."""
 
     # Define class-level variables   
     containerSize = 0
@@ -41,39 +41,12 @@ class CommModularContainer:
     """ """
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
     """ """
-    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS = 18
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK = 19
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET = 20
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK = 21
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION = 100
-    """ """
-    FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK = 101
-    """ """
+
     
     
     ID_UNKNOWN = 0
     """Class ID 0 is reserved as an unknown class. QLabs may respond with a container with information it does not understand due to an unknown class, if data was improperly formatted, or if communication methods were executed in the wrong order."""
-    
-    # Common
-    FCN_UNKNOWN = 0
-    """Function ID is not recognized."""
-    FCN_REQUEST_PING = 1
-    """Request a response from an actor to test if it is present."""
-    FCN_RESPONSE_PING = 2
-    """Response from an actor to confirming it is present."""
-    FCN_REQUEST_WORLD_TRANSFORM = 3
-    """Request a world transform from the actor to read its current location, rotation, and scale."""
-    FCN_RESPONSE_WORLD_TRANSFORM = 4
-    """Response from an actor with its current location, rotation, and scale."""
-    
+       
     BASE_CONTAINER_SIZE = 13
     """Container size variable (4 bytes) + class ID (4 bytes) + actor number (4 bytes) + actor function (1 byte). Does not include the payload size which is variable per function."""
 
@@ -85,7 +58,7 @@ class CommModularContainer:
 ######################### COMMUNICATIONS #########################        
        
 class QuanserInteractiveLabs:
-
+    """This class establishes a server connection with QLabs and manages the communications."""
     _stream = None
     #_client_connection = None
     _BUFFER_SIZE = 65537
@@ -298,269 +271,7 @@ class QuanserInteractiveLabs:
             if e.error_code == -34:
                 # would block
                 bytesRead = 0
-            
-    def destroy_all_spawned_actors(self):
-        """Find and destroy all spawned actors and widgets. This is a blocking operation.
-
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
-
-        .. danger::
-
-            TODO: Confirm this does not block if the actor does not exist. Perhaps return integer for number of actors deleted.
-        """   
-        actorNumber = 0
-        c = CommModularContainer()
-        
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = actorNumber
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS
-        c.payload = bytearray()
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
-
-        if (self.send_container(c)):
-            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
-            
-            return True
-        
-        else:
-            return False
-            
-    def destroy_spawned_actor(self, classID, actorNumber):
-        """Find and destroy a specific actor. This is a blocking operation.
-        
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type classID: uint32
-        :type actorNumber: uint32
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
-
-        .. danger::
-
-            TODO: Change this to return the number of actors deleted
-
-        """   
-        c = CommModularContainer()
-        
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR
-        c.payload = bytearray(struct.pack(">II", classID, actorNumber))
-        
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
-
-        if (self.send_container(c)):
-            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
-            
-            return True
-        
-        else:
-            return False            
-            
-    def spawn(self, actorNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration=0, waitForConfirmation=True):
-        """Spawns a new actor.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :param x: Location in m
-        :param y: Location in m
-        :param z: Location in m
-        :param roll: Angle in radians
-        :param pitch: Angle in radians
-        :param yaw: Angle in radians
-        :param sx: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sy: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sz: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
-        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type actorNumber: uint32
-        :type classID: uint32
-        :type x: float
-        :type y: float
-        :type z: float
-        :type roll: float
-        :type pitch: float
-        :type yaw: float
-        :type sx: float
-        :type sy: float
-        :type sz: float
-        :type configuration: uint32
-        :type waitForConfirmation: boolean
-        :return: `True` if spawn was successful, `False` otherwise
-        :rtype: boolean
-
-        """
-        c = CommModularContainer()
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
-        c.payload = bytearray(struct.pack(">IIfffffffffI", classID, actorNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration))
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-        
-        if waitForConfirmation:
-            self.flush_receive()        
-                
-        if (self.send_container(c)):
-        
-            if waitForConfirmation:
-                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
-                return c
-            
-            return True
-        else:
-            return False 
-            
-    def spawn_and_parent_with_relative_transform(self, actorNumber, classID, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation=True):
-        """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :param x: Location in m
-        :param y: Location in m
-        :param z: Location in m
-        :param roll: Angle in radians
-        :param pitch: Angle in radians
-        :param yaw: Angle in radians
-        :param sx: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sy: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sz: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
-        :param parentClassID: See the ID_ variables in the respective library classes for the class identifier
-        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
-        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
-        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type actorNumber: uint32
-        :type classID: uint32
-        :type x: float
-        :type y: float
-        :type z: float
-        :type roll: float
-        :type pitch: float
-        :type yaw: float
-        :type sx: float
-        :type sy: float
-        :type sz: float
-        :type configuration: uint32
-        :type parentClassID: uint32
-        :type parentActorNumber: uint32
-        :type parentComponent: uint32
-        :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean
-
-        """
-        c = CommModularContainer()
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE
-        c.payload = bytearray(struct.pack(">IIfffffffffIIII", classID, actorNumber, x, y, z, roll, pitch, yaw, sx, sy, sz, configuration, parentClassID, parentActorNumber, parentComponent))
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-        
-        if waitForConfirmation:
-            self.flush_receive()        
-                
-        if (self.send_container(c)):
-        
-            if waitForConfirmation:
-                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
-                return c
-            
-            return True
-        else:
-            return False            
-            
-    def spawn_widget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, properties, waitForConfirmation=True):
-        """Spawns a new widget. It is recommended that you use the methods implemented in the QLabsWidget class instead.
-
-        :param widgetType: See QLabsWidget class
-        :param x: Location in m
-        :param y: Location in m
-        :param z: Location in m
-        :param roll: Angle in radians
-        :param pitch: Angle in radians
-        :param yaw: Angle in radians
-        :param sx: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sy: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param sz: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param colorR: Red component of the color on a 0.0 to 1.0 scale.
-        :param colorG: Green component of the color on a 0.0 to 1.0 scale.
-        :param colorB: Blue component of the color on a 0.0 to 1.0 scale.
-        :param measuredMass: A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.
-        :param IDTag: An integer value for use with IDTag sensor instrumented actors.
-        :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
-        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type widgetType: uint32
-        :type x: float
-        :type y: float
-        :type z: float
-        :type roll: float
-        :type pitch: float
-        :type yaw: float
-        :type sx: float
-        :type sy: float
-        :type sz: float
-        :type colorR: float
-        :type colorG: float
-        :type colorB: float
-        :type measuredMass: float
-        :type IDTag: uint8
-        :type properties: string
-        :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean
-
-        """
-        c = CommModularContainer()
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
-        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, len(properties)))
-        c.payload = c.payload + bytearray(properties.encode('utf-8'))
-        
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-        
-        if waitForConfirmation:
-            self.flush_receive()        
-                
-        if (self.send_container(c)):
-        
-            if waitForConfirmation:
-                c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
-                return c
-            
-            return True
-        else:
-            return False      
-                  
-            
-    def ping(self):
-        """Ping a specific actor. This is a blocking operation.
-        
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
-
-        .. danger::
-
-            TODO: This should not be a blocking function.  Re-write this with a timeout. If it can't find the actor, it will never return.
-        """
-
-        c = CommModularContainer()
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_REQUEST_PING
-        c.payload = bytearray()
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-        
-        self.flush_receive()        
-                
-        if (self.send_container(c)):
-        
-            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_RESPONSE_PING)
-            return True
-        else:
-            return False 
-    
+               
     def regenerate_cache_list(self):
         """Advanced function for actor indexing.
         
@@ -585,58 +296,39 @@ class QuanserInteractiveLabs:
         
         else:
             return False
+
+    def ping(self, qlabs):
+        """QLabs will automatically disconnect a non-responsive client connection. The ping method can be used to keep the connection alive if operations are infrequent.
+        
+        :param qlabs: A QuanserInteractiveLabs object.
+        :type qlabs: QuanserInteractiveLabs object
+        :return: `True` if successful, `False` otherwise
+        :rtype: boolean
+        """
+
+        FCN_REQUEST_PING = 1
+        FCN_RESPONSE_PING = 2
     
-    def destroy_all_spawned_widgets(self):
-        """Destroys all spawned widgets, but does not destroy actors.
-        
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
 
-        """
-        actorNumber = 0
         c = CommModularContainer()
-        
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = actorNumber
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS
+        c.actorNumber = 0
+        c.actorFunction = FCN_REQUEST_PING
         c.payload = bytearray()
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
-
-        if (self.send_container(c)):
-            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
-            
-            return True
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
+        qlabs.flush_receive()        
+                
+        if (qlabs.send_container(c)):
+        
+            c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, FCN_RESPONSE_PING)
+            if c.payload[0] > 0:
+                return True
+            else:
+                return False
         else:
-            return False   
-            
-    def widget_spawn_configuration(self, enableShadow=True):
-        """If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.
-        
-        :param enableShadow: (Optional) Show (`True`) or hide (`False`) widget shadows.
-        :type enableShadow: boolean
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
+            return False 
 
-        """
-        actorNumber = 0
-        c = CommModularContainer()
-        
-        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
-        c.actorNumber = actorNumber
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION
-        c.payload = bytearray(struct.pack(">B", enableShadow))
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
-
-        if (self.send_container(c)):
-            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
-            
-            return True
-        
-        else:
-            return False   
-            
-       
    
     def __del__(self):
         """ Destructor Method """

@@ -11,13 +11,15 @@ class QLabsSilhouettePerson:
     
        
     ID_SILHOUETTE_PERSON = 10030
+    """Class ID"""
     FCN_SILHOUETTE_PERSON_MOVE_TO = 10
+    """ """
     FCN_SILHOUETTE_PERSON_MOVE_TO_ACK = 11
-    
-    # Initialize class
-    def __init__(self):
+    """ """
 
-       return
+    def __init__(self):
+        """ Constructor Method """
+        return
        
     def spawn(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         # To put the spawn point at the feet, offset z by 1m
