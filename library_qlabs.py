@@ -97,11 +97,10 @@ class QuanserInteractiveLabs:
     _receivePacketSize = 0
     _receivePacketContainerIndex = 0  
 
-    _URIPort = 17001
 
     # Initialize QLabs
     def __init__(self):
-       """ Constructor Method """
+        """ Constructor Method """
         pass
     
     def open(self, address, timeout=10):
@@ -272,7 +271,7 @@ class QuanserInteractiveLabs:
         """   
 
 
-       while(True):
+        while(True):
             while (self.receive_new_data() == False):
                 pass
                 

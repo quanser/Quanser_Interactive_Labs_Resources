@@ -8,7 +8,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsFreeCamera:
-    """ This class documents the Free Camera."""
+    """ This class supports the spawning and control of free movement cameras in QLabs open worlds."""
 
     ID_FREE_CAMERA = 170 
     """ """
