@@ -29,13 +29,10 @@ class QLabsCommon:
 
         :param qlabs: A QuanserInteractiveLabs object.
         :type qlabs: QuanserInteractiveLabs object
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
+        :return: The number of actors deleted. -1 if failed.
+        :rtype: int32
 
-        .. danger::
-
-            TODO: Confirm this does not block if the actor does not exist. Perhaps return integer for number of actors deleted.
-        """   
+        """
         actorNumber = 0
         c = CommModularContainer()
         
@@ -47,11 +44,14 @@ class QLabsCommon:
 
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
-            
-            return True
+            if len(c.payload) == 4:
+                num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
+                return num_actors_destroyed
+            else:
+                return -1
         
         else:
-            return False
+            return -1
             
     def destroy_spawned_actor(self, qlabs, classID, actorNumber):
         """Find and destroy a specific actor. This is a blocking operation.
@@ -62,12 +62,8 @@ class QLabsCommon:
         :type qlabs: QuanserInteractiveLabs object
         :type classID: uint32
         :type actorNumber: uint32
-        :return: `True` if successful, `False` otherwise
-        :rtype: boolean
-
-        .. danger::
-
-            TODO: Change this to return the number of actors deleted
+        :return: The number of actors destroyed. -1 if failed.
+        :rtype: int32
 
         """   
         c = CommModularContainer()
@@ -81,11 +77,13 @@ class QLabsCommon:
 
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
-            
-            return True
-        
+            if len(c.payload) == 4:
+                num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
+                return num_actors_destroyed
+            else:
+                return -1
         else:
-            return False            
+            return -1            
             
     def spawn(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor.
@@ -106,8 +104,8 @@ class QLabsCommon:
         :type scale: float array[3]
         :type configuration: uint32
         :type waitForConfirmation: boolean
-        :return: `True` if spawn was successful, `False` otherwise
-        :rtype: boolean
+        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
+        :rtype: int32
 
         """
         c = CommModularContainer()
@@ -124,11 +122,15 @@ class QLabsCommon:
         
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
-                return c
+                if len(c.payload) == 1:
+                    status, = struct.unpack(">B", c.payload[0:1])
+                    return status
+                else:
+                    return -1
             
-            return True
+            return 0
         else:
-            return False 
+            return -1 
             
     def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
@@ -212,4 +214,40 @@ class QLabsCommon:
         else:
             return False 
     
-    
+    def get_world_transform(self, qlabs, actorNumber, classID):
+        """Get the location, rotation, and scale in world coordinates of the specified actor
+        
+        :param qlabs: A QuanserInteractiveLabs object.
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param classID: See the ID_ variables in the respective library classes for the class identifier
+        :type qlabs: QuanserInteractiveLabs object
+        :type actorNumber: uint32
+        :type classID: uint32
+        :return: success, location, rotation, scale
+        :rtype: boolean, float array[3], float array[3], float array[3]
+        """
+
+        c = CommModularContainer()
+        c.classID = classID
+        c.actorNumber = actorNumber
+        c.actorFunction = self.FCN_REQUEST_WORLD_TRANSFORM
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        location = [0,0,0]
+        rotation = [0,0,0]
+        scale = [0,0,0]
+        
+        qlabs.flush_receive()        
+                
+        if (qlabs.send_container(c)):
+        
+            c = qlabs.wait_for_container(classID, actorNumber, self.FCN_RESPONSE_WORLD_TRANSFORM)
+
+            if len(c.payload) == 36:
+                location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], = struct.unpack(">fffffffff", c.payload[0:36])
+                return True, location, rotation, scale
+            else:
+                return False, location, rotation, scale
+        else:
+            return False, location, rotation, scale

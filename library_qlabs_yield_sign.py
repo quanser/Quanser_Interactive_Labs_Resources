@@ -29,8 +29,8 @@ class QLabsYieldSign:
         :type rotation: float array[3]
         :type scale: float array[3]
         :type waitForConfirmation: boolean
-        :return: `True` if spawn was successful, `False` otherwise
-        :rtype: boolean
+        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
+        :rtype: int32
 
 
         """
@@ -51,8 +51,8 @@ class QLabsYieldSign:
         :type rotation: float array[3]
         :type scale: float array[3]
         :type waitForConfirmation: boolean
-        :return: `True` if spawn was successful, `False` otherwise
-        :rtype: boolean
+        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
+        :rtype: int32
 
 
         """    
@@ -66,8 +66,8 @@ class QLabsYieldSign:
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
-        :return: `True` if spawn was successful, `False` otherwise
-        :rtype: boolean
+        :return: The number of actors destroyed. -1 if failed.
+        :rtype: int32
 
         """
         return QLabsCommon().destroy_spawned_actor(qlabs, self.ID_YIELD_SIGN, actorNumber)
@@ -85,4 +85,15 @@ class QLabsYieldSign:
 
         """
         return QLabsCommon().ping_actor(qlabs, actorNumber, self.ID_YIELD_SIGN)
-    
+
+    def get_world_transform(self, qlabs, actorNumber):
+        """Get the location, rotation, and scale in world coordinates of the actor
+        
+        :param qlabs: A QuanserInteractiveLabs object.
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :type qlabs: QuanserInteractiveLabs object
+        :type actorNumber: uint32
+        :return: success, location, rotation, scale
+        :rtype: boolean, float array[3], float array[3], float array[3]
+        """    
+        return QLabsCommon().get_world_transform(qlabs, actorNumber, self.ID_YIELD_SIGN)
