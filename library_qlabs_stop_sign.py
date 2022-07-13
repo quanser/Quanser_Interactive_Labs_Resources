@@ -64,7 +64,7 @@ class QLabsStopSign:
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_STOP_SIGN, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, 0, waitForConfirmation)
  
     def destroy(self, qlabs, actorNumber):
-        """Destroys a yield sign in an instance of QLabs.
+        """Destroys a stop sign in an instance of QLabs.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -78,7 +78,7 @@ class QLabsStopSign:
 
 
     def ping(self, qlabs, actorNumber):
-        """Checks if a yield sign of the corresponding actor number exists in the QLabs environment.
+        """Checks if a stop sign of the corresponding actor number exists in the QLabs environment.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -91,7 +91,7 @@ class QLabsStopSign:
         return QLabsCommon().ping_actor(qlabs, actorNumber, self.ID_STOP_SIGN)
 
     def get_world_transform(self, qlabs, actorNumber):
-        """Get the location, rotation, and scale in world coordinates of the actor
+        """Get the location, rotation, and scale in world coordinates of the stop sign
         
         :param qlabs: A QuanserInteractiveLabs object.
         :param actorNumber: User defined unique identifier for the class actor in QLabs

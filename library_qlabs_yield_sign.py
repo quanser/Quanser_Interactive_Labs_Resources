@@ -87,7 +87,7 @@ class QLabsYieldSign:
         return QLabsCommon().ping_actor(qlabs, actorNumber, self.ID_YIELD_SIGN)
 
     def get_world_transform(self, qlabs, actorNumber):
-        """Get the location, rotation, and scale in world coordinates of the actor
+        """Get the location, rotation, and scale in world coordinates of the yield sign
         
         :param qlabs: A QuanserInteractiveLabs object.
         :param actorNumber: User defined unique identifier for the class actor in QLabs
