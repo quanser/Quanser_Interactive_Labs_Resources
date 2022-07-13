@@ -154,8 +154,8 @@ class QLabsCommon:
         :type parentActorNumber: uint32
         :type parentComponent: uint32
         :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean
+        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
+        :rtype: int32
 
         """
         c = CommModularContainer()
@@ -172,11 +172,16 @@ class QLabsCommon:
         
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
-                return c
+
+                if len(c.payload) == 1:
+                    status, = struct.unpack(">B", c.payload[0:1])
+                    return status
+                else:
+                    return -1
             
-            return True
+            return 0
         else:
-            return False                              
+            return -1                              
             
     def ping_actor(self, qlabs, actorNumber, classID):
         """Check if an actor of the specified class and actor number is present in the QLabs environment.

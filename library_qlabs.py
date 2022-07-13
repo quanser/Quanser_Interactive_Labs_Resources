@@ -41,7 +41,10 @@ class CommModularContainer:
     """ """
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
     """ """
-
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
+    """ """
+    FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
+    """ """
     
     
     ID_UNKNOWN = 0

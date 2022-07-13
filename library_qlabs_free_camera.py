@@ -34,10 +34,7 @@ class QLabsFreeCamera:
     """ """
     FCN_FREE_CAMERA_RESPONSE_IMAGE = 101
     """ """
-
-    _jpg_buffer = bytearray()
-    
-    # Initialize class
+   
     def __init__(self):
        """ Constructor Method """
        return
@@ -347,9 +344,9 @@ class QLabsFreeCamera:
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_RESPONSE_IMAGE)
             data_size, = struct.unpack(">I", c.payload[0:4])
 
-            self._jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
+            jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
             
             
-            return True, self._jpg_buffer
+            return True, jpg_buffer
         else:
-            return False, self._jpg_buffer
+            return False, None
