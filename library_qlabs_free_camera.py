@@ -325,14 +325,14 @@ class QLabsFreeCamera:
         
 
     def get_image(self, qlabs, actorNumber):
-        """Request an image from the camera actor
+        """Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.
         
         :param qlabs: A QuanserInteractiveLabs object.
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
-        :return: Success, RGB image data (default resolution is 640x480).
-        :rtype: boolean, 
+        :return: Success, RGB image data
+        :rtype: boolean, byte array[variable]
         """   
         c = CommModularContainer()
         c.classID = self.ID_FREE_CAMERA
