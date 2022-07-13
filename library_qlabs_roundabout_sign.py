@@ -1,10 +1,6 @@
 from library_qlabs_common import QLabsCommon
 import math
-
 import struct
-        
-        
-######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsRoundaboutSign:
     """This class is for spawning roundabout signs."""

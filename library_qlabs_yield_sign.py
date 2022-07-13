@@ -1,9 +1,8 @@
 from library_qlabs_common import QLabsCommon
 
-import math     
+import math   
+import struct
         
-######################### MODULAR CONTAINER CLASS #########################
-
 class QLabsYieldSign:
     """This class is for spawning yield signs."""
        

@@ -1,9 +1,6 @@
 from library_qlabs import QuanserInteractiveLabs, CommModularContainer
 
 import struct
-import os
-import platform
-       
        
 class QLabsCommon:
     """This contains a set of methods that are common to many classes. Many of these are wrapped with actor-specific versions."""
