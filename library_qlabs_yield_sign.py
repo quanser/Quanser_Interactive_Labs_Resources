@@ -33,7 +33,7 @@ class QLabsYieldSign:
 
 
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_YIELD_SIGN, location, rotation, scale, 0, waitForConfirmation)
+        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_YIELD_SIGN, location, rotation, [1,1,1], 0, waitForConfirmation)
  
     def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a yield sign in an instance of QLabs at a specific location and rotation using degrees.

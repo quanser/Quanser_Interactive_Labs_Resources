@@ -87,8 +87,8 @@ class QLabsFreeCamera:
         :param ParentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
         :type qlabs: object
         :type actorNumber: uint32
-        :type location: array[3]
-        :type rotation: array[3]
+        :type location: float array[3]
+        :type rotation: float array[3]
         :type parentClassID: uint32
         :type parentActorNumber: uint32
         :type ParentComponent: uint32
@@ -110,8 +110,8 @@ class QLabsFreeCamera:
         :param ParentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
         :type qlabs: object
         :type actorNumber: uint32
-        :type location: array[3]
-        :type rotation: array[3]
+        :type location: float array[3]
+        :type rotation: float array[3]
         :type parentClassID: uint32
         :type parentActorNumber: uint32
         :type ParentComponent: uint32
@@ -157,14 +157,14 @@ class QLabsFreeCamera:
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param fieldOfView: The field of view that the camera can see (range:5-150)
-        :param depthOfField: The depth of feild that the camera can see
-        :param aperature: The amount of light allowed into the camera sensor (range:2.0-22.0)
+        :param depthOfField: The depth of field that the camera can see
+        :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0)
         :param focusDistance: The focus distance that the camera can see (range:0.1-50.0)
         :type qlabs: object
         :type actorNumber: uint32
         :type fieldOfView:
         :type depthOfField:
-        :type aperature:
+        :type aperture:
         :type focusDistance:
         :return: `True` if setting the camera properties was successful, `False` otherwise
         :rtype: boolean
