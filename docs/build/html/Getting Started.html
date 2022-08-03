@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/tabs.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Glossary" href="Glossary.html" />
+    <link rel="prev" title="Quanser’s Self-Driving Car Virtual Studio Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="index.html">
+            <img src="_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-set-up">Installation / Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-a-python-script-for-qlabs-sdcs">Running a Python Script for QLabs SDCS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisits">Prerequisits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#github-qlabs-libraries-download">GitHub QLabs Libraries Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-opencv-python">Download OpenCV-Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-package-update">Python Package Update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorial-getting-started">Tutorial - Getting Started</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html">Python System &amp; Utility Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html#attaching-objects">Attaching Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Objects/index.html">Python Actors Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Getting Started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<section id="installation-set-up">
+<h2>Installation / Set Up<a class="headerlink" href="#installation-set-up" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Create an account on <a class="reference external" href="https://portal.quanser.com/Accounts/Login?returnUrl=/">Portal</a> with your school email.</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the box “Remember Me” for QLabs to remember your account</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Download Quanser Interactive Lab on the <a class="reference external" href="https://portal.quanser.com/Accounts/Login?returnUrl=/">Portal</a></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All available content should be available to you on the main screen. If something is missing, try logging out and logging back in again.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Scroll using a mouse wheel or the arrow keys on either side of the screen to the QCar studio.</p></li>
+<li><p>Click on the QCar studio and select the workspace of choice.</p></li>
+</ol>
+</section>
+<section id="running-a-python-script-for-qlabs-sdcs">
+<h2>Running a Python Script for QLabs SDCS<a class="headerlink" href="#running-a-python-script-for-qlabs-sdcs" title="Permalink to this headline"></a></h2>
+<p>In order to run a python script in QLabs to control the enviroment and its objects, a few things that will need to be installed first.</p>
+<section id="prerequisits">
+<h3>Prerequisits<a class="headerlink" href="#prerequisits" title="Permalink to this headline"></a></h3>
+<section id="github-qlabs-libraries-download">
+<h4>GitHub QLabs Libraries Download<a class="headerlink" href="#github-qlabs-libraries-download" title="Permalink to this headline"></a></h4>
+<p>Download the common library off Github which will be needed in order to run the objects in your python script for QLabs <a class="reference external" href="https://github.com/quanser/virtual_sdcs_docs">Virtual QCar Public Libraries</a>.</p>
+</section>
+<section id="download-opencv-python">
+<h4>Download OpenCV-Python<a class="headerlink" href="#download-opencv-python" title="Permalink to this headline"></a></h4>
+<p>In the command terminal running as an admin (or in Linux running “sudo”), paste and run this code to install opencv on the computer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+</section>
+<section id="python-package-update">
+<h4>Python Package Update<a class="headerlink" href="#python-package-update" title="Permalink to this headline"></a></h4>
+<p>Quanser has a set of python packages that need to be installed as well to run with your QUARC.
+In order to do this, navigate to your QUARC python folder.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Make sure the files in the QUARC python folder below have the same date as the date in the following code below before running it!</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" role="tablist"><button aria-controls="panel-0-V2luZG93cw==" aria-selected="true" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-V2luZG93cw==" name="V2luZG93cw==" role="tab" tabindex="0">Windows</button><button aria-controls="panel-0-TGludXg=" aria-selected="false" class="sphinx-tabs-tab code-tab group-tab" id="tab-0-TGludXg=" name="TGludXg=" role="tab" tabindex="-1">Linux</button></div><div aria-labelledby="tab-0-V2luZG93cw==" class="sphinx-tabs-panel code-tab group-tab" id="panel-0-V2luZG93cw==" name="V2luZG93cw==" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd C:\Program Files\Quanser\QUARC\python</span>
+<span class="go">python -m pip install --upgrade --find-links &quot;%QUARC_DIR%\python&quot; &quot;%QUARC_DIR%\python\quanser_api-2022.4.29-py2.py3-none-any.whl&quot;</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-0-TGludXg=" class="sphinx-tabs-panel code-tab group-tab" hidden="true" id="panel-0-TGludXg=" name="TGludXg=" role="tabpanel" tabindex="0"><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /opt/quanser/python</span>
+<span class="go">python3 -m pip install --upgrade --find-links /opt/quanser/python /opt/quanser/python/quanser_api-2022.4.29-py2.py3-none-any.whl</span>
+</pre></div>
+</div>
+</div></div>
+<p>If you have trouble or for more information about this <a class="reference external" href="https://docs.quanser.com/quarc/documentation/python/hardware/Getting%20Started/getting_started.html#:~:text=Installing%20Quanser%20Hardware%20Python%20Package,29%2Dpy2">click here</a>.</p>
+<p><strong>At this point you should be ready to build and run a test script!</strong></p>
+<p>The following tutorial will walk you through how to get a simple script up and running.</p>
+</section>
+</section>
+</section>
+<section id="tutorial-getting-started">
+<h2>Tutorial - Getting Started<a class="headerlink" href="#tutorial-getting-started" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Quanser’s Self-Driving Car Virtual Studio Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

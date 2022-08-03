@@ -1,0 +1,10 @@
+# Defining the exact version will make sure things don't break
+sphinx==4.5.0
+sphinx-autobuild==0.7.1
+sphinx_collapse==0.1.2
+sphinx-panels==0.6.0
+sphinx-tabs==3.4.0
+sphinx_rtd_theme==1.0.0
+readthedocs-sphinx-search==0.1.2
+sphinx-jinja2-compat==0.1.2
+sphinx-autodoc-typehints==1.18.3

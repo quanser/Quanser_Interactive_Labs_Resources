@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quanser’s Self-Driving Car Virtual Studio Documentation &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="Getting%20Started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="#">
+            <img src="_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html">Python System &amp; Utility Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html#attaching-objects">Attaching Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Objects/index.html">Python Actors Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Quanser’s Self-Driving Car Virtual Studio Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quanser-s-self-driving-car-virtual-studio-documentation">
+<h1>Quanser’s Self-Driving Car Virtual Studio Documentation<a class="headerlink" href="#quanser-s-self-driving-car-virtual-studio-documentation" title="Permalink to this headline"></a></h1>
+<p>Welcome to the Self-Driving Car Studio Virtual Documentation!</p>
+<p>This site contains documentation for the Self-Driving Car Studio’s Virtual Lab.
+If you are looking for courseware for using the physical studio please check out the
+<a class="reference external" href="https://www.quanser.com/products/self-driving-car-research-studio/">website</a>.</p>
+</section>
+<section id="design-philosophy">
+<h1>Design Philosophy<a class="headerlink" href="#design-philosophy" title="Permalink to this headline"></a></h1>
+<p>The Self-Driving Car Studio’s Virtual Lab has been designed for python script tests.
+Although there are some basic interface options, the current Self-Driving Car Virtual Studio is not designed to be used through the interface alone.
+We therefore highly recommend that you try our simple <a class="reference internal" href="Getting%20Started.html#tutorial-getting-started"><span class="std std-ref">Tutorial - Getting Started</span></a> to get started with python scripts for the Self-Driving Car Virtual Studio and get used to our libraries and the capabilities of our workspaces.</p>
+</section>
+<section id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline"></a></h1>
+<p>We are always striving to impove our documentation.
+You can help by submitting pull requests for fixes or issues for suggestions on our GitHub repository.
+See the contribution guide.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#installation-set-up">Installation / Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#running-a-python-script-for-qlabs-sdcs">Running a Python Script for QLabs SDCS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Getting%20Started.html#prerequisits">Prerequisits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Getting%20Started.html#github-qlabs-libraries-download">GitHub QLabs Libraries Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Getting%20Started.html#download-opencv-python">Download OpenCV-Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Getting%20Started.html#python-package-update">Python Package Update</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#tutorial-getting-started">Tutorial - Getting Started</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="User%20Interface.html">User Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface.html#keyboard-controls">Keyboard Controls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface.html#coordinate-helper-determining-locations">Coordinate Helper (Determining Locations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User%20Interface.html#controlling-cameras-in-the-gui">Controlling Cameras in the GUI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="User%20Interface.html#controlling-free-open-world-flying-cameras-in-the-gui">Controlling Free/Open World Flying Cameras in the GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="User%20Interface.html#adding-cameras-in-the-gui">Adding Cameras in the GUI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="User%20Interface.html#camera-options">Camera Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html">Python System &amp; Utility Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Other.html#changing-the-workspace-name">Changing the Workspace Name</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Other.html#attaching-objects">Attaching Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Objects/index.html">Python Actors Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Objects/camera_library.html">Cameras</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#cameralibrary">Camera Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/camera_library.html#camera-tutorial">Camera Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Objects/person_library.html">Person</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/person_library.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Objects/car_library.html">Cars</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#tutorial">Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/car_library.html#driving-cars">Driving Cars</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Objects/road_signage.html">Road Signage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#crosswalk">Crosswalk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#library">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#constants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#methods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#configurations">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#connection-points">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#roundabout-sign">Roundabout Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutdescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundaboutconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#roundabouttutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#stop-sign">Stop Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsigndescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsignlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsignconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsignmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsignconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsignconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#stopsigntutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#yield-sign">Yield Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsigndescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsignlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsignconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsignmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsignconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsignconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#yieldsigntutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#traffic-cone">Traffic Cone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconedescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconelibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconeconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconemethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconeconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconeconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficconetutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/road_signage.html#traffic-light">Traffic Light</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightdescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlightconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Objects/road_signage.html#trafficlighttutorial">Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Objects/widgets.html">Widgets (Cube/Cylinder/Sphere/Autoclave cage/plastic bottle/metal can)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/widgets.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Objects/basic_shapes.html">Basic Shapes (Cube/Cylinder/Sphere)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Objects/basic_shapes.html#tutorial">Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Code%20Style.html">Code Style</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Code%20Style.html#python">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Code%20Style.html#version">Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Code%20Style.html#style">Style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Code%20Style.html#markdown-restructured-text">Markdown / reStructured Text</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Code%20Style.html#id2">Style</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Getting%20Started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
