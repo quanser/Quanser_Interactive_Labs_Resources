@@ -31,7 +31,8 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> Quanser's Self Driving Car Virtual Studio Documentation
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -114,7 +115,7 @@
 
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">QLabsCommon</span><span class="p">()</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID_YIELD_SIGN</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">QLabsCommon</span><span class="p">()</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID_YIELD_SIGN</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="p">)</span></div>
  
 <div class="viewcode-block" id="QLabsYieldSign.spawn_degrees"><a class="viewcode-back" href="../Objects/road_signage.html#library_qlabs_yield_sign.QLabsYieldSign.spawn_degrees">[docs]</a>    <span class="k">def</span> <span class="nf">spawn_degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Spawns a yield sign in an instance of QLabs at a specific location and rotation using degrees.</span>

@@ -31,7 +31,8 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search"  style="background: white" >
-            <a href="../index.html" class="icon icon-home"> Quanser's Self Driving Car Virtual Studio Documentation
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -168,8 +169,8 @@
 <span class="sd">        :param ParentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options</span>
 <span class="sd">        :type qlabs: object</span>
 <span class="sd">        :type actorNumber: uint32</span>
-<span class="sd">        :type location: array[3]</span>
-<span class="sd">        :type rotation: array[3]</span>
+<span class="sd">        :type location: float array[3]</span>
+<span class="sd">        :type rotation: float array[3]</span>
 <span class="sd">        :type parentClassID: uint32</span>
 <span class="sd">        :type parentActorNumber: uint32</span>
 <span class="sd">        :type ParentComponent: uint32</span>
@@ -191,8 +192,8 @@
 <span class="sd">        :param ParentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options</span>
 <span class="sd">        :type qlabs: object</span>
 <span class="sd">        :type actorNumber: uint32</span>
-<span class="sd">        :type location: array[3]</span>
-<span class="sd">        :type rotation: array[3]</span>
+<span class="sd">        :type location: float array[3]</span>
+<span class="sd">        :type rotation: float array[3]</span>
 <span class="sd">        :type parentClassID: uint32</span>
 <span class="sd">        :type parentActorNumber: uint32</span>
 <span class="sd">        :type ParentComponent: uint32</span>
@@ -238,14 +239,14 @@
 <span class="sd">        :param qlabs: A QuanserInteractiveLabs object</span>
 <span class="sd">        :param actorNumber: User defined unique identifier for the class actor in QLabs</span>
 <span class="sd">        :param fieldOfView: The field of view that the camera can see (range:5-150)</span>
-<span class="sd">        :param depthOfField: The depth of feild that the camera can see</span>
-<span class="sd">        :param aperature: The amount of light allowed into the camera sensor (range:2.0-22.0)</span>
+<span class="sd">        :param depthOfField: The depth of field that the camera can see</span>
+<span class="sd">        :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0)</span>
 <span class="sd">        :param focusDistance: The focus distance that the camera can see (range:0.1-50.0)</span>
 <span class="sd">        :type qlabs: object</span>
 <span class="sd">        :type actorNumber: uint32</span>
 <span class="sd">        :type fieldOfView:</span>
 <span class="sd">        :type depthOfField:</span>
-<span class="sd">        :type aperature:</span>
+<span class="sd">        :type aperture:</span>
 <span class="sd">        :type focusDistance:</span>
 <span class="sd">        :return: `True` if setting the camera properties was successful, `False` otherwise</span>
 <span class="sd">        :rtype: boolean</span>

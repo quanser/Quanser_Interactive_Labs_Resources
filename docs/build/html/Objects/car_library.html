@@ -113,7 +113,8 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <dl class="py class">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_qcar.</span></span><span class="sig-name descname"><span class="pre">QLabsQCar</span></span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This class is for spawning QCars.</p>
+</dd></dl>
 
 </section>
 <section id="constants">
@@ -121,7 +122,8 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <dl class="py attribute">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.ID_QCAR">
 <span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">ID_QCAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.ID_QCAR" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Class ID</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE">
@@ -208,33 +210,285 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <span id="carmethods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.spawn">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.spawn" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a QCar in an instance of QLabs at a specific location and rotation using radians.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.spawn_degrees">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.spawn_degrees" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_transform_and_request_state">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_transform_and_request_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">honk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_transform_and_request_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_transform_and_request_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_transform_and_request_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>enableDynamics</strong> (<em>boolean</em>) – (default True) Enables or disables gravity for set transform requests.</p></li>
+<li><p><strong>headlights</strong> (<em>boolean</em>) – Enable the headlights</p></li>
+<li><p><strong>leftTurnSignal</strong> (<em>boolean</em>) – Enable the left turn signal</p></li>
+<li><p><strong>rightTurnSignal</strong> (<em>boolean</em>) – Enable the right turn signal</p></li>
+<li><p><strong>brakeSignal</strong> (<em>boolean</em>) – Enable the brake lights (does not affect the motion of the vehicle)</p></li>
+<li><p><strong>reverseSignal</strong> (<em>boolean</em>) – Play a honking sound</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful or False otherwise, location in full scale, rotation in radians, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean</p>
+</dd>
+</dl>
+<p><strong>***********</strong> Need to add degrees equivalent <strong>*****************************</strong></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_transform_and_request_state_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_transform_and_request_state_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>enableDynamics</strong> (<em>boolean</em>) – (default True) Enables or disables gravity for set transform requests.</p></li>
+<li><p><strong>headlights</strong> (<em>boolean</em>) – Enable the headlights</p></li>
+<li><p><strong>leftTurnSignal</strong> (<em>boolean</em>) – Enable the left turn signal</p></li>
+<li><p><strong>rightTurnSignal</strong> (<em>boolean</em>) – Enable the right turn signal</p></li>
+<li><p><strong>brakeSignal</strong> (<em>boolean</em>) – Enable the brake lights (does not affect the motion of the vehicle)</p></li>
+<li><p><strong>reverseSignal</strong> (<em>boolean</em>) – Play a honking sound</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful or False otherwise, location in full scale, rotation in degrees, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean</p>
+</dd>
+</dl>
+<p><strong>***********</strong> Need to add degrees equivalent <strong>*****************************</strong></p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_velocity_and_request_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">honk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_velocity_and_request_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_velocity_and_request_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_velocity_and_request_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>float</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>forward</strong> – Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.</p></li>
+<li><p><strong>turn</strong> (<em>float</em>) – Turn angle in radians. Positive values turn right.</p></li>
+<li><p><strong>headlights</strong> (<em>boolean</em>) – Enable the headlights</p></li>
+<li><p><strong>leftTurnSignal</strong> (<em>boolean</em>) – Enable the left turn signal</p></li>
+<li><p><strong>rightTurnSignal</strong> (<em>boolean</em>) – Enable the right turn signal</p></li>
+<li><p><strong>brakeSignal</strong> (<em>boolean</em>) – Enable the brake lights (does not affect the motion of the vehicle)</p></li>
+<li><p><strong>reverseSignal</strong> (<em>boolean</em>) – Play a honking sound</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True or False if successful, location, rotation in radians, front bumper hit, rear bumper hit</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], boolean, boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_velocity_and_request_state_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_velocity_and_request_state_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>float</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>forward</strong> – Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.</p></li>
+<li><p><strong>turn</strong> (<em>float</em>) – Turn angle in degrees. Positive values turn right.</p></li>
+<li><p><strong>headlights</strong> (<em>boolean</em>) – Enable the headlights</p></li>
+<li><p><strong>leftTurnSignal</strong> (<em>boolean</em>) – Enable the left turn signal</p></li>
+<li><p><strong>rightTurnSignal</strong> (<em>boolean</em>) – Enable the right turn signal</p></li>
+<li><p><strong>brakeSignal</strong> (<em>boolean</em>) – Enable the brake lights (does not affect the motion of the vehicle)</p></li>
+<li><p><strong>reverseSignal</strong> (<em>boolean</em>) – Play a honking sound</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True or False if successful, location, rotation in degrees, front bumper hit, rear bumper hit</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], boolean, boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.possess">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">possess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.possess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.possess" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">possess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.possess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.possess" title="Permalink to this definition"></a></dt>
+<dd><p>Possess (take control of) a QCar in QLabs with the selected camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>camera</strong> (<em>uint32</em>) – Pre-defined camera constant. See CAMERA constants for available options. Default is the trailing camera.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if possessing the camera was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.get_camera_data">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">get_camera_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.get_camera_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.get_camera_data" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.get_image">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">get_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.get_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.get_image" title="Permalink to this definition"></a></dt>
+<dd><p>Request a JPG image from one of the QCar cameras.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>camera</strong> (<em>uint32</em>) – Pre-defined camera constant. See CAMERA constants for available options. Trailing and Overhead cameras cannot be selected.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if possessing the camera was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a QCar in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a QCar of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the QCar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation in radians</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.get_world_transform_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">get_world_transform_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.get_world_transform_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.get_world_transform_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the QCar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation in degrees</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="configurations">
