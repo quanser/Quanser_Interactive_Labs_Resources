@@ -8,7 +8,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsBasicShape:
-    """ This class is for spawning both static and dynamic basic shapes. """
+    """ This class is for spawning both static and dynamic basic shapes that can still be addressed after they have been spawned like other actors."""
     
     ID_BASIC_SHAPE = 200
     """Class ID"""

@@ -125,8 +125,6 @@ class QLabsQCar:
         :return: True if successful or False otherwise, location in full scale, rotation in radians, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
 
-        *************** Need to add degrees equivalent *********************************
-
         """ 
         c = CommModularContainer()
         c.classID = self.ID_QCAR
@@ -187,8 +185,6 @@ class QLabsQCar:
         :type waitForConfirmation: boolean
         :return: True if successful or False otherwise, location in full scale, rotation in degrees, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
-
-        *************** Need to add degrees equivalent *********************************
 
         """ 
         success, location, rotation, forward_vector, up_vector, frontHit, rearHit = self.set_transform_and_request_state(qlabs, actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation)

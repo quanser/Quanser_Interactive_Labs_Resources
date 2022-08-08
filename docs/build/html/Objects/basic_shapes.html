@@ -60,10 +60,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Shapes (Cube/Cylinder/Sphere)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#connection-points">Connection Points</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tutorial">Tutorial</a></li>
 </ul>
 </li>
@@ -106,18 +106,125 @@
 </section>
 <section id="library">
 <span id="basicshapelibrary"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_basic_shape.</span></span><span class="sig-name descname"><span class="pre">QLabsBasicShape</span></span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning both static and dynamic basic shapes that can still be addressed after they have been spawned like other actors.</p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<span id="basicshapeconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.ID_BASIC_SHAPE">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">ID_BASIC_SHAPE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">200</span></em><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.ID_BASIC_SHAPE" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CUBE">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">SHAPE_CUBE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CUBE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CYLINDER">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">SHAPE_CYLINDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CYLINDER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.SHAPE_SPHERE">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">SHAPE_SPHERE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.SHAPE_SPHERE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="methods">
 <span id="basicshapemethods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a yield sign in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – Use the constants defined for selecting the shapes.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a yield sign in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – Use the constants defined for selecting the shapes.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.spawn_and_parent_with_relative_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">spawn_and_parent_with_relative_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentClass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentActorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentComponent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.spawn_and_parent_with_relative_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.spawn_and_parent_with_relative_transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.set_material_properties">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">set_material_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roughness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metallic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.set_material_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.set_material_properties" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.set_physics_properties">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">set_physics_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linearDampign</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angularDamping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.set_physics_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.set_physics_properties" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.set_enable_dynamics">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">set_enable_dynamics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.set_enable_dynamics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.set_enable_dynamics" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.set_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">set_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.set_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.set_transform" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_basic_shape.QLabsBasicShape.set_transform_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsBasicShape.</span></span><span class="sig-name descname"><span class="pre">set_transform_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_basic_shape.html#QLabsBasicShape.set_transform_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_basic_shape.QLabsBasicShape.set_transform_degrees" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 <section id="configurations">
 <span id="basicshapeconfig"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>
 </section>
 <section id="connection-points">
 <span id="basicshapeconnect"></span><h2>Connection Points<a class="headerlink" href="#connection-points" title="Permalink to this headline"></a></h2>
-</section>
-<section id="constants">
-<span id="basicshapeconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
 </section>
 <section id="tutorial">
 <span id="basicshapetutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h2>

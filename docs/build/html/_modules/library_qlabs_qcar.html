@@ -207,8 +207,6 @@
 <span class="sd">        :return: True if successful or False otherwise, location in full scale, rotation in radians, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.</span>
 <span class="sd">        :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean</span>
 
-<span class="sd">        *************** Need to add degrees equivalent *********************************</span>
-
 <span class="sd">        &quot;&quot;&quot;</span> 
         <span class="n">c</span> <span class="o">=</span> <span class="n">CommModularContainer</span><span class="p">()</span>
         <span class="n">c</span><span class="o">.</span><span class="n">classID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID_QCAR</span>
@@ -269,8 +267,6 @@
 <span class="sd">        :type waitForConfirmation: boolean</span>
 <span class="sd">        :return: True if successful or False otherwise, location in full scale, rotation in degrees, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.</span>
 <span class="sd">        :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean</span>
-
-<span class="sd">        *************** Need to add degrees equivalent *********************************</span>
 
 <span class="sd">        &quot;&quot;&quot;</span> 
         <span class="n">success</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">forward_vector</span><span class="p">,</span> <span class="n">up_vector</span><span class="p">,</span> <span class="n">frontHit</span><span class="p">,</span> <span class="n">rearHit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_transform_and_request_state</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="p">[</span><span class="n">rotation</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="n">enableDynamics</span><span class="p">,</span> <span class="n">headlights</span><span class="p">,</span> <span class="n">leftTurnSignal</span><span class="p">,</span> <span class="n">rightTurnSignal</span><span class="p">,</span> <span class="n">brakeSignal</span><span class="p">,</span> <span class="n">reverseSignal</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="p">)</span>

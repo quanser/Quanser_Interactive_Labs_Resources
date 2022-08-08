@@ -206,6 +206,37 @@ Widgets can’t be modified once created.  They also can’t be deleted individu
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">destroy_all_spawned_widgets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.destroy_all_spawned_widgets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys all spawned widgets, but does not destroy actors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.widget_spawn_configuration">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">widget_spawn_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enableShadow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.widget_spawn_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.widget_spawn_configuration" title="Permalink to this definition"></a></dt>
+<dd><p>If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>enableShadow</strong> (<em>boolean</em>) – (Optional) Show (<cite>True</cite>) or hide (<cite>False</cite>) widget shadows.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="configurations">
 <span id="widgetconfig"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>

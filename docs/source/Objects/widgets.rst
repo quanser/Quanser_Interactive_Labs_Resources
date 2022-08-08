@@ -37,6 +37,8 @@ Methods
 
 .. automethod:: library_qlabs_widget.QLabsWidget.spawn
 .. automethod:: library_qlabs_widget.QLabsWidget.spawn_degrees
+.. automethod:: library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets
+.. automethod:: library_qlabs_widget.QLabsWidget.widget_spawn_configuration
 
 .. _widgetConfig:
 

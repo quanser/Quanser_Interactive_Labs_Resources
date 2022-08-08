@@ -8,8 +8,8 @@ Cameras
 Description
 ^^^^^^^^^^^
 
-Cameras in the Virtual Self Driving Car Studio are used for observing the workspace from different views and taking images.
-Cameras are considered "actors" in the Virtual Self Driving Car Studio.  The camera library controls the camera actors.
+Cameras in the Open Worlds are used for observing the workspace from different views and capturing image data.
+Cameras are considered "actors".  The camera library controls the camera actors.
 
 A camera must be initialized first by spawning the camera in the location (or attached to the parent actor of choice) in order to use it.
 
