@@ -287,7 +287,7 @@ class QLabsQCar:
         
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param camera: Pre-defined camera constant. See CAMERA_ constants for available options. Default is the trailing camera.
+        :param camera: Pre-defined camera constant. See CAMERA constants for available options. Default is the trailing camera.
         :type qlabs: object
         :type actorNumber: uint32
         :type camera: uint32
@@ -318,7 +318,7 @@ class QLabsQCar:
         
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param camera: Pre-defined camera constant. See CAMERA_ constants for available options. Trailing and Overhead cameras cannot be selected.
+        :param camera: Pre-defined camera constant. See CAMERA constants for available options. Trailing and Overhead cameras cannot be selected.
         :type qlabs: object
         :type actorNumber: uint32
         :type camera: uint32
