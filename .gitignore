@@ -1,2 +1,6 @@
 .vs/
 __pycache__/
+docs/build/doctrees/
+docs/build/html/.buildinfo
+docs/build/html/objects.inv
+docs/build/html/_sources/
