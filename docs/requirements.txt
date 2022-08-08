@@ -1,4 +1,4 @@
-# Defining the exact version will make sure things don't break
+# Defining the exact version will make sure things don't break (eg pip install sphinx==4.5.0)
 sphinx==4.5.0
 sphinx-autobuild==0.7.1
 sphinx_collapse==0.1.2
@@ -8,3 +8,7 @@ sphinx_rtd_theme==1.0.0
 readthedocs-sphinx-search==0.1.2
 sphinx-jinja2-compat==0.1.2
 sphinx-autodoc-typehints==1.18.3
+opencv-python
+
+All Quanser API's from the QUARC/Python folder: python -m pip install --upgrade --find-links <package folder> <package folder>/quanser_api-2022.4.29-py2.py3-none-any.whl
+

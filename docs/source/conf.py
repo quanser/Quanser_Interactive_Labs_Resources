@@ -12,7 +12,9 @@
 #
 import os
 import sys
-sys.path.insert(1, os.path.abspath('C:/Users/kfullerton/Documents/Repos/virtual_sdcs_docs'))
+sys.path.insert(1, os.path.abspath('../../libraries/'))
+
+print(sys.path)
 
 
 # -- Project information -----------------------------------------------------

@@ -52,9 +52,15 @@ Methods
 .. automethod:: library_qlabs_qcar.QLabsQCar.spawn
 .. automethod:: library_qlabs_qcar.QLabsQCar.spawn_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state
+.. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state
+.. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.possess
-.. automethod:: library_qlabs_qcar.QLabsQCar.get_camera_data
+.. automethod:: library_qlabs_qcar.QLabsQCar.get_image
+.. automethod:: library_qlabs_qcar.QLabsQCar.destroy
+.. automethod:: library_qlabs_qcar.QLabsQCar.ping
+.. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform
+.. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform_degrees
 
 .. _carConfig:
 
