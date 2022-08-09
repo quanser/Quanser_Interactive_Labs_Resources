@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cars &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+  <title>QCars &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
@@ -54,7 +54,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Actors Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="camera_library.html">Cameras</a></li>
 <li class="toctree-l2"><a class="reference internal" href="person_library.html">Person</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Cars</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">QCars</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#library">Library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
@@ -90,7 +90,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Python Actors Reference</a> &raquo;</li>
-      <li>Cars</li>
+      <li>QCars</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Objects/car_library.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -100,13 +100,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="cars">
-<span id="car-library"></span><h1>Cars<a class="headerlink" href="#cars" title="Permalink to this headline"></a></h1>
+  <section id="qcars">
+<span id="car-library"></span><h1>QCars<a class="headerlink" href="#qcars" title="Permalink to this headline"></a></h1>
 <a class="reference internal image-reference" href="../_images/qcar.png"><img alt="../_images/qcar.png" class="align-center" src="../_images/qcar.png" style="width: 140.0px; height: 162.25px;" /></a>
 <section id="description">
 <span id="cardescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
-<p>Cars are considered “actors” in the Virtual Self Driving Car Studio.
-The car library controls the QCars that are placed in the workspace of the Quanser Interactive Labs.</p>
+<p>QCars are considered “actors” in the Virtual Self-Driving Car Studio.
+The QCar library can be used to acquire sensor data from the virtual environment and controls the motion of the vehicles.</p>
 </section>
 <section id="library">
 <span id="carlibrary"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
@@ -124,46 +124,6 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">ID_QCAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.ID_QCAR" title="Permalink to this definition"></a></dt>
 <dd><p>Class ID</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_VELOCITY_STATE_RESPONSE">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_VELOCITY_STATE_RESPONSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_VELOCITY_STATE_RESPONSE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_TRANSFORM_STATE_RESPONSE">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_TRANSFORM_STATE_RESPONSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_TRANSFORM_STATE_RESPONSE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_POSSESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS_ACK">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_POSSESS_ACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS_ACK" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_REQUEST">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_CAMERA_DATA_REQUEST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_REQUEST" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_RESPONSE">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">FCN_QCAR_CAMERA_DATA_RESPONSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">101</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_RESPONSE" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.CAMERA_CSI_RIGHT">
@@ -257,7 +217,7 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_transform_and_request_state">
 <span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_transform_and_request_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_transform_and_request_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state" title="Permalink to this definition"></a></dt>
-<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -286,7 +246,7 @@ The car library controls the QCars that are placed in the workspace of the Quans
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees">
 <span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">set_transform_and_request_state_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableDynamics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headlights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leftTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rightTurnSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brakeSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverseSignal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.set_transform_and_request_state_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees" title="Permalink to this definition"></a></dt>
-<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
+<dd><p>Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to “playback” previously recorded position data without the need for a full dynamic model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -368,7 +328,7 @@ The car library controls the QCars that are placed in the workspace of the Quans
 
 <dl class="py method">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.possess">
-<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">possess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.possess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.possess" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">possess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">CAMERA_TRAILING</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_qcar.html#QLabsQCar.possess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.possess" title="Permalink to this definition"></a></dt>
 <dd><p>Possess (take control of) a QCar in QLabs with the selected camera.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -495,6 +455,11 @@ The car library controls the QCars that are placed in the workspace of the Quans
 </section>
 <section id="connection-points">
 <span id="carconnect"></span><h2>Connection Points<a class="headerlink" href="#connection-points" title="Permalink to this headline"></a></h2>
+<a class="reference internal image-reference" href="../_images/qcar_connection_points.png"><img alt="../_images/qcar_connection_points.png" class="align-center" src="../_images/qcar_connection_points.png" style="width: 433.5px; height: 426.0px;" /></a>
+<ul class="simple">
+<li><p>0 - The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.</p></li>
+<li><p>1 - The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.</p></li>
+</ul>
 </section>
 <section id="tutorial">
 <span id="cartutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h2>

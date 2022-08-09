@@ -1,7 +1,7 @@
 .. _car_library:
 
-Cars
-----
+QCars
+-----
 
 .. image:: pictures/qcar.png
     :scale: 25%
@@ -12,8 +12,8 @@ Cars
 Description
 ^^^^^^^^^^^
 
-Cars are considered "actors" in the Virtual Self Driving Car Studio.
-The car library controls the QCars that are placed in the workspace of the Quanser Interactive Labs.
+QCars are considered "actors" in the Virtual Self-Driving Car Studio.
+The QCar library can be used to acquire sensor data from the virtual environment and controls the motion of the vehicles.
 
 .. _carlibrary:
 
@@ -27,14 +27,22 @@ Library
 Constants
 ^^^^^^^^^
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.ID_QCAR
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_VELOCITY_STATE_RESPONSE
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_TRANSFORM_STATE_RESPONSE
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS_ACK
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_REQUEST
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_RESPONSE
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_VELOCITY_STATE_RESPONSE
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_TRANSFORM_STATE_RESPONSE
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS_ACK
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_REQUEST
+.. 
+ autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_RESPONSE
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_RIGHT
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_BACK
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_LEFT
@@ -73,6 +81,13 @@ There are no configurations options for the QCar.
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+.. image:: pictures/qcar_connection_points.png
+    :scale: 50%
+    :align: center
+	
+* 0 - The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
+* 1 - The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
 
 .. _carTutorial:
 

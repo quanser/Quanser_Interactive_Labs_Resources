@@ -12,8 +12,6 @@ import numpy as np
 class QLabsQCar:
     """This class is for spawning QCars."""
     
-    _jpg_buffer = bytearray()
-    
        
     ID_QCAR = 160
     """Class ID"""
@@ -98,7 +96,7 @@ class QLabsQCar:
     
     
     def set_transform_and_request_state(self, qlabs, actorNumber, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
-        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
+        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -159,7 +157,7 @@ class QLabsQCar:
             return False, location, rotation, forward_vector, up_vector, frontHit, rearHit  
 
     def set_transform_and_request_state_degrees(self, qlabs, actorNumber, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
-        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
+        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs

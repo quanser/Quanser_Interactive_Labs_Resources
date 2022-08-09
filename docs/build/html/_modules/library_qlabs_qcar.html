@@ -94,8 +94,6 @@
 <div class="viewcode-block" id="QLabsQCar"><a class="viewcode-back" href="../Objects/car_library.html#library_qlabs_qcar.QLabsQCar">[docs]</a><span class="k">class</span> <span class="nc">QLabsQCar</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;This class is for spawning QCars.&quot;&quot;&quot;</span>
     
-    <span class="n">_jpg_buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
-    
        
     <span class="n">ID_QCAR</span> <span class="o">=</span> <span class="mi">160</span>
     <span class="sd">&quot;&quot;&quot;Class ID&quot;&quot;&quot;</span>
@@ -180,7 +178,7 @@
     
     
 <div class="viewcode-block" id="QLabsQCar.set_transform_and_request_state"><a class="viewcode-back" href="../Objects/car_library.html#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_transform_and_request_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">enableDynamics</span><span class="p">,</span> <span class="n">headlights</span><span class="p">,</span> <span class="n">leftTurnSignal</span><span class="p">,</span> <span class="n">rightTurnSignal</span><span class="p">,</span> <span class="n">brakeSignal</span><span class="p">,</span> <span class="n">reverseSignal</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to &quot;playback&quot; previously recorded position data without the need for a full dynamic model.</span>
+        <span class="sd">&quot;&quot;&quot;Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to &quot;playback&quot; previously recorded position data without the need for a full dynamic model.</span>
 
 <span class="sd">        :param qlabs: A QuanserInteractiveLabs object</span>
 <span class="sd">        :param actorNumber: User defined unique identifier for the class actor in QLabs</span>
@@ -241,7 +239,7 @@
             <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">forward_vector</span><span class="p">,</span> <span class="n">up_vector</span><span class="p">,</span> <span class="n">frontHit</span><span class="p">,</span> <span class="n">rearHit</span>  </div>
 
 <div class="viewcode-block" id="QLabsQCar.set_transform_and_request_state_degrees"><a class="viewcode-back" href="../Objects/car_library.html#library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees">[docs]</a>    <span class="k">def</span> <span class="nf">set_transform_and_request_state_degrees</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qlabs</span><span class="p">,</span> <span class="n">actorNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">enableDynamics</span><span class="p">,</span> <span class="n">headlights</span><span class="p">,</span> <span class="n">leftTurnSignal</span><span class="p">,</span> <span class="n">rightTurnSignal</span><span class="p">,</span> <span class="n">brakeSignal</span><span class="p">,</span> <span class="n">reverseSignal</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to &quot;playback&quot; previously recorded position data without the need for a full dynamic model.</span>
+        <span class="sd">&quot;&quot;&quot;Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to &quot;playback&quot; previously recorded position data without the need for a full dynamic model.</span>
 
 <span class="sd">        :param qlabs: A QuanserInteractiveLabs object</span>
 <span class="sd">        :param actorNumber: User defined unique identifier for the class actor in QLabs</span>

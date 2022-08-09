@@ -183,7 +183,7 @@
         <span class="k">return</span> <span class="n">qlabs</span><span class="o">.</span><span class="n">spawn_widget</span><span class="p">(</span><span class="n">widgetType</span><span class="p">,</span> <span class="n">location</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">location</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">location</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">rotation</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="mi">180</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">scale</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">scale</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">scale</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">measuredMass</span><span class="p">,</span> <span class="n">IDTag</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="p">)</span></div>
  
 
-    <span class="k">def</span> <span class="nf">destroy_all_spawned_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="QLabsWidget.destroy_all_spawned_widgets"><a class="viewcode-back" href="../Objects/widgets.html#library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets">[docs]</a>    <span class="k">def</span> <span class="nf">destroy_all_spawned_widgets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Destroys all spawned widgets, but does not destroy actors.</span>
 <span class="sd">        </span>
 <span class="sd">        :return: `True` if successful, `False` otherwise</span>
@@ -205,10 +205,10 @@
             <span class="k">return</span> <span class="kc">True</span>
         
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>   
+            <span class="k">return</span> <span class="kc">False</span>   </div>
 
             
-    <span class="k">def</span> <span class="nf">widget_spawn_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enableShadow</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="QLabsWidget.widget_spawn_configuration"><a class="viewcode-back" href="../Objects/widgets.html#library_qlabs_widget.QLabsWidget.widget_spawn_configuration">[docs]</a>    <span class="k">def</span> <span class="nf">widget_spawn_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enableShadow</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.</span>
 <span class="sd">        </span>
 <span class="sd">        :param enableShadow: (Optional) Show (`True`) or hide (`False`) widget shadows.</span>
@@ -232,7 +232,7 @@
             <span class="k">return</span> <span class="kc">True</span>
         
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span> 
+            <span class="k">return</span> <span class="kc">False</span> </div>
 
        
     <span class="k">def</span> <span class="nf">spawn_widget</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">widgetType</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span><span class="p">,</span> <span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">,</span> <span class="n">sz</span><span class="p">,</span> <span class="n">colorR</span><span class="p">,</span> <span class="n">colorG</span><span class="p">,</span> <span class="n">colorB</span><span class="p">,</span> <span class="n">measuredMass</span><span class="p">,</span> <span class="n">IDTag</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
