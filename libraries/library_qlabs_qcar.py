@@ -45,9 +45,9 @@ class QLabsQCar:
     CAMERA_DEPTH = 5
     """ """
     CAMERA_OVERHEAD = 6
-    """ """
+    """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     CAMERA_TRAILING = 7
-    """ """
+    """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     
     # Initialize class
     def __init__(self):
