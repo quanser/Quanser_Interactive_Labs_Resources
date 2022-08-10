@@ -13,7 +13,7 @@ The person library controls the people placed in the Virtual Self Driving Car St
 
 See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
 
-.. _personlibrary:
+.. _personLibrary:
 
 Library
 ^^^^^^^

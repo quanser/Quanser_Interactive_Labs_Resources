@@ -13,37 +13,23 @@ class QLabsQCar:
     """This class is for spawning QCars."""
     
        
-    ID_QCAR = 160
-    """Class ID"""
+    ID_QCAR = 160 
+    """ Class ID """
     FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE = 10
-    """ """
     FCN_QCAR_VELOCITY_STATE_RESPONSE = 11
-    """ """
     FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE = 12
-    """ """
     FCN_QCAR_TRANSFORM_STATE_RESPONSE = 13
-    """ """
     FCN_QCAR_POSSESS = 20
-    """ """
     FCN_QCAR_POSSESS_ACK = 21
-    """ """
     FCN_QCAR_CAMERA_DATA_REQUEST = 100
-    """ """
     FCN_QCAR_CAMERA_DATA_RESPONSE = 101
-    """ """
     
     CAMERA_CSI_RIGHT = 0
-    """ """
     CAMERA_CSI_BACK = 1
-    """ """
     CAMERA_CSI_LEFT = 2
-    """ """
     CAMERA_CSI_FRONT = 3
-    """ """
     CAMERA_RGB = 4
-    """ """
     CAMERA_DEPTH = 5
-    """ """
     CAMERA_OVERHEAD = 6
     """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     CAMERA_TRAILING = 7

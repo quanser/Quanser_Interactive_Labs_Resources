@@ -15,7 +15,7 @@ Description
 QCars are considered "actors" in the Virtual Self-Driving Car Studio.
 The QCar library can be used to acquire sensor data from the virtual environment and controls the motion of the vehicles.
 
-.. _carlibrary:
+.. _carLibrary:
 
 Library
 ^^^^^^^
@@ -26,6 +26,33 @@ Library
 
 Constants
 ^^^^^^^^^
+
+.. literalinclude:: ../../../libraries/library_qlabs_qcar.py
+   :language: python
+   :lines: 16,45-50
+
+.. code-block:: python
+
+    ID_QCAR = 160 #Class ID
+    FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE = 10
+    FCN_QCAR_VELOCITY_STATE_RESPONSE = 11
+    FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE = 12
+    FCN_QCAR_TRANSFORM_STATE_RESPONSE = 13
+    FCN_QCAR_POSSESS = 20
+    FCN_QCAR_POSSESS_ACK = 21
+    FCN_QCAR_CAMERA_DATA_REQUEST = 100
+    FCN_QCAR_CAMERA_DATA_RESPONSE = 101
+    CAMERA_CSI_RIGHT = 0
+    CAMERA_CSI_BACK = 1
+    CAMERA_CSI_LEFT = 2
+    CAMERA_CSI_FRONT = 3
+    CAMERA_RGB = 4
+    CAMERA_DEPTH = 5
+    CAMERA_OVERHEAD = 6 #Note: The mouse scroll wheel can be used to zoom in and out in this mode.
+    CAMERA_TRAILING = 7 #Note: The mouse scroll wheel can be used to zoom in and out in this mode.
+
+
+
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.ID_QCAR
 .. 
  autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
@@ -102,7 +129,17 @@ Connection Points
      - 0
      - [0,0,0] [0,0,0]
      - The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
-   
+
+.. table::
+
+    ====================== ============ ===================================================== ===========
+    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation Deg) Description
+    ====================== ============ ===================================================== ===========
+    0                                                                                         The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame. 
+    1                                   [0,0,0] [0,0,0]                                       The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
+    ====================== ============ ===================================================== ===========
+
+
 .. _carTutorial:
 
 Tutorial

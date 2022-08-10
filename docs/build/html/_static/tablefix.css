@@ -1,0 +1,25 @@
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+.wy-table-responsive {
+    margin-bottom: 24px;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.wy-table-responsive th p {
+    margin-bottom: unset;
+}
+
+
+/* 
+.wy-side-nav-search, .wy-nav-top {
+    background: #0b750a;
+}
+a:visited {
+	color: red;
+  }
+*/
+
+/* override table width restrictions */

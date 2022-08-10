@@ -12,7 +12,7 @@
       <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -118,7 +118,43 @@ The QCar library can be used to acquire sensor data from the virtual environment
 </section>
 <section id="constants">
 <span id="carconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
-<dl class="py attribute">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">ID_QCAR</span> <span class="o">=</span> <span class="mi">160</span>
+    <span class="n">CAMERA_DEPTH</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+    <span class="n">CAMERA_OVERHEAD</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="sd">&quot;&quot;&quot; Note: The mouse scroll wheel can be used to zoom in and out in this mode. &quot;&quot;&quot;</span>
+    <span class="n">CAMERA_TRAILING</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="sd">&quot;&quot;&quot; Note: The mouse scroll wheel can be used to zoom in and out in this mode. &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Constants<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ID_QCAR</span> <span class="o">=</span> <span class="mi">160</span> <span class="c1">#Class ID</span>
+<span class="n">FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">FCN_QCAR_VELOCITY_STATE_RESPONSE</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">FCN_QCAR_TRANSFORM_STATE_RESPONSE</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">FCN_QCAR_POSSESS</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">FCN_QCAR_POSSESS_ACK</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">FCN_QCAR_CAMERA_DATA_REQUEST</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">FCN_QCAR_CAMERA_DATA_RESPONSE</span> <span class="o">=</span> <span class="mi">101</span>
+<span class="n">CAMERA_CSI_RIGHT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CAMERA_CSI_BACK</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">CAMERA_CSI_LEFT</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">CAMERA_CSI_FRONT</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">CAMERA_RGB</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">CAMERA_DEPTH</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">CAMERA_OVERHEAD</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1">#Note: The mouse scroll wheel can be used to zoom in and out in this mode.</span>
+<span class="n">CAMERA_TRAILING</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1">#Note: The mouse scroll wheel can be used to zoom in and out in this mode.</span>
+</pre></div>
+</div>
+</div>
+</details><dl class="py attribute">
 <dt class="sig sig-object py" id="library_qlabs_qcar.QLabsQCar.ID_QCAR">
 <span class="sig-prename descclassname"><span class="pre">QLabsQCar.</span></span><span class="sig-name descname"><span class="pre">ID_QCAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">160</span></em><a class="headerlink" href="#library_qlabs_qcar.QLabsQCar.ID_QCAR" title="Permalink to this definition"></a></dt>
 <dd><p>Class ID</p>
@@ -479,6 +515,33 @@ The QCar library can be used to acquire sensor data from the virtual environment
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>0</p></td>
+<td><p>[0,0,0] [0,0,0]</p></td>
+<td><p>The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Reference Frame Number</p></th>
+<th class="head"><p>Parent Frame</p></th>
+<th class="head"><p>Relative Transform to Parent (Location, Rotation Deg)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td></td>
+<td></td>
+<td><p>The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td></td>
 <td><p>[0,0,0] [0,0,0]</p></td>
 <td><p>The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.</p></td>
 </tr>

@@ -14,9 +14,7 @@ class QLabsEnvironmentOutdoors:
     """Class ID"""
 
     FCN_SET_TIME_OF_DAY = 10
-    """ """
     FCN_SET_TIME_OF_DAY_ACK = 11
-    """ """
    
     def __init__(self):
        """ Constructor Method """

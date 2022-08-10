@@ -6,37 +6,22 @@ import math
 class QLabsWidget:
     """ This class is for the spawning of widgets. Widgets are special actors that cannot be addressed after they have been spawned so they do not support parenting. They are highly efficient so it is possible to spawn thousands of widgets while maintaining performance."""
 
-
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS = 18
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK = 19
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET = 20
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK = 21
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION = 100
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK = 101
-    """ """
 
 
     CUBE = 0
-    """ """
     CYLINDER = 1
-    """ """
     SPHERE = 2
-    """ """
     AUTOCLAVE_CAGE = 3
-    """ """
     PLASTIC_BOTTLE = 4
-    """ """
     METAL_CAN = 5
-    """ """
         
     # Initialize class
     def __init__(self):

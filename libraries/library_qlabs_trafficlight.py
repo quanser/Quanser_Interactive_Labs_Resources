@@ -14,9 +14,7 @@ class QLabsTrafficLight:
     """Class ID"""
     
     FCN_TRAFFIC_LIGHT_SET_STATE = 10
-    """ """
     FCN_TRAFFIC_LIGHT_SET_STATE_ACK = 11
-    """ """
     
     STATE_RED = 0
     """State constant for red light"""

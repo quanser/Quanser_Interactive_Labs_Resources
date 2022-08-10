@@ -12,9 +12,7 @@ class QLabsSystem:
     ID_SYSTEM = 1000
     """Class ID."""
     FCN_SYSTEM_SET_TITLE_STRING = 10
-    """ """
     FCN_SYSTEM_SET_TITLE_STRING_ACK = 11
-    """ """
         
     # Initialize class
     def __init__(self):

@@ -14,29 +14,18 @@ class QLabsBasicShape:
     """Class ID"""
 
     SHAPE_CUBE = 0
-    """ """
     SHAPE_CYLINDER = 1
-    """ """
     SHAPE_SPHERE = 2
-    """ """
        
     
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES = 10
-    """ """
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES_ACK = 11
-    """ """
     FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES = 12
-    """ """
     FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES_ACK = 13
-    """ """
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS = 14
-    """ """
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS_ACK = 15
-    """ """
     FCN_BASIC_SHAPE_SET_TRANSFORM = 16
-    """ """
     FCN_BASIC_SHAPE_SET_TRANSFORM_ACK = 17
-    """ """
     
     # Initialize class
     def __init__(self):

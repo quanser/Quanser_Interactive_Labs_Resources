@@ -15,25 +15,15 @@ class QLabsFreeCamera:
     ID_FREE_CAMERA = 170 
     """Class ID"""
     FCN_FREE_CAMERA_POSSESS = 10
-    """ """
     FCN_FREE_CAMERA_POSSESS_ACK = 11
-    """ """
     FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES = 12
-    """ """
     FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK = 13
-    """ """
     FCN_FREE_CAMERA_SET_TRANSFORM = 14
-    """ """
     FCN_FREE_CAMERA_SET_TRANSFORM_ACK = 15
-    """ """
     FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION = 90
-    """ """
     FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE = 91
-    """ """
     FCN_FREE_CAMERA_REQUEST_IMAGE = 100
-    """ """
     FCN_FREE_CAMERA_RESPONSE_IMAGE = 101
-    """ """
    
     def __init__(self):
        """ Constructor Method """
