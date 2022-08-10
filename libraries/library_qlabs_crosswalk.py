@@ -79,7 +79,7 @@ class QLabsCrosswalk:
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
-        :return: `True` if spawn was successful, `False` otherwise
+        :return: `True` if actor is present, `False` otherwise
         :rtype: boolean
 
         """

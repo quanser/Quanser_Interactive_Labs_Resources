@@ -13,6 +13,8 @@ from library_qlabs_free_camera import QLabsFreeCamera
 from library_qlabs_basic_shape import QLabsBasicShape
 from library_qlabs_qcar import QLabsQCar
 from library_qlabs_environment_outdoors import QLabsEnvironmentOutdoors
+from library_qlabs_system import QLabsSystem
+from library_qlabs_person import QLabsPerson
 
 
 import sys
@@ -25,6 +27,7 @@ import xlsxwriter
 import os
 
 
+require_user_input = False
 
 ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_bottle_table', \
@@ -156,6 +159,12 @@ def main():
     x = "Destroyed {} actors.".format(QLabsCommon().destroy_all_spawned_actors(qlabs))
     print(x)
     PrintWS(2, x)
+    
+    ### System
+    PrintWSHeader("System")
+    x = QLabsSystem().set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
+    PrintWS(x == True, "Set title string")
+    checkFunctionTestList("library_qlabs_system")
     
     ### Free Camera
     PrintWSHeader("Free Camera")
@@ -438,6 +447,18 @@ def main():
     
     checkFunctionTestList("library_qlabs_crosswalk")   
     
+    ### People
+    
+    QLabsPerson().spawn(qlabs, actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    QLabsPerson().spawn(qlabs, actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    QLabsPerson().spawn_degrees(qlabs, actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    
+    QLabsPerson().move_to(qlabs, actorNumber=0, location=[-7.637, 51, 0.005], speed=0.01, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, actorNumber=1, location=[-11.834, 51, 0.005], speed=1, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, actorNumber=2, location=[-15.903, 51, 0.005], speed=6, waitForConfirmation=True)
+    
+    checkFunctionTestList("library_qlabs_person")   
+    
     ### QCar
     
     QLabsFreeCamera().spawn(qlabs, actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
@@ -472,7 +493,10 @@ def main():
     QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=1, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
     time.sleep(1)
     QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=0.0, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
-    x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):")
+    else:
+        x = ""
     PrintWS(x == "", "Headlights")
     PrintWS(x == "", "Set velocity")
     
@@ -480,7 +504,10 @@ def main():
     time.sleep(1)
     success, location, rotation, frontHit, rearHit = QLabsQCar().set_velocity_and_request_state_degrees(qlabs, actorNumber=2, forward=0.0, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     print(rotation)
-    x = input("Moving forward towards the left of the screen? Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Moving forward towards the left of the screen? Enter yes, anything else no):")
+    else:
+        x = ""
     PrintWS(x == "", "Set velocity degrees")
     
 
@@ -491,7 +518,10 @@ def main():
     time.sleep(1)
     QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=0.0, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
     
-    x = input("Brake lights on and casting red glow? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Brake lights on and casting red glow? (Enter yes, anything else no):")
+    else:
+        x = ""
     PrintWS(x == "", "Brake lights")
     
     
@@ -544,35 +574,67 @@ def main():
     
     #camera tests
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_OVERHEAD)
-    x = input("Overhead camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Overhead camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess overhead camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_TRAILING)
-    x = input("Trailing camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Trailing camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess trailing camera")
     
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_FRONT)
-    x = input("Front camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Front camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess front camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_RIGHT)
-    x = input("Right camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Right camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess right camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_BACK)
-    x = input("Back camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Back camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess back camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_LEFT)
-    x = input("Left camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Left camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess left camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_RGB)
-    x = input("Real Sense RGB camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Real Sense RGB camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess Real Sense RGB camera")
 
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_DEPTH)
-    x = input("Real Sense Depth camera? (Enter yes, anything else no):")
+    if require_user_input == True:
+        x = input("Real Sense Depth camera? (Enter yes, anything else no):")
+    else:
+        x = ""
+        time.sleep(0.5)
     PrintWS(x == "", "Possess Real Sense Depth camera")
     
     cv2.namedWindow('QCarImageStream', cv2.WINDOW_AUTOSIZE)

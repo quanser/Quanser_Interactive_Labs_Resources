@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Person &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+  <title>People &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
@@ -49,11 +49,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Other.html">Python System &amp; Utility Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Other.html#attaching-objects">Attaching Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System/index.html">Python System &amp; Utility Reference</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Actors Reference</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="camera_library.html">Cameras</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Person</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">People</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#library">Library</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
@@ -89,7 +88,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">Python Actors Reference</a> &raquo;</li>
-      <li>Person</li>
+      <li>People</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Objects/person_library.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,62 +98,210 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="person">
-<span id="person-library"></span><h1>Person<a class="headerlink" href="#person" title="Permalink to this headline"></a></h1>
+  <section id="people">
+<span id="person-library"></span><h1>People<a class="headerlink" href="#people" title="Permalink to this headline"></a></h1>
 <section id="description">
 <span id="persondescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
-<p>People are considered “actors” in the Virtual Self Driving Car Studio.
+<p>People are considered “actors” in the Virtual Self-Driving Car Studio.
 The person library controls the people placed in the Virtual Self Driving Car Studio workspaces of the Quanser Interactive Labs.</p>
 <p>See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.</p>
 </section>
 <section id="library">
 <span id="personlibrary"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_silhouette_person.</span></span><span class="sig-name descname"><span class="pre">QLabsSilhouettePerson</span></span><a class="reference internal" href="../_modules/library_qlabs_silhouette_person.html#QLabsSilhouettePerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_person.</span></span><span class="sig-name descname"><span class="pre">QLabsPerson</span></span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="constants">
 <span id="personconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.ID_SILHOUETTE_PERSON">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">ID_SILHOUETTE_PERSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10030</span></em><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.ID_SILHOUETTE_PERSON" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.ID_PERSON">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">ID_PERSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10030</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.ID_PERSON" title="Permalink to this definition"></a></dt>
 <dd><p>Class ID</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">FCN_SILHOUETTE_PERSON_MOVE_TO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO_ACK">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">FCN_SILHOUETTE_PERSON_MOVE_TO_ACK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO_ACK" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
 </section>
 <section id="methods">
 <span id="personmethods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
 <dl class="py method">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_silhouette_person.html#QLabsSilhouettePerson.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a person in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the x, y, and z scale</p></li>
+<li><p><strong>configuration</strong> (<em>int32</em>) – (Optional) Select the style of person to be spawned. See the Configuration section for more details.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you would like to use the <cite>move_to</cite> method, the actor must be spawned in a valid nav area.</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn_degrees">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_silhouette_person.html#QLabsSilhouettePerson.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn_degrees" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a person in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the x, y, and z scale</p></li>
+<li><p><strong>configuration</strong> (<em>int32</em>) – (Optional) Select the style of person to be spawned. See the Configuration section for more details.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you would like to use the <cite>move_to</cite> method, the actor must be spawned in a valid nav area.</p>
+</div>
+</dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="library_qlabs_silhouette_person.QLabsSilhouettePerson.move_to">
-<span class="sig-prename descclassname"><span class="pre">QLabsSilhouettePerson.</span></span><span class="sig-name descname"><span class="pre">move_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_silhouette_person.html#QLabsSilhouettePerson.move_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_silhouette_person.QLabsSilhouettePerson.move_to" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.move_to">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">move_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.move_to"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.move_to" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a person in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – A target destination as an array of floats for x, y and z coordinates in full-scale units.</p></li>
+<li><p><strong>speed</strong> (<em>float</em>) – The speed at which the person should walk to the destination.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation, but only until the command is received. The time for the actor to traverse to the destination is always non-blocking.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ensure the start and end locations are in valid nav areas so the actor can find a path to the destination.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a person in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a person of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the person</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation in radians</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.get_world_transform_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">get_world_transform_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson.get_world_transform_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson.get_world_transform_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the person</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation in degrees</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
 
 </section>
 <section id="configurations">
 <span id="personconfig"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>
-<p>There are several configurations for a person generated in the Quanser Interactive Labs.</p>
+<p>There are 6 configurations (0-5) for a person generated in QLabs.</p>
 <img alt="../_images/people.png" src="../_images/people.png" />
 </section>
 <section id="connection-points">
@@ -189,19 +336,19 @@ Example 3<div class="summary-down docutils">
 </details><p><strong>See Also:</strong></p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">Spawning a Person</span><a class="headerlink" href="#id1" title="Permalink to this code"></a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsSilhouettePerson</span><span class="p">()</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsPerson</span><span class="p">()</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">Spawning a Person using Degrees</span><a class="headerlink" href="#id2" title="Permalink to this code"></a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsSilhouettePerson</span><span class="p">()</span><span class="o">.</span><span class="n">spawn_degrees</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsPerson</span><span class="p">()</span><span class="o">.</span><span class="n">spawn_degrees</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">Making the Person to move to a secondary location</span><a class="headerlink" href="#id3" title="Permalink to this code"></a></div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsSilhouettePerson</span><span class="p">()</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">QLabsPerson</span><span class="p">()</span><span class="o">.</span><span class="n">move_to</span><span class="p">(</span><span class="n">qlabs</span><span class="p">,</span> <span class="n">deviceNumber</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">waitForConfirmation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

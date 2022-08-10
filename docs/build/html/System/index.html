@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Actors Reference &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+  <title>Python System &amp; Utility Reference &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Cameras" href="camera_library.html" />
-    <link rel="prev" title="Real-Time" href="../System/real_time_library.html" /> 
+    <link rel="next" title="System" href="system_library.html" />
+    <link rel="prev" title="User Interface" href="../User%20Interface.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -49,16 +49,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../System/index.html">Python System &amp; Utility Reference</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Actors Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="camera_library.html">Cameras</a></li>
-<li class="toctree-l2"><a class="reference internal" href="person_library.html">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="car_library.html">QCars</a></li>
-<li class="toctree-l2"><a class="reference internal" href="road_signage.html">Road Signage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="widgets.html">Widgets (Cube/Cylinder/Sphere/Autoclave cage/plastic bottle/metal can)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="basic_shapes.html">Basic Shapes (Cube/Cylinder/Sphere)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python System &amp; Utility Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system_library.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment_outdoors_library.html">Outdoor Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real_time_library.html">Real-Time</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Objects/index.html">Python Actors Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Code%20Style.html">Code Style</a></li>
@@ -78,9 +75,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Python Actors Reference</li>
+      <li>Python System &amp; Utility Reference</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Objects/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/System/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -88,17 +85,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="python-actors-reference">
-<span id="objects"></span><h1>Python Actors Reference<a class="headerlink" href="#python-actors-reference" title="Permalink to this headline"></a></h1>
-<p>This section documents the different types of actors that you can spawn and control in the QLabs Workspaces.</p>
+  <section id="python-system-utility-reference">
+<span id="system"></span><h1>Python System &amp; Utility Reference<a class="headerlink" href="#python-system-utility-reference" title="Permalink to this headline"></a></h1>
+<p>This section documents system, global, environmental and utility functions to support the QLabs Workspaces.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="camera_library.html">Cameras</a></li>
-<li class="toctree-l1"><a class="reference internal" href="person_library.html">People</a></li>
-<li class="toctree-l1"><a class="reference internal" href="car_library.html">QCars</a></li>
-<li class="toctree-l1"><a class="reference internal" href="road_signage.html">Road Signage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="widgets.html">Widgets (Cube/Cylinder/Sphere/Autoclave cage/plastic bottle/metal can)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="basic_shapes.html">Basic Shapes (Cube/Cylinder/Sphere)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_library.html">System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="environment_outdoors_library.html">Outdoor Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="real_time_library.html">Real-Time</a></li>
 </ul>
 </div>
 </section>
@@ -107,8 +101,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../System/real_time_library.html" class="btn btn-neutral float-left" title="Real-Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="camera_library.html" class="btn btn-neutral float-right" title="Cameras" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../User%20Interface.html" class="btn btn-neutral float-left" title="User Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="system_library.html" class="btn btn-neutral float-right" title="System" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,6 +1,6 @@
 .. _Person_Library:
 
-Person
+People
 ------
 
 .. _personDescription: 
@@ -8,7 +8,7 @@ Person
 Description
 ^^^^^^^^^^^
 
-People are considered "actors" in the Virtual Self Driving Car Studio.  
+People are considered "actors" in the Virtual Self-Driving Car Studio.  
 The person library controls the people placed in the Virtual Self Driving Car Studio workspaces of the Quanser Interactive Labs.
 
 See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
@@ -18,32 +18,34 @@ See the tutorial to get a better understanding of using cameras in the Quanser I
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_silhouette_person.QLabsSilhouettePerson
+.. autoclass:: library_qlabs_person.QLabsPerson
 
 .. _personConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_silhouette_person.QLabsSilhouettePerson.ID_SILHOUETTE_PERSON
-.. autoattribute:: library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO
-.. autoattribute:: library_qlabs_silhouette_person.QLabsSilhouettePerson.FCN_SILHOUETTE_PERSON_MOVE_TO_ACK
+.. autoattribute:: library_qlabs_person.QLabsPerson.ID_PERSON
 
 .. _personMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn
-.. automethod:: library_qlabs_silhouette_person.QLabsSilhouettePerson.spawn_degrees
-.. automethod:: library_qlabs_silhouette_person.QLabsSilhouettePerson.move_to
+.. automethod:: library_qlabs_person.QLabsPerson.spawn
+.. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
+.. automethod:: library_qlabs_person.QLabsPerson.move_to
+.. automethod:: library_qlabs_person.QLabsPerson.destroy
+.. automethod:: library_qlabs_person.QLabsPerson.ping
+.. automethod:: library_qlabs_person.QLabsPerson.get_world_transform
+.. automethod:: library_qlabs_person.QLabsPerson.get_world_transform_degrees
 
 .. _personConfig:
 
 Configurations
 ^^^^^^^^^^^^^^
 
-There are several configurations for a person generated in the Quanser Interactive Labs.
+There are 6 configurations (0-5) for a person generated in QLabs.
 
 .. image:: pictures/people.png 
 
@@ -71,15 +73,15 @@ Tutorial
 .. code-block:: python
     :caption: Spawning a Person 
 
-    QLabsSilhouettePerson().spawn(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
+    QLabsPerson().spawn(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
 
 .. code-block:: python
     :caption: Spawning a Person using Degrees
 
-    QLabsSilhouettePerson().spawn_degrees(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
+    QLabsPerson().spawn_degrees(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
 
 .. code-block:: python
     :caption: Making the Person to move to a secondary location
 
-    QLabsSilhouettePerson().move_to(qlabs, deviceNumber, location, speed, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, deviceNumber, location, speed, waitForConfirmation=True)
 

@@ -24,12 +24,12 @@ class QLabsEnvironmentOutdoors:
 
     def set_time_of_day(self, qlabs, time):
         """
-        Set the time of day for an outdoor environment
+        Set the time of day for an outdoor environment.
         
         :param qlabs: A QuanserInteractiveLabs object
-        :param time: A value from 0 to 24
+        :param time: A value from 0 to 24. Midnight is a value 0 or 24. Noon is a value of 12.
         :type qlabs: object
-        :type float: float
+        :type time: float
         :return: `True` if setting the time was successful, `False` otherwise
         :rtype: boolean
 

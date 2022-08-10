@@ -34,16 +34,6 @@ Constants
 ^^^^^^^^^
 
 .. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.ID_FREE_CAMERA
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_POSSESS
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_POSSESS_ACK
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_TRANSFORM
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_TRANSFORM_ACK
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_REQUEST_IMAGE
-.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.FCN_FREE_CAMERA_RESPONSE_IMAGE
 
 .. _cameraMethods:
 

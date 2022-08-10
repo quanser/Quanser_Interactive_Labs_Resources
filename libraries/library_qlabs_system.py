@@ -1,9 +1,13 @@
-import math      
+from library_qlabs_common import QLabsCommon
+from library_qlabs import CommModularContainer
+
+import math  
+import struct    
        
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsSystem:
-    """The System is a special actor class that allows you to modify elements of the user interface and application."""
+    """The System is a special class that allows you to modify elements of the user interface and application."""
 
     ID_SYSTEM = 1000
     """Class ID."""
@@ -26,13 +30,13 @@ class QLabsSystem:
         :type qlabs: QuanserInteractiveLabs object
         :type titleString: string
         :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean or CommModularContainer object
+        :return: `True` if successful, `False` otherwise.
+        :rtype: boolean
         """
         c = CommModularContainer()
-        c.classID = CommModularContainer.ID_SYSTEM
+        c.classID = self.ID_SYSTEM
         c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_SYSTEM_SET_TITLE_STRING
+        c.actorFunction = self.FCN_SYSTEM_SET_TITLE_STRING
         c.payload = bytearray(struct.pack(">I", len(titleString)))
         c.payload = c.payload + bytearray(titleString.encode('utf-8'))
         
@@ -44,8 +48,8 @@ class QLabsSystem:
         if (qlabs.send_container(c)):
         
             if waitForConfirmation:
-                c = qlabs.wait_for_container(CommModularContainer.ID_SYSTEM, 0, CommModularContainer.FCN_SYSTEM_SET_TITLE_STRING_ACK)
-                return c
+                c = qlabs.wait_for_container(self.ID_SYSTEM, 0, self.FCN_SYSTEM_SET_TITLE_STRING_ACK)
+                return True
             
             return True
         else:

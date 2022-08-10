@@ -31,7 +31,6 @@ class QLabsRealTime:
 
             TODO: Need to add support for MacOS, Linux x86, and Linux NVidia (?) targets. 
             TODO: Also consider adding remote execution of the real-time model.
-            TODO: Can we remove the _URIPort?
         """
         if platform.system() == "Windows":
             cmdString="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 {}.rt-win64 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, actorNumber, modelName, self._URIPort, QLabsHostName, actorNumber, additionalArguments)
@@ -51,7 +50,7 @@ class QLabsRealTime:
         self._URIPort = self._URIPort + 1
         return cmdString            
           
-    def terminate_real_time_model(self, modelName, additionalArguments=""):
+    def terminate_real_time_model(self, modelName, additionalArguments=''):
         """Stops a real-time model specified by name that is currently running.
 
         :param modelName: Filename of the model without extension.
@@ -78,7 +77,7 @@ class QLabsRealTime:
         os.system(cmdString)
         return cmdString
         
-    def terminate_all_real_time_models(self, additionalArguments=""):
+    def terminate_all_real_time_models(self, additionalArguments=''):
         """Stops all real-time models currently running.
 
         :param additionalArguments: (Optional) See QUARC documentation for additional quarc_run arguments.

@@ -312,8 +312,6 @@ Constants
 ^^^^^^^^^
 
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.ID_TRAFFIC_LIGHT
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.FCN_TRAFFIC_LIGHT_SET_STATE
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.FCN_TRAFFIC_LIGHT_SET_STATE_ACK
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_RED
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_GREEN
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_YELLOW

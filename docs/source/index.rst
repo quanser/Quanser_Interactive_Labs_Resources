@@ -21,7 +21,7 @@ We therefore highly recommend that you try our simple :ref:`Tutorial - Getting S
 
 Contributing
 ============
-We are always striving to impove our documentation.  
+We are always striving to improve our documentation.  
 You can help by submitting pull requests for fixes or issues for suggestions on our GitHub repository.  
 See the contribution guide.
 
@@ -32,7 +32,7 @@ See the contribution guide.
    Getting Started
    Glossary
    User Interface
-   Other
+   System/index
    Objects/index
    Troubleshooting
    Debugging
