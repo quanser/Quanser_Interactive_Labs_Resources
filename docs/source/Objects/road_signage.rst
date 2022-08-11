@@ -44,7 +44,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-.. image:: pictures/crosswalk.png 
+.. image:: ../pictures/crosswalk.png 
 
 .. _crosswalkConnect:
 
@@ -271,7 +271,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-.. image:: pictures/trafficCones.png
+.. image:: ../pictures/trafficCones.png
 
 .. _trafficconeConnect:
 

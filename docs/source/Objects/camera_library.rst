@@ -3,7 +3,7 @@
 Cameras
 -------
 
-.. image:: pictures/camera_header.png
+.. image:: ../pictures/camera_header.png
     :scale: 75%
     :align: center
 	

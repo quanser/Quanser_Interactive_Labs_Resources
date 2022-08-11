@@ -3,7 +3,7 @@
 QCars
 -----
 
-.. image:: pictures/qcar.png
+.. image:: ../pictures/qcar.png
     :scale: 25%
     :align: center
 
@@ -109,7 +109,7 @@ There are no configurations options for the QCar.
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-.. image:: pictures/qcar_connection_points.png
+.. image:: ../pictures/qcar_connection_points.png
     :scale: 50%
     :align: center
 	
