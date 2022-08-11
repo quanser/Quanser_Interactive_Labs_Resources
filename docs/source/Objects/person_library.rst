@@ -9,7 +9,17 @@ Description
 ^^^^^^^^^^^
 
 People are considered "actors" in the Virtual Self-Driving Car Studio.  
-The person library controls the people placed in the Virtual Self Driving Car Studio workspaces of the Quanser Interactive Labs.
+The person library controls the people placed in the Virtual Self-Driving 
+Car Studio workspaces of the Quanser Interactive Labs. 
+
+People actors can be spawned anywhere in the Open Worlds, but to use the
+move_to methods to allow the people to self-navigate around the environment,
+they must originate and travel to a connected valid nav area.
+
+For the best visual animation, it is recommended that you use the speed
+constants defining different gait styles. A character will accurately travel 
+at any specified speed up to 6m/s, but the visual animation may give the
+impression of "slipping" at certain speeds outside the recommended values.
 
 See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
 
@@ -26,6 +36,10 @@ Constants
 ^^^^^^^^^
 
 .. autoattribute:: library_qlabs_person.QLabsPerson.ID_PERSON
+.. autoattribute:: library_qlabs_person.QLabsPerson.STANDING
+.. autoattribute:: library_qlabs_person.QLabsPerson.WALK
+.. autoattribute:: library_qlabs_person.QLabsPerson.JOG
+.. autoattribute:: library_qlabs_person.QLabsPerson.RUN
 
 .. _personMethods:
 

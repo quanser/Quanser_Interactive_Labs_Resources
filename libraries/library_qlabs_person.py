@@ -8,10 +8,21 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsPerson:
-    
+    """ This class implements spawning and AI navigation of the environment for human pedestrians."""
        
     ID_PERSON = 10030
-    """Class ID"""
+    
+    STANDING = 0
+    """ Speed constant for the move_to method. """
+    WALK = 1.2
+    """ Speed constant for the move_to method. """
+    JOG = 3.6
+    """ Speed constant for the move_to method. """
+    RUN = 6.0
+    """ Speed constant for the move_to method. """
+    
+    
+    
     FCN_PERSON_MOVE_TO = 10
     FCN_PERSON_MOVE_TO_ACK = 11
 
@@ -89,7 +100,7 @@ class QLabsPerson:
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: A target destination as an array of floats for x, y and z coordinates in full-scale units.
-        :param speed: The speed at which the person should walk to the destination.
+        :param speed: The speed at which the person should walk to the destination (refer to the constants for recommended speeds)
         :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation, but only until the command is received. The time for the actor to traverse to the destination is always non-blocking.
         :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
