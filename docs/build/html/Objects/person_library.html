@@ -103,7 +103,15 @@
 <section id="description">
 <span id="persondescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
 <p>People are considered “actors” in the Virtual Self-Driving Car Studio.
-The person library controls the people placed in the Virtual Self Driving Car Studio workspaces of the Quanser Interactive Labs.</p>
+The person library controls the people placed in the Virtual Self-Driving
+Car Studio workspaces of the Quanser Interactive Labs.</p>
+<p>People actors can be spawned anywhere in the Open Worlds, but to use the
+move_to methods to allow the people to self-navigate around the environment,
+they must originate and travel to a connected valid nav area.</p>
+<p>For the best visual animation, it is recommended that you use the speed
+constants defining different gait styles. A character will accurately travel
+at any specified speed up to 6m/s, but the visual animation may give the
+impression of “slipping” at certain speeds outside the recommended values.</p>
 <p>See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.</p>
 </section>
 <section id="library">
@@ -111,7 +119,8 @@ The person library controls the people placed in the Virtual Self Driving Car St
 <dl class="py class">
 <dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_person.</span></span><span class="sig-name descname"><span class="pre">QLabsPerson</span></span><a class="reference internal" href="../_modules/library_qlabs_person.html#QLabsPerson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_person.QLabsPerson" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>This class implements spawning and AI navigation of the environment for human pedestrians.</p>
+</dd></dl>
 
 </section>
 <section id="constants">
@@ -119,7 +128,30 @@ The person library controls the people placed in the Virtual Self Driving Car St
 <dl class="py attribute">
 <dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.ID_PERSON">
 <span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">ID_PERSON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10030</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.ID_PERSON" title="Permalink to this definition"></a></dt>
-<dd><p>Class ID</p>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.STANDING">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">STANDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.STANDING" title="Permalink to this definition"></a></dt>
+<dd><p>Speed constant for the move_to method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.WALK">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">WALK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1.2</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.WALK" title="Permalink to this definition"></a></dt>
+<dd><p>Speed constant for the move_to method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.JOG">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">JOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3.6</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.JOG" title="Permalink to this definition"></a></dt>
+<dd><p>Speed constant for the move_to method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_person.QLabsPerson.RUN">
+<span class="sig-prename descclassname"><span class="pre">QLabsPerson.</span></span><span class="sig-name descname"><span class="pre">RUN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6.0</span></em><a class="headerlink" href="#library_qlabs_person.QLabsPerson.RUN" title="Permalink to this definition"></a></dt>
+<dd><p>Speed constant for the move_to method.</p>
 </dd></dl>
 
 </section>
@@ -201,7 +233,7 @@ The person library controls the people placed in the Virtual Self Driving Car St
 <li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
 <li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
 <li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – A target destination as an array of floats for x, y and z coordinates in full-scale units.</p></li>
-<li><p><strong>speed</strong> (<em>float</em>) – The speed at which the person should walk to the destination.</p></li>
+<li><p><strong>speed</strong> (<em>float</em>) – The speed at which the person should walk to the destination (refer to the constants for recommended speeds)</p></li>
 <li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation, but only until the command is received. The time for the actor to traverse to the destination is always non-blocking.</p></li>
 </ul>
 </dd>

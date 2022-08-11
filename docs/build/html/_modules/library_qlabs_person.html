@@ -89,10 +89,21 @@
 <span class="c1">######################### MODULAR CONTAINER CLASS #########################</span>
 
 <div class="viewcode-block" id="QLabsPerson"><a class="viewcode-back" href="../Objects/person_library.html#library_qlabs_person.QLabsPerson">[docs]</a><span class="k">class</span> <span class="nc">QLabsPerson</span><span class="p">:</span>
-    
+    <span class="sd">&quot;&quot;&quot; This class implements spawning and AI navigation of the environment for human pedestrians.&quot;&quot;&quot;</span>
        
     <span class="n">ID_PERSON</span> <span class="o">=</span> <span class="mi">10030</span>
-    <span class="sd">&quot;&quot;&quot;Class ID&quot;&quot;&quot;</span>
+    
+    <span class="n">STANDING</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot; Speed constant for the move_to method. &quot;&quot;&quot;</span>
+    <span class="n">WALK</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="sd">&quot;&quot;&quot; Speed constant for the move_to method. &quot;&quot;&quot;</span>
+    <span class="n">JOG</span> <span class="o">=</span> <span class="mf">3.6</span>
+    <span class="sd">&quot;&quot;&quot; Speed constant for the move_to method. &quot;&quot;&quot;</span>
+    <span class="n">RUN</span> <span class="o">=</span> <span class="mf">6.0</span>
+    <span class="sd">&quot;&quot;&quot; Speed constant for the move_to method. &quot;&quot;&quot;</span>
+    
+    
+    
     <span class="n">FCN_PERSON_MOVE_TO</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">FCN_PERSON_MOVE_TO_ACK</span> <span class="o">=</span> <span class="mi">11</span>
 
@@ -170,7 +181,7 @@
 <span class="sd">        :param qlabs: A QuanserInteractiveLabs object</span>
 <span class="sd">        :param actorNumber: User defined unique identifier for the class actor in QLabs</span>
 <span class="sd">        :param location: A target destination as an array of floats for x, y and z coordinates in full-scale units.</span>
-<span class="sd">        :param speed: The speed at which the person should walk to the destination.</span>
+<span class="sd">        :param speed: The speed at which the person should walk to the destination (refer to the constants for recommended speeds)</span>
 <span class="sd">        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation, but only until the command is received. The time for the actor to traverse to the destination is always non-blocking.</span>
 <span class="sd">        :type qlabs: QuanserInteractiveLabs object</span>
 <span class="sd">        :type actorNumber: uint32</span>
