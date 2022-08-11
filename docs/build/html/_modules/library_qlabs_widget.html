@@ -11,7 +11,7 @@
       <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
       <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -87,37 +87,22 @@
 <div class="viewcode-block" id="QLabsWidget"><a class="viewcode-back" href="../Objects/widgets.html#library_qlabs_widget.QLabsWidget">[docs]</a><span class="k">class</span> <span class="nc">QLabsWidget</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; This class is for the spawning of widgets. Widgets are special actors that cannot be addressed after they have been spawned so they do not support parenting. They are highly efficient so it is possible to spawn thousands of widgets while maintaining performance.&quot;&quot;&quot;</span>
 
-
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS</span> <span class="o">=</span> <span class="mi">18</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK</span> <span class="o">=</span> <span class="mi">19</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK</span> <span class="o">=</span> <span class="mi">21</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE</span> <span class="o">=</span> <span class="mi">50</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK</span> <span class="o">=</span> <span class="mi">51</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION</span> <span class="o">=</span> <span class="mi">100</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK</span> <span class="o">=</span> <span class="mi">101</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
 
 
     <span class="n">CUBE</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">CYLINDER</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">SPHERE</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">AUTOCLAVE_CAGE</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">PLASTIC_BOTTLE</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
     <span class="n">METAL_CAN</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
         
     <span class="c1"># Initialize class</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

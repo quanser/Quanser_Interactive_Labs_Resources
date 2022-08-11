@@ -113,31 +113,33 @@ Connection Points
     :scale: 50%
     :align: center
 	
-.. list-table:: 
-   :widths: 10, 10, 30, 50
-   :header-rows: 1
-
-   * - Reference Frame Number
-     - Parent Frame
-     - Relative Transform to Parent (Location, Rotation Deg)
-     - Description
-   * - 0
-     - 
-     - 
-     - The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
-   * - 1
-     - 0
-     - [0,0,0] [0,0,0]
-     - The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
+.. .. list-table
+..    :widths: 10, 10, 30, 50
+..    :header-rows: 1
+.. 
+..    * - Reference Frame Number
+..      - Parent Frame
+..      - Relative Transform to Parent (Location, Rotation, Deg)
+..      - Description
+..    * - 0
+..      - 
+..      - 
+..      - The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
+..    * - 1
+..      - 0
+..      - [0,0,0] [0,0,0]
+..      - The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
 
 .. table::
+    :widths: 11, 11, 25, 53
+    :align: center
 
-    ====================== ============ ===================================================== ===========
-    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation Deg) Description
-    ====================== ============ ===================================================== ===========
-    0                                                                                         The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame. 
-    1                                   [0,0,0] [0,0,0]                                       The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
-    ====================== ============ ===================================================== ===========
+    ====================== ============ ====================================================== ===========
+    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation, Deg) Description
+    ====================== ============ ====================================================== ===========
+    0                                                                                          The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame. 
+    1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
+    ====================== ============ ====================================================== ===========
 
 
 .. _carTutorial:
