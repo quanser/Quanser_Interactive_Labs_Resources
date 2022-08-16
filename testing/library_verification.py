@@ -448,14 +448,18 @@ def main():
     checkFunctionTestList("library_qlabs_crosswalk")   
     
     ### People
+    PrintWSHeader("People")
+    print("\n\n---People---")
     
     QLabsPerson().spawn(qlabs, actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     QLabsPerson().spawn(qlabs, actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     QLabsPerson().spawn_degrees(qlabs, actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     
-    QLabsPerson().move_to(qlabs, actorNumber=0, location=[-7.637, 51, 0.005], speed=0.01, waitForConfirmation=True)
-    QLabsPerson().move_to(qlabs, actorNumber=1, location=[-11.834, 51, 0.005], speed=1, waitForConfirmation=True)
-    QLabsPerson().move_to(qlabs, actorNumber=2, location=[-15.903, 51, 0.005], speed=6, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, actorNumber=0, location=[-7.637, 51, 0.005], speed=QLabsPerson().WALK, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, actorNumber=1, location=[-11.834, 51, 0.005], speed=QLabsPerson().JOG, waitForConfirmation=True)
+    QLabsPerson().move_to(qlabs, actorNumber=2, location=[-15.903, 51, 0.005], speed=QLabsPerson().RUN, waitForConfirmation=True)
+    
+    time.sleep(3)
     
     checkFunctionTestList("library_qlabs_person")   
     
@@ -463,7 +467,7 @@ def main():
     
     QLabsFreeCamera().spawn(qlabs, actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
     QLabsFreeCamera().possess(qlabs, 33)
-     
+    
     PrintWSHeader("QCar")
     print("\n\n---QCar---")
     
@@ -545,12 +549,16 @@ def main():
         time.sleep(0.25)
 
     PrintWS(x == True and frontHit == True, "Front bumper hit")
+    x = QLabsQCar().ghost_mode(qlabs, actorNumber=3)
+    PrintWS(x == True, "Ghost Mode")
     
 
     for count in range(10):
         x, location, rotation, frontHit, rearHit  = QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=-2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
 
         time.sleep(0.25)
+        
+    QLabsQCar().ghost_mode(qlabs, actorNumber=3, enable=True, colour=[1,0,0])
 
     PrintWS(x == True and rearHit == True, "Rear bumper hit")
     QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
@@ -570,9 +578,11 @@ def main():
     x, loc, rot = QLabsQCar().get_world_transform_degrees(qlabs, 3)
     PrintWS(abs(np.sum(np.subtract(loc, [-13.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,179]))) < 0.01 and x == True, "Get world transform degrees")
     
+    QLabsQCar().ghost_mode(qlabs, actorNumber=3, enable=False, colour=[1,0,0])
 
     
     #camera tests
+    print("\nQCar camera tests...")
     QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_OVERHEAD)
     if require_user_input == True:
         x = input("Overhead camera? (Enter yes, anything else no):")

@@ -91,6 +91,7 @@ Methods
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.possess
+.. automethod:: library_qlabs_qcar.QLabsQCar.ghost_mode
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_image
 .. automethod:: library_qlabs_qcar.QLabsQCar.destroy
 .. automethod:: library_qlabs_qcar.QLabsQCar.ping
