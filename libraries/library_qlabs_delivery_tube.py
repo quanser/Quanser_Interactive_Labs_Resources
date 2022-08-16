@@ -37,12 +37,12 @@ class QLabsDeliveryTube:
     
         return qlabs.spawn(actorNumber, self.ID_DELIVERY_TUBE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
   
-    def spawn_block(self, qlabs, actorNumber, blockType, mass, yawRotation, color):
+    def spawn_block(self, qlabs, actorNumber, blockType, mass, yawRotation, colour):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_DELIVERY_TUBE_SPAWN_BLOCK
-        c.payload = bytearray(struct.pack(">Ifffff", blockType, mass, yawRotation, color[0], color[1], color[2]))
+        c.payload = bytearray(struct.pack(">Ifffff", blockType, mass, yawRotation, colour[0], colour[1], colour[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         qlabs.flush_receive()  
@@ -102,12 +102,12 @@ class QLabsDeliveryTubeBottles:
   
     
     
-    def spawn_container(self, qlabs, actorNumber, metallic, color, mass, propertyString="", height = 0.1, diameter = 0.65, roughness = 0.65):
+    def spawn_container(self, qlabs, actorNumber, metallic, colour, mass, propertyString="", height = 0.1, diameter = 0.65, roughness = 0.65):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE_BOTTLES
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_DELIVERY_TUBE_SPAWN_CONTAINER
-        c.payload = bytearray(struct.pack(">ffBffffffI", height, diameter, metallic, color[0], color[1], color[2], 1.0, roughness, mass, len(propertyString)))
+        c.payload = bytearray(struct.pack(">ffBffffffI", height, diameter, metallic, colour[0], colour[1], colour[2], 1.0, roughness, mass, len(propertyString)))
         c.payload = c.payload + bytearray(propertyString.encode('utf-8'))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         

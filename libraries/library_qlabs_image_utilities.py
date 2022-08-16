@@ -21,7 +21,7 @@ def hue_threshold(image, hueCenter = 0, hueWidth = 20, hueGamut = 180):
     svMax = 255.0
 
     # Convert and threshold image
-    imageHSV = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+    imageHSV = cv2.cvtColour(image, cv2.COLOUR_BGR2HSV)
     bottomBounds = np.array([0.0,svMin,svMin])
     lowerBounds = np.array([hMin,svMin,svMin])
     upperBounds = np.array([hMax,svMax,svMax])

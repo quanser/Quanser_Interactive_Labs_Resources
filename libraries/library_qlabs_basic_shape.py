@@ -83,12 +83,12 @@ class QLabsBasicShape:
     def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation=True):
         return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
    
-    def set_material_properties(self, qlabs, actorNumber, color, roughness=0.4, metallic=False, waitForConfirmation=True):
+    def set_material_properties(self, qlabs, actorNumber, colour, roughness=0.4, metallic=False, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = self.ID_BASIC_SHAPE
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES
-        c.payload = bytearray(struct.pack(">ffffB", color[0], color[1], color[2], roughness, metallic))
+        c.payload = bytearray(struct.pack(">ffffB", colour[0], colour[1], colour[2], roughness, metallic))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:

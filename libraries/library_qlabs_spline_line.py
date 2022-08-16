@@ -28,12 +28,12 @@ class QLabsSplineLine:
     
         return qlabs.spawn(actorNumber, self.ID_SPLINE_LINE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
    
-    def set_points(self, qlabs, actorNumber, color, alignEndPointTangents, pointList, waitForConfirmation=True):
+    def set_points(self, qlabs, actorNumber, colour, alignEndPointTangents, pointList, waitForConfirmation=True):
         c = CommModularContainer()
         c.classID = self.ID_SPLINE_LINE
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_SPLINE_LINE_SET_POINTS
-        c.payload = bytearray(struct.pack(">fffB", color[0], color[1], color[2], alignEndPointTangents))
+        c.payload = bytearray(struct.pack(">fffB", colour[0], colour[1], colour[2], alignEndPointTangents))
         
         for point in pointList:
             c.payload = c.payload + bytearray(struct.pack(">ffff", point[0], point[1], point[2], point[3]))

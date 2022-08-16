@@ -28,7 +28,7 @@ class QLabsWidget:
         """ Constructor Method """
         return
        
-    def spawn(self, qlabs, widgetType, location, rotation, scale, color, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+    def spawn(self, qlabs, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Spawns a widget in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -36,7 +36,7 @@ class QLabsWidget:
         :param location: An array of floats for x, y and z coordinates.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians.
         :param scale: An array of floats for the scale in the x, y, and z directions.
-        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
         :param measuredMass: A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.
         :param IDTag: An integer value for use with IDTag sensor instrumented actors.
         :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
@@ -46,7 +46,7 @@ class QLabsWidget:
         :type location: float array[3]
         :type rotation: float array[3]
         :type scale: float array[3]
-        :type color: float array[3]
+        :type colour: float array[3]
         :type measuredMass: float
         :type IDTag: uint8
         :type properties: string
@@ -55,9 +55,9 @@ class QLabsWidget:
         :rtype: boolean or CommModularContainer object
 
         """
-        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
+        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], colour[0], colour[1], colour[2], measuredMass, IDTag, properties, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, widgetType, location, rotation, scale, color, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Spawns a widget in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -65,7 +65,7 @@ class QLabsWidget:
         :param location: An array of floats for x, y and z coordinates.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees.
         :param scale: An array of floats for the scale in the x, y, and z directions.
-        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
         :param measuredMass: A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.
         :param IDTag: An integer value for use with IDTag sensor instrumented actors.
         :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
@@ -74,7 +74,7 @@ class QLabsWidget:
         :type location: float array[3]
         :type rotation: float array[3]
         :type scale: float array[3]
-        :type color: float array[3]
+        :type colour: float array[3]
         :type measuredMass: float
         :type IDTag: uint8
         :type properties: string
@@ -83,7 +83,7 @@ class QLabsWidget:
         :rtype: boolean or CommModularContainer object
 
         """
-        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], color[0], color[1], color[2], measuredMass, IDTag, properties, waitForConfirmation)
+        return qlabs.spawn_widget(widgetType, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], colour[0], colour[1], colour[2], measuredMass, IDTag, properties, waitForConfirmation)
  
 
     def destroy_all_spawned_widgets(self):
@@ -138,7 +138,7 @@ class QLabsWidget:
             return False 
 
        
-    def spawn_widget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, properties, waitForConfirmation=True):
+    def spawn_widget(self, widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colourR, colourG, colourB, measuredMass, IDTag, properties, waitForConfirmation=True):
         """Spawns a new widget. It is recommended that you use the methods implemented in the QLabsWidget class instead.
 
         :param widgetType: See QLabsWidget class
@@ -151,9 +151,9 @@ class QLabsWidget:
         :param sx: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
         :param sy: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
         :param sz: Scale with 1.0 being full scale. Scale values of 0.0 should not be used.
-        :param colorR: Red component of the color on a 0.0 to 1.0 scale.
-        :param colorG: Green component of the color on a 0.0 to 1.0 scale.
-        :param colorB: Blue component of the color on a 0.0 to 1.0 scale.
+        :param colourR: Red component of the colour on a 0.0 to 1.0 scale.
+        :param colourG: Green component of the colour on a 0.0 to 1.0 scale.
+        :param colourB: Blue component of the colour on a 0.0 to 1.0 scale.
         :param measuredMass: A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.
         :param IDTag: An integer value for use with IDTag sensor instrumented actors.
         :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
@@ -168,9 +168,9 @@ class QLabsWidget:
         :type sx: float
         :type sy: float
         :type sz: float
-        :type colorR: float
-        :type colorG: float
-        :type colorB: float
+        :type colourR: float
+        :type colourG: float
+        :type colourB: float
         :type measuredMass: float
         :type IDTag: uint8
         :type properties: string
@@ -183,7 +183,7 @@ class QLabsWidget:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET
-        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colorR, colorG, colorB, measuredMass, IDTag, len(properties)))
+        c.payload = bytearray(struct.pack(">IfffffffffffffBI", widgetType, x, y, z, roll, pitch, yaw, sx, sy, sz, colourR, colourG, colourB, measuredMass, IDTag, len(properties)))
         c.payload = c.payload + bytearray(properties.encode('utf-8'))
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
