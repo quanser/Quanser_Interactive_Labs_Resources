@@ -25,6 +25,9 @@ class QLabsQCar:
     FCN_QCAR_GHOST_MODE_ACK = 23
     FCN_QCAR_CAMERA_DATA_REQUEST = 100
     FCN_QCAR_CAMERA_DATA_RESPONSE = 101
+    FCN_QCAR_LIDAR_DATA_REQUEST = 110
+    FCN_QCAR_LIDAR_DATA_RESPONSE = 111
+    
     
     CAMERA_CSI_RIGHT = 0
     CAMERA_CSI_BACK = 1
@@ -338,8 +341,8 @@ class QLabsQCar:
         :type qlabs: object
         :type actorNumber: uint32
         :type camera: uint32
-        :return: `True` if possessing the camera was successful, `False` otherwise
-        :rtype: boolean
+        :return: `True` and image data if successful, `False` and empty otherwise
+        :rtype: boolean, byte array with jpg data
 
         """        
     
@@ -360,6 +363,50 @@ class QLabsQCar:
             return True, jpg_buffer
         else:
             return False, None
+            
+    def get_lidar(self, qlabs, actorNumber):   
+        """
+        Request LIDAR data from a QCar. This data is at a resolution of 4096 samples per revolution,
+        but this should be subsampled to match the actual resolution of the LIDAR hardware in use.
+        
+        :param qlabs: A QuanserInteractiveLabs object
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :type qlabs: object
+        :type actorNumber: uint32
+        :return: `True` and image data if successful, `False` and empty otherwise
+        :rtype: boolean, byte array with data
+
+        """        
+        LIDAR_SAMPLES = 4096
+        LIDAR_RANGE = 80
+    
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.actorNumber = actorNumber
+        c.actorFunction = self.FCN_QCAR_LIDAR_DATA_REQUEST
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        qlabs.flush_receive()  
+        
+        if (qlabs.send_container(c)):
+            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_LIDAR_DATA_RESPONSE)
+            
+            if ((len(c.payload)-4)/2 != LIDAR_SAMPLES):
+                print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
+                return False, None, None
+
+            distance = np.linspace(0,0,LIDAR_SAMPLES)
+            for count in range(LIDAR_SAMPLES):
+                #distance[count], =  struct.unpack("<h", c.payload[4+count:4+count+2])
+                distance[count] = c.payload[4+count] * 256 + c.payload[5+count] 
+            #distance = np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint16, count=-1, offset=0)
+            #distance = distance/65535*LIDAR_RANGE
+            angles = np.linspace(0,2*math.pi, LIDAR_SAMPLES)
+            
+            return True, angles, distance
+        else:
+            return False, None, None            
             
 
     def destroy(self, qlabs, actorNumber):
@@ -417,3 +464,4 @@ class QLabsQCar:
         rotation_deg = rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
 
         return  success, location, rotation_deg
+        
