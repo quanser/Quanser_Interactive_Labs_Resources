@@ -379,6 +379,24 @@ class QLabsQCar:
         """        
         LIDAR_SAMPLES = 4096
         LIDAR_RANGE = 80
+        
+        # The LIDAR is simulated by using 4 orthogonal virtual cameras that are 1 pixel high. The
+        # lens distortion of these cameras must be removed to accurately calculate the XY position
+        # of the depth samples.
+        quarter_angle = np.linspace(0, 45, int(LIDAR_SAMPLES/8))
+        lens_curve = -0.0077*quarter_angle*quarter_angle + 1.3506*quarter_angle
+        lens_curve_rad = lens_curve/180*np.pi
+    
+        #angles = np.array([-1*np.flip(lens_curve_rad) lens_curve_rad (np.pi/2 - 1*np.flip(lens_curve_rad)) (np.pi/2 + lens_curve_rad) (np.pi - 1*flip(lens_curve_rad)) (np.pi + lens_curve_rad) (np.pi*3/2 - 1*np.flip(lens_curve_rad)) (np.pi*3/2 + lens_curve_rad)])
+        angles = np.concatenate((-1*np.flip(lens_curve_rad), \
+                                 lens_curve_rad, \
+                                 (np.pi/2 - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi/2 + lens_curve_rad), \
+                                 (np.pi - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi + lens_curve_rad), \
+                                 (np.pi*3/2 - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi*3/2 + lens_curve_rad)))
+
     
         c = CommModularContainer()
         c.classID = self.ID_QCAR
@@ -397,12 +415,19 @@ class QLabsQCar:
                 return False, None, None
 
             distance = np.linspace(0,0,LIDAR_SAMPLES)
-            for count in range(LIDAR_SAMPLES):
-                #distance[count], =  struct.unpack("<h", c.payload[4+count:4+count+2])
-                distance[count] = c.payload[4+count] * 256 + c.payload[5+count] 
+            
+            LidarAngle = np.linspace(-math.pi/4,math.pi/4, int(LIDAR_SAMPLES/4));
+
+            
+            for count in range(LIDAR_SAMPLES-1):
+                #distance[count], =  struct.unpack(">h", c.payload[4+count*2:6+count*2])
+                #distance[(count+4095-512) % 4095] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE;                
+                distance[count] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE;                
+                #LidarData(count) = ((double(Payload(StartIndex+(count-1)*2+4))*256 + double(Payload(StartIndex+(count-1)*2 + 5)))/65535*LidarRange)/cos(LidarAngle(mod(count,NumSamples/4)));                
+                
+                
             #distance = np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint16, count=-1, offset=0)
-            #distance = distance/65535*LIDAR_RANGE
-            angles = np.linspace(0,2*math.pi, LIDAR_SAMPLES)
+
             
             return True, angles, distance
         else:
