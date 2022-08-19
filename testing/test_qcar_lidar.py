@@ -48,24 +48,20 @@ def testLIDAR():
     squareSize = 50
     lidarPlot.setXRange(-squareSize, squareSize)
     lidarPlot.setYRange(-squareSize, squareSize)
-    lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=0.75)
+    lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=2)
     
+    
+    time.sleep(1)
     
     QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=0, forward=5, turn=0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     
     for count in range(100):
         
         print("Reading data")
-        success, angle, distance = QLabsQCar().get_lidar(qlabs,0)
-        
-        
+        success, angle, distance = QLabsQCar().get_lidar(qlabs,0,samplePoints=400)
         
         x = np.sin(angle)*distance
         y = np.cos(angle)*distance
-     
-        
-        #print("Angle: {}, {}, {}, Dist: {}, {}, {}".format(angle[0], angle[1], angle[2], distance[0], distance[1], distance[2]))
-        #print("x: {}, y: {}".format(len(x), len(y)))
 
         lidarData.setData(x,y)
         QtWidgets.QApplication.instance().processEvents()

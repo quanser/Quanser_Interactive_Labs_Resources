@@ -93,6 +93,7 @@ Methods
 .. automethod:: library_qlabs_qcar.QLabsQCar.possess
 .. automethod:: library_qlabs_qcar.QLabsQCar.ghost_mode
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_image
+.. automethod:: library_qlabs_qcar.QLabsQCar.get_lidar
 .. automethod:: library_qlabs_qcar.QLabsQCar.destroy
 .. automethod:: library_qlabs_qcar.QLabsQCar.ping
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform

@@ -364,17 +364,18 @@ class QLabsQCar:
         else:
             return False, None
             
-    def get_lidar(self, qlabs, actorNumber):   
+    def get_lidar(self, qlabs, actorNumber, samplePoints=400):   
         """
-        Request LIDAR data from a QCar. This data is at a resolution of 4096 samples per revolution,
-        but this should be subsampled to match the actual resolution of the LIDAR hardware in use.
+        Request LIDAR data from a QCar.
         
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param samplePoints: (Optional) Change the number of points per revolution of the LIDAR.
         :type qlabs: object
         :type actorNumber: uint32
-        :return: `True` and image data if successful, `False` and empty otherwise
-        :rtype: boolean, byte array with data
+        :type samplePoints: uint32
+        :return: `True`, angles in radians, and distances in m if successful, `False`, none, and none otherwise
+        :rtype: boolean, float array, float array
 
         """        
         LIDAR_SAMPLES = 4096
@@ -387,8 +388,7 @@ class QLabsQCar:
         lens_curve = -0.0077*quarter_angle*quarter_angle + 1.3506*quarter_angle
         lens_curve_rad = lens_curve/180*np.pi
     
-        #angles = np.array([-1*np.flip(lens_curve_rad) lens_curve_rad (np.pi/2 - 1*np.flip(lens_curve_rad)) (np.pi/2 + lens_curve_rad) (np.pi - 1*flip(lens_curve_rad)) (np.pi + lens_curve_rad) (np.pi*3/2 - 1*np.flip(lens_curve_rad)) (np.pi*3/2 + lens_curve_rad)])
-        angles = np.concatenate((-1*np.flip(lens_curve_rad), \
+        angles = np.concatenate((np.pi*4/2-1*np.flip(lens_curve_rad), \
                                  lens_curve_rad, \
                                  (np.pi/2 - 1*np.flip(lens_curve_rad)), \
                                  (np.pi/2 + lens_curve_rad), \
@@ -397,7 +397,8 @@ class QLabsQCar:
                                  (np.pi*3/2 - 1*np.flip(lens_curve_rad)), \
                                  (np.pi*3/2 + lens_curve_rad)))
 
-    
+
+   
         c = CommModularContainer()
         c.classID = self.ID_QCAR
         c.actorNumber = actorNumber
@@ -420,16 +421,32 @@ class QLabsQCar:
 
             
             for count in range(LIDAR_SAMPLES-1):
-                #distance[count], =  struct.unpack(">h", c.payload[4+count*2:6+count*2])
-                #distance[(count+4095-512) % 4095] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE;                
-                distance[count] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE;                
-                #LidarData(count) = ((double(Payload(StartIndex+(count-1)*2+4))*256 + double(Payload(StartIndex+(count-1)*2 + 5)))/65535*LidarRange)/cos(LidarAngle(mod(count,NumSamples/4)));                
-                
-                
-            #distance = np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint16, count=-1, offset=0)
+                distance[count] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE             
 
+
+            # Resample the data using a linear radial distribution to the desired number of points
+            # and realign the first index to be 0 (forward)
+            sampled_angles = np.linspace(0,2*np.pi, num=samplePoints, endpoint=False)
+            sampled_distance = np.linspace(0,0, samplePoints)
             
-            return True, angles, distance
+            index_raw = 512
+            for count in range(samplePoints):
+                while (angles[index_raw] < sampled_angles[count]):
+                    index_raw = (index_raw + 1) % 4096
+                
+                    
+                if index_raw != 0:
+                    if (angles[index_raw]-angles[index_raw-1]) == 0:
+                        sampled_distance[count] = distance[index_raw]
+                    else:
+                        sampled_distance[count] = (distance[index_raw]-distance[index_raw-1])*(sampled_angles[count]-angles[index_raw-1])/(angles[index_raw]-angles[index_raw-1]) + distance[index_raw-1]
+                        
+                    
+                else:
+                    sampled_distance[count] = distance[index_raw]
+                    
+                    
+            return True, sampled_angles, sampled_distance
         else:
             return False, None, None            
             
