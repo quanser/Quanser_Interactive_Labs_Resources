@@ -15,6 +15,7 @@ from library_qlabs_qcar import QLabsQCar
 from library_qlabs_environment_outdoors import QLabsEnvironmentOutdoors
 from library_qlabs_system import QLabsSystem
 from library_qlabs_person import QLabsPerson
+from library_qlabs_utilities import *
 
 
 import sys
@@ -25,6 +26,9 @@ import numpy as np
 import cv2
 import xlsxwriter
 import os
+
+import pyqtgraph as pg
+from pyqtgraph.Qt import QtCore, QtWidgets
 
 
 require_user_input = False
@@ -460,7 +464,27 @@ def main():
     QLabsPerson().move_to(qlabs, actorNumber=2, location=[-15.903, 51, 0.005], speed=QLabsPerson().RUN, waitForConfirmation=True)
     
     time.sleep(3)
+
+    x, pos, rot = QLabsPerson().get_world_transform(qlabs, 2)
+    PrintWS(x == True, "Got world transform ({}), ({})".format(pos, rot))      
     
+    x, pos, rot = QLabsPerson().get_world_transform_degrees(qlabs, 2)
+    PrintWS(x == True, "Got world transform degrees ({}), ({})".format(pos, rot))      
+    
+    x = QLabsPerson().ping(qlabs, 2)
+    PrintWS(x == True, "Ping person 3 (expect True)")      
+    
+    x = QLabsPerson().destroy(qlabs, 2)
+    PrintWS(x == 1, "Person 3 destroyed (expect 1)")      
+
+    x = QLabsPerson().ping(qlabs, 2)
+    PrintWS(x == False, "Ping person 3 (expect False)")    
+    
+    time.sleep(1)
+    
+    
+
+
     checkFunctionTestList("library_qlabs_person")   
     
     ### QCar
@@ -723,6 +747,40 @@ def main():
     PrintWS(x == False, "Ping QCar that doesn't exist (expect False)")    
     
     
+    #lidar
+
+    QLabsQCar().possess(qlabs, 3, QLabsQCar().CAMERA_OVERHEAD)
+
+    lidarPlot = pg.plot(title="LIDAR")   
+    squareSize = 100
+    lidarPlot.setXRange(-squareSize, squareSize)
+    lidarPlot.setYRange(-squareSize, squareSize)
+    lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=2)
+    
+    
+    time.sleep(1)
+    
+    print("Reading from LIDAR... if QLabs crashes, make sure FPS > 100 or fix the crash bug!")
+    
+    for count in range(20):
+        
+        success, angle, distance = QLabsQCar().get_lidar(qlabs,0,samplePoints=400)
+        
+        x = np.sin(angle)*distance
+        y = np.cos(angle)*distance
+
+        lidarData.setData(x,y)
+        QtWidgets.QApplication.instance().processEvents()
+        time.sleep(0.01)
+
+    PrintWS(True, "LIDAR didn't crash QLabs!")
+
+    time.sleep(2)
+    
+    
+
+
+
     checkFunctionTestList("library_qlabs_qcar")    
     
     
