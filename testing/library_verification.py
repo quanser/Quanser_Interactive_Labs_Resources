@@ -822,6 +822,7 @@ def main():
     x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
     PrintWS(np.array_equal(loc, [-18.852, 36.977, 0.5]) and x == True, "Get world transform")
     
+    x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, [0,1,0], rotation=[0,0,math.pi/4], scale=[0.25,0.25,0.25], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber, parentComponent=0, waitForConfirmation=True)
 
     
 
