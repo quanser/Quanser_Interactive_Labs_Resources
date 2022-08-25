@@ -9,6 +9,7 @@ Description
 ^^^^^^^^^^^
 
 The Real-Time library is a helper class to assist with spawning pre-compiled models designed to interface with QLabs.
+Note that these methods assume the Quanser's QUARC has been installed on the system and the quarc_run executable is accessible.
 
 .. _realTimeLibrary:
 

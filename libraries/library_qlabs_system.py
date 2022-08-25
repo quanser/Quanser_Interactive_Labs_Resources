@@ -47,7 +47,10 @@ class QLabsSystem:
         
             if waitForConfirmation:
                 c = qlabs.wait_for_container(self.ID_SYSTEM, 0, self.FCN_SYSTEM_SET_TITLE_STRING_ACK)
-                return True
+                if (c == None):
+                    return False
+                else:
+                    return True
             
             return True
         else:

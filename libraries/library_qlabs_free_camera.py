@@ -135,8 +135,10 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_POSSESS_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:                     
+                return True
         else:
             return False  
 
@@ -171,8 +173,10 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:                     
+                return True
         else:
             return False
         
@@ -203,8 +207,10 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK)
-                                
-            return True
+            if (c == None):
+                return False
+            else:                     
+                return True
         else:
             return False     
 
@@ -235,8 +241,10 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:                     
+                return True
         else:
             return False 
 
@@ -305,7 +313,10 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE)
-            return True
+            if (c == None):
+                return False
+            else:                     
+                return True
         else:
             return False
 
@@ -332,6 +343,9 @@ class QLabsFreeCamera:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_FREE_CAMERA, actorNumber, self.FCN_FREE_CAMERA_RESPONSE_IMAGE)
+            if (c == None):
+                return False, None
+
             data_size, = struct.unpack(">I", c.payload[0:4])
 
             jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)

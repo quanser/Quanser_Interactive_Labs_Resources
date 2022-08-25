@@ -41,6 +41,9 @@ class QLabsCommon:
 
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
+            if (c == None):
+                return -1
+
             if len(c.payload) == 4:
                 num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
                 return num_actors_destroyed
@@ -74,6 +77,9 @@ class QLabsCommon:
 
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK)
+            if (c == None):
+                return -1
+
             if len(c.payload) == 4:
                 num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
                 return num_actors_destroyed
@@ -119,6 +125,8 @@ class QLabsCommon:
         
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
+                if (c == None):
+                    return None
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
                     return status
@@ -139,7 +147,7 @@ class QLabsCommon:
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param scale: An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
         :param configuration: (Optional) Spawn configuration. See class library for configuration options.
-        :param parentClassID: See the ID_ variables in the respective library classes for the class identifier
+        :param parentClassID: See the ID variables in the respective library classes for the class identifier
         :param parentActorNumber: User defined unique identifier for the class actor in QLabs
         :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
@@ -172,6 +180,8 @@ class QLabsCommon:
         
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
+                if (c == None):
+                    return -1
 
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
@@ -208,6 +218,8 @@ class QLabsCommon:
         if (qlabs.send_container(c)):
         
             c = qlabs.wait_for_container(classID, actorNumber, self.FCN_RESPONSE_PING)
+            if (c == None):
+                return False
 
             if c.payload[0] > 0:
                 return True
@@ -245,6 +257,8 @@ class QLabsCommon:
         if (qlabs.send_container(c)):
         
             c = qlabs.wait_for_container(classID, actorNumber, self.FCN_RESPONSE_WORLD_TRANSFORM)
+            if (c == None):
+                return False, location, rotation, scale
 
             if len(c.payload) == 36:
                 location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], = struct.unpack(">fffffffff", c.payload[0:36])

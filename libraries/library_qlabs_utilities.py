@@ -2,51 +2,7 @@ from library_qlabs_basic_shape import QLabsBasicShape
 from library_qlabs_spline_line import QLabsSplineLine
 import math
 
-def rotate_vector_2d_degrees(vector, angle):
 
-    result = [0,0,vector[2]]
-
-    result[0] = math.cos(angle)*vector[0] - math.sin(angle)*vector[1]
-    result[1] = math.sin(angle)*vector[0] + math.cos(angle)*vector[1]
-    
-    return result
-
-def spawn_box_walls_from_end_points(qlabs, actorNumber, startLocation, endLocation, height, wallThickness, wallColour=[1,1,1], waitForConfirmation=True):
-    length = math.sqrt(pow(startLocation[0] - endLocation[0],2) + pow(startLocation[1] - endLocation[1],2) + pow(startLocation[2] - endLocation[2],2))
-    location = [(startLocation[0] + endLocation[0])/2, (startLocation[1] + endLocation[1])/2, (startLocation[2] + endLocation[2])/2]
-    
-    yRotation = -math.asin( (endLocation[2] - startLocation[2])/(length) )
-    zRotation = math.atan2( (endLocation[1] - startLocation[1]), (endLocation[0] - startLocation[0]))
-    
-    shiftedLocation = [location[0]+math.sin(yRotation)*math.cos(zRotation)*height/2, location[1]+math.sin(yRotation)*math.sin(zRotation)*height/2, location[2]+math.cos(yRotation)*height/2]
-    
-    QLabsBasicShape().spawn(qlabs, actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, wallThickness, height], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, actorNumber, wallColour, 1, False, waitForConfirmation)
-    
-def spawn_box_walls_from_center_degrees(qlabs, actorNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
-    spawn_box_walls_from_center(qlabs, actorNumberStart, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
-
-def spawn_box_walls_from_center(qlabs, actorNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
-
-    location = rotate_vector_2d_degrees([centerLocation[0] + xSize/2 + wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, actorNumberStart+0, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+0, wallColour, 1, False, waitForConfirmation)
-    
-    location = rotate_vector_2d_degrees([centerLocation[0] - xSize/2 - wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, actorNumberStart+1, location, [0, 0, yaw], [wallThickness, ySize, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+1, wallColour, 1, False, waitForConfirmation)
-    
-    location = rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] + ySize/2 + wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, actorNumberStart+2, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+2, wallColour, 1, False, waitForConfirmation)
-    
-    location = rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] - ySize/2 - wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
-    QLabsBasicShape().spawn(qlabs, actorNumberStart+3, location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-    QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+3, wallColour, 1, False, waitForConfirmation)
-        
-    if (floorThickness > 0):
-        QLabsBasicShape().spawn(qlabs, actorNumberStart+4, [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)
-        QLabsBasicShape().set_material_properties(qlabs, actorNumberStart+4, floorColour, 1, False, waitForConfirmation)
         
 def spawn_spline_circle_from_center(qlabs, actorNumber, centerLocation, rotation, radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
     # Place the spawn point of the spline at the global origin so we can use world coordinates for the points

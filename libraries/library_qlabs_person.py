@@ -128,7 +128,10 @@ class QLabsPerson:
         if (qlabs.send_container(c)):
             if waitForConfirmation:
                 c = qlabs.wait_for_container(self.ID_PERSON, actorNumber, self.FCN_PERSON_MOVE_TO_ACK)
-                return True    
+                if (c == None):
+                    return False
+                else:                     
+                    return True  
             return True
         else:
             return False    

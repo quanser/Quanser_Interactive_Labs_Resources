@@ -1,10 +1,23 @@
 .. _widgets:
 
-Widgets (Cube/Cylinder/Sphere/Autoclave cage/plastic bottle/metal can)
-----------------------------------------------------------------------
+Widgets
+-------
 
 Widgets work slightly differently then the other objects in the Qlabs workspaces.
-Widgets can't be modified once created.  They also can't be deleted individually.
+They are special actors that cannot be addressed after they have been spawned 
+therefore they cannot be deleted individually, they do not support parenting
+and all actor properties must be set when they are spawned. 
+The advantage of widgets is that they are highly efficient dynamic actors so 
+it is possible to spawn thousands of widgets while maintaining performance.
+
+In addition to the visible properties of widgets, widget actors can also
+individually contain invisible properties such as mass, a numerical ID tag, and a general
+purpose properties string.  Some actors that are designed to interact with widgets
+include class methods to read these properties.
+
+If you need the ability to make shapes static or the ability to address,
+modify, or parent shapes, see :ref:`Basic Shapes` instead.
+
 
 .. _widgetDescription: 
 
@@ -45,10 +58,17 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
+.. danger::
+
+    TODO: Add picture
+
+
 .. _widgetConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+There are no connection points.
 
 .. _widgetTutorial:
 

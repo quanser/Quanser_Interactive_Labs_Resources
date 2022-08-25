@@ -43,7 +43,9 @@ class QLabsEnvironmentOutdoors:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_ENVIRONMENT_OUTDOORS, 0, self.FCN_SET_TIME_OF_DAY_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:                
+                return True
         else:
             return False  

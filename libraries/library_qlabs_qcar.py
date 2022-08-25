@@ -136,6 +136,10 @@ class QLabsQCar:
         if (qlabs.send_container(c)):
             if waitForConfirmation:
                 c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_TRANSFORM_STATE_RESPONSE)
+
+                if (c == None):
+                    return False, location, rotation, forward_vector, up_vector, frontHit, rearHit
+
                 if len(c.payload) == 50:
                     
                     location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], forward_vector[0], forward_vector[1], forward_vector[2], up_vector[0], up_vector[1], up_vector[2], frontHit, rearHit, = struct.unpack(">ffffffffffff??", c.payload[0:50])
@@ -225,6 +229,10 @@ class QLabsQCar:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_VELOCITY_STATE_RESPONSE)
+
+            if (c == None):
+                return False, location, rotation, frontHit, rearHit  
+
             if len(c.payload) == 26:
                 location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], frontHit, rearHit, = struct.unpack(">ffffff??", c.payload[0:26])
                 return True, location, rotation, frontHit, rearHit  
@@ -292,8 +300,10 @@ class QLabsQCar:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_POSSESS_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:
+                return True
         else:
             return False    
 
@@ -326,8 +336,10 @@ class QLabsQCar:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_GHOST_MODE_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:
+                return True
         else:
             return False             
 
@@ -357,6 +369,11 @@ class QLabsQCar:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_CAMERA_DATA_RESPONSE)
+
+            if (c == None):
+                return False, None
+
+
             jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
             
             
@@ -410,6 +427,9 @@ class QLabsQCar:
         
         if (qlabs.send_container(c)):
             c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_LIDAR_DATA_RESPONSE)
+
+            if (c == None):
+                return False, None, None
             
             if ((len(c.payload)-4)/2 != LIDAR_SAMPLES):
                 print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))

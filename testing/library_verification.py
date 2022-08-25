@@ -16,6 +16,10 @@ from library_qlabs_environment_outdoors import QLabsEnvironmentOutdoors
 from library_qlabs_system import QLabsSystem
 from library_qlabs_person import QLabsPerson
 from library_qlabs_utilities import *
+from library_qlabs_spline_line import QLabsSplineLine
+from library_qlabs_real_time import QLabsRealTime
+from library_qlabs_widget import QLabsWidget
+
 
 
 import sys
@@ -30,8 +34,13 @@ import os
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtWidgets
 
-
+####################################################
 require_user_input = False
+lidar_rate = 0.1
+
+
+####################################################
+
 
 ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_bottle_table', \
@@ -44,7 +53,8 @@ ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_qbot_hopper', \
                'library_qlabs_shredder', \
                'library_qlabs_srv02', \
-               'library_qlabs_weigh_scale']
+               'library_qlabs_weigh_scale', \
+               'library_qlabs_image_utilities']
 
                 
 def checkFunctionTestList(library_name):
@@ -277,7 +287,7 @@ def main():
     
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
-
+    
     ### Yield Sign    
     PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
@@ -762,6 +772,7 @@ def main():
     
     print("Reading from LIDAR... if QLabs crashes, make sure FPS > 100 or fix the crash bug!")
     
+    
     for count in range(20):
         
         success, angle, distance = QLabsQCar().get_lidar(qlabs,0,samplePoints=400)
@@ -771,19 +782,86 @@ def main():
 
         lidarData.setData(x,y)
         QtWidgets.QApplication.instance().processEvents()
-        time.sleep(0.01)
+        time.sleep(lidar_rate)
 
     PrintWS(True, "LIDAR didn't crash QLabs!")
+    PrintWS(lidar_rate == 0.01, "Passed lidar test with 100Hz (lidar_rate = 0.01 expected)")
 
     time.sleep(2)
     
-    
-
-
-
     checkFunctionTestList("library_qlabs_qcar")    
     
+    ### Basic Shape
+    PrintWSHeader("Basic Shape")
+    print("\n\n---Basic Shape---")
+
+    checkFunctionTestList("library_qlabs_basic_shape")    
+
+    ### Widget
+    PrintWSHeader("Widget")
+    print("\n\n--Widget---")
+
+    x = QLabsFreeCamera().possess(qlabs, 2)
+    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
+
+    for count in range(20):
+        x = QLabsWidget().spawn(qlabs, QLabsWidget().METAL_CAN, [-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+
+    PrintWS(x == True, "Widget spawn (expect True)")
+
+    time.sleep(1)
+
+    for count in range(20):
+        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().METAL_CAN, [-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+
+    PrintWS(x == True, "Widget spawn degrees(expect True)")
+
+    time.sleep(1)
+
+    x = QLabsWidget().destroy_all_spawned_widgets(qlabs)
+    PrintWS(x == True, "Widgets destroyed (expect True)")
+
+    for count in range(10):
+        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+
+    time.sleep(1)
+
+    QLabsWidget().destroy_all_spawned_widgets(qlabs)
+    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=False)
+
+    for count in range(10):
+        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+
+
     
+    checkFunctionTestList("library_qlabs_widget")  
+
+    ### Image Utilities
+    PrintWSHeader("Image Utilities")
+    print("\n\n---Image Utilities---")
+
+    checkFunctionTestList("library_qlabs_image_utilities")    
+
+    ### Utilities
+    PrintWSHeader("Utilities")
+    print("\n\n---Utilities---")
+
+    checkFunctionTestList("library_qlabs_utilities")  
+    
+    ### Real-Time
+    PrintWSHeader("Real-Time")
+    print("\n\n---Real-Time---")
+
+    checkFunctionTestList("library_qlabs_real_time")    
+
+    ### Spline Line
+    PrintWSHeader("Spline Line")
+    print("\n\n---Spline Line---")
+
+    checkFunctionTestList("library_qlabs_spline_line")  
+    
+
+
     print("\n\n------------------------------ Communications --------------------------------\n")
     
     qlabs.close()

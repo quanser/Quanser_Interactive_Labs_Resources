@@ -3,48 +3,39 @@ from quanser.communications import Stream, StreamError, PollFlag, Timeout
 import struct
 import os
 import platform
+import time
         
         
 ######################### MODULAR CONTAINER CLASS #########################
 
 class CommModularContainer:
 
-    """The CommModularContainer is a collection of data used to communicate with actors. Multiple containers can be packaged into a single packet. This class is not typically used directly."""
+    """The CommModularContainer is a collection of data used to communicate with actors. Multiple containers can be packaged into a single packet."""
 
     # Define class-level variables   
     containerSize = 0
-    """The size of the packet in bytes. Container size (4 bytes) + class ID (4 bytes) + actor number (4 bytes) + actor function (1 byte) + payload (varies per function)"""
+    """The size of the packet in bytes. Container size (uint32: 4 bytes) + class ID (uint32: 4 bytes) + actor number (uint32: 4 bytes) + actor function (1 byte) + payload (varies per function)"""
     classID = 0
-    """See the ID_ variables in the respective library classes."""
+    """See the class ID variables in the respective library classes."""
     actorNumber = 0
-    """An identifier that should be unique for a given class. """
+    """An identifier that should be unique for each actor of a given class. """
     actorFunction = 0
-    """See the FCN_ variables in the respective library classes."""
+    """See the FCN constants in the respective library classes."""
     payload = bytearray()
     """A variable sized payload depending on the actor function in use."""
        
     ID_GENERIC_ACTOR_SPAWNER = 135
     """The actor spawner is a special actor class that exists in open world environments that manages the spawning and destruction of dynamic actors."""
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN = 10
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK = 11
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR = 12
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR_ACK = 13
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS = 14
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK = 15
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST = 16
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK = 17
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
-    """ """
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
-    """ """
     
     
     ID_UNKNOWN = 0
@@ -72,6 +63,9 @@ class QuanserInteractiveLabs:
     _receivePacketBuffer = bytearray()
     _receivePacketSize = 0
     _receivePacketContainerIndex = 0  
+    _wait_for_container_timeout = 5
+
+    _send_queue = bytearray()
 
 
     # Initialize QLabs
@@ -130,6 +124,44 @@ class QuanserInteractiveLabs:
         except:
             pass
             
+
+    def queue_add_container(self, container):
+        """Queue a single container into a buffer for future transmission
+
+        :param container: CommModularContainer populated with the actor information.
+        :type container: CommModularContainer object
+
+        """
+
+        self._send_queue = self._send_queue + bytearray(struct.pack(">iiiB", container.containerSize, container.classID, container.actorNumber, container.actorFunction)) + container.payload
+
+
+    def queue_send(self):
+        """Package the containers in the queue and transmit immediately
+
+        :param container: CommModularContainer populated with the actor information.
+        :type container: CommModularContainer object
+        :return: `True` if successful and the queue will be emptied, `False` otherwise and the queue will remain intact.
+        :rtype: boolean
+
+        """
+
+        try:
+            data = bytearray(struct.pack("<iB", 1+len(self._send_queue))) + self._send_queue
+            numBytes = len(data)
+            bytesWritten = self._stream.send(data, numBytes)
+            self._stream.flush()
+            self._send_queue = bytearray()
+            return True
+        except:
+            return False 
+
+    def queue_destroy(self):
+        """The container queue is emptied of all data.
+
+        """
+        self._send_queue = bytearray()
+
     # Pack data and send immediately
     def send_container (self, container):
         """Package a single container into a packet and transmit immediately
@@ -238,17 +270,42 @@ class QuanserInteractiveLabs:
     
         return c, isMoreContainers   
 
+    def set_wait_for_container_timeout(self, timeout):
+        """By default, a method using the wait_for_container method (typically represented with the waitForComfirmation flag) will abort waiting for an acknowledgment after 5 seconds
+        at which time the method will return a failed response. This time period can be adjusted with this function. Values 
+        less than or equal to zero will cause the methods to wait indefinitely until the expected acknowledgment is received.
+
+        :param timeout: Timeout period in seconds
+        :type timeout: float
+
+        """   
+
+
+        if (timeout < 0):
+            timeout = 0
+
+        self._wait_for_container_timeout = timeout
+
+
+
     def wait_for_container(self, classID, actorNumber, functionNumber):
-        """Continually poll and parse incoming containers until a response from specific actor with a specific function response is received. Containers that do not match the class, actor number, and function number are discarded. This is a blocking function.
+        """Continually poll and parse incoming containers until a response from specific actor with a specific function response is received. 
+        Containers that do not match the class, actor number, and function number are discarded. This function blocks until the appropriate packet
+        is received or the timeout is reached.
 
         :return: The data will be returned in a CommModularContainer object.
         :rtype: CommModularContainer object
 
         """   
 
+        startTime = time.time()
 
         while(True):
             while (self.receive_new_data() == False):
+                if self._wait_for_container_timeout > 0:
+                    currentTime = time.time()
+                    if (currentTime - startTime >= self._wait_for_container_timeout):
+                        return None
                 pass
                 
             moreContainers = True
@@ -262,7 +319,7 @@ class QuanserInteractiveLabs:
                             return c
                             
     def flush_receive(self):
-        """Flush receive buffers removing all unread data.
+        """Flush receive buffers removing all unread data. This can be used to clear receive buffers after fault conditions to ensure it contains only new data.
 
         :return: None
         :rtype: None
@@ -294,8 +351,10 @@ class QuanserInteractiveLabs:
 
         if (self.send_container(c)):
             c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, c.actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_REGENERATE_CACHE_LIST_ACK)
-            
-            return True
+            if (c == None):
+                return False
+            else:
+                return True
         
         else:
             return False
@@ -325,7 +384,9 @@ class QuanserInteractiveLabs:
         if (qlabs.send_container(c)):
         
             c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, FCN_RESPONSE_PING)
-            if c.payload[0] > 0:
+            if (c == None):
+                return False
+            elif c.payload[0] > 0:
                 return True
             else:
                 return False
