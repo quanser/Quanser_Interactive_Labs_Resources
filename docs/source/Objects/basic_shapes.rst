@@ -18,8 +18,7 @@ on the number of interacting actors and what they are colliding with.
 
 Basic shapes include full support for parenting to build long kinematic chains
 or simply to group multiple shapes together so they can be moved by manipulating 
-a single parent actor. A special "empty" configuration is available to add additional
-frames of reference that are not visible.
+a single parent actor.
 
 If you are using a large number of dynamic shapes, consider using :ref:`Widgets` instead.
 They have both limitations and additional features, but are more efficient when spawning
@@ -59,6 +58,9 @@ Methods
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_box_walls_from_end_points
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_box_walls_from_center
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_box_walls_from_center_degrees
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.destroy
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.ping
 
 .. _basicshapeConfig:
 

@@ -224,7 +224,7 @@ def main():
     x = QLabsFreeCamera().possess(qlabs, 2)
     PrintWS(x == True, "Possess camera 2")
     
-    
+    '''
         
     for y in range(26):
         x = QLabsFreeCamera().set_transform(qlabs, 2, loc2, np.add(np.array(rot2)/180*math.pi, [0, 0, y/25*math.pi*2]))
@@ -284,7 +284,7 @@ def main():
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     checkFunctionTestList("library_qlabs_free_camera")
-    
+    '''
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
     
@@ -418,7 +418,7 @@ def main():
     PrintWS(x == False, "Ping cone that doesn't exist (expect False)")      
     
     checkFunctionTestList("library_qlabs_traffic_cone")   
-    
+    '''
     ### Change view points
     
     time.sleep(0.5)
@@ -790,12 +790,46 @@ def main():
     time.sleep(2)
     
     checkFunctionTestList("library_qlabs_qcar")    
-    
+    '''
     ### Basic Shape
     PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
+
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn sign with radians")
+
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    PrintWS(x == 2, "Spawn with duplicate ID")
+
+
+    x = QLabsBasicShape().spawn_degrees(qlabs, actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn sign with degrees")
+
+    x = QLabsBasicShape().spawn_degrees(qlabs, actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsBasicShape().destroy(qlabs, 221)
+    PrintWS(x == 1, "Spawn and destroy existing (expect return 1)")
+
+    x = QLabsBasicShape().destroy(qlabs, 222)
+    PrintWS(x == 0, "Destroy shape that doesn't exist (expect return 0)")
+    
+    x = QLabsBasicShape().ping(qlabs, 220)
+    PrintWS(x == True, "Ping existing sign (expect True)")
+    
+    x = QLabsBasicShape().ping(qlabs, 221)
+    PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
+
+    x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
+    PrintWS(np.array_equal(loc, [-18.852, 36.977, 0.5]) and x == True, "Get world transform")
+    
+
+    
+
     checkFunctionTestList("library_qlabs_basic_shape")    
+
+
+
+
 
     ### Widget
     PrintWSHeader("Widget")
@@ -820,17 +854,18 @@ def main():
 
     x = QLabsWidget().destroy_all_spawned_widgets(qlabs)
     PrintWS(x == True, "Widgets destroyed (expect True)")
-
+    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=False)
+    
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
     QLabsWidget().destroy_all_spawned_widgets(qlabs)
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=False)
+    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
 
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
 
     
