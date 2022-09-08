@@ -820,9 +820,9 @@ def main():
     PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
 
     x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
-    PrintWS(np.array_equal(loc, [-18.852, 36.977, 0.5]) and x == True, "Get world transform")
-    
-    x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, [0,1,0], rotation=[0,0,math.pi/4], scale=[0.25,0.25,0.25], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber, parentComponent=0, waitForConfirmation=True)
+    PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
+       
+    #x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, [0,1,0], rotation=[0,0,math.pi/4], scale=[0.25,0.25,0.25], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber, parentComponent=0, waitForConfirmation=True)
 
     
 
@@ -830,7 +830,7 @@ def main():
 
 
 
-
+    '''
 
     ### Widget
     PrintWSHeader("Widget")
@@ -868,7 +868,7 @@ def main():
     for count in range(10):
         x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
-
+    
     
     checkFunctionTestList("library_qlabs_widget")  
 
@@ -895,7 +895,7 @@ def main():
     print("\n\n---Spline Line---")
 
     checkFunctionTestList("library_qlabs_spline_line")  
-    
+    '''
 
 
     print("\n\n------------------------------ Communications --------------------------------\n")
