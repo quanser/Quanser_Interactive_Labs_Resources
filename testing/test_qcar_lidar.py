@@ -14,6 +14,8 @@ from pyqtgraph.Qt import QtCore, QtWidgets
 from library_qlabs import QuanserInteractiveLabs
 from library_qlabs_common import QLabsCommon
 from library_qlabs_qcar import QLabsQCar
+from library_qlabs_basic_shape import QLabsBasicShape
+from library_qlabs_free_camera import QLabsFreeCamera
 
 from library_qlabs_utilities import *
 
@@ -31,13 +33,17 @@ def testLIDAR():
         return    
     
     QLabsCommon().destroy_all_spawned_actors(qlabs)
+
+    QLabsFreeCamera().spawn(qlabs,0,[53.696, 18.906, 51.107], [0, 0.865, -0.01])
+    QLabsFreeCamera().possess(qlabs, 0)
+
     
     QLabsQCar().spawn_degrees(qlabs, actorNumber=0, location=[82.545, 28.056, 0], rotation=[0,0,0], waitForConfirmation=True)
     #QLabsQCar().possess(qlabs, 0, QLabsQCar().CAMERA_OVERHEAD)
-    spawn_box_walls_from_end_points(qlabs, 0, [70, 40, 0], [130, 40, 0], height=3, wallThickness=1, wallColour=[1,0,0], waitForConfirmation=True)
-    spawn_box_walls_from_end_points(qlabs, 1, [130, 40, 0], [130, 0, 0], height=3, wallThickness=1, wallColour=[1,0,0], waitForConfirmation=True)
-    spawn_box_walls_from_end_points(qlabs, 2, [70, 0, 0], [130, 0, 0], height=3, wallThickness=1, wallColour=[1,0,0], waitForConfirmation=True)    
-    spawn_box_walls_from_end_points(qlabs, 3, [70, 40, 0], [70, 0, 0], height=3, wallThickness=1, wallColour=[1,0,0], waitForConfirmation=True)
+    QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, 0, [70, 40, 0], [130, 40, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
+    QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, 1, [130, 40, 0], [130, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
+    QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, 2, [70, 0, 0], [130, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)    
+    QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, 3, [70, 40, 0], [70, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
     
     
     if (setup_only):
