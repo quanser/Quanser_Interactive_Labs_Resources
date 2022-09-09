@@ -52,6 +52,7 @@ Methods
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_material_properties
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_enable_dynamics
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_enable_collisions
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_physics_properties
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_transform
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_transform_degrees

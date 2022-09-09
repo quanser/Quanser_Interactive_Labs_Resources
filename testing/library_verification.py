@@ -85,14 +85,15 @@ def checkFunctionTestList(library_name):
             function_name = line.lstrip()
             function_name = function_name[4:function_name.find('(')]
             
-            if (function_name != "__init__"):
-                function_name = class_name + "()." + function_name
-                if not(function_name in validation_code):
-                    print("*** {} not tested".format(function_name))
-                    all_functions_tested = False
-                    PrintWS(0, function_name)
-                else:
-                    PrintWS(1, function_name)
+            if (function_name[0] != "_"):
+                if (function_name != "__init__"):
+                    function_name = class_name + "()." + function_name
+                    if not(function_name in validation_code):
+                        print("*** {} not tested".format(function_name))
+                        all_functions_tested = False
+                        PrintWS(0, function_name)
+                    else:
+                        PrintWS(1, function_name)
 
                     
                     
@@ -211,7 +212,7 @@ def main():
     x = QLabsFreeCamera().ping(qlabs, 3)
     PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
-    
+    '''
     QLabsFreeCamera().spawn(qlabs, actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
     QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
     x = QLabsFreeCamera().possess(qlabs, 3)
@@ -219,7 +220,7 @@ def main():
     for y in range(51):
         x = QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     PrintWS(x == True, "Set camera properties")
-  
+    '''
     
     x = QLabsFreeCamera().possess(qlabs, 2)
     PrintWS(x == True, "Possess camera 2")
@@ -288,6 +289,7 @@ def main():
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
     
+    '''
     ### Yield Sign    
     PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
@@ -337,7 +339,7 @@ def main():
     
     x = QLabsStopSign().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
-    
+    1
     x = QLabsStopSign().spawn_degrees(qlabs, actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with degrees")
     
@@ -418,7 +420,7 @@ def main():
     PrintWS(x == False, "Ping cone that doesn't exist (expect False)")      
     
     checkFunctionTestList("library_qlabs_traffic_cone")   
-    '''
+    
     ### Change view points
     
     time.sleep(0.5)
@@ -757,7 +759,7 @@ def main():
     PrintWS(x == False, "Ping QCar that doesn't exist (expect False)")    
     
     
-    #lidar
+    #LIDAR
 
     QLabsQCar().possess(qlabs, 3, QLabsQCar().CAMERA_OVERHEAD)
 
@@ -785,7 +787,7 @@ def main():
         time.sleep(lidar_rate)
 
     PrintWS(True, "LIDAR didn't crash QLabs!")
-    PrintWS(lidar_rate == 0.01, "Passed lidar test with 100Hz (lidar_rate = 0.01 expected)")
+    PrintWS(lidar_rate == 0.01, "Passed LIDAR test with 100Hz (lidar_rate = 0.01 expected)")
 
     time.sleep(2)
     
@@ -822,15 +824,55 @@ def main():
     x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
     PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
        
-    #x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, [0,1,0], rotation=[0,0,math.pi/4], scale=[0.25,0.25,0.25], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber, parentComponent=0, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn with parent relative transform (expect 0)")
+
+    x = QLabsBasicShape().spawn_and_parent_with_relative_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
+
+
+    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=202, colour=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=201, colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    PrintWS(x == True, "Set material properties (expect True)")
 
     
+    for y in range(51):
+        x = QLabsBasicShape().set_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
+        x = QLabsBasicShape().set_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
+        x = QLabsBasicShape().set_transform(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
+    
+
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=203, colour=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    
+
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=204, colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
+    x = QLabsBasicShape().set_enable_collisions(qlabs, actorNumber=204, enableCollisions=False, waitForConfirmation=True)
+    PrintWS(x == True, "Enable collisions")
+
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn(qlabs, actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    
+    x = QLabsBasicShape().set_physics_properties(qlabs, actorNumber=207, mass=1, linearDamping=10, angularDamping=0, enableDynamics=False, waitForConfirmation=True)
+    PrintWS(x == True, "Set physics properties")
+
+    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=205, enableDynamics=True, waitForConfirmation=False)
+    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=206, enableDynamics=True, waitForConfirmation=False)
+    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=207, enableDynamics=True, waitForConfirmation=True)
+    PrintWS(x == True, "Enable dynamics")
+
+    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=205, enableDynamics=True, waitForConfirmation=False)
+    
+    
+    x = QLabsBasicShape().spawn_box_walls_from_center(qlabs, actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
 
     checkFunctionTestList("library_qlabs_basic_shape")    
 
 
 
-    '''
+    
 
     ### Widget
     PrintWSHeader("Widget")
@@ -895,7 +937,7 @@ def main():
     print("\n\n---Spline Line---")
 
     checkFunctionTestList("library_qlabs_spline_line")  
-    '''
+    
 
 
     print("\n\n------------------------------ Communications --------------------------------\n")

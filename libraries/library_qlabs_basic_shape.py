@@ -26,6 +26,8 @@ class QLabsBasicShape:
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS_ACK = 15
     FCN_BASIC_SHAPE_SET_TRANSFORM = 16
     FCN_BASIC_SHAPE_SET_TRANSFORM_ACK = 17
+    FCN_BASIC_SHAPE_ENABLE_COLLISIONS = 18
+    FCN_BASIC_SHAPE_ENABLE_COLLISIONS_ACK = 19
     
     # Initialize class
     def __init__(self):
@@ -222,13 +224,51 @@ class QLabsBasicShape:
         else:
             return False   
 
-    def set_physics_properties(self, qlabs, actorNumber, mass, linearDampign, angularDamping, enableDynamics, waitForConfirmation=True):
+    def set_enable_collisions(self, qlabs, actorNumber, enableCollisions, waitForConfirmation=True):
+        """Enables and disables physics collisions. When disabled, other physics or velocity-based actors will be able to pass through.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param enableCollisions: Enable (True) or disable (False) the collision. 
+        :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+        :type qlabs: QuanserInteractiveLabs object
+        :type actorNumber: uint32
+        :type enableCollisions: boolean
+        :type waitForConfirmation: boolean
+        :return: True if successful, False otherwise
+        :rtype: boolean
+
+        """
+
+        c = CommModularContainer()
+        c.classID = self.ID_BASIC_SHAPE
+        c.actorNumber = actorNumber
+        c.actorFunction = self.FCN_BASIC_SHAPE_ENABLE_COLLISIONS
+        c.payload = bytearray(struct.pack(">B", enableCollisions))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if waitForConfirmation:
+            qlabs.flush_receive()  
+        
+        if (qlabs.send_container(c)):
+            if waitForConfirmation:
+                c = qlabs.wait_for_container(self.ID_BASIC_SHAPE, actorNumber, self.FCN_BASIC_SHAPE_ENABLE_COLLISIONS_ACK)
+                if (c == None):
+                    return False
+                else:
+                    return True
+                    
+            return True
+        else:
+            return False   
+
+    def set_physics_properties(self, qlabs, actorNumber, mass, linearDamping, angularDamping, enableDynamics, waitForConfirmation=True):
         """Sets the dynamic properties of the shape.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param mass: Sets the mass of the actor in kilograms.
-        :param linearDampign: Sets the damping of the actor for linear motions.
+        :param linearDamping: Sets the damping of the actor for linear motions.
         :param angularDamping: Sets the damping of the actor for angular motions.
         :param enableDynamics: Enable (True) or disable (False) the shape dynamics. A dynamic actor can be pushed with other static or dynamic actors.  A static actor will generate collisions, but will not be affected by interactions with other actors.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
@@ -236,7 +276,7 @@ class QLabsBasicShape:
         :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
         :type mass: float
-        :type linearDampign: float
+        :type linearDamping: float
         :type angularDamping: float
         :type enableDynamics: boolean
         :type waitForConfirmation: boolean
@@ -248,7 +288,7 @@ class QLabsBasicShape:
         c.classID = self.ID_BASIC_SHAPE
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES
-        c.payload = bytearray(struct.pack(">fffB", mass, linearDampign, angularDamping, enableDynamics))
+        c.payload = bytearray(struct.pack(">fffB", mass, linearDamping, angularDamping, enableDynamics))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
@@ -270,7 +310,7 @@ class QLabsBasicShape:
 
 
     def set_transform(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
-        """Sets the location, rotation in radians, and scale.
+        """Sets the location, rotation in radians, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -314,7 +354,7 @@ class QLabsBasicShape:
 
 
     def set_transform_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
-        """Sets the location, rotation in degrees, and scale.
+        """Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -332,7 +372,7 @@ class QLabsBasicShape:
         :rtype: boolean
         """
     
-        return self.set_transform(qlabs, actorNumber, location, [rotation[0]/180*pi, rotation[1]/180*pi, rotation[2]/180*pi], scale, waitForConfirmation)   
+        return self.set_transform(qlabs, actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, waitForConfirmation)   
 
 
     def _rotate_vector_2d_degrees(self, vector, angle):
