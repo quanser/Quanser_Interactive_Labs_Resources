@@ -13,7 +13,7 @@ class QLabsRoundaboutSign:
         """ Constructor Method """
         return
        
-    def spawn(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a roundabout sign in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -33,7 +33,7 @@ class QLabsRoundaboutSign:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_ROUNDABOUT_SIGN, location, rotation, scale, 0, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a roundabout sign in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object.

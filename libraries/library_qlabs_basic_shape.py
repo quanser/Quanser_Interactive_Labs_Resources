@@ -35,7 +35,7 @@ class QLabsBasicShape:
 
        return
        
-    def spawn(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -59,7 +59,7 @@ class QLabsBasicShape:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -123,7 +123,7 @@ class QLabsBasicShape:
         """
         return QLabsCommon().spawn_next(qlabs, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
 
-    def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
+    def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation in radians relative to a parent actor and binds it with that actor.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -153,7 +153,7 @@ class QLabsBasicShape:
 
         return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
 
-    def spawn_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
+    def spawn_id_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation in degrees relative to a parent actor and binds it with that actor.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -434,7 +434,7 @@ class QLabsBasicShape:
     
         return result
 
-    def spawn_box_walls_from_end_points(self, qlabs, actorNumber, startLocation, endLocation, height, thickness, colour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_end_points(self, qlabs, actorNumber, startLocation, endLocation, height, thickness, colour=[1,1,1], waitForConfirmation=True):
         """Given a start and end point, this helper method calculates the position, rotation, and scale required to place a box on top of this line. 
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -466,7 +466,7 @@ class QLabsBasicShape:
     
         shiftedLocation = [location[0]+math.sin(yRotation)*math.cos(zRotation)*height/2, location[1]+math.sin(yRotation)*math.sin(zRotation)*height/2, location[2]+math.cos(yRotation)*height/2]
     
-        if (0 == self.spawn(qlabs, actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, thickness, height], self.SHAPE_CUBE, waitForConfirmation)):
+        if (0 == self.spawn_id(qlabs, actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, thickness, height], self.SHAPE_CUBE, waitForConfirmation)):
             if (True == self.set_material_properties(qlabs, actorNumber, colour, 1, False, waitForConfirmation)):
                 return True
             else:
@@ -476,7 +476,7 @@ class QLabsBasicShape:
             return False
     
     
-    def spawn_box_walls_from_center(self, qlabs, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_center(self, qlabs, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -511,40 +511,40 @@ class QLabsBasicShape:
         origin = [centerLocation[0],  centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness]
 
         location = np.add(origin, self._rotate_vector_2d_degrees([xSize/2 + wallThickness/2, 0, 0], yaw) )
-        if (0 != self.spawn(qlabs, actorNumbers[0], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
+        if (0 != self.spawn_id(qlabs, actorNumbers[0], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[0], wallColour, 1, False, waitForConfirmation)):
             return False
     
         location = np.add(origin, self._rotate_vector_2d_degrees([ - xSize/2 - wallThickness/2, 0, 0], yaw) )
-        if (0 != self.spawn(qlabs, actorNumbers[1], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
+        if (0 != self.spawn_id(qlabs, actorNumbers[1], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[1], wallColour, 1, False, waitForConfirmation)):
             return False
     
         
         location = np.add(origin, self._rotate_vector_2d_degrees([0, ySize/2 + wallThickness/2, 0], yaw) )
-        if (0 != self.spawn(qlabs, actorNumbers[2], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
+        if (0 != self.spawn_id(qlabs, actorNumbers[2], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[2], wallColour, 1, False, waitForConfirmation)):
             return False
     
         
         location = np.add(origin, self._rotate_vector_2d_degrees([0, - ySize/2 - wallThickness/2, 0], yaw) )
-        if (0 != self.spawn(qlabs, actorNumbers[3], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
+        if (0 != self.spawn_id(qlabs, actorNumbers[3], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[3], wallColour, 1, False, waitForConfirmation)):
             return False
         
         if (floorThickness > 0):
-            if (0 != self.spawn(qlabs, actorNumbers[4], [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], self.SHAPE_CUBE, waitForConfirmation)):
+            if (0 != self.spawn_id(qlabs, actorNumbers[4], [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], self.SHAPE_CUBE, waitForConfirmation)):
                 return False
             if (True != self.set_material_properties(qlabs, actorNumbers[4], floorColour, 1, False, waitForConfirmation)):
                 return False
 
         return True
 
-    def spawn_box_walls_from_center_degrees(self, qlabs, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_center_degrees(self, qlabs, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -576,7 +576,7 @@ class QLabsBasicShape:
         :return: True if successful or False otherwise
         :rtype: boolean
         """
-        return self.spawn_box_walls_from_center(qlabs, actorNumbers, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
+        return self.spawn_id_box_walls_from_center(qlabs, actorNumbers, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
 
     def destroy(self, qlabs, actorNumber):
         """Destroys a shape in an instance of QLabs.

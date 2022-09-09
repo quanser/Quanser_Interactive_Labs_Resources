@@ -28,7 +28,7 @@ class QLabsTrafficLight:
         """ Constructor Method """
         return
        
-    def spawn(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a stoplight in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -55,7 +55,7 @@ class QLabsTrafficLight:
         """
         return qlabs.spawn(actorNumber, self.ID_TRAFFIC_LIGHT_SINGLE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], 0, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a stoplight in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object.

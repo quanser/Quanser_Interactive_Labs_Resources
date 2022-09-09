@@ -14,7 +14,7 @@ class QLabsCrosswalk:
        return
        
        
-    def spawn(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         """Spawns a crosswalk in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -36,7 +36,7 @@ class QLabsCrosswalk:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_CROSSWALK, location, rotation, scale, configuration, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         """Spawns a crosswalk in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object.

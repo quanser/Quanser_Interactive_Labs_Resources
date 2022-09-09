@@ -45,7 +45,7 @@ class QLabsQCar:
         """ Constructor Method """
         return
        
-    def spawn(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -65,7 +65,7 @@ class QLabsQCar:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_QCAR, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
     
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
         :param qlabs: A QuanserInteractiveLabs object

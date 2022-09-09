@@ -183,13 +183,13 @@ def main():
     PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     
-    x = QLabsFreeCamera().spawn(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsFreeCamera().spawn(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsFreeCamera().spawn(qlabs, actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
+    QLabsFreeCamera().spawn_id(qlabs, actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
     x = QLabsFreeCamera().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
@@ -198,7 +198,7 @@ def main():
     
     loc2 = [-23.201, 34.875, 3.482]
     rot2 = [0, 20.023, -2.275]
-    x = QLabsFreeCamera().spawn_degrees(qlabs, actorNumber=2, location=loc2, rotation=rot2)
+    x = QLabsFreeCamera().spawn_id_degrees(qlabs, actorNumber=2, location=loc2, rotation=rot2)
     PrintWS(x == 0, "Spawn sign with degrees")
     
     x, loc, rot, scale = QLabsFreeCamera().get_world_transform(qlabs, 2)
@@ -210,7 +210,7 @@ def main():
     x = QLabsFreeCamera().ping(qlabs, 3)
     PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
-    QLabsFreeCamera().spawn(qlabs, actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
+    QLabsFreeCamera().spawn_id(qlabs, actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
     QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
     x = QLabsFreeCamera().possess(qlabs, 3)
     
@@ -263,8 +263,8 @@ def main():
        
        
     loc3 = [5.252, 20.852, 9.461]
-    QLabsBasicShape().spawn(qlabs, 0, loc3, [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x = QLabsFreeCamera().spawn_and_parent_with_relative_transform(qlabs, 5, [0, -10, 0], [0,0,math.pi/2], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+    QLabsBasicShape().spawn_id(qlabs, 0, loc3, [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsFreeCamera().spawn_id_and_parent_with_relative_transform(qlabs, 5, [0, -10, 0], [0,0,math.pi/2], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
     PrintWS(x == 0, "Spawn and parent with relative transform")
     x = QLabsFreeCamera().possess(qlabs, 5)
     for y in range(26):
@@ -273,7 +273,7 @@ def main():
     time.sleep(0.5)
     
     QLabsFreeCamera().destroy(qlabs, actorNumber=5)
-    x = QLabsFreeCamera().spawn_and_parent_with_relative_transform_degrees(qlabs, 5, [0, -10, 0], [0,0,90], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+    x = QLabsFreeCamera().spawn_id_and_parent_with_relative_transform_degrees(qlabs, 5, [0, -10, 0], [0,0,90], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
     PrintWS(x == 0, "Spawn and parent with relative transform degrees")
     x = QLabsFreeCamera().possess(qlabs, 5)
     for y in range(26):
@@ -288,20 +288,20 @@ def main():
     PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
     
-    x = QLabsYieldSign().spawn(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsYieldSign().spawn_id(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsYieldSign().spawn(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsYieldSign().spawn_id(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsYieldSign().spawn(qlabs, actorNumber=1, location=[-16, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    QLabsYieldSign().spawn_id(qlabs, actorNumber=1, location=[-16, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     x = QLabsYieldSign().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
     x = QLabsYieldSign().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
     
-    x = QLabsYieldSign().spawn_degrees(qlabs, actorNumber=2, location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsYieldSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with degrees")
     
     x, loc, rot, scale = QLabsYieldSign().get_world_transform(qlabs, 2)
@@ -321,20 +321,20 @@ def main():
     PrintWSHeader("Stop Sign")
     print("\n\n---Stop Sign---")
     
-    x = QLabsStopSign().spawn(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsStopSign().spawn_id(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsStopSign().spawn(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsStopSign().spawn_id(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsStopSign().spawn(qlabs, actorNumber=1, location=[-16, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    QLabsStopSign().spawn_id(qlabs, actorNumber=1, location=[-16, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     x = QLabsStopSign().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
     x = QLabsStopSign().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
     1
-    x = QLabsStopSign().spawn_degrees(qlabs, actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsStopSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with degrees")
     
     x, loc, rot, scale = QLabsStopSign().get_world_transform(qlabs, 2)
@@ -354,20 +354,20 @@ def main():
     PrintWSHeader("Roundabout Sign")
     print("\n\n---Roundabout Sign---")
     
-    x = QLabsRoundaboutSign().spawn(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsRoundaboutSign().spawn(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsRoundaboutSign().spawn(qlabs, actorNumber=1, location=[-16, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=1, location=[-16, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
     x = QLabsRoundaboutSign().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
     x = QLabsRoundaboutSign().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
     
-    x = QLabsRoundaboutSign().spawn_degrees(qlabs, actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    x = QLabsRoundaboutSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with degrees")
     
     x, loc, rot, scale = QLabsRoundaboutSign().get_world_transform(qlabs, 2)
@@ -387,20 +387,20 @@ def main():
     PrintWSHeader("Traffic Cone")
     print("\n\n---Traffic Cone---")
     
-    x = QLabsTrafficCone().spawn(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = QLabsTrafficCone().spawn_id(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn cone with radians")
     
-    x = QLabsTrafficCone().spawn(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = QLabsTrafficCone().spawn_id(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     PrintWS(x == 2, "Spawn cone with duplicate ID (return code 2)")
     
-    QLabsTrafficCone().spawn(qlabs, actorNumber=1, location=[-16, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    QLabsTrafficCone().spawn_id(qlabs, actorNumber=1, location=[-16, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = QLabsTrafficCone().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing cone (expect return 1)")
     
     x = QLabsTrafficCone().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy cone that doesn't exist (expect return 0)")
     
-    x = QLabsTrafficCone().spawn_degrees(qlabs, actorNumber=2, location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = QLabsTrafficCone().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn cone with degrees in config 1")
     
     x, loc, rot, scale = QLabsTrafficCone().get_world_transform(qlabs, 2)
@@ -425,23 +425,23 @@ def main():
     PrintWSHeader("Crosswalk")
     print("\n\n---Crosswalk---")
     
-    x = QLabsCrosswalk().spawn(qlabs, actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = QLabsCrosswalk().spawn_id(qlabs, actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn crosswalk with radians")
     
-    x = QLabsCrosswalk().spawn(qlabs, actorNumber=0, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = QLabsCrosswalk().spawn_id(qlabs, actorNumber=0, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     PrintWS(x == 2, "Spawn crosswalk with duplicate ID (return code 2)")
     
-    QLabsCrosswalk().spawn(qlabs, actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    QLabsCrosswalk().spawn_id(qlabs, actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = QLabsCrosswalk().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing crosswalk (expect return 1)")
     
     x = QLabsCrosswalk().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy crosswalk that doesn't exist (expect return 0)")
     
-    x = QLabsCrosswalk().spawn_degrees(qlabs, actorNumber=2, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = QLabsCrosswalk().spawn_id_degrees(qlabs, actorNumber=2, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn crosswalk with degrees in config 1")
     
-    x = QLabsCrosswalk().spawn_degrees(qlabs, actorNumber=3, location=[-7.8, 47.5, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    x = QLabsCrosswalk().spawn_id_degrees(qlabs, actorNumber=3, location=[-7.8, 47.5, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn crosswalk with degrees in config 2")
     
     
@@ -461,9 +461,9 @@ def main():
     PrintWSHeader("People")
     print("\n\n---People---")
     
-    QLabsPerson().spawn(qlabs, actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    QLabsPerson().spawn(qlabs, actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-    QLabsPerson().spawn_degrees(qlabs, actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    QLabsPerson().spawn_id(qlabs, actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    QLabsPerson().spawn_id(qlabs, actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    QLabsPerson().spawn_id_degrees(qlabs, actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     
     QLabsPerson().move_to(qlabs, actorNumber=0, location=[-7.637, 51, 0.005], speed=QLabsPerson().WALK, waitForConfirmation=True)
     QLabsPerson().move_to(qlabs, actorNumber=1, location=[-11.834, 51, 0.005], speed=QLabsPerson().JOG, waitForConfirmation=True)
@@ -495,26 +495,26 @@ def main():
     
     ### QCar
     
-    QLabsFreeCamera().spawn(qlabs, actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
+    QLabsFreeCamera().spawn_id(qlabs, actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
     QLabsFreeCamera().possess(qlabs, 33)
     
     PrintWSHeader("QCar")
     print("\n\n---QCar---")
     
-    x = QLabsQCar().spawn(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    x = QLabsQCar().spawn_id(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn QCar with radians")
     
-    x = QLabsQCar().spawn(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    x = QLabsQCar().spawn_id(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     PrintWS(x == 2, "Spawn QCar with duplicate ID (return code 2)")
     
-    QLabsQCar().spawn(qlabs, actorNumber=1, location=[-17.1, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    QLabsQCar().spawn_id(qlabs, actorNumber=1, location=[-17.1, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     x = QLabsQCar().destroy(qlabs, actorNumber=1)
     PrintWS(x == 1, "Spawn and destroy existing QCar (expect return 1)")
     
     x = QLabsQCar().destroy(qlabs, actorNumber=10)
     PrintWS(x == 0, "Destroy QCar that doesn't exist (expect return 0)")
     
-    x = QLabsQCar().spawn_degrees(qlabs, actorNumber=2, location=[-11.6, 17.445, 0.005], rotation=[0,0,90], waitForConfirmation=True)
+    x = QLabsQCar().spawn_id_degrees(qlabs, actorNumber=2, location=[-11.6, 17.445, 0.005], rotation=[0,0,90], waitForConfirmation=True)
     PrintWS(x == 0, "Spawn QCar with degrees")
     
     
@@ -569,9 +569,9 @@ def main():
     print("Testing bumper response...")
     QLabsFreeCamera().possess(qlabs, 33)
     QLabsFreeCamera().set_transform(qlabs, actorNumber=33, location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
-    QLabsBasicShape().spawn(qlabs, 100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    QLabsBasicShape().spawn(qlabs, 101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    QLabsQCar().spawn(qlabs, actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
+    QLabsBasicShape().spawn_id(qlabs, 100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    QLabsBasicShape().spawn_id(qlabs, 101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    QLabsQCar().spawn_id(qlabs, actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
     
     for count in range(10):
         x, location, rotation, frontHit, rearHit  = QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
@@ -783,7 +783,7 @@ def main():
     PrintWS(True, "LIDAR didn't crash QLabs!")
     PrintWS(lidar_rate == 0.01, "Passed LIDAR test with 100Hz (lidar_rate = 0.01 expected)")
 
-    time.sleep(2)
+    time.sleep(1)
     
     checkFunctionTestList("library_qlabs_qcar")    
     
@@ -793,17 +793,17 @@ def main():
 
     x = QLabsFreeCamera().possess(qlabs, 2)
 
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with radians")
 
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 2, "Spawn with duplicate ID")
 
 
-    x = QLabsBasicShape().spawn_degrees(qlabs, actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_degrees(qlabs, actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with degrees")
 
-    x = QLabsBasicShape().spawn_degrees(qlabs, actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_degrees(qlabs, actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     x = QLabsBasicShape().destroy(qlabs, 221)
     PrintWS(x == 1, "Spawn and destroy existing (expect return 1)")
 
@@ -819,10 +819,10 @@ def main():
     x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
     PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
        
-    x = QLabsBasicShape().spawn_and_parent_with_relative_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn with parent relative transform (expect 0)")
 
-    x = QLabsBasicShape().spawn_and_parent_with_relative_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_and_parent_with_relative_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
 
 
@@ -838,18 +838,18 @@ def main():
         x = QLabsBasicShape().set_transform(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
     
 
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
     x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=203, colour=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     
 
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
     x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=204, colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
     x = QLabsBasicShape().set_enable_collisions(qlabs, actorNumber=204, enableCollisions=False, waitForConfirmation=True)
     PrintWS(x == True, "Enable collisions")
 
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().spawn(qlabs, actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
     
     x = QLabsBasicShape().set_physics_properties(qlabs, actorNumber=207, mass=1, linearDamping=10, angularDamping=0, enableDynamics=False, waitForConfirmation=True)
     PrintWS(x == True, "Set physics properties")
@@ -862,13 +862,13 @@ def main():
     x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=205, enableDynamics=True, waitForConfirmation=False)
     
     
-    x = QLabsBasicShape().spawn_box_walls_from_center(qlabs, actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_box_walls_from_center(qlabs, actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
     PrintWS(x == True, "Spawn box walls from center")
 
-    x = QLabsBasicShape().spawn_box_walls_from_center_degrees(qlabs, actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_box_walls_from_center_degrees(qlabs, actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
     PrintWS(x == True, "Spawn box walls from center degrees")
 
-    x = QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    x = QLabsBasicShape().spawn_id_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
     PrintWS(x == True, "Spawn box walls from end points")
 
     x, shapeHandle1 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
@@ -934,8 +934,8 @@ def main():
 
     checkFunctionTestList("library_qlabs_spline_line")  
 
-    x = QLabsFreeCamera().spawn(qlabs, actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
-    QLabsFreeCamera().Possess(qlabs, 300)
+    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
+    QLabsFreeCamera().possess(qlabs, 300)
     
     ### Real-Time
     PrintWSHeader("Real-Time")

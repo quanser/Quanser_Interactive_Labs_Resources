@@ -13,7 +13,7 @@ class QLabsYieldSign:
         """ Constructor Method """
         return
        
-    def spawn(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a yield sign in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -35,7 +35,7 @@ class QLabsYieldSign:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_YIELD_SIGN, location, rotation, [1,1,1], 0, waitForConfirmation)
  
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a yield sign in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object

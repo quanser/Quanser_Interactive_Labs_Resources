@@ -29,7 +29,7 @@ class QLabsFreeCamera:
        """ Constructor Method """
        return
        
-    def spawn(self, qlabs, actorNumber, location, rotation):
+    def spawn_id(self, qlabs, actorNumber, location, rotation):
         
         """Spawns a camera in an instance of QLabs at a specific location and rotation using radians.
 
@@ -46,7 +46,7 @@ class QLabsFreeCamera:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
            
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation):
+    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation using degrees.
 
@@ -64,7 +64,7 @@ class QLabsFreeCamera:
         
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
     
-    def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
+    def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation relative to the parent actor using radians.
 
@@ -87,7 +87,7 @@ class QLabsFreeCamera:
         """
         return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, rotation, [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
    
-    def spawn_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
+    def spawn_id_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation relative to the parent actor using degrees.
         
