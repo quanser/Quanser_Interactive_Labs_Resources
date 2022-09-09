@@ -212,7 +212,6 @@ def main():
     x = QLabsFreeCamera().ping(qlabs, 3)
     PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
-    '''
     QLabsFreeCamera().spawn(qlabs, actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
     QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
     x = QLabsFreeCamera().possess(qlabs, 3)
@@ -220,12 +219,10 @@ def main():
     for y in range(51):
         x = QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     PrintWS(x == True, "Set camera properties")
-    '''
     
     x = QLabsFreeCamera().possess(qlabs, 2)
     PrintWS(x == True, "Possess camera 2")
     
-    '''
         
     for y in range(26):
         x = QLabsFreeCamera().set_transform(qlabs, 2, loc2, np.add(np.array(rot2)/180*math.pi, [0, 0, y/25*math.pi*2]))
@@ -285,11 +282,10 @@ def main():
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     checkFunctionTestList("library_qlabs_free_camera")
-    '''
+
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
-    
-    '''
+
     ### Yield Sign    
     PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
@@ -792,11 +788,12 @@ def main():
     time.sleep(2)
     
     checkFunctionTestList("library_qlabs_qcar")    
-    '''
+
     ### Basic Shape
     PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
+    x = QLabsFreeCamera().possess(qlabs, 2)
 
     x = QLabsBasicShape().spawn(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn sign with radians")
@@ -867,6 +864,14 @@ def main():
     
     
     x = QLabsBasicShape().spawn_box_walls_from_center(qlabs, actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    PrintWS(x == True, "Spawn box walls from center")
+
+    x = QLabsBasicShape().spawn_box_walls_from_center_degrees(qlabs, actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    PrintWS(x == True, "Spawn box walls from center degrees")
+
+    x = QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    PrintWS(x == True, "Spawn box walls from end points")
+
 
     checkFunctionTestList("library_qlabs_basic_shape")    
 

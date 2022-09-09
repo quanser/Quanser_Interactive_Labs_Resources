@@ -1,6 +1,7 @@
 from library_qlabs_common import QLabsCommon
 from library_qlabs import CommModularContainer
 
+import numpy as np
 import math
 import struct
         
@@ -467,26 +468,29 @@ class QLabsBasicShape:
         :return: True if successful or False otherwise
         :rtype: boolean
         """
+        origin = [centerLocation[0],  centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness]
 
-        location = self._rotate_vector_2d_degrees([centerLocation[0] + xSize/2 + wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
+        location = np.add(origin, self._rotate_vector_2d_degrees([xSize/2 + wallThickness/2, 0, 0], yaw) )
         if (0 != self.spawn(qlabs, actorNumbers[0], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[0], wallColour, 1, False, waitForConfirmation)):
             return False
     
-        location = self._rotate_vector_2d_degrees([centerLocation[0] - xSize/2 - wallThickness/2, centerLocation[1], centerLocation[2] + zHeight/2 + floorThickness], yaw)
+        location = np.add(origin, self._rotate_vector_2d_degrees([ - xSize/2 - wallThickness/2, 0, 0], yaw) )
         if (0 != self.spawn(qlabs, actorNumbers[1], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[1], wallColour, 1, False, waitForConfirmation)):
             return False
     
-        location = self._rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] + ySize/2 + wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
+        
+        location = np.add(origin, self._rotate_vector_2d_degrees([0, ySize/2 + wallThickness/2, 0], yaw) )
         if (0 != self.spawn(qlabs, actorNumbers[2], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[2], wallColour, 1, False, waitForConfirmation)):
             return False
     
-        location = self._rotate_vector_2d_degrees([centerLocation[0], centerLocation[1] - ySize/2 - wallThickness/2, centerLocation[2] + zHeight/2 + floorThickness], yaw)
+        
+        location = np.add(origin, self._rotate_vector_2d_degrees([0, - ySize/2 - wallThickness/2, 0], yaw) )
         if (0 != self.spawn(qlabs, actorNumbers[3], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
         if (True != self.set_material_properties(qlabs, actorNumbers[3], wallColour, 1, False, waitForConfirmation)):
@@ -500,7 +504,7 @@ class QLabsBasicShape:
 
         return True
 
-    def spawn_box_walls_from_center_degrees(self, qlabs, actorNumberStart, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
+    def spawn_box_walls_from_center_degrees(self, qlabs, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -532,7 +536,7 @@ class QLabsBasicShape:
         :return: True if successful or False otherwise
         :rtype: boolean
         """
-        return spawn_box_walls_from_center(qlabs, actorNumberStart, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
+        return self.spawn_box_walls_from_center(qlabs, actorNumbers, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
 
     def destroy(self, qlabs, actorNumber):
         """Destroys a shape in an instance of QLabs.
