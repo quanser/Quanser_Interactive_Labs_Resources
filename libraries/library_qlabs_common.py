@@ -93,10 +93,10 @@ class QLabsCommon:
 
         :param qlabs: A QuanserInteractiveLabs object.
         :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :param location: An array of floats for x, y and z coordinates
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param scale: An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param classID: See the ID variables in the respective library classes for the class identifier
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
         :param configuration: (Optional) Spawn configuration. See class library for configuration options.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type qlabs: QuanserInteractiveLabs object
@@ -136,6 +136,53 @@ class QLabsCommon:
             return 0
         else:
             return -1 
+
+    def spawn_next(self, qlabs, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+        """Spawns a new actor with the next available actor number for that class
+
+        :param qlabs: A QuanserInteractiveLabs object.
+        :param classID: See the ID variables in the respective library classes for the class identifier
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred. Note that if this is False, the returned actor number will be invalid.
+        :type qlabs: QuanserInteractiveLabs object
+        :type classID: uint32
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type waitForConfirmation: boolean
+        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :rtype: int32, int32
+
+        """
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = 0
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT
+        c.payload = bytearray(struct.pack(">IfffffffffI", classID, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if waitForConfirmation:
+            qlabs.flush_receive()        
+                
+        if (qlabs.send_container(c)):
+        
+            if waitForConfirmation:
+                c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT_RESPONSE)
+                if (c == None):
+                    return None
+                if len(c.payload) == 5:
+                    status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
+                    return status, actorNumber
+                else:
+                    return -1, -1
+            
+            return 0, -1
+        else:
+            return -1, -1 
             
     def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
@@ -143,9 +190,9 @@ class QLabsCommon:
         :param qlabs: A QuanserInteractiveLabs object.
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :param location: An array of floats for x, y and z coordinates
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param scale: An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
         :param configuration: (Optional) Spawn configuration. See class library for configuration options.
         :param parentClassID: See the ID variables in the respective library classes for the class identifier
         :param parentActorNumber: User defined unique identifier for the class actor in QLabs

@@ -83,6 +83,46 @@ class QLabsBasicShape:
         """
         return QLabsCommon().spawn(qlabs, actorNumber, self.ID_BASIC_SHAPE,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
  
+    def spawn_next(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using radians.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param location: An array of floats for x, y and z coordinates
+        :param rotation: An array of floats for the roll, pitch, and yaw in radians
+        :param scale: An array of floats for the scale in the x, y, and z directions.
+        :param configuration: Use the constants defined for selecting the shapes.
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :type qlabs: QuanserInteractiveLabs object
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type waitForConfirmation: boolean
+        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :rtype: int32, int32
+        """
+        return QLabsCommon().spawn_next(qlabs, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
+
+    def spawn_next_degrees(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param location: An array of floats for x, y and z coordinates
+        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
+        :param scale: An array of floats for the scale in the x, y, and z directions.
+        :param configuration: Use the constants defined for selecting the shapes.
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :type qlabs: QuanserInteractiveLabs object
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type waitForConfirmation: boolean
+        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :rtype: int32, int32
+        """
+        return QLabsCommon().spawn_next(qlabs, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+
     def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation in radians relative to a parent actor and binds it with that actor.
 

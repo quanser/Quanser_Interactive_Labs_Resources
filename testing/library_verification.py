@@ -15,7 +15,6 @@ from library_qlabs_qcar import QLabsQCar
 from library_qlabs_environment_outdoors import QLabsEnvironmentOutdoors
 from library_qlabs_system import QLabsSystem
 from library_qlabs_person import QLabsPerson
-from library_qlabs_utilities import *
 from library_qlabs_spline_line import QLabsSplineLine
 from library_qlabs_real_time import QLabsRealTime
 from library_qlabs_widget import QLabsWidget
@@ -53,8 +52,7 @@ ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_qbot_hopper', \
                'library_qlabs_shredder', \
                'library_qlabs_srv02', \
-               'library_qlabs_weigh_scale', \
-               'library_qlabs_image_utilities']
+               'library_qlabs_weigh_scale']
 
                 
 def checkFunctionTestList(library_name):
@@ -282,10 +280,10 @@ def main():
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     checkFunctionTestList("library_qlabs_free_camera")
-
+    
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
-
+    
     ### Yield Sign    
     PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
@@ -788,7 +786,7 @@ def main():
     time.sleep(2)
     
     checkFunctionTestList("library_qlabs_qcar")    
-
+    
     ### Basic Shape
     PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
@@ -833,6 +831,7 @@ def main():
     PrintWS(x == True, "Set material properties (expect True)")
 
     
+
     for y in range(51):
         x = QLabsBasicShape().set_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
         x = QLabsBasicShape().set_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
@@ -872,13 +871,22 @@ def main():
     x = QLabsBasicShape().spawn_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
     PrintWS(x == True, "Spawn box walls from end points")
 
+    x, shapeHandle1 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle2 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle3 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn next")
 
+    x, shapeHandle4 = QLabsBasicShape().spawn_next_degrees(qlabs, location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle5 = QLabsBasicShape().spawn_next_degrees(qlabs, location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    PrintWS(x == 0, "Spawn next degrees")
+    
+    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=shapeHandle2, colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
     checkFunctionTestList("library_qlabs_basic_shape")    
 
 
 
     
-
+    
     ### Widget
     PrintWSHeader("Widget")
     print("\n\n--Widget---")
@@ -918,30 +926,23 @@ def main():
     
     
     checkFunctionTestList("library_qlabs_widget")  
-
-    ### Image Utilities
-    PrintWSHeader("Image Utilities")
-    print("\n\n---Image Utilities---")
-
-    checkFunctionTestList("library_qlabs_image_utilities")    
-
-    ### Utilities
-    PrintWSHeader("Utilities")
-    print("\n\n---Utilities---")
-
-    checkFunctionTestList("library_qlabs_utilities")  
-    
-    ### Real-Time
-    PrintWSHeader("Real-Time")
-    print("\n\n---Real-Time---")
-
-    checkFunctionTestList("library_qlabs_real_time")    
+  
 
     ### Spline Line
     PrintWSHeader("Spline Line")
     print("\n\n---Spline Line---")
 
     checkFunctionTestList("library_qlabs_spline_line")  
+
+    x = QLabsFreeCamera().spawn(qlabs, actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
+    QLabsFreeCamera().Possess(qlabs, 300)
+    
+    ### Real-Time
+    PrintWSHeader("Real-Time")
+    print("\n\n---Real-Time---")
+
+    checkFunctionTestList("library_qlabs_real_time")    
+    
     
 
 
