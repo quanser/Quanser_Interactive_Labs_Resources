@@ -31,7 +31,7 @@ class QLabsFreeCamera:
 
     def spawn(self, qlabs, location, rotation):
         
-        """Spawns a camera in an instance of QLabs at a specific location and rotation using radians using a specified actor number.
+        """Spawns a camera in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param location: An array of floats for x, y and z coordinates
@@ -43,6 +43,24 @@ class QLabsFreeCamera:
         :rtype: int32, int32
         """
         return QLabsCommon().spawn(qlabs, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+
+    def spawn_degrees(self, qlabs, location, rotation):
+        """
+        Spawns a camera in an instance of QLabs at a specific location and rotation using degrees.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param location: An array of floats for x, y and z coordinates
+        :param rotation: An array of floats for the roll, pitch, and yaw
+        :type qlabs: object
+        :type actorNumber: uint32
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
+        :rtype: int32, int32
+        """
+        
+        return QLabsCommon().spawn(qlabs, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
 
        
     def spawn_id(self, qlabs, actorNumber, location, rotation):

@@ -279,6 +279,14 @@ def main():
     for y in range(26):
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
+    x, hCameraSpawnA = QLabsFreeCamera().spawn(qlabs, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(hCameraSpawnA))
+
+    x, hCameraSpawnB = QLabsFreeCamera().spawn_degrees(qlabs, location=[-11.154, 42.544, 8.43], rotation=[0, 0, 0])
+    PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(hCameraSpawnB))
+
+
+
     checkFunctionTestList("library_qlabs_free_camera")
     
     cv2.destroyAllWindows()
