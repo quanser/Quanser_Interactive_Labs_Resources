@@ -59,7 +59,7 @@ class QLabsPerson:
 
             If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_PERSON, [location[0], location[1], location[2]+1.0], [rotation[0], rotation[1], rotation[2]], scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_PERSON, [location[0], location[1], location[2]+1.0], [rotation[0], rotation[1], rotation[2]], scale, configuration, waitForConfirmation)
 
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         """Spawns a person in an instance of QLabs at a specific location and rotation using degrees.
@@ -90,7 +90,7 @@ class QLabsPerson:
             If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_PERSON, [location[0], location[1], location[2]+1.0], [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_PERSON, [location[0], location[1], location[2]+1.0], [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
     
 
         

@@ -31,7 +31,7 @@ class QLabsRoundaboutSign:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_ROUNDABOUT_SIGN, location, rotation, scale, 0, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_ROUNDABOUT_SIGN, location, rotation, scale, 0, waitForConfirmation)
  
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, waitForConfirmation=True):
         """Spawns a roundabout sign in an instance of QLabs at a specific location and rotation using degrees.
@@ -51,7 +51,7 @@ class QLabsRoundaboutSign:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
         """    
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_ROUNDABOUT_SIGN, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, 0, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_ROUNDABOUT_SIGN, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, 0, waitForConfirmation)
  
     def destroy(self, qlabs, actorNumber):
         """Destroys a roundabout sign in an instance of QLabs.

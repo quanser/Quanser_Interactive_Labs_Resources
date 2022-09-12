@@ -57,7 +57,7 @@ class QLabsBasicShape:
 
 
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
  
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees.
@@ -81,9 +81,9 @@ class QLabsBasicShape:
 
 
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_BASIC_SHAPE,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_BASIC_SHAPE,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
  
-    def spawn_next(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+    def spawn(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using radians.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -101,9 +101,9 @@ class QLabsBasicShape:
         :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
         :rtype: int32, int32
         """
-        return QLabsCommon().spawn_next(qlabs, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn(qlabs, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
 
-    def spawn_next_degrees(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
+    def spawn_degrees(self, qlabs, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object
@@ -121,7 +121,7 @@ class QLabsBasicShape:
         :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
         :rtype: int32, int32
         """
-        return QLabsCommon().spawn_next(qlabs, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn(qlabs, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
 
     def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation in radians relative to a parent actor and binds it with that actor.
@@ -151,7 +151,7 @@ class QLabsBasicShape:
 
         """
 
-        return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
+        return QLabsCommon().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
 
     def spawn_id_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration, parentClass, parentActorNumber, parentComponent=0, waitForConfirmation=True):
         """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation in degrees relative to a parent actor and binds it with that actor.
@@ -181,7 +181,7 @@ class QLabsBasicShape:
 
         """
 
-        return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
+        return QLabsCommon().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
    
    
     def set_material_properties(self, qlabs, actorNumber, colour, roughness=0.4, metallic=False, waitForConfirmation=True):

@@ -37,7 +37,7 @@ class QLabsTrafficCone:
 
 
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_TRAFFIC_CONE, location, rotation, scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_TRAFFIC_CONE, location, rotation, scale, configuration, waitForConfirmation)
     
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
         """Spawns a traffic cone in an instance of QLabs at a specific location and rotation using degrees.
@@ -61,7 +61,7 @@ class QLabsTrafficCone:
 
 
         """    
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_TRAFFIC_CONE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_TRAFFIC_CONE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
  
 
     def destroy(self, qlabs, actorNumber):

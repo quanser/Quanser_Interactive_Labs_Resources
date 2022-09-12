@@ -85,7 +85,7 @@ def checkFunctionTestList(library_name):
             
             if (function_name[0] != "_"):
                 if (function_name != "__init__"):
-                    function_name = class_name + "()." + function_name
+                    function_name = class_name + "()." + function_name + "("
                     if not(function_name in validation_code):
                         print("*** {} not tested".format(function_name))
                         all_functions_tested = False
@@ -191,10 +191,10 @@ def main():
     
     QLabsFreeCamera().spawn_id(qlabs, actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
     x = QLabsFreeCamera().destroy(qlabs, actorNumber=1)
-    PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
+    PrintWS(x == 1, "Spawn and destroy existing camera (expect return 1)")
     
     x = QLabsFreeCamera().destroy(qlabs, actorNumber=10)
-    PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
+    PrintWS(x == 0, "Destroy camera that doesn't exist (expect return 0)")
     
     loc2 = [-23.201, 34.875, 3.482]
     rot2 = [0, 20.023, -2.275]
@@ -871,13 +871,13 @@ def main():
     x = QLabsBasicShape().spawn_id_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
     PrintWS(x == True, "Spawn box walls from end points")
 
-    x, shapeHandle1 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle2 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle3 = QLabsBasicShape().spawn_next(qlabs, location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle1 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle2 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle3 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn next")
 
-    x, shapeHandle4 = QLabsBasicShape().spawn_next_degrees(qlabs, location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle5 = QLabsBasicShape().spawn_next_degrees(qlabs, location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle4 = QLabsBasicShape().spawn_degrees(qlabs, location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle5 = QLabsBasicShape().spawn_degrees(qlabs, location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     PrintWS(x == 0, "Spawn next degrees")
     
     x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=shapeHandle2, colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
@@ -953,7 +953,7 @@ def main():
     print("Done!")  
  
 
-wb_file = 'QLabs Validation Report.xlsx'
+wb_file = 'QCar Validation Report.xlsx'
 wb = xlsxwriter.Workbook(wb_file)
 ws = wb.add_worksheet()
 row = 0

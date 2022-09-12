@@ -88,7 +88,7 @@ class QLabsCommon:
         else:
             return -1            
             
-    def spawn(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+    def spawn_id(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor.
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -137,7 +137,7 @@ class QLabsCommon:
         else:
             return -1 
 
-    def spawn_next(self, qlabs, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+    def spawn(self, qlabs, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor with the next available actor number for that class
 
         :param qlabs: A QuanserInteractiveLabs object.
@@ -184,7 +184,7 @@ class QLabsCommon:
         else:
             return -1, -1 
             
-    def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+    def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, classID, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
 
         :param qlabs: A QuanserInteractiveLabs object.

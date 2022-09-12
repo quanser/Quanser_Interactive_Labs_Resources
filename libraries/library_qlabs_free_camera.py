@@ -28,10 +28,26 @@ class QLabsFreeCamera:
     def __init__(self):
        """ Constructor Method """
        return
+
+    def spawn(self, qlabs, location, rotation):
+        
+        """Spawns a camera in an instance of QLabs at a specific location and rotation using radians using a specified actor number.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param location: An array of floats for x, y and z coordinates
+        :param rotation: An array of floats for the roll, pitch, and yaw
+        :type qlabs: object
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
+        :rtype: int32, int32
+        """
+        return QLabsCommon().spawn(qlabs, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+
        
     def spawn_id(self, qlabs, actorNumber, location, rotation):
         
-        """Spawns a camera in an instance of QLabs at a specific location and rotation using radians.
+        """Spawns a camera in an instance of QLabs at a specific location and rotation using radians using a specified actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -44,11 +60,11 @@ class QLabsFreeCamera:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
         """
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
            
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation):
         """
-        Spawns a camera in an instance of QLabs at a specific location and rotation using degrees.
+        Spawns a camera in an instance of QLabs at a specific location and rotation using degrees using a specified actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -62,7 +78,7 @@ class QLabsFreeCamera:
         :rtype: int32
         """
         
-        return QLabsCommon().spawn(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
+        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
     
     def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
         """
@@ -85,7 +101,7 @@ class QLabsFreeCamera:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
         :rtype: int32
         """
-        return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, rotation, [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
+        return QLabsCommon().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, rotation, [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
    
     def spawn_id_and_parent_with_relative_transform_degrees(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
         """
@@ -109,7 +125,7 @@ class QLabsFreeCamera:
         :rtype: int32
 
         """
-        return QLabsCommon().spawn_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_FREE_CAMERA,location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
+        return QLabsCommon().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber, self.ID_FREE_CAMERA,location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
    
     
     def possess(self, qlabs, actorNumber):
