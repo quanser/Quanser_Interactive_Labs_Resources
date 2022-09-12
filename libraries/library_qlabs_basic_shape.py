@@ -36,7 +36,7 @@ class QLabsBasicShape:
        return
        
     def spawn_id(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
-        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using radians.
+        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using radians using a specific actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -60,7 +60,7 @@ class QLabsBasicShape:
         return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
  
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=SHAPE_CUBE, waitForConfirmation=True):
-        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees.
+        """Spawns a Basic Shape in an instance of QLabs at a specific location and rotation using degrees using a specific actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -98,7 +98,7 @@ class QLabsBasicShape:
         :type scale: float array[3]
         :type configuration: uint32
         :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. The actor number allocated to the new actor.
         :rtype: int32, int32
         """
         return QLabsCommon().spawn(qlabs, self.ID_BASIC_SHAPE, location, rotation, scale, configuration, waitForConfirmation)
@@ -118,7 +118,7 @@ class QLabsBasicShape:
         :type scale: float array[3]
         :type configuration: uint32
         :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. The actor number allocated to the new actor.
         :rtype: int32, int32
         """
         return QLabsCommon().spawn(qlabs, self.ID_BASIC_SHAPE, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)

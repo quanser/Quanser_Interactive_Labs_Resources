@@ -46,6 +46,8 @@ Constants
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform

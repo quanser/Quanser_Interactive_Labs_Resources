@@ -103,7 +103,13 @@ class verificationReport:
 
             for line in doc_data:
                 if search_name in line:
-                    found_function = True
+                    test_case = line[line.find(".. automethod:: ")+16:]
+                    test_case = test_case.lstrip()
+                    test_case = test_case.rstrip()
+                    print(test_case)
+                    print(search_name)
+                    if search_name == test_case:
+                        found_function = True
 
             return found_function
         except:
