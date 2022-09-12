@@ -42,8 +42,10 @@ Methods
 
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_degrees
-.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform
-.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform_degrees
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_degrees
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.possess
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.set_camera_properties
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.set_transform
