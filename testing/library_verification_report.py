@@ -106,8 +106,6 @@ class verificationReport:
                     test_case = line[line.find(".. automethod:: ")+16:]
                     test_case = test_case.lstrip()
                     test_case = test_case.rstrip()
-                    print(test_case)
-                    print(search_name)
                     if search_name == test_case:
                         found_function = True
 
