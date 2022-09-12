@@ -60,7 +60,7 @@ def checkFunctionTestList(library_name):
     PrintWS(2, "")
     PrintWS(2, "Function check")
     all_functions_tested = True;
-    f_validation_code = open( os.path.dirname(os.path.realpath(__file__)) + '\library_verification.py', 'r')
+    f_validation_code = open( os.path.dirname(os.path.realpath(__file__)) + '\library_verification_qcar.py', 'r')
     validation_code = f_validation_code.read()
     f_validation_code.close()
     
@@ -102,7 +102,7 @@ def checkFunctionTestList(library_name):
                 
 def checkValidationLibraryList():
     #load this file for self checking
-    f_validation_code = open( os.path.dirname(os.path.realpath(__file__)) + '\library_verification.py', 'r')
+    f_validation_code = open( os.path.dirname(os.path.realpath(__file__)) + '\library_verification_qcar.py', 'r')
     validation_code = f_validation_code.read()
     f_validation_code.close()
     
