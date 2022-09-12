@@ -98,7 +98,8 @@ def main():
     vr.PrintWSHeader("System")
     x = QLabsSystem().set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
-    vr.checkFunctionTestList("library_qlabs_system")
+    vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
+
     
     ### Free Camera
     vr.PrintWSHeader("Free Camera")
@@ -208,7 +209,7 @@ def main():
 
 
 
-    vr.checkFunctionTestList("library_qlabs_free_camera")
+    vr.checkFunctionTestList("library_qlabs_free_camera", "../docs/source/Objects/camera_library.rst")
     
     cv2.destroyAllWindows()
     x = QLabsFreeCamera().possess(qlabs, 2)
@@ -243,7 +244,7 @@ def main():
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
     
-    vr.checkFunctionTestList("library_qlabs_yield_sign")
+    vr.checkFunctionTestList("library_qlabs_yield_sign", "../docs/source/Objects/road_signage.rst")
     
 
     ### Stop Sign    
@@ -276,7 +277,7 @@ def main():
     x = QLabsStopSign().ping(qlabs, 3)
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")    
     
-    vr.checkFunctionTestList("library_qlabs_stop_sign")    
+    vr.checkFunctionTestList("library_qlabs_stop_sign", "../docs/source/Objects/road_signage.rst")    
     
     
     ### Roundabout Sign    
@@ -309,7 +310,7 @@ def main():
     x = QLabsRoundaboutSign().ping(qlabs, 3)
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")      
     
-    vr.checkFunctionTestList("library_qlabs_roundabout_sign")    
+    vr.checkFunctionTestList("library_qlabs_roundabout_sign", "../docs/source/Objects/road_signage.rst")    
     
     
     ### Traffic Cone
@@ -342,7 +343,7 @@ def main():
     x = QLabsTrafficCone().ping(qlabs, 3)
     vr.PrintWS(x == False, "Ping cone that doesn't exist (expect False)")      
     
-    vr.checkFunctionTestList("library_qlabs_traffic_cone")   
+    vr.checkFunctionTestList("library_qlabs_traffic_cone", "../docs/source/Objects/road_signage.rst")   
     
     ### Change view points
     
@@ -384,7 +385,7 @@ def main():
     x = QLabsCrosswalk().ping(qlabs, 4)
     vr.PrintWS(x == False, "Ping crosswalk that doesn't exist (expect False)")      
     
-    vr.checkFunctionTestList("library_qlabs_crosswalk")   
+    vr.checkFunctionTestList("library_qlabs_crosswalk", "../docs/source/Objects/road_signage.rst")   
     
     ### People
     vr.PrintWSHeader("People")
@@ -420,7 +421,7 @@ def main():
     
 
 
-    vr.checkFunctionTestList("library_qlabs_person")   
+    vr.checkFunctionTestList("library_qlabs_person", "../docs/source/Objects/person_library.rst")   
     
     ### QCar
     
@@ -714,7 +715,7 @@ def main():
 
     time.sleep(1)
     
-    vr.checkFunctionTestList("library_qlabs_qcar")    
+    vr.checkFunctionTestList("library_qlabs_qcar", "../docs/source/Objects/car_library.rst")    
     
     ### Basic Shape
     vr.PrintWSHeader("Basic Shape")
@@ -810,7 +811,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn next degrees")
     
     x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=shapeHandle2, colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
-    vr.checkFunctionTestList("library_qlabs_basic_shape")    
+    vr.checkFunctionTestList("library_qlabs_basic_shape", "../docs/source/Objects/basic_shapes.rst")    
 
 
 
@@ -854,14 +855,14 @@ def main():
 
     
     
-    vr.checkFunctionTestList("library_qlabs_widget")  
+    vr.checkFunctionTestList("library_qlabs_widget", "../docs/source/Objects/widgets.rst")  
   
 
     ### Spline Line
     vr.PrintWSHeader("Spline Line")
     print("\n\n---Spline Line---")
 
-    vr.checkFunctionTestList("library_qlabs_spline_line")  
+    vr.checkFunctionTestList("library_qlabs_spline_line", "../docs/source/Objects/spline_line.rst")  
 
     x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
     QLabsFreeCamera().possess(qlabs, 300)
@@ -870,7 +871,7 @@ def main():
     vr.PrintWSHeader("Real-Time")
     print("\n\n---Real-Time---")
 
-    vr.checkFunctionTestList("library_qlabs_real_time")    
+    vr.checkFunctionTestList("library_qlabs_real_time", "../docs/source/System/real_time_library.rst")    
     
     
 
