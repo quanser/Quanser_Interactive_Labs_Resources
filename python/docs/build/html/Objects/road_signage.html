@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Road Signage &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Widgets" href="widgets.html" />
+    <link rel="prev" title="QCars" href="car_library.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System/index.html">Python System &amp; Utility Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Actors Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="camera_library.html">Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="person_library.html">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="car_library.html">QCars</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Road Signage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#crosswalk">Crosswalk</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#library">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connection-points">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#roundabout-sign">Roundabout Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutdescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundaboutconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roundabouttutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stop-sign">Stop Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stopsigndescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsignlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsignconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsignmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsignconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsignconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stopsigntutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#yield-sign">Yield Sign</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsigndescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsignlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsignconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsignmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsignconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsignconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yieldsigntutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#traffic-cone">Traffic Cone</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconedescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconelibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconeconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconemethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconeconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconeconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficconetutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#traffic-light">Traffic Light</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightdescription">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightlibrary">Library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightconstants">Constants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightmethods">Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightconfig">Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlightconnect">Connection Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trafficlighttutorial">Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="widgets.html">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_shapes.html">Basic Shapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python Actors Reference</a> &raquo;</li>
+      <li>Road Signage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Objects/road_signage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="road-signage">
+<span id="id1"></span><h1>Road Signage<a class="headerlink" href="#road-signage" title="Permalink to this headline"></a></h1>
+<section id="crosswalk">
+<h2>Crosswalk<a class="headerlink" href="#crosswalk" title="Permalink to this headline"></a></h2>
+<section id="description">
+<span id="crosswalkdescription"></span><h3>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h3>
+</section>
+<section id="library">
+<span id="crosswalklibrary"></span><h3>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_crosswalk.</span></span><span class="sig-name descname"><span class="pre">QLabsCrosswalk</span></span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning crosswalks.</p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<span id="crosswalkconstants"></span><h3>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.ID_CROSSWALK">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">ID_CROSSWALK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10010</span></em><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.ID_CROSSWALK" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="methods">
+<span id="crosswalkmethods"></span><h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a crosswalk in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – (Optional) See the configuration section for the available spawn configurations.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a crosswalk in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – (Optional) See the configuration section for the available spawn configurations.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a crosswalk in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a crosswalk of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsCrosswalk.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_crosswalk.html#QLabsCrosswalk.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the crosswalk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="configurations">
+<span id="crosswalkconfig"></span><h3>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h3>
+<img alt="../_images/crosswalk.png" src="../_images/crosswalk.png" />
+</section>
+<section id="connection-points">
+<span id="crosswalkconnect"></span><h3>Connection Points<a class="headerlink" href="#connection-points" title="Permalink to this headline"></a></h3>
+</section>
+<section id="tutorial">
+<span id="crosswalktutorial"></span><h3>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="roundabout-sign">
+<h2>Roundabout Sign<a class="headerlink" href="#roundabout-sign" title="Permalink to this headline"></a></h2>
+<section id="roundaboutdescription">
+<span id="id2"></span><h3>Description<a class="headerlink" href="#roundaboutdescription" title="Permalink to this headline"></a></h3>
+</section>
+<section id="roundaboutlibrary">
+<span id="id3"></span><h3>Library<a class="headerlink" href="#roundaboutlibrary" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_roundabout_sign.</span></span><span class="sig-name descname"><span class="pre">QLabsRoundaboutSign</span></span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning roundabout signs.</p>
+</dd></dl>
+
+</section>
+<section id="roundaboutconstants">
+<span id="id4"></span><h3>Constants<a class="headerlink" href="#roundaboutconstants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">ID_ROUNDABOUT_SIGN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10060</span></em><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="roundaboutmethods">
+<span id="id5"></span><h3>Methods<a class="headerlink" href="#roundaboutmethods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a roundabout sign in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians.</p></li>
+<li><p><strong>scale</strong> – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a roundabout sign in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees.</p></li>
+<li><p><strong>scale</strong> – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a roundabout sign in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a roundabout sign of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_roundabout_sign.QLabsRoundaboutSign.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsRoundaboutSign.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_roundabout_sign.html#QLabsRoundaboutSign.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_roundabout_sign.QLabsRoundaboutSign.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the roundabout sign</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="roundaboutconfig">
+<span id="id6"></span><h3>Configurations<a class="headerlink" href="#roundaboutconfig" title="Permalink to this headline"></a></h3>
+</section>
+<section id="roundaboutconnect">
+<span id="id7"></span><h3>Connection Points<a class="headerlink" href="#roundaboutconnect" title="Permalink to this headline"></a></h3>
+</section>
+<section id="roundabouttutorial">
+<span id="id8"></span><h3>Tutorial<a class="headerlink" href="#roundabouttutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="stop-sign">
+<h2>Stop Sign<a class="headerlink" href="#stop-sign" title="Permalink to this headline"></a></h2>
+<section id="stopsigndescription">
+<span id="id9"></span><h3>Description<a class="headerlink" href="#stopsigndescription" title="Permalink to this headline"></a></h3>
+</section>
+<section id="stopsignlibrary">
+<span id="id10"></span><h3>Library<a class="headerlink" href="#stopsignlibrary" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_stop_sign.</span></span><span class="sig-name descname"><span class="pre">QLabsStopSign</span></span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning stop signs.</p>
+</dd></dl>
+
+</section>
+<section id="stopsignconstants">
+<span id="id11"></span><h3>Constants<a class="headerlink" href="#stopsignconstants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.ID_STOP_SIGN">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">ID_STOP_SIGN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10020</span></em><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.ID_STOP_SIGN" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="stopsignmethods">
+<span id="id12"></span><h3>Methods<a class="headerlink" href="#stopsignmethods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a stop sign in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a stop sign in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a stop sign in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a stop sign of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_stop_sign.QLabsStopSign.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsStopSign.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_stop_sign.html#QLabsStopSign.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_stop_sign.QLabsStopSign.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the stop sign</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="stopsignconfig">
+<span id="id13"></span><h3>Configurations<a class="headerlink" href="#stopsignconfig" title="Permalink to this headline"></a></h3>
+</section>
+<section id="stopsignconnect">
+<span id="id14"></span><h3>Connection Points<a class="headerlink" href="#stopsignconnect" title="Permalink to this headline"></a></h3>
+</section>
+<section id="stopsigntutorial">
+<span id="id15"></span><h3>Tutorial<a class="headerlink" href="#stopsigntutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="yield-sign">
+<h2>Yield Sign<a class="headerlink" href="#yield-sign" title="Permalink to this headline"></a></h2>
+<section id="yieldsigndescription">
+<span id="id16"></span><h3>Description<a class="headerlink" href="#yieldsigndescription" title="Permalink to this headline"></a></h3>
+</section>
+<section id="yieldsignlibrary">
+<span id="id17"></span><h3>Library<a class="headerlink" href="#yieldsignlibrary" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_yield_sign.</span></span><span class="sig-name descname"><span class="pre">QLabsYieldSign</span></span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning yield signs.</p>
+</dd></dl>
+
+</section>
+<section id="yieldsignconstants">
+<span id="id18"></span><h3>Constants<a class="headerlink" href="#yieldsignconstants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.ID_YIELD_SIGN">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">ID_YIELD_SIGN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10070</span></em><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.ID_YIELD_SIGN" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="yieldsignmethods">
+<span id="id19"></span><h3>Methods<a class="headerlink" href="#yieldsignmethods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a yield sign in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a yield sign in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a yield sign in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a yield sign of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_yield_sign.QLabsYieldSign.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsYieldSign.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_yield_sign.html#QLabsYieldSign.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_yield_sign.QLabsYieldSign.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the yield sign</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="yieldsignconfig">
+<span id="id20"></span><h3>Configurations<a class="headerlink" href="#yieldsignconfig" title="Permalink to this headline"></a></h3>
+</section>
+<section id="yieldsignconnect">
+<span id="id21"></span><h3>Connection Points<a class="headerlink" href="#yieldsignconnect" title="Permalink to this headline"></a></h3>
+</section>
+<section id="yieldsigntutorial">
+<span id="id22"></span><h3>Tutorial<a class="headerlink" href="#yieldsigntutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="traffic-cone">
+<h2>Traffic Cone<a class="headerlink" href="#traffic-cone" title="Permalink to this headline"></a></h2>
+<section id="trafficconedescription">
+<span id="id23"></span><h3>Description<a class="headerlink" href="#trafficconedescription" title="Permalink to this headline"></a></h3>
+</section>
+<section id="trafficconelibrary">
+<span id="id24"></span><h3>Library<a class="headerlink" href="#trafficconelibrary" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_traffic_cone.</span></span><span class="sig-name descname"><span class="pre">QLabsTrafficCone</span></span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for spawning traffic cones.</p>
+</dd></dl>
+
+</section>
+<section id="trafficconeconstants">
+<span id="id25"></span><h3>Constants<a class="headerlink" href="#trafficconeconstants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">ID_TRAFFIC_CONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10000</span></em><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="trafficconemethods">
+<span id="id26"></span><h3>Methods<a class="headerlink" href="#trafficconemethods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a traffic cone in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – (Optional) See the configuration section for the available spawn configurations.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a traffic cone in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>configuration</strong> (<em>uint32</em>) – (Optional) See the configuration section for the available spawn configurations.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a traffic cone in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a traffic cone of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_traffic_cone.QLabsTrafficCone.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficCone.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_traffic_cone.html#QLabsTrafficCone.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_traffic_cone.QLabsTrafficCone.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the traffic cone</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="trafficconeconfig">
+<span id="id27"></span><h3>Configurations<a class="headerlink" href="#trafficconeconfig" title="Permalink to this headline"></a></h3>
+<img alt="../_images/trafficCones.png" src="../_images/trafficCones.png" />
+</section>
+<section id="trafficconeconnect">
+<span id="id28"></span><h3>Connection Points<a class="headerlink" href="#trafficconeconnect" title="Permalink to this headline"></a></h3>
+</section>
+<section id="trafficconetutorial">
+<span id="id29"></span><h3>Tutorial<a class="headerlink" href="#trafficconetutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+<section id="traffic-light">
+<h2>Traffic Light<a class="headerlink" href="#traffic-light" title="Permalink to this headline"></a></h2>
+<section id="trafficlightdescription">
+<span id="id30"></span><h3>Description<a class="headerlink" href="#trafficlightdescription" title="Permalink to this headline"></a></h3>
+</section>
+<section id="trafficlightlibrary">
+<span id="id31"></span><h3>Library<a class="headerlink" href="#trafficlightlibrary" title="Permalink to this headline"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_trafficlight.</span></span><span class="sig-name descname"><span class="pre">QLabsTrafficLight</span></span><a class="reference internal" href="../_modules/library_qlabs_trafficlight.html#QLabsTrafficLight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="trafficlightconstants">
+<span id="id32"></span><h3>Constants<a class="headerlink" href="#trafficlightconstants" title="Permalink to this headline"></a></h3>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.ID_TRAFFIC_LIGHT">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">ID_TRAFFIC_LIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10051</span></em><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.ID_TRAFFIC_LIGHT" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.STATE_RED">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">STATE_RED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.STATE_RED" title="Permalink to this definition"></a></dt>
+<dd><p>State constant for red light</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.STATE_GREEN">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">STATE_GREEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.STATE_GREEN" title="Permalink to this definition"></a></dt>
+<dd><p>State constant for green light</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.STATE_YELLOW">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">STATE_YELLOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.STATE_YELLOW" title="Permalink to this definition"></a></dt>
+<dd><p>State constant for yellow light</p>
+</dd></dl>
+
+</section>
+<section id="trafficlightmethods">
+<span id="id33"></span><h3>Methods<a class="headerlink" href="#trafficlightmethods" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_trafficlight.html#QLabsTrafficLight.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a stoplight in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>TODO: Update traffic light artwork
+TODO: Add configuration options for different orientations
+TODO: Add helper functions for multi-light setups</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_trafficlight.html#QLabsTrafficLight.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a stoplight in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>TODO: Update traffic light artwork
+TODO: Add configuration options for different orientations
+TODO: Add helper functions for multi-light setups</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_trafficlight.QLabsTrafficLight.set_state">
+<span class="sig-prename descclassname"><span class="pre">QLabsTrafficLight.</span></span><span class="sig-name descname"><span class="pre">set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_trafficlight.html#QLabsTrafficLight.set_state"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_trafficlight.QLabsTrafficLight.set_state" title="Permalink to this definition"></a></dt>
+<dd><p>Set the light state (red/yellow/green) of a traffic light actor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs.</p></li>
+<li><p><strong>state</strong> (<em>uint32</em>) – An integer constant corresponding to a light state (see class constants)</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Wait for confirmation of the state change before proceeding. This makes the method a blocking operation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="trafficlightconfig">
+<span id="id34"></span><h3>Configurations<a class="headerlink" href="#trafficlightconfig" title="Permalink to this headline"></a></h3>
+</section>
+<section id="trafficlightconnect">
+<span id="id35"></span><h3>Connection Points<a class="headerlink" href="#trafficlightconnect" title="Permalink to this headline"></a></h3>
+</section>
+<section id="trafficlighttutorial">
+<span id="id36"></span><h3>Tutorial<a class="headerlink" href="#trafficlighttutorial" title="Permalink to this headline"></a></h3>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="car_library.html" class="btn btn-neutral float-left" title="QCars" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="widgets.html" class="btn btn-neutral float-right" title="Widgets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

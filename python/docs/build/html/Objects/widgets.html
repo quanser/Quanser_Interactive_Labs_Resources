@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Widgets &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basic Shapes" href="basic_shapes.html" />
+    <link rel="prev" title="Road Signage" href="road_signage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System/index.html">Python System &amp; Utility Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Actors Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="camera_library.html">Cameras</a></li>
+<li class="toctree-l2"><a class="reference internal" href="person_library.html">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="car_library.html">QCars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="road_signage.html">Road Signage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Widgets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#library">Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial">Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basic_shapes.html">Basic Shapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python Actors Reference</a> &raquo;</li>
+      <li>Widgets</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Objects/widgets.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="widgets">
+<span id="id1"></span><h1>Widgets<a class="headerlink" href="#widgets" title="Permalink to this headline"></a></h1>
+<p>Widgets work slightly differently then the other objects in the Qlabs workspaces.
+They are special actors that cannot be addressed after they have been spawned
+therefore they cannot be deleted individually, they do not support parenting
+and all actor properties must be set when they are spawned.
+The advantage of widgets is that they are highly efficient dynamic actors so
+it is possible to spawn thousands of widgets while maintaining performance.</p>
+<p>In addition to the visible properties of widgets, widget actors can also
+individually contain invisible properties such as mass, a numerical ID tag, and a general
+purpose properties string.  Some actors that are designed to interact with widgets
+include class methods to read these properties.</p>
+<p>If you need the ability to make shapes static or the ability to address,
+modify, or parent shapes, see <a class="reference internal" href="basic_shapes.html#basic-shapes"><span class="std std-ref">Basic Shapes</span></a> instead.</p>
+<section id="description">
+<span id="widgetdescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+</section>
+<section id="library">
+<span id="widgetlibrary"></span><h2>Library<a class="headerlink" href="#library" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_widget.</span></span><span class="sig-name descname"><span class="pre">QLabsWidget</span></span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget" title="Permalink to this definition"></a></dt>
+<dd><p>This class is for the spawning of widgets.</p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<span id="widgetconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.CUBE">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">CUBE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.CUBE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.CYLINDER">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">CYLINDER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.CYLINDER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.SPHERE">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">SPHERE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.SPHERE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.AUTOCLAVE_CAGE">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">AUTOCLAVE_CAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.AUTOCLAVE_CAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.PLASTIC_BOTTLE">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">PLASTIC_BOTTLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.PLASTIC_BOTTLE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.METAL_CAN">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">METAL_CAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.METAL_CAN" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="methods">
+<span id="widgetmethods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widgetType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measuredMass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IDTag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a widget in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>widgetType</strong> (<em>uint32</em>) – See QLabsWidget class</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in radians.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>colour</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.</p></li>
+<li><p><strong>measuredMass</strong> (<em>float</em>) – A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.</p></li>
+<li><p><strong>IDTag</strong> (<em>uint8</em>) – An integer value for use with IDTag sensor instrumented actors.</p></li>
+<li><p><strong>properties</strong> (<em>string</em>) – A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Make this operation blocking until confirmation of the spawn has occurred.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If waitForConfirmation = <cite>False</cite> then returns <cite>True</cite> if spawn was successful, <cite>False</cite> otherwise.  If waitForConfirmation = <cite>True</cite>, returns a container detailed response information if successful, otherwise <cite>False</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean or CommModularContainer object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">widgetType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measuredMass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">IDTag</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waitForConfirmation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a widget in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>widgetType</strong> (<em>uint32</em>) – See QLabsWidget class</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates.</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw in degrees.</p></li>
+<li><p><strong>scale</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the scale in the x, y, and z directions.</p></li>
+<li><p><strong>colour</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.</p></li>
+<li><p><strong>measuredMass</strong> (<em>float</em>) – A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.</p></li>
+<li><p><strong>IDTag</strong> (<em>uint8</em>) – An integer value for use with IDTag sensor instrumented actors.</p></li>
+<li><p><strong>properties</strong> (<em>string</em>) – A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.</p></li>
+<li><p><strong>waitForConfirmation</strong> (<em>boolean</em>) – (Optional) Make this operation blocking until confirmation of the spawn has occurred.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If waitForConfirmation = <cite>False</cite> then returns <cite>True</cite> if spawn was successful, <cite>False</cite> otherwise.  If waitForConfirmation = <cite>True</cite>, returns a container detailed response information if successful, otherwise <cite>False</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean or CommModularContainer object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">destroy_all_spawned_widgets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.destroy_all_spawned_widgets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys all spawned widgets, but does not destroy actors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_widget.QLabsWidget.widget_spawn_configuration">
+<span class="sig-prename descclassname"><span class="pre">QLabsWidget.</span></span><span class="sig-name descname"><span class="pre">widget_spawn_configuration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enableShadow</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_widget.html#QLabsWidget.widget_spawn_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_widget.QLabsWidget.widget_spawn_configuration" title="Permalink to this definition"></a></dt>
+<dd><p>If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>enableShadow</strong> (<em>boolean</em>) – (Optional) Show (<cite>True</cite>) or hide (<cite>False</cite>) widget shadows.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="configurations">
+<span id="widgetconfig"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>TODO: Add picture</p>
+</div>
+</section>
+<section id="connection-points">
+<span id="widgetconnect"></span><h2>Connection Points<a class="headerlink" href="#connection-points" title="Permalink to this headline"></a></h2>
+<p>There are no connection points.</p>
+</section>
+<section id="tutorial">
+<span id="widgettutorial"></span><h2>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline"></a></h2>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="road_signage.html" class="btn btn-neutral float-left" title="Road Signage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_shapes.html" class="btn btn-neutral float-right" title="Basic Shapes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

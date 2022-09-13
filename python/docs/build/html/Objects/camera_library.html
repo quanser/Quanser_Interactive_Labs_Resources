@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cameras &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="People" href="person_library.html" />
+    <link rel="prev" title="Python Actors Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../System/index.html">Python System &amp; Utility Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Actors Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cameras</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cameralibrary">Camera Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connection-points">Connection Points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camera-tutorial">Camera Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="person_library.html">People</a></li>
+<li class="toctree-l2"><a class="reference internal" href="car_library.html">QCars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="road_signage.html">Road Signage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="widgets.html">Widgets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_shapes.html">Basic Shapes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python Actors Reference</a> &raquo;</li>
+      <li>Cameras</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Objects/camera_library.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cameras">
+<span id="camera-library"></span><h1>Cameras<a class="headerlink" href="#cameras" title="Permalink to this headline"></a></h1>
+<a class="reference internal image-reference" href="../_images/camera_header.png"><img alt="../_images/camera_header.png" class="align-center" src="../_images/camera_header.png" style="width: 417.0px; height: 265.5px;" /></a>
+<section id="description">
+<span id="cameradescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<p>Cameras in the Open Worlds are used for observing the workspace from different views and capturing image data.
+Cameras are considered “actors”.  The camera library controls the camera actors.</p>
+<p>A camera must be initialized first by spawning the camera in the location (or attached to the parent actor of choice) in order to use it.</p>
+<p>See the <a class="reference internal" href="#cameratutorial"><span class="std std-ref">Camera Tutorial</span></a> to get a better understanding of using cameras in the Quanser Interactive Labs.</p>
+</section>
+<section id="cameralibrary">
+<span id="id1"></span><h2>Camera Library<a class="headerlink" href="#cameralibrary" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs_free_camera.</span></span><span class="sig-name descname"><span class="pre">QLabsFreeCamera</span></span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera" title="Permalink to this definition"></a></dt>
+<dd><p>This class supports the spawning and control of free movement cameras in QLabs open worlds.</p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<span id="cameraconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.ID_FREE_CAMERA">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">ID_FREE_CAMERA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">170</span></em><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.ID_FREE_CAMERA" title="Permalink to this definition"></a></dt>
+<dd><p>Class ID</p>
+</dd></dl>
+
+</section>
+<section id="methods">
+<span id="cameramethods"></span><h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.spawn">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.spawn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a camera in an instance of QLabs at a specific location and rotation using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.spawn_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">spawn_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.spawn_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.spawn_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a camera in an instance of QLabs at a specific location and rotation using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, and yaw</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">spawn_and_parent_with_relative_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentClassID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentActorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentComponent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.spawn_and_parent_with_relative_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a camera in an instance of QLabs at a specific location and rotation relative to the parent actor using radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, yaw</p></li>
+<li><p><strong>parentClassID</strong> (<em>uint32</em>) – Parent class ID (Can be found in the class library)</p></li>
+<li><p><strong>parentActorNumber</strong> (<em>uint32</em>) – The unique actorNumber identifier for the parent class in QLabs</p></li>
+<li><p><strong>ParentComponent</strong> (<em>uint32</em>) – <cite>0</cite> for the origin of the parent actor, see the parent class for additional reference frame options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">spawn_and_parent_with_relative_transform_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentClassID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentActorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentComponent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.spawn_and_parent_with_relative_transform_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.spawn_and_parent_with_relative_transform_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Spawns a camera in an instance of QLabs at a specific location and rotation relative to the parent actor using degrees.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>float array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, yaw</p></li>
+<li><p><strong>parentClassID</strong> (<em>uint32</em>) – Parent class ID (Can be found in the class library)</p></li>
+<li><p><strong>parentActorNumber</strong> (<em>uint32</em>) – The unique actorNumber identifier for the parent class in QLabs</p></li>
+<li><p><strong>ParentComponent</strong> (<em>uint32</em>) – <cite>0</cite> for the origin of the parent actor, see the parent class for additional reference frame options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.possess">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">possess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.possess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.possess" title="Permalink to this definition"></a></dt>
+<dd><p>Possess (take control of) a camera in QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if possessing the camera was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.set_camera_properties">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">set_camera_properties</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fieldOfView</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depthOfField</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aperature</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">focusDistance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.set_camera_properties"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.set_camera_properties" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the camera properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>fieldOfView</strong> – The field of view that the camera can see (range:5-150)</p></li>
+<li><p><strong>depthOfField</strong> – The depth of field that the camera can see</p></li>
+<li><p><strong>aperture</strong> – The amount of light allowed into the camera sensor (range:2.0-22.0)</p></li>
+<li><p><strong>focusDistance</strong> – The focus distance that the camera can see (range:0.1-50.0)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if setting the camera properties was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.set_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">set_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.set_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.set_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Change the location and rotation of a spawned camera in radians</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, yaw in radians</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.set_transform_degrees">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">set_transform_degrees</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.set_transform_degrees"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.set_transform_degrees" title="Permalink to this definition"></a></dt>
+<dd><p>Change the location and rotation of a spawned camera in degrees</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>location</strong> (<em>array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for x, y and z coordinates</p></li>
+<li><p><strong>rotation</strong> (<em>array</em><em>[</em><em>3</em><em>]</em>) – An array of floats for the roll, pitch, yaw in degrees</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.destroy">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.destroy" title="Permalink to this definition"></a></dt>
+<dd><p>Destroys a camera in an instance of QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of actors destroyed. -1 if failed.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.ping">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.ping" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a camera of the corresponding actor number exists in the QLabs environment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if actor is present, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.get_world_transform">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">get_world_transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.get_world_transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.get_world_transform" title="Permalink to this definition"></a></dt>
+<dd><p>Get the location, rotation, and scale in world coordinates of the camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>success, location, rotation, scale</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, float array[3], float array[3], float array[3]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.set_image_capture_resolution">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">set_image_capture_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">640</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">480</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.set_image_capture_resolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.set_image_capture_resolution" title="Permalink to this definition"></a></dt>
+<dd><p>Change the default width and height of image resolution for capture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+<li><p><strong>width</strong> (<em>uint32</em>) – Must be an even number. Default 640</p></li>
+<li><p><strong>height</strong> (<em>uint32</em>) – Must be an even number. Default 480</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if spawn was successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs_free_camera.QLabsFreeCamera.get_image">
+<span class="sig-prename descclassname"><span class="pre">QLabsFreeCamera.</span></span><span class="sig-name descname"><span class="pre">get_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs_free_camera.html#QLabsFreeCamera.get_image"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs_free_camera.QLabsFreeCamera.get_image" title="Permalink to this definition"></a></dt>
+<dd><p>Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p></li>
+<li><p><strong>actorNumber</strong> (<em>uint32</em>) – User defined unique identifier for the class actor in QLabs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Success, RGB image data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean, byte array[variable]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="configurations">
+<span id="cameraconfigs"></span><h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline"></a></h2>
+<p>There are no configuration options for the camera actor.</p>
+</section>
+<section id="connection-points">
+<span id="cameraconnect"></span><h2>Connection Points<a class="headerlink" href="#connection-points" title="Permalink to this headline"></a></h2>
+<p>There are no connection points for the free camera actor.</p>
+</section>
+<section id="camera-tutorial">
+<span id="cameratutorial"></span><h2>Camera Tutorial<a class="headerlink" href="#camera-tutorial" title="Permalink to this headline"></a></h2>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There is a few easy steps to initializing a new camera in an environment using the interface as well as the code:</p>
+<ol class="arabic simple">
+<li><p>Pick a Location for your camera using the <a class="reference internal" href="../User%20Interface.html#coordinate-helper-determining-locations"><span class="std std-ref">Coordinate Helper (Determining Locations)</span></a> section.</p></li>
+<li><p>Copy the location and rotation desired.</p></li>
+<li><p>Use spawn or spawn_degrees to initialize a new camera. Paste the copied location and rotation into their respective places.</p></li>
+</ol>
+</div>
+<p><strong>See Also:</strong></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Python Actors Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="person_library.html" class="btn btn-neutral float-right" title="People" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

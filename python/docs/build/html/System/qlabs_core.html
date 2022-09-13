@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QLabs Core Library &mdash; Quanser&#39;s Self Driving Car Virtual Studio Documentation 0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_collapse.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tablefix.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QLabs Communication Container" href="qlabs_comm_container.html" />
+    <link rel="prev" title="Python System &amp; Utility Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+            <a href="../index.html">
+            <img src="../_static/quanser_selfdrivingcarstudio.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../User%20Interface.html">User Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python System &amp; Utility Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">QLabs Core Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qlabscorelibrary">QLabs Core Library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-methods">Basic Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-methods">Advanced Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qlabs-core-tutorial">QLabs Core Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qlabs_comm_container.html">QLabs Communication Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system_library.html">System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="environment_outdoors_library.html">Outdoor Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="real_time_library.html">Real-Time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Objects/index.html">Python Actors Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Debugging.html">Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Code%20Style.html">Code Style</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Quanser's Self Driving Car Virtual Studio Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python System &amp; Utility Reference</a> &raquo;</li>
+      <li>QLabs Core Library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/System/qlabs_core.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qlabs-core-library">
+<span id="id1"></span><h1>QLabs Core Library<a class="headerlink" href="#qlabs-core-library" title="Permalink to this headline"></a></h1>
+<section id="description">
+<span id="qlabscoredescription"></span><h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<p>The QLabs Core library is the base library that manages all communications to the Quanser Interactive Labs
+software. Only the open and close methods are typically used. The remaining methods are for advanced usage.</p>
+</section>
+<section id="qlabscorelibrary">
+<span id="id2"></span><h2>QLabs Core Library<a class="headerlink" href="#qlabscorelibrary" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">library_qlabs.</span></span><span class="sig-name descname"><span class="pre">QuanserInteractiveLabs</span></span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs" title="Permalink to this definition"></a></dt>
+<dd><p>This class establishes a server connection with QLabs and manages the communications.</p>
+</dd></dl>
+
+</section>
+<section id="constants">
+<span id="qlabscoreconstants"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline"></a></h2>
+<p>This library has no user constants.</p>
+</section>
+<section id="basic-methods">
+<span id="qlabscoremethodsbasic"></span><h2>Basic Methods<a class="headerlink" href="#basic-methods" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.open">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.open"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.open" title="Permalink to this definition"></a></dt>
+<dd><p>Open a connection to QLabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<em>string</em>) – The machine name or IP address of a local or remote copy of QLabs such as “localhost”, or “192.168.1.123”.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (Optional) Period to attempt the connection for before aborting. Default 10s.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.close">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.close" title="Permalink to this definition"></a></dt>
+<dd><p>Shutdown and close a connection to QLabs. Always close a connection when communications are finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>No return. If an existing connection cannot be found, the function will fail silently.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>none</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">set_wait_for_container_timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timeout</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.set_wait_for_container_timeout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout" title="Permalink to this definition"></a></dt>
+<dd><p>By default, a method using the wait_for_container method (typically represented with the waitForComfirmation flag) will abort waiting for an acknowledgment after 5 seconds
+at which time the method will return a failed response. This time period can be adjusted with this function. Values 
+less than or equal to zero will cause the methods to wait indefinitely until the expected acknowledgment is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> (<em>float</em>) – Timeout period in seconds</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="advanced-methods">
+<span id="qlabscoremethodsadvanced"></span><h2>Advanced Methods<a class="headerlink" href="#advanced-methods" title="Permalink to this headline"></a></h2>
+<p>To help manage the volume of data in the communications channel and help maintain real-time performance, the
+system is built on a request/response system. In a typical control system, a request for information about the state
+of the system is made from which a new output can be calculated.  This in turn is sent back to the simulation which
+in turn responds with a new set of data.</p>
+<p>Most of the library methods implemented follow this approach where the method call will package a single container into
+a packet, send the request and wait for the response before proceeding. All requests are processed once each frame so
+the communications rate is directly related to the frame rate. The exception to this is when the wait_for_container
+(typically represented with the waitForConfirmation flag) is used.  Once again a single container is packaged
+into a packet and sent, but if the waitForConfirmation is set to False then the method immediately returns allowing
+the user code to call more non-blocking methods. If done in quick succession, then multiple packets will be received
+by QLabs and all containers received during that frame will have a return container that will be packed into a single packet.</p>
+<p>Using non-blocking methods can significantly improve the data rate as you can now process multiple containers per
+animation frame instead of just one. The approach is simple, but the disadvantage is that high volumes of data can
+exceeds the communication buffers resulting lost requests and unreliable communications. This can work well
+when spawning hundreds of actors on setup, but you may find a a few actors missing when trying to spawn thousands.</p>
+<p>A better method to improve the communication efficiency as well as ensure all communication requests are processed
+during a single animation frame is to use the queue methods.  Rather than sending container immediately, the
+container is queued. Once all the containers have been added, the queue_send is used to package the containers
+into a single packet ensuring that all containers will be processed during a single animation frame. To construct a
+container for a given function, refer to the library source code. See <a class="reference internal" href="qlabs_comm_container.html#id1"><span class="std std-ref">QLabs Communication Container</span></a> for
+details of the container class.</p>
+<p>After the data is sent, poll the receive_new_data method to wait for the response packet. If the data exceeds
+the size of a TCP/IP frame, this method may need to be called multiple times to collect the entire packet.  Once
+receive_new_data returns True, use the get_next_container method to extract the next container from the packet
+until no more containers remain. To decode the contents of the container, again refer to the source code
+of the respective libraries the responses. Note that containers may not return in the same order in which
+they were sent.</p>
+<p>Using these low-level communications functions adds more complexity to the communication process, but it
+provides a higher level of control and optimizes the transaction process to improve the data throughput.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.send_container">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">send_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.send_container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.send_container" title="Permalink to this definition"></a></dt>
+<dd><p>Package a single container into a packet and transmit immediately</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>CommModularContainer object</em>) – CommModularContainer populated with the actor information.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.queue_add_container">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">queue_add_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">container</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.queue_add_container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.queue_add_container" title="Permalink to this definition"></a></dt>
+<dd><p>Queue a single container into a buffer for future transmission</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>CommModularContainer object</em>) – CommModularContainer populated with the actor information.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.queue_send">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">queue_send</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.queue_send"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.queue_send" title="Permalink to this definition"></a></dt>
+<dd><p>Package the containers in the queue and transmit immediately</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>container</strong> (<em>CommModularContainer object</em>) – CommModularContainer populated with the actor information.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful and the queue will be emptied, <cite>False</cite> otherwise and the queue will remain intact.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.queue_destroy">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">queue_destroy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.queue_destroy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.queue_destroy" title="Permalink to this definition"></a></dt>
+<dd><p>The container queue is emptied of all data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.receive_new_data">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">receive_new_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.receive_new_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.receive_new_data" title="Permalink to this definition"></a></dt>
+<dd><p>Poll for new data received from QLabs through the communications framework. If you are expecting large amounts of data such as video, this should be executed frequently to avoid overflowing internal buffers. Data split over multiple packets will be automatically reassembled before returning true. This method is non-blocking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><cite>True</cite> if at least one complete container has been received, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.get_next_container">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">get_next_container</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.get_next_container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.get_next_container" title="Permalink to this definition"></a></dt>
+<dd><p>If receive_new_data has returned true, use this method to receive the next container in the queue.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The data will be returned in a CommModularContainer object along with a flag to indicate if additional complete containers remain in the queue for extraction. If this method was used without checking for new data first and the queue is empty, the container will contain the default values with a class ID of ID_UNKNOWN.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>CommModularContainer object, boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.wait_for_container">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">wait_for_container</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">actorNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">functionNumber</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.wait_for_container"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.wait_for_container" title="Permalink to this definition"></a></dt>
+<dd><p>Continually poll and parse incoming containers until a response from specific actor with a specific function response is received. 
+Containers that do not match the class, actor number, and function number are discarded. This function blocks until the appropriate packet
+is received or the timeout is reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The data will be returned in a CommModularContainer object.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>CommModularContainer object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.flush_receive">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">flush_receive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.flush_receive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.flush_receive" title="Permalink to this definition"></a></dt>
+<dd><p>Flush receive buffers removing all unread data. This can be used to clear receive buffers after fault conditions to ensure it contains only new data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="library_qlabs.QuanserInteractiveLabs.ping">
+<span class="sig-prename descclassname"><span class="pre">QuanserInteractiveLabs.</span></span><span class="sig-name descname"><span class="pre">ping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qlabs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/library_qlabs.html#QuanserInteractiveLabs.ping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#library_qlabs.QuanserInteractiveLabs.ping" title="Permalink to this definition"></a></dt>
+<dd><p>QLabs will automatically disconnect a non-responsive client connection. The ping method can be used to keep the connection alive if operations are infrequent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>qlabs</strong> (<em>QuanserInteractiveLabs object</em>) – A QuanserInteractiveLabs object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>True</cite> if successful, <cite>False</cite> otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="qlabs-core-tutorial">
+<h2>QLabs Core Tutorial<a class="headerlink" href="#qlabs-core-tutorial" title="Permalink to this headline"></a></h2>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 1<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 2<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details><details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Example 3<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+</div>
+</details></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Python System &amp; Utility Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qlabs_comm_container.html" class="btn btn-neutral float-right" title="QLabs Communication Container" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Quanser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
