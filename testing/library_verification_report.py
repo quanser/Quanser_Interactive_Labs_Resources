@@ -111,6 +111,7 @@ class verificationReport:
 
             return found_function
         except:
+            print("Failure searching {}".format(documentation_path_and_name))
             return False
                     
     def checkValidationLibraryList(self):
