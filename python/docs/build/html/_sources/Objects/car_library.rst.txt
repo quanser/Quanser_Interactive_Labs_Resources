@@ -84,8 +84,8 @@ Constants
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_degrees
+.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_id
+.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_id_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state

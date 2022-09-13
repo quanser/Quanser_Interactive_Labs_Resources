@@ -46,8 +46,8 @@ Constants
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_person.QLabsPerson.spawn
-.. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
+.. automethod:: library_qlabs_person.QLabsPerson.spawn_id
+.. automethod:: library_qlabs_person.QLabsPerson.spawn_id_degrees
 .. automethod:: library_qlabs_person.QLabsPerson.move_to
 .. automethod:: library_qlabs_person.QLabsPerson.destroy
 .. automethod:: library_qlabs_person.QLabsPerson.ping
