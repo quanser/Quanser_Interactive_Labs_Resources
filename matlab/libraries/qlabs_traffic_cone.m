@@ -1,4 +1,4 @@
-classdef qlab_stop_sign < handle
+classdef qlabs_traffic_cone < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?
@@ -7,15 +7,14 @@ classdef qlab_stop_sign < handle
         payload = [];
 
 
-        ID_STOP_SIGN = 10020;
+        ID_TRAFFIC_CONE = 10000;
     end
     methods
         
-        function spawn(obj, qlabs, device_num, location, rotation, scale)
+        function spawn(obj, qlabs, device_num, location, rotation, scale, configuration)
             wait_for_confirmation = false;
-            configuration = 0;
             
-            qlabs.spawn(device_num, obj.ID_STOP_SIGN, location, rotation, scale, configuration, wait_for_confirmation);
+            qlabs.spawn(device_num, obj.ID_TRAFFIC_CONE, location, rotation, scale, configuration, wait_for_confirmation);
         end
 
     end

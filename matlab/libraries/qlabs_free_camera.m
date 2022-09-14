@@ -1,4 +1,4 @@
-classdef qlab_free_camera < handle
+classdef qlabs_free_camera < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?

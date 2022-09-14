@@ -1,4 +1,4 @@
-classdef qlab_qcar < handle
+classdef qlabs_qcar < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?

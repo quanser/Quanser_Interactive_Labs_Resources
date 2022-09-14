@@ -1,4 +1,4 @@
-classdef qlab_silhouette_person < handle
+classdef qlabs_silhouette_person < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?

@@ -1,4 +1,4 @@
-classdef qlab_traffic_cone < handle
+classdef qlabs_crosswalk < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?
@@ -7,14 +7,14 @@ classdef qlab_traffic_cone < handle
         payload = [];
 
 
-        ID_TRAFFIC_CONE = 10000;
+        ID_CROSSWALK = 10010;
     end
     methods
         
         function spawn(obj, qlabs, device_num, location, rotation, scale, configuration)
             wait_for_confirmation = false;
             
-            qlabs.spawn(device_num, obj.ID_TRAFFIC_CONE, location, rotation, scale, configuration, wait_for_confirmation);
+            qlabs.spawn(device_num, obj.ID_CROSSWALK, location, rotation, scale, configuration, wait_for_confirmation);
         end
 
     end

@@ -1,4 +1,4 @@
-classdef qlab_roundabout_sign < handle
+classdef qlabs_roundabout_sign < handle
     properties
         container_size = 0;
         class_id = 0;        % What device type is this?
