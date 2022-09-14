@@ -133,10 +133,8 @@ def main():
     x = QLabsFreeCamera().ping(qlabs, 3)
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
-    QLabsFreeCamera().spawn_id(qlabs, actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
-    QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
-    x = QLabsFreeCamera().possess(qlabs, 3)
     
+
     for y in range(51):
         x = QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     vr.PrintWS(x == True, "Set camera properties")

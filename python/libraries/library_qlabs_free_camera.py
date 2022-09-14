@@ -24,71 +24,102 @@ class QLabsFreeCamera:
     FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE = 91
     FCN_FREE_CAMERA_REQUEST_IMAGE = 100
     FCN_FREE_CAMERA_RESPONSE_IMAGE = 101
+
+    actor_number = None;
+    """ The current actor number of this class to be addressed. This can be modified at any time. """
+    _qlabs = None
+    _verbose = False
    
-    def __init__(self):
-       """ Constructor Method """
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor Method
+
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
        return
 
-    def spawn(self, qlabs, location, rotation):
+    def spawn(self, location, rotation):
         
         """Spawns a camera in an instance of QLabs at a specific location and rotation using radians.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param location: An array of floats for x, y and z coordinates
         :param rotation: An array of floats for the roll, pitch, and yaw
-        :type qlabs: object
         :type location: float array[3]
         :type rotation: float array[3]
         :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
         :rtype: int32, int32
         """
-        return QLabsCommon().spawn(qlabs, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
 
-    def spawn_degrees(self, qlabs, location, rotation):
+        [status, actor_number] = QLabsCommon().spawn(self.qlabs, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        if (status == 0):
+            self.actor_number = actor_number
+        else:
+            if (verbose):
+                if (status == 1):
+                    printf('Class not available.')
+                else if (status == 2):
+                    printf('Actor number already in use.')
+                else if (status == 3):
+                    printf('unknown error')
+
+            
+        return status, actor_number
+
+    def spawn_degrees(self, location, rotation):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation using degrees.
 
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
         :param rotation: An array of floats for the roll, pitch, and yaw
-        :type qlabs: object
-        :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
         :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
         :rtype: int32, int32
         """
         
-        return QLabsCommon().spawn(qlabs, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
+        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi])
 
        
-    def spawn_id(self, qlabs, actorNumber, location, rotation):
+    def spawn_id(self, actorNumber, location, rotation):
         
         """Spawns a camera in an instance of QLabs at a specific location and rotation using radians using a specified actor number.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
         :param rotation: An array of floats for the roll, pitch, and yaw
-        :type qlabs: object
         :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
         """
-        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        status = QLabsCommon().spawn_id(self.qlabs, actor_number, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        
+        if (status == 0):
+            self.actor_number = actor_number
+        else:
+            if (verbose):
+                if (status == 1):
+                    printf('Class not available.')
+                else if (status == 2):
+                    printf('Actor number already in use.')
+                else if (status == 3):
+                    printf('unknown error')
+
+        return status
            
-    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation):
+    def spawn_id_degrees(self, actorNumber, location, rotation):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation using degrees using a specified actor number.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
         :param rotation: An array of floats for the roll, pitch, and yaw
-        :type qlabs: object
         :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
@@ -96,20 +127,18 @@ class QLabsFreeCamera:
         :rtype: int32
         """
         
-        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_FREE_CAMERA,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, True)
+        return self.spawn_id(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi])
     
-    def spawn_id_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
+    def spawn_id_and_parent_with_relative_transform(self, actorNumber, location, rotation, parentClassID, parentActorNumber, parentComponent):
         """
         Spawns a camera in an instance of QLabs at a specific location and rotation relative to the parent actor using radians.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates
         :param rotation: An array of floats for the roll, pitch, yaw
         :param parentClassID: Parent class ID (Can be found in the class library)
         :param parentActorNumber: The unique actorNumber identifier for the parent class in QLabs
         :param ParentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
-        :type qlabs: object
         :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
