@@ -126,7 +126,7 @@ class QLabsCommon:
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
                 if (c == None):
-                    return None
+                    return -1
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
                     return status
@@ -173,7 +173,7 @@ class QLabsCommon:
             if waitForConfirmation:
                 c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT_RESPONSE)
                 if (c == None):
-                    return None
+                    return -1
                 if len(c.payload) == 5:
                     status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
                     return status, actorNumber
