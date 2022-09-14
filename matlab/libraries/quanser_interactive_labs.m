@@ -59,8 +59,8 @@ classdef quanser_interactive_labs < handle
                          uint8(123) ...
                          flip(typecast(int32(container.container_size), 'uint8')) ...
                          flip(typecast(int32(container.class_id), 'uint8')) ...
-                         flip(typecast(int32(container.device_number), 'uint8')) ...
-                         uint8(container.device_function) ...
+                         flip(typecast(int32(container.actor_number), 'uint8')) ...
+                         uint8(container.actor_function) ...
                          container.payload];
             
                      
@@ -119,8 +119,8 @@ classdef quanser_interactive_labs < handle
                 
                 c.container_size  = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+0:obj.receive_packet_container_index+3))), 'int32');
                 c.class_id        = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+4:obj.receive_packet_container_index+7))), 'int32');
-                c.device_number   = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+8:obj.receive_packet_container_index+11))), 'int32');
-                c.device_function = uint8(obj.receive_packet_buffer(obj.receive_packet_container_index+12));
+                c.actor_number   = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+8:obj.receive_packet_container_index+11))), 'int32');
+                c.actor_function = uint8(obj.receive_packet_buffer(obj.receive_packet_container_index+12));
                 
                 PayloadStart = obj.receive_packet_container_index+13;
                 PayloadEnd = obj.receive_packet_container_index + c.container_size - 1;
@@ -183,8 +183,8 @@ classdef quanser_interactive_labs < handle
                     [c, more_containers] = obj.get_next_container();
 
                     if c.class_id == class_id
-                        if c.device_number == device_num
-                            if c.device_function == function_num
+                        if c.actor_number == device_num
+                            if c.actor_function == function_num
                                 container = c;
                                 return;
                             end

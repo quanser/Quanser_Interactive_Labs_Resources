@@ -1,8 +1,8 @@
 function status = qlabs_common_spawn_id(qlabs, actor_number, class_id, location, rotation, scale, configuration, wait_for_confirmation)
     c = qlabs_comm_modular_container();
     c.class_id = c.ID_GENERIC_ACTOR_SPAWNER;
-    c.device_number = 0;
-    c.device_function = c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID;
+    c.actor_number = 0;
+    c.actor_function = c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID;
 	
 	status = -1;
 
@@ -20,7 +20,7 @@ function status = qlabs_common_spawn_id(qlabs, actor_number, class_id, location,
                  flip(typecast(single(scale(3)), 'uint8')) ...
                  flip(typecast(int32(configuration), 'uint8'))];
 
-    c.container_size = 13 + length(c.payload);
+    c.container_size = c.BASE_CONTAINER_SIZE + length(c.payload);
 
     if wait_for_confirmation
         qlabs.flush_receive()

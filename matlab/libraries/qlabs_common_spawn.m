@@ -1,8 +1,8 @@
 function [status, actor_number] = qlabs_common_spawn(qlabs, class_id, location, rotation, scale, configuration, wait_for_confirmation)
     c = qlabs_comm_modular_container();
     c.class_id = c.ID_GENERIC_ACTOR_SPAWNER;
-    c.device_number = 0;
-    c.device_function = c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN;
+    c.actor_number = 0;
+    c.actor_function = c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN;
 
 
     c.payload = [flip(typecast(int32(class_id), 'uint8')) ...

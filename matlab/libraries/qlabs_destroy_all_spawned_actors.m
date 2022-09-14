@@ -5,8 +5,8 @@ function num_destroyed = qlabs_destroy_all_spawned_actors(qlabs)
     c = qlabs_comm_modular_container();
 
     c.class_id = c.ID_GENERIC_ACTOR_SPAWNER;
-    c.device_number = device_num;
-    c.device_function = c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS;
+    c.actor_number = device_num;
+    c.actor_function = c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS;
     c.payload = [];
     c.container_size = 13 + length(c.payload);
 

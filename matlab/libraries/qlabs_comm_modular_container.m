@@ -2,10 +2,11 @@ classdef qlabs_comm_modular_container < handle
     properties
         container_size = 0;
         class_id = 0;       % What device type is this?
-        device_number = 0;   % Increment if there are more than one of the same device ID
-        device_function = 0; % Command/reponse
+        actor_number = 0;   % Increment if there are more than one of the same device ID
+        actor_function = 0; % Command/reponse
         payload = [];
 
+        BASE_CONTAINER_SIZE = 13;
 
         ID_GENERIC_ACTOR_SPAWNER = 135;
         FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID = 10;
