@@ -32,7 +32,7 @@ class QLabsPerson:
         return
        
     def spawn_id(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using radians.
+        """Spawns a person in an instance of QLabs at a specific location and rotation using radians with a specified actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -62,7 +62,7 @@ class QLabsPerson:
         return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_PERSON, [location[0], location[1], location[2]+1.0], [rotation[0], rotation[1], rotation[2]], scale, configuration, waitForConfirmation)
 
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using degrees.
+        """Spawns a person in an instance of QLabs at a specific location and rotation using degrees with a specified actor number.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs

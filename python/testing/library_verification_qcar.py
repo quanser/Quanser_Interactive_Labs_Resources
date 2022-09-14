@@ -105,6 +105,7 @@ def main():
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     
+
     x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     vr.PrintWS(x == 0, "Spawn sign with radians")
     

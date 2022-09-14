@@ -44,9 +44,46 @@ class QLabsQCar:
     def __init__(self):
         """ Constructor Method """
         return
+
+    def spawn(self, qlabs, location, rotation, waitForConfirmation=True):
+        """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
+        :param rotation: An array of floats for the roll, pitch, and yaw in radians
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :type qlabs: QuanserInteractiveLabs object
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type waitForConfirmation: boolean
+        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
+        :rtype: int32, int32
+
+
+        """
+        return QLabsCommon().spawn(qlabs, self.ID_QCAR, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
+    
+    def spawn_degrees(self, qlabs, location, rotation, waitForConfirmation=True):
+        """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
+
+        :param qlabs: A QuanserInteractiveLabs object
+        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
+        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :type qlabs: QuanserInteractiveLabs object
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type waitForConfirmation: boolean
+        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
+        :rtype: int32, int32
+
+
+        """        
+        return QLabsCommon().spawn(qlabs, self.ID_QCAR,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1.0, 1.0, 1.0], 0, waitForConfirmation)
+    
        
     def spawn_id(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
+        """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -66,7 +103,7 @@ class QLabsQCar:
         return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_QCAR, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
     
     def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
+        """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
         :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
