@@ -1,5 +1,5 @@
-from library_qlabs_common import QLabsCommon
 from library_qlabs import CommModularContainer
+from library_qlabs_actor import QLabsActor
 
 import math
 import struct
@@ -9,7 +9,7 @@ import numpy as np
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsFreeCamera:
+class QLabsFreeCamera(QLabsActor):
     """ This class supports the spawning and control of free movement cameras in QLabs open worlds."""
 
     ID_FREE_CAMERA = 170 
@@ -41,16 +41,8 @@ class QLabsFreeCamera:
 
        self._qlabs = qlabs
        self._verbose = verbose
+       self._classID = self.ID_FREE_CAMERA
        return
-
-    def _is_actor_number_valid(self):
-        if self.actorNumber == None:
-            if (self._verbose):
-                print('actorNumber object variable None. Use a spawn function to assign an actor or manually assign the actorNumber variable.')
-
-            return False
-        else:
-            return True
 
     def spawn(self, location, rotation):
         
@@ -64,7 +56,7 @@ class QLabsFreeCamera:
         :rtype: int32, int32
         """
 
-        [status, actorNumber] = QLabsCommon().spawn(self._qlabs, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        [status, actorNumber] = self._spawn(location, rotation, [1, 1, 1], 0, True)
         if (status == 0):
             self.actorNumber = actorNumber
         else:
@@ -110,7 +102,7 @@ class QLabsFreeCamera:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
         """
-        status = QLabsCommon().spawn_id(self._qlabs, actorNumber, self.ID_FREE_CAMERA, location, rotation, [1, 1, 1], 0, True)
+        status = self._spawn_id(actorNumber, location, rotation, [1, 1, 1], 0, True)
         
         if (status == 0):
             self.actorNumber = actorNumber
@@ -162,7 +154,7 @@ class QLabsFreeCamera:
         :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
         :rtype: int32
         """
-        status = QLabsCommon().spawn_id_and_parent_with_relative_transform(self._qlabs, actorNumber, self.ID_FREE_CAMERA,  location, rotation, [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
+        status = self._spawn_id_and_parent_with_relative_transform(actorNumber, location, rotation, [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
 
         if (status == 0):
             self.actorNumber = actorNumber
@@ -201,7 +193,7 @@ class QLabsFreeCamera:
         :rtype: int32
 
         """
-        return QLabsCommon().spawn_id_and_parent_with_relative_transform(self._qlabs, actorNumber, self.ID_FREE_CAMERA,location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1, 1, 1], 0, parentClassID, parentActorNumber, parentComponent, True)
+        return self.spawn_id_and_parent_with_relative_transform(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], parentClassID, parentActorNumber, parentComponent)
    
     
     def possess(self):
@@ -317,45 +309,6 @@ class QLabsFreeCamera:
         """
         return self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi]) 
 
-    def destroy(self):
-        """Destroys a camera in an instance of QLabs.
-
-        :return: The number of actors destroyed. -1 if failed.
-        :rtype: int32
-
-        """
-        if (not self._is_actor_number_valid()):
-            return False
-        
-        return QLabsCommon().destroy_spawned_actor(self._qlabs, self.ID_FREE_CAMERA, self.actorNumber)
-
-
-    def ping(self):
-        """Checks if a camera of the corresponding actor number exists in the QLabs environment.
-
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :return: `True` if actor is present, `False` otherwise
-        :rtype: boolean
-
-        """
-        if (not self._is_actor_number_valid()):
-            return False
-
-        return QLabsCommon().ping_actor(self._qlabs, self.actorNumber, self.ID_FREE_CAMERA)
-
-    def get_world_transform(self):
-        """Get the location, rotation, and scale in world coordinates of the camera
-        
-        :return: success, location, rotation, scale
-        :rtype: boolean, float array[3], float array[3], float array[3]
-        """
-        if (not self._is_actor_number_valid()):
-            return False, [0,0,0], [0,0,0], [0,0,0]
-
-        return QLabsCommon().get_world_transform(self._qlabs, self.actorNumber, self.ID_FREE_CAMERA)
 
     def set_image_capture_resolution(self, width=640, height=480):
         """Change the default width and height of image resolution for capture
