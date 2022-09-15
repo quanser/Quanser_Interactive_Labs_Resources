@@ -41,11 +41,19 @@ Constants
 .. autoattribute:: library_qlabs_person.QLabsPerson.JOG
 .. autoattribute:: library_qlabs_person.QLabsPerson.RUN
 
+.. _personMemberVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_person.QLabsPerson.actorNumber
+
 .. _personMethods:
 
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_person.QLabsPerson.__init__
 .. automethod:: library_qlabs_person.QLabsPerson.spawn
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_id

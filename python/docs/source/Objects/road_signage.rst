@@ -27,6 +27,14 @@ Constants
 
 .. autoattribute:: library_qlabs_crosswalk.QLabsCrosswalk.ID_CROSSWALK
 
+.. _crosswalkVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_crosswalk.QLabsPerson.actorNumber
+
+
 .. _crosswalkMethods:
 
 Methods
@@ -88,6 +96,13 @@ Constants
 
 .. autoattribute:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
 
+.. _roundaboutVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.actorNumber
+
 .. _roundaboutMethods:
 
 Methods
@@ -147,6 +162,13 @@ Constants
 
 .. autoattribute:: library_qlabs_stop_sign.QLabsStopSign.ID_STOP_SIGN
 
+.. _stopsignVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_stop_sign.QLabsStopSign.actorNumber
+
 .. _stopsignMethods:
 
 Methods
@@ -205,6 +227,13 @@ Constants
 
 .. autoattribute:: library_qlabs_yield_sign.QLabsYieldSign.ID_YIELD_SIGN
 
+.. _yieldsignVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_yield_sign.QLabsYieldSign.actorNumber
+
 .. _yieldsignMethods:
 
 Methods
@@ -262,6 +291,13 @@ Constants
 ^^^^^^^^^
 
 .. autoattribute:: library_qlabs_traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE
+
+.. _trafficconeVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_traffic_cone.QLabsTrafficCone.actorNumber
 
 .. _trafficconeMethods:
 
@@ -326,11 +362,19 @@ Constants
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_GREEN
 .. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_YELLOW
 
+.. _trafficlightVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.actorNumber
+
 .. _trafficlightMethods:
 
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.__init__
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_degrees
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id

@@ -28,7 +28,7 @@ class QLabsPerson(QLabsActor):
 
 
     def __init__(self, qlabs, verbose=False):
-       """ Constructor Method
+       """ Constructor method
 
        :param qlabs: A QuanserInteractiveLabs object
        :param verbose: (Optional) Print error information to the console.

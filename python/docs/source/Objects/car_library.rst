@@ -54,22 +54,6 @@ Constants
 
 
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.ID_QCAR
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_VELOCITY_STATE_RESPONSE
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_TRANSFORM_STATE_RESPONSE
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_POSSESS_ACK
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_REQUEST
-.. 
- autoattribute:: library_qlabs_qcar.QLabsQCar.FCN_QCAR_CAMERA_DATA_RESPONSE
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_RIGHT
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_BACK
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_LEFT
@@ -79,11 +63,20 @@ Constants
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_OVERHEAD
 .. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_TRAILING
 
+
+.. _carMemberVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_qcar.QLabsQCar.actorNumber
+
 .. _carMethods:
 
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_qcar.QLabsQCar.__init__
 .. automethod:: library_qlabs_qcar.QLabsQCar.spawn
 .. automethod:: library_qlabs_qcar.QLabsQCar.spawn_degrees
 .. automethod:: library_qlabs_qcar.QLabsQCar.spawn_id

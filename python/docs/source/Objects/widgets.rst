@@ -48,6 +48,7 @@ Constants
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_widget.QLabsWidget.__init__
 .. automethod:: library_qlabs_widget.QLabsWidget.spawn
 .. automethod:: library_qlabs_widget.QLabsWidget.spawn_degrees
 .. automethod:: library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets

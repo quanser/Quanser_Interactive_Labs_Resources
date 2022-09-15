@@ -24,7 +24,7 @@ class QLabsActor:
     """Response from an actor with its current location, rotation, and scale."""
 
     actorNumber = None
-    """ The current actor number of this class to be addressed. This can be modified at any time. """
+    """ The current actor number of this class to be addressed. This will be set by spawn methods and cleared by destroy methods. It will not be modified by the destroy all actors.  This can be manually altered at any time to use one object to address multiple actors. """
     _qlabs = None
     _verbose = False
     _classID = 0
@@ -229,14 +229,9 @@ class QLabsActor:
             return -1                              
             
     def ping(self):
-        """Check if an actor of the specified class and actor number is present in the QLabs environment.
+        """Checks if the actor is still present in the environment. Note that if you did not spawn the actor with one of the spawn functions, you may need to manually set the actorNumber member variable.
+           
         
-        :param qlabs: A QuanserInteractiveLabs object.
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :type classID: uint32
         :return: `True` if successful, `False` otherwise
         :rtype: boolean
         """

@@ -41,11 +41,19 @@ Constants
 .. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CYLINDER
 .. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_SPHERE
 
+.. _basicshapeMemberVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.actorNumber
+
 .. _basicshapeMethods:
 
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.__init__
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id

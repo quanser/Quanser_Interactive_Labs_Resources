@@ -35,11 +35,19 @@ Constants
 
 .. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.ID_FREE_CAMERA
 
+.. _cameraMemberVars:
+
+Member Variables
+^^^^^^^^^^^^^^^^
+
+.. autoattribute:: library_qlabs_free_camera.QLabsFreeCamera.actorNumber
+
 .. _cameraMethods:
 
 Methods
 ^^^^^^^
 
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.__init__
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_degrees
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id
