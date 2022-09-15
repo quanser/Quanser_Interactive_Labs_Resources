@@ -77,6 +77,7 @@ class QLabsActor:
 
             if len(c.payload) == 4:
                 num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
+                self.actorNumber = None
                 return num_actors_destroyed
             else:
                 return -1
@@ -302,8 +303,8 @@ class QLabsActor:
     def get_world_transform_degrees(self):
         """Get the location, rotation, and scale in world coordinates of the actor
         
-        :return: success, location, rotation in degrees
-        :rtype: boolean, float array[3], float array[3]
+        :return: success, location, rotation in degrees, scale
+        :rtype: boolean, float array[3], float array[3], float array[3]
         """    
         success, location, rotation, scale = self.get_world_transform()
         rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]

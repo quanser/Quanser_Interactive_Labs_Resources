@@ -457,21 +457,26 @@ def main():
     
     vr.PrintWSHeader("QCar")
     print("\n\n---QCar---")
-    
-    x = QLabsQCar().spawn_id(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+
+    hQCar0 = QLabsQCar(qlabs)
+    x = hQCar0.spawn_id(actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn QCar with radians")
     
-    x = QLabsQCar().spawn_id(qlabs, actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    hQCar0Duplicate = QLabsQCar(qlabs, True)
+    x = hQCar0Duplicate.spawn_id(actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn QCar with duplicate ID (return code 2)")
     
-    QLabsQCar().spawn_id(qlabs, actorNumber=1, location=[-17.1, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
-    x = QLabsQCar().destroy(qlabs, actorNumber=1)
+    hQCar1 = QLabsQCar(qlabs)
+    hQCar1.spawn_id(actorNumber=1, location=[-17.1, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    x = hQCar1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing QCar (expect return 1)")
     
-    x = QLabsQCar().destroy(qlabs, actorNumber=10)
+    hQCar1.actorNumber = 10
+    x = hQCar1.destroy()
     vr.PrintWS(x == 0, "Destroy QCar that doesn't exist (expect return 0)")
     
-    x = QLabsQCar().spawn_id_degrees(qlabs, actorNumber=2, location=[-11.6, 17.445, 0.005], rotation=[0,0,90], waitForConfirmation=True)
+    hQCar2 = QLabsQCar(qlabs)
+    x = hQCar2.spawn_id_degrees(actorNumber=2, location=[-11.6, 17.445, 0.005], rotation=[0,0,90], waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn QCar with degrees")
     
     
@@ -481,9 +486,9 @@ def main():
     
     time.sleep(0.5)
     
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=1, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
+    hQCar2.set_velocity_and_request_state(forward=1, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
     time.sleep(1)
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=0.0, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
+    hQCar2.set_velocity_and_request_state(forward=0.0, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
     if require_user_input == True:
         x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):")
     else:
@@ -491,9 +496,9 @@ def main():
     vr.PrintWS(x == "", "Headlights")
     vr.PrintWS(x == "", "Set velocity")
     
-    QLabsQCar().set_velocity_and_request_state_degrees(qlabs, actorNumber=2, forward=1, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    hQCar2.set_velocity_and_request_state_degrees(forward=1, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     time.sleep(1)
-    success, location, rotation, frontHit, rearHit = QLabsQCar().set_velocity_and_request_state_degrees(qlabs, actorNumber=2, forward=0.0, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    success, location, rotation, frontHit, rearHit = hQCar2.set_velocity_and_request_state_degrees(forward=0.0, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     print(rotation)
     if require_user_input == True:
         x = input("Moving forward towards the left of the screen? Enter yes, anything else no):")
@@ -502,12 +507,12 @@ def main():
     vr.PrintWS(x == "", "Set velocity degrees")
     
 
-    x = QLabsQCar().possess(qlabs, 2)
+    x = hQCar2.possess()
         
     time.sleep(0.1)
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=1, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
+    hQCar2.set_velocity_and_request_state(forward=1, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
     time.sleep(1)
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=0.0, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
+    hQCar2.set_velocity_and_request_state(forward=0.0, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
     
     if require_user_input == True:
         x = input("Brake lights on and casting red glow? (Enter yes, anything else no):")
@@ -516,7 +521,7 @@ def main():
     vr.PrintWS(x == "", "Brake lights")
     
     
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=2, forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    hQCar2.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     
     for env_time in range(60):
         QLabsEnvironmentOutdoors().set_time_of_day(qlabs, env_time/10*2)
@@ -528,49 +533,51 @@ def main():
     hCameraQCars.set_transform(location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
     QLabsBasicShape().spawn_id(qlabs, 100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     QLabsBasicShape().spawn_id(qlabs, 101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    QLabsQCar().spawn_id(qlabs, actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
+
+    hQCar3 = QLabsQCar(qlabs)
+    hQCar3.spawn_id(actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
     
     for count in range(10):
-        x, location, rotation, frontHit, rearHit  = QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+        x, location, rotation, frontHit, rearHit  = hQCar3.set_velocity_and_request_state(forward=2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
 
         time.sleep(0.25)
 
     vr.PrintWS(x == True and frontHit == True, "Front bumper hit")
-    x = QLabsQCar().ghost_mode(qlabs, actorNumber=3)
+    x = hQCar3.ghost_mode()
     vr.PrintWS(x == True, "Ghost Mode")
     
 
     for count in range(10):
-        x, location, rotation, frontHit, rearHit  = QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=-2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+        x, location, rotation, frontHit, rearHit  = hQCar3.set_velocity_and_request_state(forward=-2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
 
         time.sleep(0.25)
         
-    QLabsQCar().ghost_mode(qlabs, actorNumber=3, enable=True, colour=[1,0,0])
+    hQCar3.ghost_mode(enable=True, colour=[1,0,0])
 
     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit")
-    QLabsQCar().set_velocity_and_request_state(qlabs, actorNumber=3, forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    hQCar3.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     
 
     
-    x, location, rotation, forward_vector, up_vector, frontHit, rearHit = QLabsQCar().set_transform_and_request_state(qlabs, actorNumber=3, location=[-16.1, 26.299, 0.005], rotation=[0,0,math.pi-0.01], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    x, location, rotation, forward_vector, up_vector, frontHit, rearHit = hQCar3.set_transform_and_request_state(location=[-16.1, 26.299, 0.005], rotation=[0,0,math.pi-0.01], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     vr.PrintWS(x == True and frontHit == True, "Front bumper hit with transform")
     
-    x, loc, rot = QLabsQCar().get_world_transform(qlabs, 3)
+    x, loc, rot, scale = hQCar3.get_world_transform()
     vr.PrintWS(abs(np.sum(np.subtract(loc, [-16.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,math.pi-0.01]))) < 0.01 and x == True, "Get world transform")
     
     
-    x, location, rotation, forward_vector, up_vector, frontHit, rearHit = QLabsQCar().set_transform_and_request_state_degrees(qlabs, actorNumber=3, location=[-13.1, 26.299, 0.005], rotation=[0,0,179], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    x, location, rotation, forward_vector, up_vector, frontHit, rearHit = hQCar3.set_transform_and_request_state_degrees(location=[-13.1, 26.299, 0.005], rotation=[0,0,179], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit with transform")
 
-    x, loc, rot = QLabsQCar().get_world_transform_degrees(qlabs, 3)
+    x, loc, rot, scales = hQCar3.get_world_transform_degrees()
     vr.PrintWS(abs(np.sum(np.subtract(loc, [-13.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,179]))) < 0.01 and x == True, "Get world transform degrees")
     
-    QLabsQCar().ghost_mode(qlabs, actorNumber=3, enable=False, colour=[1,0,0])
+    hQCar3.ghost_mode(enable=False, colour=[1,0,0])
 
     
     #camera tests
     print("\nQCar camera tests...")
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_OVERHEAD)
+    hQCar2.possess(hQCar2.CAMERA_OVERHEAD)
     if require_user_input == True:
         x = input("Overhead camera? (Enter yes, anything else no):")
     else:
@@ -578,7 +585,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess overhead camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_TRAILING)
+    hQCar2.possess(hQCar2.CAMERA_TRAILING)
     if require_user_input == True:
         x = input("Trailing camera? (Enter yes, anything else no):")
     else:
@@ -586,7 +593,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess trailing camera")
     
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_FRONT)
+    hQCar2.possess(hQCar2.CAMERA_CSI_FRONT)
     if require_user_input == True:
         x = input("Front camera? (Enter yes, anything else no):")
     else:
@@ -594,7 +601,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess front camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_RIGHT)
+    hQCar2.possess(hQCar2.CAMERA_CSI_RIGHT)
     if require_user_input == True:
         x = input("Right camera? (Enter yes, anything else no):")
     else:
@@ -602,7 +609,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess right camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_BACK)
+    hQCar2.possess(hQCar2.CAMERA_CSI_BACK)
     if require_user_input == True:
         x = input("Back camera? (Enter yes, anything else no):")
     else:
@@ -610,7 +617,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess back camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_CSI_LEFT)
+    hQCar2.possess(hQCar2.CAMERA_CSI_LEFT)
     if require_user_input == True:
         x = input("Left camera? (Enter yes, anything else no):")
     else:
@@ -618,7 +625,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess left camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_RGB)
+    hQCar2.possess(hQCar2.CAMERA_RGB)
     if require_user_input == True:
         x = input("Real Sense RGB camera? (Enter yes, anything else no):")
     else:
@@ -626,7 +633,7 @@ def main():
         time.sleep(0.5)
     vr.PrintWS(x == "", "Possess Real Sense RGB camera")
 
-    QLabsQCar().possess(qlabs, 2, QLabsQCar().CAMERA_DEPTH)
+    hQCar2.possess(hQCar2.CAMERA_DEPTH)
     if require_user_input == True:
         x = input("Real Sense Depth camera? (Enter yes, anything else no):")
     else:
@@ -640,7 +647,7 @@ def main():
     cv2.waitKey(1)
     
     
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_CSI_FRONT)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_CSI_FRONT)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -650,7 +657,7 @@ def main():
     vr.PrintWS(x == True, "Image read CSI Front")
     cv2.waitKey(1000)
 
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_CSI_RIGHT)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_CSI_RIGHT)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -660,7 +667,7 @@ def main():
     vr.PrintWS(x == True, "Image read CSI Right")
     cv2.waitKey(1000)
 
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_CSI_BACK)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_CSI_BACK)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -670,7 +677,7 @@ def main():
     vr.PrintWS(x == True, "Image read CSI Back")
     cv2.waitKey(1000)
 
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_CSI_LEFT)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_CSI_LEFT)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -680,7 +687,7 @@ def main():
     vr.PrintWS(x == True, "Image read CSI Left")
     cv2.waitKey(1000)
 
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_RGB)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_RGB)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -690,7 +697,7 @@ def main():
     vr.PrintWS(x == True, "Image read Real Sense RGB")
     cv2.waitKey(1000)
 
-    x, camera_image = QLabsQCar().get_image(qlabs, actorNumber=2, camera=QLabsQCar().CAMERA_DEPTH)
+    x, camera_image = hQCar2.get_image(camera=hQCar2.CAMERA_DEPTH)
     if (x == True):
         cv2.imshow('QCarImageStream', camera_image)
         cv2.waitKey(1)
@@ -703,16 +710,16 @@ def main():
 
     #ping
     print("Testing ping response...")
-    x = QLabsQCar().ping(qlabs, 2)
+    x = hQCar2.ping()
     vr.PrintWS(x == True, "Ping existing QCar (expect True)")
     
-    x = QLabsQCar().ping(qlabs, 123)
+    x = hQCar1.ping()
     vr.PrintWS(x == False, "Ping QCar that doesn't exist (expect False)")    
     
     
     #LIDAR
 
-    QLabsQCar().possess(qlabs, 3, QLabsQCar().CAMERA_OVERHEAD)
+    hQCar3.possess(hQCar3.CAMERA_OVERHEAD)
 
     lidarPlot = pg.plot(title="LIDAR")   
     squareSize = 100
@@ -728,7 +735,7 @@ def main():
     
     for count in range(20):
         
-        success, angle, distance = QLabsQCar().get_lidar(qlabs,0,samplePoints=400)
+        success, angle, distance = hQCar3.get_lidar(samplePoints=400)
         
         x = np.sin(angle)*distance
         y = np.cos(angle)*distance
@@ -911,7 +918,7 @@ def main():
 
 vr = verificationReport('QCar Validation Report.xlsx', 'library_verification_qcar.py', library_path)
 vr.ignore_list = ignore_list
-vr.verbose = True
+#vr.verbose = True
 
 
 main()

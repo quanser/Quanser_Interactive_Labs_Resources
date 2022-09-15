@@ -1,5 +1,5 @@
-from library_qlabs_common import QLabsCommon
 from library_qlabs import CommModularContainer
+from library_qlabs_actor import QLabsActor
 
 import math
 import struct
@@ -9,7 +9,7 @@ import numpy as np
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsQCar:
+class QLabsQCar(QLabsActor):
     """This class is for spawning QCars."""
     
        
@@ -40,19 +40,27 @@ class QLabsQCar:
     CAMERA_TRAILING = 7
     """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     
-    # Initialize class
-    def __init__(self):
-        """ Constructor Method """
-        return
 
-    def spawn(self, qlabs, location, rotation, waitForConfirmation=True):
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor Method
+
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
+       self._classID = self.ID_QCAR
+       return
+
+    def spawn(self, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
         :type location: float array[3]
         :type rotation: float array[3]
         :type waitForConfirmation: boolean
@@ -61,16 +69,14 @@ class QLabsQCar:
 
 
         """
-        return QLabsCommon().spawn(qlabs, self.ID_QCAR, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
+        return self._spawn(location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
     
-    def spawn_degrees(self, qlabs, location, rotation, waitForConfirmation=True):
+    def spawn_degrees(self, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
         :type location: float array[3]
         :type rotation: float array[3]
         :type waitForConfirmation: boolean
@@ -79,18 +85,16 @@ class QLabsQCar:
 
 
         """        
-        return QLabsCommon().spawn(qlabs, self.ID_QCAR,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1.0, 1.0, 1.0], 0, waitForConfirmation)
+        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], waitForConfirmation)
     
        
-    def spawn_id(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
+    def spawn_id(self, actorNumber, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
@@ -100,17 +104,15 @@ class QLabsQCar:
 
 
         """
-        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_QCAR, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
+        return self._spawn_id(actorNumber, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
     
-    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, waitForConfirmation=True):
+    def spawn_id_degrees(self, actorNumber, location, rotation, waitForConfirmation=True):
         """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
 
-        :param qlabs: A QuanserInteractiveLabs object
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
         :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
@@ -120,14 +122,12 @@ class QLabsQCar:
 
 
         """        
-        return QLabsCommon().spawn_id(qlabs, actorNumber, self.ID_QCAR,  location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], [1.0, 1.0, 1.0], 0, waitForConfirmation)
+        return self.spawn_id(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], waitForConfirmation)
     
     
-    def set_transform_and_request_state(self, qlabs, actorNumber, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
+    def set_transform_and_request_state(self, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
         """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
@@ -137,8 +137,6 @@ class QLabsQCar:
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
@@ -152,9 +150,12 @@ class QLabsQCar:
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
 
         """ 
+        if (not self._is_actor_number_valid()):
+            return False, [0,0,0], [0,0,0], [0,0,0], [0,0,0], False, False
+
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_SET_TRANSFORM_AND_REQUEST_STATE
         c.payload = bytearray(struct.pack(">ffffffBBBBBB", location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
@@ -168,11 +169,11 @@ class QLabsQCar:
         rearHit = False
 
         if waitForConfirmation:
-            qlabs.flush_receive()
+            self._qlabs.flush_receive()
 
-        if (qlabs.send_container(c)):
+        if (self._qlabs.send_container(c)):
             if waitForConfirmation:
-                c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_TRANSFORM_STATE_RESPONSE)
+                c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_TRANSFORM_STATE_RESPONSE)
 
                 if (c == None):
                     return False, location, rotation, forward_vector, up_vector, frontHit, rearHit
@@ -188,11 +189,9 @@ class QLabsQCar:
         else:
             return False, location, rotation, forward_vector, up_vector, frontHit, rearHit  
 
-    def set_transform_and_request_state_degrees(self, qlabs, actorNumber, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
+    def set_transform_and_request_state_degrees(self, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
         """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees
         :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
@@ -202,8 +201,6 @@ class QLabsQCar:
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
         :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
@@ -217,16 +214,14 @@ class QLabsQCar:
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
 
         """ 
-        success, location, rotation, forward_vector, up_vector, frontHit, rearHit = self.set_transform_and_request_state(qlabs, actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation)
+        success, location, rotation, forward_vector, up_vector, frontHit, rearHit = self.set_transform_and_request_state(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation)
         rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
 
         return success, location, rotation_deg, forward_vector, up_vector, frontHit, rearHit
             
-    def set_velocity_and_request_state(self, qlabs, actorNumber, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
+    def set_velocity_and_request_state(self, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
         """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in radians. Positive values turn right.
         :param headlights: Enable the headlights
@@ -234,8 +229,6 @@ class QLabsQCar:
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
         :type actorNumber: float
         :type turn: float
         :type enableDynamics: boolean
@@ -249,9 +242,13 @@ class QLabsQCar:
 
 
         """ 
+
+        if (not self._is_actor_number_valid()):
+            return False, [0,0,0], [0,0,0], False, False
+
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_SET_VELOCITY_AND_REQUEST_STATE
         c.payload = bytearray(struct.pack(">ffBBBBB", forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
@@ -262,10 +259,10 @@ class QLabsQCar:
         rearHit = False
         
 
-        qlabs.flush_receive()  
+        self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_VELOCITY_STATE_RESPONSE)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_VELOCITY_STATE_RESPONSE)
 
             if (c == None):
                 return False, location, rotation, frontHit, rearHit  
@@ -279,11 +276,9 @@ class QLabsQCar:
             return False, location, rotation, frontHit, rearHit  
             
 
-    def set_velocity_and_request_state_degrees(self, qlabs, actorNumber, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
+    def set_velocity_and_request_state_degrees(self, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
         """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in degrees. Positive values turn right.
         :param headlights: Enable the headlights
@@ -291,9 +286,6 @@ class QLabsQCar:
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :type actorNumber: float
         :type turn: float
         :type enableDynamics: boolean
         :type headlights: boolean
@@ -306,37 +298,36 @@ class QLabsQCar:
 
 
         """ 
-        success, location, rotation, frontHit, rearHit = self.set_velocity_and_request_state(qlabs, actorNumber, forward, turn/180*math.pi, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal)
+        success, location, rotation, frontHit, rearHit = self.set_velocity_and_request_state(forward, turn/180*math.pi, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal)
 
         rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
         return success, location, rotation_deg, frontHit, rearHit 
             
-    def possess(self, qlabs, actorNumber, camera=CAMERA_TRAILING):
+    def possess(self, camera=CAMERA_TRAILING):
         """
         Possess (take control of) a QCar in QLabs with the selected camera.
         
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param camera: Pre-defined camera constant. See CAMERA constants for available options. Default is the trailing camera.
-        :type qlabs: object
-        :type actorNumber: uint32
         :type camera: uint32
         :return: `True` if possessing the camera was successful, `False` otherwise
         :rtype: boolean
 
         """
 
+        if (not self._is_actor_number_valid()):
+            return False
+
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_POSSESS
         c.payload = bytearray(struct.pack(">B", camera))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_POSSESS_ACK)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_POSSESS_ACK)
             if (c == None):
                 return False
             else:
@@ -344,16 +335,12 @@ class QLabsQCar:
         else:
             return False    
 
-    def ghost_mode(self, qlabs, actorNumber, enable=True, colour=[0,1,0]):
+    def ghost_mode(self, enable=True, colour=[0,1,0]):
         """
         Ghost mode changes the selected QCar actor into a transparent coloured version. This can be useful as a reference actor or indicating a change in state.
         
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param enable: Set the QCar to the defined transparent colour, otherwise revert to the solid color scheme.
         :param colour: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
-        :type qlabs: object
-        :type actorNumber: uint32
         :type camera: uint32
         :type enable: boolean
         :type colour: float array[3]
@@ -361,18 +348,21 @@ class QLabsQCar:
         :rtype: boolean
 
         """
+        
+        if (not self._is_actor_number_valid()):
+            return False
 
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_GHOST_MODE
         c.payload = bytearray(struct.pack(">Bfff", enable, colour[0], colour[1], colour[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_GHOST_MODE_ACK)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_GHOST_MODE_ACK)
             if (c == None):
                 return False
             else:
@@ -380,32 +370,31 @@ class QLabsQCar:
         else:
             return False             
 
-    def get_image(self, qlabs, actorNumber, camera):   
+    def get_image(self, camera):   
         """
         Request a JPG image from one of the QCar cameras.
         
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param camera: Pre-defined camera constant. See CAMERA constants for available options. Trailing and Overhead cameras cannot be selected.
-        :type qlabs: object
-        :type actorNumber: uint32
         :type camera: uint32
         :return: `True` and image data if successful, `False` and empty otherwise
         :rtype: boolean, byte array with jpg data
 
-        """        
+        """   
+        
+        if (not self._is_actor_number_valid()):
+            return False, None
     
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_CAMERA_DATA_REQUEST
         c.payload = bytearray(struct.pack(">I", camera))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_CAMERA_DATA_RESPONSE)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_CAMERA_DATA_RESPONSE)
 
             if (c == None):
                 return False, None
@@ -418,20 +407,20 @@ class QLabsQCar:
         else:
             return False, None
             
-    def get_lidar(self, qlabs, actorNumber, samplePoints=400):   
+    def get_lidar(self, samplePoints=400):   
         """
         Request LIDAR data from a QCar.
         
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param samplePoints: (Optional) Change the number of points per revolution of the LIDAR.
-        :type qlabs: object
-        :type actorNumber: uint32
         :type samplePoints: uint32
         :return: `True`, angles in radians, and distances in m if successful, `False`, none, and none otherwise
         :rtype: boolean, float array, float array
 
         """        
+
+        if (not self._is_actor_number_valid()):
+            return False, None, None
+
         LIDAR_SAMPLES = 4096
         LIDAR_RANGE = 80
         
@@ -455,15 +444,15 @@ class QLabsQCar:
    
         c = CommModularContainer()
         c.classID = self.ID_QCAR
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_LIDAR_DATA_REQUEST
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()  
+        self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QCAR, actorNumber, self.FCN_QCAR_LIDAR_DATA_RESPONSE)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_LIDAR_DATA_RESPONSE)
 
             if (c == None):
                 return False, None, None
@@ -508,59 +497,3 @@ class QLabsQCar:
             return False, None, None            
             
 
-    def destroy(self, qlabs, actorNumber):
-        """Destroys a QCar in an instance of QLabs.
-
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :return: The number of actors destroyed. -1 if failed.
-        :rtype: int32
-
-        """
-        return QLabsCommon().destroy_spawned_actor(qlabs, self.ID_QCAR, actorNumber)
-
-
-    def ping(self, qlabs, actorNumber):
-        """Checks if a QCar of the corresponding actor number exists in the QLabs environment.
-
-        :param qlabs: A QuanserInteractiveLabs object
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :return: `True` if actor is present, `False` otherwise
-        :rtype: boolean
-
-        """
-        return QLabsCommon().ping_actor(qlabs, actorNumber, self.ID_QCAR)
-
-    def get_world_transform(self, qlabs, actorNumber):
-        """Get the location, rotation, and scale in world coordinates of the QCar
-        
-        :param qlabs: A QuanserInteractiveLabs object.
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :return: success, location, rotation in radians
-        :rtype: boolean, float array[3], float array[3]
-        """    
-        success, location, rotation, scale = QLabsCommon().get_world_transform(qlabs, actorNumber, self.ID_QCAR)
-
-        return  success, location, rotation
-
-    def get_world_transform_degrees(self, qlabs, actorNumber):
-        """Get the location, rotation, and scale in world coordinates of the QCar
-        
-        :param qlabs: A QuanserInteractiveLabs object.
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :type qlabs: QuanserInteractiveLabs object
-        :type actorNumber: uint32
-        :return: success, location, rotation in degrees
-        :rtype: boolean, float array[3], float array[3]
-        """    
-        success, location, rotation, scale = QLabsCommon().get_world_transform(qlabs, actorNumber, self.ID_QCAR)
-        rotation_deg = rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
-
-        return  success, location, rotation_deg
-        
