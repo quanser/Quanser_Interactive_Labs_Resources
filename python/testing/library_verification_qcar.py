@@ -105,50 +105,60 @@ def main():
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     
-
-    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    hCamera0 = QLabsFreeCamera(qlabs)
+    x = hCamera0.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    hCamera0Duplicate = QLabsFreeCamera(qlabs, True)
+    x = hCamera0Duplicate.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsFreeCamera().spawn_id(qlabs, actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
-    x = QLabsFreeCamera().destroy(qlabs, actorNumber=1)
+    hCamera1 = QLabsFreeCamera(qlabs)
+    hCamera1.spawn_id(actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
+    x = hCamera1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing camera (expect return 1)")
     
-    x = QLabsFreeCamera().destroy(qlabs, actorNumber=10)
+    hCamera10 = QLabsFreeCamera(qlabs)
+    hCamera10.actorNumber = 10
+    x = hCamera10.destroy()
     vr.PrintWS(x == 0, "Destroy camera that doesn't exist (expect return 0)")
     
     loc2 = [-23.201, 34.875, 3.482]
     rot2 = [0, 20.023, -2.275]
-    x = QLabsFreeCamera().spawn_id_degrees(qlabs, actorNumber=2, location=loc2, rotation=rot2)
-    vr.PrintWS(x == 0, "Spawn sign with degrees")
+    hCamera2 = QLabsFreeCamera(qlabs)
+    x = hCamera2.spawn_id_degrees(actorNumber=2, location=loc2, rotation=rot2)
+    vr.PrintWS(x == 0, "Spawn camera with degrees")
     
-    x, loc, rot, scale = QLabsFreeCamera().get_world_transform(qlabs, 2)
+    x, loc, rot, scale = hCamera2.get_world_transform()
     vr.PrintWS(abs(np.sum(np.subtract(loc, loc2))) < 0.001 and x == True, "Get world transform")
     
-    x = QLabsFreeCamera().ping(qlabs, 2)
-    vr.PrintWS(x == True, "Ping existing sign (expect True)")
+    x = hCamera2.ping()
+    vr.PrintWS(x == True, "Ping existing camera (expect True)")
     
-    x = QLabsFreeCamera().ping(qlabs, 3)
-    vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
+    x = hCamera10.ping()
+    vr.PrintWS(x == False, "Ping camera that doesn't exist (expect False)")
+
+    hCamera3 = QLabsFreeCamera(qlabs)
+    hCamera3.spawn_id(actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
+    hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
+    x = hCamera3.possess()
     
     
 
     for y in range(51):
-        x = QLabsFreeCamera().set_camera_properties(qlabs, actorNumber=3, fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
+        x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     vr.PrintWS(x == True, "Set camera properties")
     
-    x = QLabsFreeCamera().possess(qlabs, 2)
+    x = hCamera2.possess()
     vr.PrintWS(x == True, "Possess camera 2")
     
         
     for y in range(26):
-        x = QLabsFreeCamera().set_transform(qlabs, 2, loc2, np.add(np.array(rot2)/180*math.pi, [0, 0, y/25*math.pi*2]))
+        x = hCamera2.set_transform(loc2, np.add(np.array(rot2)/180*math.pi, [0, 0, y/25*math.pi*2]))
     vr.PrintWS(x == True, "Set transform")
     
     for y in range(26):
-        x = QLabsFreeCamera().set_transform_degrees(qlabs, 2, loc2, np.add(rot2, [0, 0, y/25*360]))
+        x = hCamera2.set_transform_degrees(loc2, np.add(rot2, [0, 0, y/25*360]))
     vr.PrintWS(x == True, "Set transform degrees (expect True)")
     
     
@@ -157,9 +167,9 @@ def main():
     cv2.imshow('CameraImageStream', camera_image)
     cv2.waitKey(1)
     
-    x = QLabsFreeCamera().set_image_capture_resolution(qlabs, actorNumber=2, width=640, height=480)
+    x = hCamera2.set_image_capture_resolution(width=640, height=480)
     vr.PrintWS(x == True, "Set image capture resolution")
-    x, camera_image = QLabsFreeCamera().get_image(qlabs, actorNumber=2)
+    x, camera_image = hCamera2.get_image()
     vr.PrintWS(x == True, "Read image 640x480")
     if (x == True):
         cv2.imshow('CameraImageStream', camera_image)
@@ -173,9 +183,9 @@ def main():
     cv2.imshow('CameraImageStream2', camera_image)
     cv2.waitKey(1)
     
-    QLabsFreeCamera().set_image_capture_resolution(qlabs, actorNumber=2, width=820, height=410)
+    hCamera2.set_image_capture_resolution(width=820, height=410)
     vr.PrintWS(x == True, "Read image 820x410 (expect True)")
-    x, camera_image = QLabsFreeCamera().get_image(qlabs, actorNumber=2)
+    x, camera_image = hCamera2.get_image()
     if (x == True):
         cv2.imshow('CameraImageStream2', camera_image)
         cv2.waitKey(1)
@@ -185,33 +195,37 @@ def main():
        
     loc3 = [5.252, 20.852, 9.461]
     QLabsBasicShape().spawn_id(qlabs, 0, loc3, [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x = QLabsFreeCamera().spawn_id_and_parent_with_relative_transform(qlabs, 5, [0, -10, 0], [0,0,math.pi/2], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+
+    hCamera5Child = QLabsFreeCamera(qlabs)
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform(5, [0, -10, 0], [0,0,math.pi/2], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform")
-    x = QLabsFreeCamera().possess(qlabs, 5)
+    x = hCamera5Child.possess()
     for y in range(26):
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     time.sleep(0.5)
     
-    QLabsFreeCamera().destroy(qlabs, actorNumber=5)
-    x = QLabsFreeCamera().spawn_id_and_parent_with_relative_transform_degrees(qlabs, 5, [0, -10, 0], [0,0,90], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+    hCamera5Child.destroy()
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform_degrees(5, [0, -10, 0], [0,0,90], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform degrees")
-    x = QLabsFreeCamera().possess(qlabs, 5)
+    x = hCamera5Child.possess()
     for y in range(26):
         x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
-    x, hCameraSpawnA = QLabsFreeCamera().spawn(qlabs, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
-    vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(hCameraSpawnA))
+    hCameraSpawnAutogen1 = QLabsFreeCamera(qlabs)
+    x, CameraSpawn1Num = hCameraSpawnAutogen1.spawn(location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+    vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(CameraSpawn1Num))
 
-    x, hCameraSpawnB = QLabsFreeCamera().spawn_degrees(qlabs, location=[-11.154, 42.544, 8.43], rotation=[0, 0, 0])
-    vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(hCameraSpawnB))
+    hCameraSpawnAutogen2 = QLabsFreeCamera(qlabs)
+    x, CameraSpawn2Num = hCameraSpawnAutogen2.spawn_degrees(location=[-11.154, 42.544, 8.43], rotation=[0, 0, 0])
+    vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(CameraSpawn2Num))
 
 
 
     vr.checkFunctionTestList("library_qlabs_free_camera", "../docs/source/Objects/camera_library.rst")
     
     cv2.destroyAllWindows()
-    x = QLabsFreeCamera().possess(qlabs, 2)
+    x = hCamera2.possess()
     
     ### Yield Sign    
     vr.PrintWSHeader("Yield Sign")
@@ -347,7 +361,7 @@ def main():
     ### Change view points
     
     time.sleep(0.5)
-    QLabsFreeCamera().possess(qlabs, 0)
+    hCamera0.possess()
     print("Possess camera 0")
     
     ### Crosswalk
@@ -424,8 +438,9 @@ def main():
     
     ### QCar
     
-    QLabsFreeCamera().spawn_id(qlabs, actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
-    QLabsFreeCamera().possess(qlabs, 33)
+    hCameraQCars = QLabsFreeCamera(qlabs)
+    hCameraQCars.spawn_id(actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
+    hCameraQCars.possess()
     
     vr.PrintWSHeader("QCar")
     print("\n\n---QCar---")
@@ -496,8 +511,8 @@ def main():
     
     #bumper test
     print("Testing bumper response...")
-    QLabsFreeCamera().possess(qlabs, 33)
-    QLabsFreeCamera().set_transform(qlabs, actorNumber=33, location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
+    hCameraQCars.possess()
+    hCameraQCars.set_transform(location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
     QLabsBasicShape().spawn_id(qlabs, 100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     QLabsBasicShape().spawn_id(qlabs, 101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     QLabsQCar().spawn_id(qlabs, actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
@@ -720,7 +735,7 @@ def main():
     vr.PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
-    x = QLabsFreeCamera().possess(qlabs, 2)
+    x = hCamera2.possess()
 
     x = QLabsBasicShape().spawn_id(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
@@ -820,7 +835,7 @@ def main():
     vr.PrintWSHeader("Widget")
     print("\n\n--Widget---")
 
-    x = QLabsFreeCamera().possess(qlabs, 2)
+    x = hCamera2.possess()
     QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
 
     for count in range(20):
@@ -863,8 +878,9 @@ def main():
 
     vr.checkFunctionTestList("library_qlabs_spline_line", "../docs/source/Objects/spline_line.rst")  
 
-    x = QLabsFreeCamera().spawn_id(qlabs, actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
-    QLabsFreeCamera().possess(qlabs, 300)
+    hCameraSplines = QLabsFreeCamera(qlabs)
+    x = hCameraSplines.spawn(location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
+    hCameraSplines.possess()
     
     ### Real-Time
     vr.PrintWSHeader("Real-Time")
@@ -872,8 +888,6 @@ def main():
 
     vr.checkFunctionTestList("library_qlabs_real_time", "../docs/source/System/real_time_library.rst")    
     
-    
-
 
     print("\n\n------------------------------ Communications --------------------------------\n")
     
