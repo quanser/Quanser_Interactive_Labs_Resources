@@ -144,7 +144,7 @@ def main():
     x = hCamera3.possess()
     
     
-
+    
     for y in range(51):
         x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     vr.PrintWS(x == True, "Set camera properties")
@@ -194,23 +194,24 @@ def main():
        
        
     loc3 = [5.252, 20.852, 9.461]
-    QLabsBasicShape().spawn_id(qlabs, 0, loc3, [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    hCubeCameraHook = QLabsBasicShape(qlabs)
+    hCubeCameraHook.spawn_id(0, loc3, [0,0,0], [1,1,1], configuration=hCubeCameraHook.SHAPE_CUBE, waitForConfirmation=True)
 
     hCamera5Child = QLabsFreeCamera(qlabs)
-    x = hCamera5Child.spawn_id_and_parent_with_relative_transform(5, [0, -10, 0], [0,0,math.pi/2], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform(5, [0, -10, 0], [0,0,math.pi/2], hCubeCameraHook.ID_BASIC_SHAPE, 0, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform")
     x = hCamera5Child.possess()
     for y in range(26):
-        x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
+        x = hCubeCameraHook.set_transform(loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     time.sleep(0.5)
     
     hCamera5Child.destroy()
-    x = hCamera5Child.spawn_id_and_parent_with_relative_transform_degrees(5, [0, -10, 0], [0,0,90], QLabsBasicShape().ID_BASIC_SHAPE, 0, 0)
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform_degrees(5, [0, -10, 0], [0,0,90], hCubeCameraHook.ID_BASIC_SHAPE, 0, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform degrees")
     x = hCamera5Child.possess()
     for y in range(26):
-        x = QLabsBasicShape().set_transform(qlabs, 0, loc3, [0, 0, y/25*math.pi*2], [1,1,1])
+        x = hCubeCameraHook.set_transform(loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     hCameraSpawnAutogen1 = QLabsFreeCamera(qlabs)
     x, CameraSpawn1Num = hCameraSpawnAutogen1.spawn(location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
@@ -531,8 +532,10 @@ def main():
     print("Testing bumper response...")
     hCameraQCars.possess()
     hCameraQCars.set_transform(location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
-    QLabsBasicShape().spawn_id(qlabs, 100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    QLabsBasicShape().spawn_id(qlabs, 101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+
+    hCubeQCarBlocks = QLabsBasicShape(qlabs)
+    hCubeQCarBlocks .spawn_id(100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=hCubeQCarBlocks.SHAPE_CUBE, waitForConfirmation=True)
+    hCubeQCarBlocks .spawn_id(101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=hCubeQCarBlocks.SHAPE_CUBE, waitForConfirmation=True)
 
     hQCar3 = QLabsQCar(qlabs)
     hQCar3.spawn_id(actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
@@ -750,101 +753,116 @@ def main():
     time.sleep(1)
     
     vr.checkFunctionTestList("library_qlabs_qcar", "../docs/source/Objects/car_library.rst")    
-    
+
     ### Basic Shape
     vr.PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
     x = hCamera2.possess()
 
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    hCube200 = QLabsBasicShape(qlabs)
+    x = hCube200.spawn_id(actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
 
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    hCube200Duplicate = QLabsBasicShape(qlabs)
+    x = hCube200Duplicate.spawn_id(actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200Duplicate.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn with duplicate ID")
 
-
-    x = QLabsBasicShape().spawn_id_degrees(qlabs, actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    hCube220 = QLabsBasicShape(qlabs)
+    x = hCube220.spawn_id_degrees(actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube220.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
 
-    x = QLabsBasicShape().spawn_id_degrees(qlabs, actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x = QLabsBasicShape().destroy(qlabs, 221)
+    hCube221 = QLabsBasicShape(qlabs, True)
+    x = hCube221.spawn_id_degrees(actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube221.SHAPE_CUBE, waitForConfirmation=True)
+    x = hCube221.destroy()
+    print("Num actors destroyed: {}".format(x))
     vr.PrintWS(x == 1, "Spawn and destroy existing (expect return 1)")
 
-    x = QLabsBasicShape().destroy(qlabs, 222)
+    
+    hCube221.actorNumber = 221
+    x = hCube221.destroy()
+    print("Num actors destroyed: {}".format(x))
     vr.PrintWS(x == 0, "Destroy shape that doesn't exist (expect return 0)")
     
-    x = QLabsBasicShape().ping(qlabs, 220)
+    
+    x = hCube220.ping()
     vr.PrintWS(x == True, "Ping existing sign (expect True)")
     
-    x = QLabsBasicShape().ping(qlabs, 221)
+    hCube221.actorNumber = 221
+    x = hCube221.ping()
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
 
-    x, loc, rot, scale = QLabsBasicShape().get_world_transform(qlabs, 200)
+    x, loc, rot, scale = hCube200.get_world_transform()
     vr.PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
        
-    x = QLabsBasicShape().spawn_id_and_parent_with_relative_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    hCube201 = QLabsBasicShape(qlabs, True)
+    x = hCube201.spawn_id_and_parent_with_relative_transform(actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=hCube201.SHAPE_CUBE, parentClass=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn with parent relative transform (expect 0)")
 
-    x = QLabsBasicShape().spawn_id_and_parent_with_relative_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=QLabsBasicShape().SHAPE_CUBE, parentClass=QLabsBasicShape().ID_BASIC_SHAPE, parentActorNumber=200, parentComponent=0, waitForConfirmation=True)
+    hCube202 = QLabsBasicShape(qlabs, True)
+    x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=hCube202.SHAPE_CUBE, parentClass=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
 
 
-    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=202, colour=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
-    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=201, colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hCube202.set_material_properties(colour=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hCube201.set_material_properties(colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.PrintWS(x == True, "Set material properties (expect True)")
 
-    
-
     for y in range(51):
-        x = QLabsBasicShape().set_transform(qlabs, actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
-        x = QLabsBasicShape().set_transform_degrees(qlabs, actorNumber=202, location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
-        x = QLabsBasicShape().set_transform(qlabs, actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
+        x = hCube201.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
+        x = hCube202.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
+        x = hCube200.set_transform(location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
     
 
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=203, colour=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    hSphere203 = QLabsBasicShape(qlabs)
+    x = hSphere203.spawn_id(actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere203.set_material_properties(colour=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     
-
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=204, colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
-    x = QLabsBasicShape().set_enable_collisions(qlabs, actorNumber=204, enableCollisions=False, waitForConfirmation=True)
+    hSphere204 = QLabsBasicShape(qlabs)
+    x = hSphere204.spawn_id(actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere204.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere204.set_material_properties(colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
+    x = hSphere204.set_enable_collisions(enableCollisions=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Enable collisions")
 
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
-    x = QLabsBasicShape().spawn_id(qlabs, actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation=True)
+    hSphere205 = QLabsBasicShape(qlabs)
+    hSphere206 = QLabsBasicShape(qlabs)
+    hSphere207 = QLabsBasicShape(qlabs)
     
-    x = QLabsBasicShape().set_physics_properties(qlabs, actorNumber=207, mass=1, linearDamping=10, angularDamping=0, enableDynamics=False, waitForConfirmation=True)
+    x = hSphere205.spawn_id(actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere205.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere206.spawn_id(actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere206.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere207.spawn_id(actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere207.SHAPE_SPHERE, waitForConfirmation=True)
+    
+    x = hSphere207.set_physics_properties(mass=1, linearDamping=10, angularDamping=0, enableDynamics=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Set physics properties")
 
-    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=205, enableDynamics=True, waitForConfirmation=False)
-    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=206, enableDynamics=True, waitForConfirmation=False)
-    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=207, enableDynamics=True, waitForConfirmation=True)
+    x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
+    x = hSphere206.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
+    x = hSphere207.set_enable_dynamics(enableDynamics=True, waitForConfirmation=True)
     vr.PrintWS(x == True, "Enable dynamics")
 
-    x = QLabsBasicShape().set_enable_dynamics(qlabs, actorNumber=205, enableDynamics=True, waitForConfirmation=False)
+    x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
     
-    
-    x = QLabsBasicShape().spawn_id_box_walls_from_center(qlabs, actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    hBoxSpawn = QLabsBasicShape(qlabs)
+    x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center")
 
-    x = QLabsBasicShape().spawn_id_box_walls_from_center_degrees(qlabs, actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center degrees")
 
-    x = QLabsBasicShape().spawn_id_box_walls_from_end_points(qlabs, actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from end points")
 
-    x, shapeHandle1 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle2 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle3 = QLabsBasicShape().spawn(qlabs, location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle1 = hBoxSpawn.spawn(location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle2 = hBoxSpawn.spawn(location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle3 = hBoxSpawn.spawn(location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn next")
 
-    x, shapeHandle4 = QLabsBasicShape().spawn_degrees(qlabs, location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle5 = QLabsBasicShape().spawn_degrees(qlabs, location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=QLabsBasicShape().SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle4 = hBoxSpawn.spawn_degrees(location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle5 = hBoxSpawn.spawn_degrees(location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn next degrees")
     
-    x = QLabsBasicShape().set_material_properties(qlabs, actorNumber=shapeHandle2, colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
+    hBoxSpawn.actorNumber = shapeHandle2
+    x = hBoxSpawn.set_material_properties(colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.checkFunctionTestList("library_qlabs_basic_shape", "../docs/source/Objects/basic_shapes.rst")    
 
 

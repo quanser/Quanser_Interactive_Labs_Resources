@@ -148,7 +148,7 @@ class verificationReport:
         elif (status == 0):
             self.ws.write(self.row, 0, "", self.status_bad)
             if (self.verbose):
-                print('{}: {}'.format(text, status))
+                print('*** ERROR! *** {}: {}'.format(text, status))
         elif (status == 3):
             self.ws.write(self.row, 0, "ND", self.status_no_doc)
             if (self.verbose):

@@ -111,7 +111,6 @@ class QLabsActor:
         c.payload = bytearray(struct.pack(">IIfffffffffI", self._classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
-        self.actorNumber = actorNumber
         
         if waitForConfirmation:
             self._qlabs.flush_receive()        
@@ -124,10 +123,13 @@ class QLabsActor:
                     return -1
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
+                    if (status == 0):
+                        self.actorNumber = actorNumber
                     return status
                 else:
                     return -1
-
+            
+            self.actorNumber = actorNumber
             return 0
         else:
             return -1 
@@ -167,6 +169,9 @@ class QLabsActor:
                     return -1
                 if len(c.payload) == 5:
                     status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
+                    if (status == 0):
+                        self.actorNumber = actorNumber
+
                     return status, actorNumber
                 else:
                     return -1, -1
@@ -221,10 +226,13 @@ class QLabsActor:
 
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
+                    if (status == 0):
+                        self.actorNumber = actorNumber
                     return status
                 else:
                     return -1
             
+            self.actorNumber = actorNumber
             return 0
         else:
             return -1                              
