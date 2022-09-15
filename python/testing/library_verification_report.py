@@ -23,6 +23,7 @@ class verificationReport:
     status_bad = None
     status_no_doc = None
     library_path = None
+    verbose = False
     
     def __init__(self, filename, test_script, library_path):
     
@@ -142,10 +143,16 @@ class verificationReport:
     def PrintWS(self, status, text):
         if (status == 1):
             self.ws.write(self.row, 0, "", self.status_good)
+            if (self.verbose):
+                print('{}: {}'.format(text, status))
         elif (status == 0):
             self.ws.write(self.row, 0, "", self.status_bad)
+            if (self.verbose):
+                print('{}: {}'.format(text, status))
         elif (status == 3):
             self.ws.write(self.row, 0, "ND", self.status_no_doc)
+            if (self.verbose):
+                print('{}: {} (No Documentation)'.format(text, status))
             
         self.ws.write(self.row, 1, text)
         self.row = self.row + 1

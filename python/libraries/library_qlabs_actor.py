@@ -58,6 +58,9 @@ class QLabsActor:
         :rtype: int32
 
         """   
+        if (not self._is_actor_number_valid()):
+            return -1
+
         c = CommModularContainer()
         
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
@@ -99,12 +102,15 @@ class QLabsActor:
         :rtype: int32
 
         """
+
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
         c.payload = bytearray(struct.pack(">IIfffffffffI", self._classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        self.actorNumber = actorNumber
         
         if waitForConfirmation:
             self._qlabs.flush_receive()        
@@ -120,7 +126,7 @@ class QLabsActor:
                     return status
                 else:
                     return -1
-            
+
             return 0
         else:
             return -1 
@@ -235,6 +241,9 @@ class QLabsActor:
         :rtype: boolean
         """
 
+        if (not self._is_actor_number_valid()):
+            return False
+
         c = CommModularContainer()
         c.classID = self._classID
         c.actorNumber = self.actorNumber
@@ -258,11 +267,14 @@ class QLabsActor:
             return False 
     
     def get_world_transform(self):
-        """Get the location, rotation, and scale in world coordinates of the specified actor
+        """Get the location, rotation, and scale in world coordinates of the actor
         
         :return: success, location, rotation, scale
         :rtype: boolean, float array[3], float array[3], float array[3]
         """
+
+        if (not self._is_actor_number_valid()):
+            return False, [0,0,0], [0,0,0], [0,0,0]
 
         c = CommModularContainer()
         c.classID = self._classID
@@ -290,3 +302,15 @@ class QLabsActor:
                 return False, location, rotation, scale
         else:
             return False, location, rotation, scale
+
+
+    def get_world_transform_degrees(self):
+        """Get the location, rotation, and scale in world coordinates of the actor
+        
+        :return: success, location, rotation in degrees
+        :rtype: boolean, float array[3], float array[3]
+        """    
+        success, location, rotation, scale = self.get_world_transform()
+        rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
+
+        return  success, location, rotation_deg, scale

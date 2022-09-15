@@ -368,34 +368,37 @@ def main():
     vr.PrintWSHeader("Crosswalk")
     print("\n\n---Crosswalk---")
     
-    x = QLabsCrosswalk().spawn_id(qlabs, actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hCrosswalk = QLabsCrosswalk(qlabs)
+    x = hCrosswalk.spawn_id(actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with radians")
     
-    x = QLabsCrosswalk().spawn_id(qlabs, actorNumber=0, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id(actorNumber=0, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn crosswalk with duplicate ID (return code 2)")
     
-    QLabsCrosswalk().spawn_id(qlabs, actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    x = QLabsCrosswalk().destroy(qlabs, actorNumber=1)
+    hCrosswalk.spawn_id(actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCrosswalk.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing crosswalk (expect return 1)")
     
-    x = QLabsCrosswalk().destroy(qlabs, actorNumber=10)
+    hCrosswalk.actorNumber = 10
+    x = hCrosswalk.destroy()
     vr.PrintWS(x == 0, "Destroy crosswalk that doesn't exist (expect return 0)")
     
-    x = QLabsCrosswalk().spawn_id_degrees(qlabs, actorNumber=2, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id_degrees(actorNumber=2, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 1")
     
-    x = QLabsCrosswalk().spawn_id_degrees(qlabs, actorNumber=3, location=[-7.8, 47.5, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id_degrees(actorNumber=3, location=[-7.8, 47.5, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 2")
     
     
-    x, loc, rot, scale = QLabsCrosswalk().get_world_transform(qlabs, 3)
+    x, loc, rot, scale = hCrosswalk.get_world_transform()
     vr.PrintWS(abs(np.sum(np.subtract(loc, [-7.8, 47.5, 0.0]))) < 0.001 and x == True, "Get world transform")
     
-    
-    x = QLabsCrosswalk().ping(qlabs, 2)
+    hCrosswalk.actorNumber = 2
+    x = hCrosswalk.ping()
     vr.PrintWS(x == True, "Ping existing crosswalk (expect True)")
     
-    x = QLabsCrosswalk().ping(qlabs, 4)
+    hCrosswalk.actorNumber = 4
+    x = hCrosswalk.ping()
     vr.PrintWS(x == False, "Ping crosswalk that doesn't exist (expect False)")      
     
     vr.checkFunctionTestList("library_qlabs_crosswalk", "../docs/source/Objects/road_signage.rst")   
@@ -404,30 +407,40 @@ def main():
     vr.PrintWSHeader("People")
     print("\n\n---People---")
     
-    QLabsPerson().spawn_id(qlabs, actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    QLabsPerson().spawn_id(qlabs, actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-    QLabsPerson().spawn_id_degrees(qlabs, actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    hPersonRight = QLabsPerson(qlabs)
+    hPersonRight.spawn_id(actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+
+    hPersonMiddle = QLabsPerson(qlabs)
+    hPersonMiddle.spawn_id(actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     
-    QLabsPerson().move_to(qlabs, actorNumber=0, location=[-7.637, 51, 0.005], speed=QLabsPerson().WALK, waitForConfirmation=True)
-    QLabsPerson().move_to(qlabs, actorNumber=1, location=[-11.834, 51, 0.005], speed=QLabsPerson().JOG, waitForConfirmation=True)
-    QLabsPerson().move_to(qlabs, actorNumber=2, location=[-15.903, 51, 0.005], speed=QLabsPerson().RUN, waitForConfirmation=True)
+    hPersonLeft = QLabsPerson(qlabs, True)
+    hPersonLeft.spawn_id_degrees(actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    
+    hPersonRight.move_to(location=[-7.637, 51, 0.005], speed=hPersonRight.WALK, waitForConfirmation=True)
+    hPersonMiddle.move_to(location=[-11.834, 51, 0.005], speed=hPersonMiddle.JOG, waitForConfirmation=True)
+    hPersonLeft.move_to(location=[-15.903, 51, 0.005], speed=hPersonLeft.RUN, waitForConfirmation=True)
     
     time.sleep(3)
 
-    x, pos, rot = QLabsPerson().get_world_transform(qlabs, 2)
-    vr.PrintWS(x == True, "Got world transform ({}), ({})".format(pos, rot))      
+    x, pos, rot, scale = hPersonLeft.get_world_transform()
+    vr.PrintWS(x == True, "Got world transform ({}), ({}), ({})".format(pos, rot, scale))      
     
-    x, pos, rot = QLabsPerson().get_world_transform_degrees(qlabs, 2)
-    vr.PrintWS(x == True, "Got world transform degrees ({}), ({})".format(pos, rot))      
+    x, pos, rot, scale = hPersonLeft.get_world_transform_degrees()
+    vr.PrintWS(x == True, "Got world transform degrees ({}), ({}), ({})".format(pos, rot, scale))      
     
-    x = QLabsPerson().ping(qlabs, 2)
-    vr.PrintWS(x == True, "Ping person 3 (expect True)")      
+    x = hPersonLeft.ping()
+    vr.PrintWS(x == True, "Ping person left (expect True)")      
     
-    x = QLabsPerson().destroy(qlabs, 2)
-    vr.PrintWS(x == 1, "Person 3 destroyed (expect 1)")      
+    x = hPersonLeft.destroy()
+    vr.PrintWS(x == 1, "Person left destroyed (expect 1)")      
 
-    x = QLabsPerson().ping(qlabs, 2)
-    vr.PrintWS(x == False, "Ping person 3 (expect False)")    
+    x = hPersonLeft.ping()
+    vr.PrintWS(x == False, "Ping person left (expect False)")    
+
+    hPersonLeft.actorNumber = 2
+    x = hPersonLeft.ping()
+    vr.PrintWS(x == False, "Ping person left after manual assignment of actor number (expect False)")    
+
     
     time.sleep(1)
     
@@ -898,7 +911,7 @@ def main():
 
 vr = verificationReport('QCar Validation Report.xlsx', 'library_verification_qcar.py', library_path)
 vr.ignore_list = ignore_list
-
+vr.verbose = True
 
 
 main()

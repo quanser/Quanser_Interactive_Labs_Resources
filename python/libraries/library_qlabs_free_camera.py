@@ -25,10 +25,8 @@ class QLabsFreeCamera(QLabsActor):
     FCN_FREE_CAMERA_REQUEST_IMAGE = 100
     FCN_FREE_CAMERA_RESPONSE_IMAGE = 101
 
-    actorNumber = None;
     """ The current actor number of this class to be addressed. This can be modified at any time. """
-    _qlabs = None
-    _verbose = False
+
    
     def __init__(self, qlabs, verbose=False):
        """ Constructor Method
