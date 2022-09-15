@@ -54,7 +54,8 @@ ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_qbot_hopper', \
                'library_qlabs_shredder', \
                'library_qlabs_srv02', \
-               'library_qlabs_weigh_scale']
+               'library_qlabs_weigh_scale',
+               'library_qlabs_qube_servo_2']
 
  
 
@@ -232,63 +233,72 @@ def main():
     vr.PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
     
-    x = QLabsYieldSign().spawn_id(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    hYield0 = QLabsYieldSign(qlabs)
+    x = hYield0.spawn_id(actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsYieldSign().spawn_id(qlabs, actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = hYield0.spawn_id(actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsYieldSign().spawn_id(qlabs, actorNumber=1, location=[-16, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
-    x = QLabsYieldSign().destroy(qlabs, actorNumber=1)
+    hYield1 = QLabsYieldSign(qlabs)
+    hYield1.spawn_id(actorNumber=1, location=[-16, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hYield1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
-    x = QLabsYieldSign().destroy(qlabs, actorNumber=10)
+    hYield1.actorNumber=1
+    x = hYield1.destroy()
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
     
-    x = QLabsYieldSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    hYield2 = QLabsYieldSign(qlabs)
+    x = hYield2.spawn_id_degrees(actorNumber=2, location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
     
-    x, loc, rot, scale = QLabsYieldSign().get_world_transform(qlabs, 2)
+    x, loc, rot, scale = hYield2.get_world_transform()
     vr.PrintWS(np.array_equal(loc, [-15, 38, 0.0]) and x == True, "Get world transform")
     
-    x = QLabsYieldSign().ping(qlabs, 2)
+    x = hYield2.ping()
     vr.PrintWS(x == True, "Ping existing sign (expect True)")
     
-    x = QLabsYieldSign().ping(qlabs, 3)
+    hYield1.actorNumber=1
+    x = hYield1.ping()
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
     
     
     vr.checkFunctionTestList("library_qlabs_yield_sign", "../docs/source/Objects/road_signage.rst")
     
-
     ### Stop Sign    
     vr.PrintWSHeader("Stop Sign")
     print("\n\n---Stop Sign---")
     
-    x = QLabsStopSign().spawn_id(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    hStop0 = QLabsStopSign(qlabs)
+    x = hStop0.spawn_id(actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsStopSign().spawn_id(qlabs, actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = hStop0.spawn_id(actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsStopSign().spawn_id(qlabs, actorNumber=1, location=[-16, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
-    x = QLabsStopSign().destroy(qlabs, actorNumber=1)
+    hStop1 = QLabsStopSign(qlabs)
+    hStop1.spawn_id(actorNumber=1, location=[-16, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hStop1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
-    x = QLabsStopSign().destroy(qlabs, actorNumber=10)
+    hStop1.actorNumber=1
+    x = hStop1.destroy()
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
-    1
-    x = QLabsStopSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    
+    hStop2 = QLabsStopSign(qlabs)
+    x = hStop2.spawn_id_degrees(actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
     
-    x, loc, rot, scale = QLabsStopSign().get_world_transform(qlabs, 2)
+    x, loc, rot, scale = hStop2.get_world_transform()
     vr.PrintWS(np.array_equal(loc, [-15, 37, 0.0]) and x == True, "Get world transform")
     
     
-    x = QLabsStopSign().ping(qlabs, 2)
+    x = hStop2.ping()
     vr.PrintWS(x == True, "Ping existing sign (expect True)")
     
-    x = QLabsStopSign().ping(qlabs, 3)
+    hStop1.actorNumber=1
+    x = hStop1.ping()
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")    
     
     vr.checkFunctionTestList("library_qlabs_stop_sign", "../docs/source/Objects/road_signage.rst")    
@@ -298,34 +308,38 @@ def main():
     vr.PrintWSHeader("Roundabout Sign")
     print("\n\n---Roundabout Sign---")
     
-    x = QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    hRoundabout0 = QLabsRoundaboutSign(qlabs)
+    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
-    x = QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
+    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
     
-    QLabsRoundaboutSign().spawn_id(qlabs, actorNumber=1, location=[-16, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], waitForConfirmation=True)
-    x = QLabsRoundaboutSign().destroy(qlabs, actorNumber=1)
+    hRoundabout1 = QLabsRoundaboutSign(qlabs)
+    hRoundabout1.spawn_id(actorNumber=1, location=[-16, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hRoundabout1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
     
-    x = QLabsRoundaboutSign().destroy(qlabs, actorNumber=10)
+    hRoundabout1.actorNumber = 1
+    x = hRoundabout1.destroy()
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
     
-    x = QLabsRoundaboutSign().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], waitForConfirmation=True)
+    hRoundabout2 = QLabsRoundaboutSign(qlabs)
+    x = hRoundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
     
-    x, loc, rot, scale = QLabsRoundaboutSign().get_world_transform(qlabs, 2)
+    x, loc, rot, scale = hRoundabout2.get_world_transform()
     vr.PrintWS(np.array_equal(loc, [-15, 36, 0.0]) and x == True, "Get world transform")
     
     
-    x = QLabsRoundaboutSign().ping(qlabs, 2)
+    x = hRoundabout2.ping()
     vr.PrintWS(x == True, "Ping existing sign (expect True)")
     
-    x = QLabsRoundaboutSign().ping(qlabs, 3)
+    hRoundabout1.actorNumber = 1
+    x = hRoundabout1.ping()
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")      
     
     vr.checkFunctionTestList("library_qlabs_roundabout_sign", "../docs/source/Objects/road_signage.rst")    
-    
     
     ### Traffic Cone
     vr.PrintWSHeader("Traffic Cone")
