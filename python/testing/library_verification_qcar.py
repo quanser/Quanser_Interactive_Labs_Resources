@@ -111,6 +111,7 @@ def main():
     x = hCamera0.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
+    print('Attempt to spawn duplicate.')
     hCamera0Duplicate = QLabsFreeCamera(qlabs, True)
     x = hCamera0Duplicate.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
@@ -180,6 +181,7 @@ def main():
     else:
         print("Image decoding failure")
         
+    print('Image streaming.')
     cv2.namedWindow('CameraImageStream2', cv2.WINDOW_AUTOSIZE)
     camera_image = cv2.imread('Quanser820x410.jpg')
     cv2.imshow('CameraImageStream2', camera_image)
@@ -194,22 +196,22 @@ def main():
     else:
         print("Image decoding failure")    
        
-       
+    print('Testing parenting.')
     loc3 = [5.252, 20.852, 9.461]
-    hCubeCameraHook = QLabsBasicShape(qlabs)
-    hCubeCameraHook.spawn_id(0, loc3, [0,0,0], [1,1,1], configuration=hCubeCameraHook.SHAPE_CUBE, waitForConfirmation=True)
-
-    hCamera5Child = QLabsFreeCamera(qlabs)
-    x = hCamera5Child.spawn_id_and_parent_with_relative_transform(5, [0, -10, 0], [0,0,math.pi/2], hCubeCameraHook.ID_BASIC_SHAPE, 0, 0)
+    hCubeCameraHook = QLabsBasicShape(qlabs, True)
+    x = hCubeCameraHook.spawn_id(1000, loc3, [0,0,0], [1,1,1], configuration=hCubeCameraHook.SHAPE_CUBE, waitForConfirmation=True)
+    
+    hCamera5Child = QLabsFreeCamera(qlabs, True)
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform(5, [0, -10, 0], [0,0,math.pi/2], [1,1,1], 0, hCubeCameraHook.ID_BASIC_SHAPE, hCubeCameraHook.actorNumber, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform")
     x = hCamera5Child.possess()
     for y in range(26):
         x = hCubeCameraHook.set_transform(loc3, [0, 0, y/25*math.pi*2], [1,1,1])
     
     time.sleep(0.5)
-    
+        
     hCamera5Child.destroy()
-    x = hCamera5Child.spawn_id_and_parent_with_relative_transform_degrees(5, [0, -10, 0], [0,0,90], hCubeCameraHook.ID_BASIC_SHAPE, 0, 0)
+    x = hCamera5Child.spawn_id_and_parent_with_relative_transform_degrees(5, [0, -10, 0], [0,0,90], [1,1,1], 0, hCubeCameraHook.ID_BASIC_SHAPE, hCubeCameraHook.actorNumber, 0)
     vr.PrintWS(x == 0, "Spawn and parent with relative transform degrees")
     x = hCamera5Child.possess()
     for y in range(26):
@@ -456,9 +458,6 @@ def main():
     
     x = hPersonLeft.destroy()
     vr.PrintWS(x == 1, "Person left destroyed (expect 1)")      
-
-    x = hPersonLeft.ping()
-    vr.PrintWS(x == False, "Ping person left (expect False)")    
 
     hPersonLeft.actorNumber = 2
     x = hPersonLeft.ping()
@@ -818,11 +817,11 @@ def main():
     vr.PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
        
     hCube201 = QLabsBasicShape(qlabs, True)
-    x = hCube201.spawn_id_and_parent_with_relative_transform(actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=hCube201.SHAPE_CUBE, parentClass=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
+    x = hCube201.spawn_id_and_parent_with_relative_transform(actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=hCube201.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn with parent relative transform (expect 0)")
 
     hCube202 = QLabsBasicShape(qlabs, True)
-    x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=hCube202.SHAPE_CUBE, parentClass=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
+    x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=hCube202.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
 
 

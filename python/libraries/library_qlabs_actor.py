@@ -54,7 +54,8 @@ class QLabsActor:
     def destroy(self):
         """Find and destroy a specific actor. This is a blocking operation.
         
-        :return: The number of actors destroyed. -1 if failed.
+        :return: 
+            - **numActorsDestroyed** - The number of actors destroyed. -1 if failed.
         :rtype: int32
 
         """   
@@ -76,15 +77,15 @@ class QLabsActor:
                 return -1
 
             if len(c.payload) == 4:
-                num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
+                numActorsDestroyed, = struct.unpack(">I", c.payload[0:4])
                 self.actorNumber = None
-                return num_actors_destroyed
+                return numActorsDestroyed
             else:
                 return -1
         else:
             return -1            
             
-    def _spawn_id(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+    def spawn_id(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor.
 
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -99,7 +100,8 @@ class QLabsActor:
         :type scale: float array[3]
         :type configuration: uint32
         :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
+        :return: 
+            - **status** - 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
         :rtype: int32
 
         """
@@ -120,22 +122,63 @@ class QLabsActor:
             if waitForConfirmation:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
                 if (c == None):
+                    if (self._verbose):
+                        print('spawn_id: Communication timeout (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
                     return -1
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
                     if (status == 0):
                         self.actorNumber = actorNumber
+                    
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('spawn_id: Class not available (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                        elif (status == 2):
+                            print('spawn_id: Actor number not available or already in use (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                        elif (status == -1):
+                            print('spawn_id: Communication error (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                        else:
+                            print('spawn_id: Unknown error (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
                     return status
                 else:
+                    if (self._verbose):
+                        print("spawn: Communication error (classID {}, actorNumber {}).".format(self._classID, actorNumber))
                     return -1
             
             self.actorNumber = actorNumber
             return 0
         else:
+            if (self._verbose):
+                print('spawn_id: Communication failed (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
             return -1 
 
-    def _spawn(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
-        """Spawns a new actor with the next available actor number for that class
+
+
+    def spawn_id_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+        """Spawns a new actor.
+
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type actorNumber: uint32
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
+        :rtype: int32
+
+        """
+
+        return self.spawn_id(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
+
+    def spawn(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+        """Spawns a new actor with the next available actor number within this class
 
         :param location: (Optional) An array of floats for x, y and z coordinates
         :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
@@ -147,7 +190,9 @@ class QLabsActor:
         :type scale: float array[3]
         :type configuration: uint32
         :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 3 unknown error, -1 communications error. An actor number to use for future references.
+        :return:
+            - **status** - 0 if successful, 1 class not available, 3 unknown error, -1 communications error. 
+            - **actorNumber** - An actor number to use for future references.
         :rtype: int32, int32
 
         """
@@ -166,25 +211,60 @@ class QLabsActor:
             if waitForConfirmation:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT_RESPONSE)
                 if (c == None):
+                    if (self._verbose):
+                        print('spawn: Communication timeout (classID {}).'.format(self._classID))
                     return -1
                 if len(c.payload) == 5:
                     status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
                     if (status == 0):
                         self.actorNumber = actorNumber
 
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('spawn: Class not available (classID {}).'.format(self._classID))
+                        elif (status == -1):
+                            print('spawn: Communication error (classID {}).'.format(self._classID))
+                        else:
+                            print('spawn: Unknown error (classID {}).'.format(self._classID))
+
                     return status, actorNumber
                 else:
+                    if (self._verbose):
+                        print('spawn: Communication error (classID {}).'.format(self._classID))
                     return -1, -1
             
             return 0, -1
         else:
+            if (self._verbose):
+                print('spawn: Communication failed (classID {}).'.format(self._classID))
             return -1, -1 
+
+    def spawn_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
+        """Spawns a new actor with the next available actor number within this class
+
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred. Note that if this is False, the returned actor number will be invalid.
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type waitForConfirmation: boolean
+        :return:
+            - **status** - 0 if successful, 1 class not available, 3 unknown error, -1 communications error. 
+            - **actorNumber** - An actor number to use for future references.
+        :rtype: int32, int32
+
+        """
+
+        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
             
-    def _spawn_id_and_parent_with_relative_transform(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+    def spawn_id_and_parent_with_relative_transform(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
 
         :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param classID: See the ID_ variables in the respective library classes for the class identifier
         :param location: (Optional) An array of floats for x, y and z coordinates
         :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
         :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
@@ -194,7 +274,6 @@ class QLabsActor:
         :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type actorNumber: uint32
-        :type classID: uint32
         :type location: float array[3]
         :type rotation: float array[3]
         :type scale: float array[3]
@@ -203,7 +282,8 @@ class QLabsActor:
         :type parentActorNumber: uint32
         :type parentComponent: uint32
         :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
+        :return: 
+            - **status** - 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
         :rtype: int32
 
         """
@@ -222,26 +302,74 @@ class QLabsActor:
             if waitForConfirmation:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
                 if (c == None):
+                    if (self._verbose):
+                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication timeout.".format(self._classID, actorNumber))
                     return -1
 
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
                     if (status == 0):
                         self.actorNumber = actorNumber
+
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Class not available.'.format(self._classID, actorNumber))
+                        elif (status == 2):
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Actor number not available or already in use.'.format(self._classID, actorNumber))
+                        elif (status == 3):
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Cannot find parent.'.format(self._classID, actorNumber))
+                        elif (status == -1):
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.'.format(self._classID, actorNumber))
+                        else:
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Unknown error.'.format(self._classID, actorNumber))
+
                     return status
                 else:
+                    if (self._verbose):
+                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.".format(self._classID, actorNumber))
                     return -1
             
             self.actorNumber = actorNumber
             return 0
         else:
-            return -1                              
+            if (self._verbose):
+                print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication failed.".format(self._classID, actorNumber))
+            return -1     
+            
+    def spawn_id_and_parent_with_relative_transform_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+        """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
+
+        :param actorNumber: User defined unique identifier for the class actor in QLabs
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param configuration: (Optional) Spawn configuration. See class library for configuration options.
+        :param parentClassID: See the ID variables in the respective library classes for the class identifier
+        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
+        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type actorNumber: uint32
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type configuration: uint32
+        :type parentClassID: uint32
+        :type parentActorNumber: uint32
+        :type parentComponent: uint32
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 cannot find the parent actor, 4 unknown error, -1 communications error
+        :rtype: int32
+
+        """
+        return self.spawn_id_and_parent_with_relative_transform(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
             
     def ping(self):
         """Checks if the actor is still present in the environment. Note that if you did not spawn the actor with one of the spawn functions, you may need to manually set the actorNumber member variable.
            
         
-        :return: `True` if successful, `False` otherwise
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
         """
 
@@ -268,12 +396,18 @@ class QLabsActor:
             else:
                 return False
         else:
+            if (self._verbose):
+                print("ping: Communication failed.")
             return False 
     
     def get_world_transform(self):
         """Get the location, rotation, and scale in world coordinates of the actor
         
-        :return: success, location, rotation, scale
+        :return: 
+            - **status** - True if successful, False otherwise
+            - **location**
+            - **rotation**
+            - **scale**
         :rtype: boolean, float array[3], float array[3], float array[3]
         """
 
@@ -303,15 +437,23 @@ class QLabsActor:
                 location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], = struct.unpack(">fffffffff", c.payload[0:36])
                 return True, location, rotation, scale
             else:
+                if (self._verbose):
+                    print("get_world_transform: Communication error (classID {}, actorNumber {}).".format(self._classID, self.actorNumber))
                 return False, location, rotation, scale
         else:
+            if (self._verbose):
+                print("get_world_transform: Communication failed (classID {}, actorNumber {}).".format(self._classID, self.actorNumber))
             return False, location, rotation, scale
 
 
     def get_world_transform_degrees(self):
         """Get the location, rotation, and scale in world coordinates of the actor
         
-        :return: success, location, rotation in degrees, scale
+        :return: 
+            - **status** - True if successful, False otherwise
+            - **location**
+            - **rotation**
+            - **scale**
         :rtype: boolean, float array[3], float array[3], float array[3]
         """    
         success, location, rotation, scale = self.get_world_transform()

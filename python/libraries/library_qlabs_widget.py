@@ -52,8 +52,9 @@ class QLabsWidget:
         :type IDTag: uint8
         :type properties: string
         :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean or CommModularContainer object
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean
 
         """
         c = CommModularContainer()
@@ -104,8 +105,9 @@ class QLabsWidget:
         :type IDTag: uint8
         :type properties: string
         :type waitForConfirmation: boolean
-        :return: If waitForConfirmation = `False` then returns `True` if spawn was successful, `False` otherwise.  If waitForConfirmation = `True`, returns a container detailed response information if successful, otherwise `False`.
-        :rtype: boolean or CommModularContainer object
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean
 
         """
         return self.spawn(qlabs, widgetType, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, colour, measuredMass, IDTag, properties, waitForConfirmation)

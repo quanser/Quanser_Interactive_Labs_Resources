@@ -55,9 +55,29 @@ Methods
 
 .. automethod:: library_qlabs_person.QLabsPerson.__init__
 .. automethod:: library_qlabs_person.QLabsPerson.spawn
+.. tip::
+    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+.. tip::
+    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
+.. tip::
+    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+.. tip::
+    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_id
+.. tip::
+    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+.. tip::
+    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_id_degrees
+.. tip::
+    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+.. tip::
+    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+
 .. automethod:: library_qlabs_person.QLabsPerson.move_to
 .. automethod:: library_qlabs_person.QLabsPerson.destroy
 .. automethod:: library_qlabs_person.QLabsPerson.ping

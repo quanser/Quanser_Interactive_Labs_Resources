@@ -41,136 +41,6 @@ class QLabsPerson(QLabsActor):
        self._classID = self.ID_PERSON
        return
        
-    def spawn(self, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using radians.
-
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param scale: An array of floats for the x, y, and z scale
-        :param configuration: (Optional) Select the style of person to be spawned. See the Configuration section for more details.
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type scale: float array[3]
-        :type configuration: int32
-        :type waitForConfirmation: boolean
-        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
-        :rtype: int32, int32
-        
-        .. tip::
-
-            The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
-
-        .. tip::
-
-            If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
-        """
-
-
-        [status, actorNumber] = self._spawn([location[0], location[1], location[2]+1.0], [rotation[0], rotation[1], rotation[2]], scale, configuration, waitForConfirmation)
-        if (status == 0):
-            self.actorNumber = actorNumber
-        else:
-            if (self._verbose):
-                if (status == 1):
-                    print('Class not available.')
-                elif (status == 2):
-                    print('Actor number already in use.')
-                elif (status == -1):
-                    print('Communication error.')
-                else:
-                    print('Unknown error')
-
-
-            
-        return status, actorNumber
-
-
-    def spawn_degrees(self, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using degrees.
-
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
-        :param scale: An array of floats for the x, y, and z scale
-        :param configuration: (Optional) Select the style of person to be spawned. See the Configuration section for more details.
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type scale: float array[3]
-        :type configuration: int32
-        :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
-        :rtype: int32
-        
-        .. tip::
-
-            The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
-
-        .. tip::
-
-            If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
-
-        """
-        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
-
-
-    def spawn_id(self, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using radians with a specified actor number.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param scale: An array of floats for the x, y, and z scale
-        :param configuration: (Optional) Select the style of person to be spawned. See the Configuration section for more details.
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type actorNumber: uint32
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type scale: float array[3]
-        :type configuration: int32
-        :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
-        :rtype: int32
-        
-        .. tip::
-
-            The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
-
-        .. tip::
-
-            If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
-        """
-        return self._spawn_id(actorNumber, [location[0], location[1], location[2]+1.0], [rotation[0], rotation[1], rotation[2]], scale, configuration, waitForConfirmation)
-
-    def spawn_id_degrees(self, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using degrees with a specified actor number.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
-        :param scale: An array of floats for the x, y, and z scale
-        :param configuration: (Optional) Select the style of person to be spawned. See the Configuration section for more details.
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type actorNumber: uint32
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type scale: float array[3]
-        :type configuration: int32
-        :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
-        :rtype: int32
-        
-        .. tip::
-
-            The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
-
-        .. tip::
-
-            If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
-
-        """
-        return self._spawn_id(actorNumber,[location[0], location[1], location[2]+1.0], [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
-    
 
         
     def move_to(self, location, speed, waitForConfirmation=True):
@@ -182,7 +52,8 @@ class QLabsPerson(QLabsActor):
         :type location: float array[3]
         :type speed: float
         :type waitForConfirmation: boolean
-        :return: `True` if successful, `False` otherwise
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
         
         .. tip::

@@ -30,11 +30,17 @@ class QLabsQCar(QLabsActor):
     
     
     CAMERA_CSI_RIGHT = 0
+    """Image capture resolution: 820x410"""
     CAMERA_CSI_BACK = 1
+    """Image capture resolution: 820x410"""
     CAMERA_CSI_LEFT = 2
+    """Image capture resolution: 820x410"""
     CAMERA_CSI_FRONT = 3
+    """Image capture resolution: 820x410"""
     CAMERA_RGB = 4
+    """Image capture resolution: 640x480"""
     CAMERA_DEPTH = 5
+    """Image capture resolution: 640x480"""
     CAMERA_OVERHEAD = 6
     """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     CAMERA_TRAILING = 7
@@ -54,75 +60,6 @@ class QLabsQCar(QLabsActor):
        self._verbose = verbose
        self._classID = self.ID_QCAR
        return
-
-    def spawn(self, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
-
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type waitForConfirmation: boolean
-        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
-        :rtype: int32, int32
-
-
-        """
-        return self._spawn(location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
-    
-    def spawn_degrees(self, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
-
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type waitForConfirmation: boolean
-        :return: Success value of 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error. Actor number ID to use for addressing the actor.
-        :rtype: int32, int32
-
-
-        """        
-        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], waitForConfirmation)
-    
-       
-    def spawn_id(self, actorNumber, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using radians with a specified actor number.  Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type actorNumber: uint32
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
-        :rtype: int32
-
-
-        """
-        return self._spawn_id(actorNumber, location, rotation, [1.0, 1.0, 1.0], 0, waitForConfirmation)
-    
-    def spawn_id_degrees(self, actorNumber, location, rotation, waitForConfirmation=True):
-        """Spawns a QCar in an instance of QLabs at a specific location and rotation using degrees with a specified actor number. Note that dynamics are enabled by default. Use set_transform_and_request_state to disable dynamics.
-
-        :param actorNumber: User defined unique identifier for the class actor in QLabs
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
-        :type actorNumber: uint32
-        :type location: float array[3]
-        :type rotation: float array[3]
-        :type waitForConfirmation: boolean
-        :return: 0 if successful, 1 class not available, 2 actor number not available or already in use, 3 unknown error, -1 communications error
-        :rtype: int32
-
-
-        """        
-        return self.spawn_id(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], waitForConfirmation)
     
     
     def set_transform_and_request_state(self, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation=True):
@@ -136,7 +73,7 @@ class QLabsQCar(QLabsActor):
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
@@ -146,7 +83,14 @@ class QLabsQCar(QLabsActor):
         :type brakeSignal: boolean
         :type reverseSignal: boolean
         :type waitForConfirmation: boolean
-        :return: True if successful or False otherwise, location in full scale, rotation in radians, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.
+        :return: 
+            - **status** - True if successful or False otherwise
+            - **location** - in full scale
+            - **rotation** - in radians
+            - **forward vector** - unit scale vector
+            - **up vector** - unit scale vector
+            - **front bumper hit** - True if in contact with a collision object, False otherwise
+            - **rear bumper hit** - True if in contact with a collision object, False otherwise
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
 
         """ 
@@ -200,7 +144,7 @@ class QLabsQCar(QLabsActor):
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation.
+        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
@@ -210,7 +154,14 @@ class QLabsQCar(QLabsActor):
         :type brakeSignal: boolean
         :type reverseSignal: boolean
         :type waitForConfirmation: boolean
-        :return: True if successful or False otherwise, location in full scale, rotation in degrees, unit forward vector, unit up vector, front bumper hit, rear bumper hit. Data only valid if waitForConfirmation=True.
+        :return: 
+            - **status** - True if successful or False otherwise
+            - **location** - in full scale
+            - **rotation** - in radians
+            - **forward vector** - unit scale vector
+            - **up vector** - unit scale vector
+            - **front bumper hit** - True if in contact with a collision object, False otherwise
+            - **rear bumper hit** - True if in contact with a collision object, False otherwise
         :rtype: boolean, float array[3], float array[3], float array[3], float array[3], boolean, boolean
 
         """ 
@@ -237,7 +188,12 @@ class QLabsQCar(QLabsActor):
         :type rightTurnSignal: boolean
         :type brakeSignal: boolean
         :type reverseSignal: boolean
-        :return: True or False if successful, location, rotation in radians, front bumper hit, rear bumper hit
+        :return: 
+            - **status** - True if successful, False otherwise
+            - **location**
+            - **rotation** - in radians
+            - **front bumper hit** - True if in contact with a collision object, False otherwise
+            - **rear bumper hit** - True if in contact with a collision object, False otherwise
         :rtype: boolean, float array[3], float array[3], boolean, boolean
 
 
@@ -293,7 +249,12 @@ class QLabsQCar(QLabsActor):
         :type rightTurnSignal: boolean
         :type brakeSignal: boolean
         :type reverseSignal: boolean
-        :return: True or False if successful, location, rotation in degrees, front bumper hit, rear bumper hit
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+            - **location**
+            - **rotation** - in radians
+            - **front bumper hit** - `True` if in contact with a collision object, `False` otherwise
+            - **rear bumper hit** - `True` if in contact with a collision object, `False` otherwise
         :rtype: boolean, float array[3], float array[3], boolean, boolean
 
 
@@ -309,7 +270,8 @@ class QLabsQCar(QLabsActor):
         
         :param camera: Pre-defined camera constant. See CAMERA constants for available options. Default is the trailing camera.
         :type camera: uint32
-        :return: `True` if possessing the camera was successful, `False` otherwise
+        :return: 
+            - **status** - `True` if possessing the camera was successful, `False` otherwise
         :rtype: boolean
 
         """
@@ -344,7 +306,8 @@ class QLabsQCar(QLabsActor):
         :type camera: uint32
         :type enable: boolean
         :type colour: float array[3]
-        :return: `True` if successful, `False` otherwise
+        :return: 
+            - **status** - `True` if possessing the camera was successful, `False` otherwise
         :rtype: boolean
 
         """
@@ -376,7 +339,9 @@ class QLabsQCar(QLabsActor):
         
         :param camera: Pre-defined camera constant. See CAMERA constants for available options. Trailing and Overhead cameras cannot be selected.
         :type camera: uint32
-        :return: `True` and image data if successful, `False` and empty otherwise
+        :return: 
+            - **status** - `True` and image data if successful, `False` and empty otherwise
+            - **imageData** - Image in a JPG format
         :rtype: boolean, byte array with jpg data
 
         """   

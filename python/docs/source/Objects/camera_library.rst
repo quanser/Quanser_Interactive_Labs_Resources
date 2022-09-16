@@ -49,9 +49,17 @@ Methods
 
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.__init__
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn
+.. tip::
+    Scale will not affect the camera, but will affect attached children.
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_degrees
+.. tip::
+    Scale will not affect the camera, but will affect attached children.
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id
+.. tip::
+    Scale will not affect the camera, but will affect attached children.
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_degrees
+.. tip::
+    Scale will not affect the camera, but will affect attached children.
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.possess
