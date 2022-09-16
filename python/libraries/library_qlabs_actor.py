@@ -108,7 +108,7 @@ class QLabsActor:
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID
         c.payload = bytearray(struct.pack(">IIfffffffffI", self._classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
@@ -119,7 +119,7 @@ class QLabsActor:
         if (self._qlabs.send_container(c)):
         
             if waitForConfirmation:
-                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ACK)
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID_ACK)
                 if (c == None):
                     if (self._verbose):
                         print('spawn_id: Communication timeout (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
@@ -198,7 +198,7 @@ class QLabsActor:
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
-        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
         c.payload = bytearray(struct.pack(">IfffffffffI", self._classID, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
@@ -208,7 +208,7 @@ class QLabsActor:
         if (self._qlabs.send_container(c)):
         
             if waitForConfirmation:
-                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_NEXT_RESPONSE)
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_RESPONSE)
                 if (c == None):
                     if (self._verbose):
                         print('spawn: Communication timeout (classID {}).'.format(self._classID))
