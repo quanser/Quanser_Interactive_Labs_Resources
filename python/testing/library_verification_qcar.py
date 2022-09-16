@@ -3,7 +3,6 @@ library_path = '../libraries'
 sys.path.append(library_path)
 
 from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_common import QLabsCommon
 from library_qlabs_yield_sign import QLabsYieldSign
 from library_qlabs_stop_sign import QLabsStopSign
 from library_qlabs_roundabout_sign import QLabsRoundaboutSign
@@ -90,15 +89,16 @@ def main():
     print("\n\n------------------------- Testing Individual Libraries ---------------------------\n")
     
     
-    ### Common
+    ### QLabs
     vr.PrintWSHeader("Common")
-    x = "Destroyed {} actors.".format(QLabsCommon().destroy_all_spawned_actors(qlabs))
+    x = "Destroyed {} actors.".format(qlabs.destroy_all_spawned_actors())
     print(x)
     vr.PrintWS(2, x)
     
     ### System
     vr.PrintWSHeader("System")
-    x = QLabsSystem().set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
+    hSystem = QLabsSystem()
+    x = hSystem.set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
 
@@ -503,8 +503,9 @@ def main():
     
     
     # lights
+    hEnvironmentOutdoors = QLabsEnvironmentOutdoors()
     for env_time in range(60):
-        QLabsEnvironmentOutdoors().set_time_of_day(qlabs, 12+env_time/10*2)
+        hEnvironmentOutdoors.set_time_of_day(qlabs, 12+env_time/10*2)
     
     time.sleep(0.5)
     
@@ -546,7 +547,7 @@ def main():
     hQCar2.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     
     for env_time in range(60):
-        QLabsEnvironmentOutdoors().set_time_of_day(qlabs, env_time/10*2)
+        hEnvironmentOutdoors.set_time_of_day(qlabs, env_time/10*2)
     
     
     #bumper test
@@ -895,36 +896,37 @@ def main():
     print("\n\n--Widget---")
 
     x = hCamera2.possess()
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
+    hQLabsWidget = QLabsWidget()
+    hQLabsWidget.widget_spawn_configuration(qlabs, enableShadow=True)
 
     for count in range(20):
-        x = QLabsWidget().spawn(qlabs, QLabsWidget().METAL_CAN, [-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn(qlabs, hQLabsWidget.METAL_CAN, [-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn (expect True)")
 
     time.sleep(1)
 
     for count in range(20):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().METAL_CAN, [-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees(qlabs, hQLabsWidget.METAL_CAN, [-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
 
     time.sleep(1)
 
-    x = QLabsWidget().destroy_all_spawned_widgets(qlabs)
+    x = hQLabsWidget.destroy_all_spawned_widgets(qlabs)
     vr.PrintWS(x == True, "Widgets destroyed (expect True)")
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=False)
+    hQLabsWidget.widget_spawn_configuration(qlabs, enableShadow=False)
     
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees(qlabs, hQLabsWidget.SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
-    QLabsWidget().destroy_all_spawned_widgets(qlabs)
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
+    hQLabsWidget.destroy_all_spawned_widgets(qlabs)
+    hQLabsWidget.widget_spawn_configuration(qlabs, enableShadow=True)
 
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees(qlabs, hQLabsWidget.SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     
     

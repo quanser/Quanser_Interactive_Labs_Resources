@@ -361,11 +361,9 @@ class QuanserInteractiveLabs:
         else:
             return False
 
-    def ping(self, qlabs):
+    def ping(self):
         """QLabs will automatically disconnect a non-responsive client connection. The ping method can be used to keep the connection alive if operations are infrequent.
         
-        :param qlabs: A QuanserInteractiveLabs object.
-        :type qlabs: QuanserInteractiveLabs object
         :return: `True` if successful, `False` otherwise
         :rtype: boolean
         """
@@ -381,11 +379,11 @@ class QuanserInteractiveLabs:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
-        qlabs.flush_receive()        
+        self.flush_receive()        
                 
-        if (qlabs.send_container(c)):
+        if (self.send_container(c)):
         
-            c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, FCN_RESPONSE_PING)
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, FCN_RESPONSE_PING)
             if (c == None):
                 return False
             elif c.payload[0] > 0:
@@ -394,6 +392,36 @@ class QuanserInteractiveLabs:
                 return False
         else:
             return False 
+
+    def destroy_all_spawned_actors(self):
+        """Find and destroy all spawned actors and widgets. This is a blocking operation.
+
+        :return: The number of actors deleted. -1 if failed.
+        :rtype: int32
+
+        """
+        actorNumber = 0
+        c = CommModularContainer()
+        
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = actorNumber
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
+
+        if (self.send_container(c)):
+            c = self.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK)
+            if (c == None):
+                return -1
+
+            if len(c.payload) == 4:
+                num_actors_destroyed, = struct.unpack(">I", c.payload[0:4])
+                return num_actors_destroyed
+            else:
+                return -1
+        
+        else:
+            return -1
 
    
     def __del__(self):
