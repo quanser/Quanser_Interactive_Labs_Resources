@@ -54,8 +54,10 @@ ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_qbot_hopper', \
                'library_qlabs_shredder', \
                'library_qlabs_srv02', \
-               'library_qlabs_weigh_scale',
-               'library_qlabs_qube_servo_2']
+               'library_qlabs_weigh_scale', \
+               'library_qlabs_qube_servo_2',\
+               'library_qlabs_actor',\
+               'library_qlabs_image_utilities']
 
  
 
@@ -231,7 +233,7 @@ def main():
     
     cv2.destroyAllWindows()
     x = hCamera2.possess()
-    
+        
     ### Yield Sign    
     vr.PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")

@@ -44,9 +44,13 @@ Methods
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.spawn_degrees
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.spawn_id
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.spawn_id_degrees
+.. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.destroy
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.ping
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform
+.. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform_degrees
+
 
 
 .. _crosswalkConfig:
@@ -112,9 +116,13 @@ Methods
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_degrees
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_id
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_id_degrees
+.. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.destroy
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.ping
 .. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.get_world_transform
+.. automethod:: library_qlabs_roundabout_sign.QLabsRoundaboutSign.get_world_transform_degrees
+
 
 .. _roundaboutConfig:
 
@@ -178,9 +186,14 @@ Methods
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.spawn_degrees
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.spawn_id
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.spawn_id_degrees
+.. automethod:: library_qlabs_stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.destroy
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.ping
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.get_world_transform
+.. automethod:: library_qlabs_stop_sign.QLabsStopSign.get_world_transform_degrees
+
+
 
 .. _stopsignConfig:
 
@@ -243,9 +256,14 @@ Methods
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.spawn_degrees
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.spawn_id
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.spawn_id_degrees
+.. automethod:: library_qlabs_yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.destroy
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.ping
 .. automethod:: library_qlabs_yield_sign.QLabsYieldSign.get_world_transform
+.. automethod:: library_qlabs_yield_sign.QLabsYieldSign.get_world_transform_degrees
+
+
 
 .. _yieldsignConfig:
 
@@ -308,9 +326,14 @@ Methods
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.spawn_degrees
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.spawn_id
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.spawn_id_degrees
+.. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.destroy
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.ping
 .. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.get_world_transform
+.. automethod:: library_qlabs_traffic_cone.QLabsTrafficCone.get_world_transform_degrees
+
+
 
 .. _trafficconeConfig:
 
@@ -379,7 +402,15 @@ Methods
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_degrees
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_degrees
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.set_state
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.destroy
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.ping
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.get_world_transform
+.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.get_world_transform_degrees
+
+
 
 .. _trafficlightConfig:
 

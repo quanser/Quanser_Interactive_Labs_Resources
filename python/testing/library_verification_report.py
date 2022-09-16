@@ -62,6 +62,7 @@ class verificationReport:
                     if ":" in line:
                         class_name = line[6:len(line)-2]
                         #print("Class name: {}".format(class_name))
+
         
         for line in library_data:
             if "def " in line:
@@ -83,6 +84,34 @@ class verificationReport:
                             else:
                                 self.PrintWS(3, function_name)
                                 print("*** {} not documented".format(function_name))
+
+        if (class_name.find('(QLabsActor)') >= 0):
+            CheckQLabsActorParentClass = True
+
+            f_library = open(self.library_path + '/library_qlabs_actor.py', 'r')
+            library_data = f_library.readlines();    
+            f_library.close()
+       
+            for line in library_data:
+                if "def " in line:
+                    function_name = line.lstrip()
+                    function_name = function_name[4:function_name.find('(')]
+                
+                    if (function_name[0] != "_"):
+                        if (function_name != "__init__"):
+                            doc_function_name = function_name
+                            #function_name = "." + function_name
+                            search_name = "." + function_name + "("
+                            if not(search_name in validation_code):
+                                print("*** {} not tested".format(function_name))
+                                all_functions_tested = False
+                                self.PrintWS(0, function_name)
+                            else:
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(1, function_name)
+                                else:
+                                    self.PrintWS(3, function_name)
+                                    print("*** {} not documented".format(function_name))
 
                         
                         
