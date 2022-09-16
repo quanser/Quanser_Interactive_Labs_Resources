@@ -18,6 +18,7 @@ from library_qlabs_person import QLabsPerson
 from library_qlabs_spline_line import QLabsSplineLine
 from library_qlabs_real_time import QLabsRealTime
 from library_qlabs_widget import QLabsWidget
+from library_qlabs_trafficlight import QLabsTrafficLight
 
 from library_verification_report import verificationReport
 
@@ -345,33 +346,40 @@ def main():
     vr.PrintWSHeader("Traffic Cone")
     print("\n\n---Traffic Cone---")
     
-    x = QLabsTrafficCone().spawn_id(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hCone0 = QLabsTrafficCone(qlabs)
+    x = hCone0.spawn_id(actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn cone with radians")
     
-    x = QLabsTrafficCone().spawn_id(qlabs, actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCone0.spawn_id(actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn cone with duplicate ID (return code 2)")
     
-    QLabsTrafficCone().spawn_id(qlabs, actorNumber=1, location=[-16, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    x = QLabsTrafficCone().destroy(qlabs, actorNumber=1)
+    hCone1 = QLabsTrafficCone(qlabs)
+    hCone1.spawn_id(actorNumber=1, location=[-16, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCone1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing cone (expect return 1)")
     
-    x = QLabsTrafficCone().destroy(qlabs, actorNumber=10)
+    hCone1.actorNumber = 1
+    x = hCone1.destroy()
     vr.PrintWS(x == 0, "Destroy cone that doesn't exist (expect return 0)")
     
-    x = QLabsTrafficCone().spawn_id_degrees(qlabs, actorNumber=2, location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    hCone2 = QLabsTrafficCone(qlabs)
+    x = hCone2.spawn_id_degrees(actorNumber=2, location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn cone with degrees in config 1")
     
-    x, loc, rot, scale = QLabsTrafficCone().get_world_transform(qlabs, 2)
+    x, loc, rot, scale = hCone2.get_world_transform()
     vr.PrintWS(x == True, "Get world transform")
     
     
-    x = QLabsTrafficCone().ping(qlabs, 2)
+    x = hCone2.ping()
     vr.PrintWS(x == True, "Ping existing cone (expect True)")
     
-    x = QLabsTrafficCone().ping(qlabs, 3)
+    hCone1.actorNumber = 1
+    x = hCone1.ping()
     vr.PrintWS(x == False, "Ping cone that doesn't exist (expect False)")      
     
     vr.checkFunctionTestList("library_qlabs_traffic_cone", "../docs/source/Objects/road_signage.rst")   
+    
+
     
     ### Change view points
     
@@ -923,7 +931,74 @@ def main():
     
     vr.checkFunctionTestList("library_qlabs_widget", "../docs/source/Objects/widgets.rst")  
   
+    
+    
+    ### Traffic Light
+    vr.PrintWSHeader("Traffic Light")
+    print("\n\n---Traffic Light---")
 
+    
+    hCameraTraffic = QLabsFreeCamera(qlabs)
+    x = hCameraTraffic.spawn(location=[-6.891, 3.568, 2.127], rotation=[0, 0.049, 1.105])
+    hCameraTraffic.possess()
+
+    hTrafficLight0 = QLabsTrafficLight(qlabs)
+    x = hTrafficLight0.spawn_id(actorNumber=0, location=[-0.044, 17.715, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn traffic light with radians")
+    
+    x = hTrafficLight0.spawn_id(actorNumber=0, location=[-0.044, 17.715, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 2, "Spawn traffic light with duplicate ID (return code 2)")
+    
+    hTrafficLight1 = QLabsTrafficLight(qlabs)
+    hTrafficLight1.spawn_id(actorNumber=1, location=[-8.455, 17.527, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hTrafficLight1.destroy()
+    vr.PrintWS(x == 1, "Spawn and destroy existing light (expect return 1)")
+    
+    hTrafficLight1.actorNumber = 1
+    x = hTrafficLight1.destroy()
+    vr.PrintWS(x == 0, "Destroy traffic light that doesn't exist (expect return 0)")
+    
+    hTrafficLight2 = QLabsTrafficLight(qlabs)
+    x = hTrafficLight2.spawn_id_degrees(actorNumber=2, location=[-8.455, 17.527, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 1")
+    
+    hTrafficLight3 = QLabsTrafficLight(qlabs)
+    [x, assignedActorNum] = hTrafficLight3.spawn_degrees(location=[-0.195, 7.261, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 2")
+    
+
+    x, loc, rot, scale = hTrafficLight2.get_world_transform()
+    vr.PrintWS(x == True, "Get world transform")
+    
+    
+    x = hTrafficLight2.ping()
+    vr.PrintWS(x == True, "Ping existing cone (expect True)")
+    
+    hTrafficLight1.actorNumber = 1
+    x = hTrafficLight1.ping()
+    vr.PrintWS(x == False, "Ping cone that doesn't exist (expect False)")     
+    
+    hTrafficLight0.set_state(state=hTrafficLight0.STATE_GREEN, waitForConfirmation=True)
+    hTrafficLight2.set_state(state=hTrafficLight2.STATE_GREEN, waitForConfirmation=True)
+    hTrafficLight3.set_state(state=hTrafficLight3.STATE_GREEN, waitForConfirmation=True)
+
+    time.sleep(0.5)
+    
+    hTrafficLight0.set_state(state=hTrafficLight0.STATE_YELLOW, waitForConfirmation=True)
+    hTrafficLight2.set_state(state=hTrafficLight2.STATE_YELLOW, waitForConfirmation=True)
+    hTrafficLight3.set_state(state=hTrafficLight3.STATE_YELLOW, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hTrafficLight0.set_state(state=hTrafficLight0.STATE_RED, waitForConfirmation=True)
+    hTrafficLight2.set_state(state=hTrafficLight2.STATE_RED, waitForConfirmation=True)
+    hTrafficLight3.set_state(state=hTrafficLight3.STATE_RED, waitForConfirmation=True)
+
+    time.sleep(0.5)
+    
+    vr.checkFunctionTestList("library_qlabs_trafficlight", "../docs/source/Objects/road_signage.rst")   
+
+    
     ### Spline Line
     vr.PrintWSHeader("Spline Line")
     print("\n\n---Spline Line---")

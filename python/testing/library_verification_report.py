@@ -61,7 +61,7 @@ class verificationReport:
                 if line[0] == "c":
                     if ":" in line:
                         class_name = line[6:len(line)-2]
-                        print("Class name: {}".format(class_name))
+                        #print("Class name: {}".format(class_name))
         
         for line in library_data:
             if "def " in line:
@@ -97,10 +97,12 @@ class verificationReport:
             f_documentation = open(documentation_path_and_name, 'r')
             doc_data = f_documentation.readlines();
             f_documentation.close()
+            
+            if (class_name.find('(') >= 0):
+                class_name = class_name[0:class_name.find('(')]
 
             search_name = library_name + "." + class_name + "." + function_name
             found_function = False
-
 
             for line in doc_data:
                 if search_name in line:

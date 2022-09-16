@@ -32,7 +32,7 @@ Constants
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_crosswalk.QLabsPerson.actorNumber
+.. autoattribute:: library_qlabs_crosswalk.QLabsCrosswalk.actorNumber
 
 
 .. _crosswalkMethods:
