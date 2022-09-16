@@ -35,6 +35,7 @@ Basic Methods
 .. automethod:: library_qlabs.QuanserInteractiveLabs.open
 .. automethod:: library_qlabs.QuanserInteractiveLabs.close
 .. automethod:: library_qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
+.. automethod:: library_qlabs.QuanserInteractiveLabs.destroy_all_spawned_actors
 
 
 .. _qlabsCoreMethodsAdvanced:
