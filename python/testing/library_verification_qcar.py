@@ -98,6 +98,10 @@ def main():
     vr.PrintWS(2, x)
     
     ### System
+
+    #Completed function list for verification report:
+    # QLabsSystem.set_title_string
+
     vr.PrintWSHeader("System")
     hSystem = QLabsSystem()
     x = hSystem.set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
@@ -106,6 +110,25 @@ def main():
 
     
     ### Free Camera
+
+    #Completed function list for verification report:
+    # QLabsFreeCamera(QLabsActor).spawn_id
+    # QLabsFreeCamera(QLabsActor).destroy
+    # QLabsFreeCamera(QLabsActor).spawn_id_degrees
+    # QLabsFreeCamera(QLabsActor).get_world_transform
+    # QLabsFreeCamera(QLabsActor).ping
+    # QLabsFreeCamera(QLabsActor).set_camera_properties
+    # QLabsFreeCamera(QLabsActor).possess
+    # QLabsFreeCamera(QLabsActor).set_transform
+    # QLabsFreeCamera(QLabsActor).set_transform_degrees
+    # QLabsFreeCamera(QLabsActor).set_image_capture_resolution
+    # QLabsFreeCamera(QLabsActor).get_image
+    # QLabsFreeCamera(QLabsActor).spawn_id_and_parent_with_relative_transform
+    # QLabsFreeCamera(QLabsActor).spawn_id_and_parent_with_relative_transform_degrees
+    # QLabsFreeCamera(QLabsActor).spawn
+    # QLabsFreeCamera(QLabsActor).spawn_degrees
+
+
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     
@@ -233,8 +256,18 @@ def main():
     
     cv2.destroyAllWindows()
     x = hCamera2.possess()
+
         
     ### Yield Sign    
+
+    #Completed function list for verification report:
+    # QLabsYieldSign(QLabsActor).spawn_id
+    # QLabsYieldSign(QLabsActor).destroy
+    # QLabsYieldSign(QLabsActor).spawn_id_degrees
+    # QLabsYieldSign(QLabsActor).get_world_transform
+    # QLabsYieldSign(QLabsActor).ping
+
+
     vr.PrintWSHeader("Yield Sign")
     print("\n\n---Yield Sign---")
     
@@ -272,6 +305,14 @@ def main():
     vr.checkFunctionTestList("library_qlabs_yield_sign", "../docs/source/Objects/road_signage.rst")
     
     ### Stop Sign    
+
+    #Completed function list for verification report:
+    # QLabsStopSign(QLabsActor).spawn_id
+    # QLabsStopSign(QLabsActor).destroy
+    # QLabsStopSign(QLabsActor).spawn_id_degrees
+    # QLabsStopSign(QLabsActor).get_world_transform
+    # QLabsStopSign(QLabsActor).ping
+
     vr.PrintWSHeader("Stop Sign")
     print("\n\n---Stop Sign---")
     
@@ -310,6 +351,14 @@ def main():
     
     
     ### Roundabout Sign    
+
+    #Completed function list for verification report:
+    # QLabsRoundaboutSign(QLabsActor).spawn_id
+    # QLabsRoundaboutSign(QLabsActor).destroy
+    # QLabsRoundaboutSign(QLabsActor).spawn_id_degrees
+    # QLabsRoundaboutSign(QLabsActor).get_world_transform
+    # QLabsRoundaboutSign(QLabsActor).ping
+
     vr.PrintWSHeader("Roundabout Sign")
     print("\n\n---Roundabout Sign---")
     
@@ -347,6 +396,14 @@ def main():
     vr.checkFunctionTestList("library_qlabs_roundabout_sign", "../docs/source/Objects/road_signage.rst")    
     
     ### Traffic Cone
+
+    #Completed function list for verification report:
+    # QLabsTrafficCone(QLabsActor).spawn_id
+    # QLabsTrafficCone(QLabsActor).destroy
+    # QLabsTrafficCone(QLabsActor).spawn_id_degrees
+    # QLabsTrafficCone(QLabsActor).get_world_transform
+    # QLabsTrafficCone(QLabsActor).ping
+
     vr.PrintWSHeader("Traffic Cone")
     print("\n\n---Traffic Cone---")
     
@@ -392,6 +449,14 @@ def main():
     print("Possess camera 0")
     
     ### Crosswalk
+
+    #Completed function list for verification report:
+    # QLabsCrosswalk(QLabsActor).spawn_id
+    # QLabsCrosswalk(QLabsActor).destroy
+    # QLabsCrosswalk(QLabsActor).spawn_id_degrees
+    # QLabsCrosswalk(QLabsActor).get_world_transform
+    # QLabsCrosswalk(QLabsActor).ping
+
     vr.PrintWSHeader("Crosswalk")
     print("\n\n---Crosswalk---")
     
@@ -431,6 +496,16 @@ def main():
     vr.checkFunctionTestList("library_qlabs_crosswalk", "../docs/source/Objects/road_signage.rst")   
     
     ### People
+
+    #Completed function list for verification report:
+    # QLabsPerson(QLabsActor).spawn_id
+    # QLabsPerson(QLabsActor).destroy
+    # QLabsPerson(QLabsActor).spawn_id_degrees
+    # QLabsPerson(QLabsActor).get_world_transform
+    # QLabsPerson(QLabsActor).get_world_transform_degrees
+    # QLabsPerson(QLabsActor).ping
+    # QLabsPerson(QLabsActor).move_to
+
     vr.PrintWSHeader("People")
     print("\n\n---People---")
     
@@ -474,6 +549,23 @@ def main():
     vr.checkFunctionTestList("library_qlabs_person", "../docs/source/Objects/person_library.rst")   
     
     ### QCar
+
+    #Completed function list for verification report:
+    # QLabsQCar(QLabsActor).spawn_id
+    # QLabsQCar(QLabsActor).destroy
+    # QLabsQCar(QLabsActor).spawn_id_degrees
+    # QLabsQCar(QLabsActor).get_world_transform
+    # QLabsQCar(QLabsActor).get_world_transform_degrees
+    # QLabsQCar(QLabsActor).ping
+    # QLabsQCar(QLabsActor).set_velocity_and_request_state
+    # QLabsQCar(QLabsActor).set_velocity_and_request_state_degrees
+    # QLabsQCar(QLabsActor).possess
+    # QLabsQCar(QLabsActor).ghost_mode
+    # QLabsQCar(QLabsActor).get_image
+    # QLabsQCar(QLabsActor).get_lidar
+    
+    #Completed function list for verification report:
+    # QLabsEnvironmentOutdoors.set_time_of_day
     
     hCameraQCars = QLabsFreeCamera(qlabs)
     hCameraQCars.spawn_id(actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
@@ -779,6 +871,25 @@ def main():
     vr.checkFunctionTestList("library_qlabs_qcar", "../docs/source/Objects/car_library.rst")    
 
     ### Basic Shape
+
+    #Completed function list for verification report:
+    # QLabsBasicShape(QLabsActor).spawn_id
+    # QLabsBasicShape(QLabsActor).destroy
+    # QLabsBasicShape(QLabsActor).spawn_id_degrees
+    # QLabsBasicShape(QLabsActor).get_world_transform
+    # QLabsBasicShape(QLabsActor).ping
+    # QLabsBasicShape(QLabsActor).set_material_properties
+    # QLabsBasicShape(QLabsActor).set_transform
+    # QLabsBasicShape(QLabsActor).set_enable_collisions
+    # QLabsBasicShape(QLabsActor).set_enable_dynamics
+    # QLabsBasicShape(QLabsActor).spawn_id_box_walls_from_center
+    # QLabsBasicShape(QLabsActor).spawn_id_box_walls_from_center_degrees
+    # QLabsBasicShape(QLabsActor).spawn_id_box_walls_from_end_points
+    # QLabsBasicShape(QLabsActor).spawn
+    # QLabsBasicShape(QLabsActor).spawn_degrees
+
+    
+
     vr.PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
@@ -894,6 +1005,14 @@ def main():
     
     
     ### Widget
+
+    #Completed function list for verification report:
+    # QLabsWidget(QLabsActor).spawn
+    # QLabsWidget(QLabsActor).spawn_degrees
+    # QLabsWidget(QLabsActor).destroy_all_spawned_widgets
+    # QLabsWidget(QLabsActor).widget_spawn_configuration
+    
+
     vr.PrintWSHeader("Widget")
     print("\n\n--Widget---")
 
@@ -937,6 +1056,16 @@ def main():
     
     
     ### Traffic Light
+
+    #Completed function list for verification report:
+    # QLabsTrafficLight(QLabsActor).spawn_id
+    # QLabsTrafficLight(QLabsActor).destroy
+    # QLabsTrafficLight(QLabsActor).spawn_id_degrees
+    # QLabsTrafficLight(QLabsActor).spawn_degrees
+    # QLabsTrafficLight(QLabsActor).get_world_transform
+    # QLabsTrafficLight(QLabsActor).ping
+    # QLabsTrafficLight(QLabsActor).set_state
+
     vr.PrintWSHeader("Traffic Light")
     print("\n\n---Traffic Light---")
 
@@ -975,11 +1104,11 @@ def main():
     
     
     x = hTrafficLight2.ping()
-    vr.PrintWS(x == True, "Ping existing cone (expect True)")
+    vr.PrintWS(x == True, "Ping existing traffic light (expect True)")
     
     hTrafficLight1.actorNumber = 1
     x = hTrafficLight1.ping()
-    vr.PrintWS(x == False, "Ping cone that doesn't exist (expect False)")     
+    vr.PrintWS(x == False, "Ping traffic light that doesn't exist (expect False)")     
     
     hTrafficLight0.set_state(state=hTrafficLight0.STATE_GREEN, waitForConfirmation=True)
     hTrafficLight2.set_state(state=hTrafficLight2.STATE_GREEN, waitForConfirmation=True)
@@ -998,6 +1127,9 @@ def main():
     hTrafficLight3.set_state(state=hTrafficLight3.STATE_RED, waitForConfirmation=True)
 
     time.sleep(0.5)
+
+    x = hTrafficLight0.destroy_all_actors_of_class()
+    vr.PrintWS(x == 3, "Delete all actors of class (expect 3), received {}".format(x))
     
     vr.checkFunctionTestList("library_qlabs_trafficlight", "../docs/source/Objects/road_signage.rst")   
 

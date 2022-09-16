@@ -73,7 +73,7 @@ class verificationReport:
                     if (function_name != "__init__"):
                         doc_function_name = function_name
                         #function_name = "." + function_name
-                        search_name = "." + function_name + "("
+                        search_name = class_name + "." + function_name
                         if not(search_name in validation_code):
                             print("*** {} not tested".format(function_name))
                             all_functions_tested = False
@@ -101,7 +101,7 @@ class verificationReport:
                         if (function_name != "__init__"):
                             doc_function_name = function_name
                             #function_name = "." + function_name
-                            search_name = "." + function_name + "("
+                            search_name = class_name + "." + function_name
                             if not(search_name in validation_code):
                                 print("*** {} not tested".format(function_name))
                                 all_functions_tested = False

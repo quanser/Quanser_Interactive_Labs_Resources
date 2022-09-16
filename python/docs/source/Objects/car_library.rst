@@ -64,6 +64,7 @@ Methods
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_image
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_lidar
 .. automethod:: library_qlabs_qcar.QLabsQCar.destroy
+.. automethod:: library_qlabs_qcar.QLabsQCar.destroy_all_actors_of_class
 .. automethod:: library_qlabs_qcar.QLabsQCar.ping
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform
 .. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform_degrees

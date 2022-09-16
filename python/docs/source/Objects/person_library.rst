@@ -80,6 +80,7 @@ Methods
 
 .. automethod:: library_qlabs_person.QLabsPerson.move_to
 .. automethod:: library_qlabs_person.QLabsPerson.destroy
+.. automethod:: library_qlabs_person.QLabsPerson.destroy_all_actors_of_class
 .. automethod:: library_qlabs_person.QLabsPerson.ping
 .. automethod:: library_qlabs_person.QLabsPerson.get_world_transform
 .. automethod:: library_qlabs_person.QLabsPerson.get_world_transform_degrees

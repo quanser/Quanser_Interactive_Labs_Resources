@@ -67,6 +67,7 @@ Methods
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.set_transform
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.set_transform_degrees
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.destroy
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.destroy_all_actors_of_class
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.ping
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.get_world_transform
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.get_world_transform_degrees

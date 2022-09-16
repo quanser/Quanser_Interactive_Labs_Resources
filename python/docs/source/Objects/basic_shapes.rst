@@ -70,6 +70,7 @@ Methods
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.destroy
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.destroy_all_actors_of_class
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.ping

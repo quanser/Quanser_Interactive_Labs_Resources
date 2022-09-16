@@ -82,7 +82,39 @@ class QLabsActor:
             else:
                 return -1
         else:
-            return -1            
+            return -1     
+            
+    def destroy_all_actors_of_class(self):
+        """Find and destroy all actors of this class. This is a blocking operation.
+        
+        :return: 
+            - **numActorsDestroyed** - The number of actors destroyed. -1 if failed.
+        :rtype: int32
+
+        """   
+
+        c = CommModularContainer()
+        
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = 0
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_ACTORS_OF_CLASS
+        c.payload = bytearray(struct.pack(">I", self._classID))
+        
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
+
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_ACTORS_OF_CLASS_ACK)
+            if (c == None):
+                return -1
+
+            if len(c.payload) == 4:
+                numActorsDestroyed, = struct.unpack(">I", c.payload[0:4])
+                self.actorNumber = None
+                return numActorsDestroyed
+            else:
+                return -1
+        else:
+            return -1  
             
     def spawn_id(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor.
