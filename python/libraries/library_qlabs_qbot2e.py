@@ -1,4 +1,6 @@
-from library_qlabs import QuanserInteractiveLabs, CommModularContainer
+from library_qlabs import CommModularContainer
+from library_qlabs_actor import QLabsActor
+
 from quanser.common import GenericError
 import math
 
@@ -7,7 +9,7 @@ import struct
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsQBot2e:
+class QLabsQBot2e(QLabsActor):
 
        
     ID_QBOT = 20
@@ -22,18 +24,20 @@ class QLabsQBot2e:
     VIEWPOINT_DEPTH = 1
     VIEWPOINT_TRAILING = 2
     
-    # Initialize class
-    def __init__(self):
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor Method
 
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
+       self._classID = self.ID_QBOT
        return
-       
-    def spawn(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-   
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-    
-        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-   
+     
    
     def possess(self, qlabs, actorNumber, camera):
         c = CommModularContainer()

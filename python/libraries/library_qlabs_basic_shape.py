@@ -320,7 +320,8 @@ class QLabsBasicShape(QLabsActor):
 
         else:
             return False
-    
+
+   
     
     def spawn_id_box_walls_from_center(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
