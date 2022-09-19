@@ -7,6 +7,7 @@ from library_qlabs_free_camera import QLabsFreeCamera
 from library_qlabs_basic_shape import QLabsBasicShape
 from library_qlabs_widget import QLabsWidget
 from library_qlabs_qbot2e import QLabsQBot2e
+from library_qlabs_qbot3 import QLabsQBot3
 from library_qlabs_system import QLabsSystem
 
 
@@ -84,7 +85,7 @@ def main():
     os.system('cls')
     
     qlabs = QuanserInteractiveLabs()
-    cv2.startWindowThread()
+    
 
     print("Connecting to QLabs...")
     try:
@@ -104,19 +105,27 @@ def main():
     
     ### Free Camera    
     hCamera = QLabsFreeCamera(qlabs)
-    hCamera.spawn(location=[0.073, -2.743, 0], rotation=[0, 0.339, 2.206])
+    hCamera.spawn(location=[2.39, -3.525, 2.547], rotation=[0, 0.762, 2.073])
     #hCamera.possess()
 
 
     ### QBOT
 
-    myQBot = QLabsQBot2e(qlabs)
-    myQBot.spawn_degrees([0.073, -2.743, 0], [0,0,90])
+    #myQBot = QLabsQBot2e(qlabs)
+    myQBot = QLabsQBot3(qlabs)
+    myQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
 
 
     ### Shapes
     construct_maze(qlabs)
-
+    
+    hGoalObject = QLabsBasicShape(qlabs)
+    hGoalObject.spawn(location=[1.579, -0.534, 0], rotation=[0, 0, 0], scale=[0.5, 0.5, 0.05], configuration=hGoalObject.SHAPE_CYLINDER, waitForConfirmation=True)
+    hGoalObject.set_material_properties(colour=[0,0,1], roughness=1, metallic=False)
+    hGoalObject.set_enable_collisions(False)
+    
+    hGateObject = QLabsBasicShape(qlabs)
+    hGateObject.spawn_id(100, location=[1.621, 0.776, 0.25], rotation=[0, 0, 0], scale=[0.5, 0.1, 0.5], configuration=hGoalObject.SHAPE_CUBE, waitForConfirmation=True)
     
     qlabs.close()
     print("Done!")  

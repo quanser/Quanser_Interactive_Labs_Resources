@@ -9,10 +9,10 @@ import struct
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsQBot2e(QLabsActor):
+class QLabsQBot3(QLabsActor):
 
        
-    ID_QBOT2e = 20
+    ID_QBOT3 = 22
     
     FCN_QBOT_COMMAND_AND_REQUEST_STATE = 10
     FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE = 11
@@ -35,7 +35,7 @@ class QLabsQBot2e(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_QBOT2e
+       self._classID = self.ID_QBOT3
        return
      
    
