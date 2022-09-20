@@ -35,7 +35,7 @@ class QLabsTrafficLight(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_TRAFFIC_LIGHT
+       self.classID = self.ID_TRAFFIC_LIGHT
        return
 
     def set_state(self, state, waitForConfirmation=True):

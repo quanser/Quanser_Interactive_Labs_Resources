@@ -99,6 +99,7 @@ def main():
 
     qlabs.destroy_all_spawned_actors()
     
+    
     hSystem = QLabsSystem()
     x = hSystem.set_title_string(qlabs, 'CUSTOM QBOT EXAMPLE', waitForConfirmation=True)
     
@@ -106,14 +107,13 @@ def main():
     ### Free Camera    
     hCamera = QLabsFreeCamera(qlabs)
     hCamera.spawn(location=[2.39, -3.525, 2.547], rotation=[0, 0.762, 2.073])
-    #hCamera.possess()
+    hCamera.possess()
 
 
     ### QBOT
 
-    #myQBot = QLabsQBot2e(qlabs)
-    myQBot = QLabsQBot3(qlabs)
-    myQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
+    #myQBot = QLabsQBot3(qlabs)
+    #myQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
 
 
     ### Shapes

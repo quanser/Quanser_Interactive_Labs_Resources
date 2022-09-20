@@ -39,7 +39,7 @@ class QLabsFreeCamera(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_FREE_CAMERA
+       self.classID = self.ID_FREE_CAMERA
        return
 
     

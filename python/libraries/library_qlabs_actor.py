@@ -26,7 +26,7 @@ class QLabsActor:
     """ The current actor number of this class to be addressed. This will be set by spawn methods and cleared by destroy methods. It will not be modified by the destroy all actors.  This can be manually altered at any time to use one object to address multiple actors. """
     _qlabs = None
     _verbose = False
-    _classID = 0
+    classID = 0
    
     def __init__(self, qlabs, verbose=False):
        """ Constructor Method
@@ -66,7 +66,7 @@ class QLabsActor:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ACTOR
-        c.payload = bytearray(struct.pack(">II", self._classID, self.actorNumber))
+        c.payload = bytearray(struct.pack(">II", self.classID, self.actorNumber))
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
@@ -98,7 +98,7 @@ class QLabsActor:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_ACTORS_OF_CLASS
-        c.payload = bytearray(struct.pack(">I", self._classID))
+        c.payload = bytearray(struct.pack(">I", self.classID))
         
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
@@ -141,7 +141,7 @@ class QLabsActor:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID
-        c.payload = bytearray(struct.pack(">IIfffffffffI", self._classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
+        c.payload = bytearray(struct.pack(">IIfffffffffI", self.classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         
@@ -154,7 +154,7 @@ class QLabsActor:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID_ACK)
                 if (c == None):
                     if (self._verbose):
-                        print('spawn_id: Communication timeout (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                        print('spawn_id: Communication timeout (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
                     return -1
                 if len(c.payload) == 1:
                     status, = struct.unpack(">B", c.payload[0:1])
@@ -163,24 +163,24 @@ class QLabsActor:
                     
                     elif (self._verbose):
                         if (status == 1):
-                            print('spawn_id: Class not available (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                            print('spawn_id: Class not available (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
                         elif (status == 2):
-                            print('spawn_id: Actor number not available or already in use (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                            print('spawn_id: Actor number not available or already in use (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
                         elif (status == -1):
-                            print('spawn_id: Communication error (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                            print('spawn_id: Communication error (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
                         else:
-                            print('spawn_id: Unknown error (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                            print('spawn_id: Unknown error (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
                     return status
                 else:
                     if (self._verbose):
-                        print("spawn: Communication error (classID {}, actorNumber {}).".format(self._classID, actorNumber))
+                        print("spawn: Communication error (classID {}, actorNumber {}).".format(self.classID, actorNumber))
                     return -1
             
             self.actorNumber = actorNumber
             return 0
         else:
             if (self._verbose):
-                print('spawn_id: Communication failed (classID {}, actorNumber {}).'.format(self._classID, actorNumber))
+                print('spawn_id: Communication failed (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
             return -1 
 
 
@@ -231,7 +231,7 @@ class QLabsActor:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN
-        c.payload = bytearray(struct.pack(">IfffffffffI", self._classID, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
+        c.payload = bytearray(struct.pack(">IfffffffffI", self.classID, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
@@ -243,7 +243,7 @@ class QLabsActor:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_RESPONSE)
                 if (c == None):
                     if (self._verbose):
-                        print('spawn: Communication timeout (classID {}).'.format(self._classID))
+                        print('spawn: Communication timeout (classID {}).'.format(self.classID))
                     return -1
                 if len(c.payload) == 5:
                     status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
@@ -252,22 +252,22 @@ class QLabsActor:
 
                     elif (self._verbose):
                         if (status == 1):
-                            print('spawn: Class not available (classID {}).'.format(self._classID))
+                            print('spawn: Class not available (classID {}).'.format(self.classID))
                         elif (status == -1):
-                            print('spawn: Communication error (classID {}).'.format(self._classID))
+                            print('spawn: Communication error (classID {}).'.format(self.classID))
                         else:
-                            print('spawn: Unknown error (classID {}).'.format(self._classID))
+                            print('spawn: Unknown error (classID {}).'.format(self.classID))
 
                     return status, actorNumber
                 else:
                     if (self._verbose):
-                        print('spawn: Communication error (classID {}).'.format(self._classID))
+                        print('spawn: Communication error (classID {}).'.format(self.classID))
                     return -1, -1
             
             return 0, -1
         else:
             if (self._verbose):
-                print('spawn: Communication failed (classID {}).'.format(self._classID))
+                print('spawn: Communication failed (classID {}).'.format(self.classID))
             return -1, -1 
 
     def spawn_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
@@ -322,7 +322,7 @@ class QLabsActor:
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
         c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE
-        c.payload = bytearray(struct.pack(">IIfffffffffIIII", self._classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, parentClassID, parentActorNumber, parentComponent))
+        c.payload = bytearray(struct.pack(">IIfffffffffIIII", self.classID, actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, parentClassID, parentActorNumber, parentComponent))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
@@ -334,7 +334,7 @@ class QLabsActor:
                 c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK)
                 if (c == None):
                     if (self._verbose):
-                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication timeout.".format(self._classID, actorNumber))
+                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication timeout.".format(self.classID, actorNumber))
                     return -1
 
                 if len(c.payload) == 1:
@@ -344,27 +344,27 @@ class QLabsActor:
 
                     elif (self._verbose):
                         if (status == 1):
-                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Class not available.'.format(self._classID, actorNumber))
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Class not available.'.format(self.classID, actorNumber))
                         elif (status == 2):
-                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Actor number not available or already in use.'.format(self._classID, actorNumber))
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Actor number not available or already in use.'.format(self.classID, actorNumber))
                         elif (status == 3):
-                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Cannot find parent.'.format(self._classID, actorNumber))
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Cannot find parent.'.format(self.classID, actorNumber))
                         elif (status == -1):
-                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.'.format(self._classID, actorNumber))
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.'.format(self.classID, actorNumber))
                         else:
-                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Unknown error.'.format(self._classID, actorNumber))
+                            print('spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Unknown error.'.format(self.classID, actorNumber))
 
                     return status
                 else:
                     if (self._verbose):
-                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.".format(self._classID, actorNumber))
+                        print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication error.".format(self.classID, actorNumber))
                     return -1
             
             self.actorNumber = actorNumber
             return 0
         else:
             if (self._verbose):
-                print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication failed.".format(self._classID, actorNumber))
+                print("spawn_id_and_parent_with_relative_transform (classID {}, actorNumber {}): Communication failed.".format(self.classID, actorNumber))
             return -1     
             
     def spawn_id_and_parent_with_relative_transform_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
@@ -408,7 +408,7 @@ class QLabsActor:
             return False
 
         c = CommModularContainer()
-        c.classID = self._classID
+        c.classID = self.classID
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_REQUEST_PING
         c.payload = bytearray()
@@ -418,7 +418,7 @@ class QLabsActor:
                 
         if (self._qlabs.send_container(c)):
         
-            c = self._qlabs.wait_for_container(self._classID, self.actorNumber, self.FCN_RESPONSE_PING)
+            c = self._qlabs.wait_for_container(self.classID, self.actorNumber, self.FCN_RESPONSE_PING)
             if (c == None):
                 return False
 
@@ -446,7 +446,7 @@ class QLabsActor:
             return False, [0,0,0], [0,0,0], [0,0,0]
 
         c = CommModularContainer()
-        c.classID = self._classID
+        c.classID = self.classID
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_REQUEST_WORLD_TRANSFORM
         c.payload = bytearray()
@@ -460,7 +460,7 @@ class QLabsActor:
                 
         if (self._qlabs.send_container(c)):
         
-            c = self._qlabs.wait_for_container(self._classID, self.actorNumber, self.FCN_RESPONSE_WORLD_TRANSFORM)
+            c = self._qlabs.wait_for_container(self.classID, self.actorNumber, self.FCN_RESPONSE_WORLD_TRANSFORM)
             if (c == None):
                 return False, location, rotation, scale
 
@@ -469,11 +469,11 @@ class QLabsActor:
                 return True, location, rotation, scale
             else:
                 if (self._verbose):
-                    print("get_world_transform: Communication error (classID {}, actorNumber {}).".format(self._classID, self.actorNumber))
+                    print("get_world_transform: Communication error (classID {}, actorNumber {}).".format(self.classID, self.actorNumber))
                 return False, location, rotation, scale
         else:
             if (self._verbose):
-                print("get_world_transform: Communication failed (classID {}, actorNumber {}).".format(self._classID, self.actorNumber))
+                print("get_world_transform: Communication failed (classID {}, actorNumber {}).".format(self.classID, self.actorNumber))
             return False, location, rotation, scale
 
 

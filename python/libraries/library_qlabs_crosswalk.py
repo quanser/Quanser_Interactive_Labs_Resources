@@ -20,7 +20,7 @@ class QLabsCrosswalk(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_CROSSWALK
+       self.classID = self.ID_CROSSWALK
        return
 
    

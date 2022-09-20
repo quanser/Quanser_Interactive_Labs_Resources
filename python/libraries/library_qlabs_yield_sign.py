@@ -19,6 +19,6 @@ class QLabsYieldSign(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_YIELD_SIGN
+       self.classID = self.ID_YIELD_SIGN
        return
 

@@ -35,7 +35,7 @@ class QLabsQBot2e(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_QBOT2e
+       self.classID = self.ID_QBOT2e
        return
      
    

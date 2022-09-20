@@ -41,7 +41,7 @@ class QLabsBasicShape(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_BASIC_SHAPE
+       self.classID = self.ID_BASIC_SHAPE
        return
        
     

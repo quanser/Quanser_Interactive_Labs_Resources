@@ -19,6 +19,6 @@ class QLabsStopSign(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_STOP_SIGN
+       self.classID = self.ID_STOP_SIGN
        return
 

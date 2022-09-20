@@ -22,5 +22,5 @@ class QLabsTrafficCone(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_TRAFFIC_CONE
+       self.classID = self.ID_TRAFFIC_CONE
        return

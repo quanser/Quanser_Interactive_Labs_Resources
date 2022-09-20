@@ -38,7 +38,7 @@ class QLabsPerson(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_PERSON
+       self.classID = self.ID_PERSON
        return
        
 

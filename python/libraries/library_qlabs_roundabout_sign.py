@@ -19,7 +19,7 @@ class QLabsRoundaboutSign(QLabsActor):
 
        self._qlabs = qlabs
        self._verbose = verbose
-       self._classID = self.ID_ROUNDABOUT_SIGN
+       self.classID = self.ID_ROUNDABOUT_SIGN
        return
 
     
