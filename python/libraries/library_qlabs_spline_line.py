@@ -1,37 +1,53 @@
-﻿from library_qlabs import QuanserInteractiveLabs, CommModularContainer
-from quanser.common import GenericError
-import math
+﻿from library_qlabs import CommModularContainer
+from library_qlabs_actor import QLabsActor
 
+import math
 import struct
         
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsSplineLine:
+class QLabsSplineLine(QLabsActor):
 
        
     ID_SPLINE_LINE = 180
     
-    FCN_SPLINE_LINE_SET_POINTS = 10
-    FCN_SPLINE_LINE_SET_POINTS_ACK = 11
+    FCN_SPLINE_LINE_SET_POINTS = 12
+    FCN_SPLINE_LINE_SET_POINTS_ACK = 13
     
         
-    # Initialize class
-    def __init__(self):
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor Method
 
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
+       self.classID = self.ID_SPLINE_LINE
        return
        
-    def spawn_id(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_SPLINE_LINE, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], configuration, waitForConfirmation)
-   
-    def spawn_id_degrees(self, qlabs, actorNumber, location, rotation, scale, configuration=0, waitForConfirmation=True):
-    
-        return qlabs.spawn(actorNumber, self.ID_SPLINE_LINE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, scale[0], scale[1], scale[2], configuration, waitForConfirmation)
-   
-    def set_points(self, qlabs, actorNumber, colour, alignEndPointTangents, pointList, waitForConfirmation=True):
+    def set_points(self, colour, pointList, alignEndPointTangents=False, waitForConfirmation=True):
+        """After spawning the origin of the spline actor, this method is used to create the individual points. At least 2 points must be specified to make a line.
+
+        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param pointList: A 2D array with each row containing [x,y,z,width] elements. Width is in m.
+        :param alignEndPointTangents: (Optional) Sets the tangent of the first and last point to be the same.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type colour: float array[3]
+        :type pointList: float 2D array[4][n]
+        :type alignEndPointTangents: boolean
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean
+        """
         c = CommModularContainer()
         c.classID = self.ID_SPLINE_LINE
-        c.actorNumber = actorNumber
+        c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_SPLINE_LINE_SET_POINTS
         c.payload = bytearray(struct.pack(">fffB", colour[0], colour[1], colour[2], alignEndPointTangents))
         
@@ -42,21 +58,39 @@ class QLabsSplineLine:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flush_receive()  
+            self._qlabs.flush_receive()  
         
-        if (qlabs.send_container(c)):
+        if (self._qlabs.send_container(c)):
             if waitForConfirmation:
-                c = qlabs.wait_for_container(self.ID_SPLINE_LINE, actorNumber, self.FCN_SPLINE_LINE_SET_POINTS_ACK)
-                return c
+                c = self._qlabs.wait_for_container(self.ID_SPLINE_LINE, self.actorNumber, self.FCN_SPLINE_LINE_SET_POINTS_ACK)
+                if c == None:
+                    if (self._verbose):
+                        print('spawn_id: Communication timeout (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
+                    return False
                     
             return True
         else:
+            if (self._verbose):
+                print('spawn_id: Communication failed (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
             return False    
 
-    def spawn_spline_circle_from_center(qlabs, actorNumber, centerLocation, rotation, radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
-        # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-        QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
-
+    def circle_from_center(radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+        """After spawning the origin of the spline actor, this method is used to create a circle.
+        :param radius: in m
+        :param lineWidth: in m
+        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param numSplinePoints: The number of points distributed around the circle. Splines will automatically round the edges, but more points will be needed for larger circles to achieve an accurate circle.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type radius: float
+        :type lineWidth: float
+        :type colour: float array[3]
+        :type numSplinePoints: integer
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean
+        """
+        
         points = []
 
         for angle in range(0, numSplinePoints):
@@ -64,54 +98,31 @@ class QLabsSplineLine:
         
         points.append(points[0])
     
-        QLabsSplineLine().set_points(qlabs, actorNumber, colour, alignEndPointTangents=True, pointList=points)
+        return self.set_points(colour, pointList=points, alignEndPointTangents=True, )
         
-    def spawn_spline_circle_from_center_degrees(qlabs, actorNumber, centerLocation, rotation, radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
-
-        spawn_spline_circle_from_center(qlabs, actorNumber, centerLocation, [x/180*math.pi for x in rotation], radius, lineWidth, colour, numSplinePoints, waitForConfirmation)
      
-    def spawn_spline_arc_from_center(qlabs, actorNumber, centerLocation, rotation, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
-        # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-        QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
-
+    def arc_from_center(radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+        
         points = []
 
         for angle in range(0, numSplinePoints+1):
             points.append([radius*math.sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*math.cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth])
         
-        QLabsSplineLine().set_points(qlabs, actorNumber, colour, alignEndPointTangents=False, pointList=points)
+        return self.set_points(qlabs, actorNumber, colour, pointList=points, alignEndPointTangents=False)
     
-    def spawn_spline_arc_from_center_degrees(qlabs, actorNumber, centerLocation, rotation, radius, startAngle=0, endAngle=90, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+    def arc_from_center_degrees(radius, startAngle=0, endAngle=90, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
-        spawn_spline_arc_from_center(qlabs, actorNumber, centerLocation, rotation, radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, colour, numSplinePoints, waitForConfirmation)
-
-    def spawn_spline_line_two_point(qlabs, actorNumber, p1, p2, lineWidth=1, colour=[1,0,0], waitForConfirmation=True):
-        # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-        QLabsSplineLine().spawn(qlabs, actorNumber, [0,0,0], [0,0,0], [1, 1, 1], 0, waitForConfirmation)
-
-        points = [[p1[0], p1[1], p1[2], lineWidth], [p2[0], p2[1], p2[2], lineWidth]]
+        return  self.spawn_spline_arc_from_center(qlabsradius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, colour, numSplinePoints, waitForConfirmation)
         
-        QLabsSplineLine().set_points(qlabs, actorNumber, colour, alignEndPointTangents=False, pointList=points)
+    def rounded_rectangle_from_center(qlabs, actorNumber, centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1, colour=[1,0,0], waitForConfirmation=True):
         
-    def spawn_spline_rounded_rectangle_from_center(qlabs, actorNumber, centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1, colour=[1,0,0], waitForConfirmation=True):
-        # Place the spawn point of the spline at the global origin so we can use world coordinates for the points
-        QLabsSplineLine().spawn(qlabs, actorNumber, centerLocation, rotation, [1, 1, 1], 0, waitForConfirmation)
-
         points = spawn_spline_rounded_rectangle_from_center_point_list(centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth)
         
-        QLabsSplineLine().set_points(qlabs, actorNumber, colour, alignEndPointTangents=True, pointList=points)
+        return self.set_points(colour, pointList=points, alignEndPointTangents=True)
     
+ 
     
-        # index = 2000
-        # for pt in points:
-            # QLabsBasicShape().spawn(qlabs, index, [pt[0], pt[1], pt[2]], [0, 0, 0], [0.05+0.001*(index-2000), 0.05+0.001*(index-2000), 0.05+0.001*(index-2000)], QLabsBasicShape().SHAPE_SPHERE, waitForConfirmation)
-            # index = index + 1
-        
-    
-
-        #QLabsBasicShape().spawn(qlabs, index, centerLocation, [0, 0, 0], [xWidth, yLength, 0.5], QLabsBasicShape().SHAPE_CUBE, waitForConfirmation)    
-    
-    def spawn_spline_rounded_rectangle_from_center_point_list(centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1):
+    def _spawn_spline_rounded_rectangle_from_center_point_list(centerLocation, rotation, cornerRadius, xWidth, yLength, lineWidth=1):
         if (xWidth <= cornerRadius*2):
             xWidth = cornerRadius*2
         
