@@ -108,7 +108,7 @@ def main():
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
 
-    '''
+    
     ### Free Camera
 
     #Completed function list for verification report:
@@ -1132,7 +1132,7 @@ def main():
     vr.PrintWS(x == 3, "Delete all actors of class (expect 3), received {}".format(x))
     
     vr.checkFunctionTestList("library_qlabs_trafficlight", "../docs/source/Objects/road_signage.rst")   
-    '''
+    
     
     ### Spline Line
     vr.PrintWSHeader("Spline Line")
@@ -1145,33 +1145,38 @@ def main():
     hCameraSplines.possess()
 
 
-    hSpline = QLabsSplineLine(qlabs)
+    '''hSpline = QLabsSplineLine(qlabs)
     x = hSpline.spawn_id(0, [-12.07, 12.228, 0.01], [0,0,0])
     vr.PrintWS(x == 0, "Spawn id (expect 0): {}".format(x))
 
     points = [[0,0,0,0.01],
-              [5,0,0,1],
+              [2,0,0,1],
               [8.0,0,0,0.1],
               [10,0,0,0.1]]
 
-    x = hSpline.set_points(colour=[1,1,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+    #x = hSpline.set_points(colour=[1,1,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Set points (expect True): {}".format(x))
-
-    x = hSpline.spawn([0,0,0], [0,0,0])
-    vr.PrintWS(x == 0, "Spawn (expect 0): {}".format(x))
-
-    lineWidth = 0.125
-    points = [[3.026, 12.23, 0.01,lineWidth],
-              [-1.725, 12.23, 0.005, lineWidth],
-              [-9.144, 10.625, 0.005, lineWidth],
-              [-4.677, 15.179, 0.005, lineWidth],
-              [-4.512, 19.745, 0.005, lineWidth]]
-
-    x = hSpline.set_points(colour=[1,0,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
-
-    tempShape = QLabsBasicShape(qlabs)
-    tempShape.spawn([3.0, 12.231, 0.01], [0,0,0], [1,1,1], tempShape.SHAPE_CUBE)
+    '''
+    hSpline2 = QLabsSplineLine(qlabs)
     
+    lineWidth = 0.125
+    splineZ = 0.015
+    points = [[3.026, 12.23, splineZ,lineWidth],
+              [-1.725, 12.23, splineZ, lineWidth],
+              [-9.144, 10.625, splineZ, lineWidth],
+              [-4.677, 15.179, splineZ, lineWidth],
+              [-4.512, 19.745, splineZ, lineWidth]]
+    
+    color_selection=[[0.5,0,0], [0.5,0,0.5], [0,0.5,0], [0,0,0.5]]
+
+    for counter in range(4):
+        x = hSpline2.spawn(location=[-1,1.5-counter*0.75,1+counter*0.001], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
+        x = hSpline2.set_points(colour=color_selection[counter], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+
+    #hSpline3 = QLabsSplineLine(qlabs)
+    #hSpline3.spawn([-6.843, 9.104, 0.005])
+    #hSpline3.circle_from_center(radius=1, lineWidth=0.1, colour=[1,0,0], numSplinePoints=4)
+
     ### Real-Time
     vr.PrintWSHeader("Real-Time")
     print("\n\n---Real-Time---")

@@ -11,6 +11,7 @@ class QLabsSplineLine(QLabsActor):
 
        
     ID_SPLINE_LINE = 180
+    """Class ID"""
     
     FCN_SPLINE_LINE_SET_POINTS = 12
     FCN_SPLINE_LINE_SET_POINTS_ACK = 13
@@ -74,8 +75,9 @@ class QLabsSplineLine(QLabsActor):
                 print('spawn_id: Communication failed (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
             return False    
 
-    def circle_from_center(radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+    def circle_from_center(self, radius, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
         """After spawning the origin of the spline actor, this method is used to create a circle.
+
         :param radius: in m
         :param lineWidth: in m
         :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
@@ -92,7 +94,7 @@ class QLabsSplineLine(QLabsActor):
         """
         
         points = []
-
+        print(radius)
         for angle in range(0, numSplinePoints):
             points.append([radius*math.sin(angle/numSplinePoints*math.pi*2), radius*math.cos(angle/numSplinePoints*math.pi*2), 0, lineWidth])
         
@@ -101,7 +103,7 @@ class QLabsSplineLine(QLabsActor):
         return self.set_points(colour, pointList=points, alignEndPointTangents=True, )
         
      
-    def arc_from_center(radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+    def arc_from_center(self, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
         
         points = []
 
@@ -110,7 +112,7 @@ class QLabsSplineLine(QLabsActor):
         
         return self.set_points(qlabs, actorNumber, colour, pointList=points, alignEndPointTangents=False)
     
-    def arc_from_center_degrees(radius, startAngle=0, endAngle=90, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+    def arc_from_center_degrees(self, radius, startAngle=0, endAngle=90, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
 
         return  self.spawn_spline_arc_from_center(qlabsradius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, colour, numSplinePoints, waitForConfirmation)
         

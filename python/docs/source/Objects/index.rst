@@ -20,5 +20,6 @@ This section documents the different types of actors that you can spawn and cont
    road_signage
    widgets
    basic_shapes
+   splines
 
 

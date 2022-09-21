@@ -9,6 +9,7 @@ from library_qlabs_widget import QLabsWidget
 from library_qlabs_qbot2e import QLabsQBot2e
 from library_qlabs_qbot3 import QLabsQBot3
 from library_qlabs_system import QLabsSystem
+from library_qlabs_spline_line import QLabsSplineLine
 
 
 import sys
@@ -119,13 +120,28 @@ def main():
     ### Shapes
     construct_maze(qlabs)
     
-    hGoalObject = QLabsBasicShape(qlabs)
-    hGoalObject.spawn(location=[1.579, -0.534, 0], rotation=[0, 0, 0], scale=[0.5, 0.5, 0.05], configuration=hGoalObject.SHAPE_CYLINDER, waitForConfirmation=True)
-    hGoalObject.set_material_properties(colour=[0,0,1], roughness=1, metallic=False)
-    hGoalObject.set_enable_collisions(False)
+    hSpline = QLabsSplineLine(qlabs)
     
-    hGateObject = QLabsBasicShape(qlabs)
-    hGateObject.spawn_id(100, location=[1.621, 0.776, 0.25], rotation=[0, 0, 0], scale=[0.5, 0.1, 0.5], configuration=hGoalObject.SHAPE_CUBE, waitForConfirmation=True)
+    lineWidth = 0.04
+
+    points = [[0.112, -2.996, 0,lineWidth],
+              [0.017, -1.907, 0, lineWidth],
+              [-0.602, -1.801, 0, lineWidth],
+              [-0.656, -1.13, 0, lineWidth],
+              [-2.087, -1.012, 0, lineWidth],
+              [-2.093, 0.34, 0, lineWidth],
+              [-1.317, 0.403, 0,lineWidth],
+              [-1.44, 1.077, 0, lineWidth],
+              [-0.638, 1.114, 0,lineWidth],
+              [-0.613, 0.343, -0, lineWidth],
+              [1.473, 0.328, 0, lineWidth],
+              [1.428, 1.904, 0, lineWidth],
+              [0.087, 1.905, 0, lineWidth],
+              [0.074, 2.606, 0, lineWidth]]
+    
+    hSpline.spawn(location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=1)
+    hSpline.set_points(colour=[0,0.2,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+
     
     qlabs.close()
     print("Done!")  
