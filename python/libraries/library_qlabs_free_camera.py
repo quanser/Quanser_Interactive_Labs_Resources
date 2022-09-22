@@ -74,12 +74,12 @@ class QLabsFreeCamera(QLabsActor):
 
     def set_camera_properties(self, fieldOfView, depthOfField, aperature, focusDistance):
         """
-        Sets the camera properties.
+        Sets the camera properties. When depthOfField is enabled, the camera will produce more realistic (and cinematic) results by adding some blur to the view at distances closer and further away from a given focal distance. For more blur, use a large aperture (small value) and a narrow field of view. 
         
-        :param fieldOfView: The field of view that the camera can see (range:5-150)
+        :param fieldOfView: The field of view that the camera can see (range:5-150 degrees). When depthOfField is True, smaller values will increase focal blur at distances relative to the focusDistance.
         :param depthOfField: Enable or disable the depth of field visual effect
-        :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0)
-        :param focusDistance: The focus distance that the camera can see (range:0.1-50.0)
+        :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0). Smaller values (larger apertures) increase the light and decrease the depth of field. This parameter is only active when depthOfField is True.
+        :param focusDistance: The distance to the focal plane of the camera. (range:0.1-50.0 meters).  This parameter is only active when depthOfField is True.
         :type fieldOfView: int
         :type depthOfField: boolean
         :type aperture: float
