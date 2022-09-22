@@ -77,13 +77,13 @@ class QLabsFreeCamera(QLabsActor):
         Sets the camera properties.
         
         :param fieldOfView: The field of view that the camera can see (range:5-150)
-        :param depthOfField: The depth of field that the camera can see
+        :param depthOfField: Enable or disable the depth of field visual effect
         :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0)
         :param focusDistance: The focus distance that the camera can see (range:0.1-50.0)
-        :type fieldOfView:
-        :type depthOfField:
-        :type aperture:
-        :type focusDistance:
+        :type fieldOfView: int
+        :type depthOfField: boolean
+        :type aperture: float
+        :type focusDistance: float
         :return: `True` if setting the camera properties was successful, `False` otherwise
         :rtype: boolean
 
