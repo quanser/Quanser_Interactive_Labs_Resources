@@ -1,37 +1,70 @@
 """
-Camera Testing Examples
------------------------
+Free Camera Library Example
+---------------------------
 
 .. note:: Make sure you have Quanser Interactive Labs open before running any of these examples.
 
 .. tip:: If you are struggling to get this example running check out our _Troubleshooting page.
 
 """
-# imports to important libraries we will 
+# imports to important libraries
 import sys
+import time
 sys.path.append('../libraries/')
 
 from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_common import QLabsCommon
 from library_qlabs_free_camera import QLabsFreeCamera
 
-# creates a server connection with Quanser Interactive Labs and manages the communications
-qlabs = QuanserInteractiveLabs()
 
-# initialize our variables 
-# note that you can use the ..Coordinate Helper to pick locations for your camera.
-location = [15, 10, 15]
-rotation = [-0, 0.817, 2.159]
+def main():
 
-# not sure if this is needed
-print("Connecting to QLabs...")
-qlabs.open("localhost")
+    # creates a server connection with Quanser Interactive Labs and manages the communications
+    qlabs = QuanserInteractiveLabs()
+    qlabs.destroy_all_spawned_actors()
 
-QLabsCommon().destroy_all_spawned_actors(qlabs)
+    # initialize our desired variables 
+    # note that you can use the coordinate helper to pick locations for your camera.
+    location = [-53.022, -7.491, 14.475]
+    rotation = [-0, 0.261, 0.683]
 
-# add a custom camera at a specified location and rotation using radians
-QLabsFreeCamera().spawn(qlabs, location=location, rotation=rotation)
+    # not sure if this is needed
+    print("Connecting to QLabs...")
+    qlabs.open("localhost")
 
-# to switch our view from our current camera to the new camera we just initialized
-QLabsFreeCamera().possess(qlabs, 0)
-print("magic")
+    # destroy any spawned actors in the world
+    qlabs.destroy_all_spawned_actors()
+
+    # create a camera in this qlabs instance
+    camera = QLabsFreeCamera(qlabs)
+
+    # add a custom camera at a specified location and rotation using radians
+    camera.spawn(location=location, rotation=rotation)
+
+    # to switch our view from our current camera to the new camera we just initialized
+    camera.possess()
+
+    #time wait to demonstrate the difference between the default camera settings and after we've set the camera properties
+    time.sleep(3)
+
+    # set the properties of our camera to customize it - this is not required
+    # default camera is set to a FOV: 90 degrees with DOF disabled (which disables aperature and focal distance) 
+    camera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
+
+    # collect the current world transform information from the actor camera (should be the same as the one we set).
+    x, loc, rot, scale = camera.get_world_transform()
+
+    # ping the existing camera -- we will expect this to return "True", since the camera does indeed exist.
+    camera.ping()
+
+    # set the image resolution height and width - here we are just setting them to be the default 640x480
+    camera.set_image_capture_resolution()
+    # request an image from the camera
+    camera.get_image()
+
+    #x = hCamera0.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
+
+
+    print("magic")
+
+if __name__ == "__main__":
+    main()
