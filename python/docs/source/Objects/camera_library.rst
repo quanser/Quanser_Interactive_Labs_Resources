@@ -95,6 +95,10 @@ Camera Tutorial
 
 .. dropdown:: Example 1
 
+    .. literalinclude:: ../../../tutorials/camera_tutorial.py
+        :language: python
+        :linenos:
+
 .. dropdown:: Example 2
 
 .. dropdown:: Example 3

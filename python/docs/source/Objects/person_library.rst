@@ -105,6 +105,9 @@ Tutorial
 ^^^^^^^^
 
 .. dropdown:: Example 1
+    .. literalinclude:: ../../../tutorials/person_tutorial.py
+        :language: python
+        :linenos:
 
 .. dropdown:: Example 2
 
