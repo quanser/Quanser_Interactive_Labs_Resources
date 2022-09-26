@@ -10,6 +10,7 @@ from library_qlabs_qbot2e import QLabsQBot2e
 from library_qlabs_qbot3 import QLabsQBot3
 from library_qlabs_system import QLabsSystem
 from library_qlabs_spline_line import QLabsSplineLine
+from library_qlabs_real_time import QLabsRealTime
 
 
 import sys
@@ -105,18 +106,6 @@ def main():
     x = hSystem.set_title_string(qlabs, 'CUSTOM QBOT EXAMPLE', waitForConfirmation=True)
     
     
-    ### Free Camera    
-    hCamera = QLabsFreeCamera(qlabs)
-    hCamera.spawn(location=[2.39, -3.525, 2.547], rotation=[0, 0.762, 2.073])
-    hCamera.possess()
-
-
-    ### QBOT
-
-    #myQBot = QLabsQBot3(qlabs)
-    #myQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
-
-
     ### Shapes
     construct_maze(qlabs)
     
@@ -142,7 +131,41 @@ def main():
     hSpline.spawn(location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=1)
     hSpline.set_points(colour=[0,0.2,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
 
+    lineWidth = 0.04
+
+    points = [[3.395, -3.46, 0,lineWidth],
+              [5.274, -0.389, 0, lineWidth],
+              [5.31, 3.181, 0, lineWidth],
+              [3.726, 4.718, -0, lineWidth],
+              [-3.624, 4.453, 0, lineWidth],
+              [-5.678, 2.738, 0, lineWidth],
+              [-5.458, -4.044, -0, lineWidth],
+              [-3.72, -5.601, 0, lineWidth],
+              [1.233, -5.814, 0, lineWidth],
+              [3.395, -3.46, 0,lineWidth]]
     
+    #spawning a new actor internally sets a new ID
+    hSpline.spawn(location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=1)
+    hSpline.set_points(colour=[0.2,0,0], pointList=points, alignEndPointTangents=True, waitForConfirmation=True)
+    
+    ### QBOT
+
+    myQBot = QLabsQBot3(qlabs)
+    myQBot.spawn_id_degrees(actorNumber=0, location=[-0.347, -5.97, -0], rotation=[0,0,0], scale=[1,1,1], configuration=0)
+    myQBot.possess(myQBot.VIEWPOINT_TRAILING)
+    
+    rt = QLabsRealTime()
+    rt.terminate_all_real_time_models()
+    time.sleep(1)
+    rt.start_real_time_model(modelName="../../rtmodels/QBot3/QBot3_Spawn", actorNumber=0, QLabsHostName='localhost', additionalArguments="")
+
+    ### Free Camera    
+    hCamera = QLabsFreeCamera(qlabs)
+    hCamera.spawn(location=[2.39, -3.525, 2.547], rotation=[0, 0.762, 2.073])
+    #hCamera.possess()
+
+
+
     qlabs.close()
     print("Done!")  
  
