@@ -67,9 +67,10 @@ try:
         rightWheelVel = 0
         leftWheelVel = 0
         if ret >= 0:
-            lowerBounds = (0, 0, 100)       # color thresholds must be updated for tracking your colored line in a physical setup.
-            upperBounds = (100, 100, 255)   # note that these are in BGR format, not RGB. 
-            dest = cv2.inRange(myCam.imageBufferRGB, lowerBounds, upperBounds)
+            hsv = cv2.cvtColor(myCam.imageBufferRGB, cv2.COLOR_BGR2HSV)
+            lowerBounds = (0, 150, 100)       # color thresholds must be updated for tracking your colored line in a physical setup.
+            upperBounds = (255, 255, 220)  
+            dest = cv2.inRange(hsv, lowerBounds, upperBounds)
             cv2.imshow('Threshold', dest)
             
             mask = dest[340:400]    # focus on the bottom rows

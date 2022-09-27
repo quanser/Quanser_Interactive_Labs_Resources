@@ -6,7 +6,6 @@ from library_qlabs import QuanserInteractiveLabs
 from library_qlabs_free_camera import QLabsFreeCamera
 from library_qlabs_basic_shape import QLabsBasicShape
 from library_qlabs_widget import QLabsWidget
-from library_qlabs_qbot2e import QLabsQBot2e
 from library_qlabs_qbot3 import QLabsQBot3
 from library_qlabs_system import QLabsSystem
 from library_qlabs_spline_line import QLabsSplineLine
