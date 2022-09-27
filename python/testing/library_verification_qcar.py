@@ -17,7 +17,7 @@ from library_qlabs_person import QLabsPerson
 from library_qlabs_spline_line import QLabsSplineLine
 from library_qlabs_real_time import QLabsRealTime
 from library_qlabs_widget import QLabsWidget
-from library_qlabs_trafficlight import QLabsTrafficLight
+from library_qlabs_traffic_light import QLabsTrafficLight
 
 from library_verification_report import verificationReport
 
@@ -1131,7 +1131,7 @@ def main():
     x = hTrafficLight0.destroy_all_actors_of_class()
     vr.PrintWS(x == 3, "Delete all actors of class (expect 3), received {}".format(x))
     
-    vr.checkFunctionTestList("library_qlabs_trafficlight", "../docs/source/Objects/road_signage.rst")   
+    vr.checkFunctionTestList("library_qlabs_traffic_light", "../docs/source/Objects/road_signage.rst")   
     
     
     ### Spline Line
