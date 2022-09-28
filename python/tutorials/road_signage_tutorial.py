@@ -23,6 +23,13 @@ from library_qlabs_stop_sign import QLabsStopSign
 from library_qlabs_traffic_cone import QLabsTrafficCone
 from library_qlabs_traffic_light import QLabsTrafficLight
 
+# set any of these flags to False if you don't want to see the output
+CROSSWALK_FLAG = True
+ROUNDABOUT_FLAG = True
+YIELDSIGN_FLAG = True
+STOPSIGN_FLAG = True
+TRAFFICCONE_FLAG = True
+TRAFFICLIGHT_FLAG = True
 
 def crosswalk(qlabs):
     """This method demonstrates some basic commands with the crosswalk class"""
@@ -37,8 +44,7 @@ def crosswalk(qlabs):
 
     # spawn crosswalk with radians in config
     crosswalk.spawn_id(actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-
-    crosswalk.spawn_id(actorNumber=3, location=[-4.691, 5.925, 0.005], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    # waits so we can see the output
     time.sleep(1)
     # spawn crosswalk with degrees in config 1
     crosswalk.spawn_id_degrees(actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
@@ -225,28 +231,34 @@ def main():
     # destroying any spawned actors in our QLabs that currently exist
     qlabs.destroy_all_spawned_actors()
 
-    # running our road sign classes to show various methods -- you can comment these out if you only want to see a specific class
-    crosswalk(qlabs) 
-    time.sleep(2)
+    if CROSSWALK_FLAG == True:
+        crosswalk(qlabs)
+        time.sleep(2)
 
     # switch the camera angle from whatever it was previous to be able to see where we will be spawning the rest of the objects - see Camera Actor Library Reference for more information
-    camera0 = QLabsFreeCamera(qlabs)
-    camera0.spawn(location=[-23.106, 37.257, 3.482], rotation=[0, 0.349, -0.04])
-    camera0.possess()
+    if ROUNDABOUT_FLAG or YIELDSIGN_FLAG or STOPSIGN_FLAG or TRAFFICCONE_FLAG:
+        camera0 = QLabsFreeCamera(qlabs)
+        camera0.spawn(location=[-23.106, 37.257, 3.482], rotation=[0, 0.349, -0.04])
+        camera0.possess()
 
-    roundabout_sign(qlabs)
-    time.sleep(1)
+        if ROUNDABOUT_FLAG:
+            roundabout_sign(qlabs)
+            time.sleep(1)
+        
+        if YIELDSIGN_FLAG:
+            yield_sign(qlabs)
+            time.sleep(1)
+        
+        if STOPSIGN_FLAG:
+            stop_sign(qlabs)
+            time.sleep(1)
+        
+        if TRAFFICCONE_FLAG:
+            traffic_cone(qlabs)
+            time.sleep(1)
     
-    yield_sign(qlabs)
-    time.sleep(1)
-    
-    stop_sign(qlabs)
-    time.sleep(1)
-    
-    traffic_cone(qlabs)
-    time.sleep(1)
-    
-    traffic_light(qlabs)
+    if TRAFFICLIGHT_FLAG:
+        traffic_light(qlabs)
 
 
 if __name__ == "__main__":
