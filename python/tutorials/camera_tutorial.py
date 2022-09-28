@@ -52,17 +52,16 @@ def main():
 
     # collect the current world transform information from the actor camera (should be the same as the one we set).
     x, loc, rot, scale = camera.get_world_transform()
+    print(x, loc, rot, scale)
 
     # ping the existing camera -- we will expect this to return "True", since the camera does indeed exist.
     camera.ping()
 
     # set the image resolution height and width - here we are just setting them to be the default 640x480
     camera.set_image_capture_resolution()
+
     # request an image from the camera
     camera.get_image()
-
-    #x = hCamera0.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
-
 
     print("magic")
 

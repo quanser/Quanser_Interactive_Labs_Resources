@@ -378,43 +378,43 @@ Description
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_trafficlight.QLabsTrafficLight
+.. autoclass:: library_qlabs_traffic_light.QLabsTrafficLight
 
 .. _trafficlightConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.ID_TRAFFIC_LIGHT
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_RED
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_GREEN
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.STATE_YELLOW
+.. autoattribute:: library_qlabs_traffic_light.QLabsTrafficLight.ID_TRAFFIC_LIGHT
+.. autoattribute:: library_qlabs_traffic_light.QLabsTrafficLight.STATE_RED
+.. autoattribute:: library_qlabs_traffic_light.QLabsTrafficLight.STATE_GREEN
+.. autoattribute:: library_qlabs_traffic_light.QLabsTrafficLight.STATE_YELLOW
 
 .. _trafficlightVars:
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_trafficlight.QLabsTrafficLight.actorNumber
+.. autoattribute:: library_qlabs_traffic_light.QLabsTrafficLight.actorNumber
 
 .. _trafficlightMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.__init__
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_degrees
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_degrees
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.set_state
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.destroy
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.destroy_all_actors_of_class
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.ping
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.get_world_transform
-.. automethod:: library_qlabs_trafficlight.QLabsTrafficLight.get_world_transform_degrees
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.__init__
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn_degrees
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn_id
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn_id_degrees
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.set_state
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.destroy
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.destroy_all_actors_of_class
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.ping
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.get_world_transform
+.. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.get_world_transform_degrees
 
 
 
