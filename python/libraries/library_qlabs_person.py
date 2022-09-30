@@ -1,5 +1,5 @@
 from library_qlabs import CommModularContainer
-from library_qlabs_actor import QLabsActor
+from library_qlabs_character import QLabsCharacter
 import math
 
 import struct
@@ -7,7 +7,7 @@ import struct
         
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsPerson(QLabsActor):
+class QLabsPerson(QLabsCharacter):
     """ This class implements spawning and AI navigation of the environment for human pedestrians."""
        
     ID_PERSON = 10030
@@ -21,11 +21,6 @@ class QLabsPerson(QLabsActor):
     RUN = 6.0
     """ Speed constant for the move_to method. """
     
-    
-    
-    FCN_PERSON_MOVE_TO = 10
-    FCN_PERSON_MOVE_TO_ACK = 11
-
 
     def __init__(self, qlabs, verbose=False):
        """ Constructor method
@@ -43,45 +38,3 @@ class QLabsPerson(QLabsActor):
        
 
         
-    def move_to(self, location, speed, waitForConfirmation=True):
-        """Spawns a person in an instance of QLabs at a specific location and rotation using degrees.
-
-        :param location: A target destination as an array of floats for x, y and z coordinates in full-scale units.
-        :param speed: The speed at which the person should walk to the destination (refer to the constants for recommended speeds)
-        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation, but only until the command is received. The time for the actor to traverse to the destination is always non-blocking.
-        :type location: float array[3]
-        :type speed: float
-        :type waitForConfirmation: boolean
-        :return: 
-            - **status** - `True` if successful, `False` otherwise
-        :rtype: boolean
-        
-        .. tip::
-
-            Ensure the start and end locations are in valid nav areas so the actor can find a path to the destination.
-
-        """    
-        
-        if (not self._is_actor_number_valid()):
-            return False
-
-        c = CommModularContainer()
-        c.classID = self.ID_PERSON
-        c.actorNumber = self.actorNumber
-        c.actorFunction = self.FCN_PERSON_MOVE_TO
-        c.payload = bytearray(struct.pack(">ffff", location[0], location[1], location[2], speed))
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-        
-        if waitForConfirmation:
-            self._qlabs.flush_receive()  
-        
-        if (self._qlabs.send_container(c)):
-            if waitForConfirmation:
-                c = self._qlabs.wait_for_container(self.ID_PERSON, self.actorNumber, self.FCN_PERSON_MOVE_TO_ACK)
-                if (c == None):
-                    return False
-                else:                     
-                    return True  
-            return True
-        else:
-            return False    
