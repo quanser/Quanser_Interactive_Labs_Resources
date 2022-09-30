@@ -103,8 +103,8 @@ def main():
     # QLabsSystem.set_title_string
 
     vr.PrintWSHeader("System")
-    hSystem = QLabsSystem()
-    x = hSystem.set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
+    hSystem = QLabsSystem(qlabs)
+    x = hSystem.set_title_string('QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
 
@@ -597,9 +597,9 @@ def main():
     
     
     # lights
-    hEnvironmentOutdoors = QLabsEnvironmentOutdoors()
+    hEnvironmentOutdoors = QLabsEnvironmentOutdoors(qlabs)
     for env_time in range(60):
-        hEnvironmentOutdoors.set_time_of_day(qlabs, 12+env_time/10*2)
+        hEnvironmentOutdoors.set_time_of_day(12+env_time/10*2)
     
     time.sleep(0.5)
     
@@ -641,7 +641,7 @@ def main():
     hQCar2.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     
     for env_time in range(60):
-        hEnvironmentOutdoors.set_time_of_day(qlabs, env_time/10*2)
+        hEnvironmentOutdoors.set_time_of_day(env_time/10*2)
     
     
     #bumper test

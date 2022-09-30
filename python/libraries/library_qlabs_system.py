@@ -12,19 +12,28 @@ class QLabsSystem:
     """Class ID."""
     FCN_SYSTEM_SET_TITLE_STRING = 10
     FCN_SYSTEM_SET_TITLE_STRING_ACK = 11
-        
-    # Initialize class
-    def __init__(self):
-        """ Constructor Method """
-        return
 
-    def set_title_string(self, qlabs, titleString, waitForConfirmation=True):
+    _qlabs = None
+    _verbose = False
+        
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor method
+
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
+       return
+
+    def set_title_string(self, titleString, waitForConfirmation=True):
         """Sets the title string in the upper left of the window to custom text. This can be useful when doing screen recordings or labeling experiment configurations.
 
-        :param qlabs: A QuanserInteractiveLabs object.
         :param titleString: User defined string to replace the default title text
         :param waitForConfirmation: (Optional) Wait for confirmation of the before proceeding. This makes the method a blocking operation.
-        :type qlabs: QuanserInteractiveLabs object
         :type titleString: string
         :type waitForConfirmation: boolean
         :return: `True` if successful, `False` otherwise.
@@ -40,12 +49,12 @@ class QLabsSystem:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flush_receive()        
+            self._qlabs.flush_receive()        
                 
-        if (qlabs.send_container(c)):
+        if (self._qlabs.send_container(c)):
         
             if waitForConfirmation:
-                c = qlabs.wait_for_container(self.ID_SYSTEM, 0, self.FCN_SYSTEM_SET_TITLE_STRING_ACK)
+                c = self._qlabs.wait_for_container(self.ID_SYSTEM, 0, self.FCN_SYSTEM_SET_TITLE_STRING_ACK)
                 if (c == None):
                     return False
                 else:
