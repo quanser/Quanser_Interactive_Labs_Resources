@@ -23,16 +23,28 @@ class QLabsWidget:
     AUTOCLAVE_CAGE = 3
     PLASTIC_BOTTLE = 4
     METAL_CAN = 5
+
+    _qlabs = None
+    _verbose = False
         
     # Initialize class
-    def __init__(self):
-        """ Constructor Method """
-        return
+    def __init__(self, qlabs, verbose=False):
+       """ Constructor Method
+
+       :param qlabs: A QuanserInteractiveLabs object
+       :param verbose: (Optional) Print error information to the console.
+       :type qlabs: object
+       :type verbose: boolean
+       """
+
+       self._qlabs = qlabs
+       self._verbose = verbose
+
+       return
        
-    def spawn(self, qlabs, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+    def spawn(self, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Spawns a widget in an instance of QLabs at a specific location and rotation using radians.
 
-        :param qlabs: A QuanserInteractiveLabs object.
         :param widgetType: See QLabsWidget class
         :param location: An array of floats for x, y and z coordinates.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians.
@@ -42,7 +54,6 @@ class QLabsWidget:
         :param IDTag: An integer value for use with IDTag sensor instrumented actors.
         :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type qlabs: QuanserInteractiveLabs object
         :type widgetType: uint32
         :type location: float array[3]
         :type rotation: float array[3]
@@ -67,12 +78,12 @@ class QLabsWidget:
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
-            qlabs.flush_receive()        
+            self._qlabs.flush_receive()        
                 
-        if (qlabs.send_container(c)):
+        if (self._qlabs.send_container(c)):
         
             if waitForConfirmation:
-                c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, self.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, self.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_WIDGET_ACK)
                 if (c == None):
                     return False
                 else:
@@ -82,11 +93,10 @@ class QLabsWidget:
         else:
             return False 
  
-    def spawn_degrees(self, qlabs, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+    def spawn_degrees(self, widgetType, location, rotation, scale, colour, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Spawns a widget in an instance of QLabs at a specific location and rotation using degrees.
 
         :param qlabs: A QuanserInteractiveLabs object.
-        :param widgetType: See QLabsWidget class
         :param location: An array of floats for x, y and z coordinates.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees.
         :param scale: An array of floats for the scale in the x, y, and z directions.
@@ -95,7 +105,6 @@ class QLabsWidget:
         :param IDTag: An integer value for use with IDTag sensor instrumented actors.
         :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse out user-customized parameters.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type qlabs: QuanserInteractiveLabs object
         :type widgetType: uint32
         :type location: float array[3]
         :type rotation: float array[3]
@@ -110,13 +119,11 @@ class QLabsWidget:
         :rtype: boolean
 
         """
-        return self.spawn(qlabs, widgetType, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, colour, measuredMass, IDTag, properties, waitForConfirmation)
+        return self.spawn(widgetType, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, colour, measuredMass, IDTag, properties, waitForConfirmation)
 
-    def destroy_all_spawned_widgets(self, qlabs):
+    def destroy_all_spawned_widgets(self):
         """Destroys all spawned widgets, but does not destroy actors.
         
-        :param qlabs: A QuanserInteractiveLabs object.
-        :type qlabs: QuanserInteractiveLabs object
         :return: `True` if successful, `False` otherwise
         :rtype: boolean
 
@@ -130,8 +137,8 @@ class QLabsWidget:
         c.payload = bytearray()
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, self.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, self.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_WIDGETS_ACK)
             if (c == None):
                 return False
             else:
@@ -141,12 +148,10 @@ class QLabsWidget:
             return False   
 
             
-    def widget_spawn_configuration(self, qlabs, enableShadow=True):
+    def widget_spawn_configuration(self, enableShadow=True):
         """If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.
         
-        :param qlabs: A QuanserInteractiveLabs object.
         :param enableShadow: (Optional) Show (`True`) or hide (`False`) widget shadows.
-        :type qlabs: QuanserInteractiveLabs object        
         :type enableShadow: boolean
         :return: `True` if successful, `False` otherwise
         :rtype: boolean
@@ -161,8 +166,8 @@ class QLabsWidget:
         c.payload = bytearray(struct.pack(">B", enableShadow))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)        
 
-        if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, self.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, actorNumber, self.FCN_GENERIC_ACTOR_SPAWNER_WIDGET_SPAWN_CONFIGURATION_ACK)
             if (c == None):
                 return False
             else:
