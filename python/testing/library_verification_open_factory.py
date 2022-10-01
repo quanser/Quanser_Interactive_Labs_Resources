@@ -90,7 +90,8 @@ def main():
     
     ### System
     vr.PrintWSHeader("System")
-    x = QLabsSystem().set_title_string(qlabs, 'QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
+    hSystem = QLabsSystem(qlabs)
+    x = hSystem.set_title_string('QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
 
@@ -99,7 +100,7 @@ def main():
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     print("Basic spawning")
-    hCamera =QLabsFreeCamera(qlabs)
+    hCamera = QLabsFreeCamera(qlabs)
     x = hCamera.spawn_id(actorNumber=0, location=[3.578, 1.766, 1.702], rotation=[0, 0.355, -2.766])
     vr.PrintWS(x == 0, "Spawn sign with radians")
     
@@ -224,7 +225,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(CameraOverviewNum))
     
 
-    vr.checkFunctionTestList("library_qlabs_free_camera", "../docs/source/Objects/camera_library.rst")
+    vr.checkFunctionTestList("library_qlabs_free_camera", "../docs/source/Objects/camera_library.rst", "library_qlabs_actor")
     
     cv2.destroyAllWindows()
     hBasicShape0.destroy()
@@ -343,7 +344,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn next degrees")
     
     x = hBasicShape.set_material_properties(colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
-    vr.checkFunctionTestList("library_qlabs_basic_shape", "../docs/source/Objects/basic_shapes.rst")    
+    vr.checkFunctionTestList("library_qlabs_basic_shape", "../docs/source/Objects/basic_shapes.rst", "library_qlabs_actor")    
 
 
 
@@ -353,34 +354,35 @@ def main():
     print("\n\n--Widget---")
 
     x = hCamera.possess()
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
+    hWidget = QLabsWidget(qlabs)
+    hWidget.widget_spawn_configuration(enableShadow=True)
 
     for count in range(10):
-        x = QLabsWidget().spawn(qlabs, QLabsWidget().METAL_CAN, [-1.012, 1.17, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn(hWidget.METAL_CAN, [-1.012, 1.17, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn (expect True)")
 
     time.sleep(1)
 
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().METAL_CAN, [1.458, 1.195, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(hWidget.METAL_CAN, [1.458, 1.195, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
 
     time.sleep(1)
 
-    x = QLabsWidget().destroy_all_spawned_widgets(qlabs)
+    x = hWidget.destroy_all_spawned_widgets()
     vr.PrintWS(x == True, "Widgets destroyed (expect True)")
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=False)
+    hWidget.widget_spawn_configuration(enableShadow=False)
     
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [-1.012, 1.17+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(hWidget.SPHERE, [-1.012, 1.17+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     
-    QLabsWidget().widget_spawn_configuration(qlabs, enableShadow=True)
+    hWidget.widget_spawn_configuration(enableShadow=True)
 
     for count in range(10):
-        x = QLabsWidget().spawn_degrees(qlabs, QLabsWidget().SPHERE, [1.458, 1.195+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(hWidget.SPHERE, [1.458, 1.195+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
     
@@ -391,7 +393,7 @@ def main():
     vr.PrintWSHeader("Spline Line")
     print("\n\n---Spline Line---")
 
-    vr.checkFunctionTestList("library_qlabs_spline_line", "../docs/source/Objects/spline_line.rst")  
+    vr.checkFunctionTestList("library_qlabs_spline_line", "../docs/source/Objects/spline_line.rst", "library_qlabs_actor")  
 
     x = hCamera.spawn_id(actorNumber=300, location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
     hCamera.possess()
