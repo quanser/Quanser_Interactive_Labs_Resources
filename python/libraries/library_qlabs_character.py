@@ -52,7 +52,7 @@ class QLabsCharacter(QLabsActor):
             return False
 
         c = CommModularContainer()
-        c.classID = self.ID_PERSON
+        c.classID = self.classID
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_CHARACTER_MOVE_TO
         c.payload = bytearray(struct.pack(">ffff", location[0], location[1], location[2], speed))
@@ -63,7 +63,7 @@ class QLabsCharacter(QLabsActor):
         
         if (self._qlabs.send_container(c)):
             if waitForConfirmation:
-                c = self._qlabs.wait_for_container(self.ID_PERSON, self.actorNumber, self.FCN_CHARACTER_MOVE_TO_ACK)
+                c = self._qlabs.wait_for_container(self.classID, self.actorNumber, self.FCN_CHARACTER_MOVE_TO_ACK)
                 if (c == None):
                     return False
                 else:                     

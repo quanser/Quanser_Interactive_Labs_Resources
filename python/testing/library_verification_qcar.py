@@ -18,6 +18,7 @@ from library_qlabs_spline_line import QLabsSplineLine
 from library_qlabs_real_time import QLabsRealTime
 from library_qlabs_widget import QLabsWidget
 from library_qlabs_traffic_light import QLabsTrafficLight
+from library_qlabs_animal import QLabsAnimal
 
 from library_verification_report import verificationReport
 
@@ -106,8 +107,7 @@ def main():
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
 
     ### Free Camera
-    '''
-   
+       
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
     
@@ -1022,7 +1022,7 @@ def main():
     vr.PrintWS(x == 3, "Delete all actors of class (expect 3), received {}".format(x))
     
     vr.checkFunctionTestList("library_qlabs_traffic_light", "../docs/source/Objects/road_signage.rst", "library_qlabs_actor")   
-    '''
+    
     
     ### Spline Line
     vr.PrintWSHeader("Spline Line")
@@ -1093,7 +1093,50 @@ def main():
 
 
     vr.checkFunctionTestList("library_qlabs_spline_line", "../docs/source/Objects/splines.rst", "library_qlabs_actor")  
+    
 
+    ### Animals
+    vr.PrintWSHeader("Animals")
+    print("\n\n---Animals---")
+    
+    hCameraAnimals = QLabsFreeCamera(qlabs)
+    x = hCameraAnimals.spawn(location=[-29.226, 0.96, 1.098], rotation=[0, 0.133, 3.101])
+    hCameraAnimals.possess()
+    
+    
+    
+    
+    hGoat = QLabsAnimal(qlabs)
+    hGoat.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hGoat.GOAT, waitForConfirmation=True)
+    hGoat.move_to(location=[-33.46, 6.736, 0], speed=hGoat.GOAT_RUN, waitForConfirmation=True)
+    
+    time.sleep(3)
+    hGoat.move_to(location=[-32.832, -3.196, 0], speed=hGoat.GOAT_WALK, waitForConfirmation=True)
+    time.sleep(6)    
+    hGoat.destroy()
+
+
+    hSheep = QLabsAnimal(qlabs)
+    hSheep.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hSheep.SHEEP, waitForConfirmation=True)
+    hSheep.move_to(location=[-33.46, 6.736, 0], speed=hSheep.SHEEP_RUN, waitForConfirmation=True)
+    time.sleep(3)
+    hSheep.move_to(location=[-32.832, -3.196, 0], speed=hSheep.SHEEP_WALK, waitForConfirmation=True)
+    time.sleep(6)
+    hSheep.destroy()
+
+
+    hCow = QLabsAnimal(qlabs)
+    hCow.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hCow.COW, waitForConfirmation=True)
+    hCow.move_to(location=[-33.46, 6.736, 0], speed=hCow.COW_RUN, waitForConfirmation=True)
+    time.sleep(3)
+    hCow.move_to(location=[-32.832, -3.196, 0], speed=hCow.COW_WALK, waitForConfirmation=True)
+    time.sleep(6)
+    
+
+
+    vr.checkFunctionTestList("library_qlabs_animal", "../docs/source/Objects/animal_library.rst", "library_qlabs_character", "library_qlabs_actor")   
+    
+    
 
     ### Real-Time
     vr.PrintWSHeader("Real-Time")
