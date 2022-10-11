@@ -77,6 +77,9 @@ Tutorial
 ^^^^^^^^
 
 .. dropdown:: Example 1
+    .. literalinclude:: ../../../tutorials/widgets_tutorial.py
+        :language: python
+        :linenos:
 
 .. dropdown:: Example 2
 

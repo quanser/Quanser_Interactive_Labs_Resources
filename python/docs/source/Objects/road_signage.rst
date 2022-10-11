@@ -68,14 +68,6 @@ Connection Points
 
 .. _crosswalkTutorial:
 
-Tutorial
-^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 
 .. ----------------------------------------------------------------------------------
 
@@ -139,15 +131,6 @@ Connection Points
 
 .. _roundaboutTutorial:
 
-Tutorial
-^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
-
 .. ----------------------------------------------------------------------------------
 
 Stop Sign
@@ -210,14 +193,6 @@ Connection Points
 
 .. _stopsignTutorial:
 
-Tutorial
-^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 
 .. ----------------------------------------------------------------------------------
 
@@ -281,14 +256,6 @@ Connection Points
 
 .. _yieldsignTutorial:
 
-Tutorial
-^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 
 .. ----------------------------------------------------------------------------------
 
@@ -354,14 +321,6 @@ Connection Points
 
 .. _trafficconeTutorial:
 
-Tutorial
-^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 
 .. ----------------------------------------------------------------------------------
 
@@ -430,10 +389,14 @@ Connection Points
 
 .. _trafficlightTutorial:
 
-Tutorial
-^^^^^^^^
+Road Signage Tutorial
+^^^^^^^^^^^^^^^^^^^^^
 
 .. dropdown:: Example 1
+    
+    .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
+        :language: python
+        :linenos:
 
 .. dropdown:: Example 2
 

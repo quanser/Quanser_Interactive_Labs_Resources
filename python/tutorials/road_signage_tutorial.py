@@ -1,6 +1,6 @@
 """
-Free Camera Library Example
----------------------------
+Road Signage Library Example
+----------------------------
 
 .. note:: Make sure you have Quanser Interactive Labs open before running any of these examples.
 

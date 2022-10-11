@@ -18,7 +18,8 @@ from library_qlabs_free_camera import QLabsFreeCamera
 
 def main():
 
-    # creates a server connection with Quanser Interactive Labs and manages the communications
+    # creates a server connection with Quanser Interactive Labs and manages 
+    # the communications
     qlabs = QuanserInteractiveLabs()
     qlabs.destroy_all_spawned_actors()
 
@@ -43,21 +44,27 @@ def main():
     # to switch our view from our current camera to the new camera we just initialized
     camera.possess()
 
-    #time wait to demonstrate the difference between the default camera settings and after we've set the camera properties
+    #time wait to demonstrate the difference between the default camera settings 
+    # and after we've set the camera properties
     time.sleep(3)
 
     # set the properties of our camera to customize it - this is not required
-    # default camera is set to a FOV: 90 degrees with DOF disabled (which disables aperature and focal distance) 
-    camera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
+    # default camera is set to a FOV: 90 degrees with DOF disabled 
+    # (which disables aperature and focal distance) 
+    camera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, 
+                                focusDistance=0.6)
 
-    # collect the current world transform information from the actor camera (should be the same as the one we set).
+    # collect the current world transform information from the actor camera (should be 
+    # the same as the one we set).
     x, loc, rot, scale = camera.get_world_transform()
     print(x, loc, rot, scale)
 
-    # ping the existing camera -- we will expect this to return "True", since the camera does indeed exist.
+    # ping the existing camera -- we will expect this to return "True", since the camera 
+    # does indeed exist.
     camera.ping()
 
-    # set the image resolution height and width - here we are just setting them to be the default 640x480
+    # set the image resolution height and width - here we are just setting them to be 
+    # the default 640x480
     camera.set_image_capture_resolution()
 
     # request an image from the camera
