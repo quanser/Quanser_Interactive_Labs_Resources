@@ -25,13 +25,13 @@ Glossary
 
     Open World
         In QLabs, an open world is a virtual world or map where the user can move freely and create 
-        and place objects according to their whim. There are several different Open Worlds 
+        and place objects to create custom scenarios. There are several different Open Worlds 
         available in QLabs for different types of products. Please 
         `contact <https://www.quanser.com/contact/>`__ a Quanser representative to find out more.
 
     Actor
         In QLabs, an actor is any object that can be placed in the Open Worlds such as a camera,
-        person, QCar, road signage, etc. Each actor class has different capabilties. 
+        person, QCar, road signage, etc. Each actor class has different capabilities. 
         For a full list of actors, see the 
         :ref:`Python Actors Reference` for more details in controlling these actors in Python.
     
@@ -47,14 +47,16 @@ Glossary
         Connection Points are points on an actor that other actors can be attached to. 
 
     Widget
-        .. warning:: FINISH THIS
+        Widgets are a special class of highly performant actors. This allows thousands of dynamic 
+        widgets can be spawned in the Open World, but they have the restriction that widgets cannot
+        be addressed after they have been spawned.
 
     Reference Frame
         Reference Frames are used to specify the relationship between a moving observer and the 
         phenomenon under observation.
 
     Workspace
-        A workspace in QLabs opens a specfic virtual enviroment.  This enviroment could either be 
+        A workspace in QLabs opens a specific virtual environment.  This environment could either be 
         an open world or a virtual lab space.
 
 
