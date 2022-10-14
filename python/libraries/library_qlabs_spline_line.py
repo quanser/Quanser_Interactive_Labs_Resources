@@ -138,7 +138,7 @@ class QLabsSplineLine(QLabsActor):
         points = []
 
         for angle in range(0, numSplinePoints+1):
-            points.append([radius*math.sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*math.cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth])
+            points.append([radius*math.cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*math.sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth])
         
         return self.set_points(colour, pointList=points, alignEndPointTangents=False)
     
