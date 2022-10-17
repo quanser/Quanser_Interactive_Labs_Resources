@@ -15,6 +15,23 @@ class QLabsEnvironmentOutdoors:
 
     FCN_SET_TIME_OF_DAY = 10
     FCN_SET_TIME_OF_DAY_ACK = 11
+    FCN_OVERRIDE_OUTDOOR_LIGHTING = 12
+    FCN_OVERRIDE_OUTDOOR_LIGHTING_ACK = 13
+    FCN_SET_WEATHER_PRESET = 14
+    FCN_SET_WEATHER_PRESET_ACK = 15
+    
+    CLEAR_SKIES = 0
+    PARTLY_CLOUDY = 1
+    CLOUDY = 2
+    OVERCAST = 3
+    FOGGY = 4
+    LIGHT_RAIN = 5
+    RAIN = 6
+    THUNDERSTORM = 7
+    LIGHT_SNOW = 8
+    SNOW = 9
+    BLIZZARD = 10
+    
 
     _qlabs = None
     _verbose = False
@@ -60,3 +77,59 @@ class QLabsEnvironmentOutdoors:
                 return True
         else:
             return False  
+            
+    def set_outdoor_lighting(self, state):
+        """
+        Overrides the outdoor lighting set by other environment functions
+        
+        :param state: 0 force lights off, 1 force lights on
+        :type time: int32
+        :return: `True` if setting the time was successful, `False` otherwise
+        :rtype: boolean
+
+        """
+        c = CommModularContainer()
+        c.classID = self.ID_ENVIRONMENT_OUTDOORS
+        c.actorNumber = 0
+        c.actorFunction = self.FCN_OVERRIDE_OUTDOOR_LIGHTING
+        c.payload = bytearray(struct.pack(">I", state))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        self._qlabs.flush_receive()  
+        
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_ENVIRONMENT_OUTDOORS, 0, self.FCN_OVERRIDE_OUTDOOR_LIGHTING_ACK)
+            if (c == None):
+                return False
+            else:                
+                return True
+        else:
+            return False               
+            
+    def set_weather_preset(self, weather_preset):
+        """
+        Set the weather conditions for an outdoor environment with a preset value
+        
+        :param time: A constant index (see defined constants for weather types)
+        :type time: int32
+        :return: `True` if setting the time was successful, `False` otherwise
+        :rtype: boolean
+
+        """
+        c = CommModularContainer()
+        c.classID = self.ID_ENVIRONMENT_OUTDOORS
+        c.actorNumber = 0
+        c.actorFunction = self.FCN_SET_WEATHER_PRESET
+        c.payload = bytearray(struct.pack(">I", weather_preset))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        self._qlabs.flush_receive()  
+        
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_ENVIRONMENT_OUTDOORS, 0, self.FCN_SET_WEATHER_PRESET_ACK)
+            if (c == None):
+                return False
+            else:                
+                return True
+        else:
+            return False              
