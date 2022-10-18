@@ -15,9 +15,9 @@ This section documents the different types of actors that you can spawn and cont
    :maxdepth: 1
 
    camera_library
-   animal_library
-   person_library
    car_library
+   person_library
+   animal_library
    road_signage
    widgets
    basic_shapes

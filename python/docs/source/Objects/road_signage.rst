@@ -52,8 +52,6 @@ Methods
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform
 .. automethod:: library_qlabs_crosswalk.QLabsCrosswalk.get_world_transform_degrees
 
-
-
 .. _crosswalkConfig:
 
 Configurations
@@ -65,6 +63,8 @@ Configurations
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+There are no connection points for this actor class.
 
 .. _crosswalkTutorial:
 
@@ -123,11 +123,14 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
+.. image:: ../pictures/roundaboutsign.png
+
 .. _roundaboutConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
+There are no connection points for this actor class.
 
 .. _roundaboutTutorial:
 
@@ -180,16 +183,19 @@ Methods
 .. automethod:: library_qlabs_stop_sign.QLabsStopSign.get_world_transform_degrees
 
 
-
 .. _stopsignConfig:
 
 Configurations
 ^^^^^^^^^^^^^^
 
+.. image:: ../pictures/stopsign.png
+
 .. _stopsignConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+There are no connection points for this actor class.
 
 .. _stopsignTutorial:
 
@@ -249,10 +255,15 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
+.. image:: ../pictures/yieldsign.png
+
 .. _yieldsignConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+There are no connection points for this actor class.
+
 
 .. _yieldsignTutorial:
 
@@ -319,6 +330,8 @@ Configurations
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
+There are no connection points for this actor class.
+
 .. _trafficconeTutorial:
 
 
@@ -376,16 +389,19 @@ Methods
 .. automethod:: library_qlabs_traffic_light.QLabsTrafficLight.get_world_transform_degrees
 
 
-
 .. _trafficlightConfig:
 
 Configurations
 ^^^^^^^^^^^^^^
 
+.. image:: ../pictures/trafficlight.png
+
 .. _trafficlightConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+
+There are no connection points for this actor class.
 
 .. _trafficlightTutorial:
 

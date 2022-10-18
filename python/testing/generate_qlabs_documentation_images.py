@@ -200,17 +200,20 @@ def main(previewImages = False):
     hCamera = QLabsFreeCamera(qlabs)
     x = hCamera.spawn(location=[91.179, 66.456, 1.786], rotation=[0, 0.096, -1.581])
     hCamera.possess()
+
+    hCamera2 = QLabsFreeCamera(qlabs)
+    x = hCamera2.spawn(location=[91.234, 71.06, 2.359], rotation=[0, 0.043, -1.58])
     
     
     #backdrop
     
     loc = [90, 50, 0]
     hCube1 = QLabsBasicShape(qlabs)
-    hCube1.spawn_degrees(location=loc, rotation=[0, 0, 0], scale=[100, 60, 1], configuration=0)
+    hCube1.spawn_degrees(location=loc, rotation=[0, 0, 0], scale=[150, 60, 1], configuration=0)
     hCube1.set_material_properties([0,1,0], 1)
     
     hCube2 = QLabsBasicShape(qlabs)
-    hCube2.spawn_degrees(location=[loc[0], loc[1]-25, 0], rotation=[45, 0, 0], scale=[100, 1, 100], configuration=0)
+    hCube2.spawn_degrees(location=[loc[0], loc[1]-15, 0], rotation=[45, 0, 0], scale=[150, 1, 150], configuration=0)
     hCube2.set_material_properties([0,1,0], 1)
     
     hEnvironmentOutdoors = QLabsEnvironmentOutdoors(qlabs)
@@ -218,7 +221,7 @@ def main(previewImages = False):
     
     print("\n\n------------------------- Generating Images ---------------------------\n")
 
-    
+
     ### People
     print("People\n")
 
@@ -257,7 +260,129 @@ def main(previewImages = False):
     
     
     save_masked_image('../docs/source/pictures/trafficCones.png', color_image, mask_image, 0.6, previewImages)
+    hCone.destroy_all_actors_of_class()
+
+
+    ### yield_sign
     
+    print("Yield Sign\n")
+    hYield_sign = QLabsYieldSign(qlabs)
+    hYield_sign.spawn(location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,0])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [50, 1700, 50, 3900], hsv_min, hsv_max, showDebugImages=False)
+    color_image = gammaCorrection(color_image, 0.6)
+    
+    
+    save_masked_image('../docs/source/pictures/yieldsign.png', color_image, mask_image, 0.6, previewImages)
+    hYield_sign.destroy_all_actors_of_class()
+
+
+    ### stop sign
+
+    print("Stop Sign\n")
+    hStopSign = QLabsStopSign(qlabs)
+    hStopSign.spawn(location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,0])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [50, 1700, 50, 3900], hsv_min, hsv_max, showDebugImages=False)
+    color_image = gammaCorrection(color_image, 0.6)
+    
+    
+    save_masked_image('../docs/source/pictures/stopsign.png', color_image, mask_image, 0.6, previewImages)
+    hStopSign.destroy_all_actors_of_class()
+
+    ### roundabout_sign
+
+    print("Roundabout Sign\n")
+    hRoundaboutSign = QLabsRoundaboutSign(qlabs)
+    hRoundaboutSign.spawn(location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,150])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [50, 1700, 50, 3900], hsv_min, hsv_max, showDebugImages=False)
+    color_image = gammaCorrection(color_image, 0.6)
+
+    save_masked_image('../docs/source/pictures/roundaboutsign.png', color_image, mask_image, 0.6, previewImages)
+    hRoundaboutSign.destroy_all_actors_of_class()
+
+    ### widgets
+
+    print("Widgets\n")
+
+    hWidgets = QLabsWidget(qlabs)
+    
+    hWidgets.spawn(hWidgets.METAL_CAN, location=[91.562-1, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.PLASTIC_BOTTLE, location=[91.562-0.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.AUTOCLAVE_CAGE, location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[2,2,2], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.SPHERE, location=[91.562+0.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.CYLINDER, location=[91.562+1, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.CUBE, location=[91.562+1.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,50])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [1000, 2000, 700, 2500], hsv_min, hsv_max, showDebugImages=False)
+    color_image = gammaCorrection(color_image, 0.6)
+    
+    
+    save_masked_image('../docs/source/pictures/widgets.png', color_image, mask_image, 0.6, previewImages)
+
+    hWidgets.destroy_all_spawned_widgets()
+
+    ### traffic_light
+
+    print("Traffic Light\n")
+    hCamera2.possess()
+    hTrafficLight = QLabsTrafficLight(qlabs)
+    
+    for count in range(3):
+        if count==1 or 2:
+            spacing = count*4
+        hTrafficLight.spawn(location=[93.562 - spacing, 63, 0.5], rotation=[0,0,-math.pi], scale=[1,1,1], configuration=count, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,150])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera2, [10, 1500, 10, 4000], hsv_min, hsv_max, 6)
+    color_image = gammaCorrection(color_image, 0.8)
+    
+    
+    save_masked_image('../docs/source/pictures/trafficlight.png', color_image, mask_image, 0.4, previewImages)
+
+    hTrafficLight.destroy_all_actors_of_class()
+
+
+    ### crosswalks
+
+
+    ### qCars
+    print("qCar\n")
+    hCamera.possess()
+    car = QLabsQCar(qlabs)
+    car.spawn_id(actorNumber=0, location=[91.585, 59, 0.5], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+
+    time.sleep(0.5)
+
+    hsv_min = np.array([50,100,150])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [400, 1900, 800, 2300], hsv_min, hsv_max, 6)
+    color_image = gammaCorrection(color_image, 0.8)
+    
+    
+    save_masked_image('../docs/source/pictures/qCar.png', color_image, mask_image, 0.4, previewImages)
+
+    car.destroy_all_actors_of_class()
 
 
     print("\n\n------------------------------ Communications --------------------------------\n")
