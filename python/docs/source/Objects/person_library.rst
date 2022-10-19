@@ -90,7 +90,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There are 6 configurations (0-5) for a person generated in QLabs.
+There are 12 configurations (0-11) for a person generated in QLabs.
 
 .. image:: ../pictures/people.png 
 

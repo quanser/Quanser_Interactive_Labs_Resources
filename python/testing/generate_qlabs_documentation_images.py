@@ -228,21 +228,34 @@ def main(previewImages = False):
     hPerson = QLabsPerson(qlabs)
     
     for count in range(6):
-        hPerson.spawn(location=[93.562 - count, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=count, waitForConfirmation=True)
+        hPerson.spawn(location=[95.5 - count*0.8, 60, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=count, waitForConfirmation=True)
+
+    for count in range(6):
+        hPerson.spawn(location=[95 - (count+6)*0.8, 60, 0.7], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=count+6, waitForConfirmation=True)
+
 
     time.sleep(0.5)
 
-    hsv_min = np.array([50,100,0])
+    hsv_min = np.array([50,100,150])
     hsv_max = np.array([90,255,255])
-    color_image, mask_image = get_color_and_mask(hCamera, [300, 1700, 300, 3900], hsv_min, hsv_max)
+    color_image, mask_image = get_color_and_mask(hCamera, [300, 1700, 300, 3900], hsv_min, hsv_max, 3)
     color_image = gammaCorrection(color_image, 0.8)
     
+    # Change cubes to white to avoid the green splash that shows up on the actors and save just the color image
+    hCube1.set_material_properties([1,1,1], 1)
+    hCube2.set_material_properties([1,1,1], 1)
+    color_image, temp = get_color_and_mask(hCamera, [300, 1700, 300, 3900], hsv_min, hsv_max, 3)
+    color_image = gammaCorrection(color_image, 0.8)
     
     save_masked_image('../docs/source/pictures/people.png', color_image, mask_image, 0.4, previewImages)
 
-    hPerson.destroy_all_actors_of_class()
+    hCube1.set_material_properties([0,1,0], 1)
+    hCube2.set_material_properties([0,1,0], 1)
     
 
+    hPerson.destroy_all_actors_of_class()
+    
+    
     ### Cones
     print("Cones\n")
 
