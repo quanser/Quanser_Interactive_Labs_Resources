@@ -4,8 +4,38 @@
 Troubleshooting
 ***************
 
-If I put something here does this work properly?
+Opening QLabs
+^^^^^^^^^^^^^
 
+Licensing
+"""""""""
+
+Locked Modules
+""""""""""""""
+
+DirectX
+"""""""
+
+Creating Drive Images
+"""""""""""""""""""""
+
+Missing Python Libraries
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Performance Issues
+^^^^^^^^^^^^^^^^^^
+Put the link to the minimum recommended specs Helper
+
+Real-time failures (HIL)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Firewalls
+"""""""""
+
+Debugging User code
+^^^^^^^^^^^^^^^^^^^
+
+Pull-out panel, duplicate actor numbers
 
 .. admonition:: Examples
 

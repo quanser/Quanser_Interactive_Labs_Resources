@@ -3,7 +3,7 @@
 Widgets
 -------
 
-Widgets work slightly differently then the other objects in the Qlabs workspaces.
+Widgets work slightly differently then the other objects in the QLabs workspaces.
 They are special actors that cannot be addressed after they have been spawned 
 therefore they cannot be deleted individually, they do not support parenting
 and all actor properties must be set when they are spawned. 
@@ -17,6 +17,9 @@ include class methods to read these properties.
 
 If you need the ability to make shapes static or the ability to address,
 modify, or parent shapes, see :ref:`Basic Shapes` instead.
+
+See the :ref:`widgetTutorial` to get a better understanding of using people in Quanser 
+Interactive Labs.
 
 
 .. _widgetDescription: 
@@ -39,7 +42,7 @@ Constants
 .. autoattribute:: library_qlabs_widget.QLabsWidget.CUBE
 .. autoattribute:: library_qlabs_widget.QLabsWidget.CYLINDER
 .. autoattribute:: library_qlabs_widget.QLabsWidget.SPHERE
-.. autoattribute:: library_qlabs_widget.QLabsWidget.AUTOCLAVE_CAGE
+.. .. autoattribute:: library_qlabs_widget.QLabsWidget.AUTOCLAVE_CAGE
 .. autoattribute:: library_qlabs_widget.QLabsWidget.PLASTIC_BOTTLE
 .. autoattribute:: library_qlabs_widget.QLabsWidget.METAL_CAN
 
@@ -59,9 +62,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-.. danger::
-
-    TODO: Add picture
+.. image:: ../pictures/widgets.png 
 
 
 .. _widgetConnect:
@@ -69,18 +70,15 @@ Configurations
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-There are no connection points.
+There are no connection points for this actor class.
 
 .. _widgetTutorial:
 
 Tutorial
 ^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
+
     .. literalinclude:: ../../../tutorials/widgets_tutorial.py
         :language: python
         :linenos:
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3

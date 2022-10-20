@@ -34,8 +34,7 @@ See the contribution guide.
    User Interface
    System/index
    Objects/index
-   Troubleshooting
-   Debugging
+   ..Troubleshooting
    Code Style
 
 Indices and tables

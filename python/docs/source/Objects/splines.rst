@@ -14,6 +14,9 @@ point basis. Splines are created by first spawning a spline actor and then addin
 control points.  Depending on the configuration used when spawned, you can get
 variations on the curve shape or straight lines.
 
+See the :ref:`splineTutorial` to get a better understanding of using people in Quanser 
+Interactive Labs.
+
 .. _splinelibrary:
 
 Library
@@ -81,7 +84,7 @@ Configurations 0 to 3 are shown from top to bottom in the above image using the 
     ============= ============= ===========
     Configuration Mode          Description
     ============= ============= ===========
-    0             Linear        The tangent of the curve at each control point is set to match tbe tangent of the start of each line segment.
+    0             Linear        The tangent of the curve at each control point is set to match the tangent of the start of each line segment.
     1             Curve         The tangent of the curve at each control point is an average of the two adjacent line segments and matched to the start and end tangents.
     2             Constant      Straight line segments
     3             Clamped Curve As angles become more acute, the curve will transition from a smooth change to a sharp point.
@@ -95,15 +98,12 @@ Configurations 0 to 3 are shown from top to bottom in the above image using the 
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-
+There are no connection points for this actor class.
 
 .. _splineTutorial:
 
 Tutorial
 ^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
 
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3

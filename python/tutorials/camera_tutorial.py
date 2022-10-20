@@ -70,7 +70,7 @@ def main():
     # request an image from the camera
     camera.get_image()
 
-    print("magic")
+    qlabs.close()
 
 if __name__ == "__main__":
     main()

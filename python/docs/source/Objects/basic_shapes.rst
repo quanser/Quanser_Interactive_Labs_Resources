@@ -24,6 +24,9 @@ If you are using a large number of dynamic shapes, consider using :ref:`Widgets`
 They have both limitations and additional features, but are more efficient when spawning
 large numbers of dynamic actors.
 
+See the :ref:`basicShapeTutorial` to get a better understanding of using people in Quanser 
+Interactive Labs.
+
 .. _basicshapelibrary:
 
 Library
@@ -79,21 +82,25 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
+There are 3 configurations (0-2) for the basic shape actor class. 0 - Sphere, 1 - Cylinder, 2 - Square
+
+.. image:: ../pictures/basicshapes.png 
 
 .. _basicshapeConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-
+There are no connection points for this actor class.
 
 .. _basicshapeTutorial:
 
 Tutorial
 ^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
 
-.. dropdown:: Example 2
+    .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.py
+        :language: python
+        :linenos:
 
-.. dropdown:: Example 3

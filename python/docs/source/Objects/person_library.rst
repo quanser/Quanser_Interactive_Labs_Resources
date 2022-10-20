@@ -21,7 +21,8 @@ constants defining different gait styles. A character will accurately travel
 at any specified speed up to 6m/s, but the visual animation may give the
 impression of "slipping" at certain speeds outside the recommended values.
 
-See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
+See the :ref:`personTutorial` to get a better understanding of using people in Quanser 
+Interactive Labs.
 
 .. _personLibrary:
 
@@ -56,25 +57,33 @@ Methods
 .. automethod:: library_qlabs_person.QLabsPerson.__init__
 .. automethod:: library_qlabs_person.QLabsPerson.spawn
 .. tip::
-    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the person is in the center of the body so by default, it will be spawned 1m 
+    above the surface of the target. An additional vertical offset may be required if the surface 
+    is sloped to prevent the actor from falling through the world ground surface.
 .. tip::
     If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
 .. tip::
-    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the person is in the center of the body so by default, it will be spawned 1m 
+    above the surface of the target. An additional vertical offset may be required if the surface 
+    is sloped to prevent the actor from falling through the world ground surface.
 .. tip::
     If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_id
 .. tip::
-    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the person is in the center of the body so by default, it will be spawned 1m 
+    above the surface of the target. An additional vertical offset may be required if the surface 
+    is sloped to prevent the actor from falling through the world ground surface.
 .. tip::
     If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
 .. automethod:: library_qlabs_person.QLabsPerson.spawn_id_degrees
 .. tip::
-    The origin of the person is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the person is in the center of the body so by default, it will be spawned 1m 
+    above the surface of the target. An additional vertical offset may be required if the surface 
+    is sloped to prevent the actor from falling through the world ground surface.
 .. tip::
     If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
@@ -104,32 +113,11 @@ Connection Points
 Tutorial
 ^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
+
     .. literalinclude:: ../../../tutorials/person_tutorial.py
         :language: python
         :linenos:
 
-.. dropdown:: Example 2
 
-.. dropdown:: Example 3
-
-**See Also:**
-
-
-
-
-.. code-block:: python
-    :caption: Spawning a Person 
-
-    QLabsPerson().spawn(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
-
-.. code-block:: python
-    :caption: Spawning a Person using Degrees
-
-    QLabsPerson().spawn_degrees(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
-
-.. code-block:: python
-    :caption: Making the Person to move to a secondary location
-
-    QLabsPerson().move_to(qlabs, deviceNumber, location, speed, waitForConfirmation=True)
-
+.. **See Also:**

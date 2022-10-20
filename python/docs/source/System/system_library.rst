@@ -33,12 +33,3 @@ Methods
 .. automethod:: library_qlabs_system.QLabsSystem.set_title_string
 
 
-System Tutorial
-^^^^^^^^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
-

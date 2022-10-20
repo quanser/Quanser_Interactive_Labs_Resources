@@ -47,12 +47,3 @@ Methods
 .. automethod:: library_qlabs_environment_outdoors.QLabsEnvironmentOutdoors.set_weather_preset
 
 
-Outdoor Environment Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
-

@@ -50,7 +50,8 @@ def main():
     camera = QLabsFreeCamera(qlabs)
     # place the custom camera at a specified location and rotation using radians
     camera.spawn(location=[-0.418, 46.473, 8.82], rotation=[-0, 0.606, 3.127])
-    # to switch our view from our current camera to the new camera we just initialized to be able to view where our people will spawn
+    # to switch our view from our current camera to the new camera we just initialized to 
+    # be able to view where our people will spawn
     camera.possess()
 
     # creates an instance of the person 
@@ -62,13 +63,15 @@ def main():
     # creates a second instance of a person 
     person2 = QLabsPerson(qlabs)
     # place the person at a specified location and rotation using radians
-    # spawn creates the internal number for the actor automatically using the next available actor number
+    # spawn creates the internal number for the actor automatically using 
+    # the next available actor number
     person2.spawn(location=LOCATION_START_P2, rotation=ROTATION_P1P2, scale=SCALE, configuration=1, waitForConfirmation=True)
     
     # creates a third instance of a person
     person3 = QLabsPerson(qlabs, True)
     # place the person at a specified location and rotation using degrees
-    # spawn_degrees creates the internal number for the actor automatically using the next available number and takes the inputted rotation as degrees
+    # spawn_degrees creates the internal number for the actor automatically using the next 
+    # available number and takes the inputted rotation as degrees
     person3.spawn_degrees(location=LOCATION_START_P3, rotation=ROTATION_P3, scale=SCALE, configuration=2, waitForConfirmation=True)
     
     # move the 3 people created to a new location
@@ -77,6 +80,7 @@ def main():
     person3.move_to(location=LOCATION_END_P3, speed=person3.RUN, waitForConfirmation=True)
     
     time.sleep(3)
+    qlabs.close()
 
 if __name__ == "__main__":
     main()

@@ -209,7 +209,7 @@ class QLabsActor:
         return self.spawn_id(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
 
     def spawn(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
-        """Spawns a new actor with the next available actor number within this class
+        """Spawns a new actor with the next available actor number within this class.
 
         :param location: (Optional) An array of floats for x, y and z coordinates
         :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
@@ -271,7 +271,7 @@ class QLabsActor:
             return -1, -1 
 
     def spawn_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
-        """Spawns a new actor with the next available actor number within this class
+        """Spawns a new actor with the next available actor number within this class.
 
         :param location: (Optional) An array of floats for x, y and z coordinates
         :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
@@ -396,7 +396,8 @@ class QLabsActor:
         return self.spawn_id_and_parent_with_relative_transform(actorNumber, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
             
     def ping(self):
-        """Checks if the actor is still present in the environment. Note that if you did not spawn the actor with one of the spawn functions, you may need to manually set the actorNumber member variable.
+        """Checks if the actor is still present in the environment. Note that if you did not spawn 
+        the actor with one of the spawn functions, you may need to manually set the actorNumber member variable.
            
         
         :return: 
@@ -432,7 +433,7 @@ class QLabsActor:
             return False 
     
     def get_world_transform(self):
-        """Get the location, rotation, and scale in world coordinates of the actor
+        """Get the location, rotation, and scale in world coordinates of the actor.
         
         :return: 
             - **status** - True if successful, False otherwise
@@ -478,7 +479,7 @@ class QLabsActor:
 
 
     def get_world_transform_degrees(self):
-        """Get the location, rotation, and scale in world coordinates of the actor
+        """Get the location, rotation, and scale in world coordinates of the actor.
         
         :return: 
             - **status** - True if successful, False otherwise

@@ -18,7 +18,7 @@ Cameras are considered "actors".  The camera library controls the camera actors.
 
 A camera must be initialized first by spawning the camera in the location (or attached to the parent actor of choice) in order to use it.
 
-See the :ref:`cameraTutorial` to get a better understanding of using cameras in the Quanser Interactive Labs.
+See the :ref:`cameraTutorial` to get a better understanding of using cameras in Quanser Interactive Labs.
 
 
 .. _cameraLibrary:
@@ -93,15 +93,11 @@ There are no connection points for the free camera actor.
 Camera Tutorial
 ^^^^^^^^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
 
     .. literalinclude:: ../../../tutorials/camera_tutorial.py
         :language: python
         :linenos:
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 
 
 .. tip:: 
@@ -112,5 +108,5 @@ Camera Tutorial
   #. Copy the location and rotation desired.
   #. Use spawn or spawn_degrees to initialize a new camera. Paste the copied location and rotation into their respective places.
 
-**See Also:** 
+.. **See Also:** 
  

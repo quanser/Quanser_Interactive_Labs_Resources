@@ -91,11 +91,9 @@ provides a higher level of control and optimizes the transaction process to impr
 
 
 QLabs Core Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
+.. dropdown:: Example
+        
+        Coming Soon
 

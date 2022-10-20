@@ -3,8 +3,8 @@
 QCars
 -----
 
-.. image:: ../pictures/qcar.png
-    :scale: 25%
+.. image:: ../pictures/qcar_crop_banner.png
+    :scale: 120%
     :align: center
 
 .. _carDescription: 
@@ -14,6 +14,8 @@ Description
 
 QCars are considered "actors" in the Virtual Self-Driving Car Studio.
 The QCar library can be used to acquire sensor data from the virtual environment and controls the motion of the vehicles.
+
+See the QCar :ref:`carTutorial` to get a better understanding of using QCars in Quanser Interactive Labs.
 
 .. _carLibrary:
 
@@ -74,7 +76,12 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There are no configurations options for the QCar.
+There is only one configuration of the QCar actor. 
+
+.. image:: ../pictures/qcar.png
+    :scale: 50%
+    :align: center
+
 
 .. _carConnect:
 
@@ -96,20 +103,36 @@ Connection Points
     1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
     ====================== ============ ====================================================== ===========
 
+.. image:: ../pictures/qcar_connection_points.png
+
+
+Component Extrinsics
+^^^^^^^^^^^^^^^^^^^^
+.. table::
+    :widths: 11, 11, 25, 53
+    :align: center
+
+    ========== ======= ======= ======
+    Component  x       y       z
+    ========== ======= ======= ======
+    front axle 0.1300  0       0.0310                                                                          
+    rear axle  -0.1300 0       0.0310
+    csi front  -0.1930 0       0.0953
+    csi left   0.0140  0.0438  0.0953
+    csi rear   -0.1650 0       0.0953
+    csi right  0.0140  -0.0674 0.0953
+    imu        0.1278  0.0223  0.0895
+    realsense  0.0822  0.0003  0.1582
+    rplidar    -0.0108 -0.0001 0.1860                                      
+    ========== ======= ======= ======
 
 .. _carTutorial:
 
 Tutorial
 ^^^^^^^^
 
-.. dropdown:: Example 1
+.. dropdown:: Example
 
-.. dropdown:: Example 2
+    Coming Soon
 
-.. dropdown:: Example 3
-
-
-Driving Cars
-^^^^^^^^^^^^
-
-**See Also:**
+.. **See Also:**

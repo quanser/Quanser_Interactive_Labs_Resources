@@ -221,7 +221,7 @@ def main(previewImages = False):
     
     print("\n\n------------------------- Generating Images ---------------------------\n")
 
-
+    """
     ### People
     print("People\n")
 
@@ -326,32 +326,48 @@ def main(previewImages = False):
 
     save_masked_image('../docs/source/pictures/roundaboutsign.png', color_image, mask_image, 0.6, previewImages)
     hRoundaboutSign.destroy_all_actors_of_class()
-
+    """
     ### widgets
 
     print("Widgets\n")
 
     hWidgets = QLabsWidget(qlabs)
     
-    hWidgets.spawn(hWidgets.METAL_CAN, location=[91.562-1, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.PLASTIC_BOTTLE, location=[91.562-0.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.AUTOCLAVE_CAGE, location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[2,2,2], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.SPHERE, location=[91.562+0.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.CYLINDER, location=[91.562+1, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.CUBE, location=[91.562+1.5, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.METAL_CAN, location=[91.562-0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.PLASTIC_BOTTLE, location=[91.562-0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    #hWidgets.spawn(hWidgets.AUTOCLAVE_CAGE, location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[2,2,2], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.SPHERE, location=[91.562+0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.CYLINDER, location=[91.562 + 0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(hWidgets.CUBE, location=[91.562 + 1.25, 63, 0.75], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
-    time.sleep(0.5)
+    time.sleep(1)
 
     hsv_min = np.array([50,100,50])
     hsv_max = np.array([90,255,255])
-    color_image, mask_image = get_color_and_mask(hCamera, [1000, 2000, 700, 2500], hsv_min, hsv_max, showDebugImages=False)
+    color_image, mask_image = get_color_and_mask(hCamera, [1000, 2000, 700, 2500], hsv_min, hsv_max, 4, showDebugImages=False)
     color_image = gammaCorrection(color_image, 0.6)
     
     
     save_masked_image('../docs/source/pictures/widgets.png', color_image, mask_image, 0.6, previewImages)
-
     hWidgets.destroy_all_spawned_widgets()
+    
+    ### basic shapes
 
+    hBasicShape = QLabsBasicShape(qlabs)
+    hBasicShape.spawn(location=[91.562-2, 63, 1], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hBasicShape.spawn(location=[91.562, 63, 1], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    hBasicShape.spawn(location=[91.562+2, 63, 1], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+
+    time.sleep(1)
+
+    hsv_min = np.array([50,100,50])
+    hsv_max = np.array([90,255,255])
+    color_image, mask_image = get_color_and_mask(hCamera, [500, 2000, 50, 3700], hsv_min, hsv_max, showDebugImages=False)
+    color_image = gammaCorrection(color_image, 0.6)
+
+    save_masked_image('../docs/source/pictures/basicshapes.png', color_image, mask_image, 0.6, previewImages)
+
+    """
     ### traffic_light
 
     print("Traffic Light\n")
@@ -399,7 +415,7 @@ def main(previewImages = False):
 
 
     print("\n\n------------------------------ Communications --------------------------------\n")
-    
+    """
     qlabs.close()
     cv2.destroyAllWindows()
     print("Done!")  

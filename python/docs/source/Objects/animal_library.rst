@@ -20,7 +20,7 @@ constants defining different gait styles. A character will accurately travel
 at any specified speed up to 6m/s, but the visual animation may give the
 impression of "slipping" at certain speeds outside the recommended values.
 
-See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
+.. See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
 
 .. _animalLibrary:
 
@@ -63,7 +63,9 @@ Methods
 .. automethod:: library_qlabs_animal.QLabsAnimal.__init__
 .. automethod:: library_qlabs_animal.QLabsAnimal.spawn
 .. tip::
-    The origin of the animal is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the animal is in the center of the body so by default, it will be spawned 1m 
+    above the surface of the target. An additional vertical offset may be required if the surface 
+    is sloped to prevent the actor from falling through the world ground surface.
 .. tip::
     If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
 
@@ -99,41 +101,24 @@ Configurations
 
 There are 3 configurations (0-2) for a animal generated in QLabs.
 
-
+.. TODO: Add image of 3 configurations
 
 .. _animalConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-.. _animalTutorial:
+There are no connection points for the animal actor.
 
-Tutorial
-^^^^^^^^
+.. .. _animalTutorial:
 
-.. dropdown:: Example 1
+.. Tutorial
+.. ^^^^^^^^
 
-.. dropdown:: Example 2
+.. .. dropdown:: Example 1
+.. 
+.. .. dropdown:: Example 2
 
-.. dropdown:: Example 3
+.. .. dropdown:: Example 3
 
-**See Also:**
-
-
-
-
-.. code-block:: python
-    :caption: Spawning a Animal 
-
-    QLabsAnimal().spawn(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
-
-.. code-block:: python
-    :caption: Spawning a Animal using Degrees
-
-    QLabsAnimal().spawn_degrees(qlabs, deviceNumber, location, rotation, scale, configuration=0, waitForConfirmation=True)
-
-.. code-block:: python
-    :caption: Making the Animal to move to a secondary location
-
-    QLabsAnimal().move_to(qlabs, deviceNumber, location, speed, waitForConfirmation=True)
-
+.. **See Also:**

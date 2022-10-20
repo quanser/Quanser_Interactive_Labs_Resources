@@ -71,7 +71,8 @@ def roundabout_sign(qlabs):
 
     # spawns the sign we just created using radians and specifying the actorNumber
     roundabout.spawn_id(actorNumber=0, location=[-17, 36, 0.0], rotation=[0, 0, math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)    
-    # spawns the second sign we just created using degrees and allowing the computer to generate an actorNumber internally
+    # spawns the second sign we just created using degrees and allowing the computer to 
+    # generate an actorNumber internally
     roundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     
     # collecting the world transform coordinates of the roundabout sign
@@ -96,7 +97,8 @@ def yield_sign(qlabs):
 
     # spawns the sign we just created using radians and specifying the actorNumber
     yieldsign.spawn_id(actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns the second sign we just created using degrees and allowing the computer to generate an actorNumber internally
+    # spawns the second sign we just created using degrees and allowing the computer to 
+    # generate an actorNumber internally
     yieldsign2.spawn_degrees(location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     
     # collecting the world transform coordinates of the yield sign
@@ -154,7 +156,8 @@ def traffic_cone(qlabs):
     time.sleep(1)
     # spawns another small traffic cone we just initialized using radians in the same place
     cone1.spawn_id(actorNumber=1, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns a construction pylon using the cone we just initialized using degrees and generating the actorNumber internally
+    # spawns a construction pylon using the cone we just initialized using degrees and generating 
+    # the actorNumber internally
     cone2.spawn_degrees(location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
    
     # collecting the world transform coordinates of the traffic cone
@@ -235,7 +238,8 @@ def main():
         crosswalk(qlabs)
         time.sleep(2)
 
-    # switch the camera angle from whatever it was previous to be able to see where we will be spawning the rest of the objects - see Camera Actor Library Reference for more information
+    # switch the camera angle from whatever it was previous to be able to see where we will be 
+    # spawning the rest of the objects - see Camera Actor Library Reference for more information
     if ROUNDABOUT_FLAG or YIELDSIGN_FLAG or STOPSIGN_FLAG or TRAFFICCONE_FLAG:
         camera0 = QLabsFreeCamera(qlabs)
         camera0.spawn(location=[-23.106, 37.257, 3.482], rotation=[0, 0.349, -0.04])
