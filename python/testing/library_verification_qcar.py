@@ -38,7 +38,7 @@ from pyqtgraph.Qt import QtCore, QtWidgets
 
 ####################################################
 require_user_input = False
-lidar_rate = 0.1
+lidar_rate = 0.01
 
 
 ####################################################
@@ -917,17 +917,17 @@ def main():
 
     x = hCamera2.possess()
     hQLabsWidget = QLabsWidget(qlabs)
-    hQLabsWidget.widget_spawn_configuration(enableShadow=True)
+    hQLabsWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(20):
-        x = hQLabsWidget.spawn(hQLabsWidget.METAL_CAN, [-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn([-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn (expect True)")
 
     time.sleep(1)
 
     for count in range(20):
-        x = hQLabsWidget.spawn_degrees(hQLabsWidget.METAL_CAN, [-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
 
@@ -935,18 +935,18 @@ def main():
 
     x = hQLabsWidget.destroy_all_spawned_widgets()
     vr.PrintWS(x == True, "Widgets destroyed (expect True)")
-    hQLabsWidget.widget_spawn_configuration(enableShadow=False)
+    hQLabsWidget.widget_spawn_shadow(enableShadow=False)
     
     for count in range(10):
-        x = hQLabsWidget.spawn_degrees(hQLabsWidget.SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
     hQLabsWidget.destroy_all_spawned_widgets()
-    hQLabsWidget.widget_spawn_configuration(enableShadow=True)
+    hQLabsWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(10):
-        x = hQLabsWidget.spawn_degrees(hQLabsWidget.SPHERE, [-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     
     

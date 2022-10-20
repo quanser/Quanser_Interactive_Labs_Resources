@@ -333,12 +333,12 @@ def main(previewImages = False):
 
     hWidgets = QLabsWidget(qlabs)
     
-    hWidgets.spawn(hWidgets.METAL_CAN, location=[91.562-0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.PLASTIC_BOTTLE, location=[91.562-0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    #hWidgets.spawn(hWidgets.AUTOCLAVE_CAGE, location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[2,2,2], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.SPHERE, location=[91.562+0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.CYLINDER, location=[91.562 + 0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-    hWidgets.spawn(hWidgets.CUBE, location=[91.562 + 1.25, 63, 0.75], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(location=[91.562-0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=hWidgets.METAL_CAN, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(location=[91.562-0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=hWidgets.PLASTIC_BOTTLE, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    #hWidgets.spawn(location=[91.562, 63, 0.5], rotation=[0,0,math.pi/2], scale=[2,2,2], configuration=hWidgets.AUTOCLAVE_CAGE, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(location=[91.562+0.25, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], configuration=hWidgets.SPHERE, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(location=[91.562 + 0.75, 63, 0.5], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], configuration=hWidgets.CYLINDER, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+    hWidgets.spawn(location=[91.562 + 1.25, 63, 0.75], rotation=[0,0,math.pi/2], scale=[0.25,0.25,0.25], configuration=hWidgets.CUBE, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
