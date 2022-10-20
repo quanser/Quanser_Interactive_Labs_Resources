@@ -3,6 +3,9 @@
 Widgets
 -------
 
+.. image:: ../pictures/widget_banner.png
+    :align: center
+
 Widgets work slightly differently then the other objects in the QLabs workspaces.
 They are special actors that cannot be addressed after they have been spawned 
 therefore they cannot be deleted individually, they do not support parenting

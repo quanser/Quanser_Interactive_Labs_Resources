@@ -33,6 +33,7 @@ import numpy as np
 import cv2
 import xlsxwriter
 import os
+import random
 
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtWidgets
@@ -326,7 +327,7 @@ def main(previewImages = False):
 
     save_masked_image('../docs/source/pictures/roundaboutsign.png', color_image, mask_image, 0.6, previewImages)
     hRoundaboutSign.destroy_all_actors_of_class()
-    """
+    
     ### widgets
 
     print("Widgets\n")
@@ -367,7 +368,7 @@ def main(previewImages = False):
 
     save_masked_image('../docs/source/pictures/basicshapes.png', color_image, mask_image, 0.6, previewImages)
 
-    """
+    
     ### traffic_light
 
     print("Traffic Light\n")
@@ -416,6 +417,44 @@ def main(previewImages = False):
 
     print("\n\n------------------------------ Communications --------------------------------\n")
     """
+
+
+
+    ############################ Banner shots #######################################
+    qlabs.destroy_all_spawned_actors()
+
+
+    #widgets
+    hCamera = QLabsFreeCamera(qlabs)
+    hCamera.spawn_degrees(location=[9.997, 28.452, 1.909], rotation=[0, -4.75, -0.303])
+    hCamera.possess()
+
+    hWidgets = QLabsWidget(qlabs)
+    
+    widgetWait = False
+    x_size = 20
+
+    for z in range(50):
+        for x in range(x_size):
+            widgetType = x % 3
+            if widgetType > 3:
+                widgetType = widgetType + 1
+
+            widgetSize = np.array([0.4,0.4,0.4])*(0.1+random.random())
+
+            hWidgets.spawn(location=[18, 22.861+12/x_size*x, z*0.2+1], rotation=[0,0,0], scale=widgetSize, configuration=widgetType, colour=[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=widgetWait)
+
+        time.sleep(0.01)
+    time.sleep(1)
+
+    hsv_min = np.array([50,100,50])
+    hsv_max = np.array([90,255,255])
+    color_image, temp = get_color_and_mask(hCamera, [500, 2000, 0, 4095], hsv_min, hsv_max, 3, False)
+    color_image = gammaCorrection(color_image, 0.8)
+    
+    save_image('../docs/source/pictures/widget_banner.png', color_image, 0.4, previewImages) 
+
+
     qlabs.close()
     cv2.destroyAllWindows()
     print("Done!")  
