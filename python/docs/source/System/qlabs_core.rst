@@ -88,12 +88,3 @@ provides a higher level of control and optimizes the transaction process to impr
 .. automethod:: library_qlabs.QuanserInteractiveLabs.wait_for_container
 .. automethod:: library_qlabs.QuanserInteractiveLabs.flush_receive
 .. automethod:: library_qlabs.QuanserInteractiveLabs.ping
-
-
-QLabs Core Tutorial
-^^^^^^^^^^^^^^^^^^^
-
-.. dropdown:: Example
-        
-        Coming Soon
-

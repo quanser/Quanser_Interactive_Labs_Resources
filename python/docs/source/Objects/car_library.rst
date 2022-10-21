@@ -108,23 +108,50 @@ Connection Points
 
 Component Extrinsics
 ^^^^^^^^^^^^^^^^^^^^
+"Extrinsics" refer to the external relationship of an object with respect to a specific frame of 
+reference (in this case the body center of the QCar). Sometimes it's important to know specific 
+distances and orientation of extrinsic components, for instance, this can be use for obstacle 
+detection and camera calibration. You will find a list of the important extrinsics below.
+
+Distances From Body Center
+""""""""""""""""""""""""""
+All distance in QCar's virtual enviroment are 10 times larger then in real life. 
+Therefore the distances to important components have been scaled appropriately below:
+
 .. table::
-    :widths: 11, 11, 25, 53
+    :widths: 11, 11, 11, 11
     :align: center
 
-    ========== ======= ======= ======
-    Component  x       y       z
-    ========== ======= ======= ======
-    front axle 0.1300  0       0.0310                                                                          
-    rear axle  -0.1300 0       0.0310
-    csi front  -0.1930 0       0.0953
-    csi left   0.0140  0.0438  0.0953
-    csi rear   -0.1650 0       0.0953
-    csi right  0.0140  -0.0674 0.0953
-    imu        0.1278  0.0223  0.0895
-    realsense  0.0822  0.0003  0.1582
-    rplidar    -0.0108 -0.0001 0.1860                                      
-    ========== ======= ======= ======
+    ========== ====== ====== ======
+    Component  x (m)  y (m)  z (m)
+    ========== ====== ====== ======
+    Front axle 1.300  0      0.310                                                                          
+    Rear axle  -1.300 0      0.310
+    CSI front  -1.930 0      0.953
+    CSI left   0.140  0.438  0.953
+    CSI rear   -1.650 0      0.953
+    CSI right  0.140  -0.674 0.953
+    IMU        1.278  0.223  0.895
+    RealSense  0.822  0.003  1.582
+    RPLIDAR    -0.108 -0.001 1.860                                      
+    ========== ====== ====== ======
+
+Transformation Matrices
+"""""""""""""""""""""""
+
+.. image:: ../pictures/bodyframe.png
+    :scale:  65%
+    :align: center
+
+All transformation matrices are built off of the body frame and camera frames for the QCar.
+To read more about this check out our documentation 
+`here <https://www.quanser.com/products/self-driving-car-studio/>`__
+by clicking on resources button and looking inside the zip folder for 
+User Guides/System Hardware.pdf
+
+.. image:: ../pictures/extrinsics_virtual.png
+    :scale:  65%
+    :align: center
 
 .. _carTutorial:
 
