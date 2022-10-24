@@ -46,14 +46,14 @@ class QLabsBasicShape(QLabsActor):
        
     
    
-    def set_material_properties(self, colour, roughness=0.4, metallic=False, waitForConfirmation=True):
+    def set_material_properties(self, color, roughness=0.4, metallic=False, waitForConfirmation=True):
         """Sets the visual surface properties of the shape.
 
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param roughness: A value between 0.0 (completely smooth and reflective) to 1.0 (completely rough and diffuse). Note that reflections are rendered using screen space reflections. Only objects visible in the camera view will be rendered in the reflection of the object.
         :param metallic: Metallic (True) or non-metallic (False)
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
-        :type colour: float array[3]
+        :type color: float array[3]
         :type roughness: float
         :type metallic: boolean
         :type waitForConfirmation: boolean
@@ -68,7 +68,7 @@ class QLabsBasicShape(QLabsActor):
         c.classID = self.ID_BASIC_SHAPE
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES
-        c.payload = bytearray(struct.pack(">ffffB", colour[0], colour[1], colour[2], roughness, metallic))
+        c.payload = bytearray(struct.pack(">ffffB", color[0], color[1], color[2], roughness, metallic))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:
@@ -282,7 +282,7 @@ class QLabsBasicShape(QLabsActor):
     
         return result
 
-    def spawn_id_box_walls_from_end_points(self, actorNumber, startLocation, endLocation, height, thickness, colour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_end_points(self, actorNumber, startLocation, endLocation, height, thickness, color=[1,1,1], waitForConfirmation=True):
         """Given a start and end point, this helper method calculates the position, rotation, and scale required to place a box on top of this line. 
 
         :param actorNumber: User defined unique identifier for the class actor in QLabs
@@ -290,14 +290,14 @@ class QLabsBasicShape(QLabsActor):
         :param endLocation: An array of floats for x, y and z coordinates.
         :param height: The height of the wall.
         :param thickness: The width or thickness of the wall.
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
         :type actorNumber: uint32
         :type startLocation: float array[3]
         :type endLocation: float array[3]
         :type height: float
         :type thickness: float
-        :type colour: float array[3]
+        :type color: float array[3]
         :type waitForConfirmation: boolean
         :return: True if successful or False otherwise
         :rtype: boolean
@@ -313,7 +313,7 @@ class QLabsBasicShape(QLabsActor):
         shiftedLocation = [location[0]+math.sin(yRotation)*math.cos(zRotation)*height/2, location[1]+math.sin(yRotation)*math.sin(zRotation)*height/2, location[2]+math.cos(yRotation)*height/2]
     
         if (0 == self.spawn_id(actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, thickness, height], self.SHAPE_CUBE, waitForConfirmation)):
-            if (True == self.set_material_properties(colour, 1, False, waitForConfirmation)):
+            if (True == self.set_material_properties(color, 1, False, waitForConfirmation)):
                 return True
             else:
                 return False
@@ -323,7 +323,7 @@ class QLabsBasicShape(QLabsActor):
 
    
     
-    def spawn_id_box_walls_from_center(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_center(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
 
         :param actorNumbers: An array of 5 user defined unique identifiers for the class actors in QLabs.
@@ -334,8 +334,8 @@ class QLabsBasicShape(QLabsActor):
         :param zSize: Size of the box in the z direction.
         :param wallThickness: The thickness of the walls.
         :param floorThickness: (Optional) The thickness of the floor. Setting this to 0 will spawn a box without a floor.
-        :param wallColour: (Optional) Red, Green, Blue components of the wall colour on a 0.0 to 1.0 scale.
-        :param floorColour: (Optional) Red, Green, Blue components of the floor colour on a 0.0 to 1.0 scale.
+        :param wallColor: (Optional) Red, Green, Blue components of the wall color on a 0.0 to 1.0 scale.
+        :param floorColor: (Optional) Red, Green, Blue components of the floor color on a 0.0 to 1.0 scale.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
 
         :type actorNumbers: uint32 array[5]
@@ -346,8 +346,8 @@ class QLabsBasicShape(QLabsActor):
         :type zSize: float
         :type wallThickness: float
         :type floorThickness: float
-        :type wallColour: float array[3]
-        :type floorColour: float array[3]
+        :type wallColor: float array[3]
+        :type floorColor: float array[3]
         :type waitForConfirmation: boolean
 
         :return: True if successful or False otherwise
@@ -358,38 +358,38 @@ class QLabsBasicShape(QLabsActor):
         location = np.add(origin, self._rotate_vector_2d_degrees([xSize/2 + wallThickness/2, 0, 0], yaw) )
         if (0 != self.spawn_id(actorNumbers[0], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
-        if (True != self.set_material_properties(wallColour, 1, False, waitForConfirmation)):
+        if (True != self.set_material_properties(wallColor, 1, False, waitForConfirmation)):
             return False
     
         location = np.add(origin, self._rotate_vector_2d_degrees([ - xSize/2 - wallThickness/2, 0, 0], yaw) )
         if (0 != self.spawn_id(actorNumbers[1], location, [0, 0, yaw], [wallThickness, ySize, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
-        if (True != self.set_material_properties(wallColour, 1, False, waitForConfirmation)):
+        if (True != self.set_material_properties(wallColor, 1, False, waitForConfirmation)):
             return False
     
         
         location = np.add(origin, self._rotate_vector_2d_degrees([0, ySize/2 + wallThickness/2, 0], yaw) )
         if (0 != self.spawn_id(actorNumbers[2], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
-        if (True != self.set_material_properties(wallColour, 1, False, waitForConfirmation)):
+        if (True != self.set_material_properties(wallColor, 1, False, waitForConfirmation)):
             return False
     
         
         location = np.add(origin, self._rotate_vector_2d_degrees([0, - ySize/2 - wallThickness/2, 0], yaw) )
         if (0 != self.spawn_id(actorNumbers[3], location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], self.SHAPE_CUBE, waitForConfirmation)):
             return False
-        if (True != self.set_material_properties(wallColour, 1, False, waitForConfirmation)):
+        if (True != self.set_material_properties(wallColor, 1, False, waitForConfirmation)):
             return False
         
         if (floorThickness > 0):
             if (0 != self.spawn_id(actorNumbers[4], [centerLocation[0], centerLocation[1], centerLocation[2]+ floorThickness/2], [0, 0, yaw], [xSize+wallThickness*2, ySize+wallThickness*2, floorThickness], self.SHAPE_CUBE, waitForConfirmation)):
                 return False
-            if (True != self.set_material_properties(floorColour, 1, False, waitForConfirmation)):
+            if (True != self.set_material_properties(floorColor, 1, False, waitForConfirmation)):
                 return False
 
         return True
 
-    def spawn_id_box_walls_from_center_degrees(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColour=[1,1,1], floorColour=[1,1,1], waitForConfirmation=True):
+    def spawn_id_box_walls_from_center_degrees(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor. 
 
         :param actorNumbers: An array of 5 user defined unique identifiers for the class actors in QLabs.
@@ -400,8 +400,8 @@ class QLabsBasicShape(QLabsActor):
         :param zSize: Size of the box in the z direction.
         :param wallThickness: The thickness of the walls.
         :param floorThickness: (Optional) The thickness of the floor. Setting this to 0 will spawn a box without a floor.
-        :param wallColour: (Optional) Red, Green, Blue components of the wall colour on a 0.0 to 1.0 scale.
-        :param floorColour: (Optional) Red, Green, Blue components of the floor colour on a 0.0 to 1.0 scale.
+        :param wallColor: (Optional) Red, Green, Blue components of the wall color on a 0.0 to 1.0 scale.
+        :param floorColor: (Optional) Red, Green, Blue components of the floor color on a 0.0 to 1.0 scale.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
 
         :type actorNumbers: uint32 array[5]
@@ -412,13 +412,13 @@ class QLabsBasicShape(QLabsActor):
         :type zSize: float
         :type wallThickness: float
         :type floorThickness: float
-        :type wallColour: float array[3]
-        :type floorColour: float array[3]
+        :type wallColor: float array[3]
+        :type floorColor: float array[3]
         :type waitForConfirmation: boolean
 
         :return: True if successful or False otherwise
         :rtype: boolean
         """
-        return self.spawn_id_box_walls_from_center(actorNumbers, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColour, floorColour, waitForConfirmation)
+        return self.spawn_id_box_walls_from_center(actorNumbers, centerLocation, yaw/180*math.pi, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
 
     

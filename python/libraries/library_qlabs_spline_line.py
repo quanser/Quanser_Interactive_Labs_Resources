@@ -40,14 +40,14 @@ class QLabsSplineLine(QLabsActor):
        self.classID = self.ID_SPLINE_LINE
        return
        
-    def set_points(self, colour, pointList, alignEndPointTangents=False, waitForConfirmation=True):
+    def set_points(self, color, pointList, alignEndPointTangents=False, waitForConfirmation=True):
         """After spawning the origin of the spline actor, this method is used to create the individual points. At least 2 points must be specified to make a line.
 
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param pointList: A 2D array with each row containing [x,y,z,width] elements. Width is in m.
         :param alignEndPointTangents: (Optional) Sets the tangent of the first and last point to be the same.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
-        :type colour: float array[3]
+        :type color: float array[3]
         :type pointList: float 2D array[4][n]
         :type alignEndPointTangents: boolean
         :type waitForConfirmation: boolean
@@ -59,7 +59,7 @@ class QLabsSplineLine(QLabsActor):
         c.classID = self.ID_SPLINE_LINE
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_SPLINE_LINE_SET_POINTS
-        c.payload = bytearray(struct.pack(">fffB", colour[0], colour[1], colour[2], alignEndPointTangents))
+        c.payload = bytearray(struct.pack(">fffB", color[0], color[1], color[2], alignEndPointTangents))
         
         for point in pointList:
             c.payload = c.payload + bytearray(struct.pack(">ffff", point[0], point[1], point[2], point[3]))
@@ -84,17 +84,17 @@ class QLabsSplineLine(QLabsActor):
                 print('spawn_id: Communication failed (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
             return False    
 
-    def circle_from_center(self, radius, lineWidth=0.1, colour=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
+    def circle_from_center(self, radius, lineWidth=0.1, color=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
         """After spawning the origin of the spline actor, this method is used to create a circle. Configuration 1 is recommended when spawning the line.
 
         :param radius: Radius in m
         :param lineWidth: Line width in m
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param numSplinePoints: The number of points distributed around the circle. Splines will automatically round the edges, but more points will be needed for larger circles to achieve an accurate circle.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type radius: float
         :type lineWidth: float
-        :type colour: float array[3]
+        :type color: float array[3]
         :type numSplinePoints: integer
         :type waitForConfirmation: boolean
         :return: 
@@ -109,10 +109,10 @@ class QLabsSplineLine(QLabsActor):
         
         points.append(points[0])
     
-        return self.set_points(colour, pointList=points, alignEndPointTangents=True, )
+        return self.set_points(color, pointList=points, alignEndPointTangents=True, )
         
      
-    def arc_from_center(self, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, colour=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
+    def arc_from_center(self, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, color=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
         
         """After spawning the origin of the spline actor, this method is used to create an arc. Configuration 1 is recommended when spawning the line.
 
@@ -120,14 +120,14 @@ class QLabsSplineLine(QLabsActor):
         :param startAngle: Angle relative to the spawn orientation in radians
         :param endAngle: Angle relative to the spawn orientation in radians
         :param lineWidth: Line width in m
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param numSplinePoints: The number of points distributed around the circle. Splines will automatically round the edges, but more points will be needed for larger circles to achieve an accurate circle.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type radius: float
         :type startAngle: float
         :type endAngle: float
         :type lineWidth: float
-        :type colour: float array[3]
+        :type color: float array[3]
         :type numSplinePoints: integer
         :type waitForConfirmation: boolean
         :return: 
@@ -140,23 +140,23 @@ class QLabsSplineLine(QLabsActor):
         for angle in range(0, numSplinePoints+1):
             points.append([radius*math.cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*math.sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth])
         
-        return self.set_points(colour, pointList=points, alignEndPointTangents=False)
+        return self.set_points(color, pointList=points, alignEndPointTangents=False)
     
-    def arc_from_center_degrees(self, radius, startAngle=0, endAngle=90, lineWidth=1, colour=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
+    def arc_from_center_degrees(self, radius, startAngle=0, endAngle=90, lineWidth=1, color=[1,0,0], numSplinePoints=4, waitForConfirmation=True):
         """After spawning the origin of the spline actor, this method is used to create an arc. Configuration 1 is recommended when spawning the line.
 
         :param radius: Radius in m
         :param startAngle: Angle relative to the spawn orientation in degrees
         :param endAngle: Angle relative to the spawn orientation in degrees
         :param lineWidth: Line width in m
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param numSplinePoints: The number of points distributed around the circle. Splines will automatically round the edges, but more points will be needed for larger circles to achieve an accurate circle.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type radius: float
         :type startAngle: float
         :type endAngle: float
         :type lineWidth: float
-        :type colour: float array[3]
+        :type color: float array[3]
         :type numSplinePoints: integer
         :type waitForConfirmation: boolean
         :return: 
@@ -164,9 +164,9 @@ class QLabsSplineLine(QLabsActor):
         :rtype: boolean
         """
 
-        return  self.arc_from_center(radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, colour, numSplinePoints, waitForConfirmation)
+        return  self.arc_from_center(radius, startAngle/180*math.pi, endAngle/180*math.pi, lineWidth, color, numSplinePoints, waitForConfirmation)
         
-    def rounded_rectangle_from_center(self, cornerRadius, xWidth, yLength, lineWidth=0.1, colour=[1,0,0], waitForConfirmation=True):
+    def rounded_rectangle_from_center(self, cornerRadius, xWidth, yLength, lineWidth=0.1, color=[1,0,0], waitForConfirmation=True):
 
         """After spawning the origin of the spline actor, this method is used to create a rounded rectangle. Configuration 1 is recommended when spawning the line.
 
@@ -174,13 +174,13 @@ class QLabsSplineLine(QLabsActor):
         :param xWidth: Dimension in m of the rectangle in the local x axis
         :param yLength: Dimension in m of the rectangle in the local y axis
         :param lineWidth: Line width in m
-        :param colour: Red, Green, Blue components of the RGB colour on a 0.0 to 1.0 scale.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type cornerRadius: float
         :type xWidth: float
         :type yLength: float
         :type lineWidth: float
-        :type colour: float array[3]
+        :type color: float array[3]
         :type numSplinePoints: integer
         :type waitForConfirmation: boolean
         :return: 
@@ -190,7 +190,7 @@ class QLabsSplineLine(QLabsActor):
         
         points = self._spawn_spline_rounded_rectangle_from_center_point_list(cornerRadius, xWidth, yLength, lineWidth)
         
-        return self.set_points(colour, pointList=points, alignEndPointTangents=True)
+        return self.set_points(color, pointList=points, alignEndPointTangents=True)
     
  
     

@@ -297,15 +297,15 @@ class QLabsQCar(QLabsActor):
         else:
             return False    
 
-    def ghost_mode(self, enable=True, colour=[0,1,0]):
+    def ghost_mode(self, enable=True, color=[0,1,0]):
         """
-        Ghost mode changes the selected QCar actor into a transparent coloured version. This can be useful as a reference actor or indicating a change in state.
+        Ghost mode changes the selected QCar actor into a transparent colored version. This can be useful as a reference actor or indicating a change in state.
         
-        :param enable: Set the QCar to the defined transparent colour, otherwise revert to the solid color scheme.
-        :param colour: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param enable: Set the QCar to the defined transparent color, otherwise revert to the solid color scheme.
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :type camera: uint32
         :type enable: boolean
-        :type colour: float array[3]
+        :type color: float array[3]
         :return: 
             - **status** - `True` if possessing the camera was successful, `False` otherwise
         :rtype: boolean
@@ -319,7 +319,7 @@ class QLabsQCar(QLabsActor):
         c.classID = self.ID_QCAR
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QCAR_GHOST_MODE
-        c.payload = bytearray(struct.pack(">Bfff", enable, colour[0], colour[1], colour[2]))
+        c.payload = bytearray(struct.pack(">Bfff", enable, color[0], color[1], color[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         self._qlabs.flush_receive()  

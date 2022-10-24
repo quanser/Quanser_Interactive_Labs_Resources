@@ -594,7 +594,7 @@ def main():
 
         time.sleep(0.25)
         
-    hQCar3.ghost_mode(enable=True, colour=[1,0,0])
+    hQCar3.ghost_mode(enable=True, color=[1,0,0])
 
     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit")
     hQCar3.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
@@ -614,7 +614,7 @@ def main():
     x, loc, rot, scales = hQCar3.get_world_transform_degrees()
     vr.PrintWS(abs(np.sum(np.subtract(loc, [-13.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,179]))) < 0.01 and x == True, "Get world transform degrees")
     
-    hQCar3.ghost_mode(enable=False, colour=[1,0,0])
+    hQCar3.ghost_mode(enable=False, color=[1,0,0])
 
     
     #camera tests
@@ -845,8 +845,8 @@ def main():
     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
 
 
-    x = hCube202.set_material_properties(colour=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
-    x = hCube201.set_material_properties(colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hCube202.set_material_properties(color=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hCube201.set_material_properties(color=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.PrintWS(x == True, "Set material properties (expect True)")
 
     for y in range(51):
@@ -857,11 +857,11 @@ def main():
 
     hSphere203 = QLabsBasicShape(qlabs)
     x = hSphere203.spawn_id(actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hSphere203.set_material_properties(colour=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    x = hSphere203.set_material_properties(color=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     
     hSphere204 = QLabsBasicShape(qlabs)
     x = hSphere204.spawn_id(actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere204.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hSphere204.set_material_properties(colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
+    x = hSphere204.set_material_properties(color=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
     x = hSphere204.set_enable_collisions(enableCollisions=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Enable collisions")
 
@@ -884,13 +884,13 @@ def main():
     x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
     
     hBoxSpawn = QLabsBasicShape(qlabs)
-    x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center")
 
-    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center degrees")
 
-    x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from end points")
 
     x, shapeHandle1 = hBoxSpawn.spawn(location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
@@ -903,7 +903,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn next degrees")
     
     hBoxSpawn.actorNumber = shapeHandle2
-    x = hBoxSpawn.set_material_properties(colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hBoxSpawn.set_material_properties(color=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.checkFunctionTestList("library_qlabs_basic_shape", "../docs/source/Objects/basic_shapes.rst", "library_qlabs_actor")    
 
 
@@ -1046,7 +1046,7 @@ def main():
 
     for counter in range(4):
         x = hSpline2.spawn(location=[-1,1.5-counter*0.75,1+counter*0.001], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-        x = hSpline2.set_points(colour=color_selection[counter], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+        x = hSpline2.set_points(color=color_selection[counter], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
         vr.PrintWS(x == True, "Spawn configuration {}: {}".format(counter, x))
 
     time.sleep(0.5)
@@ -1054,14 +1054,14 @@ def main():
     vr.PrintWS(x == 4, "Destroy all actors of class (expect 4): {}".format(x))
 
     hSpline2.spawn_id(actorNumber=0, location=[-1,1.5,1], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-    hSpline2.set_points(colour=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+    hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
     time.sleep(0.5)
 
     x = hSpline2.destroy()
     vr.PrintWS(x == 1, "Destroy actor (expect 1): {}".format(x))
 
     hSpline2.spawn_id_degrees(actorNumber=1, location=[-1,1.5,1], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-    hSpline2.set_points(colour=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
+    hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
     x = hSpline2.ping()
     vr.PrintWS(x == True, "Ping (expect True): {}".format(x))
 
@@ -1073,22 +1073,22 @@ def main():
 
     hSpline3 = QLabsSplineLine(qlabs)
     hSpline3.spawn([-6.843, 9.104, 0.005], [0,0,0],[1,1,1],1)
-    x = hSpline3.circle_from_center(radius=1, lineWidth=0.1, colour=[1,0,1], numSplinePoints=8)
+    x = hSpline3.circle_from_center(radius=1, lineWidth=0.1, color=[1,0,1], numSplinePoints=8)
     vr.PrintWS(x == True, "Circle from center (expect True): {}".format(x))
 
     hSpline4 = QLabsSplineLine(qlabs)
     hSpline4.spawn([-3.843, 9.104, 0.005], [0,0,0],[1,1,1],1)
-    hSpline4.arc_from_center(radius=1, startAngle=0, endAngle=math.pi/2, lineWidth=0.1, colour=[1,0,0], numSplinePoints=8)
+    hSpline4.arc_from_center(radius=1, startAngle=0, endAngle=math.pi/2, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
     vr.PrintWS(x == True, "Arc from center (expect True): {}".format(x))
 
     hSpline5 = QLabsSplineLine(qlabs)
     hSpline5.spawn([-3.843, 7.104, 0.005], [0,0,0],[1,1,1],1)
-    hSpline5.arc_from_center_degrees(radius=1, startAngle=0, endAngle=90, lineWidth=0.1, colour=[1,0,0], numSplinePoints=8)
+    hSpline5.arc_from_center_degrees(radius=1, startAngle=0, endAngle=90, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
     vr.PrintWS(x == True, "Arc from center degrees (expect True): {}".format(x))
 
     hSpline6 = QLabsSplineLine(qlabs)
     hSpline6.spawn([-5.7, 6.782, 0.005], [0,0,0],[1,1,1],1)
-    hSpline6.rounded_rectangle_from_center(cornerRadius=0.5, xWidth=2, yLength=4, lineWidth=0.1, colour=[1,1,0])
+    hSpline6.rounded_rectangle_from_center(cornerRadius=0.5, xWidth=2, yLength=4, lineWidth=0.1, color=[1,1,0])
     vr.PrintWS(x == True, "Rounded rectangle (expect True): {}".format(x))
 
 

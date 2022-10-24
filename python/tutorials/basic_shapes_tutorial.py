@@ -72,8 +72,8 @@ def main():
     cube2.spawn_id_and_parent_with_relative_transform(actorNumber=2, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=cube2.SHAPE_CUBE, parentClassID=cube0.ID_BASIC_SHAPE, parentActorNumber=cube0.actorNumber, parentComponent=0, waitForConfirmation=True)
     cube3.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=3, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=cube3.SHAPE_CUBE, parentClassID=cube0.ID_BASIC_SHAPE, parentActorNumber=cube0.actorNumber, parentComponent=0, waitForConfirmation=True)
     # set the material properties to a metallic red and gold reflective surface
-    cube2.set_material_properties(colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
-    cube3.set_material_properties(colour=[252/255,144/255,3/255], roughness=0.0, metallic=True, waitForConfirmation=True)
+    cube2.set_material_properties(color=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    cube3.set_material_properties(color=[252/255,144/255,3/255], roughness=0.0, metallic=True, waitForConfirmation=True)
     # have child actors rotate around the parent actor as their scale grows in size simultaneously
     for y in range(51):
         cube0.set_transform(location=[-15.202, 36.005, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
@@ -94,12 +94,12 @@ def main():
     sphere11.spawn_id(actorNumber=11, location=[-18.75, 31.5, 1], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=sphere11.SHAPE_SPHERE, waitForConfirmation=True)
     sphere12.spawn_id(actorNumber=12, location=[-18.75, 30.5, 0.25], rotation=[0,0,0], scale=[0.7,0.7,0.7], configuration=sphere12.SHAPE_SPHERE, waitForConfirmation=True)
     
-    # in qlabs, the colour of shapes uses the RGB colour space with 0 to 255 represented between 0 and 1.
-    # if you know what colour you'd like to set your shape in RGB simply devide the red, green and blue numbers by 255.
+    # in qlabs, the color of shapes uses the RGB color space with 0 to 255 represented between 0 and 1.
+    # if you know what color you'd like to set your shape in RGB simply devide the red, green and blue numbers by 255.
     # this script sets these spheres to red, green and blue respectively while increasing in roughness
-    sphere10.set_material_properties(colour=[1,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
-    sphere11.set_material_properties(colour=[0,1,0], roughness=0.5, metallic=False, waitForConfirmation=True)
-    sphere12.set_material_properties(colour=[0,0,1], roughness=1.0, metallic=False, waitForConfirmation=True)
+    sphere10.set_material_properties(color=[1,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    sphere11.set_material_properties(color=[0,1,0], roughness=0.5, metallic=False, waitForConfirmation=True)
+    sphere12.set_material_properties(color=[0,0,1], roughness=1.0, metallic=False, waitForConfirmation=True)
     
     # we want to now look at physics properties that are available to us in qlabs
     # if we spawn three more spheres and set the properties of these spheres to
@@ -119,13 +119,13 @@ def main():
     
 
     boxSpawn = QLabsBasicShape(qlabs)
-    boxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-14.35, 26.5, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,0], waitForConfirmation=True)
+    boxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-14.35, 26.5, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,0], waitForConfirmation=True)
 
 
-    boxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-16.35, 28.5, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColour=[1,0,0], floorColour=[0,0,0], waitForConfirmation=True)
+    boxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-16.35, 28.5, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,0], waitForConfirmation=True)
 
 
-    boxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-15.5, 32.5, 0.005], endLocation=[-15.5, 30.5, 0.005], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    boxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-15.5, 32.5, 0.005], endLocation=[-15.5, 30.5, 0.005], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
 
 
     x, shapeHandle1 = boxSpawn.spawn(location=[-11.945, 31.5, 0.5], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=boxSpawn.SHAPE_CUBE, waitForConfirmation=True)
@@ -138,13 +138,13 @@ def main():
 
 
     boxSpawn.actorNumber = shapeHandle1
-    boxSpawn.set_material_properties(colour=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    boxSpawn.set_material_properties(color=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     boxSpawn.actorNumber = shapeHandle2
-    boxSpawn.set_material_properties(colour=[1,1,1], roughness=0.0, metallic=False, waitForConfirmation=True)
+    boxSpawn.set_material_properties(color=[1,1,1], roughness=0.0, metallic=False, waitForConfirmation=True)
     boxSpawn.actorNumber = shapeHandle3
-    boxSpawn.set_material_properties(colour=[0.5,0.5,0.5], roughness=0.0, metallic=False, waitForConfirmation=True)
+    boxSpawn.set_material_properties(color=[0.5,0.5,0.5], roughness=0.0, metallic=False, waitForConfirmation=True)
     boxSpawn.actorNumber = shapeHandle4
-    boxSpawn.set_material_properties(colour=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
+    boxSpawn.set_material_properties(color=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
 
     
 

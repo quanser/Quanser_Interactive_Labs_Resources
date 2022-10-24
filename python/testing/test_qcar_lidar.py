@@ -42,10 +42,10 @@ def testLIDAR():
     #hQCar.possess(hQCar.CAMERA_OVERHEAD)
 
     hShape = QLabsBasicShape(qlabs)
-    hShape.spawn_id_box_walls_from_end_points(0, [70, 40, 0], [130, 40, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
-    hShape.spawn_id_box_walls_from_end_points(1, [130, 40, 0], [130, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
-    hShape.spawn_id_box_walls_from_end_points(2, [70, 0, 0], [130, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)    
-    hShape.spawn_id_box_walls_from_end_points(3, [70, 40, 0], [70, 0, 0], height=3, thickness=1, colour=[1,0,0], waitForConfirmation=True)
+    hShape.spawn_id_box_walls_from_end_points(0, [70, 40, 0], [130, 40, 0], height=3, thickness=1, color=[1,0,0], waitForConfirmation=True)
+    hShape.spawn_id_box_walls_from_end_points(1, [130, 40, 0], [130, 0, 0], height=3, thickness=1, color=[1,0,0], waitForConfirmation=True)
+    hShape.spawn_id_box_walls_from_end_points(2, [70, 0, 0], [130, 0, 0], height=3, thickness=1, color=[1,0,0], waitForConfirmation=True)    
+    hShape.spawn_id_box_walls_from_end_points(3, [70, 40, 0], [70, 0, 0], height=3, thickness=1, color=[1,0,0], waitForConfirmation=True)
     
     
     if (setup_only):

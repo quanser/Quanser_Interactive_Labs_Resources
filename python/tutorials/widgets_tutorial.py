@@ -25,25 +25,25 @@ def widgets(qlabs):
 
     # create 10 cubes of a variety of shades of red
     for count in range(10):
-        widget.spawn_degrees(widgetType = widget.CUBE, location = [-15.504, 34.584+count*0.01, 1+count*0.6], rotation = [90,0,0], scale = [0.5,0.5,0.5], colour = [1,0+count*0.03,0+count*0.02], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        widget.spawn_degrees(widgetType = widget.CUBE, location = [-15.504, 34.584+count*0.01, 1+count*0.6], rotation = [90,0,0], scale = [0.5,0.5,0.5], color = [1,0+count*0.03,0+count*0.02], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(2)
 
     # create 20 grey metal cans and place them at slightly different spots
     for count in range(20):
-        widget.spawn(widgetType = widget.METAL_CAN, location = [-15.504, 32.584, 1+count*0.2], rotation = [0,0,0], scale = [1,1,1], colour = [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        widget.spawn(widgetType = widget.METAL_CAN, location = [-15.504, 32.584, 1+count*0.2], rotation = [0,0,0], scale = [1,1,1], color = [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
     # create 20 plastic bottles of a variety of shades of blue
     for count in range(20):
-        widget.spawn_degrees(widgetType = widget.PLASTIC_BOTTLE, location = [-15.504, 32.584, 1+count*0.2], rotation = [90,0,0], scale = [1,1,1], colour = [count*0.01 ,count*0.02, 1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        widget.spawn_degrees(widgetType = widget.PLASTIC_BOTTLE, location = [-15.504, 32.584, 1+count*0.2], rotation = [90,0,0], scale = [1,1,1], color = [count*0.01 ,count*0.02, 1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
     # create 10 spheres of a ombre of red to yellow
     for count in range(10):
-        widget.spawn_degrees(widgetType = widget.SPHERE, location = [-15.504, 38.584+count*0.01, 1+count*0.6], rotation = [90,0,0], scale = [0.5,0.5,0.5], colour = [1,0+ count*0.05,0+ count*0.01], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        widget.spawn_degrees(widgetType = widget.SPHERE, location = [-15.504, 38.584+count*0.01, 1+count*0.6], rotation = [90,0,0], scale = [0.5,0.5,0.5], color = [1,0+ count*0.05,0+ count*0.01], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(5)
 
