@@ -118,7 +118,11 @@ class verificationReport:
                         if (found_function_usage == False):
                             print("*** {} not tested".format(function_name))
                             all_functions_tested = False
-                            self.PrintWS(0, function_name)
+                            if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                self.PrintWS(0, function_name)
+                            else:
+                                self.PrintWS(4, function_name)
+                                print("*** {} not documented".format(function_name))
                         else:
                             if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
                                 self.PrintWS(1, function_name)
@@ -161,7 +165,11 @@ class verificationReport:
                             if (found_function_usage == False):
                                 print("*** {} not tested".format(function_name))
                                 all_functions_tested = False
-                                self.PrintWS(0, function_name)
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(0, function_name)
+                                else:
+                                    self.PrintWS(4, function_name)
+                                    print("*** {} not documented".format(function_name))
                             else:
                                 if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
                                     self.PrintWS(1, function_name)
@@ -204,7 +212,11 @@ class verificationReport:
                             if (found_function_usage == False):
                                 print("*** {} not tested".format(function_name))
                                 all_functions_tested = False
-                                self.PrintWS(0, function_name)
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(0, function_name)
+                                else:
+                                    self.PrintWS(4, function_name)
+                                    print("*** {} not documented".format(function_name))
                             else:
                                 if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
                                     self.PrintWS(1, function_name)
@@ -313,6 +325,10 @@ class verificationReport:
             self.ws.write(self.row, 0, "ND", self.status_no_doc)
             if (self.verbose):
                 print('{}: {} (No Documentation)'.format(text, status))
+        elif (status == 4):
+            self.ws.write(self.row, 0, "ND", self.status_bad)
+            if (self.verbose):
+                print('*** ERROR! *** (And no documentation) {}: {}'.format(text, status))
             
         self.ws.write(self.row, 1, text)
         self.row = self.row + 1

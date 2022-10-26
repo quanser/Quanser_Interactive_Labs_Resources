@@ -77,6 +77,10 @@ Methods
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform_degrees
 .. automethod:: library_qlabs_basic_shape.QLabsBasicShape.ping
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_relative_transform
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_relative_transform_degrees
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_current_world_transform
+.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_break
 
 .. _basicshapeConfig:
 

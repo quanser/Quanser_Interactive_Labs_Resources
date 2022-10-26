@@ -40,7 +40,12 @@ class CommModularContainer:
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_RESPONSE = 23
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE = 50
     FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK = 51
-    
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_CURRENT_WORLD = 52
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_CURRENT_WORLD_ACK = 53
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_RELATIVE = 54
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_RELATIVE_ACK = 55
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_BREAK_WITH_CURRENT_WORLD = 56
+    FCN_GENERIC_ACTOR_SPAWNER_PARENT_BREAK_WITH_CURRENT_WORLD_ACK = 57
     
     ID_UNKNOWN = 0
     """Class ID 0 is reserved as an unknown class. QLabs may respond with a container with information it does not understand due to an unknown class, if data was improperly formatted, or if communication methods were executed in the wrong order."""
