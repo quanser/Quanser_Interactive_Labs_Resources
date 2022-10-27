@@ -65,6 +65,10 @@ Methods
 .. automethod:: library_qlabs_spline_line.QLabsSplineLine.arc_from_center
 .. automethod:: library_qlabs_spline_line.QLabsSplineLine.arc_from_center_degrees
 .. automethod:: library_qlabs_spline_line.QLabsSplineLine.rounded_rectangle_from_center
+.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_relative_transform
+.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_relative_transform_degrees
+.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_current_world_transform
+.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_break
 
 .. _splineConfig:
 

@@ -52,6 +52,7 @@ ignore_list = ['library_qlabs_autoclave', \
                'library_qlabs_qarm', \
                'library_qlabs_qbot', \
                'library_qlabs_qbot2e', \
+               'library_qlabs_qbot3', \
                'library_qlabs_qbot_hopper', \
                'library_qlabs_shredder', \
                'library_qlabs_srv02', \
@@ -105,7 +106,7 @@ def main():
     x = hSystem.set_title_string('QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("library_qlabs_system", "../docs/source/System/system_library.rst")
-
+    
     ### Free Camera
      
     vr.PrintWSHeader("Free Camera")
@@ -146,7 +147,7 @@ def main():
     vr.PrintWS(x == False, "Ping camera that doesn't exist (expect False)")
 
     hCamera3 = QLabsFreeCamera(qlabs)
-    hCamera3.spawn_id(actorNumber=3, location=[-34.03, 23.433, 5.328], rotation=[0, 0.261, 0.683])
+    hCamera3.spawn_id(actorNumber=3, location=[-30.586, 19.365, 2.282], rotation=[0, 0.077, 0.564])
     hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
     x = hCamera3.possess()
     
@@ -792,7 +793,7 @@ def main():
     time.sleep(1)
     
     vr.checkFunctionTestList("library_qlabs_qcar", "../docs/source/Objects/car_library.rst", "library_qlabs_actor")    
-
+    
     ### Basic Shape
         
 
@@ -850,10 +851,51 @@ def main():
     vr.PrintWS(x == True, "Set material properties (expect True)")
 
     for y in range(51):
-        x = hCube201.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
-        x = hCube202.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
+        x = hCube201.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1], waitForConfirmation=False)
+        x = hCube202.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1], waitForConfirmation=False)
         x = hCube200.set_transform(location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
+
+
+    # parenting without spawn
+    hCube301 = QLabsBasicShape(qlabs)
+    hCube301.spawn(location=[-18.93, 36.985, 1.5], rotation=[0,0,0], scale=[0.2,0.2,0.2], configuration=hCube301.SHAPE_CUBE, waitForConfirmation=True)
+
+    hCube302 = QLabsBasicShape(qlabs)
+    hCube302.spawn(location=[-18.93, 35.985, 1.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hCube302.SHAPE_CUBE, waitForConfirmation=True)
+
+    for y in range(37):
+        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
     
+    x = hCube302.parent_with_relative_transform(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Parent with relative transform")
+    time.sleep(0.5)
+
+    for y in range(37):
+        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+
+    x = hCube302.parent_break()
+    vr.PrintWS(x == 0, "Parent break")
+
+    for y in range(37):
+        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+
+    x = hCube302.parent_with_current_world_transform(parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Parent with current world transform")
+    time.sleep(0.5)
+
+    for y in range(37):
+        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+
+    x = hCube302.parent_break()
+    x = hCube302.parent_with_relative_transform_degrees(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Parent with relative transform degrees")
+    time.sleep(0.5)
+
+    for y in range(37):
+        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+
+
+    #collisions
 
     hSphere203 = QLabsBasicShape(qlabs)
     x = hSphere203.spawn_id(actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)

@@ -73,6 +73,10 @@ Methods
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.get_world_transform_degrees
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.set_image_capture_resolution
 .. automethod:: library_qlabs_free_camera.QLabsFreeCamera.get_image
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.parent_with_relative_transform
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.parent_with_relative_transform_degrees
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.parent_with_current_world_transform
+.. automethod:: library_qlabs_free_camera.QLabsFreeCamera.parent_break
 
 .. _cameraConfigs:
 

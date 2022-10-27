@@ -293,7 +293,7 @@ class QLabsActor:
         return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, waitForConfirmation)
             
     def spawn_id_and_parent_with_relative_transform(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
-        """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
+        """Spawns a new actor relative to an existing actor and creates a kinematic relationship.
 
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: (Optional) An array of floats for x, y and z coordinates
@@ -368,7 +368,7 @@ class QLabsActor:
             return -1     
             
     def spawn_id_and_parent_with_relative_transform_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
-        """Spawns a new actor relative to an existing actor and creates an kinematic relationship.
+        """Spawns a new actor relative to an existing actor and creates a kinematic relationship.
 
         :param actorNumber: User defined unique identifier for the class actor in QLabs
         :param location: (Optional) An array of floats for x, y and z coordinates
@@ -492,3 +492,218 @@ class QLabsActor:
         rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
 
         return  success, location, rotation_deg, scale
+
+
+    def parent_with_relative_transform(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+        """Parents one existing actor to another to create a kinematic relationship.
+
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param parentClassID: See the ID variables in the respective library classes for the class identifier
+        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
+        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type parentClassID: uint32
+        :type parentActorNumber: uint32
+        :type parentComponent: uint32
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 cannot find this actor, 2 cannot find the parent actor, 3 unknown error, -1 communications error
+        :rtype: int32
+
+        """
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = 0
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_RELATIVE
+        c.payload = bytearray(struct.pack(">IIfffffffffIII", self.classID, self.actorNumber, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], parentClassID, parentActorNumber, parentComponent))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if waitForConfirmation:
+            self._qlabs.flush_receive()        
+                
+        if (self._qlabs.send_container(c)):
+        
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_RELATIVE_ACK)
+                if (c == None):
+                    if (self._verbose):
+                        print("parent_with_relative_transform (classID {}, actorNumber {}): Communication timeout.".format(self.classID, self.actorNumber))
+                    return -1
+
+                if len(c.payload) == 1:
+                    status, = struct.unpack(">B", c.payload[0:1])
+                    if (status == 0):
+                        pass
+
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('parent_with_relative_transform (classID {}, actorNumber {}): Cannot find this actor.'.format(self.classID, self.actorNumber))
+                        elif (status == 2):
+                            print('parent_with_relative_transform (classID {}, actorNumber {}): Cannot find parent (classID {}, actorNumber {}).'.format(self.classID, self.actorNumber, parentClassID, parentActorNumber))
+                        elif (status == -1):
+                            print('parent_with_relative_transform (classID {}, actorNumber {}): Communication error.'.format(self.classID, self.actorNumber))
+                        else:
+                            print('parent_with_relative_transform (classID {}, actorNumber {}): Unknown error.'.format(self.classID, self.actorNumber))
+
+                    return status
+                else:
+                    if (self._verbose):
+                        print("parent_with_relative_transform (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
+                    return -1
+            
+            self.actorNumber = actorNumber
+            return 0
+        else:
+            if (self._verbose):
+                print("parent_with_relative_transform (classID {}, actorNumber {}): Communication failed.".format(self.classID, self.actorNumber))
+            return -1   
+            
+    def parent_with_relative_transform_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+        """Parents one existing actor to another to create a kinematic relationship.
+
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param parentClassID: See the ID variables in the respective library classes for the class identifier
+        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
+        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type parentClassID: uint32
+        :type parentActorNumber: uint32
+        :type parentComponent: uint32
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 cannot find this actor, 2 cannot find the parent actor, 3 unknown error, -1 communications error
+        :rtype: int32
+
+        """
+
+        return self.parent_with_relative_transform(location, rotation, scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
+        
+
+    def parent_with_current_world_transform(self, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
+        """Parents one existing actor to another to create a kinematic relationship while preserving the current world transform of the child actor.
+
+        :param parentClassID: See the ID variables in the respective library classes for the class identifier
+        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
+        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type parentClassID: uint32
+        :type parentActorNumber: uint32
+        :type parentComponent: uint32
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 cannot find this actor, 2 cannot find the parent actor, 3 unknown error, -1 communications error
+        :rtype: int32
+
+        """
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = 0
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_CURRENT_WORLD
+        c.payload = bytearray(struct.pack(">IIIII", self.classID, self.actorNumber, parentClassID, parentActorNumber, parentComponent))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if waitForConfirmation:
+            self._qlabs.flush_receive()        
+                
+        if (self._qlabs.send_container(c)):
+        
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_CURRENT_WORLD_ACK)
+                if (c == None):
+                    if (self._verbose):
+                        print("parent_with_current_world_transform (classID {}, actorNumber {}): Communication timeout.".format(self.classID, self.actorNumber))
+                    return -1
+
+                if len(c.payload) == 1:
+                    status, = struct.unpack(">B", c.payload[0:1])
+                    if (status == 0):
+                        pass
+
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('parent_with_current_world_transform (classID {}, actorNumber {}): Cannot find this actor.'.format(self.classID, self.actorNumber))
+                        elif (status == 2):
+                            print('parent_with_current_world_transform (classID {}, actorNumber {}): Cannot find parent (classID {}, actorNumber {}).'.format(self.classID, self.actorNumber, parentClassID, parentActorNumber))
+                        elif (status == -1):
+                            print('parent_with_current_world_transform (classID {}, actorNumber {}): Communication error.'.format(self.classID, self.actorNumber))
+                        else:
+                            print('parent_with_current_world_transform (classID {}, actorNumber {}): Unknown error.'.format(self.classID, self.actorNumber))
+
+                    return status
+                else:
+                    if (self._verbose):
+                        print("parent_with_current_world_transform (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
+                    return -1
+            
+            self.actorNumber = actorNumber
+            return 0
+        else:
+            if (self._verbose):
+                print("parent_with_current_world_transform (classID {}, actorNumber {}): Communication failed.".format(self.classID, self.actorNumber))
+            return -1   
+
+    def parent_break(self, waitForConfirmation=True):
+        """Breaks any relationship with a parent actor (if it exists) and preserves the current world transform
+
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type waitForConfirmation: boolean
+        :return: 
+            - **status** - 0 if successful, 1 cannot find this actor, -1 communications error
+        :rtype: int32
+
+        """
+        c = CommModularContainer()
+        c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
+        c.actorNumber = 0
+        c.actorFunction = CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_BREAK_WITH_CURRENT_WORLD
+        c.payload = bytearray(struct.pack(">II", self.classID, self.actorNumber))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+        
+        if waitForConfirmation:
+            self._qlabs.flush_receive()        
+                
+        if (self._qlabs.send_container(c)):
+        
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(CommModularContainer.ID_GENERIC_ACTOR_SPAWNER, 0, CommModularContainer.FCN_GENERIC_ACTOR_SPAWNER_PARENT_BREAK_WITH_CURRENT_WORLD_ACK)
+                if (c == None):
+                    if (self._verbose):
+                        print("parent_break (classID {}, actorNumber {}): Communication timeout.".format(self.classID, self.actorNumber))
+                    return -1
+
+                if len(c.payload) == 1:
+                    status, = struct.unpack(">B", c.payload[0:1])
+                    if (status == 0):
+                        pass
+
+                    elif (self._verbose):
+                        if (status == 1):
+                            print('parent_break (classID {}, actorNumber {}): Cannot find this actor.'.format(self.classID, self.actorNumber))
+                        else:
+                            print('parent_break (classID {}, actorNumber {}): Unknown error.'.format(self.classID, self.actorNumber))
+
+                    return status
+                else:
+                    if (self._verbose):
+                        print("parent_break (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
+                    return -1
+            
+            self.actorNumber = actorNumber
+            return 0
+        else:
+            if (self._verbose):
+                print("parent_break (classID {}, actorNumber {}): Communication failed.".format(self.classID, self.actorNumber))
+            return -1   
+
+
+            
