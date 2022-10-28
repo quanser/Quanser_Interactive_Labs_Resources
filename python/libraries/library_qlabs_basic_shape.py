@@ -17,12 +17,17 @@ class QLabsBasicShape(QLabsActor):
     SHAPE_CUBE = 0
     SHAPE_CYLINDER = 1
     SHAPE_SPHERE = 2
+
+    COMBINE_AVERAGE = 0
+    COMBINE_MIN = 1
+    COMBINE_MULTIPLY = 2
+    COMBINE_MAX = 3
        
     
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES = 10
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES_ACK = 11
-    FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES = 12
-    FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES_ACK = 13
+    FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES = 20
+    FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES_ACK = 21
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS = 14
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS_ACK = 15
     FCN_BASIC_SHAPE_SET_TRANSFORM = 16
@@ -159,19 +164,29 @@ class QLabsBasicShape(QLabsActor):
         else:
             return False   
 
-    def set_physics_properties(self, mass, linearDamping, angularDamping, enableDynamics, waitForConfirmation=True):
+    def set_physics_properties(self, enableDynamics, mass=1.0, linearDamping=0.01, angularDamping=0.0, staticFriction=0.0, dynamicFriction=0.7, frictionCombineMode=COMBINE_AVERAGE, restitution=0.3, restitutionCombineMode=COMBINE_AVERAGE, waitForConfirmation=True):
         """Sets the dynamic properties of the shape.
 
-        :param mass: Sets the mass of the actor in kilograms.
-        :param linearDamping: Sets the damping of the actor for linear motions.
-        :param angularDamping: Sets the damping of the actor for angular motions.
         :param enableDynamics: Enable (True) or disable (False) the shape dynamics. A dynamic actor can be pushed with other static or dynamic actors.  A static actor will generate collisions, but will not be affected by interactions with other actors.
+        :param mass: (Optional) Sets the mass of the actor in kilograms.
+        :param linearDamping: (Optional) Sets the damping of the actor for linear motions.
+        :param angularDamping: (Optional) Sets the damping of the actor for angular motions.
+        :param staticFriction: (Optional) Sets the coefficient of friction when the actor is at rest. A value of 0.0 is frictionless.
+        :param dynamicFriction: (Optional) Sets the coefficient of friction when the actor is moving relative to the surface it is on. A value of 0.0 is frictionless.
+        :param frictionCombineMode: (Optional) Defines how the friction between two surfaces with different coefficients should be calculated (see COMBINE constants).
+        :param restitution: (Optional) The coefficient of restitution defines how plastic or elastic a collision is. A value of 0.0 is plastic and will absorb all energy. A value of 1.0 is elastic and will bounce forever. A value greater than 1.0 will add energy with each collision.
+        :param restitutionCombineMode: (Optional) Defines how the restitution between two surfaces with different coefficients should be calculated (see COMBINE constants).
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
-        
+
+        :type enableDynamics: boolean
         :type mass: float
         :type linearDamping: float
         :type angularDamping: float
-        :type enableDynamics: boolean
+        :type staticFriction: float
+        :type dynamicFriction: float
+        :type frictionCombineMode: byte
+        :type restitution: float
+        :type restitutionCombineMode: byte
         :type waitForConfirmation: boolean
         :return: True if successful, False otherwise
         :rtype: boolean
@@ -184,7 +199,7 @@ class QLabsBasicShape(QLabsActor):
         c.classID = self.ID_BASIC_SHAPE
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES
-        c.payload = bytearray(struct.pack(">fffB", mass, linearDamping, angularDamping, enableDynamics))
+        c.payload = bytearray(struct.pack(">BfffffBfB", enableDynamics, mass, linearDamping, angularDamping, staticFriction, dynamicFriction, frictionCombineMode, restitution, restitutionCombineMode))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
         
         if waitForConfirmation:

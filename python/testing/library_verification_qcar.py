@@ -915,7 +915,7 @@ def main():
     x = hSphere206.spawn_id(actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere206.SHAPE_SPHERE, waitForConfirmation=True)
     x = hSphere207.spawn_id(actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere207.SHAPE_SPHERE, waitForConfirmation=True)
     
-    x = hSphere207.set_physics_properties(mass=1, linearDamping=10, angularDamping=0, enableDynamics=False, waitForConfirmation=True)
+    x = hSphere207.set_physics_properties(enableDynamics=False, mass=1, linearDamping=10, angularDamping=0)
     vr.PrintWS(x == True, "Set physics properties")
 
     x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)

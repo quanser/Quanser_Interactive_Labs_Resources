@@ -44,6 +44,12 @@ Constants
 .. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CYLINDER
 .. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_SPHERE
 
+.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_AVERAGE
+.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MIN
+.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MULTIPLY
+.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MAX
+
+
 .. _basicshapeMemberVars:
 
 Member Variables
