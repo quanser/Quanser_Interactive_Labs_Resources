@@ -93,7 +93,7 @@ class QLabsWidget:
         else:
             return False 
  
-    def spawn_degrees(self, configuration, location, rotation, scale, color=[1,1,1], measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+    def spawn_degrees(self, location, rotation, scale, configuration, color=[1,1,1], measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Spawns a widget in an instance of QLabs at a specific location and rotation using degrees.
 
         :param location: An array of floats for x, y and z coordinates.
@@ -119,7 +119,7 @@ class QLabsWidget:
         :rtype: boolean
 
         """
-        return self.spawn(configuration, location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, color, measuredMass, IDTag, properties, waitForConfirmation)
+        return self.spawn(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, configuration, color, measuredMass, IDTag, properties, waitForConfirmation)
 
     def destroy_all_spawned_widgets(self):
         """Destroys all spawned widgets, but does not destroy actors.
