@@ -64,7 +64,7 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
-
+There are 5 different types of widgets that can be spawned in the widgets class. 
 .. image:: ../pictures/widgets.png 
 
 
@@ -77,8 +77,8 @@ There are no connection points for this actor class.
 
 .. _widgetTutorial:
 
-Tutorial
-^^^^^^^^
+Widgets Tutorial
+^^^^^^^^^^^^^^^^
 
 .. dropdown:: Example
 
