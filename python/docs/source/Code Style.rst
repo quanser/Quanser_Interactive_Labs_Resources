@@ -3,7 +3,12 @@
 Code Style
 ==========
 
-Documentation style tests should be part of testing before new releases are made.
+Our code style page outlines what coding and style choices have been made for our documentation and code.
+If you are interested in contributing to our documentation or code, please make contribution via pull
+requests to the appropriate repository.  We appreciate any bug fixes you find or cool scripts you have
+created that we can showcase as examples!
+
+.. note:: Opening discourse as soon as possible is preferable when wanting to contribute to documentation. 
 
 Python
 ------
@@ -45,7 +50,7 @@ The following standard to format text is intented to increase readability as wel
     * ``-``
     * ``^``
     * ``"``
-    * Rationale: A consistent hierarchy expediites getting an idea about the nesting level when screening a document.
+    * Rationale: A consistent hierarchy expedites getting an idea about the nesting level when screening a document.
 
 * *[.md only]* In Markdown the headings should follow the ATX-style described in the `Markdown syntax documentation <https://daringfireball.net/projects/markdown/syntax#header>`__
 
@@ -54,7 +59,7 @@ The following standard to format text is intented to increase readability as wel
     * Justifiication for the ATX-style preference comes from the `Google Mardown style guide <https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings>`__
     * Rationale: ATX-style headers are easier to search and maintain, and make the first two header levels consistent with the other levels.
 
-* *[any]* Each sentence must start on a new line.
+..* *[any]* Each sentence must start on a new line.
 
     * Rationale: For longer paragraphs a single change in the beginning makes the difference unreadable since it carries forward through the whole paragraph.
 
@@ -65,3 +70,8 @@ The following standard to format text is intented to increase readability as wel
     * Rationale: Whitespace is significant only directly before and directly after fenced code blocks. Following these instructions will ensure that highlighting works properly and consistantly.
 
 * *[.md, .rst only]* A code block should specify a syntax (e.g. ``bash``).
+
+General Notes
+^^^^^^^^^^^^^
+
+Documentation style tests should be part of testing before new releases are made.

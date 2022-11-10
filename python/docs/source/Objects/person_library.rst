@@ -110,8 +110,8 @@ Connection Points
 
 .. _personTutorial:
 
-Tutorial
-^^^^^^^^
+People Tutorial
+^^^^^^^^^^^^^^^
 
 .. dropdown:: Example
 

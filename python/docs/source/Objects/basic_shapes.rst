@@ -105,8 +105,8 @@ There are no connection points for this actor class.
 
 .. _basicshapeTutorial:
 
-Tutorial
-^^^^^^^^
+Basic Shapes Tutorial
+^^^^^^^^^^^^^^^^^^^^^
 
 .. dropdown:: Example
 

@@ -94,9 +94,6 @@ Configurations 0 to 3 are shown from top to bottom in the above image using the 
     3             Clamped Curve As angles become more acute, the curve will transition from a smooth change to a sharp point.
     ============= ============= ===========
 
-
-
-
 .. _splineConnect:
 
 Connection Points
@@ -106,8 +103,10 @@ There are no connection points for this actor class.
 
 .. _splineTutorial:
 
-Tutorial
-^^^^^^^^
+Splines Tutorial
+^^^^^^^^^^^^^^^^
 
 .. dropdown:: Example
+
+    Coming Soon!
 

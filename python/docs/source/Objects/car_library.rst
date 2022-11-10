@@ -155,8 +155,8 @@ User Guides/System Hardware.pdf
 
 .. _carTutorial:
 
-Tutorial
-^^^^^^^^
+QCar Tutorial
+^^^^^^^^^^^^^
 
 .. dropdown:: Example
 

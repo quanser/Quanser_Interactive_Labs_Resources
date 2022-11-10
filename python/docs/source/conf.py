@@ -34,16 +34,15 @@ release = '0.1'
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.doctest',
     'sphinx.ext.duration',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
-    'sphinx_tabs.tabs',
-    'sphinx_collapse',
+    #'sphinx_collapse',
     'sphinx_panels',
+    'sphinx_tabs.tabs',
     #'sphinx_toolbox',
 ]
 
@@ -55,7 +54,7 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-
+autodoc_mock_imports = ['quanser']
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

@@ -26,13 +26,13 @@ In order to run a python script in QLabs to control the enviroment and its objec
 
 .. Note that this will need to change when we agree what info will be where for customers.
 
-Prerequisits
-------------
+Prerequisites
+-------------
 
 GitHub QLabs Libraries Download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Download the common library off Github which will be needed in order to run the objects in your python script for QLabs `Virtual QCar Public Libraries <https://github.com/quanser/virtual_sdcs_docs>`__.
+Download the common library off Github which will be needed in order to run the objects in your python script for QLabs `Virtual QCar Public Libraries <https://github.com/quanser/virtual_qcar_libraries>`__.
 
 Download OpenCV-Python
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -46,8 +46,10 @@ Python Package Update
 ^^^^^^^^^^^^^^^^^^^^^
 
 Quanser has a set of python packages that need to be installed as well to run with your QUARC.
-In order to do this, navigate to your QUARC python folder. 
+In order to do this, navigate to your QUARC python folder.
 
+.. note:: You will need to have QUARC installed for this to work.
+ 
 .. important:: Make sure the files in the QUARC python folder below have the same date as the date in the following code below before running it!
 
 .. tabs::
@@ -65,9 +67,9 @@ If you have trouble or for more information about this `click here <https://docs
 
 **At this point you should be ready to build and run a test script!**
 
-The following tutorial will walk you through how to get a simple script up and running.
+..The following test script will test your capabilities in a simple script to get you up and running.
 
-Tutorial - Getting Started
-==========================
+..Tutorial - Getting Started
+..==========================
 
 .. I think there should be a tutorial script to walk someone through a simple python file in here.
