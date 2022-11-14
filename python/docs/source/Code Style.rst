@@ -59,7 +59,7 @@ The following standard to format text is intented to increase readability as wel
     * Justifiication for the ATX-style preference comes from the `Google Mardown style guide <https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings>`__
     * Rationale: ATX-style headers are easier to search and maintain, and make the first two header levels consistent with the other levels.
 
-..* *[any]* Each sentence must start on a new line.
+* *[any]* Each sentence must start on a new line.
 
     * Rationale: For longer paragraphs a single change in the beginning makes the difference unreadable since it carries forward through the whole paragraph.
 

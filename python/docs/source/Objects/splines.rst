@@ -1,4 +1,4 @@
-.. _spline_base:
+.. _Spline_Base:
 
 Splines
 -------

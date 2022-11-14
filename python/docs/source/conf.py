@@ -19,7 +19,7 @@ print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
-project = "Quanser's Self Driving Car Virtual Studio Documentation"
+project = "Quanser's Virtual QCar Documentation"
 copyright = '2022, Quanser'
 author = 'Quanser'
 
@@ -54,7 +54,6 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-autodoc_mock_imports = ['quanser']
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -77,3 +76,4 @@ html_logo = 'pictures/quanser_selfdrivingcarstudio.png'
 sphinx_tabs_disable_tab_closing = True
 
 autodoc_preserve_defaults = True
+autodoc_mock_imports = ['quanser, pyqtgraph, PyQT6, python']

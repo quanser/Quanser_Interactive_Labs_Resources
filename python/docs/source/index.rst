@@ -6,7 +6,7 @@
 Quanser's QCar Virtual Documentation
 ====================================
 
-Welcome to the Virtual QCar Documentation! 
+Welcome to the virtual QCar documentation! 
 
 This site contains documentation for the virtual QCar documentation.
 If you are looking for courseware for using the physical studio please check out the 
@@ -25,22 +25,23 @@ Contributing
 ============
 We are always striving to improve our documentation.  
 You can help by submitting pull requests for fixes or issues for suggestions on our GitHub repository.  
-See our :ref:`Code Style`` page for more information about how to contribute and our coding practices.
+See our :ref:`Code Style` page for more information about how to contribute and our coding practices.
 
 ----------------------------------------------------------------------------------------------------
 
 Contents
 ========
+.. dropdown:: Table of Contents
 
-.. toctree::
-   
-   Getting Started
-   Glossary
-   User Interface
-   System/index
-   Objects/index
-   ..Troubleshooting
-   Code Style
+   .. toctree::
+
+      Getting Started
+      Glossary
+      User Interface
+      System/index
+      Objects/index
+      ..Troubleshooting
+      Code Style
 
 Indices and tables
 ==================

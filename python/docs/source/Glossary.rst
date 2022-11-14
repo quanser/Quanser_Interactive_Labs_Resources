@@ -74,7 +74,8 @@ Glossary
         lectures and activities in traditional labs, or bring credible, authentic, model-based lab 
         experiences into your distance and online self-driving course. As with the physical QCar,  
         the virtual system is a self-driving teaching and research platform complete with 
-        industrially relevant sensors such as LiDAR and RGB-D cameras.
+        industrially relevant sensors such as LiDAR and RGB-D cameras. See more on our
+        `website <https://www.quanser.com/products/qlabs-virtual-qcar/>`__.
      
     Quanser Interactive Labs (QLabs)
         QLabs or Quanser Interactive Labs is the virtual twin for Quanser's hardware products.

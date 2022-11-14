@@ -1,7 +1,7 @@
 # Defining the exact version will make sure things don't break (eg pip install sphinx==4.5.0)
 sphinx==4.5.0
 sphinx-autobuild==0.7.1
-sphinx_collapse==0.1.2
+#sphinx_collapse==0.1.2
 sphinx-panels==0.6.0
 sphinx-tabs==3.4.0
 sphinx_rtd_theme==1.0.0
@@ -12,6 +12,11 @@ opencv-python
 python==3.7.5
 pyqtgraph==0.12.4
 PyQT6==6.3.1
+setuptools==62.1.0
 
-All Quanser API's from the QUARC/Python folder: python -m pip install --upgrade --find-links <package folder> <package folder>/quanser_api-2022.4.29-py2.py3-none-any.whl
+#You can build the documentation without these two, but if running the documentation locally on your computer you will need the 3rd command
+#https://github.com/quanser/testingWhl/blob/main/quanser_common-2022.10.19-py2.py3-none-any.whl?raw=true
+#https://github.com/quanser/testingWhl/blob/main/quanser_communications-2022.10.19-py2.py3-none-any.whl?raw=true
+#python -m pip install --upgrade --find-links "%QUARC_DIR%\python" "%QUARC_DIR%\python\quanser_api-2022.4.29-py2.py3-none-any.whl"
 
+#All Quanser API's from QUARC/Python folder: python -m pip install --upgrade --find-links "%QUARC_DIR%\python" "%QUARC_DIR%\python\quanser_api-2022.4.29-py2.py3-none-any.whl"

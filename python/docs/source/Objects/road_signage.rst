@@ -1,7 +1,13 @@
-.. _road_signage:
+.. _Road_Signage:
 
+************
 Road Signage
-============
+************
+
+.. _roadsignagedescription:
+
+Description
+===========
 
 Road signage is considered an "actor" in Virtual Self-Driving Car Studio.
 The road signage library controls the road signage available to be placed in the QLabs environment.
@@ -10,11 +16,10 @@ Road signage can be spawned anywhere in the Open Worlds.
 See the :ref:`roadsignageTutorial` to get a better understanding of using road signage in Quanser Interactive Labs.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :caption: Contents:
 
     road_signage
-
 
 ----------------------------------------------------------------------------------------------
 

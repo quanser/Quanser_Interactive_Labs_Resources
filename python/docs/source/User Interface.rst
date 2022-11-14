@@ -3,14 +3,16 @@
 **************
 User Interface
 **************
-
-Although the Virtual Self Driving Car Studio was not meant to be used primary through the user interface (UI) (See our :ref:`Design Philosophy` for more information), there are several UI graphical features that are documented below.
-This page goes through the basic :ref:`Keyboard Controls` and graphical features available in the interface of the Self Driving Car Studio Workspaces.
+Although the Virtual QCar is not meant to be used primarily through the user interface (UI), there 
+are several graphical features that this page goes through, such as basic Keyboard Controls. 
+See our :ref:`Design Philosophy`` for more information.
+This page goes through the basic :ref:`Keyboard Controls` and graphical features available in 
+the interface of the QCar Studio Workspaces.
 
 Keyboard Controls
 =================
 
-The following keyboard controls are how you move the default camera around the SDCS workspace.
+The following keyboard controls can be used to navigate the default camera around the virtual QCar workspace.
 
 .. image:: pictures/Keyboard_Mouse_Controls.png 
 
@@ -20,9 +22,9 @@ Coordinate Helper (Determining Locations)
 .. |coordinatehelper| image:: pictures/coordinate_helper.png
     :scale: 25%
 
-In the top right corner of the workspace, click on the coordinate button |coordinatehelper|.
 This function helps determine specific locations of interest which can aid in determining where to
 spawn objects or place cameras.
+In the top right corner of the workspace, click on the coordinate button |coordinatehelper|.
 If you toggle the button to enable click placement, it will disable camera motion while you click
 to place a point in the workspace.  
 The location readout will now display the coordinates of the dropped point in your workspace.
