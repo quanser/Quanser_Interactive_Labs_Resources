@@ -428,9 +428,6 @@ class QLabsQCar(QLabsActor):
 
             distance = np.linspace(0,0,LIDAR_SAMPLES)
             
-            LidarAngle = np.linspace(-math.pi/4,math.pi/4, int(LIDAR_SAMPLES/4));
-
-            
             for count in range(LIDAR_SAMPLES-1):
                 distance[count] = (c.payload[4+count*2] * 256 + c.payload[5+count*2] )/65535*LIDAR_RANGE             
 
