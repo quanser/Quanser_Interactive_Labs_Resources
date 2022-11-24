@@ -22,5 +22,6 @@ This section documents the different types of actors that you can spawn and cont
    widgets
    basic_shapes
    splines
+   reference_frame
 
 

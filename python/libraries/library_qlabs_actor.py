@@ -556,7 +556,6 @@ class QLabsActor:
                         print("parent_with_relative_transform (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
                     return -1
             
-            self.actorNumber = actorNumber
             return 0
         else:
             if (self._verbose):
@@ -569,9 +568,9 @@ class QLabsActor:
         :param location: (Optional) An array of floats for x, y and z coordinates
         :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
         :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
-        :param parentClassID: See the ID variables in the respective library classes for the class identifier
-        :param parentActorNumber: User defined unique identifier for the class actor in QLabs
-        :param parentComponent: `0` for the origin of the parent actor, see the parent class for additional reference frame options
+        :param parentClassID: (Optional) See the ID variables in the respective library classes for the class identifier
+        :param parentActorNumber: (Optional) User defined unique identifier for the class actor in QLabs
+        :param parentComponent: (Optional) `0` for the origin of the parent actor, see the parent class for additional reference frame options
         :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
         :type location: float array[3]
         :type rotation: float array[3]
@@ -586,7 +585,7 @@ class QLabsActor:
 
         """
 
-        return self.parent_with_relative_transform(location, rotation, scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
+        return self.parent_with_relative_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
         
 
     def parent_with_current_world_transform(self, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
@@ -645,7 +644,6 @@ class QLabsActor:
                         print("parent_with_current_world_transform (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
                     return -1
             
-            self.actorNumber = actorNumber
             return 0
         else:
             if (self._verbose):
