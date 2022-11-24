@@ -47,6 +47,7 @@ def test():
 
     hBaseYawJoint = QLabsReferenceFrame(qlabs)
     hBaseYawJoint.spawn_id_degrees(0, [-15.492, 34.512, 0.005], [0,0,0], [1,1,1], frame_configuration, wait_for_confirmation)
+    hBaseYawJoint.set_icon_scale([1.5,1.5,1.5])
     
     hBaseShoulderJoint = QLabsReferenceFrame(qlabs)
     hBaseShoulderJoint.spawn_id_degrees(1, [0,0,0], [0,0,0], [1,1,1], frame_configuration, wait_for_confirmation)
