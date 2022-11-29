@@ -171,7 +171,7 @@ class QLabsQCar(QLabsActor):
         return success, location, rotation_deg, forward_vector, up_vector, frontHit, rearHit
             
     def set_velocity_and_request_state(self, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
-        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
+        """Sets the velocity, turn angle in radians, and other car properties. 
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in radians. Positive values turn right.
@@ -233,7 +233,7 @@ class QLabsQCar(QLabsActor):
             
 
     def set_velocity_and_request_state_degrees(self, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
-        """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
+        """Sets the velocity, turn angle in degrees, and other car properties.
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in degrees. Positive values turn right.

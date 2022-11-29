@@ -44,6 +44,16 @@ class QLabsQBot3(QLabsActor):
      
    
     def possess(self, camera):
+        """
+        Possess (take control of) a QBot in QLabs with the selected camera.
+        
+        :param camera: Pre-defined camera constant. See CAMERA constants for available options. Default is the trailing camera.
+        :type camera: uint32
+        :return: 
+            - **status** - `True` if possessing the camera was successful, `False` otherwise
+        :rtype: boolean
+
+        """
         c = CommModularContainer()
         c.classID = self.ID_QBOT3
         c.actorNumber = self.actorNumber
@@ -55,27 +65,73 @@ class QLabsQBot3(QLabsActor):
         
         if (self._qlabs.send_container(c)):
             c = self._qlabs.wait_for_container(self.ID_QBOT3, self.actorNumber, self.FCN_QBOT3_POSSESS_ACK)
-                    
-            return True
+            if (c == None):
+                return False
+            else:
+                return True
         else:
             return False
             
     def command_and_request_state(self, rightWheelSpeed, leftWheelSpeed):
+        """Sets the velocity, turn angle in radians, and other car properties. 
+
+        :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
+        :param turn: Turn angle in radians. Positive values turn right.
+
+        :type actorNumber: float
+        :type turn: float
+
+        :return: 
+            - **status** - `True` if successful, `False` otherwise
+            - **location** - world location in m
+            - **forward vector** - unit scale vector
+            - **up vector** - unit scale vector
+            - **front bumper hit** - true if in contact with a collision object, False otherwise
+            - **left bumper hit** - true if in contact with a collision object, False otherwise
+            - **right bumper hit** - true if in contact with a collision object, False otherwise
+            - **gyro** - turn rate in rad/s
+            - **heading** - angle in rad
+            - **encoder left** - in counts
+            - **encoder right** - in counts
+
+        :rtype: boolean, float array[3], float array[3], float array[3], boolean, boolean, boolean, float, float, uint32, uint32
+
+
+        """ 
         c = CommModularContainer()
         c.classID = self.ID_QBOT3
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QBOT3_COMMAND_AND_REQUEST_STATE
         c.payload = bytearray(struct.pack(">ff", rightWheelSpeed, leftWheelSpeed))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        location = [0,0,0]
+        forward = [0,0,0]
+        up = [0,0,0]
+        frontHit = False
+        leftHit = False
+        rightHit = False
+        gyro = 0
+        heading = 0
+        encoderLeft = 0
+        encoderRight = 0
+
         
         self._qlabs.flush_receive()  
         
         if (self._qlabs.send_container(c)):
             c = self._qlabs.wait_for_container(self.ID_QBOT3, self.actorNumber, self.FCN_QBOT3_COMMAND_AND_REQUEST_STATE_RESPONSE)
                     
-            return True
+            if (c == None):
+                return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
+
+            if len(c.payload) == 55:
+                location[0], location[1], location[2], forward[0], forward[1], forward[2], up[0], up[1], up[2], frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight, = struct.unpack(">fffffffff???ffII", c.payload[0:55])
+                return True, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
+            else:
+                return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
         else:
-            return False
+            return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
             
 
     def get_image_rgb(self):   
