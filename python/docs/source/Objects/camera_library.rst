@@ -6,19 +6,23 @@ Cameras
 .. image:: ../pictures/camera_header.png
     :scale: 75%
     :align: center
-	
+
 
 .. _cameraDescription:
 
 Description
 ^^^^^^^^^^^
 
-Cameras in the Open Worlds are used for observing the workspace from different views and capturing image data.
-Cameras are considered "actors".  The camera library controls the camera actors.
+Cameras in the Open Worlds are used for observing the workspace from different
+views and capturing image data.
+Cameras are considered "actors".
+The camera library controls the camera actors.
 
-A camera must be initialized first by spawning the camera in the location (or attached to the parent actor of choice) in order to use it.
+A camera must be initialized first by spawning the camera in the location
+(or attached to the parent actor of choice) in order to use it.
 
-See the :ref:`cameraTutorial` to get a better understanding of using cameras in Quanser Interactive Labs.
+See the :ref:`cameraTutorial` to get a better understanding of using cameras
+in Quanser Interactive Labs.
 
 
 .. _cameraLibrary:
@@ -99,18 +103,18 @@ Camera Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../tutorials/camera_tutorial.py
+    .. literalinclude:: ../../../../tutorials/camera_tutorial.py
         :language: python
         :linenos:
 
 
-.. tip:: 
-  
-  There is a few easy steps to initializing a new camera in an environment using the interface as well as the code:
-  
+.. tip::
+
+  There is a few easy steps to initializing a new camera in an environment
+  using the interface as well as the code:
+
   #. Pick a Location for your camera using the :ref:`Coordinate Helper (Determining Locations)` section.
   #. Copy the location and rotation desired.
   #. Use spawn or spawn_degrees to initialize a new camera. Paste the copied location and rotation into their respective places.
 
-.. **See Also:** 
- 
+.. **See Also:**

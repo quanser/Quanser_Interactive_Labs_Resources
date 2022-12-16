@@ -8,7 +8,9 @@ Outdoor Environment
 Description
 ^^^^^^^^^^^
 
-The Environment Outdoors library is used to modify settings of the QLabs actor environment. Not all Open World environments support all environmental features.
+The Environment Outdoors library is used to modify settings of the QLabs actor
+environment.
+Not all Open World environments support all environmental features.
 
 .. _environmentOutdoorsLibrary:
 

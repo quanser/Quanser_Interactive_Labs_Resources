@@ -3,24 +3,25 @@
 Animals
 -------
 
-.. _animalDescription: 
+.. _animalDescription:
 
 Description
 ^^^^^^^^^^^
 
-Animals are considered "actors" in the open world workspaces.  
-The animal library controls the animals placed in Quanser Interactive Labs. 
+Animals are considered "actors" in the Open World Workspaces.
+The animal library controls the animals placed in Quanser Interactive Labs.
 
 Animal actors can be spawned anywhere in the open worlds, but to use the
 move_to methods to allow the people to self-navigate around the environment,
 they must originate and travel to a connected valid nav area.
 
 For the best visual animation, it is recommended that you use the speed
-constants defining different gait styles. A character will accurately travel 
+constants defining different gait styles. A character will accurately travel
 at any specified speed up to 6m/s, but the visual animation may give the
 impression of "slipping" at certain speeds outside the recommended values.
 
-.. See the tutorial to get a better understanding of using cameras in the Quanser Interactive Labs.
+.. See the tutorial to get a better understanding of using cameras in the
+.. Quanser Interactive Labs.
 
 .. _animalLibrary:
 
@@ -63,29 +64,43 @@ Methods
 .. automethod:: library_qlabs_animal.QLabsAnimal.__init__
 .. automethod:: library_qlabs_animal.QLabsAnimal.spawn
 .. tip::
-    The origin of the animal is in the center of the body so by default, it will be spawned 1m 
-    above the surface of the target. An additional vertical offset may be required if the surface 
-    is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the animal is in the center of the body so by default, it
+    will be spawned 1m above the surface of the target.
+    An additional vertical offset may be required if the surface is sloped to
+    prevent the actor from falling through the world ground surface.
 .. tip::
-    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+    If you would like to use the `move_to` method, the actor must be spawned in
+    a valid nav area.
 
 .. automethod:: library_qlabs_animal.QLabsAnimal.spawn_degrees
 .. tip::
-    The origin of the animal is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the animal is in the center of the body so by default, it
+    will be spawned 1m above the surface of the target.
+    An additional vertical offset may be required if the surface is sloped to
+    prevent the actor from falling through the world ground surface.
 .. tip::
-    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+    If you would like to use the `move_to` method, the actor must be spawned in
+    a valid nav area.
 
 .. automethod:: library_qlabs_animal.QLabsAnimal.spawn_id
 .. tip::
-    The origin of the animal is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the animal is in the center of the body so by default, it
+    will be spawned 1m above the surface of the target.
+    An additional vertical offset may be required if the surface is sloped to
+    prevent the actor from falling through the world ground surface.
 .. tip::
-    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+    If you would like to use the `move_to` method, the actor must be spawned in
+    a valid nav area.
 
 .. automethod:: library_qlabs_animal.QLabsAnimal.spawn_id_degrees
 .. tip::
-    The origin of the animal is in the center of the body so by default, it will be spawned 1m above the surface of the target. An additional vertical offset may be required if the surface is sloped to prevent the actor from falling through the world ground surface.
+    The origin of the animal is in the center of the body so by default, it
+    will be spawned 1m above the surface of the target.
+    An additional vertical offset may be required if the surface is sloped to
+    prevent the actor from falling through the world ground surface.
 .. tip::
-    If you would like to use the `move_to` method, the actor must be spawned in a valid nav area.
+    If you would like to use the `move_to` method, the actor must be spawned
+    in a valid nav area.
 
 .. automethod:: library_qlabs_animal.QLabsAnimal.move_to
 .. automethod:: library_qlabs_animal.QLabsAnimal.destroy
@@ -112,11 +127,11 @@ There are no connection points for the animal actor.
 
 .. .. _animalTutorial:
 
-.. Tutorial
-.. ^^^^^^^^
+.. Animal Tutorial
+.. ^^^^^^^^^^^^^^^
 
 .. .. dropdown:: Example 1
-.. 
+..
 .. .. dropdown:: Example 2
 
 .. .. dropdown:: Example 3

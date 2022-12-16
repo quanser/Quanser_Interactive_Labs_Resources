@@ -3,31 +3,42 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Quanser's QCar Virtual Documentation
-====================================
+Quanser Interactive Labs API Documentation
+==========================================
 
-Welcome to the virtual QCar documentation! 
+**Welcome to the Quanser Interactive Labs documentation!**
 
-This site contains documentation for the virtual QCar documentation.
-If you are looking for courseware for using the physical studio please check out the 
-`website <https://www.quanser.com/products/self-driving-car-research-studio/>`_.
+This site contains documentation for the virtual environments inside of Quanser
+Interactive Labs.  It will walk you through installation and setup as well as
+documentation for how to customize your enviroment.
 
-Design Philosophy 
+.. attention:: **Looking for Hardware Documentation?**
+   If you are looking for courseware or other hardware documentation for using
+   the physical studio (hardware) please check out the `website
+   <https://www.quanser.com/products/self-driving-car-research-studio/>`_.
+
+Design Philosophy
 =================
-The virtual QCar documentation has been designed for python script tests.  
-Although there are some basic interface options, the current virtual Quanser lab (QLabs) is not 
-designed to be used through the interface alone. We therefore highly recommend that you try our 
-simple :ref:`Tutorial - Getting Started` to get started with a python script that uses the virtual 
-QCar libraries and get used to our libraries and the capabilities of our workspaces. 
+The Quanser Interactive Labs API documentation has been currently designed for
+python script tests.
+Although there are some basic interface options, the current virtual Quanser
+Interactive Labs (QLabs) is not designed to be used through the interface
+alone. We therefore highly recommend that you try our simple
+:ref:`Tutorial - Getting Started` to get started.  This python script uses
+the virtual QCar libraries to help you get used to our libraries and the
+capabilities of our workspaces.
 
 
 Contributing
 ============
-We are always striving to improve our documentation.  
-You can help by submitting pull requests for fixes or issues for suggestions on our GitHub repository.  
-See our :ref:`Code Style` page for more information about how to contribute and our coding practices.
+We are always striving to improve our documentation.
+You can help by submitting pull requests for fixes or issues for suggestions on
+our `GitHub repository
+<https://github.com/quanser/Quanser_Interactive_Labs_Resources>`__.
+See our :ref:`Code Style` page for more information about how to contribute and
+our coding practices.
 
-----------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Contents
 ========
@@ -35,13 +46,12 @@ Contents
 
    .. toctree::
 
-      Getting Started
-      Glossary
-      User Interface
+      Getting Started.rst
+      Glossary.rst
+      User Interface.rst
       System/index
       Objects/index
-      ..Troubleshooting
-      Code Style
+      Code Style.rst
 
 Indices and tables
 ==================

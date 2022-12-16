@@ -13,6 +13,7 @@
 import os
 import sys
 sys.path.insert(1, os.path.abspath('../../libraries/'))
+#sys.path.insert(1, os.path.abspath('./common/'))
 
 print(sys.path)
 
@@ -43,6 +44,7 @@ extensions = [
     #'sphinx_collapse',
     'sphinx_panels',
     'sphinx_tabs.tabs',
+    'sphinx.ext.napoleon'
     #'sphinx_toolbox',
 ]
 
@@ -71,7 +73,7 @@ html_theme_options = {
     'style_nav_header_background': 'white', #'#e21b22',
     'logo_only': True,
 }
-html_logo = 'pictures/quanser_selfdrivingcarstudio.png'
+html_logo = 'pictures/QL.png'
 
 sphinx_tabs_disable_tab_closing = True
 

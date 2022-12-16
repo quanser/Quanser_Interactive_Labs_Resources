@@ -8,7 +8,8 @@ System
 Description
 ^^^^^^^^^^^
 
-The System library is used to modify settings of the QLabs user interface and window which are independent of the actor environment.
+The System library is used to modify settings of the QLabs user interface and
+window which are independent of the actor environment.
 
 .. _systemLibrary:
 

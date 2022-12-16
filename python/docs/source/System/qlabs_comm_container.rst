@@ -8,7 +8,8 @@ QLabs Communication Container
 Description
 ^^^^^^^^^^^
 
-The communications container is constructed with using the class member variables.
+The communications container is constructed with using the class member
+variables.
 
 QLabs Communication Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

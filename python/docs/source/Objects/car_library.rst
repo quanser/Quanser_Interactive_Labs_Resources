@@ -1,4 +1,4 @@
-.. _car_library:
+.. _Car_Library:
 
 QCars
 -----
@@ -7,15 +7,17 @@ QCars
     :scale: 120%
     :align: center
 
-.. _carDescription: 
+.. _carDescription:
 
 Description
 ^^^^^^^^^^^
 
-QCars are considered "actors" in the Virtual Self-Driving Car Studio.
-The QCar library can be used to acquire sensor data from the virtual environment and controls the motion of the vehicles.
+QCars are considered "actors" in Quanser Interactive Labs.The QCar library can
+be used to acquire sensor data from the virtual environment and controls the
+motion of the vehicles.
 
-See the QCar :ref:`carTutorial` to get a better understanding of using QCars in Quanser Interactive Labs.
+See the QCar :ref:`carTutorial` to get a better understanding of using QCars in
+Quanser Interactive Labs.
 
 .. _carLibrary:
 
@@ -76,7 +78,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There is only one configuration of the QCar actor. 
+There is only one configuration of the QCar actor.
 
 .. image:: ../pictures/qcar.png
     :scale: 50%
@@ -99,7 +101,7 @@ Connection Points
     ====================== ============ ====================================================== ===========
     Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation, Deg) Description
     ====================== ============ ====================================================== ===========
-    0                                                                                          The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame. 
+    0                                                                                          The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
     1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
     ====================== ============ ====================================================== ===========
 
@@ -108,15 +110,19 @@ Connection Points
 
 Component Extrinsics
 ^^^^^^^^^^^^^^^^^^^^
-"Extrinsics" refer to the external relationship of an object with respect to a specific frame of 
-reference (in this case the body center of the QCar). Sometimes it's important to know specific 
-distances and orientation of extrinsic components, for instance, this can be use for obstacle 
-detection and camera calibration. You will find a list of the important extrinsics below.
+"Extrinsics" refer to the external relationship of an object with respect to a
+specific frame of reference (in this case the body center of the QCar).
+Sometimes it's important to know specific distances and orientation of
+extrinsic components, for instance, this can be use for obstacle detection and
+camera calibration.
+You will find a list of the important extrinsics below.
 
 Distances From Body Center
 """"""""""""""""""""""""""
-All distance in QCar's virtual enviroment are 10 times larger then in real life. 
-Therefore the distances to important components have been scaled appropriately below:
+All distances of the QCar in its virtual enviroment are 10 times larger then in
+real life.
+Therefore the distances to important components have been scaled appropriately
+below:
 
 .. table::
     :widths: 11, 11, 11, 11
@@ -125,7 +131,7 @@ Therefore the distances to important components have been scaled appropriately b
     ========== ====== ====== ======
     Component  x (m)  y (m)  z (m)
     ========== ====== ====== ======
-    Front axle 1.300  0      0.310                                                                          
+    Front axle 1.300  0      0.310
     Rear axle  -1.300 0      0.310
     CSI front  -1.930 0      0.953
     CSI left   0.140  0.438  0.953
@@ -133,7 +139,7 @@ Therefore the distances to important components have been scaled appropriately b
     CSI right  0.140  -0.674 0.953
     IMU        1.278  0.223  0.895
     RealSense  0.822  0.003  1.582
-    RPLIDAR    -0.108 -0.001 1.860                                      
+    RPLIDAR    -0.108 -0.001 1.860
     ========== ====== ====== ======
 
 Transformation Matrices
@@ -143,10 +149,11 @@ Transformation Matrices
     :scale:  65%
     :align: center
 
-All transformation matrices are built off of the body frame and camera frames for the QCar.
-To read more about this check out our documentation 
+All transformation matrices are built off of the body frame and camera frames
+for the QCar.
+To read more about this check out our documentation
 `here <https://www.quanser.com/products/self-driving-car-studio/>`__
-by clicking on resources button and looking inside the zip folder for 
+by clicking on resources button and looking inside the zip folder for
 User Guides/System Hardware.pdf
 
 .. image:: ../pictures/extrinsics_virtual.png

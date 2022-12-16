@@ -3,19 +3,21 @@
 Splines
 -------
 
-.. _splineDescription: 
+.. _splineDescription:
 
 Description
 ^^^^^^^^^^^
 
-The spline actor can be used to create both curves and straight lines. Line
-color can be set for the entire line, and line width can be set on a per-control
-point basis. Splines are created by first spawning a spline actor and then adding
-control points.  Depending on the configuration used when spawned, you can get
-variations on the curve shape or straight lines.
+The spline actor can be used to create both curves and straight lines.
+Line color can be set for the entire line, and line width can be set on a
+per-control point basis.
+Splines are created by first spawning a spline actor and then adding control
+points.
+Depending on the configuration used when spawned, you can get variations on the
+curve shape or straight lines.
 
-See the :ref:`splineTutorial` to get a better understanding of using people in Quanser 
-Interactive Labs.
+See the :ref:`splineTutorial` to get a better understanding of using people in
+Quanser Interactive Labs.
 
 .. _splinelibrary:
 
@@ -79,7 +81,8 @@ Configurations
     :scale: 75%
     :align: center
 
-Configurations 0 to 3 are shown from top to bottom in the above image using the same set of control points.
+Configurations 0 to 3 are shown from top to bottom in the above image using the
+same set of control points.
 
 .. table::
     :widths: 10, 10, 80

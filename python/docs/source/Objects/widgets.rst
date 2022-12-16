@@ -6,26 +6,28 @@ Widgets
 .. image:: ../pictures/widget_banner.png
     :align: center
 
-Widgets work slightly differently then the other objects in the QLabs workspaces.
-They are special actors that cannot be addressed after they have been spawned 
+Widgets work slightly differently then the other objects in the QLabs
+Workspaces.
+They are special actors that cannot be addressed after they have been spawned
 therefore they cannot be deleted individually, they do not support parenting
-and all actor properties must be set when they are spawned. 
-The advantage of widgets is that they are highly efficient dynamic actors so 
+and all actor properties must be set when they are spawned.
+The advantage of widgets is that they are highly efficient dynamic actors so
 it is possible to spawn thousands of widgets while maintaining performance.
 
 In addition to the visible properties of widgets, widget actors can also
-individually contain invisible properties such as mass, a numerical ID tag, and a general
-purpose properties string.  Some actors that are designed to interact with widgets
-include class methods to read these properties.
+individually contain invisible properties such as mass, a numerical ID tag,
+and a general purpose properties string.
+Some actors that are designed to interact with widgets include class methods to
+read these properties.
 
 If you need the ability to make shapes static or the ability to address,
 modify, or parent shapes, see :ref:`Basic Shapes` instead.
 
-See the :ref:`widgetTutorial` to get a better understanding of using people in Quanser 
-Interactive Labs.
+See the :ref:`widgetTutorial` to get a better understanding of using people in
+Quanser Interactive Labs.
 
 
-.. _widgetDescription: 
+.. _widgetDescription:
 
 Description
 ^^^^^^^^^^^
@@ -64,8 +66,10 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
-There are 5 different types of widgets that can be spawned in the widgets class. 
-.. image:: ../pictures/widgets.png 
+There are 5 different types of widgets that can be spawned in the widgets
+class.
+
+.. image:: ../pictures/widgets.png
 
 
 .. _widgetConnect:
@@ -82,6 +86,6 @@ Widgets Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../tutorials/widgets_tutorial.py
+    .. literalinclude:: ../../../../tutorials/widgets_tutorial.py
         :language: python
         :linenos:

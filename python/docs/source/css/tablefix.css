@@ -12,14 +12,15 @@
     margin-bottom: unset;
 }
 
+a:hover {
+    color: red;
+    text-decoration: underline !important;}
 
-/* 
-.wy-side-nav-search, .wy-nav-top {
-    background: #0b750a;
-}
-a:visited {
-	color: red;
-  }
+/*
+a:link{color: red;} /*3f3f3f*/
+/*
+a:visited {color: rgb(119, 119, 119)}
 */
 
-/* override table width restrictions */
+
+/* override table width restrictions and changes links to red when hovering */

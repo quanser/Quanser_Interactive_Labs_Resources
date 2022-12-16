@@ -1,31 +1,34 @@
-.. _base_shape:
+.. _Basic_Shapes:
 
 Basic Shapes
 ------------
 
-.. _basicshapeDescription: 
+.. _basicshapeDescription:
 
 Description
 ^^^^^^^^^^^
 
 Basic shapes are building blocks to modify and customize your environment.
-All shapes are spawned by default as static objects complete with collision boundaries which
-can be useful to create walls and other obstacles.  Dynamics can be enabled and
-disabled to facilitate dynamic events that are triggered by actor locations such
-as the sudden appearance of an obstacle crossing the path.
-The physics properties can also be modified to tune the physics response depending
-on the number of interacting actors and what they are colliding with.
+All shapes are spawned by default as static objects complete with collision
+boundaries which can be useful to create walls and other obstacles.
+Dynamics can be enabled and disabled to facilitate dynamic events that are
+triggered by actor locations such as the sudden appearance of an obstacle
+crossing the path.
+The physics properties can also be modified to tune the physics response
+depending 9on the number of interacting actors and what they are colliding with
+.
 
 Basic shapes include full support for parenting to build long kinematic chains
-or simply to group multiple shapes together so they can be moved by manipulating 
-a single parent actor.
+or simply to group multiple shapes together so they can be moved by
+manipulating a single parent actor.
 
-If you are using a large number of dynamic shapes, consider using :ref:`Widgets` instead.
-They have both limitations and additional features, but are more efficient when spawning
-large numbers of dynamic actors.
+If you are using a large number of dynamic shapes, consider using
+:ref:`Widgets` instead.
+They have both limitations and additional features, but are more efficient when
+spawning large numbers of dynamic actors.
 
-See the :ref:`basicShapeTutorial` to get a better understanding of using people in Quanser 
-Interactive Labs.
+See the :ref:`basicShapeTutorial` to get a better understanding of using people
+in Quanser Interactive Labs.
 
 .. _basicshapelibrary:
 
@@ -92,9 +95,10 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
-There are 3 configurations (0-2) for the basic shape actor class. 0 - Sphere, 1 - Cylinder, 2 - Square
+There are 3 configurations (0-2) for the basic shape actor class.
+0 - Sphere, 1 - Cylinder, 2 - Square
 
-.. image:: ../pictures/basicshapes.png 
+.. image:: ../pictures/basicshapes.png
 
 .. _basicshapeConnect:
 
@@ -110,7 +114,7 @@ Basic Shapes Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.py
+    .. literalinclude:: ../../../../tutorials/basic_shapes_tutorial.py
         :language: python
         :linenos:
 

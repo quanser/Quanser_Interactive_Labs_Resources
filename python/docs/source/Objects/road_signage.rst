@@ -6,22 +6,20 @@ Road Signage
 
 .. _roadsignagedescription:
 
-Description
-===========
-
-Road signage is considered an "actor" in Virtual Self-Driving Car Studio.
-The road signage library controls the road signage available to be placed in the QLabs environment.
+Road signage is considered an "actor" in Quanser Interactive Labs Open Worlds.
+The road signage library controls the road signage available to be placed in
+the QLabs environment.
 Road signage can be spawned anywhere in the Open Worlds.
 
-See the :ref:`roadsignageTutorial` to get a better understanding of using road signage in Quanser Interactive Labs.
+See the :ref:`roadsignageTutorial` to get a better understanding of using road
+signage in Quanser Interactive Labs.
 
-.. toctree::
-    :maxdepth: 3
-    :caption: Contents:
+.. contents:: Table of Contents
+    :depth: 1
+    :local:
+    :backlinks: none
 
-    road_signage
-
-----------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Crosswalk
 ---------
@@ -73,9 +71,10 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
-There are 3 different configurations (0-2) available for crosswalks generated in QLabs.
+There are 3 different configurations (0-2) available for crosswalks generated
+in QLabs.
 
-.. image:: ../pictures/crosswalk.png 
+.. image:: ../pictures/crosswalk.png
 
 .. _crosswalkConnect:
 
@@ -85,7 +84,7 @@ Connection Points
 There are no connection points for this actor class.
 
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Roundabout Sign
 ---------------
@@ -138,7 +137,8 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There is only one configuration (0) of the roundabout sign actor generated in QLabs.
+There is only one configuration (0) of the roundabout sign actor generated in
+QLabs.
 
 .. image:: ../pictures/roundaboutsign.png
 
@@ -149,7 +149,7 @@ Connection Points
 
 There are no connection points for this actor class.
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Stop Sign
 ---------
@@ -213,7 +213,7 @@ Connection Points
 There are no connection points for this actor class.
 
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Yield Sign
 ----------
@@ -278,7 +278,7 @@ Connection Points
 
 There are no connection points for this actor class.
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Traffic Cone
 ------------
@@ -332,7 +332,8 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There are two configurations (0-1) for the traffic cone actor class generated in QLabs.
+There are two configurations (0-1) for the traffic cone actor class generated
+in QLabs.
 
 .. image:: ../pictures/trafficCones.png
 
@@ -343,7 +344,7 @@ Connection Points
 
 There are no connection points for this actor class.
 
-----------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Traffic Light
 -------------
@@ -401,7 +402,8 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There are three configurations (0-2) for the traffic light actor class generated in QLabs.
+There are three configurations (0-2) for the traffic light actor class
+generated in QLabs.
 
 .. image:: ../pictures/trafficlight.png
 
@@ -418,7 +420,7 @@ Road Signage Tutorial
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. dropdown:: Example
-    
-    .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
+
+    .. literalinclude:: ../../../../tutorials/road_signage_tutorial.py
         :language: python
         :linenos:
