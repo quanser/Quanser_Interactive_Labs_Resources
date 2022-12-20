@@ -1,25 +1,15 @@
 ## example_virtual_qbot_line_following.py
-# This example lets you drive the QBot 2e hardware with it's camera view while following a line. 
+# This example lets you drive the QBot 2e hardware with it's camera view while following a line.
 # Ensure that you start the Quanser Interactive Labs - QBot 2e Workspace before running this script.
-# This example can also be used on the hardware, after you make changes as shown from lines 41 to 49. 
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-# Pathing imports
-import sys
-from turtle import forward
-pathToCommon = ''
-sys.path.append(pathToCommon)
-from library_pathing import append_path 
-append_path(pathToCommon)
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-#region: Other imports
-from library_qbot import QBot3
-from library_vision import Camera3D
+# This example can also be used on the hardware, after you make changes as shown from lines 41 to 49.
+
+from pal.products.qbot import QBot3
+from pal.utilities.vision import Camera3D
 import numpy as np
 import time
 import cv2
-#endregion
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-#region: Timing Parameters and methods 
+
+#region: Timing Parameters and methods
 startTime = time.time()
 def elapsed_time():
     return time.time() - startTime
@@ -35,7 +25,7 @@ imageWidth = 640
 imageHeight = 480
 
 #endregion
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 #region: Initialize QBot3 object
 
 # Hardware Setup:
@@ -52,13 +42,13 @@ startTime = time.time()
 np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
 
 #endregion
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 #region: Main Loop
 try:
     prev = elapsed_time() - sampleTime
-    
+
     while elapsed_time() < simulationTime:
-        
+
         # Start timing this iteration
         start = elapsed_time()
 
@@ -69,18 +59,18 @@ try:
         if ret >= 0:
             hsv = cv2.cvtColor(myCam.imageBufferRGB, cv2.COLOR_BGR2HSV)
             lowerBounds = (0, 150, 100)       # color thresholds must be updated for tracking your colored line in a physical setup.
-            upperBounds = (255, 255, 220)  
+            upperBounds = (255, 255, 220)
             dest = cv2.inRange(hsv, lowerBounds, upperBounds)
             cv2.imshow('Threshold', dest)
-            
+
             mask = dest[340:400]    # focus on the bottom rows
             cv2.imshow('MaskedThreshold', mask)
-            # Figure out the location of the blob in the middle, and calculate turning velocity based on this. 
+            # Figure out the location of the blob in the middle, and calculate turning velocity based on this.
             M = cv2.moments(mask)
             if M["m00"] > 0:
                 cX = int(M["m10"] / M["m00"])
                 cY = int(M["m01"] / M["m00"])
-            
+
                 turnVel = (320 - cX)/320*4
                 counter += 1
                 forwardVel = 0.0
@@ -95,25 +85,25 @@ try:
 
         # Display the two images
         cv2.imshow('My RGB', myCam.imageBufferRGB)
-        
-            
-        # Write commands and update measurements
-        myQBot.read_write_std(rightWheelVel, leftWheelVel, led1State, led2State)        
 
-        # Get wheel distance from encoders. 
+
+        # Write commands and update measurements
+        myQBot.read_write_std(rightWheelVel, leftWheelVel, led1State, led2State)
+
+        # Get wheel distance from encoders.
         rightWheelDistance = myQBot.estimate_wheel_travel(myQBot.rightEncoder)
         leftWheelDistance = myQBot.estimate_wheel_travel(myQBot.leftEncoder)
 
         end = elapsed_time()
         cv2.waitKey(1)
-        
+
         prev = start
 
 except KeyboardInterrupt:
     print("User interrupted!")
 
-finally:    
+finally:
     myQBot.terminate()
     myCam.terminate()
 #endregion
-# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+# -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

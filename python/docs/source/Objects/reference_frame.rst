@@ -2,14 +2,14 @@
 
 Reference Frames
 ----------------
-	
+
 
 .. _referenceFrameDescription:
 
 Description
 ^^^^^^^^^^^
 
-The reference frame is an actor that, by default, is hidden, but can still be used to create parent-child 
+The reference frame is an actor that, by default, is hidden, but can still be used to create parent-child
 kinematic relationships, or simply for tracking points of interest that can be queried to get the world
 location.
 
@@ -21,46 +21,46 @@ transformation of child actors.
 Reference Frame Library
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: library_qlabs_reference_frame.QLabsReferenceFrame
+.. autoclass:: qvl.reference_frame.QLabsReferenceFrame
 
 .. _referenceFrameConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_reference_frame.QLabsReferenceFrame.ID_REFERENCE_FRAME
+.. autoattribute:: qvl.reference_frame.QLabsReferenceFrame.ID_REFERENCE_FRAME
 
 .. _referenceFrameMemberVars:
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_reference_frame.QLabsReferenceFrame.actorNumber
+.. autoattribute:: qvl.reference_frame.QLabsReferenceFrame.actorNumber
 
 .. _referenceFrameMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.__init__
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn_id
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn_id_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.set_transform
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.set_transform_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.set_icon_scale
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.destroy
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.destroy_all_actors_of_class
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.ping
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.get_world_transform
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.get_world_transform_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.parent_with_relative_transform
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.parent_with_current_world_transform
-.. automethod:: library_qlabs_reference_frame.QLabsReferenceFrame.parent_break
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.__init__
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn_id
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn_id_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.set_transform
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.set_transform_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.set_icon_scale
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.destroy
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.destroy_all_actors_of_class
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.ping
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.get_world_transform
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.get_world_transform_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform_degrees
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.parent_with_current_world_transform
+.. automethod:: qvl.reference_frame.QLabsReferenceFrame.parent_break
 
 .. _referenceFrameConfigs:
 
@@ -81,5 +81,4 @@ There are no connection points for the reference frame.
 Reference Frame Tutorial
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. **See Also:** 
- 
+.. **See Also:**

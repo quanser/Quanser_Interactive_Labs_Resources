@@ -29,33 +29,33 @@ Quanser Interactive Labs.
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_person.QLabsPerson
+.. autoclass:: qvl.person.QLabsPerson
 
 .. _personConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_person.QLabsPerson.ID_PERSON
-.. autoattribute:: library_qlabs_person.QLabsPerson.STANDING
-.. autoattribute:: library_qlabs_person.QLabsPerson.WALK
-.. autoattribute:: library_qlabs_person.QLabsPerson.JOG
-.. autoattribute:: library_qlabs_person.QLabsPerson.RUN
+.. autoattribute:: qvl.person.QLabsPerson.ID_PERSON
+.. autoattribute:: qvl.person.QLabsPerson.STANDING
+.. autoattribute:: qvl.person.QLabsPerson.WALK
+.. autoattribute:: qvl.person.QLabsPerson.JOG
+.. autoattribute:: qvl.person.QLabsPerson.RUN
 
 .. _personMemberVars:
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_person.QLabsPerson.actorNumber
+.. autoattribute:: qvl.person.QLabsPerson.actorNumber
 
 .. _personMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_person.QLabsPerson.__init__
-.. automethod:: library_qlabs_person.QLabsPerson.spawn
+.. automethod:: qvl.person.QLabsPerson.__init__
+.. automethod:: qvl.person.QLabsPerson.spawn
 .. tip::
     The origin of the person is in the center of the body so by default,
     it will be spawned 1m above the surface of the target.
@@ -65,7 +65,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_person.QLabsPerson.spawn_degrees
+.. automethod:: qvl.person.QLabsPerson.spawn_degrees
 .. tip::
     The origin of the person is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -75,7 +75,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_person.QLabsPerson.spawn_id
+.. automethod:: qvl.person.QLabsPerson.spawn_id
 .. tip::
     The origin of the person is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -85,7 +85,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_person.QLabsPerson.spawn_id_degrees
+.. automethod:: qvl.person.QLabsPerson.spawn_id_degrees
 .. tip::
     The origin of the person is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -95,12 +95,12 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_person.QLabsPerson.move_to
-.. automethod:: library_qlabs_person.QLabsPerson.destroy
-.. automethod:: library_qlabs_person.QLabsPerson.destroy_all_actors_of_class
-.. automethod:: library_qlabs_person.QLabsPerson.ping
-.. automethod:: library_qlabs_person.QLabsPerson.get_world_transform
-.. automethod:: library_qlabs_person.QLabsPerson.get_world_transform_degrees
+.. automethod:: qvl.person.QLabsPerson.move_to
+.. automethod:: qvl.person.QLabsPerson.destroy
+.. automethod:: qvl.person.QLabsPerson.destroy_all_actors_of_class
+.. automethod:: qvl.person.QLabsPerson.ping
+.. automethod:: qvl.person.QLabsPerson.get_world_transform
+.. automethod:: qvl.person.QLabsPerson.get_world_transform_degrees
 
 .. _personConfig:
 

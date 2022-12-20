@@ -35,22 +35,22 @@ in Quanser Interactive Labs.
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_basic_shape.QLabsBasicShape
+.. autoclass:: qvl.basic_shape.QLabsBasicShape
 
 .. _basicshapeConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.ID_BASIC_SHAPE
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CUBE
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_CYLINDER
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.SHAPE_SPHERE
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.ID_BASIC_SHAPE
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CUBE
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CYLINDER
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_SPHERE
 
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_AVERAGE
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MIN
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MULTIPLY
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.COMBINE_MAX
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_AVERAGE
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_MIN
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_MULTIPLY
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_MAX
 
 
 .. _basicshapeMemberVars:
@@ -58,38 +58,38 @@ Constants
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_basic_shape.QLabsBasicShape.actorNumber
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.actorNumber
 
 .. _basicshapeMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.__init__
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_material_properties
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_enable_dynamics
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_enable_collisions
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_physics_properties
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_transform
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.set_transform_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_box_walls_from_end_points
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.destroy
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.destroy_all_actors_of_class
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.get_world_transform_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.ping
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_relative_transform
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_with_current_world_transform
-.. automethod:: library_qlabs_basic_shape.QLabsBasicShape.parent_break
+.. automethod:: qvl.basic_shape.QLabsBasicShape.__init__
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_material_properties
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_enable_dynamics
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_enable_collisions
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_physics_properties
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_transform_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_end_points
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.destroy
+.. automethod:: qvl.basic_shape.QLabsBasicShape.destroy_all_actors_of_class
+.. automethod:: qvl.basic_shape.QLabsBasicShape.get_world_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.get_world_transform_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.ping
+.. automethod:: qvl.basic_shape.QLabsBasicShape.parent_with_relative_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.parent_with_relative_transform_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.parent_with_current_world_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.parent_break
 
 .. _basicshapeConfig:
 

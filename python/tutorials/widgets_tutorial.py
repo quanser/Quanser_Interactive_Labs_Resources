@@ -11,15 +11,15 @@ Widget Library Example
 import sys
 import math
 import time
-sys.path.append('../libraries/')
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_qlabs_widget import QLabsWidget
+
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.free_camera import QLabsFreeCamera
+from qvl.widget import QLabsWidget
 
 def widgets(qlabs):
     # initialize the widget class in qlabs
     widget = QLabsWidget(qlabs)
-    
+
     # choose to show shadows on our objects since we aren't going to be spawning a lot of widgets
     widget.widget_spawn_configuration(enableShadow=True)
 
@@ -52,11 +52,11 @@ def widgets(qlabs):
 
 def main():
 
-    # creates a server connection with Quanser Interactive Labs and manages 
+    # creates a server connection with Quanser Interactive Labs and manages
     # the communications
     qlabs = QuanserInteractiveLabs()
 
-    # initialize our desired variables 
+    # initialize our desired variables
     # note that you can use the coordinate helper to pick locations for your camera.
     loc = [-23.201, 34.875, 3.482]
     rot = [0, 20.023, -2.275]

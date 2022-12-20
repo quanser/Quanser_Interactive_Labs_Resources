@@ -24,18 +24,18 @@ Quanser Interactive Labs.
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_spline_line.QLabsSplineLine
+.. autoclass:: qvl.spline_line.QLabsSplineLine
 
 .. _splineConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.ID_SPLINE_LINE
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.LINEAR
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.CURVE
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.CONSTANT
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.CLAMPED_CURVE
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.ID_SPLINE_LINE
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.LINEAR
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.CURVE
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.CONSTANT
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.CLAMPED_CURVE
 
 
 .. _splineMemberVars:
@@ -43,34 +43,34 @@ Constants
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_spline_line.QLabsSplineLine.actorNumber
+.. autoattribute:: qvl.spline_line.QLabsSplineLine.actorNumber
 
 .. _splineMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.__init__
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn_id
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn_id_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn_id_and_parent_with_relative_transform
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.destroy
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.destroy_all_actors_of_class
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.ping
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.get_world_transform
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.get_world_transform_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.set_points
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.circle_from_center
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.arc_from_center
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.arc_from_center_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.rounded_rectangle_from_center
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_relative_transform
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_relative_transform_degrees
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_with_current_world_transform
-.. automethod:: library_qlabs_spline_line.QLabsSplineLine.parent_break
+.. automethod:: qvl.spline_line.QLabsSplineLine.__init__
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn_id
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn_id_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.spline_line.QLabsSplineLine.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.destroy
+.. automethod:: qvl.spline_line.QLabsSplineLine.destroy_all_actors_of_class
+.. automethod:: qvl.spline_line.QLabsSplineLine.ping
+.. automethod:: qvl.spline_line.QLabsSplineLine.get_world_transform
+.. automethod:: qvl.spline_line.QLabsSplineLine.get_world_transform_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.set_points
+.. automethod:: qvl.spline_line.QLabsSplineLine.circle_from_center
+.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center
+.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.rounded_rectangle_from_center
+.. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_relative_transform
+.. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_relative_transform_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_current_world_transform
+.. automethod:: qvl.spline_line.QLabsSplineLine.parent_break
 
 .. _splineConfig:
 

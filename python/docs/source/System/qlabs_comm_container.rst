@@ -14,17 +14,17 @@ variables.
 QLabs Communication Container
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: library_qlabs.CommModularContainer
+.. autoclass:: qvl.qlabs.CommModularContainer
 
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs.CommModularContainer.containerSize
-.. autoattribute:: library_qlabs.CommModularContainer.classID
-.. autoattribute:: library_qlabs.CommModularContainer.actorNumber
-.. autoattribute:: library_qlabs.CommModularContainer.actorFunction
-.. autoattribute:: library_qlabs.CommModularContainer.payload
+.. autoattribute:: qvl.qlabs.CommModularContainer.containerSize
+.. autoattribute:: qvl.qlabs.CommModularContainer.classID
+.. autoattribute:: qvl.qlabs.CommModularContainer.actorNumber
+.. autoattribute:: qvl.qlabs.CommModularContainer.actorFunction
+.. autoattribute:: qvl.qlabs.CommModularContainer.payload
 
 Methods
 ^^^^^^^

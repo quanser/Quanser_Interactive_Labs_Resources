@@ -2,12 +2,9 @@ from lib2to3 import refactor
 import sys
 import os
 
-sys.path.append('../libraries/')
-
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_tile import TileMap
-
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.free_camera import QLabsFreeCamera
+from qvl.tile import TileMap
 
 def testMapGeneration():
     os.system('cls')
@@ -15,12 +12,12 @@ def testMapGeneration():
     print("Connecting to QLabs...")
     try:
         qlabs.open("localhost")
-        
+
         print("Connected to QLabs")
     except:
         print("Unable to connect to QLabs")
-        return    
-    
+        return
+
     qlabs.destroy_all_spawned_actors()
 
     hcamera = QLabsFreeCamera(qlabs)
@@ -41,5 +38,5 @@ def testMapGeneration():
     m.add_tile(1,-1,1,2)
 
     qlabs.close()
-    
+
 testMapGeneration()

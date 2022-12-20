@@ -1,9 +1,5 @@
-import sys
-library_path = '../libraries'
-sys.path.append(library_path)
-
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_qcar import QLabsQCar
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.qcar import QLabsQCar
 
 import sys
 import pygame
@@ -42,14 +38,14 @@ class TextPrint(object):
 
     def unindent(self):
         self.x -= 10
-        
-        
+
+
 ########### Main program #################
 
 
 def main():
     qlabs = QuanserInteractiveLabs()
-    
+
 
     print("Connecting to QLabs...")
     try:
@@ -57,7 +53,7 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
-    
+
     print("Connected")
 
 
@@ -73,13 +69,13 @@ def main():
     time.sleep(1)
 
     print("Spawning new actors...")
-    
+
     device_num = 0
 
     hQCar.spawn_id_degrees(device_num, location=[1.75, -0.626, 0.01], rotation=[0,0,0], scale=[0.1,0.1,0.1])
     hQCar.possess()
 
-    
+
 
     x = 0
     y = 0
@@ -101,7 +97,7 @@ def main():
 
 
 
-    
+
 
     print("Starting main")
 
@@ -159,19 +155,19 @@ def main():
         left_x = joystick.get_axis(0)
         if abs(left_x) < 0.01:
             left_x = 0
-        
+
         left_y = joystick.get_axis(1)
         if abs(left_y) < 0.01:
             left_y = 0
-        
+
         right_x = joystick.get_axis(2)
         if abs(right_x) < 0.01:
             right_x = 0
-        
+
         right_y = joystick.get_axis(3)
         if abs(right_y) < 0.01:
             right_y = 0
-        
+
         trigger_left = joystick.get_axis(4)
         trigger_right = joystick.get_axis(5)
 
@@ -189,25 +185,25 @@ def main():
         buttons = joystick.get_numbuttons()
         textPrint.tprint(screen, "Number of buttons: {}".format(buttons))
         textPrint.indent()
-    
+
         button_A = joystick.get_button(0)
         button_B = joystick.get_button(1)
         button_X = joystick.get_button(2)
         button_Y = joystick.get_button(3)
-    
+
         textPrint.tprint(screen, "A: {}".format(button_A))
         textPrint.tprint(screen, "B: {}".format(button_B))
         textPrint.tprint(screen, "X: {}".format(button_X))
         textPrint.tprint(screen, "Y: {}".format(button_Y))
 
         textPrint.unindent()
-    
-    
+
+
         textPrint.tprint(screen, "Coordinates")
         textPrint.indent()
-    
-    
-    
+
+
+
         enable_dynamics=False
         headlights=False
         left_turn=False
@@ -216,32 +212,32 @@ def main():
         honk=False
         device_num=0
         speed_scale = 3.0*0.1
-    
-    
+
+
         status, loc, rot, fp, rb  = hQCar.set_velocity_and_request_state(((trigger_left + 1)*-1 + (trigger_right + 1)*1)*speed_scale, left_x*0.3, headlights, left_turn, right_turn, brake, False)
-       
+
         if status == False:
             done = True
-        
-        
+
+
         success, image_csi = hQCar.get_image(hQCar.CAMERA_CSI_FRONT)
-    
+
         if success == True:
             cv2.imshow('csi_stream', image_csi)
-        
+
             textPrint.tprint(screen, "CSI Image: {}, {}".format(len(image_csi[0]), len(image_csi)))
-    
+
         else:
             textPrint.tprint(screen, "CSI Image: Failed")
-    
-    
+
+
         textPrint.tprint(screen, "X: {:>6.3f}".format(location_x))
         textPrint.tprint(screen, "Y: {:>6.3f}".format(location_y))
         textPrint.tprint(screen, "R: {:>6.3f}".format(rotation_z))
 
         textPrint.unindent()
-    
-    
+
+
 
         textPrint.unindent()
 
@@ -263,6 +259,6 @@ def main():
     pygame.quit()
 
     qlabs.close()
-    print("Done!")  
+    print("Done!")
 
 main()

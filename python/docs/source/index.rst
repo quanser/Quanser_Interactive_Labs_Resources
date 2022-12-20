@@ -42,6 +42,7 @@ our coding practices.
 
 Contents
 ========
+
 .. dropdown:: Table of Contents
 
    .. toctree::

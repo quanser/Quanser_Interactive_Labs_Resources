@@ -1,6 +1,6 @@
 import numpy as np
-from library_qlabs_basic_shape import QLabsBasicShape
-from library_qlabs_spline_line import QLabsSplineLine
+from qvl.basic_shape import QLabsBasicShape
+from qvl.spline_line import QLabsSplineLine
 
 # XXX use enum for tile types?
 
@@ -36,7 +36,7 @@ class Tile():
 
     # Tile Dimensions (meters)
     width = 1.2192
-    height = 0.001 
+    height = 0.001
     lineWidth = 0.0127
     markerWidth = 0.0254
     edgeMarkerDepth = 0.01905
@@ -166,7 +166,7 @@ class Tile():
         Tile._hSpline.arc_from_center(
             r,
             startAngle=0,
-            endAngle=th2 , 
+            endAngle=th2 ,
             lineWidth=Tile.lineWidth,
             colour=Tile.lineColor,
             numSplinePoints=8,
@@ -292,7 +292,7 @@ class Tile():
                 [-Tile.width/2, Tile.width/4]
             )
             self._generate_marker([0, 0])
-        
+
         else:
             # Invalid tile type
             pass

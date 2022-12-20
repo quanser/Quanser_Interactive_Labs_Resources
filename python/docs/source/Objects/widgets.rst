@@ -37,30 +37,30 @@ Description
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_widget.QLabsWidget
+.. autoclass:: qvl.widget.QLabsWidget
 
 .. _widgetConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_widget.QLabsWidget.CUBE
-.. autoattribute:: library_qlabs_widget.QLabsWidget.CYLINDER
-.. autoattribute:: library_qlabs_widget.QLabsWidget.SPHERE
-.. .. autoattribute:: library_qlabs_widget.QLabsWidget.AUTOCLAVE_CAGE
-.. autoattribute:: library_qlabs_widget.QLabsWidget.PLASTIC_BOTTLE
-.. autoattribute:: library_qlabs_widget.QLabsWidget.METAL_CAN
+.. autoattribute:: qvl.widget.QLabsWidget.CUBE
+.. autoattribute:: qvl.widget.QLabsWidget.CYLINDER
+.. autoattribute:: qvl.widget.QLabsWidget.SPHERE
+.. .. autoattribute:: qvl.widget.QLabsWidget.AUTOCLAVE_CAGE
+.. autoattribute:: qvl.widget.QLabsWidget.PLASTIC_BOTTLE
+.. autoattribute:: qvl.widget.QLabsWidget.METAL_CAN
 
 .. _widgetMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_widget.QLabsWidget.__init__
-.. automethod:: library_qlabs_widget.QLabsWidget.spawn
-.. automethod:: library_qlabs_widget.QLabsWidget.spawn_degrees
-.. automethod:: library_qlabs_widget.QLabsWidget.destroy_all_spawned_widgets
-.. automethod:: library_qlabs_widget.QLabsWidget.widget_spawn_shadow
+.. automethod:: qvl.widget.QLabsWidget.__init__
+.. automethod:: qvl.widget.QLabsWidget.spawn
+.. automethod:: qvl.widget.QLabsWidget.spawn_degrees
+.. automethod:: qvl.widget.QLabsWidget.destroy_all_spawned_widgets
+.. automethod:: qvl.widget.QLabsWidget.widget_spawn_shadow
 
 .. _widgetConfig:
 

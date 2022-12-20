@@ -1,10 +1,6 @@
-import sys
-library_path = '../libraries'
-sys.path.append(library_path)
-
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_qlabs_qbot3 import QLabsQBot3
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.free_camera import QLabsFreeCamera
+from qvl.qbot3 import QLabsQBot3
 
 import sys
 import time
@@ -14,7 +10,7 @@ import numpy as np
 import cv2
 import keyboard
 
-        
+
 ########### Main program #################
 
 
@@ -27,14 +23,14 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
-    
+
     print("Connected")
 
     # destroy the previous QBot and respawn it in a starting position
 
     hQBot = QLabsQBot3(qlabs)
     hQBot.actorNumber=0
-    hQBot.destroy() 
+    hQBot.destroy()
     hQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
     #hQBot.possess(hQBot.VIEWPOINT_TRAILING)
 
@@ -63,9 +59,9 @@ def main():
     # -------- Main Program Loop -----------
     while not done:
 
-     
+
         status, image_RGBD = hQBot.get_image_rgb()
-    
+
         if status == True:
 
             image_RGBD = cv2.putText(img = image_RGBD, text = "QA, ED for tank-control driving", org = (0, 30), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
@@ -91,17 +87,17 @@ def main():
             rightWheelSpeed = rightWheelSpeed - speedScale
 
         if (keyboard.is_pressed('Esc')):
-            done = True      
+            done = True
 
         print('{}, {}'.format(rightWheelSpeed, leftWheelSpeed))
-    
+
         c = hQBot.command_and_request_state(rightWheelSpeed, leftWheelSpeed)
         if c == False:
             done = True
 
-    
+
     cv2.destroyAllWindows()
     qlabs.close()
-    print("Done!")  
+    print("Done!")
 
 main()

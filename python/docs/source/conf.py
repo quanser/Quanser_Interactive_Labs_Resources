@@ -71,7 +71,7 @@ html_static_path = ['css'] #previously _static
 #html_css_files = [ 'css']
 html_theme_options = {
     'style_nav_header_background': 'white', #'#e21b22',
-    'logo_only': True,
+    'logo_only': True
 }
 html_logo = 'pictures/QL.png'
 

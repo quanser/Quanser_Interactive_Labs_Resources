@@ -1,9 +1,6 @@
 import sys
 import os
 
-library_path = '../libraries'
-sys.path.append(library_path)
-
 import numpy as np
 import time
 import math
@@ -11,10 +8,9 @@ import math
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtWidgets
 
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_basic_shape import QLabsBasicShape
-from library_qlabs_free_camera import QLabsFreeCamera
-
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.basic_shape import QLabsBasicShape
+from qvl.free_camera import QLabsFreeCamera
 
 setup_only = False
 
@@ -27,17 +23,17 @@ def test():
         print("Connected to QLabs")
     except:
         print("Unable to connect to QLabs")
-        return    
-    
+        return
+
     qlabs.destroy_all_spawned_actors()
-    
+
 
     hCamera = QLabsFreeCamera(qlabs)
     hCamera.spawn([-20.851, 33.956, 1.211], [0, 0.112, -0.06])
     hCamera.possess()
 
     time.sleep(2)
-    
+
 
     hShape = QLabsBasicShape(qlabs)
     hShape.spawn([-17.224, 35.494, 2], [0,0,0], [0.5,0.5,0.5])

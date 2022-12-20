@@ -28,41 +28,41 @@ impression of "slipping" at certain speeds outside the recommended values.
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_animal.QLabsAnimal
+.. autoclass:: qvl.animal.QLabsAnimal
 
 .. _animalConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.ID_ANIMAL
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.GOAT
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.SHEEP
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.COW
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.GOAT_STANDING
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.GOAT_WALK
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.GOAT_RUN
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.SHEEP_STANDING
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.SHEEP_WALK
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.SHEEP_RUN
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.COW_STANDING
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.COW_WALK
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.COW_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.ID_ANIMAL
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP
+.. autoattribute:: qvl.animal.QLabsAnimal.COW
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_RUN
 
 .. _animalMemberVars:
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_animal.QLabsAnimal.actorNumber
+.. autoattribute:: qvl.animal.QLabsAnimal.actorNumber
 
 .. _animalMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_animal.QLabsAnimal.__init__
-.. automethod:: library_qlabs_animal.QLabsAnimal.spawn
+.. automethod:: qvl.animal.QLabsAnimal.__init__
+.. automethod:: qvl.animal.QLabsAnimal.spawn
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -72,7 +72,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_animal.QLabsAnimal.spawn_degrees
+.. automethod:: qvl.animal.QLabsAnimal.spawn_degrees
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -82,7 +82,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_animal.QLabsAnimal.spawn_id
+.. automethod:: qvl.animal.QLabsAnimal.spawn_id
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -92,7 +92,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod:: library_qlabs_animal.QLabsAnimal.spawn_id_degrees
+.. automethod:: qvl.animal.QLabsAnimal.spawn_id_degrees
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -102,12 +102,12 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned
     in a valid nav area.
 
-.. automethod:: library_qlabs_animal.QLabsAnimal.move_to
-.. automethod:: library_qlabs_animal.QLabsAnimal.destroy
-.. automethod:: library_qlabs_animal.QLabsAnimal.destroy_all_actors_of_class
-.. automethod:: library_qlabs_animal.QLabsAnimal.ping
-.. automethod:: library_qlabs_animal.QLabsAnimal.get_world_transform
-.. automethod:: library_qlabs_animal.QLabsAnimal.get_world_transform_degrees
+.. automethod:: qvl.animal.QLabsAnimal.move_to
+.. automethod:: qvl.animal.QLabsAnimal.destroy
+.. automethod:: qvl.animal.QLabsAnimal.destroy_all_actors_of_class
+.. automethod:: qvl.animal.QLabsAnimal.ping
+.. automethod:: qvl.animal.QLabsAnimal.get_world_transform
+.. automethod:: qvl.animal.QLabsAnimal.get_world_transform_degrees
 
 .. _animalConfig:
 

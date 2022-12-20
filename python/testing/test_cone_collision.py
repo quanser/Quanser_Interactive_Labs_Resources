@@ -1,9 +1,6 @@
 import sys
 import os
 
-library_path = '../libraries'
-sys.path.append(library_path)
-
 import numpy as np
 import time
 import math
@@ -11,10 +8,10 @@ import math
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtCore, QtWidgets
 
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_basic_shape import QLabsBasicShape
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_qlabs_traffic_cone import QLabsTrafficCone
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.basic_shape import QLabsBasicShape
+from qvl.free_camera import QLabsFreeCamera
+from qvl.traffic_cone import QLabsTrafficCone
 
 
 
@@ -29,8 +26,8 @@ def testLIDAR():
         print("Connected to QLabs")
     except:
         print("Unable to connect to QLabs")
-        return    
-    
+        return
+
     qlabs.destroy_all_spawned_actors()
 
     hCamera = QLabsFreeCamera(qlabs)

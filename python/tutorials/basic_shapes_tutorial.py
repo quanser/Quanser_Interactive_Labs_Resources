@@ -11,19 +11,18 @@ Basic Shape Library Example
 import sys
 import math
 import time
-sys.path.append('../libraries/')
 
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_qlabs_basic_shape import QLabsBasicShape
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.free_camera import QLabsFreeCamera
+from qvl.basic_shape import QLabsBasicShape
 
 def main():
 
-    # creates a server connection with Quanser Interactive Labs and manages 
+    # creates a server connection with Quanser Interactive Labs and manages
     # the communications
     qlabs = QuanserInteractiveLabs()
 
-    # initialize our desired variables 
+    # initialize our desired variables
     # note that you can use the coordinate helper to pick locations for your camera.
     loc = [-25.0, 31.5, 4.6]
     rot = [-0, 18.815, -0.326]
@@ -61,7 +60,7 @@ def main():
     # collecting the world transform coordinates of the cube
     x, loc, rot, scale = cube0.get_world_transform()
     print(x, loc, rot, scale)
-    
+
     # spawn a second cube using degrees
     cube1.spawn_id_degrees(actorNumber=1, location=[-18.503, 33.677, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=cube1.SHAPE_CUBE, waitForConfirmation=True)
     # wait to see visualization
@@ -79,7 +78,7 @@ def main():
         cube0.set_transform(location=[-15.202, 36.005, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
         cube2.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1])
         cube3.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1])
-    
+
     # initialize 6 spheres in our qlabs instance
     sphere10 = QLabsBasicShape(qlabs)
     sphere11 = QLabsBasicShape(qlabs)
@@ -93,14 +92,14 @@ def main():
     sphere10.spawn_id(actorNumber=10, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=sphere10.SHAPE_SPHERE, waitForConfirmation=True)
     sphere11.spawn_id(actorNumber=11, location=[-18.75, 31.5, 1], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=sphere11.SHAPE_SPHERE, waitForConfirmation=True)
     sphere12.spawn_id(actorNumber=12, location=[-18.75, 30.5, 0.25], rotation=[0,0,0], scale=[0.7,0.7,0.7], configuration=sphere12.SHAPE_SPHERE, waitForConfirmation=True)
-    
+
     # in qlabs, the color of shapes uses the RGB color space with 0 to 255 represented between 0 and 1.
     # if you know what color you'd like to set your shape in RGB simply devide the red, green and blue numbers by 255.
     # this script sets these spheres to red, green and blue respectively while increasing in roughness
     sphere10.set_material_properties(color=[1,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     sphere11.set_material_properties(color=[0,1,0], roughness=0.5, metallic=False, waitForConfirmation=True)
     sphere12.set_material_properties(color=[0,0,1], roughness=1.0, metallic=False, waitForConfirmation=True)
-    
+
     # we want to now look at physics properties that are available to us in qlabs
     # if we spawn three more spheres and set the properties of these spheres to
     sphere13.spawn_id(actorNumber=13, location=[-16.253, 28.614, 1], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=sphere13.SHAPE_SPHERE, waitForConfirmation=True)
@@ -116,7 +115,7 @@ def main():
     sphere12.set_enable_dynamics(enableDynamics=True, waitForConfirmation=True)
     sphere13.set_enable_dynamics(enableDynamics=True, waitForConfirmation=True)
 
-    
+
 
     boxSpawn = QLabsBasicShape(qlabs)
     boxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-14.35, 26.5, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,0], waitForConfirmation=True)
@@ -146,7 +145,7 @@ def main():
     boxSpawn.actorNumber = shapeHandle4
     boxSpawn.set_material_properties(color=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
 
-    
+
 
 if __name__ == "__main__":
     main()

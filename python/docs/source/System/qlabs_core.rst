@@ -34,10 +34,10 @@ This library has no user constants.
 
 Basic Methods
 ^^^^^^^^^^^^^
-.. automethod:: library_qlabs.QuanserInteractiveLabs.open
-.. automethod:: library_qlabs.QuanserInteractiveLabs.close
-.. automethod:: library_qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
-.. automethod:: library_qlabs.QuanserInteractiveLabs.destroy_all_spawned_actors
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.open
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.close
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.destroy_all_spawned_actors
 
 
 .. _qlabsCoreMethodsAdvanced:
@@ -101,12 +101,12 @@ communication process, but it provides a higher level of control and optimizes
 the transaction process to improve the data throughput.
 
 
-.. automethod:: library_qlabs.QuanserInteractiveLabs.send_container
-.. automethod:: library_qlabs.QuanserInteractiveLabs.queue_add_container
-.. automethod:: library_qlabs.QuanserInteractiveLabs.queue_send
-.. automethod:: library_qlabs.QuanserInteractiveLabs.queue_destroy
-.. automethod:: library_qlabs.QuanserInteractiveLabs.receive_new_data
-.. automethod:: library_qlabs.QuanserInteractiveLabs.get_next_container
-.. automethod:: library_qlabs.QuanserInteractiveLabs.wait_for_container
-.. automethod:: library_qlabs.QuanserInteractiveLabs.flush_receive
-.. automethod:: library_qlabs.QuanserInteractiveLabs.ping
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.send_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_add_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_send
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_destroy
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.receive_new_data
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.get_next_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.wait_for_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.flush_receive
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.ping

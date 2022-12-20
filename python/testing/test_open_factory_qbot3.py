@@ -1,15 +1,11 @@
-import sys
-library_path = '../libraries'
-sys.path.append(library_path)
-
-from library_qlabs import QuanserInteractiveLabs
-from library_qlabs_free_camera import QLabsFreeCamera
-from library_qlabs_basic_shape import QLabsBasicShape
-from library_qlabs_widget import QLabsWidget
-from library_qlabs_qbot3 import QLabsQBot3
-from library_qlabs_system import QLabsSystem
-from library_qlabs_spline_line import QLabsSplineLine
-from library_qlabs_real_time import QLabsRealTime
+from qvl.qlabs import QuanserInteractiveLabs
+from qvl.free_camera import QLabsFreeCamera
+from qvl.basic_shape import QLabsBasicShape
+from qvl.widget import QLabsWidget
+from qvl.qbot3 import QLabsQBot3
+from qvl.system import QLabsSystem
+from qvl.spline_line import QLabsSplineLine
+from qvl.real_time import QLabsRealTime
 
 
 import sys
@@ -45,7 +41,7 @@ def construct_maze(qlabs):
     draw_wall_on_grid(qlabs, [3,1], [2,1])
     draw_wall_on_grid(qlabs, [2,1], [2,2])
     draw_wall_on_grid(qlabs, [2,2], [1,2])
-    
+
 
     draw_wall_on_grid(qlabs, [0,0], [0,7])
     draw_wall_on_grid(qlabs, [0,7], [3,7])
@@ -58,18 +54,18 @@ def construct_maze(qlabs):
     draw_wall_on_grid(qlabs, [1,5], [1,6])
     draw_wall_on_grid(qlabs, [1,6], [2,6])
 
-    
+
     draw_wall_on_grid(qlabs, [6,7], [6,6])
     draw_wall_on_grid(qlabs, [7,7], [7,0])
     draw_wall_on_grid(qlabs, [7,5], [6,5])
     draw_wall_on_grid(qlabs, [7,5], [6,5])
-    
+
     draw_wall_on_grid(qlabs, [7,2], [5,2])
     draw_wall_on_grid(qlabs, [5,2], [5,4])
     draw_wall_on_grid(qlabs, [5,4], [6,4])
     draw_wall_on_grid(qlabs, [6,4], [6,3])
     draw_wall_on_grid(qlabs, [6,2], [6,1])
-    
+
     draw_wall_on_grid(qlabs, [7,0], [4,0])
     draw_wall_on_grid(qlabs, [5,0], [5,1])
     draw_wall_on_grid(qlabs, [4,0], [4,2])
@@ -81,12 +77,12 @@ def construct_maze(qlabs):
     draw_wall_on_grid(qlabs, [4,4], [4,3])
     draw_wall_on_grid(qlabs, [2,4], [2,5])
 
-  
+
 def main():
     os.system('cls')
-    
+
     qlabs = QuanserInteractiveLabs()
-    
+
 
     print("Connecting to QLabs...")
     try:
@@ -94,22 +90,22 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
-    
+
     print("Connected")
-    
+
 
     qlabs.destroy_all_spawned_actors()
-    
-    
+
+
     hSystem = QLabsSystem()
     x = hSystem.set_title_string(qlabs, 'CUSTOM QBOT EXAMPLE', waitForConfirmation=True)
-    
-    
+
+
     ### Shapes
     construct_maze(qlabs)
-    
+
     hSpline = QLabsSplineLine(qlabs)
-    
+
     lineWidth = 0.04
 
     points = [[0.112, -2.996, 0,lineWidth],
@@ -126,7 +122,7 @@ def main():
               [1.428, 1.904, 0, lineWidth],
               [0.087, 1.905, 0, lineWidth],
               [0.074, 2.606, 0, lineWidth]]
-    
+
     hSpline.spawn(location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=1)
     hSpline.set_points(colour=[0,0.2,0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
 
@@ -142,23 +138,23 @@ def main():
               [-3.72, -5.601, 0, lineWidth],
               [1.233, -5.814, 0, lineWidth],
               [3.395, -3.46, 0,lineWidth]]
-    
+
     #spawning a new actor internally sets a new ID
     hSpline.spawn(location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=1)
     hSpline.set_points(colour=[0.2,0,0], pointList=points, alignEndPointTangents=True, waitForConfirmation=True)
-    
+
     ### QBOT
 
     myQBot = QLabsQBot3(qlabs)
     myQBot.spawn_id_degrees(actorNumber=0, location=[-0.347, -5.97, -0], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     myQBot.possess(myQBot.VIEWPOINT_TRAILING)
-    
+
     rt = QLabsRealTime()
     rt.terminate_all_real_time_models()
     time.sleep(1)
     rt.start_real_time_model(modelName="../../rtmodels/QBot3/QBot3_Spawn", actorNumber=0, QLabsHostName='localhost', additionalArguments="")
 
-    ### Free Camera    
+    ### Free Camera
     hCamera = QLabsFreeCamera(qlabs)
     hCamera.spawn(location=[2.39, -3.525, 2.547], rotation=[0, 0.762, 2.073])
     #hCamera.possess()
@@ -166,8 +162,8 @@ def main():
 
 
     qlabs.close()
-    print("Done!")  
- 
+    print("Done!")
+
 
 main()
 

@@ -24,22 +24,22 @@ Quanser Interactive Labs.
 Library
 ^^^^^^^
 
-.. autoclass:: library_qlabs_qcar.QLabsQCar
+.. autoclass:: qvl.qcar.QLabsQCar
 
 .. _carConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.ID_QCAR
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_RIGHT
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_BACK
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_LEFT
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_CSI_FRONT
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_RGB
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_DEPTH
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_OVERHEAD
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.CAMERA_TRAILING
+.. autoattribute:: qvl.qcar.QLabsQCar.ID_QCAR
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_RIGHT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_BACK
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_LEFT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_FRONT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_RGB
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_DEPTH
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_OVERHEAD
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_TRAILING
 
 
 .. _carMemberVars:
@@ -47,31 +47,31 @@ Constants
 Member Variables
 ^^^^^^^^^^^^^^^^
 
-.. autoattribute:: library_qlabs_qcar.QLabsQCar.actorNumber
+.. autoattribute:: qvl.qcar.QLabsQCar.actorNumber
 
 .. _carMethods:
 
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_qcar.QLabsQCar.__init__
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_degrees
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_id
-.. automethod:: library_qlabs_qcar.QLabsQCar.spawn_id_degrees
-.. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state
-.. automethod:: library_qlabs_qcar.QLabsQCar.set_transform_and_request_state_degrees
-.. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state
-.. automethod:: library_qlabs_qcar.QLabsQCar.set_velocity_and_request_state_degrees
-.. automethod:: library_qlabs_qcar.QLabsQCar.possess
-.. automethod:: library_qlabs_qcar.QLabsQCar.ghost_mode
-.. automethod:: library_qlabs_qcar.QLabsQCar.get_image
-.. automethod:: library_qlabs_qcar.QLabsQCar.get_lidar
-.. automethod:: library_qlabs_qcar.QLabsQCar.destroy
-.. automethod:: library_qlabs_qcar.QLabsQCar.destroy_all_actors_of_class
-.. automethod:: library_qlabs_qcar.QLabsQCar.ping
-.. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform
-.. automethod:: library_qlabs_qcar.QLabsQCar.get_world_transform_degrees
+.. automethod:: qvl.qcar.QLabsQCar.__init__
+.. automethod:: qvl.qcar.QLabsQCar.spawn
+.. automethod:: qvl.qcar.QLabsQCar.spawn_degrees
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id_degrees
+.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state
+.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state_degrees
+.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state
+.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state_degrees
+.. automethod:: qvl.qcar.QLabsQCar.possess
+.. automethod:: qvl.qcar.QLabsQCar.ghost_mode
+.. automethod:: qvl.qcar.QLabsQCar.get_image
+.. automethod:: qvl.qcar.QLabsQCar.get_lidar
+.. automethod:: qvl.qcar.QLabsQCar.destroy
+.. automethod:: qvl.qcar.QLabsQCar.destroy_all_actors_of_class
+.. automethod:: qvl.qcar.QLabsQCar.ping
+.. automethod:: qvl.qcar.QLabsQCar.get_world_transform
+.. automethod:: qvl.qcar.QLabsQCar.get_world_transform_degrees
 
 .. _carConfig:
 
