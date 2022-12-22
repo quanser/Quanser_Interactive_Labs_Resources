@@ -1,0 +1,28 @@
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '00-Aero Dynamic Model Main Assembly'
+Constraint Name: Coincident8
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '00-Aero Dynamic Model Main Assembly'
+Constraint Name: Coincident9
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '00-Aero Dynamic Model Main Assembly'
+Constraint Name: Coincident10
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '02-Aero Dynamic Model Yoke-1'
+Constraint Name: Coincident11
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '03-Aero Dynamic Model Pivot-1'
+Constraint Name: Parallel1
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '04-Aero Dynamic Model Fan 0 Module-1'
+Constraint Name: Parallel2
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
+Constrained Instances: '00-SUPPRESS TO FREE ALL MOVING PARTS-1', '05-Aero Dynamic Model Fan 1 Module-1'
+Constraint Name: Parallel3
+Error Details: Constrained components are not resolved. Resolve components and try again. The constraint has been ignored.
+---------------------------------------------------------------------------------
