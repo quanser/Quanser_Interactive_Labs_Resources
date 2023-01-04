@@ -36,7 +36,7 @@ class QLabsRealTime:
             TODO: Also consider adding remote execution of the real-time model.
         """
         if platform.system() == "Windows":
-            cmdString="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 {}.rt-win64 -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, actorNumber, modelName, self._URIPort, QLabsHostName, actorNumber, additionalArguments)
+            cmdString="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 \"{}.rt-win64\" -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, actorNumber, modelName, self._URIPort, QLabsHostName, actorNumber, additionalArguments)
         elif platform.system() == "Linux":
             if platform.machine() == "armv7l":
                 #Raspberry Pi 3, 4
