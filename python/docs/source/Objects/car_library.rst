@@ -131,15 +131,16 @@ below:
     ========== ====== ====== ======
     Component  x (m)  y (m)  z (m)
     ========== ====== ====== ======
-    Front axle 1.300  0      0.310
-    Rear axle  -1.300 0      0.310
-    CSI front  -1.930 0      0.953
-    CSI left   0.140  0.438  0.953
-    CSI rear   -1.650 0      0.953
-    CSI right  0.140  -0.674 0.953
-    IMU        1.278  0.223  0.895
-    RealSense  0.822  0.003  1.582
-    RPLIDAR    -0.108 -0.001 1.860
+    CG         0.248 -0.074  0.606 
+    Front axle 1.300  0      0.207
+    Rear axle  -1.300 0      0.207
+    CSI front  -1.930 0      0.850
+    CSI left   0.140  0.438  0.850
+    CSI rear   -1.650 0      0.850
+    CSI right  0.140  -0.674 0.850
+    IMU        1.278  0.223  0.792
+    RealSense  0.822  0.003  1.479
+    RPLIDAR    -0.108 -0.001 1.696
     ========== ====== ====== ======
 
 Transformation Matrices
