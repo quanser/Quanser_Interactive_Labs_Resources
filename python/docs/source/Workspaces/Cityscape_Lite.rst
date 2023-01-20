@@ -52,4 +52,4 @@ The following table will provide you with some coordinates of interest in citysc
     Parking Spot 4
     Parking Spot 5
     Parking Spot 6
-    ================= ====== ====== ======
+    ================= ======= ======= =======

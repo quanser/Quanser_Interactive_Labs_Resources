@@ -54,4 +54,4 @@ The following table will provide you with some coordinates of interest in the ci
     Parking Spot 6   
 
 
-    ================= ====== ====== ======
+    ================= ======= ======= =======

@@ -19,7 +19,7 @@ The remaining methods are for advanced usage.
 QLabs Core Library
 ^^^^^^^^^^^^^^^^^^
 
-.. autoclass:: library_qlabs.QuanserInteractiveLabs
+.. autoclass:: qvl.qlabs.QuanserInteractiveLabs
 
 
 .. _qlabsCoreConstants:

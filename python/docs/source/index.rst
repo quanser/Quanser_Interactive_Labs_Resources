@@ -49,9 +49,10 @@ Contents
 
       Getting Started.rst
       Glossary.rst
+      Workspaces/index.rst
       User Interface.rst
-      System/index
-      Objects/index
+      System/index.rst
+      Objects/index.rst
       Code Style.rst
 
 Indices and tables

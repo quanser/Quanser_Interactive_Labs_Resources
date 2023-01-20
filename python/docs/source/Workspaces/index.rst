@@ -1,3 +1,5 @@
+.. _Workspaces:
+
 **********
 Workspaces
 **********
@@ -12,10 +14,14 @@ of products.
 Workspaces
 ==========
 
-* :ref:`Cityscape`
-* :ref:`Cityscape Lite`
-* :ref:`Studio`
-* :ref:`Plane`
+.. toctree::
+   :maxdepth: 1
+
+   Cityscape.rst
+   Cityscape_Lite.rst
+   Plane.rst
+   Studio.rst
+
 
 Workspace Spawnable Objects
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,9 +44,15 @@ Workspace Spawnable Objects
     ============= ========= ============== ====== =====
 
 
+
+
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+
+

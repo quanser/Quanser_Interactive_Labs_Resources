@@ -43,4 +43,4 @@ The following table will provide you with some coordinates of interest in the pl
     Location          X       Y       Z    
     ================= ======= ======= =======
     Open World Origin 0       0       0
-    ================= ====== ====== ======
+    ================= ======= ======= =======
