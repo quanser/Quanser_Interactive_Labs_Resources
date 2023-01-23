@@ -24,7 +24,7 @@ python script tests.
 Although there are some basic interface options, the current virtual Quanser
 Interactive Labs (QLabs) is not designed to be used through the interface
 alone. We therefore highly recommend that you try our simple
-:ref:`Tutorial - Getting Started` to get started.  This python script uses
+:ref:`Getting Started` to get started.  This python script uses
 the virtual QCar libraries to help you get used to our libraries and the
 capabilities of our workspaces.
 
