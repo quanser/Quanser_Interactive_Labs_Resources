@@ -123,7 +123,7 @@ People Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../../tutorials/person_tutorial.py
+    .. literalinclude:: ../../../tutorials/person_tutorial.py
         :language: python
         :linenos:
 

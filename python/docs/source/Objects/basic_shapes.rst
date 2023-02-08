@@ -114,7 +114,7 @@ Basic Shapes Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../../tutorials/basic_shapes_tutorial.py
+    .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.py
         :language: python
         :linenos:
 

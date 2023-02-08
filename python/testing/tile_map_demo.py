@@ -4,7 +4,7 @@ import os
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
-from qvl.tile import TileMap
+from testing.tile import TileMap
 
 def testMapGeneration():
     os.system('cls')

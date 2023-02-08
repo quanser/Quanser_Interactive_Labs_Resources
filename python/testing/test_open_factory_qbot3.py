@@ -97,7 +97,7 @@ def main():
     qlabs.destroy_all_spawned_actors()
 
 
-    hSystem = QLabsSystem()
+    hSystem = QLabsSystem(qlabs)
     x = hSystem.set_title_string(qlabs, 'CUSTOM QBOT EXAMPLE', waitForConfirmation=True)
 
 

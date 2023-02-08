@@ -421,6 +421,6 @@ Road Signage Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../../tutorials/road_signage_tutorial.py
+    .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
         :language: python
         :linenos:

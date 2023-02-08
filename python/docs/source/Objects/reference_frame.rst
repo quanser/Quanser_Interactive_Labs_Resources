@@ -76,9 +76,4 @@ Connection Points
 
 There are no connection points for the reference frame.
 
-.. _referenceFrameTutorial:
-
-Reference Frame Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. **See Also:**

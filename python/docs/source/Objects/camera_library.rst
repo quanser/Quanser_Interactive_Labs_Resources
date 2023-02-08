@@ -103,7 +103,7 @@ Camera Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../../tutorials/camera_tutorial.py
+    .. literalinclude:: ../../../tutorials/camera_tutorial.py
         :language: python
         :linenos:
 

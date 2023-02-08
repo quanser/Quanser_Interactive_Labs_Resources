@@ -86,6 +86,6 @@ Widgets Tutorial
 
 .. dropdown:: Example
 
-    .. literalinclude:: ../../../../tutorials/widgets_tutorial.py
+    .. literalinclude:: ../../../tutorials/widgets_tutorial.py
         :language: python
         :linenos:

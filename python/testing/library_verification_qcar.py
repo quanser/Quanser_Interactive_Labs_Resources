@@ -35,6 +35,7 @@ from pyqtgraph.Qt import QtCore, QtWidgets
 ####################################################
 require_user_input = False
 lidar_rate = 0.01
+library_path = 'C:/Users/MKTUSER/Documents/Repos/virtual_qcar_libraries_dev/python/qvl'
 
 
 ####################################################
