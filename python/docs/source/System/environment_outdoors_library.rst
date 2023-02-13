@@ -48,4 +48,11 @@ Methods
 .. automethod:: qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_outdoor_lighting
 .. automethod:: qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_weather_preset
 
+Methods Tutorial
+^^^^^^^^^^^^^^^^
 
+.. dropdown:: Example
+
+    .. literalinclude:: ../../../tutorials/weather.py
+        :language: python
+        :linenos:

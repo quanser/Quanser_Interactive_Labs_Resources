@@ -2,9 +2,10 @@
 Free Camera Library Example
 ---------------------------
 
-.. note:: Make sure you have Quanser Interactive Labs open before running any of these examples.
+.. note::
 
-.. tip:: If you are struggling to get this example running check out our _Troubleshooting page.
+    Make sure you have Quanser Interactive Labs open before running this
+    example.  This example is designed to best be run in QCar Cityscape.
 
 """
 # imports to important libraries
@@ -24,8 +25,8 @@ def main():
 
     # initialize our desired variables
     # note that you can use the coordinate helper to pick locations for your camera.
-    location = [-53.022, -7.491, 14.475]
-    rotation = [-0, 0.261, 0.683]
+    location = [-5.631, -1.467, 2.198] #-53.022, -7.491, 14.475 -58.881, -11.077, 14.475
+    rotation = [0, -2.386, -20.528]
 
     # not sure if this is needed
     print("Connecting to QLabs...")
@@ -38,7 +39,7 @@ def main():
     camera = QLabsFreeCamera(qlabs)
 
     # add a custom camera at a specified location and rotation using radians
-    camera.spawn(location=location, rotation=rotation)
+    camera.spawn_degrees(location=location, rotation=rotation)
 
     # to switch our view from our current camera to the new camera we just initialized
     camera.possess()
@@ -50,8 +51,8 @@ def main():
     # set the properties of our camera to customize it - this is not required
     # default camera is set to a FOV: 90 degrees with DOF disabled
     # (which disables aperature and focal distance)
-    camera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3,
-                                focusDistance=0.6)
+    camera.set_camera_properties(fieldOfView=60, depthOfField=True, aperature=2.0,
+                                focusDistance=1.3)
 
     # collect the current world transform information from the actor camera (should be
     # the same as the one we set).

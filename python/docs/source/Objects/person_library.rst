@@ -116,6 +116,8 @@ There are 12 configurations (0-11) for a person generated in QLabs.
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
+There are no connections points for the person actor.
+
 .. _personTutorial:
 
 People Tutorial

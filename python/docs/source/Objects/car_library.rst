@@ -168,6 +168,6 @@ QCar Tutorial
 
 .. dropdown:: Example
 
-    Coming Soon
+    Coming Soon!
 
 .. **See Also:**

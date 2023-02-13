@@ -125,15 +125,11 @@ Connection Points
 
 There are no connection points for the animal actor.
 
-.. .. _animalTutorial:
+.. _animalTutorial:
 
-.. Animal Tutorial
-.. ^^^^^^^^^^^^^^^
+Animal Tutorial
+^^^^^^^^^^^^^^^
 
-.. .. dropdown:: Example 1
-..
-.. .. dropdown:: Example 2
+.. dropdown:: Example
 
-.. .. dropdown:: Example 3
-
-.. **See Also:**
+    Coming Soon!
