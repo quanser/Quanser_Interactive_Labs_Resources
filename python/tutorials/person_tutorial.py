@@ -22,17 +22,17 @@ def main():
 
     # initialize our variables
     # note that you can use the ..Coordinate Helper to pick locations for your actor.
-    LOCATION_START_P1 = [-7.637, 43.756, 0.005]
+    LOCATION_START_P1 = [-6.85, 40.396, 0.005]
     ROTATION_P1P2 = [0,0,math.pi/2]
     SCALE = [1,1,1]
 
-    LOCATION_START_P2 = [-11.834, 43.642, 0.005]
-    LOCATION_START_P3 = [-15.903, 43.802, 0.005]
+    LOCATION_START_P2 = [-8.53, 40.641, 0.005]
+    LOCATION_START_P3 = [-11.884, 40.292, 0.005]
     ROTATION_P3 = [0,0,90]
 
     LOCATION_END_P1 = [-7.637, 51, 0.005]
     LOCATION_END_P2 = [-11.834, 51, 0.005]
-    LOCATION_END_P3 = [-15.903, 51, 0.005]
+    LOCATION_END_P3 = [-23.71, 43.245, 0.005]
 
     # creates a server connection with Quanser Interactive Labs and manages the communications
     qlabs = QuanserInteractiveLabs()
@@ -49,7 +49,7 @@ def main():
     # create a camera in this qlabs instance
     camera = QLabsFreeCamera(qlabs)
     # place the custom camera at a specified location and rotation using radians
-    camera.spawn(location=[-0.418, 46.473, 8.82], rotation=[-0, 0.606, 3.127])
+    camera.spawn(location=[-0.457, 43.807, 8.82], rotation=[-0, 0.606, 3.127])
     # to switch our view from our current camera to the new camera we just initialized to
     # be able to view where our people will spawn
     camera.possess()
