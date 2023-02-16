@@ -38,18 +38,8 @@ Running a Python Script for QLabs Open Worlds
 In order to run a python script in QLabs to control the environment and its
 objects, a few things will be required.
 
-.. Note that this will need to change when we agree what info will be where for
-.. customers.
-
 Prerequisites
 -------------
-
-GitHub QLabs Libraries Download
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Download the common library off Github which will be needed in order to run the
-objects in your python script for QLabs
-`Quanser Interactive Labs Resources <https://github.com/quanser/Quanser_Interactive_Labs_Resources>`__.
 
 Download Python
 ^^^^^^^^^^^^^^^
@@ -57,21 +47,33 @@ Download Python
 If you don't already have python installed on your computer, you can download
 it from `here <https://Python.org/downloads/>`__.
 
-We have currently tested compatibility with Python 3.
+.. important::
+    We have currently tested compatibility with Python 3.7.9
 
 .. important::
     Ensure that you check the box that says 'Add Python to Path' when
     installing python.
 
-Download OpenCV-Python
-^^^^^^^^^^^^^^^^^^^^^^
+GitHub QLabs Libraries Download
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the command terminal running as an admin (or in Linux running "sudo"), paste
-and run this code to install opencv on the computer.
+Download the common library off Github which will be needed in order to run the
+objects in your python script for QLabs -
+`Quanser Interactive Labs Resources <https://github.com/quanser/Quanser_Interactive_Labs_Resources>`__.
 
-.. code-block:: python
+.. attention::
+    Please download and unzip into **'../Documents/Quanser/libraries/python/'**.
+    This ensures that your libraries will work with all content.
 
-    pip install opencv-python
+Open the folder and run the **install.py** file to download all the requirements.
+You can run this in the command window using the following code:
+
+.. code-block:: console
+
+    # cd to the directory where this install file is located
+    python install.py
+
+This install should work with both Linux and Windows computers.
 
 Python Package Update
 ^^^^^^^^^^^^^^^^^^^^^
@@ -86,11 +88,6 @@ API libraries are required.
     running the following command.
     Make sure the files in the QUARC python folder below have the same date as
     the date in the following code below before running it.
-
-.. admonition:: Attention Linux Users
-
-    On Linux, the required Quanser API libraries will be installed by the
-    following command.
 
 .. tabs::
     .. code-tab:: console Windows

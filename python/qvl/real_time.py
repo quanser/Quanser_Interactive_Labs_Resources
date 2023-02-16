@@ -29,11 +29,6 @@ class QLabsRealTime:
         :return: If the platform is supported, returns the command line used to start the model execution.
         :rtype: string
 
-
-        .. danger::
-
-            TODO: Need to add support for MacOS, Linux x86, and Linux NVidia (?) targets.
-            TODO: Also consider adding remote execution of the real-time model.
         """
         if platform.system() == "Windows":
             cmdString="start \"QLabs_{}_{}\" \"%QUARC_DIR%\quarc_run\" -D -r -t tcpip://localhost:17000 \"{}.rt-win64\" -uri tcpip://localhost:{} -hostname {} -devicenum {} {}".format(modelName, actorNumber, modelName, self._URIPort, QLabsHostName, actorNumber, additionalArguments)

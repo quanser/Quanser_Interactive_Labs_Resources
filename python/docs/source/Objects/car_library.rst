@@ -119,10 +119,10 @@ You will find a list of the important extrinsics below.
 
 Distances From Body Center
 """"""""""""""""""""""""""
-All distances of the QCar in its virtual enviroment are 10 times larger then in
-real life.
-Therefore the distances to important components have been scaled appropriately
-below:
+Distances of the QCar in its virtual environment are 10 times larger then in
+real life when scaled at [1,1,1].
+Therefore the distances to important components have been scaled accordingly
+below to match a scale of [1,1,1]:
 
 .. table::
     :widths: 11, 11, 11, 11
