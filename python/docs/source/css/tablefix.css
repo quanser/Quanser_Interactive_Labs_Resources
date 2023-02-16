@@ -1,0 +1,26 @@
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+.wy-table-responsive {
+    margin-bottom: 24px;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.wy-table-responsive th p {
+    margin-bottom: unset;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline !important;}
+
+/*
+a:link{color: red;} /*3f3f3f*/
+/*
+a:visited {color: rgb(119, 119, 119)}
+*/
+
+
+/* override table width restrictions and changes links to red when hovering */

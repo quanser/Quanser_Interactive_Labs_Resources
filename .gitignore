@@ -1,0 +1,16 @@
+.vs/
+__pycache__/
+docs/build/
+python/docs/build/
+testing/Open Command Prompt Here.bat
+testing/QLabs Validation Report.xlsx
+read_the_docs_venv.bat
+testing/~$QLabs Validation Report.xlsx
+testing/Open Factory Validation Report.xlsx
+testing/QCar Validation Report.xlsx
+testing/~$QCar Validation Report.xlsx
+testing/~$Open Factory Validation Report.xlsx
+python/testing/Open Command Prompt Here.bat
+python/testing/QCar Validation Report.xlsx
+python/testing/~$QCar Validation Report.xlsx
+python/testing/Open Factory Validation Report.xlsx
