@@ -132,11 +132,7 @@ def main():
     x, CameraNumber = hCamera.spawn(location=[3.578, 1.766, 1.702], rotation=[0, 0.116, -2.668])
     x = hCamera.possess()
 
-
-
     hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
-
-
 
     for y in range(26):
         x = hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/25, 3)*23.7))
@@ -217,7 +213,7 @@ def main():
         x = hBasicShape0.set_transform(loc3, [0, 0, y/25*math.pi*2], [0.5,0.5,0.5])
 
 
-    x, CameraOverviewNum = hCameraRelative.spawn_degrees(location=[0.089, -3.446, 2.184], rotation=[0, 32.993, 89.295])
+    x, CameraOverviewNum = hCameraRelative.spawn_degrees(location=[0.148, -2.62, 1.993], rotation=[0, 11.745, 88.479])
     vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(CameraOverviewNum))
 
 
@@ -227,12 +223,11 @@ def main():
     hBasicShape0.destroy()
 
 
-
     ### Basic Shape
     vr.PrintWSHeader("Basic Shape")
     print("\n\n---Basic Shape---")
 
-    hCamera.set_transform_degrees(location=[0.089, -3.446, 2.184], rotation=[0, 32.993, 89.295])
+    hCamera.set_transform_degrees(location=[0.148, -2.62, 1.993], rotation=[0, 11.745, 88.479])
     hCamera.possess()
 
 
@@ -277,8 +272,8 @@ def main():
     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
 
 
-    x = hBasicShape202.set_material_properties(colour=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
-    x = hBasicShape201.set_material_properties(colour=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hBasicShape202.set_material_properties(color=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hBasicShape201.set_material_properties(color=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.PrintWS(x == True, "Set material properties (expect True)")
 
 
@@ -290,12 +285,12 @@ def main():
 
     hBasicShape203 = QLabsBasicShape(qlabs)
     x = hBasicShape203.spawn_id(actorNumber=203, location=[0.928, 2.283, 0.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hBasicShape203.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hBasicShape203.set_material_properties(colour=[1,1,1], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hBasicShape203.set_material_properties(color=[1,1,1], roughness=0.0, metallic=True, waitForConfirmation=True)
 
 
     hBasicShape204 = QLabsBasicShape(qlabs)
     x = hBasicShape204.spawn_id(actorNumber=204, location=[1.928, 2.283, 0.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hBasicShape204.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hBasicShape204.set_material_properties(colour=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
+    x = hBasicShape204.set_material_properties(color=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
     x = hBasicShape204.set_enable_collisions(enableCollisions=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Enable collisions")
 
@@ -320,15 +315,15 @@ def main():
 
 
     hBasicShapeWall_1 = QLabsBasicShape(qlabs)
-    x = hBasicShapeWall_1.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-1.012, 1.17, -0], yaw=math.pi/4, xSize=1, ySize=1, zHeight=0.25, wallThickness=0.05, floorThickness=0.05, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = hBasicShapeWall_1.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-1.012, 1.17, -0], yaw=math.pi/4, xSize=1, ySize=1, zHeight=0.25, wallThickness=0.05, floorThickness=0.05, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center")
 
     hBasicShapeWall_2 = QLabsBasicShape(qlabs)
-    x = hBasicShapeWall_2.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[1.458, 1.195, -0], yaw=45, xSize=1, ySize=1, zHeight=0.25, wallThickness=0.05, floorThickness=0.05, wallColour=[1,0,0], floorColour=[0,0,1], waitForConfirmation=True)
+    x = hBasicShapeWall_2.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[1.458, 1.195, -0], yaw=45, xSize=1, ySize=1, zHeight=0.25, wallThickness=0.05, floorThickness=0.05, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center degrees")
 
     hBasicShapeWall_3 = QLabsBasicShape(qlabs)
-    x = hBasicShapeWall_3.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-0.046, 0.705, 0], endLocation=[0.454, 1.399, -0], height=0.1, thickness=0.1, colour=[0.2,0.2,0.2], waitForConfirmation=True)
+    x = hBasicShapeWall_3.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-0.046, 0.705, 0], endLocation=[0.454, 1.399, -0], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from end points")
 
 
@@ -339,7 +334,7 @@ def main():
     x, shapeHandle4 = hBasicShape.spawn_degrees(location=[4.041, 1.461, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBasicShape.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn next degrees")
 
-    x = hBasicShape.set_material_properties(colour=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
+    x = hBasicShape.set_material_properties(color=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.checkFunctionTestList("basic_shape", "../docs/source/Objects/basic_shapes.rst", "actor")
 
 
@@ -351,17 +346,17 @@ def main():
 
     x = hCamera.possess()
     hWidget = QLabsWidget(qlabs)
-    hWidget.widget_spawn_configuration(enableShadow=True)
+    hWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(10):
-        x = hWidget.spawn(hWidget.METAL_CAN, [-1.012, 1.17, 1+count*0.2], [0,0,0], [1,1,1], [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn(location=[-1.012, 1.17, 1+count*0.2], rotation =[0,0,0], scale =[1,1,1], configuration=hWidget.METAL_CAN, color=[1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn (expect True)")
 
     time.sleep(1)
 
     for count in range(10):
-        x = hWidget.spawn_degrees(hWidget.METAL_CAN, [1.458, 1.195, 1+count*0.2], [90,0,0], [1,1,1], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(location=[1.458, 1.195, 1+count*0.2], rotation =[90,0,0], scale =[1,1,1], configuration = hWidget.METAL_CAN, color =[1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
 
@@ -369,22 +364,23 @@ def main():
 
     x = hWidget.destroy_all_spawned_widgets()
     vr.PrintWS(x == True, "Widgets destroyed (expect True)")
-    hWidget.widget_spawn_configuration(enableShadow=False)
+    hWidget.widget_spawn_shadow(enableShadow=False)
 
     for count in range(10):
-        x = hWidget.spawn_degrees(hWidget.SPHERE, [-1.012, 1.17+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(location = [-1.012, 1.17+count*0.01, 1+count*0.3], rotation = [90,0,0], scale =[0.25,0.25,0.25], configuration = hWidget.SPHERE, color = [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
 
-    hWidget.widget_spawn_configuration(enableShadow=True)
+    hWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(10):
-        x = hWidget.spawn_degrees(hWidget.SPHERE, [1.458, 1.195+count*0.01, 1+count*0.3], [90,0,0], [0.25,0.25,0.25], [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hWidget.spawn_degrees(location =[1.458, 1.195+count*0.01, 1+count*0.3], rotation =[90,0,0], scale =[0.25,0.25,0.25], configuration = hWidget.SPHERE, color = [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
     vr.checkFunctionTestList("widget", "../docs/source/Objects/widgets.rst")
 
     return
+
     ### Spline Line
     vr.PrintWSHeader("Spline Line")
     print("\n\n---Spline Line---")
@@ -410,7 +406,7 @@ def main():
     print("Done!")
 
 
-vr = verificationReport('Open Factory Validation Report.xlsx', 'library_verification_open_factory.py', library_path)
+vr = verificationReport('Open Factory Validation Report.xlsx', 'library_verification_open_factory.py', '../qvl/')
 vr.ignore_list = ignore_list
 
 

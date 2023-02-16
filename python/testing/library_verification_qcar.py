@@ -97,29 +97,30 @@ def main():
     vr.PrintWS(2, x)
 
     ### System
-
+    """
     vr.PrintWSHeader("System")
     hSystem = QLabsSystem(qlabs)
     x = hSystem.set_title_string('QLABS VERIFICATION SCRIPT', waitForConfirmation=True)
     vr.PrintWS(x == True, "Set title string")
     vr.checkFunctionTestList("system", "../docs/source/System/system_library.rst")
-
+    """
     ### Free Camera
 
     vr.PrintWSHeader("Free Camera")
     print("\n\n---Free Camera---")
 
     hCamera0 = QLabsFreeCamera(qlabs)
-    x = hCamera0.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
-    vr.PrintWS(x == 0, "Spawn sign with radians")
+    x = hCamera0.spawn_id(actorNumber=0, location=[-8.248, 39.575, 8.538], rotation=[0, 1.209, 1.559])
+    vr.PrintWS(x == 0, "Spawn camera with radians")
+
 
     print('Attempt to spawn duplicate.')
     hCamera0Duplicate = QLabsFreeCamera(qlabs, True)
-    x = hCamera0Duplicate.spawn_id(actorNumber=0, location=[-11.154, 42.544, 8.43], rotation=[0, 1.204, 1.548])
-    vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
+    x = hCamera0Duplicate.spawn_id(actorNumber=0, location=[-13.74076819, 36.68400671, 8.43], rotation=[0, 1.204, 1.548])
+    vr.PrintWS(x == 2, "Spawn camera with duplicate ID (return code 2)")
 
     hCamera1 = QLabsFreeCamera(qlabs)
-    hCamera1.spawn_id(actorNumber=1, location=[-23.201, 34.875, 3.482], rotation=[0, 0.349, -0.04])
+    hCamera1.spawn_id(actorNumber=1, location=[-25.78776819, 29.01500671, 3.482], rotation=[0, 0.349, -0.04])
     x = hCamera1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing camera (expect return 1)")
 
@@ -128,8 +129,8 @@ def main():
     x = hCamera10.destroy()
     vr.PrintWS(x == 0, "Destroy camera that doesn't exist (expect return 0)")
 
-    loc2 = [-23.201, 34.875, 3.482]
-    rot2 = [0, 20.023, -2.275]
+    loc2 = [-21.456, 31.995, 3.745]
+    rot2 = [0, 18.814, 0.326]
     hCamera2 = QLabsFreeCamera(qlabs)
     x = hCamera2.spawn_id_degrees(actorNumber=2, location=loc2, rotation=rot2)
     vr.PrintWS(x == 0, "Spawn camera with degrees")
@@ -144,10 +145,9 @@ def main():
     vr.PrintWS(x == False, "Ping camera that doesn't exist (expect False)")
 
     hCamera3 = QLabsFreeCamera(qlabs)
-    hCamera3.spawn_id(actorNumber=3, location=[-30.586, 19.365, 2.282], rotation=[0, 0.077, 0.564])
+    hCamera3.spawn_id(actorNumber=3, location=[-33.17276819, 13.50500671, 2.282], rotation=[0, 0.077, 0.564])
     hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
     x = hCamera3.possess()
-
 
 
     for y in range(51):
@@ -172,6 +172,8 @@ def main():
     cv2.imshow('CameraImageStream', camera_image)
     cv2.waitKey(1)
 
+    #FIX
+
     x = hCamera2.set_image_capture_resolution(width=640, height=480)
     vr.PrintWS(x == True, "Set image capture resolution")
     x, camera_image = hCamera2.get_image()
@@ -188,6 +190,8 @@ def main():
     camera_image = cv2.imread('Quanser820x410.jpg')
     cv2.imshow('CameraImageStream2', camera_image)
     cv2.waitKey(1)
+
+    #FIX
 
     hCamera2.set_image_capture_resolution(width=820, height=410)
     vr.PrintWS(x == True, "Read image 820x410 (expect True)")
@@ -228,12 +232,10 @@ def main():
     vr.PrintWS(x == 0, "Spawn with automatically generated ID ({})".format(CameraSpawn2Num))
 
 
-
     vr.checkFunctionTestList("free_camera", "../docs/source/Objects/camera_library.rst", "actor")
 
     cv2.destroyAllWindows()
     x = hCamera2.possess()
-
 
 
     ### Yield Sign
@@ -243,14 +245,14 @@ def main():
     print("\n\n---Yield Sign---")
 
     hYield0 = QLabsYieldSign(qlabs)
-    x = hYield0.spawn_id(actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hYield0.spawn_id(actorNumber=0, location=[-17, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
 
-    x = hYield0.spawn_id(actorNumber=0, location=[-17, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hYield0.spawn_id(actorNumber=0, location=[-17, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
 
     hYield1 = QLabsYieldSign(qlabs)
-    hYield1.spawn_id(actorNumber=1, location=[-16, 38, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hYield1.spawn_id(actorNumber=1, location=[-16, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hYield1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
 
@@ -259,11 +261,11 @@ def main():
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
 
     hYield2 = QLabsYieldSign(qlabs)
-    x = hYield2.spawn_id_degrees(actorNumber=2, location=[-15, 38, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hYield2.spawn_id_degrees(actorNumber=2, location=[-15, 32.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
 
     x, loc, rot, scale = hYield2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-15, 38, 0.0]) and x == True, "Get world transform")
+    vr.PrintWS(np.array_equal(loc, [-15, 32.5, 0.0]) and x == True, "Get world transform")
 
     x = hYield2.ping()
     vr.PrintWS(x == True, "Ping existing sign (expect True)")
@@ -281,14 +283,14 @@ def main():
     print("\n\n---Stop Sign---")
 
     hStop0 = QLabsStopSign(qlabs)
-    x = hStop0.spawn_id(actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hStop0.spawn_id(actorNumber=0, location=[-17, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
 
-    x = hStop0.spawn_id(actorNumber=0, location=[-17, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hStop0.spawn_id(actorNumber=0, location=[-17, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
 
     hStop1 = QLabsStopSign(qlabs)
-    hStop1.spawn_id(actorNumber=1, location=[-16, 37, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hStop1.spawn_id(actorNumber=1, location=[-16, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hStop1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
 
@@ -297,11 +299,11 @@ def main():
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
 
     hStop2 = QLabsStopSign(qlabs)
-    x = hStop2.spawn_id_degrees(actorNumber=2, location=[-15, 37, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hStop2.spawn_id_degrees(actorNumber=2, location=[-15, 33.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
 
     x, loc, rot, scale = hStop2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-15, 37, 0.0]) and x == True, "Get world transform")
+    vr.PrintWS(np.array_equal(loc, [-15, 33.5, 0.0]) and x == True, "Get world transform")
 
 
     x = hStop2.ping()
@@ -321,14 +323,14 @@ def main():
     print("\n\n---Roundabout Sign---")
 
     hRoundabout0 = QLabsRoundaboutSign(qlabs)
-    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
 
-    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
 
     hRoundabout1 = QLabsRoundaboutSign(qlabs)
-    hRoundabout1.spawn_id(actorNumber=1, location=[-16, 36, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hRoundabout1.spawn_id(actorNumber=1, location=[-16, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hRoundabout1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
 
@@ -337,11 +339,11 @@ def main():
     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
 
     hRoundabout2 = QLabsRoundaboutSign(qlabs)
-    x = hRoundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 36, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hRoundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 31.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
 
     x, loc, rot, scale = hRoundabout2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-15, 36, 0.0]) and x == True, "Get world transform")
+    vr.PrintWS(np.array_equal(loc, [-15, 31.5, 0.0]) and x == True, "Get world transform")
 
 
     x = hRoundabout2.ping()
@@ -359,14 +361,14 @@ def main():
     print("\n\n---Traffic Cone---")
 
     hCone0 = QLabsTrafficCone(qlabs)
-    x = hCone0.spawn_id(actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCone0.spawn_id(actorNumber=0, location=[-17, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn cone with radians")
 
-    x = hCone0.spawn_id(actorNumber=0, location=[-17, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCone0.spawn_id(actorNumber=0, location=[-17, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn cone with duplicate ID (return code 2)")
 
     hCone1 = QLabsTrafficCone(qlabs)
-    hCone1.spawn_id(actorNumber=1, location=[-16, 35, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hCone1.spawn_id(actorNumber=1, location=[-16, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hCone1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing cone (expect return 1)")
 
@@ -375,7 +377,7 @@ def main():
     vr.PrintWS(x == 0, "Destroy cone that doesn't exist (expect return 0)")
 
     hCone2 = QLabsTrafficCone(qlabs)
-    x = hCone2.spawn_id_degrees(actorNumber=2, location=[-15, 35, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = hCone2.spawn_id_degrees(actorNumber=2, location=[-15, 30.5, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn cone with degrees in config 1")
 
     x, loc, rot, scale = hCone2.get_world_transform()
@@ -406,13 +408,13 @@ def main():
     print("\n\n---Crosswalk---")
 
     hCrosswalk = QLabsCrosswalk(qlabs)
-    x = hCrosswalk.spawn_id(actorNumber=0, location=[-15.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id(actorNumber=0, location=[-10.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with radians")
 
-    x = hCrosswalk.spawn_id(actorNumber=0, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id(actorNumber=0, location=[-7.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn crosswalk with duplicate ID (return code 2)")
 
-    hCrosswalk.spawn_id(actorNumber=1, location=[-11.788, 47.5, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hCrosswalk.spawn_id(actorNumber=1, location=[-7.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hCrosswalk.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing crosswalk (expect return 1)")
 
@@ -420,10 +422,10 @@ def main():
     x = hCrosswalk.destroy()
     vr.PrintWS(x == 0, "Destroy crosswalk that doesn't exist (expect return 0)")
 
-    x = hCrosswalk.spawn_id_degrees(actorNumber=2, location=[-11.788, 47.5, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id_degrees(actorNumber=2, location=[-7.5, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 1")
 
-    x = hCrosswalk.spawn_id_degrees(actorNumber=3, location=[-7.8, 47.5, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    x = hCrosswalk.spawn_id_degrees(actorNumber=3, location=[-4.5, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 2")
 
 
@@ -440,6 +442,7 @@ def main():
 
     vr.checkFunctionTestList("crosswalk", "../docs/source/Objects/road_signage.rst", "actor")
 
+
     ### People
 
 
@@ -447,17 +450,17 @@ def main():
     print("\n\n---People---")
 
     hPersonRight = QLabsPerson(qlabs)
-    hPersonRight.spawn_id(actorNumber=0, location=[-7.637, 43.756, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hPersonRight.spawn_id(actorNumber=0, location=[-4.5, 41, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
 
     hPersonMiddle = QLabsPerson(qlabs)
-    hPersonMiddle.spawn_id(actorNumber=1, location=[-11.834, 43.642, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    hPersonMiddle.spawn_id(actorNumber=1, location=[-7.5, 41, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
 
     hPersonLeft = QLabsPerson(qlabs, True)
-    hPersonLeft.spawn_id_degrees(actorNumber=2, location=[-15.903, 43.802, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    hPersonLeft.spawn_id_degrees(actorNumber=2, location=[-10.5, 41, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
 
-    hPersonRight.move_to(location=[-7.637, 51, 0.005], speed=hPersonRight.WALK, waitForConfirmation=True)
-    hPersonMiddle.move_to(location=[-11.834, 51, 0.005], speed=hPersonMiddle.JOG, waitForConfirmation=True)
-    hPersonLeft.move_to(location=[-15.903, 51, 0.005], speed=hPersonLeft.RUN, waitForConfirmation=True)
+    hPersonRight.move_to(location=[-4.5, 48, 0.005], speed=hPersonRight.WALK, waitForConfirmation=True)
+    hPersonMiddle.move_to(location=[-7.5, 48, 0.005], speed=hPersonMiddle.JOG, waitForConfirmation=True)
+    hPersonLeft.move_to(location=[-10.5, 48, 0.005], speed=hPersonLeft.RUN, waitForConfirmation=True)
 
     time.sleep(3)
 
@@ -485,6 +488,7 @@ def main():
 
     vr.checkFunctionTestList("person", "../docs/source/Objects/person_library.rst", "character", "actor")
 
+
     ### QCar
 
 
@@ -496,7 +500,7 @@ def main():
     print("\n\n---QCar---")
 
     hQCar0 = QLabsQCar(qlabs)
-    x = hQCar0.spawn_id(actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    x = hQCar0.spawn_id(actorNumber=0, location=[-8.700, 14.643, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn QCar with radians")
 
     hQCar0Duplicate = QLabsQCar(qlabs, True)
@@ -504,7 +508,7 @@ def main():
     vr.PrintWS(x == 2, "Spawn QCar with duplicate ID (return code 2)")
 
     hQCar1 = QLabsQCar(qlabs)
-    hQCar1.spawn_id(actorNumber=1, location=[-17.1, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
+    hQCar1.spawn_id(actorNumber=1, location=[-15.075, 26.703, 6.074], rotation=[0,0,math.pi/2], waitForConfirmation=True)
     x = hQCar1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing QCar (expect return 1)")
 
@@ -513,7 +517,7 @@ def main():
     vr.PrintWS(x == 0, "Destroy QCar that doesn't exist (expect return 0)")
 
     hQCar2 = QLabsQCar(qlabs)
-    x = hQCar2.spawn_id_degrees(actorNumber=2, location=[-11.6, 17.445, 0.005], rotation=[0,0,90], waitForConfirmation=True)
+    x = hQCar2.spawn_id_degrees(actorNumber=2, location=[-11.048, 14.643, 0.005], rotation=[0,0,90], waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn QCar with degrees")
 
 
@@ -596,8 +600,6 @@ def main():
 
     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit")
     hQCar3.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-
-
 
     x, location, rotation, forward_vector, up_vector, frontHit, rearHit = hQCar3.set_transform_and_request_state(location=[-16.1, 26.299, 0.005], rotation=[0,0,math.pi-0.01], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
     vr.PrintWS(x == True and frontHit == True, "Front bumper hit with transform")
@@ -791,6 +793,7 @@ def main():
 
     vr.checkFunctionTestList("qcar", "../docs/source/Objects/car_library.rst", "actor")
 
+
     ### Basic Shape
 
 
@@ -800,19 +803,21 @@ def main():
     x = hCamera2.possess()
 
     hCube200 = QLabsBasicShape(qlabs)
-    x = hCube200.spawn_id(actorNumber=200, location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200.SHAPE_CUBE, waitForConfirmation=True)
+    x = hCube200.spawn_id(actorNumber=200, location=[-4.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with radians")
 
+
+
     hCube200Duplicate = QLabsBasicShape(qlabs)
-    x = hCube200Duplicate.spawn_id(actorNumber=200, location=[-19.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200Duplicate.SHAPE_CUBE, waitForConfirmation=True)
+    x = hCube200Duplicate.spawn_id(actorNumber=200, location=[-5.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200Duplicate.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn with duplicate ID")
 
     hCube220 = QLabsBasicShape(qlabs)
-    x = hCube220.spawn_id_degrees(actorNumber=220, location=[-18.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube220.SHAPE_CUBE, waitForConfirmation=True)
+    x = hCube220.spawn_id_degrees(actorNumber=220, location=[-4.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube220.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn sign with degrees")
 
     hCube221 = QLabsBasicShape(qlabs, True)
-    x = hCube221.spawn_id_degrees(actorNumber=221, location=[-18.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube221.SHAPE_CUBE, waitForConfirmation=True)
+    x = hCube221.spawn_id_degrees(actorNumber=221, location=[-4.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube221.SHAPE_CUBE, waitForConfirmation=True)
     x = hCube221.destroy()
     print("Num actors destroyed: {}".format(x))
     vr.PrintWS(x == 1, "Spawn and destroy existing (expect return 1)")
@@ -832,7 +837,7 @@ def main():
     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
 
     x, loc, rot, scale = hCube200.get_world_transform()
-    vr.PrintWS(np.sum(np.subtract(loc, [-18.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
+    vr.PrintWS(np.sum(np.subtract(loc, [-4.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
 
     hCube201 = QLabsBasicShape(qlabs, True)
     x = hCube201.spawn_id_and_parent_with_relative_transform(actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=hCube201.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
@@ -850,38 +855,38 @@ def main():
     for y in range(51):
         x = hCube201.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1], waitForConfirmation=False)
         x = hCube202.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1], waitForConfirmation=False)
-        x = hCube200.set_transform(location=[-18.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
+        x = hCube200.set_transform(location=[-4.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
 
 
     # parenting without spawn
     hCube301 = QLabsBasicShape(qlabs)
-    hCube301.spawn(location=[-18.93, 36.985, 1.5], rotation=[0,0,0], scale=[0.2,0.2,0.2], configuration=hCube301.SHAPE_CUBE, waitForConfirmation=True)
+    hCube301.spawn(location=[-4.93, 36.985, 1.5], rotation=[0,0,0], scale=[0.2,0.2,0.2], configuration=hCube301.SHAPE_CUBE, waitForConfirmation=True)
 
     hCube302 = QLabsBasicShape(qlabs)
-    hCube302.spawn(location=[-18.93, 35.985, 1.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hCube302.SHAPE_CUBE, waitForConfirmation=True)
+    hCube302.spawn(location=[-4.93, 35.985, 1.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hCube302.SHAPE_CUBE, waitForConfirmation=True)
 
     for y in range(37):
-        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+        x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
 
     x = hCube302.parent_with_relative_transform(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Parent with relative transform")
     time.sleep(0.5)
 
     for y in range(37):
-        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+        x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
 
     x = hCube302.parent_break()
     vr.PrintWS(x == 0, "Parent break")
 
     for y in range(37):
-        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+        x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
 
     x = hCube302.parent_with_current_world_transform(parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Parent with current world transform")
     time.sleep(0.5)
 
     for y in range(37):
-        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+        x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
 
     x = hCube302.parent_break()
     x = hCube302.parent_with_relative_transform_degrees(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
@@ -889,17 +894,17 @@ def main():
     time.sleep(0.5)
 
     for y in range(37):
-        x = hCube301.set_transform_degrees(location=[-18.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
+        x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
 
 
     #collisions
 
     hSphere203 = QLabsBasicShape(qlabs)
-    x = hSphere203.spawn_id(actorNumber=203, location=[-18.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere203.spawn_id(actorNumber=203, location=[-4.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)
     x = hSphere203.set_material_properties(color=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
 
     hSphere204 = QLabsBasicShape(qlabs)
-    x = hSphere204.spawn_id(actorNumber=204, location=[-18.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere204.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere204.spawn_id(actorNumber=204, location=[-4.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere204.SHAPE_SPHERE, waitForConfirmation=True)
     x = hSphere204.set_material_properties(color=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
     x = hSphere204.set_enable_collisions(enableCollisions=False, waitForConfirmation=True)
     vr.PrintWS(x == True, "Enable collisions")
@@ -908,9 +913,9 @@ def main():
     hSphere206 = QLabsBasicShape(qlabs)
     hSphere207 = QLabsBasicShape(qlabs)
 
-    x = hSphere205.spawn_id(actorNumber=205, location=[-18.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere205.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hSphere206.spawn_id(actorNumber=206, location=[-18.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere206.SHAPE_SPHERE, waitForConfirmation=True)
-    x = hSphere207.spawn_id(actorNumber=207, location=[-18.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere207.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere205.spawn_id(actorNumber=205, location=[-4.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere205.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere206.spawn_id(actorNumber=206, location=[-4.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere206.SHAPE_SPHERE, waitForConfirmation=True)
+    x = hSphere207.spawn_id(actorNumber=207, location=[-4.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere207.SHAPE_SPHERE, waitForConfirmation=True)
 
     x = hSphere207.set_physics_properties(enableDynamics=False, mass=1, linearDamping=10, angularDamping=0)
     vr.PrintWS(x == True, "Set physics properties")
@@ -923,30 +928,27 @@ def main():
     x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
 
     hBoxSpawn = QLabsBasicShape(qlabs)
-    x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-15.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-1.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center")
 
-    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[-12.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[0.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from center degrees")
 
-    x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-16.671, 31.973, 0.005], endLocation=[-15.633, 29.818, 0.005], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
+    x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-3.232, 31.439, 0.01], endLocation=[-1.403, 29.383, 0.01], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
     vr.PrintWS(x == True, "Spawn box walls from end points")
 
-    x, shapeHandle1 = hBoxSpawn.spawn(location=[-19.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle2 = hBoxSpawn.spawn(location=[-19.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle3 = hBoxSpawn.spawn(location=[-19.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle1 = hBoxSpawn.spawn(location=[-5.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle2 = hBoxSpawn.spawn(location=[-5.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle3 = hBoxSpawn.spawn(location=[-5.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn next")
 
-    x, shapeHandle4 = hBoxSpawn.spawn_degrees(location=[-19.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-    x, shapeHandle5 = hBoxSpawn.spawn_degrees(location=[-19.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle4 = hBoxSpawn.spawn_degrees(location=[-5.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
+    x, shapeHandle5 = hBoxSpawn.spawn_degrees(location=[-5.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn next degrees")
 
     hBoxSpawn.actorNumber = shapeHandle2
     x = hBoxSpawn.set_material_properties(color=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
     vr.checkFunctionTestList("basic_shape", "../docs/source/Objects/basic_shapes.rst", "actor")
-
-
-
 
 
     ### Widget
@@ -959,14 +961,14 @@ def main():
     hQLabsWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(20):
-        x = hQLabsWidget.spawn([-15.504, 32.584, 1+count*0.2], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn([-0.974, 32.404, 1+count*0.2], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn (expect True)")
 
     time.sleep(1)
 
     for count in range(20):
-        x = hQLabsWidget.spawn_degrees([-15.504, 32.584, 1+count*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404, 1+count*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
 
@@ -977,7 +979,7 @@ def main():
     hQLabsWidget.widget_spawn_shadow(enableShadow=False)
 
     for count in range(10):
-        x = hQLabsWidget.spawn_degrees([-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
     time.sleep(1)
 
@@ -985,7 +987,7 @@ def main():
     hQLabsWidget.widget_spawn_shadow(enableShadow=True)
 
     for count in range(10):
-        x = hQLabsWidget.spawn_degrees([-15.504, 32.584+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
 
 
 
@@ -1004,14 +1006,14 @@ def main():
     hCameraTraffic.possess()
 
     hTrafficLight0 = QLabsTrafficLight(qlabs)
-    x = hTrafficLight0.spawn_id(actorNumber=0, location=[-0.044, 17.715, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hTrafficLight0.spawn_id(actorNumber=0, location=[6, 14.328, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn traffic light with radians")
 
-    x = hTrafficLight0.spawn_id(actorNumber=0, location=[-0.044, 17.715, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hTrafficLight0.spawn_id(actorNumber=0, location=[6, 14.328, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 2, "Spawn traffic light with duplicate ID (return code 2)")
 
     hTrafficLight1 = QLabsTrafficLight(qlabs)
-    hTrafficLight1.spawn_id(actorNumber=1, location=[-8.455, 17.527, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    hTrafficLight1.spawn_id(actorNumber=1, location=[-2.44, 15, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     x = hTrafficLight1.destroy()
     vr.PrintWS(x == 1, "Spawn and destroy existing light (expect return 1)")
 
@@ -1020,11 +1022,11 @@ def main():
     vr.PrintWS(x == 0, "Destroy traffic light that doesn't exist (expect return 0)")
 
     hTrafficLight2 = QLabsTrafficLight(qlabs)
-    x = hTrafficLight2.spawn_id_degrees(actorNumber=2, location=[-8.455, 17.527, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    x = hTrafficLight2.spawn_id_degrees(actorNumber=2, location=[-2.44, 15, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 1")
 
     hTrafficLight3 = QLabsTrafficLight(qlabs)
-    [x, assignedActorNum] = hTrafficLight3.spawn_degrees(location=[-0.195, 7.261, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    [x, assignedActorNum] = hTrafficLight3.spawn_degrees(location=[6.686, 5.802, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 2")
 
 
@@ -1068,23 +1070,27 @@ def main():
     print("\n\n---Spline Line---")
 
     hCameraSplines = QLabsFreeCamera(qlabs)
-    x = hCameraSplines.spawn(location=[-3.097, 2.579, 11.849], rotation=[0, 0.92, 1.536])
+    x = hCameraSplines.spawn(location=[-3.097, 2.579, 11.849], rotation=[0, 0.912, 1.141])
     hCameraSplines.possess()
 
     hSpline2 = QLabsSplineLine(qlabs)
 
     lineWidth = 0.125
     splineZ = 0.015
-    points = [[3.026, 12.23, splineZ,lineWidth],
-              [-1.725, 12.23, splineZ, lineWidth],
-              [-9.144, 10.625, splineZ, lineWidth],
-              [-4.677, 15.179, splineZ, lineWidth],
-              [-4.512, 19.745, splineZ, lineWidth]]
+    points = [[-6.184, 9.595, splineZ,lineWidth],
+              [-4.081, 9.856, splineZ, lineWidth],
+              [-1.998, 10.178, splineZ, lineWidth],
+              [-0.461, 11.024, splineZ, lineWidth],
+              [0.168, 11.721, splineZ, lineWidth],
+              [0.742, 13.048, splineZ, lineWidth],
+              [0.991, 14.059, splineZ, lineWidth],
+              [1.276, 15.72, splineZ, lineWidth],
+              [1.363, 17.125, splineZ, lineWidth]]
 
     color_selection=[[0.5,0,0], [0.5,0,0.5], [0,0.5,0], [0,0,0.5]]
 
     for counter in range(4):
-        x = hSpline2.spawn(location=[-1,1.5-counter*0.75,1+counter*0.001], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
+        x = hSpline2.spawn(location=[0,0-counter*0.75,0+counter*0.001], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
         x = hSpline2.set_points(color=color_selection[counter], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
         vr.PrintWS(x == True, "Spawn configuration {}: {}".format(counter, x))
 
@@ -1092,14 +1098,14 @@ def main():
     x = hSpline2.destroy_all_actors_of_class()
     vr.PrintWS(x == 4, "Destroy all actors of class (expect 4): {}".format(x))
 
-    hSpline2.spawn_id(actorNumber=0, location=[-1,1.5,1], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
+    hSpline2.spawn_id(actorNumber=0, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
     hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
     time.sleep(0.5)
 
     x = hSpline2.destroy()
     vr.PrintWS(x == 1, "Destroy actor (expect 1): {}".format(x))
 
-    hSpline2.spawn_id_degrees(actorNumber=1, location=[-1,1.5,1], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
+    hSpline2.spawn_id_degrees(actorNumber=1, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
     hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
     x = hSpline2.ping()
     vr.PrintWS(x == True, "Ping (expect True): {}".format(x))
@@ -1111,22 +1117,22 @@ def main():
 
 
     hSpline3 = QLabsSplineLine(qlabs)
-    hSpline3.spawn([-6.843, 9.104, 0.005], [0,0,0],[1,1,1],1)
+    hSpline3.spawn([1.741, 8.757, 0.005], [0,0,0],[1,1,1],1)
     x = hSpline3.circle_from_center(radius=1, lineWidth=0.1, color=[1,0,1], numSplinePoints=8)
     vr.PrintWS(x == True, "Circle from center (expect True): {}".format(x))
 
     hSpline4 = QLabsSplineLine(qlabs)
-    hSpline4.spawn([-3.843, 9.104, 0.005], [0,0,0],[1,1,1],1)
+    hSpline4.spawn([4.467, 10.579, 0.005], [0,0,0],[1,1,1],1)
     hSpline4.arc_from_center(radius=1, startAngle=0, endAngle=math.pi/2, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
     vr.PrintWS(x == True, "Arc from center (expect True): {}".format(x))
 
     hSpline5 = QLabsSplineLine(qlabs)
-    hSpline5.spawn([-3.843, 7.104, 0.005], [0,0,0],[1,1,1],1)
+    hSpline5.spawn([5.045, 11.205, 0.005], [0,0,0],[1,1,1],1)
     hSpline5.arc_from_center_degrees(radius=1, startAngle=0, endAngle=90, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
     vr.PrintWS(x == True, "Arc from center degrees (expect True): {}".format(x))
 
     hSpline6 = QLabsSplineLine(qlabs)
-    hSpline6.spawn([-5.7, 6.782, 0.005], [0,0,0],[1,1,1],1)
+    hSpline6.spawn([3.118, 8.109, 0.005], [0,0,0],[1,1,1],1)
     hSpline6.rounded_rectangle_from_center(cornerRadius=0.5, xWidth=2, yLength=4, lineWidth=0.1, color=[1,1,0])
     vr.PrintWS(x == True, "Rounded rectangle (expect True): {}".format(x))
 
@@ -1139,41 +1145,39 @@ def main():
     print("\n\n---Animals---")
 
     hCameraAnimals = QLabsFreeCamera(qlabs)
-    x = hCameraAnimals.spawn(location=[-29.226, 0.96, 1.098], rotation=[0, 0.133, 3.101])
+    x = hCameraAnimals.spawn(location=[25.802, 47.9, 0.484], rotation=[-0, -0.195, 1.009])
     hCameraAnimals.possess()
 
-
-
-
     hGoat = QLabsAnimal(qlabs)
-    hGoat.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hGoat.GOAT, waitForConfirmation=True)
-    hGoat.move_to(location=[-33.46, 6.736, 0], speed=hGoat.GOAT_RUN, waitForConfirmation=True)
+    hGoat.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hGoat.GOAT, waitForConfirmation=True)
+    hGoat.move_to(location=[27.214, 49.286, 0], speed=hGoat.GOAT_RUN, waitForConfirmation=True)
 
     time.sleep(3)
-    hGoat.move_to(location=[-32.832, -3.196, 0], speed=hGoat.GOAT_WALK, waitForConfirmation=True)
+    hGoat.move_to(location=[28.338, 47.826, 0], speed=hGoat.GOAT_WALK, waitForConfirmation=True)
     time.sleep(6)
     hGoat.destroy()
 
 
     hSheep = QLabsAnimal(qlabs)
-    hSheep.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hSheep.SHEEP, waitForConfirmation=True)
-    hSheep.move_to(location=[-33.46, 6.736, 0], speed=hSheep.SHEEP_RUN, waitForConfirmation=True)
+    hSheep.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hSheep.SHEEP, waitForConfirmation=True)
+    hSheep.move_to(location=[27.214, 49.286, 0], speed=hSheep.SHEEP_RUN, waitForConfirmation=True)
     time.sleep(3)
-    hSheep.move_to(location=[-32.832, -3.196, 0], speed=hSheep.SHEEP_WALK, waitForConfirmation=True)
+    hSheep.move_to(location=[28.338, 47.826, 0], speed=hSheep.SHEEP_WALK, waitForConfirmation=True)
     time.sleep(6)
     hSheep.destroy()
 
 
     hCow = QLabsAnimal(qlabs)
-    hCow.spawn(location=[-32.832, -3.196, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hCow.COW, waitForConfirmation=True)
-    hCow.move_to(location=[-33.46, 6.736, 0], speed=hCow.COW_RUN, waitForConfirmation=True)
+    hCow.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hCow.COW, waitForConfirmation=True)
+    hCow.move_to(location=[27.214, 49.286, 0], speed=hCow.COW_RUN, waitForConfirmation=True)
     time.sleep(3)
-    hCow.move_to(location=[-32.832, -3.196, 0], speed=hCow.COW_WALK, waitForConfirmation=True)
+    hCow.move_to(location=[28.338, 47.826, 0], speed=hCow.COW_WALK, waitForConfirmation=True)
     time.sleep(6)
 
 
 
     vr.checkFunctionTestList("animal", "../docs/source/Objects/animal_library.rst", "character", "actor")
+
 
 
     ### Outdoor Environment
@@ -1188,7 +1192,7 @@ def main():
     hCameraWeather.possess()
 
     time.sleep(2.5)
-
+    hSystem = QLabsSystem(qlabs)
 
     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLEAR_SKIES)
     hSystem.set_title_string('Clear skies')
@@ -1248,6 +1252,7 @@ def main():
     print("\n\n---Real-Time---")
 
     vr.checkFunctionTestList("real_time", "../docs/source/System/real_time_library.rst")
+
 
 
     print("\n\n------------------------------ Communications --------------------------------\n")

@@ -31,7 +31,7 @@ def test():
     wait_for_confirmation = True
 
     hCamera = QLabsFreeCamera(qlabs)
-    hCamera.spawn([-20.851, 33.956, 3.878], [0, 0.313, -0.06])
+    hCamera.spawn([-21.086, 30.044, 3.878], [0, 0.313, -0.06])
     hCamera.possess()
 
     time.sleep(2)
@@ -39,7 +39,7 @@ def test():
     hShape = QLabsBasicShape(qlabs)
 
     hBaseYawJoint = QLabsReferenceFrame(qlabs)
-    hBaseYawJoint.spawn_id_degrees(0, [-15.492, 34.512, 0.005], [0,0,0], [1,1,1], frame_configuration, wait_for_confirmation)
+    hBaseYawJoint.spawn_id_degrees(0, [-15.63, 29.969, 0.005], [0,0,0], [1,1,1], frame_configuration, wait_for_confirmation)
     hBaseYawJoint.set_icon_scale([1.5,1.5,1.5])
 
     hBaseShoulderJoint = QLabsReferenceFrame(qlabs)
@@ -66,7 +66,7 @@ def test():
 
     count_range = 600
     for count in range(count_range):
-        hBaseYawJoint.set_transform_degrees([-15.492, 34.512, 0.005], [0,0,count/count_range*180], [1,1,1], False)
+        hBaseYawJoint.set_transform_degrees([-15.63, 29.969, 0.005], [0,0,count/count_range*180], [1,1,1], False)
         hBaseShoulderJoint.set_transform_degrees([0,0,0.5], [math.sin(count/count_range*20)*30,0,0], [1,1,1], False)
         hBaseElbowJoint.set_transform_degrees([0,0,2], [0,math.sin(count/count_range*20)*60,0], [1,1,1], True)
 
