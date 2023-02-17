@@ -4,4 +4,3 @@ rtmodels
 spawn_models
 python/testing
 tutorials/qcars_tutorial.py
-ignoreList.txt
