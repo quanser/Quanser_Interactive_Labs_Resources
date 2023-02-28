@@ -12,7 +12,7 @@
 #
 import os
 import sys
-sys.path.insert(1, os.path.abspath('../../libraries/'))
+sys.path.insert(1, os.path.abspath('../../'))
 #sys.path.insert(1, os.path.abspath('./common/'))
 
 print(sys.path)
@@ -78,4 +78,4 @@ html_logo = 'pictures/QL.png'
 sphinx_tabs_disable_tab_closing = True
 
 autodoc_preserve_defaults = True
-autodoc_mock_imports = ['quanser, pyqtgraph, PyQT6, python']
+autodoc_mock_imports = ['quanser', 'pyqtgraph', 'PyQT6', 'python']
