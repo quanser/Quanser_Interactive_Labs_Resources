@@ -195,10 +195,7 @@ def traffic_light(qlabs):
     trafficLight2.ping()
 
     # changing the state of the traffic lights from green to red
-    trafficLight.set_state(state=trafficLight.STATE_GREEN, waitForConfirmation=True)
-    trafficLight2.set_state(state=trafficLight2.STATE_GREEN, waitForConfirmation=True)
-    trafficLight3.set_state(state=trafficLight3.STATE_RED, waitForConfirmation=True)
-
+    
     time.sleep(2)
 
     trafficLight.set_state(state=trafficLight.STATE_YELLOW, waitForConfirmation=True)
