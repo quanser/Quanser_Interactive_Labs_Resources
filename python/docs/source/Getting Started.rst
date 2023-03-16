@@ -89,20 +89,13 @@ If you have trouble or for more information about this
 GitHub QLabs Libraries Download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have purchased a product with us, the Research Resources.zip file should 
+If you have purchased a hardware product with us, the Research Resources.zip file should 
 automatically include this in its setup file and you can skip this step.  
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
-Download the common library off Github which will be needed in order to run the
-objects in your python script for QLabs -
-`Quanser Interactive Labs Resources <https://github.com/quanser/Quanser_Interactive_Labs_Resources>`__.
-
-.. attention::
-    Please download and unzip into **'../Documents/Quanser/libraries/python/'**.
-    This ensures that your libraries will work with all content.
-
-Open the folder and run the **install.py** file to download all the requirements.
+Download our install.py script `here <https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Private/main/install.py>`
+Open the folder and run the **install.py** file to download all the requirements and the qvl library.
 You can run this in the command window using the following code:
 
 .. code-block:: console
