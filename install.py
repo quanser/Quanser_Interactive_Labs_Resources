@@ -72,7 +72,7 @@ install_dir = os.path.normpath(install_dir)
 
 if 'QAL_DIR' in os.environ:
     if install_dir != os.environ['QAL_DIR']:
-        print('Error: QAL already installed in a different location.')
+        print('Error: QVL already installed in a different location.')
         print('Current location: ' + os.environ['QAL_DIR'])
         print('Attempted new location: ' + install_dir)
         print('Install unsuccessful.')
@@ -80,7 +80,7 @@ if 'QAL_DIR' in os.environ:
 
     print('')
     confirmation = input(
-        'Warning: QAL is already installed at "' + os.environ['QAL_DIR'] + '". '
+        'Warning: QVL is already installed at "' + os.environ['QAL_DIR'] + '". '
         + 'Continuing with this installer will overwrite files from the '
         + 'current installation. Are you sure you want to continue? (y,[n])'
         )
