@@ -14,14 +14,14 @@ Plane World Size
 ^^^^^^^^^^^^^^^^
 
 The world is 20,000m x 20,000m (10km in each direction from the origin) with 
-the ground located at 0m elevation. Note that placed very far from the origin 
-may start to suffer some accuracy issues for their position.
+the ground located at 0m elevation. Note that actors and objects placed very far from the 
+origin may start to suffer some accuracy issues for their position.
 
 
 Plane Navigation Area
 ^^^^^^^^^^^^^^^^^^^^^
 The navigation area is the area in which actors supporting path-finding travel can traverse. 
-In other words a actor can freely walk around in this area unobstructed by 
+In other words an actor can freely walk around in this area unobstructed by 
 barriers that are part of the Open World.
 
 The outer boundary of the navigation area is 600m x 600m (300m in each 
