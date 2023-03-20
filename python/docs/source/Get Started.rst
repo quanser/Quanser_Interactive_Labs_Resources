@@ -1,4 +1,4 @@
-.. _Getting Started:
+.. _Get Started:
 
 ***********
 Get Started
@@ -94,7 +94,7 @@ automatically include Quanser Interactive Labs Libraries in its setup file and y
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
-Download our install.py script `here <https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Private/main/install.py>`
+Download our install.py script `here <https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Private/main/install.py>__`.
 Open the folder and run the **install.py** file to download all the requirements and the qvl library.
 You can run this in the command window using the following code:
 
