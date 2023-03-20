@@ -90,7 +90,7 @@ GitHub QLabs Libraries Download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you have purchased a hardware product with us, the Research Resources.zip file should 
-automatically include this in its setup file and you can skip this step.  
+automatically include Quanser Interactive Labs Libraries in its setup file and you can skip this step.  
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
