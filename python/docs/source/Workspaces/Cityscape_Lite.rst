@@ -19,7 +19,7 @@ the ground located at 0m elevation.
 Cityscape Lite Navigation Area
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The navigation area is the area in which actors supporting path-finding travel can traverse.
-In other words a actor can freely walk around in this area unobstructed by
+In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.
 
 The outer boundary of the navigation area is 450m x 450m (225m in each
