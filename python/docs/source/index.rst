@@ -1,7 +1,5 @@
-.. Kelly's Test documentation master file, created by
+.. Quanser Academic Applications Team - QLabs Documentation, created by
    sphinx-quickstart on Tue May 31 16:06:23 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 Quanser Interactive Labs API Documentation
 ==========================================
@@ -10,7 +8,7 @@ Quanser Interactive Labs API Documentation
 
 This site contains documentation for the virtual environments inside of Quanser
 Interactive Labs.  It will walk you through installation and setup as well as
-documentation for how to customize your enviroment.
+documentation for how to customize your environment.
 
 .. attention:: **Looking for Hardware Documentation?**
    If you are looking for courseware or other hardware documentation for using
@@ -23,10 +21,10 @@ The Quanser Interactive Labs API documentation has been currently designed for
 python script tests.
 Although there are some basic interface options, the current virtual Quanser
 Interactive Labs (QLabs) is not designed to be used through the interface
-alone. We therefore highly recommend that you try our simple
-:ref:`Getting Started` to get started.  This python script uses
-the virtual QCar libraries to help you get used to our libraries and the
-capabilities of our workspaces.
+alone. We therefore highly recommend that you follow along in our
+:ref:`Get Started` page to get set up to run python scripts.  The python script
+examples used throughout this documentation of the virtual QCar libraries will 
+help you get used to our libraries and the capabilities of our workspaces.
 
 
 Contributing
@@ -47,7 +45,7 @@ Contents
 
    .. toctree::
 
-      Getting Started.rst
+      Get Started.rst
       Glossary.rst
       Workspaces/index.rst
       User Interface.rst
