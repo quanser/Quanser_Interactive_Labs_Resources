@@ -21,21 +21,18 @@ def main():
     # creates a server connection with Quanser Interactive Labs and manages
     # the communications
     qlabs = QuanserInteractiveLabs()
-    qlabs.destroy_all_spawned_actors()
+    print("Connecting to QLabs...")
+    qlabs.open("localhost")
 
     # initialize our desired variables
     # note that you can use the coordinate helper to pick locations for your camera.
     location = [-5.631, -1.467, 2.198] #-53.022, -7.491, 14.475 -58.881, -11.077, 14.475
     rotation = [0, -2.386, -20.528]
 
-    # not sure if this is needed
-    print("Connecting to QLabs...")
-    qlabs.open("localhost")
-
     # destroy any spawned actors in the world
     qlabs.destroy_all_spawned_actors()
 
-    # create a camera in this qlabs instance
+    # create a camera in this Quanser Interactive Labs instance
     camera = QLabsFreeCamera(qlabs)
 
     # add a custom camera at a specified location and rotation using radians
@@ -50,7 +47,7 @@ def main():
 
     # set the properties of our camera to customize it - this is not required
     # default camera is set to a FOV: 90 degrees with DOF disabled
-    # (which disables aperature and focal distance)
+    # (which disables aperture and focal distance)
     camera.set_camera_properties(fieldOfView=60, depthOfField=True, aperature=2.0,
                                 focusDistance=1.3)
 

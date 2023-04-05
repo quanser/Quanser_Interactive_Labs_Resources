@@ -2,9 +2,11 @@
 Road Signage Library Example
 ----------------------------
 
-.. note:: Make sure you have Quanser Interactive Labs open before running any of these examples.
+.. note::
 
-.. tip:: If you are struggling to get this example running check out our _Troubleshooting page.
+    Make sure you have Quanser Interactive Labs open before running this
+    example.  This example is designed to best be run in QCar Cityscape 
+    or Cityscape Lite.
 
 """
 

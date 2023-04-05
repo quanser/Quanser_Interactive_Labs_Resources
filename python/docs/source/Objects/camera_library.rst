@@ -103,6 +103,11 @@ Camera Tutorial
 
 .. dropdown:: Example
 
+    Download this tutorial: |camera_tutorial.py|.
+
+    .. |camera_tutorial.py| replace::
+        :download:`Camera Tutorial <../../../tutorials/camera_tutorial.py>`
+    
     .. literalinclude:: ../../../tutorials/camera_tutorial.py
         :language: python
         :linenos:

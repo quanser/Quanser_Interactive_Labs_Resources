@@ -421,6 +421,11 @@ Road Signage Tutorial
 
 .. dropdown:: Example
 
+    Download this tutorial: |road_signage_tutorial.py|.
+
+    .. |road_signage_tutorial.py| replace::
+        :download:`Road Signage Tutorial <../../../tutorials/road_signage_tutorial.py>`
+
     .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
         :language: python
         :linenos:

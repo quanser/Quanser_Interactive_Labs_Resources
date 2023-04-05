@@ -125,6 +125,11 @@ People Tutorial
 
 .. dropdown:: Example
 
+    Download this tutorial: |person_tutorial.py|.
+
+    .. |person_tutorial.py| replace::
+        :download:`Person Tutorial <../../../tutorials/person_tutorial.py>`
+
     .. literalinclude:: ../../../tutorials/person_tutorial.py
         :language: python
         :linenos:
