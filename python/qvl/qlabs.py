@@ -1,5 +1,5 @@
 from quanser.communications import Stream, StreamError, PollFlag
-from quanser.common import Timeout
+from quanser.common import ErrorCode, Timeout
 
 import struct
 import os
@@ -100,7 +100,7 @@ class QuanserInteractiveLabs:
         self._stream = Stream()
 
         result = self._stream.connect(address, True, self._BUFFER_SIZE, self._BUFFER_SIZE)
-        if ((result < 0) and (result != -34)): # QERR_WOULD_BLOCK
+        if ((result < 0) and (result != -ErrorCode.WOULD_BLOCK)):
             print("Connection failure.")
             return False
 
@@ -182,14 +182,18 @@ class QuanserInteractiveLabs:
         :rtype: boolean
 
         """
+        result = False
         try:
             data = bytearray(struct.pack("<i", 1+container.containerSize)) + bytearray(struct.pack(">BiiiB", 123, container.containerSize, container.classID, container.actorNumber, container.actorFunction)) + container.payload
             numBytes = len(data)
-            bytesWritten = self._stream.send(data, numBytes)
-            self._stream.flush()
-            return True
+            bytesWritten = self._stream.send_byte_array(data, numBytes)
+            if bytesWritten > 0:
+                self._stream.flush()
+                result = True
         except:
-            return False
+            pass
+
+        return result
 
     # Check if new data is available.  Returns true if a complete packet has been received.
     def receive_new_data(self):
@@ -199,26 +203,14 @@ class QuanserInteractiveLabs:
         :rtype: boolean
 
         """
-        bytesRead = 0
-
-        try:
-            bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
-        except StreamError as e:
-            if e.error_code == -34:
-                # would block
-                bytesRead = 0
+        bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE) # returns -ErrorCode.WOULD_BLOCK if it would block
         newData = False
 
         while bytesRead > 0:
             self._receivePacketBuffer += bytearray(self._readBuffer[0:(bytesRead)])
 
             #while we're here, check if there are any more bytes in the receive buffer
-            try:
-                bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
-            except StreamError as e:
-                if e.error_code == -34:
-                    # would block
-                    bytesRead = 0
+            bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE) # returns -ErrorCode.WOULD_BLOCK if it would block
 
         # check if we already have data in the receive buffer that was unprocessed (multiple packets in a single receive)
         if len(self._receivePacketBuffer) > 5:
@@ -335,12 +327,7 @@ class QuanserInteractiveLabs:
         :rtype: None
 
         """
-        try:
-            bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE)
-        except StreamError as e:
-            if e.error_code == -34:
-                # would block
-                bytesRead = 0
+        bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE) # returns -ErrorCode.WOULD_BLOCK if it would block
 
     def regenerate_cache_list(self):
         """Advanced function for actor indexing.
