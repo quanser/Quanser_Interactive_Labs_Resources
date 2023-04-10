@@ -1,5 +1,9 @@
 from quanser.communications import Stream, StreamError, PollFlag
-from quanser.common import ErrorCode, Timeout
+from quanser.common import ErrorCode
+try:
+    from quanser.common import Timeout
+except:
+    from quanser.communications import Timeout
 
 import struct
 import os
