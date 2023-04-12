@@ -17,6 +17,7 @@ class QLabsBasicShape(QLabsActor):
     SHAPE_CUBE = 0
     SHAPE_CYLINDER = 1
     SHAPE_SPHERE = 2
+    SHAPE_CONE = 3
 
     COMBINE_AVERAGE = 0
     COMBINE_MIN = 1
@@ -26,8 +27,12 @@ class QLabsBasicShape(QLabsActor):
 
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES = 10
     FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES_ACK = 11
+    FCN_BASIC_SHAPE_GET_MATERIAL_PROPERTIES = 30
+    FCN_BASIC_SHAPE_GET_MATERIAL_PROPERTIES_RESPONSE = 31
+    
     FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES = 20
     FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES_ACK = 21
+    
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS = 14
     FCN_BASIC_SHAPE_ENABLE_DYNAMICS_ACK = 15
     FCN_BASIC_SHAPE_SET_TRANSFORM = 16
@@ -90,6 +95,53 @@ class QLabsBasicShape(QLabsActor):
             return True
         else:
             return False
+            
+    def get_material_properties(self):
+        """Gets the visual surface properties of the shape.
+
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param roughness: A value between 0.0 (completely smooth and reflective) to 1.0 (completely rough and diffuse). Note that reflections are rendered using screen space reflections. Only objects visible in the camera view will be rendered in the reflection of the object.
+        :param metallic: Metallic (True) or non-metallic (False)
+        :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+        :type color: float array[3]
+        :type roughness: float
+        :type metallic: boolean
+        :type waitForConfirmation: boolean
+        :return:
+            - **status** - True if successful or False otherwise
+            - **color** - Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+            - **roughness** - A value between 0.0 (completely smooth and reflective) to 1.0 (completely rough and diffuse). 
+            - **metallic** - Metallic (True) or non-metallic (False)
+        :rtype: boolean, float array[3], float, boolean
+
+        """
+        color = [0,0,0]
+        roughness = 0
+        metallic = False
+        
+        if (self._is_actor_number_valid()):
+            
+            c = CommModularContainer()
+            c.classID = self.ID_BASIC_SHAPE
+            c.actorNumber = self.actorNumber
+            c.actorFunction = self.FCN_BASIC_SHAPE_GET_MATERIAL_PROPERTIES
+            c.payload = bytearray()
+            c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+            self._qlabs.flush_receive()
+
+            if (self._qlabs.send_container(c)):
+
+                c = self._qlabs.wait_for_container(self.ID_BASIC_SHAPE, self.actorNumber, self.FCN_BASIC_SHAPE_GET_MATERIAL_PROPERTIES_RESPONSE)
+                if (c == None):
+                    pass
+                    
+                elif len(c.payload) == 17:
+                    color[0], color[1], color[2], roughness, metallic, = struct.unpack(">ffff?", c.payload[0:17])
+                    return True, color, roughness, metallic          
+        
+
+        return False, color, roughness, metallic          
 
 
     def set_enable_dynamics(self, enableDynamics, waitForConfirmation=True):
