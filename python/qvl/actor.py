@@ -21,6 +21,15 @@ class QLabsActor:
     """Request a world transform from the actor to read its current location, rotation, and scale."""
     FCN_RESPONSE_WORLD_TRANSFORM = 4
     """Response from an actor with its current location, rotation, and scale."""
+    FCN_SET_CUSTOM_PROPERTIES = 5
+    """Set custom properties of measured mass, ID, and/or property string."""
+    FCN_SET_CUSTOM_PROPERTIES_ACK = 6
+    """Set custom properties acknowledgment"""
+    FCN_REQUEST_CUSTOM_PROPERTIES = 7
+    """Request the custom properties of measured mass, ID, and/or property string previously assigned to the actor."""
+    FCN_RESPONSE_CUSTOM_PROPERTIES = 8
+    """Response containing the custom properties of measured mass, ID, and/or property string previously assigned to the actor."""
+    
 
     actorNumber = None
     """ The current actor number of this class to be addressed. This will be set by spawn methods and cleared by destroy methods. It will not be modified by the destroy all actors.  This can be manually altered at any time to use one object to address multiple actors. """
@@ -704,3 +713,95 @@ class QLabsActor:
             return -1
 
 
+    def set_custom_properties(self, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
+        """Assigns custom properties to an actor.
+
+        :param measuredMass: A float value for use with mass sensor instrumented actors. This does not alter the dynamic properties.
+        :param IDTag: An integer value for use with IDTag sensor instrumented actors or for custom use.
+        :param properties: A string for use with properties sensor instrumented actors. This can contain any string that is available for use to parse user-customized parameters.
+        :param waitForConfirmation: (Optional) Make this operation blocking until confirmation of the spawn has occurred.
+        :type measuredMass: float
+        :type IDTag: uint32
+        :type properties: string
+        :type waitForConfirmation: boolean
+        :return:
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean
+
+        """
+        c = CommModularContainer()
+        c.classID = self.classID
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_SET_CUSTOM_PROPERTIES
+        c.payload = bytearray(struct.pack(">fII", measuredMass, IDTag, len(properties)))
+        c.payload = c.payload + bytearray(properties.encode('utf-8'))
+
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        if waitForConfirmation:
+            self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(self.classID, self.actorNumber, self.FCN_SET_CUSTOM_PROPERTIES_ACK)
+                if (c == None):
+                    return False
+                else:
+                    return True
+
+            return True
+        else:
+            return False
+
+
+    def get_custom_properties(self):
+        """Gets previously assigned custom properties to an actor.
+
+        :return:
+            - **status** - `True` if successful, `False` otherwise
+            - **measuredMass** - float value
+            - **IDTag** - integer value
+            - **properties** - UTF-8 string
+        :rtype: boolean, float, int32, string
+
+        """
+
+        measuredMass = 0.0
+        IDTag = 0
+        properties = ""
+
+
+        if (not self._is_actor_number_valid()):
+            return False, measuredMass, IDTag, properties
+
+        c = CommModularContainer()
+        c.classID = self.classID
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_REQUEST_CUSTOM_PROPERTIES
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        
+        self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+            
+            c = self._qlabs.wait_for_container(self.classID, self.actorNumber, self.FCN_RESPONSE_CUSTOM_PROPERTIES)
+            if (c == None):
+                pass
+            else:
+
+                if len(c.payload) >= 12:
+                    measuredMass, IDTag, stringLength, = struct.unpack(">fII", c.payload[0:12])
+
+                    if (stringLength > 0):
+
+                        if (len(c.payload) == (12 + stringLength)):
+                            properties = c.payload[12:(12+stringLength)].decode('utf-8')
+
+                            return True, measuredMass, IDTag, properties
+                    else:
+                        return True, measuredMass, IDTag, properties
+        
+        return False, measuredMass, IDTag, properties

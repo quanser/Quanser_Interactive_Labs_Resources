@@ -46,6 +46,7 @@ Constants
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CUBE
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CYLINDER
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_SPHERE
+.. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CONE
 
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_AVERAGE
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.COMBINE_MIN
@@ -73,6 +74,7 @@ Methods
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_material_properties
+.. automethod:: qvl.basic_shape.QLabsBasicShape.get_material_properties
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_enable_dynamics
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_enable_collisions
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_physics_properties
@@ -90,13 +92,17 @@ Methods
 .. automethod:: qvl.basic_shape.QLabsBasicShape.parent_with_relative_transform_degrees
 .. automethod:: qvl.basic_shape.QLabsBasicShape.parent_with_current_world_transform
 .. automethod:: qvl.basic_shape.QLabsBasicShape.parent_break
+.. automethod:: qvl.basic_shape.QLabsBasicShape.set_custom_properties
+.. automethod:: qvl.basic_shape.QLabsBasicShape.get_custom_properties
+
+
 
 .. _basicshapeConfig:
 
 Configurations
 ^^^^^^^^^^^^^^
-There are 3 configurations (0-2) for the basic shape actor class.
-0 - Sphere, 1 - Cylinder, 2 - Square
+There are 3 configurations (0-3) for the basic shape actor class.
+0 - Sphere, 1 - Cylinder, 2 - Square, 3 - Cone
 
 .. image:: ../pictures/basicshapes.png
 
