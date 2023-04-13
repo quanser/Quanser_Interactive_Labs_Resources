@@ -275,7 +275,7 @@ class QLabsBasicShape(QLabsActor):
     def set_transform(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in radians, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
+        :param location: An array of floats for x, y and z coordinates in full-scale units. 
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param scale: An array of floats for the scale in the x, y, and z directions.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
@@ -316,7 +316,7 @@ class QLabsBasicShape(QLabsActor):
     def set_transform_degrees(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
+        :param location: An array of floats for x, y and z coordinates in full-scale units.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees
         :param scale: An array of floats for the scale in the x, y, and z directions.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
