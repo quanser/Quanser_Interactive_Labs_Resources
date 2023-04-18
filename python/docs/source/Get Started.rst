@@ -62,13 +62,15 @@ Python Package Update
 For Quanser Interactive Labs to work with Python, certain base level Quanser
 API libraries are required.
 
-.. admonition:: Attention Windows Users
+.. admonition:: Attention Windows & MacOS Users
 
-    On Windows, the required Quanser API libraries are included with your QUARC
-    installation, and hence, you will need to have QUARC installed before
-    running the following command.
-    Make sure the files in the QUARC python folder below have the same date as
-    the date in the following code below before running it.
+    On Windows and MACOS computers, the required Quanser API libraries are included with 
+    your Quanser Interactive Labs installation, and hence, you will need to have Quanser 
+    Interactive Labs installed before running the following command.
+
+    Make sure the files in the QUARC python folder below have the same date (for example 
+    2022.4.29) as the date in the following code below before running it.  
+    To find this go to program files and find the Quanser/QUARC/python directory.
 
 .. tabs::
     .. code-tab:: console Windows
@@ -80,11 +82,22 @@ API libraries are required.
     .. code-tab:: console Linux
 
         # Type this into your Linux Terminal
+        wget --no-cache https://repo.quanser.com/debian/release/config/configure_repo.sh
+        chmod u+x configure_repo.sh
+        ./configure_repo.sh
+        rm -f ./configure_repo.sh
+        sudo apt update
+        sudo apt-get install python3-quanser-apis
+    
+    .. code-tab:: console MacOS
+
+        # Type this into your Linux Terminal
         sudo apt update
         sudo apt-get install python3-quanser-apis
 
-If you have trouble or for more information about this
-`click here <https://docs.quanser.com/quarc/documentation/python/hardware/Getting%20Started/getting_started.html#:~:text=Installing%20Quanser%20Hardware%20Python%20Package,29%2Dpy2>`__.
+If you have trouble or for more information about our python APIs or 
+installing individual python APIs check out the documentation here:
+`click here <https://docs.quanser.com/quarc/documentation/python/getting_started.html>`__.
 
 GitHub QLabs Libraries Download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -94,7 +107,9 @@ automatically include Quanser Interactive Labs Libraries in its setup file and y
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
-Download our install.py script `here <https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Private/main/install.py>__`.
+.. TODO: CHECK THIS
+Download our install.py script :download:`install.py <https://raw.githubcontent.com/quanser/Quanser_Interactive_Labs_Resources/main/install.py>`.
+
 Open the folder and run the **install.py** file to download all the requirements and the qvl library.
 You can run this in the command window using the following code:
 
