@@ -107,18 +107,21 @@ automatically include Quanser Interactive Labs Libraries in its setup file and y
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
-.. TODO: CHECK THIS
-Download our install.py script :download:`install.py <https://raw.githubcontent.com/quanser/Quanser_Interactive_Labs_Resources/main/install.py>`.
+Download our install.py script by entering the following in your command prompt:
+.. tabs::
+    .. code-tab:: console Windows
+        
+        # Navigate to your downloads or where ever you would like this file to be downloaded to then run the below line 
+        curl -L -o install.py https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Resources/main/install.py
 
-Open the folder and run the **install.py** file to download all the requirements and the qvl library.
-You can run this in the command window using the following code:
+Navigate to the **install.py** file and run this in the command window using the following code:
 
 .. code-block:: console
 
     # cd to the directory where this install file is located
     python install.py
 
-This install should work with both Linux and Windows computers.
+This install should work with Linux, MacOS and Windows computers to install the qvl folders and files.
 
 **At this point you should be ready to build and run a test script!**
 
