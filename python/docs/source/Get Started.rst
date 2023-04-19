@@ -16,11 +16,23 @@ Installation / Set Up
 
 #.
     Download Quanser Interactive Labs on
-    `Portal <https://portal.quanser.com/Accounts/Login?returnUrl=/>`__
+    `Portal. <https://portal.quanser.com/Accounts/Login?returnUrl=/>`__
 
     .. note::
         All available content should be available to you on the main screen.
         If something is missing, try logging out and logging back in again.
+    
+    .. attention::
+        Alternatively, the below installer is only needed for Python-only 
+        Quanser Interactive Labs users, who do not intend to use Quanser 
+        Interactive Labs with MATLAB® Simulink® and do not intend to use 
+        Quanser virtual and physical systems on the same machine 
+        (with QUARC). 
+
+        Virtual-Only Python-Only Quanser Interactive Labs Download Links:
+        | :download:`Windows Download <https://download.quanser.com/qlabs/latest/Install QLabs.exe>`
+        | :download:`macOS Download <https://download.quanser.com/qlabs/latest/QLabs_Installer_maci64.zip>`
+
 #.  
     Open Quanser Interactive Labs and log in.
 #.
@@ -108,6 +120,7 @@ However, if you would like to only download the libraries by themselves you will
 need to follow the steps below.
 
 Download our install.py script by entering the following in your command prompt:
+
 .. tabs::
     .. code-tab:: console Windows
         
@@ -124,13 +137,3 @@ Navigate to the **install.py** file and run this in the command window using the
 This install should work with Linux, MacOS and Windows computers to install the qvl folders and files.
 
 **At this point you should be ready to build and run a test script!**
-
-.. The following test script will test your capabilities in a simple script to
-.. get you up and running.
-
-.. Tutorial - Getting Started
-
-.. ==========================
-
-.. I think there should be a tutorial script to walk someone through a simple
-.. python file in here.
