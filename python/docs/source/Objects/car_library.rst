@@ -168,6 +168,14 @@ QCar Tutorial
 
 .. dropdown:: Example
 
-    Coming Soon!
+    Raw to download this tutorial: |qcar_tutorial1.py|.
+
+    .. |qcar_tutorial1.py| replace::
+        :download:`QCar Tutorial <../../../tutorials/qcar_tutorial1.py>`
+    
+    .. literalinclude:: ../../../tutorials/qcar_tutorial1.py
+        :language: python
+        :linenos:
+    
 
 .. **See Also:**

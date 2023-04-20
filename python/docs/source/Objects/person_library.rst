@@ -125,7 +125,7 @@ People Tutorial
 
 .. dropdown:: Example
 
-    Download this tutorial: |person_tutorial.py|.
+    Raw to download this tutorial: |person_tutorial.py|.
 
     .. |person_tutorial.py| replace::
         :download:`Person Tutorial <../../../tutorials/person_tutorial.py>`

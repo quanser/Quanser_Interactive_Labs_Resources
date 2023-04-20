@@ -120,7 +120,7 @@ Basic Shapes Tutorial
 
 .. dropdown:: Example
 
-    Download this tutorial: |basic_shapes_tutorial.py|.
+    Raw to download this tutorial: |basic_shapes_tutorial.py|.
 
     .. |basic_shapes_tutorial.py| replace::
         :download:`Basic Shapes Tutorial <../../../tutorials/basic_shapes_tutorial.py>`

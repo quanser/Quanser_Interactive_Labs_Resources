@@ -86,7 +86,7 @@ Widgets Tutorial
 
 .. dropdown:: Example
 
-    Download this tutorial: |widgets_tutorial.py|.
+    Raw to download this tutorial: |widgets_tutorial.py|.
 
     .. |widgets_tutorial.py| replace::
         :download:`Widgets Tutorial <../../../tutorials/widgets_tutorial.py>`
