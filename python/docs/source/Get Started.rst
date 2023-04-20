@@ -122,7 +122,7 @@ need to follow the steps below.
 Download our install.py script by entering the following in your command prompt:
 
 .. tabs::
-    .. code-tab:: console Windows
+    .. code-tab:: console
         
         # Navigate to your downloads or where ever you would like this file to be downloaded to then run the below line 
         curl -L -o install.py https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Resources/main/install.py
