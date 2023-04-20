@@ -74,9 +74,9 @@ Python Package Update
 For Quanser Interactive Labs to work with Python, certain base level Quanser
 API libraries are required.
 
-.. admonition:: Attention Windows & MacOS Users
+.. admonition:: Attention Windows & macOS Users
 
-    On Windows and MACOS computers, the required Quanser API libraries are included with 
+    On Windows and macOS computers, the required Quanser API libraries are included with 
     your Quanser Interactive Labs installation, and hence, you will need to have Quanser 
     Interactive Labs installed before running the following command.
 
@@ -101,7 +101,7 @@ API libraries are required.
         sudo apt update
         sudo apt-get install python3-quanser-apis
     
-    .. code-tab:: console MacOS
+    .. code-tab:: console macOS
 
         # Type this into your Linux Terminal
         sudo apt update
@@ -134,6 +134,6 @@ Navigate to the **install.py** file and run this in the command window using the
     # cd to the directory where this install file is located
     python install.py
 
-This install should work with Linux, MacOS and Windows computers to install the qvl folders and files.
+This install should work with Linux, macOS and Windows computers to install the qvl folders and files.
 
 **At this point you should be ready to build and run a test script!**
