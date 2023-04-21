@@ -103,9 +103,9 @@ API libraries are required.
     
     .. code-tab:: console macOS
 
-        # Type this into your Linux Terminal
-        sudo apt update
-        sudo apt-get install python3-quanser-apis
+        # Type this into your macOS Terminal
+        python3 -m pip install --upgrade pip
+        python3 -m pip install --upgrade --find-links /opt/quanser/python /opt/quanser/python/quanser_api-2023.4.13-py2.py3-none-any.whl
 
 If you have trouble or for more information about our python APIs or 
 installing individual python APIs check out the documentation here:
