@@ -6,7 +6,7 @@ from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from testing.tile import TileMap
 
-def testMapGeneration():
+def QBotPlatformMapGeneration():
     os.system('cls')
     qlabs = QuanserInteractiveLabs()
     print("Connecting to QLabs...")
@@ -39,4 +39,4 @@ def testMapGeneration():
 
     qlabs.close()
 
-testMapGeneration()
+QBotPlatformMapGeneration()
