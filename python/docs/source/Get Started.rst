@@ -88,18 +88,17 @@ API libraries are required.
     .. code-tab:: console Windows
 
         # Type this into your Windows Command Prompt
-        python -m pip install --upgrade --find-links "%QUARC_DIR%\python"
-        "%QUARC_DIR%\python\quanser_api-2022.4.29-py2.py3-none-any.whl"
+        python -m pip install --upgrade pip
+        python -m pip install --upgrade --find-links "%QUARC_DIR%\python" "%QUARC_DIR%\python\quanser_api-2023.4.13-py2.py3-none-any.whl"
 
     .. code-tab:: console Linux
 
-        # Type this into your Linux Terminal
         wget --no-cache https://repo.quanser.com/debian/release/config/configure_repo.sh
         chmod u+x configure_repo.sh
         ./configure_repo.sh
         rm -f ./configure_repo.sh
         sudo apt update
-        sudo apt-get install python3-quanser-apis
+        sudo apt install python3-quanser-apis
     
     .. code-tab:: console macOS
 
