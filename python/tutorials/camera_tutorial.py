@@ -48,7 +48,7 @@ def main():
     # set the properties of our camera to customize it - this is not required
     # default camera is set to a FOV: 90 degrees with DOF disabled
     # (which disables aperture and focal distance)
-    camera.set_camera_properties(fieldOfView=60, depthOfField=True, aperature=2.0,
+    camera.set_camera_properties(fieldOfView=60, depthOfField=True, aperture=2.0,
                                 focusDistance=1.3)
 
     # collect the current world transform information from the actor camera (should be

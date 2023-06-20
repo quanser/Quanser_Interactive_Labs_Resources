@@ -72,7 +72,7 @@ class QLabsFreeCamera(QLabsActor):
         else:
             return False
 
-    def set_camera_properties(self, fieldOfView, depthOfField, aperature, focusDistance):
+    def set_camera_properties(self, fieldOfView, depthOfField, aperture, focusDistance):
         """
         Sets the camera properties. When depthOfField is enabled, the camera will produce more realistic (and cinematic) results by adding some blur to the view at distances closer and further away from a given focal distance. For more blur, use a large aperture (small value) and a narrow field of view.
 
@@ -95,7 +95,7 @@ class QLabsFreeCamera(QLabsActor):
         c.classID = self.ID_FREE_CAMERA
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES
-        c.payload = bytearray(struct.pack(">fBff", fieldOfView, depthOfField, aperature, focusDistance))
+        c.payload = bytearray(struct.pack(">fBff", fieldOfView, depthOfField, aperture, focusDistance))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         self._qlabs.flush_receive()

@@ -82,7 +82,7 @@ There are several different camera options that can be changed.
     :ref:`keyboard controls` to move to a different location.
 * **Field of view (FOV)**
     FOV can be changed by sliding the slider or inputting a specific value.
-* **Aperature & Focal Distance**
+* **Aperture & Focal Distance**
     If the *Cinematic camera* option is toggled to on, then you can also change
     the **aperture** and the **focal distance** using their respective sliders
     or inputting specific values.

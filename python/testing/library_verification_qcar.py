@@ -146,12 +146,12 @@ def main():
 
     hCamera3 = QLabsFreeCamera(qlabs)
     hCamera3.spawn_id(actorNumber=3, location=[-33.17276819, 13.50500671, 2.282], rotation=[0, 0.077, 0.564])
-    hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
+    hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=0.6)
     x = hCamera3.possess()
 
 
     for y in range(51):
-        x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
+        x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
     vr.PrintWS(x == True, "Set camera properties")
 
     x = hCamera2.possess()

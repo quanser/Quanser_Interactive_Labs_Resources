@@ -132,18 +132,18 @@ def main():
     x, CameraNumber = hCamera.spawn(location=[3.578, 1.766, 1.702], rotation=[0, 0.116, -2.668])
     x = hCamera.possess()
 
-    hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=0.6)
+    hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=0.6)
 
     for y in range(26):
-        x = hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperature=2.3, focusDistance=(0.6 + pow(y/25, 3)*23.7))
+        x = hCamera.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=(0.6 + pow(y/25, 3)*23.7))
 
     for y in range(25):
-        x = hCamera.set_camera_properties(fieldOfView=40+y*2, depthOfField=True, aperature=2.3, focusDistance=(0.6 + 23.7))
+        x = hCamera.set_camera_properties(fieldOfView=40+y*2, depthOfField=True, aperture=2.3, focusDistance=(0.6 + 23.7))
 
 
     vr.PrintWS(x == True, "Set camera properties")
 
-    x = hCamera.set_camera_properties(fieldOfView=90, depthOfField=False, aperature=2.3, focusDistance=10000)
+    x = hCamera.set_camera_properties(fieldOfView=90, depthOfField=False, aperture=2.3, focusDistance=10000)
 
 
     print("Transforms")
