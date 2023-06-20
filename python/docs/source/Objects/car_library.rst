@@ -157,7 +157,7 @@ To read more about this check out our documentation
 by clicking on resources button and looking inside the zip folder for
 User Guides/System Hardware.pdf
 
-.. image:: ../pictures/extrinsics_virtual.png
+.. image:: ../pictures/qcar_extrinsic_matrices.png
     :scale:  65%
     :align: center
 
