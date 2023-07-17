@@ -1,6 +1,8 @@
 requirements_dev.txt
 README.md
-rtmodels
+rtmodels/QArm
+rtmodels/QBot2e
+rtmodels/QBot3
 spawn_models
 python/testing
 private_files.txt
