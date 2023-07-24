@@ -8,21 +8,22 @@ System
 Description
 ^^^^^^^^^^^
 
-The System library is used to modify settings of the QLabs user interface and window which are independent of the actor environment.
+The System library is used to modify settings of the QLabs user interface and
+window which are independent of the actor environment.
 
 .. _systemLibrary:
 
 System Library
 ^^^^^^^^^^^^^^
 
-.. autoclass:: library_qlabs_system.QLabsSystem
+.. autoclass:: qvl.system.QLabsSystem
 
 .. _systemConstants:
 
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: library_qlabs_system.QLabsSystem.ID_SYSTEM
+.. autoattribute:: qvl.system.QLabsSystem.ID_SYSTEM
 
 
 .. _systemMethods:
@@ -30,15 +31,6 @@ Constants
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_system.QLabsSystem.set_title_string
+.. automethod:: qvl.system.QLabsSystem.set_title_string
 
-
-System Tutorial
-^^^^^^^^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
 

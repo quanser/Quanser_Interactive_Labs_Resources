@@ -12,14 +12,15 @@
 #
 import os
 import sys
-sys.path.insert(1, os.path.abspath('../../libraries/'))
+sys.path.insert(1, os.path.abspath('../../'))
+#sys.path.insert(1, os.path.abspath('./common/'))
 
 print(sys.path)
 
 
 # -- Project information -----------------------------------------------------
 
-project = "Quanser's Self Driving Car Virtual Studio Documentation"
+project = "Quanser's Virtual QCar Documentation"
 copyright = '2022, Quanser'
 author = 'Quanser'
 
@@ -34,16 +35,16 @@ release = '0.1'
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'sphinx_tabs.tabs',
     'sphinx.ext.autosectionlabel',
     'sphinx.ext.doctest',
     'sphinx.ext.duration',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
-    'sphinx_tabs.tabs',
-    'sphinx_collapse',
+    #'sphinx_collapse',
     'sphinx_panels',
+    'sphinx_tabs.tabs',
+    'sphinx.ext.napoleon'
     #'sphinx_toolbox',
 ]
 
@@ -54,7 +55,6 @@ templates_path = ['_templates']
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -71,10 +71,11 @@ html_static_path = ['css'] #previously _static
 #html_css_files = [ 'css']
 html_theme_options = {
     'style_nav_header_background': 'white', #'#e21b22',
-    'logo_only': True,
+    'logo_only': True
 }
-html_logo = 'pictures/quanser_selfdrivingcarstudio.png'
+html_logo = 'pictures/QL.png'
 
 sphinx_tabs_disable_tab_closing = True
 
 autodoc_preserve_defaults = True
+autodoc_mock_imports = ['quanser', 'pyqtgraph', 'PyQT6', 'python']

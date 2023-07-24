@@ -3,7 +3,16 @@
 Code Style
 ==========
 
-Documentation style tests should be part of testing before new releases are made.
+Our code style page outlines what coding and style choices have been made for
+our documentation and code.
+If you are interested in contributing to our documentation or code, please make
+contribution via pull requests to the appropriate repository.
+We appreciate any bug fixes you find or cool scripts you have created that we
+can showcase as examples!
+
+.. note::
+    Opening discourse as soon as possible is preferable when wanting to
+    contribute to documentation.
 
 Python
 ------
@@ -16,12 +25,13 @@ Python 3 will be used for development.
 Style
 ^^^^^
 
-We will use the `PEP8 guidelines <https://www.python.org/dev/peps/pep-0008/>`_ for code format.
+We will use the `PEP8 guidelines <https://www.python.org/dev/peps/pep-0008/>`_
+for code format.
 
 We chose the following more precise rule where PEP 8 leaves some freedom:
 
-* `We allow up to 100 characters per line (fifth paragraph) <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
-* `We pick single quotes over double quotes as long as no escaping is necessary <https://www.python.org/dev/peps/pep-0008/#string-quotes>`_.
+* `We allow up to 79 characters per line for comments or docstrings(fifth paragraph) <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
+* `We pick double quotes over single quotes (as long as no escaping is necessary) <https://www.python.org/dev/peps/pep-0008/#string-quotes>`_.
 * `We prefer hanging indents for continuation lines <https://www.python.org/dev/peps/pep-0008/#indentation>`_.
 
 
@@ -31,7 +41,8 @@ Markdown / reStructured Text
 Style
 ^^^^^
 
-The following standard to format text is intented to increase readability as well as versioning.
+The following standard to format text is intended to increase readability as
+well as versioning.
 
 * *[.md, .rst only]* Each section title should be preceded by one empty line and succeeded by one empty line.
 
@@ -45,7 +56,7 @@ The following standard to format text is intented to increase readability as wel
     * ``-``
     * ``^``
     * ``"``
-    * Rationale: A consistent hierarchy expediites getting an idea about the nesting level when screening a document.
+    * Rationale: A consistent hierarchy expedites getting an idea about the nesting level when screening a document.
 
 * *[.md only]* In Markdown the headings should follow the ATX-style described in the `Markdown syntax documentation <https://daringfireball.net/projects/markdown/syntax#header>`__
 
@@ -65,3 +76,9 @@ The following standard to format text is intented to increase readability as wel
     * Rationale: Whitespace is significant only directly before and directly after fenced code blocks. Following these instructions will ensure that highlighting works properly and consistantly.
 
 * *[.md, .rst only]* A code block should specify a syntax (e.g. ``bash``).
+
+General Notes
+^^^^^^^^^^^^^
+
+Documentation style tests should be part of testing before new releases are
+made.

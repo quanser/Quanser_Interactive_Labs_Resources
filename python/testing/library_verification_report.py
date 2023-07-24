@@ -23,6 +23,7 @@ class verificationReport:
     status_bad = None
     status_no_doc = None
     library_path = None
+    verbose = False
     
     def __init__(self, filename, test_script, library_path):
     
@@ -38,13 +39,13 @@ class verificationReport:
         self.status_no_doc = self.wb.add_format({'bg_color':'orange'})
         self.library_path = library_path
                     
-    def checkFunctionTestList(self, library_name, documentation_path_and_name):
+    def checkFunctionTestList(self, library_name, documentation_path_and_name, parent_library="", grandparent_library=""):
 
         self.PrintWS(2, "")
         self.PrintWS(2, "Function check")
         all_functions_tested = True;
         f_validation_code = open( os.path.dirname(os.path.realpath(__file__)) + '\\' + self.test_script, 'r')
-        validation_code = f_validation_code.read()
+        validation_code = f_validation_code.readlines()
         f_validation_code.close()
         
         print("\nChecking function usage...")
@@ -60,8 +61,34 @@ class verificationReport:
                 if line[0] == "c":
                     if ":" in line:
                         class_name = line[6:len(line)-2]
+
+                        index = class_name.find("(")
+                        if (index >= 0):
+                            class_name = class_name[0:index]
+
                         print("Class name: {}".format(class_name))
+
+
+        print("\nObject list:")
+        class_object_list = []
+        for line in validation_code:
+            if (line.find(class_name + "(") >=0):
+                temp_string = line
+
+                index = temp_string.find("=")
+                if (index >= 0):
+                    temp_string = temp_string[0:index]
+                    temp_string = temp_string.lstrip()
+                    temp_string = temp_string.rstrip()
+
+                    class_object_list.append(temp_string)
+
+                    print("{}".format(temp_string))
+            
         
+            
+
+        # main library        
         for line in library_data:
             if "def " in line:
                 function_name = line.lstrip()
@@ -70,12 +97,32 @@ class verificationReport:
                 if (function_name[0] != "_"):
                     if (function_name != "__init__"):
                         doc_function_name = function_name
-                        function_name = class_name + "()." + function_name
-                        search_name = function_name + "("
-                        if not(search_name in validation_code):
+                        #function_name = "." + function_name
+                        
+                        found_function_usage = False
+
+                        for line in validation_code:
+                            
+                            for object_name in class_object_list:                   
+                                search_name = object_name + "." + function_name + "("
+                            
+                                if (line.find(search_name) >=0):
+                                    found_function_usage = True
+                                    break
+
+                            if (found_function_usage == True):
+                                break
+                        
+
+
+                        if (found_function_usage == False):
                             print("*** {} not tested".format(function_name))
                             all_functions_tested = False
-                            self.PrintWS(0, function_name)
+                            if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                self.PrintWS(0, function_name)
+                            else:
+                                self.PrintWS(4, function_name)
+                                print("*** {} not documented".format(function_name))
                         else:
                             if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
                                 self.PrintWS(1, function_name)
@@ -83,12 +130,136 @@ class verificationReport:
                                 self.PrintWS(3, function_name)
                                 print("*** {} not documented".format(function_name))
 
+        # parent library     
+        if not(parent_library==""):
+            f_library = open(self.library_path + '/' + parent_library + '.py', 'r')
+            library_data = f_library.readlines();    
+            f_library.close()
+
+            for line in library_data:
+                if "def " in line:
+                    function_name = line.lstrip()
+                    function_name = function_name[4:function_name.find('(')]
+                
+                    if (function_name[0] != "_"):
+                        if (function_name != "__init__"):
+                            doc_function_name = function_name
+                            #function_name = "." + function_name
+                        
+                            found_function_usage = False
+
+                            for line in validation_code:
+                            
+                                for object_name in class_object_list:                   
+                                    search_name = object_name + "." + function_name + "("
+                            
+                                    if (line.find(search_name) >=0):
+                                        found_function_usage = True
+                                        break
+
+                                if (found_function_usage == True):
+                                    break
+                        
+
+
+                            if (found_function_usage == False):
+                                print("*** {} not tested".format(function_name))
+                                all_functions_tested = False
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(0, function_name)
+                                else:
+                                    self.PrintWS(4, function_name)
+                                    print("*** {} not documented".format(function_name))
+                            else:
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(1, function_name)
+                                else:
+                                    self.PrintWS(3, function_name)
+                                    print("*** {} not documented".format(function_name))
+
+        # grandparent library     
+        if not(grandparent_library==""):
+            f_library = open(self.library_path + '/' + grandparent_library + '.py', 'r')
+            library_data = f_library.readlines();    
+            f_library.close()
+
+            for line in library_data:
+                if "def " in line:
+                    function_name = line.lstrip()
+                    function_name = function_name[4:function_name.find('(')]
+                
+                    if (function_name[0] != "_"):
+                        if (function_name != "__init__"):
+                            doc_function_name = function_name
+                            #function_name = "." + function_name
+                        
+                            found_function_usage = False
+
+                            for line in validation_code:
+                            
+                                for object_name in class_object_list:                   
+                                    search_name = object_name + "." + function_name + "("
+                            
+                                    if (line.find(search_name) >=0):
+                                        found_function_usage = True
+                                        break
+
+                                if (found_function_usage == True):
+                                    break
+                        
+
+
+                            if (found_function_usage == False):
+                                print("*** {} not tested".format(function_name))
+                                all_functions_tested = False
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(0, function_name)
+                                else:
+                                    self.PrintWS(4, function_name)
+                                    print("*** {} not documented".format(function_name))
+                            else:
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(1, function_name)
+                                else:
+                                    self.PrintWS(3, function_name)
+                                    print("*** {} not documented".format(function_name))
+
+        if (class_name.find('(QLabsActor)') >= 0):
+            CheckQLabsActorParentClass = True
+
+            f_library = open(self.library_path + '/library_qlabs_actor.py', 'r')
+            library_data = f_library.readlines();    
+            f_library.close()
+
+
+            
+            for line in library_data:
+                if "def " in line:
+                    function_name = line.lstrip()
+                    function_name = function_name[4:function_name.find('(')]
+                
+                    if (function_name[0] != "_"):
+                        if (function_name != "__init__"):
+                            doc_function_name = function_name
+                            #function_name = "." + function_name
+                            search_name = class_name + "." + function_name
+                            if not(search_name in validation_code):
+                                print("*** {} not tested".format(function_name))
+                                all_functions_tested = False
+                                self.PrintWS(0, function_name)
+                            else:
+                                if self.checkFunctionIsDocumented(documentation_path_and_name, library_name, doc_function_name, class_name):
+                                    self.PrintWS(1, function_name)
+                                else:
+                                    self.PrintWS(3, function_name)
+                                    print("*** {} not documented".format(function_name))
+
                         
                         
         
         
         if (all_functions_tested == True):
-            print("All functions tested")
+            print("\nAll functions tested")
 
     def checkFunctionIsDocumented(self, documentation_path_and_name, library_name, function_name, class_name):
         
@@ -96,10 +267,12 @@ class verificationReport:
             f_documentation = open(documentation_path_and_name, 'r')
             doc_data = f_documentation.readlines();
             f_documentation.close()
+            
+            if (class_name.find('(') >= 0):
+                class_name = class_name[0:class_name.find('(')]
 
             search_name = library_name + "." + class_name + "." + function_name
             found_function = False
-
 
             for line in doc_data:
                 if search_name in line:
@@ -142,10 +315,20 @@ class verificationReport:
     def PrintWS(self, status, text):
         if (status == 1):
             self.ws.write(self.row, 0, "", self.status_good)
+            if (self.verbose):
+                print('{}: {}'.format(text, status))
         elif (status == 0):
             self.ws.write(self.row, 0, "", self.status_bad)
+            if (self.verbose):
+                print('*** ERROR! *** {}: {}'.format(text, status))
         elif (status == 3):
             self.ws.write(self.row, 0, "ND", self.status_no_doc)
+            if (self.verbose):
+                print('{}: {} (No Documentation)'.format(text, status))
+        elif (status == 4):
+            self.ws.write(self.row, 0, "ND", self.status_bad)
+            if (self.verbose):
+                print('*** ERROR! *** (And no documentation) {}: {}'.format(text, status))
             
         self.ws.write(self.row, 1, text)
         self.row = self.row + 1

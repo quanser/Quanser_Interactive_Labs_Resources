@@ -1,4 +1,4 @@
-.. Kelly's Test documentation master file, created by
+.. Documentation master file, created by
    sphinx-quickstart on Tue May 31 16:06:23 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -15,10 +15,13 @@ This section documents the different types of actors that you can spawn and cont
    :maxdepth: 1
 
    camera_library
-   person_library
    car_library
+   person_library
+   animal_library
    road_signage
    widgets
    basic_shapes
+   splines
+   reference_frame
 
 

@@ -8,15 +8,19 @@ Real-Time
 Description
 ^^^^^^^^^^^
 
-The Real-Time library is a helper class to assist with spawning pre-compiled models designed to interface with QLabs.
-Note that these methods assume the Quanser's QUARC has been installed on the system and the quarc_run executable is accessible.
+The Real-Time library is a helper class to assist with spawning pre-compiled
+models designed to interface with QLabs.
+
+.. important::
+    These methods assume the Quanser's QUARC has been installed on the
+    system and the quarc_run executable is accessible.
 
 .. _realTimeLibrary:
 
 System Library
 ^^^^^^^^^^^^^^
 
-.. autoclass:: library_qlabs_real_time.QLabsRealTime
+.. autoclass:: qvl.real_time.QLabsRealTime
 
 .. _realTimeConstants:
 
@@ -31,17 +35,6 @@ This class has no public constants.
 Methods
 ^^^^^^^
 
-.. automethod:: library_qlabs_real_time.QLabsRealTime.start_real_time_model
-.. automethod:: library_qlabs_real_time.QLabsRealTime.terminate_real_time_model
-.. automethod:: library_qlabs_real_time.QLabsRealTime.terminate_all_real_time_models
-
-
-System Tutorial
-^^^^^^^^^^^^^^^
-
-.. dropdown:: Example 1
-
-.. dropdown:: Example 2
-
-.. dropdown:: Example 3
-
+.. automethod:: qvl.real_time.QLabsRealTime.start_real_time_model
+.. automethod:: qvl.real_time.QLabsRealTime.terminate_real_time_model
+.. automethod:: qvl.real_time.QLabsRealTime.terminate_all_real_time_models
