@@ -1,0 +1,53 @@
+function library_verification_qcar()
+    close all;
+    clear all;
+    clc;
+    addpath('../qvl')
+    
+    fprintf('\n\n------------------------------ Communications --------------------------------\n\n');
+    
+    qlabs = quanser_interactive_labs;
+    connection_established = qlabs.open('192.168.1.142');
+    
+    if connection_established == false
+        disp("Failed to open connection.")
+        return
+    end
+
+    class(qlabs)
+    
+    disp('Connected')
+    
+    num_destroyed = qlabs.destroy_all_spawned_actors();
+    
+    fprintf('%d actors destroyed', num_destroyed);
+    
+    
+    fprintf('\n\n-------------------------------- Stop Sign ----------------------------------\n\n');
+    StopSign = qlabs_stop_sign(qlabs);
+    status = StopSign.spawn_id(0, [1.193, 9.417, 0.005], [0,0,pi], [1,1,1], true);
+    eval(status, 0, 'StopSign.spawn_id')
+    
+    status = StopSign.spawn_id(1, [1.193, 7.417, 0.005], [0,0,pi], [1,1,1], true);
+    eval(status, 0, 'StopSign.spawn_id')
+    
+
+    status = StopSign.destroy();
+    eval(status, 1, 'StopSign.destroy')
+    
+    
+    
+    fprintf('\n\n------------------------------ Communications --------------------------------\n');
+    
+    qlabs.close();
+    disp('All done!');
+end
+
+function eval(return_value, expected_value, message)
+
+    if (return_value == expected_value)
+        fprintf('\nGood: %s (expected %d): %d', message, expected_value, return_value)
+    else
+        fprintf('\n*** ERROR: %s (expected %d): %d', message, expected_value, return_value)
+    end
+end

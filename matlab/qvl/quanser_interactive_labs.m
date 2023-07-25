@@ -1,7 +1,5 @@
 classdef quanser_interactive_labs < handle
     properties
-        %server_stream = []
-        %client_connection = []
         qlabs_stream = []
         
         BUFFER_SIZE = 65537
@@ -14,25 +12,34 @@ classdef quanser_interactive_labs < handle
         receive_packet_container_index = 0;
 		
 		wait_for_container_timeout = 5;
+
+        c = [];
     end
     
     methods
+%%
+        function obj = quanser_interactive_labs()
+            obj = obj@handle();
+
+            obj.c = qlabs_comm_modular_container();
+        end        
 %%        
         function success = open(obj, hostname, timeout)     
-            
+                
+            arguments
+                obj quanser_interactive_labs
+                hostname char = 'localhost'
+                timeout double = 10
+            end
 
-            if nargin > 2
-              defaultTimeout = timeout;
-            else
-              defaultTimeout = 10;
-            end            
+            defaultTimeout = timeout;
             
             % create a client connection
-            obj.qlabs_stream = stream_connect(['tcpip://' hostname ':18000'], true);
+            obj.qlabs_stream = quanser.communications.stream.connect(['tcpip://' hostname ':18000'], true);
             
-            poll_result = stream_poll(obj.qlabs_stream, 1, 'connect');
+            poll_result = obj.qlabs_stream.poll(1, 'connect');
             while ((poll_result == false) && (defaultTimeout > 0))
-                poll_result = stream_poll(obj.qlabs_stream, 1, 'connect');
+                poll_result = obj.qlabs_stream.poll(1, 'connect');
                 defaultTimeout = defaultTimeout - 1;
             end
             
@@ -42,8 +49,8 @@ classdef quanser_interactive_labs < handle
 %%        
         function close(obj)
             if ~isempty(obj.qlabs_stream)
-                stream_shutdown(obj.qlabs_stream);
-                stream_close(obj.qlabs_stream);
+                %stream_shutdown(obj.qlabs_stream);
+                obj.qlabs_stream.close();
                 obj.qlabs_stream = [];
             end
         end
@@ -55,17 +62,16 @@ classdef quanser_interactive_labs < handle
 %%        
         function success = send_container(obj, container)
             
-            byte_data = [typecast(int32(container.container_size+1), 'uint8') ...
+            byte_data = [typecast(int32(container.containerSize+1), 'uint8') ...
                          uint8(123) ...
-                         flip(typecast(int32(container.container_size), 'uint8')) ...
-                         flip(typecast(int32(container.class_id), 'uint8')) ...
-                         flip(typecast(int32(container.actor_number), 'uint8')) ...
-                         uint8(container.actor_function) ...
+                         flip(typecast(int32(container.containerSize), 'uint8')) ...
+                         flip(typecast(int32(container.classID), 'uint8')) ...
+                         flip(typecast(int32(container.actorNumber), 'uint8')) ...
+                         uint8(container.actorFunction) ...
                          container.payload];
-            
                      
-            [is_sent, would_block] = stream_send_array(obj.qlabs_stream, byte_data);           
-            stream_flush(obj.qlabs_stream);
+            [is_sent, would_block] = obj.qlabs_stream.send_int8_array(typecast(byte_data, 'int8'));           
+            obj.qlabs_stream.flush();
             success = is_sent;
         end
         
@@ -74,7 +80,7 @@ classdef quanser_interactive_labs < handle
         function new_data = receive_new_data(obj)
             new_data = false;
 
-            [data, would_block] = stream_receive_int8s(obj.qlabs_stream, obj.BUFFER_SIZE);
+            [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
             data = typecast(data, 'uint8');
 
@@ -84,7 +90,7 @@ classdef quanser_interactive_labs < handle
                 obj.receive_packet_buffer = [obj.receive_packet_buffer data];
 
 
-                [data, would_block] = stream_receive_int8s(obj.qlabs_stream, obj.BUFFER_SIZE);
+                [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
                 bytes_read = length(data);
                 
             end
@@ -117,17 +123,17 @@ classdef quanser_interactive_labs < handle
 
             if (obj.receive_packet_container_index > 0)
                 
-                c.container_size  = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+0:obj.receive_packet_container_index+3))), 'int32');
-                c.class_id        = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+4:obj.receive_packet_container_index+7))), 'int32');
-                c.actor_number   = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+8:obj.receive_packet_container_index+11))), 'int32');
-                c.actor_function = uint8(obj.receive_packet_buffer(obj.receive_packet_container_index+12));
+                c.containerSize  = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+0:obj.receive_packet_container_index+3))), 'int32');
+                c.classID        = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+4:obj.receive_packet_container_index+7))), 'int32');
+                c.actorNumber   = typecast(uint8(flip(obj.receive_packet_buffer(obj.receive_packet_container_index+8:obj.receive_packet_container_index+11))), 'int32');
+                c.actorFunction = uint8(obj.receive_packet_buffer(obj.receive_packet_container_index+12));
                 
                 PayloadStart = obj.receive_packet_container_index+13;
-                PayloadEnd = obj.receive_packet_container_index + c.container_size - 1;
+                PayloadEnd = obj.receive_packet_container_index + c.containerSize - 1;
                 
                 c.payload = obj.receive_packet_buffer(PayloadStart:PayloadEnd);
 
-                obj.receive_packet_container_index = obj.receive_packet_container_index + c.container_size;
+                obj.receive_packet_container_index = obj.receive_packet_container_index + c.containerSize;
 
                 if (obj.receive_packet_container_index >= obj.receive_packet_size)
 
@@ -163,7 +169,7 @@ classdef quanser_interactive_labs < handle
 		end
           
 %%        
-        function container = wait_for_container(obj, class_id, device_num, function_num)
+function container = wait_for_container(obj, classID, actorNumber, actorFunction)
             container = [];
             
 			tic
@@ -182,9 +188,9 @@ classdef quanser_interactive_labs < handle
                 while (more_containers)
                     [c, more_containers] = obj.get_next_container();
 
-                    if c.class_id == class_id
-                        if c.actor_number == device_num
-                            if c.actor_function == function_num
+                    if c.classID == classID
+                        if c.actorNumber == actorNumber
+                            if c.actorFunction == actorFunction
                                 container = c;
                                 return;
                             end
@@ -199,10 +205,26 @@ classdef quanser_interactive_labs < handle
         function flush_receive(obj)
             % get any data still in the receive buffer out
             
-            [data, would_block] = stream_receive_int8s(obj.qlabs_stream, obj.BUFFER_SIZE);
+            [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
         end
   
-
+%%
+        function num_destroyed = destroy_all_spawned_actors(obj)
+            % Find and destroy all spawned actors and widgets. This is a blocking operation.
+            num_destroyed = 0;
+            device_num = 0;
+        
+            obj.c.classID = obj.c.ID_GENERIC_ACTOR_SPAWNER;
+            obj.c.actorNumber = device_num;
+            obj.c.actorFunction = obj.c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS;
+            obj.c.payload = [];
+            obj.c.containerSize = 13 + length(obj.c.payload);
+        
+            if (send_container(obj, obj.c))
+                rc = wait_for_container(obj, obj.c.ID_GENERIC_ACTOR_SPAWNER, device_num, obj.c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK);
+                num_destroyed = typecast(flip(rc.payload), 'int32');
+            end
+        end
     end
 end
