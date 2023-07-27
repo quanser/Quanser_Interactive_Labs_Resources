@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "../")
+
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.qcar import QLabsQCar
 

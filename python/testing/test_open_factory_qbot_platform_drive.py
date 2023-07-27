@@ -8,6 +8,9 @@ sys.path.insert(0, "../")
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.qbot_platform import QLabsQBotPlatform
+from qvl.spline_line import QLabsSplineLine
+
+from qvl.animal import QLabsAnimal
 
 import sys
 import time
@@ -22,6 +25,9 @@ import keyboard
 
 
 def main():
+
+    tank_drive = False
+
     qlabs = QuanserInteractiveLabs()
 
     print("Connecting to QLabs...")
@@ -35,13 +41,35 @@ def main():
 
     # destroy the previous QBot and respawn it in a starting position
 
+    qlabs.destroy_all_spawned_actors()
+
+
     hQBot = QLabsQBotPlatform(qlabs)
-    hQBot.actorNumber=0
-    hQBot.destroy()
-    hQBot.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 0], rotation=[0,0,90], scale=[1,1,1], configuration=0)
+    hQBot.spawn_id_degrees(actorNumber=0, location=[-3.407, -6.666, 20], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING)
 
-    
+    stackBot = QLabsQBotPlatform(qlabs)
+    stackBot.spawn_id_degrees(actorNumber=1, location=[0.073, -2.743, 1], rotation=[0,180,90], scale=[1,1,1], configuration=0)
+
+    stackBot2 = QLabsQBotPlatform(qlabs)
+    stackBot2.spawn_id_degrees(actorNumber=2, location=[0.073, -2.743, 1.5], rotation=[0,0,90], scale=[1,1,1], configuration=0)
+
+    stackBot3 = QLabsQBotPlatform(qlabs)
+    stackBot3.spawn_id_degrees(actorNumber=3, location=[0.073, -2.743, 2], rotation=[0,180,90], scale=[1,1,1], configuration=0)
+
+    hcow = QLabsAnimal(qlabs)
+    hcow.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 3], rotation=[0,0,90], scale=[1,1,1], configuration=hcow.COW, waitForConfirmation=False)
+
+
+
+    hSpline = QLabsSplineLine(qlabs)
+    hSpline.spawn(location=[0.073, -2.743, 0], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0, waitForConfirmation=True)
+
+    point_list = [[6.49, -3.596, 0, 0.02],
+                  [7.007, 0.345, 0, 0.02]]
+
+    hSpline.set_points([1, 0, 1], point_list, alignEndPointTangents=False, waitForConfirmation=True)
+
 
     location_x = 0
     location_y = 0
@@ -65,27 +93,54 @@ def main():
 
         if status == True:
 
-            image_RGBD = cv2.putText(img = image_RGBD, text = "QA, ED for tank-control driving", org = (0, 30), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
+            if (tank_drive):
+                image_RGBD = cv2.putText(img = image_RGBD, text = "QA, ED for tank-control driving", org = (0, 30), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
+            else:
+                image_RGBD = cv2.putText(img = image_RGBD, text = "WASD for steering-control driving", org = (0, 30), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
+            
             image_RGBD = cv2.putText(img = image_RGBD, text = "ESC to exit", org = (0, 45), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
 
             cv2.imshow('image_stream', image_RGBD)
             cv2.waitKey(1)
 
-        speedScale = 1
-        leftWheelSpeed = 0
-        rightWheelSpeed = 0
+        if (tank_drive):
+            speedScale = 1
+            leftWheelSpeed = 0
+            rightWheelSpeed = 0
 
-        if (keyboard.is_pressed('Q')):
-            leftWheelSpeed = leftWheelSpeed + speedScale
+            if (keyboard.is_pressed('Q')):
+                leftWheelSpeed = leftWheelSpeed + speedScale
 
-        if (keyboard.is_pressed('A')):
-            leftWheelSpeed = leftWheelSpeed - speedScale
+            if (keyboard.is_pressed('A')):
+                leftWheelSpeed = leftWheelSpeed - speedScale
 
-        if (keyboard.is_pressed('E')):
-            rightWheelSpeed = rightWheelSpeed + speedScale
+            if (keyboard.is_pressed('E')):
+                rightWheelSpeed = rightWheelSpeed + speedScale
 
-        if (keyboard.is_pressed('D')):
-            rightWheelSpeed = rightWheelSpeed - speedScale
+            if (keyboard.is_pressed('D')):
+                rightWheelSpeed = rightWheelSpeed - speedScale
+
+        else:
+            speedScale = 1
+            leftWheelSpeed = 0
+            rightWheelSpeed = 0
+
+            if (keyboard.is_pressed('W')):
+                leftWheelSpeed = leftWheelSpeed + speedScale
+                rightWheelSpeed = rightWheelSpeed + speedScale
+
+            if (keyboard.is_pressed('S')):
+                leftWheelSpeed = leftWheelSpeed - speedScale
+                rightWheelSpeed = rightWheelSpeed - speedScale
+
+            if (keyboard.is_pressed('D')):
+                leftWheelSpeed = leftWheelSpeed + 0.5*speedScale
+                rightWheelSpeed = rightWheelSpeed - 0.5*speedScale
+
+            if (keyboard.is_pressed('A')):
+                leftWheelSpeed = leftWheelSpeed - 0.5*speedScale
+                rightWheelSpeed = rightWheelSpeed + 0.5*speedScale
+
 
         if (keyboard.is_pressed('Esc')):
             done = True
