@@ -347,28 +347,53 @@ classdef qlabs_actor < handle
             [status, actorNumber] = spawn(obj, location, rotation/180*pi, scale, configuration, waitForConfirmation);
         end             
 
-% 		%%
-% 		function [status, actor_number] = spawn(obj, qlabs, location, rotation, scale, wait_for_confirmation)
-%             if nargin == 5
-%                 wait_for_confirmation = true;
-%             end     
-%                         
-%             configuration = 0;
-%             
-%             [status, actor_number] = qlabs_common_spawn(qlabs, obj.ID_STOP_SIGN, location, rotation, scale, configuration, wait_for_confirmation);
-%         end
-%         %%
-% 		function [status, actor_number] = spawn_degrees(obj, qlabs, location, rotation, scale, wait_for_confirmation)
-%             if nargin == 5
-%                 wait_for_confirmation = true;
-%             end     
-%                         
-%             configuration = 0;
-%             
-%             [status, actor_number] = qlabs_common_spawn(qlabs, obj.ID_STOP_SIGN, location, rotation/180*pi, scale, configuration, wait_for_confirmation);
-%         end  
 
+        %%
+        function success = ping(obj)
+            % Checks if the actor is still present in the environment. Note that if you did not spawn
+            % the actor with one of the spawn functions, you may need to manually set the actorNumber member variable.
+    
+            success = false;
 
+            if (not(obj.is_actor_number_valid()))
+                return
+            end
+    
+            obj.c.classID = obj.classID;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_REQUEST_PING;
+            obj.c.payload = [];
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+    
+            obj.qlabs.flush_receive()
+    
+            if (obj.qlabs.send_container(obj.c))
+    
+                rc = obj.qlabs.wait_for_container(obj.classID, obj.actorNumber, obj.FCN_RESPONSE_PING);
+
+                if isempty(rc)
+                    if (obj.verbose)
+                        fprintf('ping: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    end
+
+                    return
+                    
+                end
+                
+                if length(rc.payload) == 1
+                    status = rc.payload(1);
+                    
+                    if (status == 1)
+                        success = true;
+                    end
+                    
+                else
+                    if (obj.verbose)
+                        fprintf('ping: Communication error (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    end
+                end
+            end
+        end
 
     end
 end

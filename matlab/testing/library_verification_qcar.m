@@ -415,32 +415,31 @@ function library_verification_qcar()
 
 
     hCrosswalk.spawn_id(1, [-7.5, 45, 0.00], [0,0,pi/2], [1,1,1], 0, true);
-    x = hCrosswalk.destroy()
+    x = hCrosswalk.destroy();
     eval(x, 1, 'Spawn and destroy existing crosswalk (expect return 1)')
     
 
     hCrosswalk.actorNumber = 10;
     x = hCrosswalk.destroy();
-    eval(x, 1, 'Destroy crosswalk that does not exist (expect return 0)')
+    eval(x, 0, 'Destroy crosswalk that does not exist (expect return 0)')
 
     x = hCrosswalk.spawn_id_degrees(2, [-7.5, 45, 0.00], [0,0,90], [1,1,1], 1, true);
-    eval(x, 1, 'Spawn crosswalk with degrees in config 1')
+    eval(x, 0, 'Spawn crosswalk with degrees in config 1');
 
     x = hCrosswalk.spawn_id_degrees(3, [-4.5, 45, 0.00], [0,0,90], [1,1,1], 2, true);
-    eval(x, 1, 'Spawn crosswalk with degrees in config 2')
+    eval(x, 0, 'Spawn crosswalk with degrees in config 2');
 
 
     %x, loc, rot, scale = hCrosswalk.get_world_transform()
     %vr.PrintWS(abs(np.sum(np.subtract(loc, [-7.8, 47.5, 0.0]))) < 0.001 and x == True, "Get world transform")
 
-%     hCrosswalk.actorNumber = 2;
-%     x = hCrosswalk.ping();
-%     vr.PrintWS(x == true, "Ping existing crosswalk (expect True)")
-%     eval(x, true, 'Ping existing crosswalk (expect True)')
-% 
-%     hCrosswalk.actorNumber = 4;
-%     x = hCrosswalk.ping();
-%     eval(x, false, 'Ping crosswalk that does not exist (expect False)')
+    hCrosswalk.actorNumber = 2;
+    x = hCrosswalk.ping();
+    eval(x, true, 'Ping existing crosswalk (expect True)');
+ 
+    hCrosswalk.actorNumber = 4;
+    x = hCrosswalk.ping();
+    eval(x, false, 'Ping crosswalk that does not exist (expect False)');
 
     
     fprintf('\n\n-------------------------------- People ----------------------------------\n\n');
