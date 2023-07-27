@@ -45,7 +45,7 @@ def main():
 
 
     hQBot = QLabsQBotPlatform(qlabs)
-    hQBot.spawn_id_degrees(actorNumber=0, location=[-3.407, -6.666, 20], rotation=[0,0,0], scale=[1,1,1], configuration=0)
+    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 3], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING)
 
     stackBot = QLabsQBotPlatform(qlabs)

@@ -227,66 +227,28 @@ function library_verification_qcar()
 %     ### Stop Sign
     fprintf('\n\n-------------------------------- Stop Sign ----------------------------------\n\n');
     % Spawn two signs
-    StopSign = qlabs_stop_sign(qlabs, true);
-    status = StopSign.spawn_id(0, [1.193, 9.417, 0.005], [0,0,pi], [1,1,1], 0, true);
-    eval(status, 0, 'StopSign.spawn_id 0')
-    
-    status = StopSign.spawn_id(1, [1.193, 7.417, 0.005], [0,0,pi], [1,1,1], 0, true);
-    eval(status, 0, 'StopSign.spawn_id 1')
-    
-    % Destroy most recent
-    status = StopSign.destroy();
-    eval(status, 1, 'StopSign.destroy 1')
+    hStop0 = qlabs_stop_sign(qlabs);
+    x = hStop0.spawn_id(0, [-17, 33.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(x, 0, 'Spawn sign with radians');
 
-    % Second destroy should fail
-    status = StopSign.destroy();
-    eval(status, -1, 'StopSign.destroy 1')
+    x = hStop0.spawn_id(0, [-17, 33.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(x, 2, 'Spawn sign with duplicate ID (return code 2)');
 
-    % Manually assign actor number then destory again
-    StopSign.actorNumber = 0;
-    status = StopSign.destroy();
-    eval(status, 1, 'StopSign.destroy 0')
+    hStop1 = qlabs_stop_sign(qlabs);
+    hStop1.spawn_id(1, [-16, 33.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    x = hStop1.destroy();
+    eval(x, 1, 'Spawn and destroy existing sign (expect return 1)')
+   
+    hStop1.actorNumber=1;
+    x = hStop1.destroy();
+    eval(x, 0, 'Destroy sign that doesn"t exist (expect return 0)')
 
-    % Spawn again with degrees
-    status = StopSign.spawn_id_degrees(0, [1.193, 9.417, 0.005], [0,0,180], [1,1,1], 0, true);
-    eval(status, 0, 'StopSign.spawn_id_degrees 0')
+    hStop2 = qlabs_stop_sign(qlabs);
+    x = hStop2.spawn_id_degrees(2, [-15, 33.5, 0.0], [0,0,180], [1,1,1], 0, true);
+    eval(x, 0, 'Spawn sign with degrees')
 
-    % Spawn with actor number auto-allocated
-    [status, actorNumber] = StopSign.spawn([1.193, 7.417, 0.005], [0,0,pi], [1,1,1], 0, true);
-    eval(status, 0, 'StopSign.spawn (status)')
-    eval(actorNumber, 1, 'StopSign.spawn (actorNumber)')
-
-    % Spawn with actor number auto-allocated
-    [status, actorNumber] = StopSign.spawn_degrees([1.193, 5.417, 0.005], [0,0,180], [1,1,1], 0, true);
-    eval(status, 0, 'StopSign.spawn (status)')
-    eval(actorNumber, 2, 'StopSign.spawn (actorNumber)')    
-
-% 
-%     vr.PrintWSHeader("Stop Sign")
-%     print("\n\n---Stop Sign---")
-% 
-%     hStop0 = QLabsStopSign(qlabs)
-%     x = hStop0.spawn_id(actorNumber=0, location=[-17, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with radians")
-% 
-%     x = hStop0.spawn_id(actorNumber=0, location=[-17, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
-% 
-%     hStop1 = QLabsStopSign(qlabs)
-%     hStop1.spawn_id(actorNumber=1, location=[-16, 33.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hStop1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
-% 
-%     hStop1.actorNumber=1
-%     x = hStop1.destroy()
-%     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
-% 
-%     hStop2 = QLabsStopSign(qlabs)
-%     x = hStop2.spawn_id_degrees(actorNumber=2, location=[-15, 33.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with degrees")
-% 
-%     x, loc, rot, scale = hStop2.get_world_transform()
-%     vr.PrintWS(np.array_equal(loc, [-15, 33.5, 0.0]) and x == True, "Get world transform")
+%    x, loc, rot, scale = hStop2.get_world_transform();
+%    vr.PrintWS(np.array_equal(loc, [-15, 33.5, 0.0]) and x == True, "Get world transform")
 % 
 % 
 %     x = hStop2.ping()
@@ -296,8 +258,6 @@ function library_verification_qcar()
 %     x = hStop1.ping()
 %     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
 % 
-%     vr.checkFunctionTestList("stop_sign", "../docs/source/Objects/road_signage.rst", "actor")
-% 
 % 
 %     ### Roundabout Sign
     fprintf('\n\n-------------------------------- Roundabout Sign ----------------------------------\n\n');
@@ -306,31 +266,27 @@ function library_verification_qcar()
     status = roundaboutSign.spawn_id(0, [1.193, 11.417, 0.005], [0,0,pi], [1,1,1], true);
     eval(status, 0, 'roundaboutSign.spawn_id 0')
 
-% 
-% 
-%     vr.PrintWSHeader("Roundabout Sign")
-%     print("\n\n---Roundabout Sign---")
-% 
-%     hRoundabout0 = QLabsRoundaboutSign(qlabs)
-%     x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with radians")
-% 
-%     x = hRoundabout0.spawn_id(actorNumber=0, location=[-17, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
-% 
-%     hRoundabout1 = QLabsRoundaboutSign(qlabs)
-%     hRoundabout1.spawn_id(actorNumber=1, location=[-16, 31.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hRoundabout1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
-% 
-%     hRoundabout1.actorNumber = 1
-%     x = hRoundabout1.destroy()
-%     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
-% 
-%     hRoundabout2 = QLabsRoundaboutSign(qlabs)
-%     x = hRoundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 31.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with degrees")
-% 
+    hRoundabout0 = qlabs_roundabout_sign(qlabs);
+    x = hRoundabout0.spawn_id(0, [-17, 31.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'Spawn sign with radians')
+    
+    x = hRoundabout0.spawn_id(0, [-17, 31.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 2, 'Spawn sign with duplicate ID (return code 2)')
+    
+    hRoundabout1 = qlabs_roundabout_sign(qlabs);
+    hRoundabout1.spawn_id(1, [-16, 31.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    x = hRoundabout1.destroy();
+    eval(status, 1, 'Spawn and destroy existing sign (expect return 1)')
+    
+    hRoundabout1.actorNumber = 1;
+    x = hRoundabout1.destroy();
+    eval(status, 0, 'Destroy sign that doesn"t exist (expect return 0)')
+    
+    hRoundabout2 = qlabs_roundabout_sign(qlabs);
+    x = hRoundabout2.spawn_id_degrees(2, [-15, 31.5, 0.0], [0,0,180], [1,1,1], 0, true);
+    eval(status, 0, 'Spawn sign with degrees')
+    
+    
 %     x, loc, rot, scale = hRoundabout2.get_world_transform()
 %     vr.PrintWS(np.array_equal(loc, [-15, 31.5, 0.0]) and x == True, "Get world transform")
 % 
@@ -349,30 +305,26 @@ function library_verification_qcar()
     fprintf('\n\n-------------------------------- Traffic Cone ----------------------------------\n\n');
     %Spawn a traffic cone
     trafficCone = qlabs_traffic_cone(qlabs, use_verbose);
-    status = trafficCone.spawn_id(0, [2.193, 11.417, 0.005], [0,0,pi], [1,1,1], 0, true);
+    status = trafficCone.spawn_id(3, [2.193, 11.417, 0.005], [0,0,pi], [1,1,1], 0, true);
     eval(status, 0, 'trafficCone.spawn_id 0')
 
     %Spawn a second traffic cone
     trafficCone = qlabs_traffic_cone(qlabs, use_verbose);
     status = trafficCone.spawn_id(1, [3.193, 11.417, 0.005], [0,0,pi], [1,1,1], 1, true);
     eval(status, 0, 'trafficCone.spawn_id 1')
+ 
+    hCone0 = qlabs_traffic_cone(qlabs);
+    x = hCone0.spawn_id(0, [-17, 30.5, 1.0], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'Spawn cone with radians')
+    
+    x = hCone0.spawn_id(0, [-17, 30.5, 1.0], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 2, 'Spawn cone with duplicate ID (return code 2)')
+    
+    hCone1 = qlabs_traffic_cone(qlabs);
+    hCone1.spawn_id(1, [-16, 30.5, 1.0], [0,0,pi], [1,1,1], 0, true);
+    x = hCone1.destroy();
+    eval(status, 1, 'Spawn and destroy existing cone (expect return 1)')
 
-
-% 
-%     vr.PrintWSHeader("Traffic Cone")
-%     print("\n\n---Traffic Cone---")
-% 
-%     hCone0 = QLabsTrafficCone(qlabs)
-%     x = hCone0.spawn_id(actorNumber=0, location=[-17, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn cone with radians")
-% 
-%     x = hCone0.spawn_id(actorNumber=0, location=[-17, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn cone with duplicate ID (return code 2)")
-% 
-%     hCone1 = QLabsTrafficCone(qlabs)
-%     hCone1.spawn_id(actorNumber=1, location=[-16, 30.5, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hCone1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing cone (expect return 1)")
 % 
 %     hCone1.actorNumber = 1
 %     x = hCone1.destroy()
