@@ -59,6 +59,14 @@ classdef qlabs_free_camera < qlabs_actor
 
 %%
     function success = set_transform(obj, location, rotation)
+        
+        arguments
+            obj qlabs_actor
+            location (1,3) double = [0 0 0]
+            rotation (1,3) double = [0 0 0]
+        end
+        
+        
         success = false;
 
 
@@ -75,7 +83,7 @@ classdef qlabs_free_camera < qlabs_actor
                      flip(typecast(single(rotation(1)), 'uint8')) ...
                      flip(typecast(single(rotation(2)), 'uint8')) ...
                      flip(typecast(single(rotation(3)), 'uint8'))];
-        obj.c.containerSize = 10 + length(c.payload);
+        obj.c.containerSize = 10 + length(obj.c.payload);
 
 
         obj.qlabs.flush_receive()

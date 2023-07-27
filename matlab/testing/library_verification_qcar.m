@@ -6,8 +6,8 @@ function library_verification_qcar()
     
     fprintf('\n\n------------------------------ Communications --------------------------------\n\n');
     
-    qlabs = quanser_interactive_labs;
-    connection_established = qlabs.open('192.168.1.165');
+    qlabs = quanser_interactive_labs();
+    connection_established = qlabs.open('localhost');
     
     if connection_established == false
         disp("Failed to open connection.")
@@ -22,67 +22,14 @@ function library_verification_qcar()
     fprintf('%d actors destroyed', num_destroyed);
     
     
-    fprintf('\n\n-------------------------------- Stop Sign ----------------------------------\n\n');
-    % Spawn two signs
-    StopSign = qlabs_stop_sign(qlabs, true);
-    status = StopSign.spawn_id(0, [1.193, 9.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'StopSign.spawn_id 0')
-    
-    status = StopSign.spawn_id(1, [1.193, 7.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'StopSign.spawn_id 1')
-    
-    % Destroy most recent
-    status = StopSign.destroy();
-    eval(status, 1, 'StopSign.destroy 1')
 
-    % Second destroy should fail
-    status = StopSign.destroy();
-    eval(status, -1, 'StopSign.destroy 1')
-
-    % Manually assign actor number then destory again
-    StopSign.actorNumber = 0;
-    status = StopSign.destroy();
-    eval(status, 1, 'StopSign.destroy 0')
-
-    % Spawn again with degrees
-    status = StopSign.spawn_id_degrees(0, [1.193, 9.417, 0.005], [0,0,180], [1,1,1], true);
-    eval(status, 0, 'StopSign.spawn_id_degrees 0')
-
-    % Spawn with actor number auto-allocated
-    [status, actorNumber] = StopSign.spawn([1.193, 7.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'StopSign.spawn (status)')
-    eval(actorNumber, 1, 'StopSign.spawn (actorNumber)')
-
-    % Spawn with actor number auto-allocated
-    [status, actorNumber] = StopSign.spawn_degrees([1.193, 5.417, 0.005], [0,0,180], [1,1,1], true);
-    eval(status, 0, 'StopSign.spawn (status)')
-    eval(actorNumber, 2, 'StopSign.spawn (actorNumber)')    
-    
-
-    fprintf('\n\n-------------------------------- Crosswalk ----------------------------------\n\n');
-    %Spawn a crosswalk 
-    crosswalk = qlabs_crosswalk(qlabs, true);
-    status = crosswalk.spawn_id(0, [1.193, 9.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'crosswalk.spawn_id 0')
+    use_verbose = true;
 
 
-    fprintf('\n\n-------------------------------- Roundabout Sign ----------------------------------\n\n');
-    %Spawn a roundabout sign
-    roundaboutSign = qlabs_roundabout_sign(qlabs, true);
-    status = roundaboutSign.spawn_id(0, [1.193, 11.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'roundaboutSign.spawn_id 0')
 
 
-    fprintf('\n\n-------------------------------- Traffic Cone ----------------------------------\n\n');
-    %Spawn a traffic cone
-    trafficCone = qlabs_traffic_cone(qlabs, true);
-    status = trafficCone.spawn_id(0, [2.193, 11.417, 0.005], [0,0,pi], [1,1,2], true);
-    eval(status, 0, 'trafficCone.spawn_id 0')
 
-    %Spawn a second traffic cone
-    trafficCone = qlabs_traffic_cone(qlabs, true);
-    status = trafficCone.spawn_id(1, [2.193, 11.417, 0.005], [0,0,pi], [1,1,1], true);
-    eval(status, 0, 'trafficCone.spawn_id 1')
+
 
 
 
@@ -278,6 +225,42 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("yield_sign", "../docs/source/Objects/road_signage.rst", "actor")
 % 
 %     ### Stop Sign
+    fprintf('\n\n-------------------------------- Stop Sign ----------------------------------\n\n');
+    % Spawn two signs
+    StopSign = qlabs_stop_sign(qlabs, true);
+    status = StopSign.spawn_id(0, [1.193, 9.417, 0.005], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'StopSign.spawn_id 0')
+    
+    status = StopSign.spawn_id(1, [1.193, 7.417, 0.005], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'StopSign.spawn_id 1')
+    
+    % Destroy most recent
+    status = StopSign.destroy();
+    eval(status, 1, 'StopSign.destroy 1')
+
+    % Second destroy should fail
+    status = StopSign.destroy();
+    eval(status, -1, 'StopSign.destroy 1')
+
+    % Manually assign actor number then destory again
+    StopSign.actorNumber = 0;
+    status = StopSign.destroy();
+    eval(status, 1, 'StopSign.destroy 0')
+
+    % Spawn again with degrees
+    status = StopSign.spawn_id_degrees(0, [1.193, 9.417, 0.005], [0,0,180], [1,1,1], 0, true);
+    eval(status, 0, 'StopSign.spawn_id_degrees 0')
+
+    % Spawn with actor number auto-allocated
+    [status, actorNumber] = StopSign.spawn([1.193, 7.417, 0.005], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'StopSign.spawn (status)')
+    eval(actorNumber, 1, 'StopSign.spawn (actorNumber)')
+
+    % Spawn with actor number auto-allocated
+    [status, actorNumber] = StopSign.spawn_degrees([1.193, 5.417, 0.005], [0,0,180], [1,1,1], 0, true);
+    eval(status, 0, 'StopSign.spawn (status)')
+    eval(actorNumber, 2, 'StopSign.spawn (actorNumber)')    
+
 % 
 %     vr.PrintWSHeader("Stop Sign")
 %     print("\n\n---Stop Sign---")
@@ -317,6 +300,12 @@ function library_verification_qcar()
 % 
 % 
 %     ### Roundabout Sign
+    fprintf('\n\n-------------------------------- Roundabout Sign ----------------------------------\n\n');
+    %Spawn a roundabout sign
+    roundaboutSign = qlabs_roundabout_sign(qlabs, use_verbose);
+    status = roundaboutSign.spawn_id(0, [1.193, 11.417, 0.005], [0,0,pi], [1,1,1], true);
+    eval(status, 0, 'roundaboutSign.spawn_id 0')
+
 % 
 % 
 %     vr.PrintWSHeader("Roundabout Sign")
@@ -356,6 +345,19 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("roundabout_sign", "../docs/source/Objects/road_signage.rst", "actor")
 % 
 %     ### Traffic Cone
+
+    fprintf('\n\n-------------------------------- Traffic Cone ----------------------------------\n\n');
+    %Spawn a traffic cone
+    trafficCone = qlabs_traffic_cone(qlabs, use_verbose);
+    status = trafficCone.spawn_id(0, [2.193, 11.417, 0.005], [0,0,pi], [1,1,1], 0, true);
+    eval(status, 0, 'trafficCone.spawn_id 0')
+
+    %Spawn a second traffic cone
+    trafficCone = qlabs_traffic_cone(qlabs, use_verbose);
+    status = trafficCone.spawn_id(1, [3.193, 11.417, 0.005], [0,0,pi], [1,1,1], 1, true);
+    eval(status, 0, 'trafficCone.spawn_id 1')
+
+
 % 
 %     vr.PrintWSHeader("Traffic Cone")
 %     print("\n\n---Traffic Cone---")
@@ -402,65 +404,59 @@ function library_verification_qcar()
 %     print("Possess camera 0")
 % 
 %     ### Crosswalk
+    fprintf('\n\n-------------------------------- Crosswalk ----------------------------------\n\n');
+    %Spawn a crosswalk 
+    hCrosswalk = qlabs_crosswalk(qlabs, use_verbose);
+    x = hCrosswalk.spawn_id(0, [-10.5 45 0.00], [0 0 pi/2], [1 1 1], 0, true);
+    eval(x, 0, 'Spawn crosswalk with radians')
+
+    x = hCrosswalk.spawn_id(0, [-7.5, 45, 0.00], [0,0,pi/2], [1,1,1], 0, true);
+    eval(x, 2, 'Spawn crosswalk with duplicate ID (return code 2)')
+
+
+    hCrosswalk.spawn_id(1, [-7.5, 45, 0.00], [0,0,pi/2], [1,1,1], 0, true);
+    x = hCrosswalk.destroy()
+    eval(x, 1, 'Spawn and destroy existing crosswalk (expect return 1)')
+    
+
+    hCrosswalk.actorNumber = 10;
+    x = hCrosswalk.destroy();
+    eval(x, 1, 'Destroy crosswalk that does not exist (expect return 0)')
+
+    x = hCrosswalk.spawn_id_degrees(2, [-7.5, 45, 0.00], [0,0,90], [1,1,1], 1, true);
+    eval(x, 1, 'Spawn crosswalk with degrees in config 1')
+
+    x = hCrosswalk.spawn_id_degrees(3, [-4.5, 45, 0.00], [0,0,90], [1,1,1], 2, true);
+    eval(x, 1, 'Spawn crosswalk with degrees in config 2')
+
+
+    %x, loc, rot, scale = hCrosswalk.get_world_transform()
+    %vr.PrintWS(abs(np.sum(np.subtract(loc, [-7.8, 47.5, 0.0]))) < 0.001 and x == True, "Get world transform")
+
+%     hCrosswalk.actorNumber = 2;
+%     x = hCrosswalk.ping();
+%     vr.PrintWS(x == true, "Ping existing crosswalk (expect True)")
+%     eval(x, true, 'Ping existing crosswalk (expect True)')
 % 
-% 
-%     vr.PrintWSHeader("Crosswalk")
-%     print("\n\n---Crosswalk---")
-% 
-%     hCrosswalk = QLabsCrosswalk(qlabs)
-%     x = hCrosswalk.spawn_id(actorNumber=0, location=[-10.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn crosswalk with radians")
-% 
-%     x = hCrosswalk.spawn_id(actorNumber=0, location=[-7.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn crosswalk with duplicate ID (return code 2)")
-% 
-%     hCrosswalk.spawn_id(actorNumber=1, location=[-7.5, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hCrosswalk.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing crosswalk (expect return 1)")
-% 
-%     hCrosswalk.actorNumber = 10
-%     x = hCrosswalk.destroy()
-%     vr.PrintWS(x == 0, "Destroy crosswalk that doesn't exist (expect return 0)")
-% 
-%     x = hCrosswalk.spawn_id_degrees(actorNumber=2, location=[-7.5, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 1")
-% 
-%     x = hCrosswalk.spawn_id_degrees(actorNumber=3, location=[-4.5, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn crosswalk with degrees in config 2")
-% 
-% 
-%     x, loc, rot, scale = hCrosswalk.get_world_transform()
-%     vr.PrintWS(abs(np.sum(np.subtract(loc, [-7.8, 47.5, 0.0]))) < 0.001 and x == True, "Get world transform")
-% 
-%     hCrosswalk.actorNumber = 2
-%     x = hCrosswalk.ping()
-%     vr.PrintWS(x == True, "Ping existing crosswalk (expect True)")
-% 
-%     hCrosswalk.actorNumber = 4
-%     x = hCrosswalk.ping()
-%     vr.PrintWS(x == False, "Ping crosswalk that doesn't exist (expect False)")
-% 
-%     vr.checkFunctionTestList("crosswalk", "../docs/source/Objects/road_signage.rst", "actor")
-% 
-% 
-%     ### People
-% 
-% 
-%     vr.PrintWSHeader("People")
-%     print("\n\n---People---")
-% 
-%     hPersonRight = QLabsPerson(qlabs)
-%     hPersonRight.spawn_id(actorNumber=0, location=[-4.5, 41, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-% 
-%     hPersonMiddle = QLabsPerson(qlabs)
-%     hPersonMiddle.spawn_id(actorNumber=1, location=[-7.5, 41, 0.005], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-% 
-%     hPersonLeft = QLabsPerson(qlabs, True)
-%     hPersonLeft.spawn_id_degrees(actorNumber=2, location=[-10.5, 41, 0.005], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-% 
-%     hPersonRight.move_to(location=[-4.5, 48, 0.005], speed=hPersonRight.WALK, waitForConfirmation=True)
-%     hPersonMiddle.move_to(location=[-7.5, 48, 0.005], speed=hPersonMiddle.JOG, waitForConfirmation=True)
-%     hPersonLeft.move_to(location=[-10.5, 48, 0.005], speed=hPersonLeft.RUN, waitForConfirmation=True)
+%     hCrosswalk.actorNumber = 4;
+%     x = hCrosswalk.ping();
+%     eval(x, false, 'Ping crosswalk that does not exist (expect False)')
+
+    
+    fprintf('\n\n-------------------------------- People ----------------------------------\n\n');
+
+    hPersonRight = qlabs_person(qlabs, use_verbose);
+    hPersonRight.spawn_id(0, [-4.5, 41, 0.005], [0,0,pi/2], [1,1,1], 6, true);
+
+    hPersonMiddle = qlabs_person(qlabs, use_verbose);
+    hPersonMiddle.spawn_id(1, [-7.5, 41, 0.005], [0,0,pi/2], [1,1,1], 7, true)
+
+    hPersonLeft = qlabs_person(qlabs, use_verbose);
+    hPersonLeft.spawn_id_degrees(2, [-10.5, 41, 0.005], [0,0,90], [1,1,1], 8, true)
+
+    hPersonRight.move_to([-4.5, 48, 0.005], hPersonRight.WALK, true);
+    hPersonMiddle.move_to([-7.5, 48, 0.005], hPersonMiddle.JOG, true);
+    hPersonLeft.move_to([-10.5, 48, 0.005], hPersonLeft.RUN, true);
 % 
 %     time.sleep(3)
 % 

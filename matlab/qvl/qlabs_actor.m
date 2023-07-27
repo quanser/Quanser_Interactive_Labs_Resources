@@ -55,7 +55,7 @@ classdef qlabs_actor < handle
         function value = is_actor_number_valid(obj)
             if isempty(obj.actorNumber) == true
                 if (obj.verbose == true)
-                    disp('actorNumber member variable empty. Use a spawn function to assign an actor or manually assign the actorNumber variable.')
+                    fprintf('actorNumber member variable empty. Use a spawn function to assign an actor or manually assign the actorNumber variable.\n')
                 end
                
                 value = false;
@@ -95,7 +95,7 @@ classdef qlabs_actor < handle
                         return;
                     else
                         if (obj.verbose == true)
-                            disp('Container payload does not match expected size.')
+                            fprintf('Container payload does not match expected size.\n')
                         end                          
                         num_destroyed = -1;
                         return
@@ -121,7 +121,7 @@ classdef qlabs_actor < handle
                 rc = obj.qlabs.wait_for_container(obj.c.ID_GENERIC_ACTOR_SPAWNER, 0, obj.c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_ACTORS_OF_CLASS_ACK);
                 if isempty(rc)
                     if (obj.verbose == true)
-                        disp('Timeout waiting for response.')
+                        fprint('Timeout waiting for response.\n')
                     end
                     num_destroyed = -1;
                 else
@@ -132,7 +132,7 @@ classdef qlabs_actor < handle
                         return;
                     else
                         if (obj.verbose == true)
-                            disp('Container payload does not match expected size.')
+                            fprintf('Container payload does not match expected size.\n')
                         end                        
                         num_destroyed = -1;
                         return
@@ -206,19 +206,19 @@ classdef qlabs_actor < handle
     
                         elseif (obj.verbose)
                             if (status == 1)
-                                fprintf('spawn_id: Class not available (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                                fprintf('spawn_id: Class not available (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                             elseif (status == 2)
-                                fprintf('spawn_id: Actor number not available or already in use (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                                fprintf('spawn_id: Actor number not available or already in use (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                             elseif (status == -1)
-                                fprintf('spawn_id: Communication error (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                                fprintf('spawn_id: Communication error (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                             else
-                                fprintf('spawn_id: Unknown error (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                                fprintf('spawn_id: Unknown error (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                             end
                         end
                         
                     else
                         if (obj.verbose)
-                            fprintf('spawn: Communication error (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                            fprintf('spawn: Communication error (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                         end
 
                         status = -1;
@@ -309,17 +309,17 @@ classdef qlabs_actor < handle
     
                         elseif (obj.verbose)
                             if (status == 1)
-                                fprintf('spawn_id: Class not available (classID %u).', obj.classID);
+                                fprintf('spawn_id: Class not available (classID %u).\n', obj.classID);
                             elseif (status == -1)
-                                fprintf('spawn_id: Communication error (classID %u).', obj.classID);
+                                fprintf('spawn_id: Communication error (classID %u).\n', obj.classID);
                             else
-                                fprintf('spawn_id: Unknown error (classID %u).', obj.classID);
+                                fprintf('spawn_id: Unknown error (classID %u).\n', obj.classID);
                             end
                         end
                         
                     else
                         if (obj.verbose)
-                            fprintf('spawn: Communication error (classID %u, actorNumber %u).', obj.classID, actorNumber);
+                            fprintf('spawn: Communication error (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
                         end
 
                         status = -1;
