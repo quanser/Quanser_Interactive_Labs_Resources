@@ -728,6 +728,9 @@ class QLabsActor:
         :rtype: boolean
 
         """
+        if (not self._is_actor_number_valid()):
+            return False
+
         c = CommModularContainer()
         c.classID = self.classID
         c.actorNumber = self.actorNumber
