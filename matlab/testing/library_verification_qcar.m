@@ -437,11 +437,11 @@ function library_verification_qcar()
 % 
 % 
 %     ### QCar
-% 
-% 
-%     hCameraQCars = QLabsFreeCamera(qlabs)
-%     hCameraQCars.spawn_id(actorNumber=33, location=[-15.075, 26.703, 6.074], rotation=[0, 0.564, -1.586])
-%     hCameraQCars.possess()
+    fprintf('\n\n-------------------------------- QCar ----------------------------------\n\n');
+
+%    hCameraQCars = qlabs_free_camera(qlabs);
+%    hCameraQCars.spawn_id(33, [-15.075, 26.703, 6.074], [0, 0.564, -1.586]);
+%    hCameraQCars.possess();
 % 
 %     vr.PrintWSHeader("QCar")
 %     print("\n\n---QCar---")
@@ -741,41 +741,33 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("qcar", "../docs/source/Objects/car_library.rst", "actor")
 % 
 % 
-%     ### Basic Shape
-% 
-% 
-%     vr.PrintWSHeader("Basic Shape")
-%     print("\n\n---Basic Shape---")
-% 
+    fprintf('\n\n-------------------------------- Basic Shape ----------------------------------\n\n');
+
 %     x = hCamera2.possess()
 % 
-%     hCube200 = QLabsBasicShape(qlabs)
-%     x = hCube200.spawn_id(actorNumber=200, location=[-4.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200.SHAPE_CUBE, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with radians")
-% 
-% 
-% 
-%     hCube200Duplicate = QLabsBasicShape(qlabs)
-%     x = hCube200Duplicate.spawn_id(actorNumber=200, location=[-5.852, 36.977, 0.5], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hCube200Duplicate.SHAPE_CUBE, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn with duplicate ID")
-% 
-%     hCube220 = QLabsBasicShape(qlabs)
-%     x = hCube220.spawn_id_degrees(actorNumber=220, location=[-4.832, 34.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube220.SHAPE_CUBE, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with degrees")
-% 
-%     hCube221 = QLabsBasicShape(qlabs, True)
-%     x = hCube221.spawn_id_degrees(actorNumber=221, location=[-4.832, 35.147, 0.5], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hCube221.SHAPE_CUBE, waitForConfirmation=True)
-%     x = hCube221.destroy()
-%     print("Num actors destroyed: {}".format(x))
-%     vr.PrintWS(x == 1, "Spawn and destroy existing (expect return 1)")
-% 
-% 
-%     hCube221.actorNumber = 221
-%     x = hCube221.destroy()
-%     print("Num actors destroyed: {}".format(x))
-%     vr.PrintWS(x == 0, "Destroy shape that doesn't exist (expect return 0)")
-% 
-% 
+    hCube200 = qlabs_basic_shape(qlabs);
+    x = hCube200.spawn_id(200, [-4.852, 36.977, 0.5], [0,0,pi/4], [0.5,0.5,0.5], hCube200.SHAPE_CUBE, true);
+    eval(x, 0, 'Spawn sign with radians')
+ 
+    hCube200Duplicate = qlabs_basic_shape(qlabs);
+    x = hCube200Duplicate.spawn_id(200, [-5.852, 36.977, 0.5], [0,0,pi/4], [0.5,0.5,0.5], hCube200Duplicate.SHAPE_CUBE, true);
+    eval(x, 2, 'Spawn with duplicate ID')
+ 
+    hCube220 = qlabs_basic_shape(qlabs);
+    x = hCube220.spawn_id_degrees(220, [-4.832, 34.147, 0.5], [0,0,45], [0.5,0.5,0.5], hCube220.SHAPE_CUBE, true);
+    eval(x, 0, 'Spawn sign with degrees')
+ 
+    hCube221 = qlabs_basic_shape(qlabs, true);
+    x = hCube221.spawn_id_degrees(221, [-4.832, 35.147, 0.5], [0,0,45], [0.5,0.5,0.5], hCube221.SHAPE_CUBE, true);
+    x = hCube221.destroy();
+    fprintf('Num actors destroyed: %u', x)
+    eval(x, 1, 'Spawn and destroy existing (expect return 1)')
+
+    hCube221.actorNumber = 221
+    x = hCube221.destroy()
+    fprintf('Num actors destroyed: %u', x)
+    eval(x, 0, 'Destroy shape that doesn"t exist (expect return 0)')
+ 
 %     x = hCube220.ping()
 %     vr.PrintWS(x == True, "Ping existing sign (expect True)")
 % 
@@ -786,10 +778,10 @@ function library_verification_qcar()
 %     x, loc, rot, scale = hCube200.get_world_transform()
 %     vr.PrintWS(np.sum(np.subtract(loc, [-4.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
 % 
-%     hCube201 = QLabsBasicShape(qlabs, True)
-%     x = hCube201.spawn_id_and_parent_with_relative_transform(actorNumber=201, location=[0,2,0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=hCube201.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn with parent relative transform (expect 0)")
-% 
+    hCube201 = qlabs_basic_shape(qlabs, true);
+    x = hCube201.spawn_id_and_parent_with_relative_transform(201, [0,2,0], [0,0,pi/4], [1,1,1], hCube201.SHAPE_CUBE, hCube200.ID_BASIC_SHAPE, hCube200.actorNumber, 0, true);
+    eval(x, 0, 'Spawn with parent relative transform (expect 0)')
+ 
 %     hCube202 = QLabsBasicShape(qlabs, True)
 %     x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=hCube202.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
 %     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
@@ -940,43 +932,37 @@ function library_verification_qcar()
 % 
 %     vr.checkFunctionTestList("widget", "../docs/source/Objects/widgets.rst")
 % 
-% 
-% 
-%     ### Traffic Light
-% 
-%     vr.PrintWSHeader("Traffic Light")
-%     print("\n\n---Traffic Light---")
-% 
-% 
+ 
+    fprintf('\n\n-------------------------------- Traffic Light ----------------------------------\n\n');
+
 %     hCameraTraffic = QLabsFreeCamera(qlabs)
 %     x = hCameraTraffic.spawn(location=[-6.891, 3.568, 2.127], rotation=[0, 0.049, 1.105])
 %     hCameraTraffic.possess()
 % 
-%     hTrafficLight0 = QLabsTrafficLight(qlabs)
-%     x = hTrafficLight0.spawn_id(actorNumber=0, location=[6, 14.328, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn traffic light with radians")
-% 
-%     x = hTrafficLight0.spawn_id(actorNumber=0, location=[6, 14.328, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn traffic light with duplicate ID (return code 2)")
-% 
-%     hTrafficLight1 = QLabsTrafficLight(qlabs)
-%     hTrafficLight1.spawn_id(actorNumber=1, location=[-2.44, 15, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hTrafficLight1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing light (expect return 1)")
-% 
-%     hTrafficLight1.actorNumber = 1
-%     x = hTrafficLight1.destroy()
-%     vr.PrintWS(x == 0, "Destroy traffic light that doesn't exist (expect return 0)")
-% 
-%     hTrafficLight2 = QLabsTrafficLight(qlabs)
-%     x = hTrafficLight2.spawn_id_degrees(actorNumber=2, location=[-2.44, 15, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 1")
-% 
-%     hTrafficLight3 = QLabsTrafficLight(qlabs)
-%     [x, assignedActorNum] = hTrafficLight3.spawn_degrees(location=[6.686, 5.802, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn traffic light with degrees in config 2")
-% 
-% 
+    hTrafficLight0 = qlabs_traffic_light(qlabs);
+    x = hTrafficLight0.spawn_id(0, [6, 14.328, 0.215], [0,0,0], [1,1,1], 0, true);
+    eval(x, 0, 'Spawn traffic light with radians')
+     
+    x = hTrafficLight0.spawn_id(0, [6, 14.328, 0.215], [0,0,0], [1,1,1], 0, true);
+    eval(x, 2, 'Spawn traffic light with duplicate ID (return code 2)')
+    
+    hTrafficLight1 = qlabs_traffic_light(qlabs);
+    hTrafficLight1.spawn_id(1, [-2.44, 15, 0.215], [0,0,0], [1,1,1], 0, true)
+    x = hTrafficLight1.destroy();
+    eval(x, 1, 'Spawn and destroy existing light (expect return 1)')
+ 
+    hTrafficLight1.actorNumber = 1;
+    x = hTrafficLight1.destroy();
+    eval(x, 0, 'Destroy traffic light that doesn"t exist (expect return 0)')    
+    
+    hTrafficLight2 = qlabs_traffic_light(qlabs);
+    x = hTrafficLight2.spawn_id_degrees(2, [-2.44, 15, 0.215], [0,0,180], [1,1,1], 1, true);
+    eval(x, 0, 'Spawn traffic light with degrees in config 1')
+    
+    hTrafficLight3 = qlabs_traffic_light(qlabs);
+    [x, assignedActorNum] = hTrafficLight3.spawn_degrees([6.686, 5.802, 0.215], [0,0,-90], [1,1,1], 2, true);
+    eval(x, 0, 'Spawn traffic light with degrees in config 2')
+ 
 %     x, loc, rot, scale = hTrafficLight2.get_world_transform()
 %     vr.PrintWS(x == True, "Get world transform")
 % 
@@ -987,28 +973,28 @@ function library_verification_qcar()
 %     hTrafficLight1.actorNumber = 1
 %     x = hTrafficLight1.ping()
 %     vr.PrintWS(x == False, "Ping traffic light that doesn't exist (expect False)")
-% 
-%     hTrafficLight0.set_state(state=hTrafficLight0.STATE_GREEN, waitForConfirmation=True)
-%     hTrafficLight2.set_state(state=hTrafficLight2.STATE_GREEN, waitForConfirmation=True)
-%     hTrafficLight3.set_state(state=hTrafficLight3.STATE_GREEN, waitForConfirmation=True)
-% 
-%     time.sleep(0.5)
-% 
-%     hTrafficLight0.set_state(state=hTrafficLight0.STATE_YELLOW, waitForConfirmation=True)
-%     hTrafficLight2.set_state(state=hTrafficLight2.STATE_YELLOW, waitForConfirmation=True)
-%     hTrafficLight3.set_state(state=hTrafficLight3.STATE_YELLOW, waitForConfirmation=True)
-% 
-%     time.sleep(0.5)
-% 
-%     hTrafficLight0.set_state(state=hTrafficLight0.STATE_RED, waitForConfirmation=True)
-%     hTrafficLight2.set_state(state=hTrafficLight2.STATE_RED, waitForConfirmation=True)
-%     hTrafficLight3.set_state(state=hTrafficLight3.STATE_RED, waitForConfirmation=True)
-% 
-%     time.sleep(0.5)
-% 
-%     x = hTrafficLight0.destroy_all_actors_of_class()
-%     vr.PrintWS(x == 3, "Delete all actors of class (expect 3), received {}".format(x))
-% 
+ 
+    hTrafficLight0.set_state(hTrafficLight0.STATE_GREEN, true)
+    hTrafficLight2.set_state(hTrafficLight2.STATE_GREEN, true)
+    hTrafficLight3.set_state(hTrafficLight3.STATE_GREEN, true)
+
+    pause(1)
+ 
+    hTrafficLight0.set_state(hTrafficLight0.STATE_YELLOW, true)
+    hTrafficLight2.set_state(hTrafficLight2.STATE_YELLOW, true)
+    hTrafficLight3.set_state(hTrafficLight3.STATE_YELLOW, true)
+
+    pause(1)
+ 
+    hTrafficLight0.set_state(hTrafficLight0.STATE_RED, true)
+    hTrafficLight2.set_state(hTrafficLight2.STATE_RED, true)
+    hTrafficLight3.set_state(hTrafficLight3.STATE_RED, true)
+ 
+    pause(1)
+ 
+%    x = hTrafficLight0.destroy_all_actors_of_class();
+%    eval(x, 3, 'Delete all actors of class (expect 3), received {}')
+    
 %     vr.checkFunctionTestList("traffic_light", "../docs/source/Objects/road_signage.rst", "actor")
 % 
 % 
