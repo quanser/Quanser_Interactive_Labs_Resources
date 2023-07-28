@@ -10,9 +10,137 @@ function check_matlab_vs_python()
     python_file_list = get_python_list(python_qvl);
     matlab_file_list = get_matlab_list(matlab_qvl);
     
-    compare_class_list(python_file_list, matlab_file_list);
+    compare_class_list(python_file_list, matlab_file_list, true);
+
+    
+    compare_function_list(python_file_list, matlab_file_list, "../../python/qvl/", "../qvl/");
+    
     
 
+
+end
+
+%%
+function compare_function_list(python_list, matlab_list, python_path, matlab_path)
+    python_match = compare_class_list(python_list, matlab_list, false);
+
+    fprintf("=======================\n")
+    fprintf("Class method comparison\n");
+    fprintf("=======================\n")
+
+    for index = 1:length(python_match)
+        if (python_match(index) == 1)
+            python_function_list = "";
+            python_function_list_count = 0;
+            matlab_function_list = "";
+            matlab_function_list_count = 0;            
+
+            fprintf("\n\n%s\n", python_list(index));
+            fprintf("-----------------\n")
+
+            % get python functions
+
+            text = readlines(sprintf("%s%s.py", python_path, python_list(index)));
+            for line = 1:length(text)
+                current_line = char(strtrim(text(line)));
+                
+                if length(current_line) > 6
+                    if (current_line(1:4) == "def ")
+                        if (current_line(5:6) == "__")
+
+                        else
+                            python_function_list_count = python_function_list_count + 1;
+                            python_function_list(python_function_list_count) = get_python_function_name(current_line);
+                            %fprintf("(p) %s\n", python_function_list(python_function_list_count))
+                            
+                        end
+                    end
+
+                end
+
+            end
+
+            % get matlab functions
+
+            text = readlines(sprintf("%sqlabs_%s.m", matlab_path, python_list(index)));
+            for line = 1:length(text)
+                current_line = char(strtrim(text(line)));
+                
+                if length(current_line) > 11
+                    if (current_line(1:9) == "function ")
+                        if (current_line(1:14) ~= "function obj =")
+                            matlab_function_list_count = matlab_function_list_count + 1;
+                            matlab_function_list(matlab_function_list_count) = get_matlab_function_name(current_line);
+                            
+                            %fprintf("(m) %s\n", matlab_function_list(matlab_function_list_count))
+                        end    
+                    end
+
+                end
+
+            end  
+
+            % compare lists
+            all_functions_match = true;
+
+            for i = 1:python_function_list_count
+                found = false;
+                for j = 1:matlab_function_list_count
+                    if python_function_list(i) == matlab_function_list(j)
+                        found = true;
+                    end
+                end
+                if (found == false)
+                    fprintf("(Matlab) %s\n", python_function_list(i))
+                    all_functions_match = false;
+                end                
+            end
+
+            for i = 1:matlab_function_list_count
+                found = false;
+                for j = 1:python_function_list_count
+                    if python_function_list(j) == matlab_function_list(i)
+                        found = true;
+                    end
+                end
+                if (found == false)
+                    fprintf("(Python) %s\n", matlab_function_list(i))
+                    all_functions_match = false;
+                end                
+            end
+
+
+            if (all_functions_match)
+                fprintf("All functions match.\n")
+            end
+
+        end
+    end
+
+end
+
+%%
+function name = get_python_function_name(raw_text)
+    name = raw_text(5:end);
+
+    if (name(1) == "_")
+        name = name(2:end);
+    end
+
+    name = name(1:strfind(name, "(")-1);
+end
+
+%%
+function name = get_matlab_function_name(raw_text)
+    name = raw_text;
+
+    index = strfind(name, "=");
+    if isempty(index)
+        name = name(10:end);
+    else
+        name = name(index+2:end);
+    end
+    name = name(1:strfind(name, "(")-1);
 
 end
 
@@ -59,13 +187,15 @@ function file_list = get_matlab_list(matlab_qvl)
 end
 
 %%
-function compare_class_list(python_list, matlab_list)
+function python_match = compare_class_list(python_list, matlab_list, display_missing)
 
     found_all = true;
+    python_match = zeros(length(python_list),1);
 
-
-    fprintf("Matlab Class List\n")
-    fprintf("-----------------\n")
+    if (display_missing)
+        fprintf("Matlab Class List\n")
+        fprintf("-----------------\n")
+    end
 
     for i = 1:length(python_list)
         found = false;
@@ -74,25 +204,31 @@ function compare_class_list(python_list, matlab_list)
             for j = 1:length(matlab_list)
                 if (strcmp(python_list(i), matlab_list(j)))
                     found = true;
+                    python_match(i) = 1;
                 end
             end
     
             if (found == false)
                 found_all = false;
-                fprintf("Missing " + python_list(i) + "\n");
+                if (display_missing)
+                    fprintf("Missing " + python_list(i) + "\n");
+                end
+                
             end
         end
     end
 
-    if (found_all == true)
+    if (found_all == true && display_missing)
         fprintf("All classes matched.\n")
     end
 
-    fprintf("\n\n")
+    if (display_missing)
+        fprintf("\n\n")
 
 
-    fprintf("Python Class List\n")
-    fprintf("-----------------\n")
+        fprintf("Python Class List\n")
+        fprintf("-----------------\n")
+    end
 
     for i = 1:length(matlab_list)
         found = false;
@@ -106,7 +242,10 @@ function compare_class_list(python_list, matlab_list)
     
             if (found == false)
                 found_all = false;
-                fprintf("Missing " + matlab_list(i) + "\n")
+                if (display_missing)
+                    fprintf("Missing " + matlab_list(i) + "\n")
+                end                
+                
             end    
         end
 
