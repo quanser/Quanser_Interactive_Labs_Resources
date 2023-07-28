@@ -129,42 +129,48 @@ classdef qlabs_free_camera < qlabs_actor
     
 
         %%
-        def set_camera_properties(self, fieldOfView, depthOfField, aperture, focusDistance):
-            """
-            Sets the camera properties. When depthOfField is enabled, the camera will produce more realistic (and cinematic) results by adding some blur to the view at distances closer and further away from a given focal distance. For more blur, use a large aperture (small value) and a narrow field of view.
-    
-            :param fieldOfView: The field of view that the camera can see (range:5-150 degrees). When depthOfField is True, smaller values will increase focal blur at distances relative to the focusDistance.
-            :param depthOfField: Enable or disable the depth of field visual effect
-            :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0). Smaller values (larger apertures) increase the light and decrease the depth of field. This parameter is only active when depthOfField is True.
-            :param focusDistance: The distance to the focal plane of the camera. (range:0.1-50.0 meters).  This parameter is only active when depthOfField is True.
-            :type fieldOfView: int
-            :type depthOfField: boolean
-            :type aperture: float
-            :type focusDistance: float
-            :return: `True` if setting the camera properties was successful, `False` otherwise
-            :rtype: boolean
-    
-            """
-            if (not self._is_actor_number_valid()):
-                return False
-    
-            c = CommModularContainer()
-            c.classID = self.ID_FREE_CAMERA
-            c.actorNumber = self.actorNumber
-            c.actorFunction = self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES
-            c.payload = bytearray(struct.pack(">fBff", fieldOfView, depthOfField, aperture, focusDistance))
-            c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-    
-            self._qlabs.flush_receive()
-    
-            if (self._qlabs.send_container(c)):
-                c = self._qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK)
-                if (c == None):
-                    return False
-                else:
-                    return True
-            else:
-                return False    
+        function set_camera_properties(obj, fieldOfView, depthOfField, aperture, focusDistance)
+%             Sets the camera properties. When depthOfField is enabled, the camera will produce more realistic (and cinematic) results by adding some blur to the view at distances closer and further away from a given focal distance. For more blur, use a large aperture (small value) and a narrow field of view.
+% 
+%             :param fieldOfView: The field of view that the camera can see (range:5-150 degrees). When depthOfField is True, smaller values will increase focal blur at distances relative to the focusDistance.
+%             :param depthOfField: Enable or disable the depth of field visual effect
+%             :param aperture: The amount of light allowed into the camera sensor (range:2.0-22.0). Smaller values (larger apertures) increase the light and decrease the depth of field. This parameter is only active when depthOfField is True.
+%             :param focusDistance: The distance to the focal plane of the camera. (range:0.1-50.0 meters).  This parameter is only active when depthOfField is True.
+%             :type fieldOfView: int
+%             :type depthOfField: boolean
+%             :type aperture: float
+%             :type focusDistance: float
+%             :return: `True` if setting the camera properties was successful, `False` otherwise
+%             :rtype: boolean
+
+            if (not(obj.is_actor_number_valid))
+                return
+            end
+
+            obj.c.classID = self.ID_FREE_CAMERA;
+            obj.c.actorNumber = self.actorNumber;
+            obj.c.actorFunction = self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES;
+            obj.c.payload = [flip(typecast(single(fieldOfView), 'uint8')) ...
+                         uint8(depthOfField) ...
+                         flip(typecast(single(aperture), 'uint8')) ...
+                         flip(typecast(single(focusDistance), 'uint8'))];
+            obj.c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload);
+
+            obj.qlabs.flush_receive();
+
+            if (obj.qlabs.send_container(obj.c))
+                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_PROPERTIES_ACK);
+                if isempty(rc)
+                    if (obj.verbose)
+                            fprintf('possess: Communication timeout (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    end
+                    return
+                else
+                    success = true;
+                    return
+                end
+            end
+        end
 
 
 % def set_image_capture_resolution(self, width=640, height=480):
