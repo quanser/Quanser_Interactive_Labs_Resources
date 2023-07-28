@@ -399,7 +399,7 @@ classdef qlabs_actor < handle
             if (obj.qlabs.send_container(obj.c))
             
                 if waitForConfirmation
-                    rc = obj.qlabs.wait_for_container(obj.c.ID_GENERIC_ACTOR_SPAWNER, 0, obj.c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_ID_ACK);
+                    rc = obj.qlabs.wait_for_container(obj.c.ID_GENERIC_ACTOR_SPAWNER, 0, obj.c.FCN_GENERIC_ACTOR_SPAWNER_SPAWN_AND_PARENT_RELATIVE_ACK);
                     if isempty(rc)
                         if (obj.verbose)
                             fprintf('spawn_id_and_parent_with_relative_transform: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, actorNumber);
@@ -463,8 +463,8 @@ classdef qlabs_actor < handle
                 parentComponent int32 = 0
                 waitForConfirmation logical = true
             end  
-    
-            status = obj.spawn_id_and_parent_with_relative_transform(obj, actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
+
+            status = spawn_id_and_parent_with_relative_transform(obj, actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
             
         end
     
@@ -700,7 +700,7 @@ classdef qlabs_actor < handle
                 waitForConfirmation logical = true
             end
 
-            status = obj.parent_with_relative_transform(obj, location, rotation/180*pi, scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
+            status = parent_with_relative_transform(obj, location, rotation/180*pi, scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
         end
 
         %%

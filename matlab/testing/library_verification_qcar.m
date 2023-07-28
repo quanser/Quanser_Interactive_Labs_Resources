@@ -100,13 +100,15 @@ function library_verification_qcar()
 %         x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
 %     vr.PrintWS(x == True, "Set camera properties")
 % 
-%     x = hCamera2.possess()
-%     vr.PrintWS(x == True, "Possess camera 2")
-% 
-% 
-%     for y in range(26):
-%         x = hCamera2.set_transform(loc2, np.add(np.array(rot2)/180*math.pi, [0, 0, y/25*math.pi*2]))
-%     vr.PrintWS(x == True, "Set transform")
+     x = hCamera2.possess();
+     eval(x, true, 'Possess camera 2');
+     
+ 
+%      for y = 0:25
+%          x = hCamera2.set_transform(loc2, rot2/180*pi + [0, 0, y/25*pi*2] );
+%      end
+%      eval(x, true, 'Set transform');
+     
 % 
 %     for y in range(26):
 %         x = hCamera2.set_transform_degrees(loc2, np.add(rot2, [0, 0, y/25*360]))
@@ -181,11 +183,10 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("free_camera", "../docs/source/Objects/camera_library.rst", "actor")
 % 
 %     cv2.destroyAllWindows()
-%     x = hCamera2.possess()
-% 
+     x = hCamera2.possess();
+ 
 
 
-    return;
      
 
 %     ### Yield Sign
@@ -403,10 +404,10 @@ function library_verification_qcar()
     hPersonRight.spawn_id(0, [-4.5, 41, 0.005], [0,0,pi/2], [1,1,1], 6, true);
 
     hPersonMiddle = qlabs_person(qlabs, use_verbose);
-    hPersonMiddle.spawn_id(1, [-7.5, 41, 0.005], [0,0,pi/2], [1,1,1], 7, true)
+    hPersonMiddle.spawn_id(1, [-7.5, 41, 0.005], [0,0,pi/2], [1,1,1], 7, true);
 
     hPersonLeft = qlabs_person(qlabs, use_verbose);
-    hPersonLeft.spawn_id_degrees(2, [-10.5, 41, 0.005], [0,0,90], [1,1,1], 8, true)
+    hPersonLeft.spawn_id_degrees(2, [-10.5, 41, 0.005], [0,0,90], [1,1,1], 8, true);
 
     hPersonRight.move_to([-4.5, 48, 0.005], hPersonRight.WALK, true);
     hPersonMiddle.move_to([-7.5, 48, 0.005], hPersonMiddle.JOG, true);
@@ -746,8 +747,8 @@ function library_verification_qcar()
 % 
     fprintf('\n\n-------------------------------- Basic Shape ----------------------------------\n\n');
 
-%     x = hCamera2.possess()
-% 
+    x = hCamera2.possess();
+ 
     hCube200 = qlabs_basic_shape(qlabs);
     x = hCube200.spawn_id(200, [-4.852, 36.977, 0.5], [0,0,pi/4], [0.5,0.5,0.5], hCube200.SHAPE_CUBE, true);
     eval(x, 0, 'Spawn sign with radians')
@@ -763,42 +764,48 @@ function library_verification_qcar()
     hCube221 = qlabs_basic_shape(qlabs, true);
     x = hCube221.spawn_id_degrees(221, [-4.832, 35.147, 0.5], [0,0,45], [0.5,0.5,0.5], hCube221.SHAPE_CUBE, true);
     x = hCube221.destroy();
-    fprintf('Num actors destroyed: %u', x)
+    fprintf('Num actors destroyed: %u\n', x)
     eval(x, 1, 'Spawn and destroy existing (expect return 1)')
 
-    hCube221.actorNumber = 221
-    x = hCube221.destroy()
+    hCube221.actorNumber = 221;
+    x = hCube221.destroy();
     fprintf('Num actors destroyed: %u', x)
     eval(x, 0, 'Destroy shape that doesn"t exist (expect return 0)')
  
-%     x = hCube220.ping()
-%     vr.PrintWS(x == True, "Ping existing sign (expect True)")
-% 
-%     hCube221.actorNumber = 221
-%     x = hCube221.ping()
-%     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
-% 
-%     x, loc, rot, scale = hCube200.get_world_transform()
-%     vr.PrintWS(np.sum(np.subtract(loc, [-4.852, 36.977, 0.5])) < 0.001 and x == True, "Get world transform")
-% 
+    x = hCube220.ping();
+    eval(x, true, 'Ping existing sign (expect True)')
+    
+
+    hCube221.actorNumber = 221;
+    x = hCube221.ping();
+    eval(x, false, 'Ping sign that does not exist (expect False)')
+
+    [x, loc, rot, scale] = hCube200.get_world_transform();
+    eval(sum(loc - [-4.852, 36.977, 0.5]) < 0.001 && (x == true), true, 'Get world transform');
+    
+    x = hCube200.ping()
+
     hCube201 = qlabs_basic_shape(qlabs, true);
     x = hCube201.spawn_id_and_parent_with_relative_transform(201, [0,2,0], [0,0,pi/4], [1,1,1], hCube201.SHAPE_CUBE, hCube200.ID_BASIC_SHAPE, hCube200.actorNumber, 0, true);
     eval(x, 0, 'Spawn with parent relative transform (expect 0)')
+
+    
  
-%     hCube202 = QLabsBasicShape(qlabs, True)
-%     x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(actorNumber=202, location=[0,-2,0], rotation=[0,0,45], scale=[1,1,1], configuration=hCube202.SHAPE_CUBE, parentClassID=hCube200.ID_BASIC_SHAPE, parentActorNumber=hCube200.actorNumber, parentComponent=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn with parent relative transform degrees (expect 0)")
-% 
+    hCube202 = qlabs_basic_shape(qlabs, true);
+    x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(202, [0,-2,0], [0,0,45], [1,1,1], hCube202.SHAPE_CUBE, hCube200.ID_BASIC_SHAPE, hCube200.actorNumber, 0, true);
+    eval(x, 0, 'Spawn with parent relative transform degrees (expect 0)')
+    
 % 
 %     x = hCube202.set_material_properties(color=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
 %     x = hCube201.set_material_properties(color=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
 %     vr.PrintWS(x == True, "Set material properties (expect True)")
 % 
-%     for y in range(51):
-%         x = hCube201.set_transform(location=[0,2,0], rotation=[0,0,math.pi/4-math.pi/25*y], scale=[1,1,1], waitForConfirmation=False)
-%         x = hCube202.set_transform_degrees(location=[0,-2,0], rotation=[0,0,45-180/25*y], scale=[1,1,1], waitForConfirmation=False)
-%         x = hCube200.set_transform(location=[-4.852, 36.977, 0.5], rotation=[0,0,math.pi/4+2*math.pi/50*y], scale=[0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50])
-% 
+%     for y = 0:50
+%         x = hCube201.set_transform([0,2,0], [0,0,pi/4-pi/25*y], [1,1,1], false);
+%         x = hCube202.set_transform_degrees([0,-2,0], [0,0,45-180/25*y], [1,1,1], false);
+%         x = hCube200.set_transform([-4.852, 36.977, 0.5], [0,0,pi/4+2*pi/50*y], [0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50]);
+%         pause(0.1)
+%     end
 % 
 %     # parenting without spawn
 %     hCube301 = QLabsBasicShape(qlabs)
