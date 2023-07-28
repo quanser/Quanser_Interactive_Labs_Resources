@@ -298,6 +298,72 @@ classdef qlabs_basic_shape < qlabs_actor
                     end
                 end
             end
+
+            function set_transform(obj, location, rotation, scale, waitForConfirmation)
+%                 Sets the location, rotation in radians, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
+%                 
+%                 :param location: An array of floats for x, y and z coordinates in full-scale units. 
+%                 :param rotation: An array of floats for the roll, pitch, and yaw in radians
+%                 :param scale: An array of floats for the scale in the x, y, and z directions.
+%                 :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+%                 :type location: float array[3]
+%                 :type rotation: float array[3]
+%                 :type scale: float array[3]
+%                 :type waitForConfirmation: boolean
+%                 :return: True if successful or False otherwise
+%                 :rtype: boolean
+
+                if (not(is_actor_number_valid))
+                    return
+                end
+
+                obj.c.classID = obj.ID_BASIC_SHAPE;
+                obj.c.actorNumber = obj.actorNumber;
+                obj.c.actorFunction = obj.FCN_BASIC_SHAPE_SET_TRANSFORM;
+                obj.c.payload = [flip(typecast(single(location(1)), 'uint8')) ...
+                         flip(typecast(single(location(2)), 'uint8')) ...
+                         flip(typecast(single(location(3)), 'uint8')) ...
+                         flip(typecast(single(rotation(1)), 'uint8')) ...
+                         flip(typecast(single(rotation(2)), 'uint8')) ...
+                         flip(typecast(single(rotation(3)), 'uint8')) ...
+                         flip(typecast(single(scale(1)), 'uint8')) ...
+                         flip(typecast(single(scale(2)), 'uint8')) ...
+                         flip(typecast(single(scale(3)), 'uint8'))];
+                obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(c.payload);
+
+                if (waitForConfirmation)
+                    obj.qlabs.flush_receive();
+                end
+
+                if (obj.qlabs.send_container(obj.c))
+                    if (waitForConfirmation)
+                        rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_SET_TRANSFORM_ACK);
+                         if isempty(rc)
+                            if (obj.verbose == true)
+                                fprintf('Timeout waiting for response.\n')
+                            end
+                         end
+                    end
+                end
+            end
+
+            function set_transform_degrees(obj, location, rotation, scale, waitForConfirmation)
+%                 Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
+%                 
+%                 :param location: An array of floats for x, y and z coordinates in full-scale units.
+%                 :param rotation: An array of floats for the roll, pitch, and yaw in degrees
+%                 :param scale: An array of floats for the scale in the x, y, and z directions.
+%                 :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+%                 :type location: float array[3]
+%                 :type rotation: float array[3]
+%                 :type scale: float array[3]
+%                 :type waitForConfirmation: boolean
+%                 :return: True if successful or False otherwise
+%                 :rtype: boolean
+
+                return
+                
+            end
         end
     end
 end
