@@ -34,15 +34,9 @@ function library_verification_qcar()
 
 
 
-    fprintf("\n\n------------------------- Testing Individual Libraries ---------------------------\n")
+    fprintf("\n\n------------------------- System Libraries ---------------------------\n")
 
 
-%     ### QLabs
-%     vr.PrintWSHeader("Common")
-%     x = "Destroyed {} actors.".format(qlabs.destroy_all_spawned_actors())
-%     print(x)
-%     vr.PrintWS(2, x)
-% 
 %     ### System
 %     """
 %     vr.PrintWSHeader("System")
@@ -51,51 +45,56 @@ function library_verification_qcar()
 %     vr.PrintWS(x == True, "Set title string")
 %     vr.checkFunctionTestList("system", "../docs/source/System/system_library.rst")
 %     """
+
+
 %     ### Free Camera
-% 
-%     vr.PrintWSHeader("Free Camera")
-     fprintf("\n\n---Free Camera---")
-% 
-%     hCamera0 = QLabsFreeCamera(qlabs)
-%     x = hCamera0.spawn_id(actorNumber=0, location=[-8.248, 39.575, 8.538], rotation=[0, 1.209, 1.559])
-%     vr.PrintWS(x == 0, "Spawn camera with radians")
-% 
-% 
-%     print('Attempt to spawn duplicate.')
-%     hCamera0Duplicate = QLabsFreeCamera(qlabs, True)
-%     x = hCamera0Duplicate.spawn_id(actorNumber=0, location=[-13.74076819, 36.68400671, 8.43], rotation=[0, 1.204, 1.548])
-%     vr.PrintWS(x == 2, "Spawn camera with duplicate ID (return code 2)")
-% 
-%     hCamera1 = QLabsFreeCamera(qlabs)
-%     hCamera1.spawn_id(actorNumber=1, location=[-25.78776819, 29.01500671, 3.482], rotation=[0, 0.349, -0.04])
-%     x = hCamera1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing camera (expect return 1)")
-% 
-%     hCamera10 = QLabsFreeCamera(qlabs)
-%     hCamera10.actorNumber = 10
-%     x = hCamera10.destroy()
-%     vr.PrintWS(x == 0, "Destroy camera that doesn't exist (expect return 0)")
-% 
-%     loc2 = [-21.456, 31.995, 3.745]
-%     rot2 = [0, 18.814, 0.326]
-%     hCamera2 = QLabsFreeCamera(qlabs)
-%     x = hCamera2.spawn_id_degrees(actorNumber=2, location=loc2, rotation=rot2)
-%     vr.PrintWS(x == 0, "Spawn camera with degrees")
-% 
-%     x, loc, rot, scale = hCamera2.get_world_transform()
-%     vr.PrintWS(abs(np.sum(np.subtract(loc, loc2))) < 0.001 and x == True, "Get world transform")
-% 
-%     x = hCamera2.ping()
-%     vr.PrintWS(x == True, "Ping existing camera (expect True)")
-% 
-%     x = hCamera10.ping()
-%     vr.PrintWS(x == False, "Ping camera that doesn't exist (expect False)")
-% 
-%     hCamera3 = QLabsFreeCamera(qlabs)
-%     hCamera3.spawn_id(actorNumber=3, location=[-33.17276819, 13.50500671, 2.282], rotation=[0, 0.077, 0.564])
-%     hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=0.6)
-%     x = hCamera3.possess()
-% 
+    fprintf('\n\n-------------------------------- Free Camera ----------------------------------\n\n');
+    
+    hCamera0 = qlabs_free_camera(qlabs, use_verbose);
+    x = hCamera0.spawn_id(0, [-8.248, 39.575, 8.538], [0, 1.209, 1.559]);
+    eval(x, 0, 'Spawn camera with radians');
+    
+
+    fprintf('Attempt to spawn duplicate.\n')
+    hCamera0Duplicate = qlabs_free_camera(qlabs, use_verbose);
+    x = hCamera0Duplicate.spawn_id(0, [-13.74076819, 36.68400671, 8.43], [0, 1.204, 1.548]);
+    eval(x, 2, 'Spawn camera with duplicate ID (return code 2)');
+    
+
+    hCamera1 = qlabs_free_camera(qlabs, use_verbose);
+    hCamera1.spawn_id(1, [-25.78776819, 29.01500671, 3.482], [0, 0.349, -0.04]);
+    x = hCamera1.destroy();
+    eval(x, 1, 'Spawn and destroy existing camera (expect return 1)');
+    
+
+    hCamera10 = qlabs_free_camera(qlabs, use_verbose);
+    hCamera10.actorNumber = 10;
+    x = hCamera10.destroy();
+    eval(x, 0, 'Destroy camera that does not exist (expect return 0)');
+    
+    loc2 = [-21.456, 31.995, 3.745];
+    rot2 = [0, 18.814, 0.326];
+    hCamera2 = qlabs_free_camera(qlabs, use_verbose);
+    x = hCamera2.spawn_id_degrees(2, loc2, rot2);
+    eval(x, 0, 'Spawn camera with degrees');
+    
+    [x, loc, rot, scale] = hCamera2.get_world_transform();
+    eval((sum(loc - loc2) < 0.001) && (x == true), true, 'Get world transform');
+
+
+    x = hCamera2.ping();
+    eval(x, true, 'Ping existing camera (expect True)');
+
+    hCamera10.actorNumber = 10;
+    x = hCamera10.ping();
+    eval(x, false, 'Ping camera that does not exist (expect False)');
+
+    hCamera3 = qlabs_free_camera(qlabs, use_verbose);
+    hCamera3.spawn_id(3, [-33.17276819, 13.50500671, 2.282], [0, 0.077, 0.564]);
+    %hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=0.6);
+    x = hCamera3.possess();
+    eval(x, true, 'Possess camera (expect True)');
+
 % 
 %     for y in range(51):
 %         x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
@@ -184,7 +183,11 @@ function library_verification_qcar()
 %     cv2.destroyAllWindows()
 %     x = hCamera2.possess()
 % 
-% 
+
+
+    return;
+     
+
 %     ### Yield Sign
 % 
 % 

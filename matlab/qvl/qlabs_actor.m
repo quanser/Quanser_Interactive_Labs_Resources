@@ -541,7 +541,7 @@ classdef qlabs_actor < handle
     
             if (obj.qlabs.send_container(obj.c))
     
-                rc = obj.qlabs.wait_for_container(obj.classID, self.actorNumber, self.FCN_RESPONSE_WORLD_TRANSFORM);
+                rc = obj.qlabs.wait_for_container(obj.classID, obj.actorNumber, obj.FCN_RESPONSE_WORLD_TRANSFORM);
     
                 if isempty(rc)
                     if (obj.verbose)
