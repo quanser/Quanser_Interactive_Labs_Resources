@@ -42,7 +42,7 @@ classdef qlabs_basic_shape < qlabs_actor
             obj.classID = obj.ID_BASIC_SHAPE;
         end
 
-        function set_material_properties(obj, color, roughness, metallic, waitForConfirmation)
+        function success = set_material_properties(obj, color, roughness, metallic, waitForConfirmation)
 %             Sets the visual surface properties of the shape.
 % 
 %             :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
@@ -55,7 +55,7 @@ classdef qlabs_basic_shape < qlabs_actor
 %             :type waitForConfirmation: boolean
 %             :return: True if successful, False otherwise
 %             :rtype: boolean
-
+            success = false;
             if (not(obj.is_actor_number_valid()))
                 return
             end
@@ -83,6 +83,7 @@ classdef qlabs_basic_shape < qlabs_actor
                         if (obj.verbose == true)
                             fprintf('Timeout waiting for response.\n')
                         end
+                        return
                     end
                 end
 
@@ -154,7 +155,8 @@ classdef qlabs_basic_shape < qlabs_actor
                 end
             end
             
-            function set_enable_dynamics(obj, enableDynamics, waitForConfirmation)
+            function success = set_enable_dynamics(obj, enableDynamics, waitForConfirmation)
+                success = false;
 %                 Sets the visual surface properties of the shape.
 % 
 %                 :param enableDynamics: Enable (True) or disable (False) the shape dynamics. A dynamic actor can be pushed with other static or dynamic actors.  A static actor will generate collisions, but will not be affected by interactions with other actors.
@@ -179,18 +181,22 @@ classdef qlabs_basic_shape < qlabs_actor
                 end
 
                 if (obj.qlabs.send_container(obj.c))
-                    if (waitForConfirmation)
+                    if waitForConfirmation
                         rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_SET_MATERIAL_PROPERTIES_ACK);
                         if isempty(rc)
                             if (obj.verbose == true)
                                 fprintf('Timeout waiting for response.\n')
                             end
+                            return
                         end
                     end
+
+                    success = true;
                 end
             end 
 
-            function set_enable_collisions(self, enableCollisions, waitForConfirmation)
+            function success = set_enable_collisions(self, enableCollisions, waitForConfirmation)
+                success = false;
 %                 Enables and disables physics collisions. When disabled, other physics or velocity-based actors will be able to pass through.
 % 
 %                 :param enableCollisions: Enable (True) or disable (False) the collision.
@@ -215,18 +221,22 @@ classdef qlabs_basic_shape < qlabs_actor
                 end
 
                 if (obj.qlabs.send_container(obj.c))
-                    if (waitForConfirmation)
+                    if waitForConfirmation
                         rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_ENABLE_COLLISIONS_ACK);
-                         if isempty(rc)
+                        if isempty(rc)
                             if (obj.verbose == true)
                                 fprintf('Timeout waiting for response.\n')
                             end
-                         end
+                            return
+                        end
                     end
+
+                    success = true;
                 end
             end
 
-            function set_physics_properties(obj, enableDynamics, mass, linearDamping, angularDamping, staticFriction, dynamicFriction, frictionCombineMode, restitution, restitutionCombineMode, waitForConfirmation)
+            function success = set_physics_properties(obj, enableDynamics, mass, linearDamping, angularDamping, staticFriction, dynamicFriction, frictionCombineMode, restitution, restitutionCombineMode, waitForConfirmation)
+                success = false;
 %                 Sets the dynamic properties of the shape.
 %         
 %                 :param enableDynamics: Enable (True) or disable (False) the shape dynamics. A dynamic actor can be pushed with other static or dynamic actors.  A static actor will generate collisions, but will not be affected by interactions with other actors.
@@ -288,18 +298,22 @@ classdef qlabs_basic_shape < qlabs_actor
                 end
                 
                 if (obj.qlabs.send_container(obj.c))
-                    if (waitForConfirmation)
-                        rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_ENABLE_COLLISIONS_ACK);
-                         if isempty(rc)
+                    if waitForConfirmation
+                        rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_SET_PHYSICS_PROPERTIES_ACK);
+                        if isempty(rc)
                             if (obj.verbose == true)
                                 fprintf('Timeout waiting for response.\n')
                             end
-                         end
+                            return
+                        end
                     end
+
+                    success = true;
                 end
             end
 
-            function set_transform(obj, location, rotation, scale, waitForConfirmation)
+            function success = set_transform(obj, location, rotation, scale, waitForConfirmation)
+                success = false;
 %                 Sets the location, rotation in radians, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 %                 
 %                 :param location: An array of floats for x, y and z coordinates in full-scale units. 
@@ -336,18 +350,21 @@ classdef qlabs_basic_shape < qlabs_actor
                 end
 
                 if (obj.qlabs.send_container(obj.c))
-                    if (waitForConfirmation)
+                    if waitForConfirmation
                         rc = obj.qlabs.wait_for_container(obj.ID_BASIC_SHAPE, obj.actorNumber, obj.FCN_BASIC_SHAPE_SET_TRANSFORM_ACK);
-                         if isempty(rc)
+                        if isempty(rc)
                             if (obj.verbose == true)
                                 fprintf('Timeout waiting for response.\n')
                             end
-                         end
+                            return
+                        end
                     end
+
+                    success = true;
                 end
             end
 
-            function set_transform_degrees(obj, location, rotation, scale, waitForConfirmation)
+            function success = set_transform_degrees(obj, location, rotation, scale, waitForConfirmation)
 %                 Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 %                 
 %                 :param location: An array of floats for x, y and z coordinates in full-scale units.
@@ -361,9 +378,107 @@ classdef qlabs_basic_shape < qlabs_actor
 %                 :return: True if successful or False otherwise
 %                 :rtype: boolean
 
-                return
+                success = set_transform(obj, location, rotation/180*pi, scale, waitForConfirmation);
                 
             end
+
+            function rotate_vector_2d_degrees(obj, vector, angle)
+%                 Internal helper function to rotate a vector on the z plane.
+%                 
+%                 :param vector: Vector to rotate
+%                 :param angle: Rotation angle in radians
+%                 :type vector: float array[3]
+%                 :type angle: float
+%                 :return: Rotated vector
+%                 :rtype: float array[3]
+
+                result = [0,0,vector(2)];
+
+                result(0) = cos(angle)*vector(0) - sin(angle)*vector(1);
+                result(1) = sin(angle)*vector(0) + cos(angle)*vector(1);
+                
+                return
+            end
+
+            function success = spawn_id_box_wall_from_end_points(obj, actorNumber, startLocation, endLocation, height, thickness, color, waitForConfirmation)
+                success = false;
+%                 Given a start and end point, this helper method calculates the position, rotation, and scale required to place a box on top of this line.
+% 
+%                 :param actorNumber: User defined unique identifier for the class actor in QLabs
+%                 :param startLocation: An array of floats for x, y and z coordinates.
+%                 :param endLocation: An array of floats for x, y and z coordinates.
+%                 :param height: The height of the wall.
+%                 :param thickness: The width or thickness of the wall.
+%                 :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+%                 :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+%                 :type actorNumber: uint32
+%                 :type startLocation: float array[3]
+%                 :type endLocation: float array[3]
+%                 :type height: float
+%                 :type thickness: float
+%                 :type color: float array[3]
+%                 :type waitForConfirmation: boolean
+%                 :return: True if successful or False otherwise
+%                 :rtype: boolean
+
+                length = sqrt(power(startLocation(1) - endLocation(1), 2) + power(startLocation(2) - endLocation(2), 2) + power(startLocation(3) - endLocation(3), 2));
+                location = [(startLocation(1) + endLocation(1))/2, (startLocation(2) + endLocation(2))/2, (startLocation(3) + endLocation(3))/2];
+
+                yRotation = asin( (endLocation(3) - startLocation(3))/(length) );
+                zRotation = atan2( (endLocation(2) - startLocation(2)), (endLocation(1) - startLocation(1)) );
+
+                shiftedLocation = [location(1)+sin(yRotation)*cos(zRotation)*height/2, location(2)+sin(yRotation)*sin(zRotation)*height/2, location(3)+cos(yRotation)*height/2];
+
+                if (0 == obj.spawn_id(actorNumber, shiftedLocation, [0, yRotation, zRotation], [length, thickness, height], obj.SHAPE_CUBE, waitForConfirmation))
+                    if (true == obj.set_material_properties(color, 1, false, waitForConfirmation))
+                        success = true;
+                        return
+                    else
+                        return
+                    end
+                    return
+                end
+            end
+
+            function success = spawn_id_box_walls_from_center(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
+                success = false;
+%                 Creates a container-like box with 4 walls and an optional floor.
+% 
+%                 :param actorNumbers: An array of 5 user defined unique identifiers for the class actors in QLabs.
+%                 :param centerLocation: An array of floats for x, y and z coordinates.
+%                 :param yaw: Rotation about the z axis in radians.
+%                 :param xSize: Size of the box in the x direction.
+%                 :param ySize: Size of the box in the y direction.
+%                 :param zSize: Size of the box in the z direction.
+%                 :param wallThickness: The thickness of the walls.
+%                 :param floorThickness: (Optional) The thickness of the floor. Setting this to 0 will spawn a box without a floor.
+%                 :param wallColor: (Optional) Red, Green, Blue components of the wall color on a 0.0 to 1.0 scale.
+%                 :param floorColor: (Optional) Red, Green, Blue components of the floor color on a 0.0 to 1.0 scale.
+%                 :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
+%         
+%                 :type actorNumbers: uint32 array[5]
+%                 :type centerLocation: float array[3]
+%                 :type yaw: float
+%                 :type xSize: float
+%                 :type ySize: float
+%                 :type zSize: float
+%                 :type wallThickness: float
+%                 :type floorThickness: float
+%                 :type wallColor: float array[3]
+%                 :type floorColor: float array[3]
+%                 :type waitForConfirmation: boolean
+%         
+%                 :return: True if successful or False otherwise
+%                 :rtype: boolean
+                
+                origin = [centerLocation(1), centerLocation(2), centerLocation(3) + zHeight/2 + floorThickness];
+
+                location = np.add(origin, obj.rotate_vector_2d_degrees([xSize/2 + wallThickness/2, 0, 0], yaw) );
+                if (0 !=)
+
+
+            end
+
         end
     end
 end
