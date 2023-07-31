@@ -611,7 +611,7 @@ classdef qlabs_actor < handle
 
             status = -1;
             
-            obj.c.classID = obj.ID_GENERIC_ACTOR_SPAWNER;
+            obj.c.classID = obj.c.ID_GENERIC_ACTOR_SPAWNER;
             obj.c.actorNumber = 0;
             obj.c.actorFunction = obj.c.FCN_GENERIC_ACTOR_SPAWNER_PARENT_RELATIVE;
             obj.c.payload = [flip(typecast(int32(obj.classID), 'uint8')) ...
@@ -718,7 +718,7 @@ classdef qlabs_actor < handle
 
             status = -1;
             
-            obj.c.classID = obj.ID_GENERIC_ACTOR_SPAWNER;
+            obj.c.classID = obj.c.ID_GENERIC_ACTOR_SPAWNER;
             obj.c.actorNumber = 0;
             obj.c.actorFunction = obj.c.FCN_GENERIC_ACTOR_SPAWNER_PARENT_CURRENT_WORLD;
             obj.c.payload = [flip(typecast(int32(obj.classID), 'uint8')) ...

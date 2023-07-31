@@ -2,7 +2,7 @@ classdef quanser_interactive_labs < handle
     properties
         qlabs_stream = []
         
-        BUFFER_SIZE = 65537
+        BUFFER_SIZE = 100000
 
         read_buffer = [];
         send_buffer = [];
@@ -80,18 +80,27 @@ classdef quanser_interactive_labs < handle
         function new_data = receive_new_data(obj)
             new_data = false;
 
+            debug = false;
+
             [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
             data = typecast(data, 'uint8');
-
+        
+            if (debug && (bytes_read > 0))
+                fprintf("New received data size: %u\n", bytes_read)
+            end
 
             while bytes_read > 0
                 
-                obj.receive_packet_buffer = [obj.receive_packet_buffer data];
+                obj.receive_packet_buffer = [obj.receive_packet_buffer; data];
 
 
                 [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
                 bytes_read = length(data);
+
+                if (debug && (bytes_read > 0))
+                    fprintf("Subsequent data received size: %u\n", bytes_read)
+                end
                 
             end
 
@@ -102,6 +111,10 @@ classdef quanser_interactive_labs < handle
                     obj.receive_packet_size = typecast(uint8(obj.receive_packet_buffer(1:4)), 'int32');
                     obj.receive_packet_size = obj.receive_packet_size + 4;
 
+                    if (debug)
+                        fprintf("Expected packet size: %u\n", obj.receive_packet_size);
+                        fprintf("Current buffer size: %u\n", length(obj.receive_packet_buffer));
+                    end
 
                     if length(obj.receive_packet_buffer) >= obj.receive_packet_size
 

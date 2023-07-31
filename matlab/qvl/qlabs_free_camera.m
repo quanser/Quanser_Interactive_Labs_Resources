@@ -49,7 +49,7 @@ classdef qlabs_free_camera < qlabs_actor
                 
                 if isempty(rc)
                     if (obj.verbose)
-                        fprintf('possess: Communication timeout (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                        fprintf('possess: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                     end
                     return
                 end     
@@ -57,7 +57,7 @@ classdef qlabs_free_camera < qlabs_actor
                 success = true;
             else
                 if (obj.verbose)
-                    fprintf('possess: Communication failure (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    fprintf('possess: Communication failure (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                 end
             end
         end
@@ -97,7 +97,7 @@ classdef qlabs_free_camera < qlabs_actor
                 rc = obj.qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK);
                 if isempty(rc)
                     if (obj.verbose)
-                            fprintf('possess: Communication timeout (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                            fprintf('possess: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                     end
                     return
                 else
@@ -106,7 +106,7 @@ classdef qlabs_free_camera < qlabs_actor
                 end
             else
                 if (obj.verbose)
-                        fprintf('possess: Communication failure (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                        fprintf('possess: Communication failure (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                 end
                 return 
             end
@@ -129,7 +129,7 @@ classdef qlabs_free_camera < qlabs_actor
     
 
         %%
-        function set_camera_properties(obj, fieldOfView, depthOfField, aperture, focusDistance)
+        function success = set_camera_properties(obj, fieldOfView, depthOfField, aperture, focusDistance)
 %             Sets the camera properties. When depthOfField is enabled, the camera will produce more realistic (and cinematic) results by adding some blur to the view at distances closer and further away from a given focal distance. For more blur, use a large aperture (small value) and a narrow field of view.
 % 
 %             :param fieldOfView: The field of view that the camera can see (range:5-150 degrees). When depthOfField is True, smaller values will increase focal blur at distances relative to the focusDistance.
@@ -143,26 +143,67 @@ classdef qlabs_free_camera < qlabs_actor
 %             :return: `True` if setting the camera properties was successful, `False` otherwise
 %             :rtype: boolean
 
+            success = false;
+
             if (not(obj.is_actor_number_valid))
                 return
             end
 
-            obj.c.classID = self.ID_FREE_CAMERA;
-            obj.c.actorNumber = self.actorNumber;
-            obj.c.actorFunction = self.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES;
+            obj.c.classID = obj.ID_FREE_CAMERA;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES;
             obj.c.payload = [flip(typecast(single(fieldOfView), 'uint8')) ...
                          uint8(depthOfField) ...
                          flip(typecast(single(aperture), 'uint8')) ...
                          flip(typecast(single(focusDistance), 'uint8'))];
-            obj.c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
 
             if (obj.qlabs.send_container(obj.c))
-                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_PROPERTIES_ACK);
+                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_SET_CAMERA_PROPERTIES_ACK);
                 if isempty(rc)
                     if (obj.verbose)
-                            fprintf('possess: Communication timeout (classID %u), actorNumber %u).\n', obj.classID, obj.actorNumber);
+                            fprintf('possess: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    end
+                    return
+                else
+                    success = true;
+                    return
+                end
+            end
+        end
+
+        %%
+        function success = set_image_capture_resolution(obj, width, height)
+            %"""Change the default width and height of image resolution for capture
+        
+            arguments
+                obj qlabs_actor
+                width int32 = 640
+                height int32 = 480
+            end
+
+            if (not(obj.is_actor_number_valid))
+                return
+            end
+        
+
+            obj.c.classID = obj.ID_FREE_CAMERA;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION;
+            obj.c.payload = [flip(typecast(int32(width), 'uint8')) ...
+                             flip(typecast(int32(height), 'uint8'))];
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+
+
+            obj.qlabs.flush_receive();
+
+            if (obj.qlabs.send_container(obj.c))
+                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE);
+                if isempty(rc)
+                    if (obj.verbose)
+                            fprintf('set_image_capture_resolution: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                     end
                     return
                 else
@@ -173,71 +214,63 @@ classdef qlabs_free_camera < qlabs_actor
         end
 
 
-% def set_image_capture_resolution(self, width=640, height=480):
-%         """Change the default width and height of image resolution for capture
-% 
-%         :param width: Must be an even number. Default 640
-%         :param height: Must be an even number. Default 480
-%         :type width: uint32
-%         :type height: uint32
-%         :return: `True` if spawn was successful, `False` otherwise
-%         :rtype: boolean
-%         """
-%         if (not self._is_actor_number_valid()):
-%             return False
-% 
-%         c = CommModularContainer()
-%         c.classID = self.ID_FREE_CAMERA
-%         c.actorNumber = self.actorNumber
-%         c.actorFunction = self.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION
-%         c.payload = bytearray(struct.pack(">II", width, height))
-%         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-% 
-%         self._qlabs.flush_receive()
-% 
-%         if (self._qlabs.send_container(c)):
-%             c = self._qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE)
-%             if (c == None):
-%                 return False
-%             else:
-%                 return True
-%         else:
-%             return False
-% 
-% 
-% 
-%     def get_image(self):
-%         """Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.
-% 
-%         :return: Success, RGB image data
-%         :rtype: boolean, byte array[variable]
-%         """
-% 
-%         if (not self._is_actor_number_valid()):
-%             return False, None
-% 
-%         c = CommModularContainer()
-%         c.classID = self.ID_FREE_CAMERA
-%         c.actorNumber = self.actorNumber
-%         c.actorFunction = self.FCN_FREE_CAMERA_REQUEST_IMAGE
-%         c.payload = bytearray()
-%         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-% 
-%         self._qlabs.flush_receive()
-% 
-%         if (self._qlabs.send_container(c)):
-%             c = self._qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_RESPONSE_IMAGE)
-%             if (c == None):
-%                 return False, None
-% 
-%             data_size, = struct.unpack(">I", c.payload[0:4])
-% 
-%             jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
-% 
-% 
-%             return True, jpg_buffer
-%         else:
-%             return False, None
+        %%
+        function [success, image] = get_image(obj, filename)
+            %Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.
+    
+            success = false;
+            image = [];
+
+            if (not(obj.is_actor_number_valid))
+                return
+            end
+        
+            obj.c.classID = obj.ID_FREE_CAMERA;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_FREE_CAMERA_REQUEST_IMAGE;
+            obj.c.payload = [];
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+
+
+            obj.qlabs.flush_receive();
+
+            if (obj.qlabs.send_container(obj.c))
+                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_RESPONSE_IMAGE);
+                if isempty(rc)
+                    if (obj.verbose)
+                        fprintf('get_image: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                    end
+                    return
+                else
+                    if length(rc.payload) >= 4
+                        image_size = typecast(flip(rc.payload(1:4)), 'int32');
+
+                        if (image_size <= 0)
+                            if (obj.verbose)
+                                fprintf('get_image: jpg size invalid (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                            end
+                            return
+                        end
+                        
+                        fprintf("Payload size: %u", 4+ length(rc.payload(5:end)))
+                        fid = fopen(sprintf("%s.jpg", filename), 'w');
+                        fwrite(fid, rc.payload(5:end));
+                        fclose(fid);
+
+                        success = true;
+                    else
+                        if (obj.verbose)
+                            fprintf('get_image: Payload size smaller than expected (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                        end
+                    end
+                    return
+                end
+            end
+        end
+
+
+
+    
 
     end % methods
 end % class
