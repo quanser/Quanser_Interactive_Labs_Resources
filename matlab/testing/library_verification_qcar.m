@@ -783,43 +783,43 @@ function library_verification_qcar()
     [x, loc, rot, scale] = hCube200.get_world_transform();
     eval(sum(loc - [-4.852, 36.977, 0.5]) < 0.001 && (x == true), true, 'Get world transform');
     
-    x = hCube200.ping()
+    x = hCube200.ping();
 
     hCube201 = qlabs_basic_shape(qlabs, true);
     x = hCube201.spawn_id_and_parent_with_relative_transform(201, [0,2,0], [0,0,pi/4], [1,1,1], hCube201.SHAPE_CUBE, hCube200.ID_BASIC_SHAPE, hCube200.actorNumber, 0, true);
     eval(x, 0, 'Spawn with parent relative transform (expect 0)')
 
-    
+    x = hCube220.set_material_properties([0,0.5,1], 0.0, false, true); %fourth cube's colour
  
     hCube202 = qlabs_basic_shape(qlabs, true);
     x = hCube202.spawn_id_and_parent_with_relative_transform_degrees(202, [0,-2,0], [0,0,45], [1,1,1], hCube202.SHAPE_CUBE, hCube200.ID_BASIC_SHAPE, hCube200.actorNumber, 0, true);
     eval(x, 0, 'Spawn with parent relative transform degrees (expect 0)')
-    
-% 
-%     x = hCube202.set_material_properties(color=[0,1,0], roughness=0.0, metallic=True, waitForConfirmation=True)
-%     x = hCube201.set_material_properties(color=[1,0,0], roughness=0.0, metallic=True, waitForConfirmation=True)
+
+    x = hCube202.set_material_properties([0,1,0], 0.0, true, true);
+    x = hCube201.set_material_properties([1,0,0], 0.0, true, true);
 %     vr.PrintWS(x == True, "Set material properties (expect True)")
 % 
-%     for y = 0:50
-%         x = hCube201.set_transform([0,2,0], [0,0,pi/4-pi/25*y], [1,1,1], false);
-%         x = hCube202.set_transform_degrees([0,-2,0], [0,0,45-180/25*y], [1,1,1], false);
-%         x = hCube200.set_transform([-4.852, 36.977, 0.5], [0,0,pi/4+2*pi/50*y], [0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50]);
-%         pause(0.1)
-%     end
+    for y = 0:50
+        x = hCube201.set_transform([0,2,0], [0,0,pi/4-pi/25*y], [1,1,1], false);
+        x = hCube202.set_transform_degrees([0,-2,0], [0,0,45-180/25*y], [1,1,1], false);
+        x = hCube200.set_transform([-4.852, 36.977, 0.5], [0,0,pi/4+2*pi/50*y], [0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50]);
+        pause(0.1)
+    end
 % 
 %     # parenting without spawn
-%     hCube301 = QLabsBasicShape(qlabs)
-%     hCube301.spawn(location=[-4.93, 36.985, 1.5], rotation=[0,0,0], scale=[0.2,0.2,0.2], configuration=hCube301.SHAPE_CUBE, waitForConfirmation=True)
-% 
-%     hCube302 = QLabsBasicShape(qlabs)
-%     hCube302.spawn(location=[-4.93, 35.985, 1.5], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hCube302.SHAPE_CUBE, waitForConfirmation=True)
-% 
-%     for y in range(37):
-%         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
-% 
-%     x = hCube302.parent_with_relative_transform(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Parent with relative transform")
-%     time.sleep(0.5)
+    hCube301 = qlabs_basic_shape(qlabs);
+    hCube301.spawn([-4.93, 36.985, 1.5], [0,0,0], [0.2,0.2,0.2], hCube301.SHAPE_CUBE, true);
+
+    hCube302 = qlabs_basic_shape(qlabs);
+    hCube302.spawn([-4.93, 35.985, 1.5], [0,0,0], [0.5,0.5,0.5], hCube302.SHAPE_CUBE, true);
+
+    for y = 37
+        x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+    end
+
+    x = hCube302.parent_with_relative_transform([0,1.2/0.2,0], [0,0,0], [0.5,0.5,0.5], hCube301.classID, hCube301.actorNumber, 0, true);
+    eval(x, 0, 'Parent with relative transform')
+    pause(0.5)
 % 
 %     for y in range(37):
 %         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
