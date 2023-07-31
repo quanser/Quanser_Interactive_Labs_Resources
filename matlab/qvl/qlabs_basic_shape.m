@@ -195,7 +195,7 @@ classdef qlabs_basic_shape < qlabs_actor
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_BASIC_SHAPE_ENABLE_DYNAMICS;
             obj.c.payload = [uint8(enableDynamics)];
-            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             if (waitForConfirmation)
                 obj.qlabs.flush_receive();
@@ -240,7 +240,7 @@ classdef qlabs_basic_shape < qlabs_actor
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_BASIC_SHAPE_ENABLE_COLLISIONS;
             obj.c.payload = [uint8(enableCollisions)];
-            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             if (waitForConfirmation)
                 obj.qlabs.flush_receive();
@@ -331,7 +331,7 @@ classdef qlabs_basic_shape < qlabs_actor
                      flip(typecast(single(restitution), 'uint8')) ...
                      uint32(restitutionCombineMode)];
 
-            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             if (waitForConfirmation)
                 obj.qlabs.flush_receive();
@@ -438,7 +438,7 @@ classdef qlabs_basic_shape < qlabs_actor
             
         end
 
-        function rotate_vector_2d_degrees(obj, vector, angle)
+        function result = rotate_vector_2d_degrees(obj, vector, angle)
             arguments
                 obj qlabs_basic_shape
                 vector (1,3) single
@@ -453,10 +453,10 @@ classdef qlabs_basic_shape < qlabs_actor
 %                 :return: Rotated vector
 %                 :rtype: float array[3]
 
-            result = [0,0,vector(2)];
+            result = [0,0,vector(3)];
 
-            result(0) = cos(angle)*vector(0) - sin(angle)*vector(1);
-            result(1) = sin(angle)*vector(0) + cos(angle)*vector(1);
+            result(1) = cos(angle)*vector(1) - sin(angle)*vector(2);
+            result(2) = sin(angle)*vector(1) + cos(angle)*vector(2);
             
             return
         end
@@ -583,7 +583,7 @@ classdef qlabs_basic_shape < qlabs_actor
                 return
             end
 
-            location = origin + obj.rotate_vector_2d_degrees([0, - ySize/2 - wallThickness/2, yaw]);
+            location = origin + obj.rotate_vector_2d_degrees([0, - ySize/2 - wallThickness/2, 0], yaw);
             if (0 ~= obj.spawn_id(actorNumbers(4), location, [0, 0, yaw], [xSize + wallThickness*2, wallThickness, zHeight], obj.SHAPE_CUBE, waitForConfirmation))
                 return
             end

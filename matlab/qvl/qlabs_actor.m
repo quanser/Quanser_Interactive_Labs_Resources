@@ -53,6 +53,9 @@ classdef qlabs_actor < handle
         %%
 
         function value = is_actor_number_valid(obj)
+            arguments
+                obj qlabs_actor
+            end
             if isempty(obj.actorNumber) == true
                 if (obj.verbose == true)
                     fprintf('actorNumber member variable empty. Use a spawn function to assign an actor or manually assign the actorNumber variable.\n')
@@ -66,6 +69,9 @@ classdef qlabs_actor < handle
 
         %%
         function num_destroyed = destroy(obj)
+            arguments
+                obj qlabs_actor
+            end
             % Find and destroy a specific actor. This is a blocking operation.
 
             if not(is_actor_number_valid(obj))
@@ -109,6 +115,9 @@ classdef qlabs_actor < handle
 
         %%
         function num_destroyed = destroy_all_actors_of_class(obj)
+            arguments
+                obj qlabs_actor
+            end
             % Find and destroy all actors of this class. This is a blocking operation.
 
             obj.c.classID = obj.c.ID_GENERIC_ACTOR_SPAWNER;
@@ -518,6 +527,10 @@ classdef qlabs_actor < handle
         %%
 
         function [success, location, rotation, scale] = get_world_transform(obj)
+
+            arguments
+                obj qlabs_actor
+            end
             % Get the location, rotation, and scale in world coordinates of the actor.
     
             location = [0,0,0];
@@ -584,6 +597,10 @@ classdef qlabs_actor < handle
 
         %%
         function [success, location, rotation, scale] = get_world_transform_degrees(obj)
+
+            arguments
+                obj qlabs_actor
+            end
             % Get the location, rotation, and scale in world coordinates of the actor.
 
             [success, location, rotation, scale] = obj.get_world_transform(obj);
@@ -726,7 +743,7 @@ classdef qlabs_actor < handle
                          flip(typecast(int32(parentClassID), 'uint8')) ...
                          flip(typecast(int32(parentActorNumber), 'uint8')) ...
                          flip(typecast(int32(parentComponent), 'uint8'))];
-            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(obj.c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
     
 
             if waitForConfirmation
@@ -784,6 +801,11 @@ classdef qlabs_actor < handle
         function status = parent_break(obj, waitForConfirmation)
             % Breaks any relationship with a parent actor (if it exists) and preserves the current world transform
     
+            arguments
+                obj qlabs_actor
+                waitForConfirmation logical = true
+            end
+
             obj.c.classID = obj.c.ID_GENERIC_ACTOR_SPAWNER;
             obj.c.actorNumber = 0;
             obj.c.actorFunction = obj.c.FCN_GENERIC_ACTOR_SPAWNER_PARENT_BREAK_WITH_CURRENT_WORLD;
@@ -897,6 +919,10 @@ classdef qlabs_actor < handle
 
         %%
         function [success, measuredMass, IDTag, properties] = get_custom_properties(obj)
+
+            arguments
+                obj qlabs_actor
+            end
             % Gets previously assigned custom properties to an actor.
     
             measuredMass = 0.0;

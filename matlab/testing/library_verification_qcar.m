@@ -91,17 +91,17 @@ function library_verification_qcar()
 
     hCamera3 = qlabs_free_camera(qlabs, use_verbose);
     hCamera3.spawn_id(3, [-33.17276819, 13.50500671, 2.282], [0, 0.077, 0.564]);
-    %hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=0.6);
+    hCamera3.set_camera_properties(40, true, 2.3, 0.6);
     x = hCamera3.possess();
     eval(x, true, 'Possess camera (expect True)');
 
-% 
-%     for y in range(51):
-%         x = hCamera3.set_camera_properties(fieldOfView=40, depthOfField=True, aperture=2.3, focusDistance=(0.6 + pow(y/50, 3)*23.7))
-%     vr.PrintWS(x == True, "Set camera properties")
-% 
-     x = hCamera2.possess();
-     eval(x, true, 'Possess camera 2');
+    for y = 1:51
+        x = hCamera3.set_camera_properties(40, true, 2.3, (0.6 + ((y/50)^3)*23.7));
+    end
+    eval(x, true, 'Set camera properties');
+    
+    x = hCamera2.possess();
+    eval(x, true, 'Possess camera 2');
      
  
 %      for y = 0:25
@@ -115,41 +115,35 @@ function library_verification_qcar()
 %     vr.PrintWS(x == True, "Set transform degrees (expect True)")
 % 
 % 
-%     cv2.namedWindow('CameraImageStream', cv2.WINDOW_AUTOSIZE)
-%     camera_image = cv2.imread('Quanser640x480.jpg')
-%     cv2.imshow('CameraImageStream', camera_image)
-%     cv2.waitKey(1)
-% 
-%     #FIX
-% 
-%     x = hCamera2.set_image_capture_resolution(width=640, height=480)
-%     vr.PrintWS(x == True, "Set image capture resolution")
-%     x, camera_image = hCamera2.get_image()
-%     vr.PrintWS(x == True, "Read image 640x480")
-%     if (x == True):
-%         cv2.imshow('CameraImageStream', camera_image)
-%         cv2.waitKey(1)
-% 
-%     else:
-%         print("Image decoding failure")
-% 
-%     print('Image streaming.')
-%     cv2.namedWindow('CameraImageStream2', cv2.WINDOW_AUTOSIZE)
-%     camera_image = cv2.imread('Quanser820x410.jpg')
-%     cv2.imshow('CameraImageStream2', camera_image)
-%     cv2.waitKey(1)
-% 
-%     #FIX
-% 
-%     hCamera2.set_image_capture_resolution(width=820, height=410)
-%     vr.PrintWS(x == True, "Read image 820x410 (expect True)")
-%     x, camera_image = hCamera2.get_image()
-%     if (x == True):
-%         cv2.imshow('CameraImageStream2', camera_image)
-%         cv2.waitKey(1)
-%     else:
-%         print("Image decoding failure")
-% 
+
+    x = hCamera3.set_image_capture_resolution(640, 480);
+    eval(x, true, 'Set image capture resolution');
+
+    [success, data] = hCamera3.get_image();
+    eval(x, true, 'Read image 640x480');
+
+    if (success)
+        image(data);
+    else
+        fprintf("Image decoding failure\n");
+    end
+    pause(1.0)
+
+
+    x = hCamera2.set_image_capture_resolution(820, 410);
+    eval(x, true, 'Set image capture resolution');
+
+    [success, data] = hCamera3.get_image();
+    eval(x, true, 'Read image 820x410');
+
+    if (success)
+        image(data);
+    else
+        fprintf("Image decoding failure\n");
+    end
+    pause(1.0)
+
+
 %     print('Testing parenting.')
 %     loc3 = [5.252, 20.852, 9.461]
 %     hCubeCameraHook = QLabsBasicShape(qlabs, True)
@@ -799,7 +793,7 @@ function library_verification_qcar()
     x = hCube201.set_material_properties([1,0,0], 0.0, true, true);
 %     vr.PrintWS(x == True, "Set material properties (expect True)")
 % 
-    for y = 0:50
+    for y = 0:10
         x = hCube201.set_transform([0,2,0], [0,0,pi/4-pi/25*y], [1,1,1], false);
         x = hCube202.set_transform_degrees([0,-2,0], [0,0,45-180/25*y], [1,1,1], false);
         x = hCube200.set_transform([-4.852, 36.977, 0.5], [0,0,pi/4+2*pi/50*y], [0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50]);
@@ -813,71 +807,76 @@ function library_verification_qcar()
     hCube302 = qlabs_basic_shape(qlabs);
     hCube302.spawn([-4.93, 35.985, 1.5], [0,0,0], [0.5,0.5,0.5], hCube302.SHAPE_CUBE, true);
 
-    for y = 37
+    for y = 0:10
         x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+        pause(0.1)
     end
 
     x = hCube302.parent_with_relative_transform([0,1.2/0.2,0], [0,0,0], [0.5,0.5,0.5], hCube301.classID, hCube301.actorNumber, 0, true);
     eval(x, 0, 'Parent with relative transform')
     pause(0.5)
-% 
-%     for y in range(37):
-%         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
-% 
-%     x = hCube302.parent_break()
-%     vr.PrintWS(x == 0, "Parent break")
-% 
-%     for y in range(37):
-%         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
-% 
-%     x = hCube302.parent_with_current_world_transform(parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Parent with current world transform")
-%     time.sleep(0.5)
-% 
-%     for y in range(37):
-%         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
-% 
-%     x = hCube302.parent_break()
-%     x = hCube302.parent_with_relative_transform_degrees(location=[0,1.2/0.2,0], rotation=[0,0,0], scale=[0.5,0.5,0.5], parentClassID=hCube301.classID, parentActorNumber=hCube301.actorNumber, parentComponent=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Parent with relative transform degrees")
-%     time.sleep(0.5)
-% 
-%     for y in range(37):
-%         x = hCube301.set_transform_degrees(location=[-4.93, 36.985, 1.5], rotation=[0,0,y*10], scale=[0.2,0.2,0.2], waitForConfirmation=True)
-% 
-% 
+
+    for y = 0:10
+        x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+    end
+
+    x = hCube302.parent_break();
+    eval(x, 0, 'Parent break')
+
+    for y = 0:10
+        x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+    end
+
+    x = hCube302.parent_with_current_world_transform(hCube301.classID, hCube301.actorNumber, 0, true);
+    eval(x, 0, 'Parent break')
+    pause(0.5)
+
+    for y = 0:10
+        x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+    end
+
+    x = hCube302.parent_break();
+    x = hCube302.parent_with_relative_transform_degrees([0,1.2/0.2,0], [0,0,0], [0.5,0.5,0.5], hCube301.classID, hCube301.actorNumber, 0, true);
+    eval(x, 0, 'Parent with relative transform degrees')
+    pause(0.5)
+
+    for y = 0:10
+        x = hCube301.set_transform_degrees([-4.93, 36.985, 1.5], [0,0,y*10], [0.2,0.2,0.2], true);
+    end
+
+
 %     #collisions
+
+    hSphere203 = qlabs_basic_shape(qlabs);
+    x = hSphere203.spawn_id(203, [-4.75, 32.5, 0.25], [0,0,0], [0.5,0.5,0.5], hSphere203.SHAPE_SPHERE, true);
+    x = hSphere203.set_material_properties([0,1,0], 0.0, false, true);
+
+    hSphere204 = qlabs_basic_shape(qlabs);
+    x = hSphere204.spawn_id(204, [-4.75, 31.5, 0.25], [0,0,0], [0.5,0.5,0.5], hSphere204.SHAPE_SPHERE, true);
+    x = hSphere204.set_material_properties([0,0,1], 0.0, false, true);
+    x = hSphere204.set_enable_collisions(false, true);
+%    vr.PrintWS(x == True, "Enable collisions")
 % 
-%     hSphere203 = QLabsBasicShape(qlabs)
-%     x = hSphere203.spawn_id(actorNumber=203, location=[-4.75, 32.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere203.SHAPE_SPHERE, waitForConfirmation=True)
-%     x = hSphere203.set_material_properties(color=[0,1,0], roughness=0.0, metallic=False, waitForConfirmation=True)
-% 
-%     hSphere204 = QLabsBasicShape(qlabs)
-%     x = hSphere204.spawn_id(actorNumber=204, location=[-4.75, 31.5, 0.25], rotation=[0,0,0], scale=[0.5,0.5,0.5], configuration=hSphere204.SHAPE_SPHERE, waitForConfirmation=True)
-%     x = hSphere204.set_material_properties(color=[0,0,1], roughness=0.0, metallic=False, waitForConfirmation=True)
-%     x = hSphere204.set_enable_collisions(enableCollisions=False, waitForConfirmation=True)
-%     vr.PrintWS(x == True, "Enable collisions")
-% 
-%     hSphere205 = QLabsBasicShape(qlabs)
-%     hSphere206 = QLabsBasicShape(qlabs)
-%     hSphere207 = QLabsBasicShape(qlabs)
-% 
-%     x = hSphere205.spawn_id(actorNumber=205, location=[-4.6, 32.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere205.SHAPE_SPHERE, waitForConfirmation=True)
-%     x = hSphere206.spawn_id(actorNumber=206, location=[-4.6, 31.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere206.SHAPE_SPHERE, waitForConfirmation=True)
-%     x = hSphere207.spawn_id(actorNumber=207, location=[-4.6, 30.5, 2], rotation=[0,0,0], scale=[0.6,0.6,0.6], configuration=hSphere207.SHAPE_SPHERE, waitForConfirmation=True)
-% 
-%     x = hSphere207.set_physics_properties(enableDynamics=False, mass=1, linearDamping=10, angularDamping=0)
-%     vr.PrintWS(x == True, "Set physics properties")
-% 
-%     x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
-%     x = hSphere206.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
-%     x = hSphere207.set_enable_dynamics(enableDynamics=True, waitForConfirmation=True)
+    hSphere205 = qlabs_basic_shape(qlabs);
+    hSphere206 = qlabs_basic_shape(qlabs);
+    hSphere207 = qlabs_basic_shape(qlabs);
+
+    x = hSphere205.spawn_id(205, [-4.6, 32.5, 2], [0,0,0], [0.6,0.6,0.6], hSphere205.SHAPE_SPHERE, true);
+    x = hSphere206.spawn_id(206, [-4.6, 31.5, 2], [0,0,0], [0.6,0.6,0.6], hSphere206.SHAPE_SPHERE, true);
+    x = hSphere207.spawn_id(207, [-4.6, 30.5, 2], [0,0,0], [0.6,0.6,0.6], hSphere207.SHAPE_SPHERE, true);
+
+    x = hSphere207.set_physics_properties(false, 1, 10, 0);
+    eval(x, true, 'Set physics properties')
+
+    x = hSphere205.set_enable_dynamics(true, false);
+    x = hSphere206.set_enable_dynamics(true, false);
+    x = hSphere207.set_enable_dynamics(true, true);
 %     vr.PrintWS(x == True, "Enable dynamics")
-% 
-%     x = hSphere205.set_enable_dynamics(enableDynamics=True, waitForConfirmation=False)
-% 
-%     hBoxSpawn = QLabsBasicShape(qlabs)
-%     x = hBoxSpawn.spawn_id_box_walls_from_center(actorNumbers=[210, 211, 212, 213, 214], centerLocation=[-1.103, 32.404, 0.005], yaw=math.pi/4, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
+
+    x = hSphere205.set_enable_dynamics(true, false);
+
+    hBoxSpawn = qlabs_basic_shape(qlabs);
+    x = hBoxSpawn.spawn_id_box_walls_from_center([210, 211, 212, 213, 214], [-1.103, 32.404, 0.005], pi/4, 2, 2, 0.5, 0.1, 0.1, [1,0,0], [0,0,1], true);
 %     vr.PrintWS(x == True, "Spawn box walls from center")
 % 
 %     x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[0.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
