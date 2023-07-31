@@ -215,11 +215,11 @@ classdef qlabs_free_camera < qlabs_actor
 
 
         %%
-        function [success, image] = get_image(obj, filename)
+        function [success, data] = get_image(obj)
             %Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.
     
             success = false;
-            image = [];
+            data = [];
 
             if (not(obj.is_actor_number_valid))
                 return
@@ -252,10 +252,15 @@ classdef qlabs_free_camera < qlabs_actor
                             return
                         end
                         
-                        fprintf("Payload size: %u", 4+ length(rc.payload(5:end)))
-                        fid = fopen(sprintf("%s.jpg", filename), 'w');
-                        fwrite(fid, rc.payload(5:end));
+                        %fprintf("Payload size: %u", 4+ length(rc.payload(5:end)))
+
+                        fprintf("TODO: REPLACE WITH MEMORY-ONLY JPG DECODING\n")
+
+                        fid = fopen("frame.jpg", 'wb');
+                        fwrite(fid, typecast(rc.payload(5:end), 'uint8'));
                         fclose(fid);
+
+                        data = imread("frame.jpg");
 
                         success = true;
                     else

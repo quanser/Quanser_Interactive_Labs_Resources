@@ -97,6 +97,7 @@ classdef quanser_interactive_labs < handle
 
                 [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
                 bytes_read = length(data);
+                data = typecast(data, 'uint8');
 
                 if (debug && (bytes_read > 0))
                     fprintf("Subsequent data received size: %u\n", bytes_read)
