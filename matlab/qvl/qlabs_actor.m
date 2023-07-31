@@ -628,7 +628,7 @@ classdef qlabs_actor < handle
                          flip(typecast(int32(parentClassID), 'uint8')) ...
                          flip(typecast(int32(parentActorNumber), 'uint8')) ...
                          flip(typecast(int32(parentComponent), 'uint8'))];
-            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + len(obj.c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
     
 
             if waitForConfirmation
