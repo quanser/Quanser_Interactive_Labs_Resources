@@ -1,3 +1,9 @@
+# Note use this method to get your qvl libraries to ensure you're using the latest version
+# in GitHub. It is inserted first in the list to take precedence over all other libraries
+# in your python path.
+import sys
+sys.path.insert(0, "../")
+
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.yield_sign import QLabsYieldSign
 from qvl.stop_sign import QLabsStopSign
@@ -35,7 +41,7 @@ from pyqtgraph.Qt import QtCore, QtWidgets
 ####################################################
 require_user_input = False
 lidar_rate = 0.01
-library_path = 'C:/Users/MKTUSER/Documents/Repos/virtual_qcar_libraries_dev/python/qvl'
+library_path = '../qvl'
 
 
 ####################################################

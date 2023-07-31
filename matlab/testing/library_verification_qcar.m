@@ -944,10 +944,10 @@ function library_verification_qcar()
  
     fprintf('\n\n-------------------------------- Traffic Light ----------------------------------\n\n');
 
-%     hCameraTraffic = QLabsFreeCamera(qlabs)
-%     x = hCameraTraffic.spawn(location=[-6.891, 3.568, 2.127], rotation=[0, 0.049, 1.105])
-%     hCameraTraffic.possess()
-% 
+    hCameraTraffic = qlabs_free_camera(qlabs);
+    x = hCameraTraffic.spawn([-6.891, 3.568, 2.127], [0, 0.049, 1.105]);
+    hCameraTraffic.possess();
+
     hTrafficLight0 = qlabs_traffic_light(qlabs);
     x = hTrafficLight0.spawn_id(0, [6, 14.328, 0.215], [0,0,0], [1,1,1], 0, true);
     eval(x, 0, 'Spawn traffic light with radians')
