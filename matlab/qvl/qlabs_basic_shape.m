@@ -461,7 +461,7 @@ classdef qlabs_basic_shape < qlabs_actor
             return
         end
 
-        function success = spawn_id_box_wall_from_end_points(obj, actorNumber, startLocation, endLocation, height, thickness, color, waitForConfirmation)
+        function success = spawn_id_box_walls_from_end_points(obj, actorNumber, startLocation, endLocation, height, thickness, color, waitForConfirmation)
             arguments
                 obj qlabs_basic_shape
                 actorNumber double
@@ -605,7 +605,7 @@ classdef qlabs_basic_shape < qlabs_actor
 
         end
 
-        function success = spawn_id_box_walls_from_center_degrees(obj, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, waitForConfirmation)
+        function success = spawn_id_box_walls_from_center_degrees(obj, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness, wallColor, floorColor, waitForConfirmation)
             arguments
                 obj qlabs_basic_shape
                 actorNumbers (1,5) single
@@ -617,6 +617,7 @@ classdef qlabs_basic_shape < qlabs_actor
                 wallThickness single
                 floorThickness single = 0
                 wallColor (1,3) single = [1 1 1]
+                floorColor (1,3) single = [1 1 1]
                 waitForConfirmation logical = true
             end
 %                 Creates a container-like box with 4 walls and an optional floor.

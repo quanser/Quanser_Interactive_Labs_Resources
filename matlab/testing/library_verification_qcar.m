@@ -46,7 +46,7 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("system", "../docs/source/System/system_library.rst")
 %     """
 
-
+    if (false)
 %     ### Free Camera
     fprintf('\n\n-------------------------------- Free Camera ----------------------------------\n\n');
     
@@ -791,16 +791,16 @@ function library_verification_qcar()
 
     x = hCube202.set_material_properties([0,1,0], 0.0, true, true);
     x = hCube201.set_material_properties([1,0,0], 0.0, true, true);
-%     vr.PrintWS(x == True, "Set material properties (expect True)")
-% 
+    eval(x, true, 'Set material properties (expect True)')
+    
     for y = 0:10
         x = hCube201.set_transform([0,2,0], [0,0,pi/4-pi/25*y], [1,1,1], false);
         x = hCube202.set_transform_degrees([0,-2,0], [0,0,45-180/25*y], [1,1,1], false);
         x = hCube200.set_transform([-4.852, 36.977, 0.5], [0,0,pi/4+2*pi/50*y], [0.5+0.5*y/50,0.5+0.5*y/50,0.5+0.5*y/50]);
         pause(0.1)
     end
-% 
-%     # parenting without spawn
+
+%   parenting without spawn
     hCube301 = qlabs_basic_shape(qlabs);
     hCube301.spawn([-4.93, 36.985, 1.5], [0,0,0], [0.2,0.2,0.2], hCube301.SHAPE_CUBE, true);
 
@@ -845,7 +845,7 @@ function library_verification_qcar()
     end
 
 
-%     #collisions
+%   collisions
 
     hSphere203 = qlabs_basic_shape(qlabs);
     x = hSphere203.spawn_id(203, [-4.75, 32.5, 0.25], [0,0,0], [0.5,0.5,0.5], hSphere203.SHAPE_SPHERE, true);
@@ -855,8 +855,8 @@ function library_verification_qcar()
     x = hSphere204.spawn_id(204, [-4.75, 31.5, 0.25], [0,0,0], [0.5,0.5,0.5], hSphere204.SHAPE_SPHERE, true);
     x = hSphere204.set_material_properties([0,0,1], 0.0, false, true);
     x = hSphere204.set_enable_collisions(false, true);
-%    vr.PrintWS(x == True, "Enable collisions")
-% 
+    eval(x, true, 'Enable collisions')
+
     hSphere205 = qlabs_basic_shape(qlabs);
     hSphere206 = qlabs_basic_shape(qlabs);
     hSphere207 = qlabs_basic_shape(qlabs);
@@ -871,76 +871,92 @@ function library_verification_qcar()
     x = hSphere205.set_enable_dynamics(true, false);
     x = hSphere206.set_enable_dynamics(true, false);
     x = hSphere207.set_enable_dynamics(true, true);
-%     vr.PrintWS(x == True, "Enable dynamics")
+    eval(x, true, 'Enable dynamics')
 
     x = hSphere205.set_enable_dynamics(true, false);
 
     hBoxSpawn = qlabs_basic_shape(qlabs);
     x = hBoxSpawn.spawn_id_box_walls_from_center([210, 211, 212, 213, 214], [-1.103, 32.404, 0.005], pi/4, 2, 2, 0.5, 0.1, 0.1, [1,0,0], [0,0,1], true);
-%     vr.PrintWS(x == True, "Spawn box walls from center")
-% 
-%     x = hBoxSpawn.spawn_id_box_walls_from_center_degrees(actorNumbers=[270, 271, 272, 273, 274], centerLocation=[0.35, 30.4, 0.005], yaw=45, xSize=2, ySize=2, zHeight=0.5, wallThickness=0.1, floorThickness=0.1, wallColor=[1,0,0], floorColor=[0,0,1], waitForConfirmation=True)
-%     vr.PrintWS(x == True, "Spawn box walls from center degrees")
-% 
-%     x = hBoxSpawn.spawn_id_box_walls_from_end_points(actorNumber=280, startLocation=[-3.232, 31.439, 0.01], endLocation=[-1.403, 29.383, 0.01], height=0.1, thickness=0.1, color=[0.2,0.2,0.2], waitForConfirmation=True)
-%     vr.PrintWS(x == True, "Spawn box walls from end points")
-% 
-%     x, shapeHandle1 = hBoxSpawn.spawn(location=[-5.632, 34.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-%     x, shapeHandle2 = hBoxSpawn.spawn(location=[-5.632, 33.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-%     x, shapeHandle3 = hBoxSpawn.spawn(location=[-5.632, 32.162, 0.25], rotation=[0,0,math.pi/4], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn next")
-% 
-%     x, shapeHandle4 = hBoxSpawn.spawn_degrees(location=[-5.632, 31.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-%     x, shapeHandle5 = hBoxSpawn.spawn_degrees(location=[-5.632, 30.162, 0.25], rotation=[0,0,45], scale=[0.5,0.5,0.5], configuration=hBoxSpawn.SHAPE_CUBE, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn next degrees")
-% 
-%     hBoxSpawn.actorNumber = shapeHandle2
-%     x = hBoxSpawn.set_material_properties(color=[1,0,1], roughness=0.0, metallic=True, waitForConfirmation=True)
-%     vr.checkFunctionTestList("basic_shape", "../docs/source/Objects/basic_shapes.rst", "actor")
-% 
-% 
-%     ### Widget
-% 
-%     vr.PrintWSHeader("Widget")
-%     print("\n\n--Widget---")
-% 
-%     x = hCamera2.possess()
-%     hQLabsWidget = QLabsWidget(qlabs)
-%     hQLabsWidget.widget_spawn_shadow(enableShadow=True)
-% 
-%     for count in range(20):
-%         x = hQLabsWidget.spawn([-0.974, 32.404, 1+count*0.2], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-% 
-%     vr.PrintWS(x == True, "Widget spawn (expect True)")
-% 
-%     time.sleep(1)
-% 
-%     for count in range(20):
-%         x = hQLabsWidget.spawn_degrees([-0.974, 32.404, 1+count*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-% 
-%     vr.PrintWS(x == True, "Widget spawn degrees(expect True)")
-% 
-%     time.sleep(1)
-% 
-%     x = hQLabsWidget.destroy_all_spawned_widgets()
-%     vr.PrintWS(x == True, "Widgets destroyed (expect True)")
-%     hQLabsWidget.widget_spawn_shadow(enableShadow=False)
-% 
-%     for count in range(10):
-%         x = hQLabsWidget.spawn_degrees([-0.974, 32.404+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-% 
-%     time.sleep(1)
-% 
-%     hQLabsWidget.destroy_all_spawned_widgets()
-%     hQLabsWidget.widget_spawn_shadow(enableShadow=True)
-% 
-%     for count in range(10):
-%         x = hQLabsWidget.spawn_degrees([-0.974, 32.404+count*0.01, 1+count*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], measuredMass=0, IDTag=0, properties='', waitForConfirmation=True)
-% 
-% 
-% 
+    eval(x, true, 'Spawn box walls from center')
+
+    x = hBoxSpawn.spawn_id_box_walls_from_center_degrees([270, 271, 272, 273, 274], [0.35, 30.4, 0.005], 45, 2, 2, 0.5, 0.1, 0.1, [1,0,0], [0,0,1], true);
+    eval(x, true, 'Spawn box walls from center degrees')
+
+    x = hBoxSpawn.spawn_id_box_walls_from_end_points(280, [-3.232, 31.439, 0.01], [-1.403, 29.383, 0.01], 0.1, 0.1, [0.2,0.2,0.2], true);
+    eval(x, true, 'Spawn box walls from end points')
+
+    x, shapeHandle1 = hBoxSpawn.spawn([-5.632, 34.162, 0.25], [0,0,pi/4], [0.5,0.5,0.5], hBoxSpawn.SHAPE_CUBE, true);
+    x, shapeHandle2 = hBoxSpawn.spawn([-5.632, 33.162, 0.25], [0,0,pi/4], [0.5,0.5,0.5], hBoxSpawn.SHAPE_CUBE, true);
+    x, shapeHandle3 = hBoxSpawn.spawn([-5.632, 32.162, 0.25], [0,0,pi/4], [0.5,0.5,0.5], hBoxSpawn.SHAPE_CUBE, true);
+    eval(x, 0, 'Spawn next')
+
+    x, shapeHandle4 = hBoxSpawn.spawn_degrees([-5.632, 31.162, 0.25], [0,0,45], [0.5,0.5,0.5], hBoxSpawn.SHAPE_CUBE, true);
+    x, shapeHandle5 = hBoxSpawn.spawn_degrees([-5.632, 30.162, 0.25], [0,0,45], [0.5,0.5,0.5], hBoxSpawn.SHAPE_CUBE, true);
+    eval(x, 0, 'Spawn next degrees')
+
+    hBoxSpawn.actorNumber = shapeHandle2;
+    x = hBoxSpawn.set_material_properties([1,0,1], 0.0, true, true);
+%    vr.checkFunctionTestList("basic_shape", "../docs/source/Objects/basic_shapes.rst", "actor");
+
+
+fprintf('\n\n-------------------------------- Widget ----------------------------------\n\n');
+    
+    x = hCamera2.possess();
+    hQLabsWidget = qlabs_widget(qlabs);
+    hQLabsWidget.widget_spawn_shadow(true);
+
+%     for y = 0:100000
+%         x = hQLabsWidget.spawn([-0.974, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+%         x = hQLabsWidget.spawn([-0.974, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+%         x = hQLabsWidget.spawn([-0.474, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+%         x = hQLabsWidget.spawn([-0.474, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', true);
+%         pause(0.01)
+%         fprintf("%u\n", y*4)
+%     end
+    
+    for y= 0:500
+        x = hQLabsWidget.spawn([-0.974, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+    end
+
+    eval(x, true, 'Widget spawn (expect True)')
+
+    pause(1);
+
+    for y = 0:20
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404, 1+y*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,0,0], 0, 0, '', true);
+    end
+
+    for y = 0:50
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404, 1+y*0.2], [90,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [0,0.5,1], 0, 0, '', true);
+    end
+
+    eval(x, true, 'Widget spawn degrees(expect True)')
+
+    pause(3);
+
+    x = hQLabsWidget.destroy_all_spawned_widgets();
+    eval(x, true, 'Widgets destroyed (expect True)')
+    
+    hQLabsWidget.widget_spawn_shadow(false);
+
+ 
+    for y = 0:10
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404+y*0.01, 1+y*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], 0, 0, '', true);
+    end
+
+    pause(1);
+
+    hQLabsWidget.destroy_all_spawned_widgets();
+    hQLabsWidget.widget_spawn_shadow(true);
+
+    for y = 0:10
+        x = hQLabsWidget.spawn_degrees([-0.974, 32.404+y*0.01, 1+y*0.6], [90,0,0], [0.5,0.5,0.5], hQLabsWidget.SPHERE, [1,0,0], 0, 0, '', true);
+    end
+
+
+
 %     vr.checkFunctionTestList("widget", "../docs/source/Objects/widgets.rst")
-% 
+
  
     fprintf('\n\n-------------------------------- Traffic Light ----------------------------------\n\n');
 
@@ -972,223 +988,221 @@ function library_verification_qcar()
     [x, assignedActorNum] = hTrafficLight3.spawn_degrees([6.686, 5.802, 0.215], [0,0,-90], [1,1,1], 2, true);
     eval(x, 0, 'Spawn traffic light with degrees in config 2')
  
-%     x, loc, rot, scale = hTrafficLight2.get_world_transform()
-%     vr.PrintWS(x == True, "Get world transform")
-% 
-% 
-%     x = hTrafficLight2.ping()
-%     vr.PrintWS(x == True, "Ping existing traffic light (expect True)")
-% 
-%     hTrafficLight1.actorNumber = 1
-%     x = hTrafficLight1.ping()
-%     vr.PrintWS(x == False, "Ping traffic light that doesn't exist (expect False)")
- 
-    hTrafficLight0.set_state(hTrafficLight0.STATE_GREEN, true)
-    hTrafficLight2.set_state(hTrafficLight2.STATE_GREEN, true)
-    hTrafficLight3.set_state(hTrafficLight3.STATE_GREEN, true)
+    x, loc, rot, scale = hTrafficLight2.get_world_transform();
+    eval(x, true, 'Get world transform')
 
-    pause(1)
- 
-    hTrafficLight0.set_state(hTrafficLight0.STATE_YELLOW, true)
-    hTrafficLight2.set_state(hTrafficLight2.STATE_YELLOW, true)
-    hTrafficLight3.set_state(hTrafficLight3.STATE_YELLOW, true)
+    x = hTrafficLight2.ping();
+    eval(x, true, 'Ping existing traffic light (expect True)')
 
-    pause(1)
+    hTrafficLight1.actorNumber = 1;
+    x = hTrafficLight1.ping();
+    eval(x, false, 'Ping traffic light that doesn"t exist (expect False)')
  
-    hTrafficLight0.set_state(hTrafficLight0.STATE_RED, true)
-    hTrafficLight2.set_state(hTrafficLight2.STATE_RED, true)
-    hTrafficLight3.set_state(hTrafficLight3.STATE_RED, true)
+    hTrafficLight0.set_state(hTrafficLight0.STATE_GREEN, true);
+    hTrafficLight2.set_state(hTrafficLight2.STATE_GREEN, true);
+    hTrafficLight3.set_state(hTrafficLight3.STATE_GREEN, true);
+
+    pause(1);
  
-    pause(1)
+    hTrafficLight0.set_state(hTrafficLight0.STATE_YELLOW, true);
+    hTrafficLight2.set_state(hTrafficLight2.STATE_YELLOW, true);
+    hTrafficLight3.set_state(hTrafficLight3.STATE_YELLOW, true);
+
+    pause(1);
  
-%    x = hTrafficLight0.destroy_all_actors_of_class();
-%    eval(x, 3, 'Delete all actors of class (expect 3), received {}')
+    hTrafficLight0.set_state(hTrafficLight0.STATE_RED, true);
+    hTrafficLight2.set_state(hTrafficLight2.STATE_RED, true);
+    hTrafficLight3.set_state(hTrafficLight3.STATE_RED, true);
+ 
+    pause(1);
+ 
+    x = hTrafficLight0.destroy_all_actors_of_class();
+    eval(x, 3, 'Delete all actors of class (expect 3), received {}')
     
 %     vr.checkFunctionTestList("traffic_light", "../docs/source/Objects/road_signage.rst", "actor")
-% 
-% 
-%     ### Spline Line
-%     vr.PrintWSHeader("Spline Line")
-%     print("\n\n---Spline Line---")
-% 
-%     hCameraSplines = QLabsFreeCamera(qlabs)
-%     x = hCameraSplines.spawn(location=[-3.097, 2.579, 11.849], rotation=[0, 0.912, 1.141])
-%     hCameraSplines.possess()
-% 
-%     hSpline2 = QLabsSplineLine(qlabs)
-% 
-%     lineWidth = 0.125
-%     splineZ = 0.015
-%     points = [[-6.184, 9.595, splineZ,lineWidth],
-%               [-4.081, 9.856, splineZ, lineWidth],
-%               [-1.998, 10.178, splineZ, lineWidth],
-%               [-0.461, 11.024, splineZ, lineWidth],
-%               [0.168, 11.721, splineZ, lineWidth],
-%               [0.742, 13.048, splineZ, lineWidth],
-%               [0.991, 14.059, splineZ, lineWidth],
-%               [1.276, 15.72, splineZ, lineWidth],
-%               [1.363, 17.125, splineZ, lineWidth]]
-% 
-%     color_selection=[[0.5,0,0], [0.5,0,0.5], [0,0.5,0], [0,0,0.5]]
-% 
-%     for counter in range(4):
-%         x = hSpline2.spawn(location=[0,0-counter*0.75,0+counter*0.001], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-%         x = hSpline2.set_points(color=color_selection[counter], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
-%         vr.PrintWS(x == True, "Spawn configuration {}: {}".format(counter, x))
-% 
-%     time.sleep(0.5)
-%     x = hSpline2.destroy_all_actors_of_class()
-%     vr.PrintWS(x == 4, "Destroy all actors of class (expect 4): {}".format(x))
-% 
-%     hSpline2.spawn_id(actorNumber=0, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-%     hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
-%     time.sleep(0.5)
-% 
-%     x = hSpline2.destroy()
-%     vr.PrintWS(x == 1, "Destroy actor (expect 1): {}".format(x))
-% 
-%     hSpline2.spawn_id_degrees(actorNumber=1, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=counter, waitForConfirmation=True)
-%     hSpline2.set_points(color=color_selection[0], pointList=points, alignEndPointTangents=False, waitForConfirmation=True)
-%     x = hSpline2.ping()
-%     vr.PrintWS(x == True, "Ping (expect True): {}".format(x))
-% 
-%     hSpline2.destroy()
-%     hSpline2.actorNumber = 1
-%     x = hSpline2.ping()
-%     vr.PrintWS(x == False, "Ping actor that doesn't exist (expect False): {}".format(x))
-% 
-% 
-%     hSpline3 = QLabsSplineLine(qlabs)
-%     hSpline3.spawn([1.741, 8.757, 0.005], [0,0,0],[1,1,1],1)
-%     x = hSpline3.circle_from_center(radius=1, lineWidth=0.1, color=[1,0,1], numSplinePoints=8)
-%     vr.PrintWS(x == True, "Circle from center (expect True): {}".format(x))
-% 
-%     hSpline4 = QLabsSplineLine(qlabs)
-%     hSpline4.spawn([4.467, 10.579, 0.005], [0,0,0],[1,1,1],1)
-%     hSpline4.arc_from_center(radius=1, startAngle=0, endAngle=math.pi/2, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
-%     vr.PrintWS(x == True, "Arc from center (expect True): {}".format(x))
-% 
-%     hSpline5 = QLabsSplineLine(qlabs)
-%     hSpline5.spawn([5.045, 11.205, 0.005], [0,0,0],[1,1,1],1)
-%     hSpline5.arc_from_center_degrees(radius=1, startAngle=0, endAngle=90, lineWidth=0.1, color=[1,0,0], numSplinePoints=8)
-%     vr.PrintWS(x == True, "Arc from center degrees (expect True): {}".format(x))
-% 
-%     hSpline6 = QLabsSplineLine(qlabs)
-%     hSpline6.spawn([3.118, 8.109, 0.005], [0,0,0],[1,1,1],1)
-%     hSpline6.rounded_rectangle_from_center(cornerRadius=0.5, xWidth=2, yLength=4, lineWidth=0.1, color=[1,1,0])
-%     vr.PrintWS(x == True, "Rounded rectangle (expect True): {}".format(x))
-% 
-% 
+    
+
+    fprintf('\n\n-------------------------------- Spline Line ----------------------------------\n\n');
+
+    hCameraSplines = qlabs_free_camera(qlabs);
+    x = hCameraSplines.spawn([-3.097, 2.579, 11.849], [0, 0.912, 1.141]);
+    hCameraSplines.possess();
+
+    hSpline2 = qlabs_spline_line(qlabs);
+
+    lineWidth = 0.125;
+    splineZ = 0.015;
+    points = [-6.184, 9.595, splineZ,lineWidth
+              -4.081, 9.856, splineZ, lineWidth
+              -1.998, 10.178, splineZ, lineWidth
+              -0.461, 11.024, splineZ, lineWidth
+              0.168, 11.721, splineZ, lineWidth
+              0.742, 13.048, splineZ, lineWidth
+              0.991, 14.059, splineZ, lineWidth
+              1.276, 15.72, splineZ, lineWidth
+              1.363, 17.125, splineZ, lineWidth];
+
+    color_selection = [0.5, 0.0, 0.0
+                       0.5, 0.0, 0.5
+                       0.0, 0.5, 0.0
+                       0.0, 0.0, 0.5];
+
+    for counter = 1:4
+        x = hSpline2.spawn([0,0-counter*0.75,0+counter*0.001], [0,0,0], [1,1,1], counter, true);
+        eval(x, true, 'Spawn configuration {}: {}".format(counter, x')
+
+        x = hSpline2.set_points(color_selection(counter, :), points, false, true);
+        eval(x, true, 'Set points {}: {}".format(counter, x')
+        
+    end
+        
+    pause(0.5);
+    x = hSpline2.destroy_all_actors_of_class();
+    eval(x, 4, 'Destroy all actors of class (expect 4): {}".format(x)')
+
+    hSpline2.spawn_id(0, [0,0,0], [0,0,0], [1,1,1], counter, true);
+    hSpline2.set_points(color_selection(1), points, false, true);
+    pause(0.5);
+
+    x = hSpline2.destroy();
+    eval(x, 1, 'Destroy actor (expect 1): {}".format(x)')
+
+    hSpline2.spawn_id_degrees(1, [0,0,0], [0,0,0], [1,1,1], counter, true);
+    hSpline2.set_points(color_selection(1), points, false, true);
+    x = hSpline2.ping();
+    eval(x, true, 'Ping (expect True): {}".format(x)');
+
+    hSpline2.destroy();
+    hSpline2.actorNumber = 1;
+    x = hSpline2.ping();
+    eval(x, false, 'Ping actor that doesn"t exist (expect False): {}".format(x)');
+
+
+    hSpline3 = qlabs_spline_line(qlabs);
+    hSpline3.spawn([1.741, 8.757, 0.005], [0,0,0],[1,1,1],1);
+    x = hSpline3.circle_from_center(1, 0.1, [1,0,1], 8);
+    eval(x, true, 'Circle from center (expect True): {}".format(x)');
+
+
+    hSpline4 = qlabs_spline_line(qlabs);
+    hSpline4.spawn([4.467, 10.579, 0.005], [0,0,0],[1,1,1],1);
+    hSpline4.arc_from_center(1, 0, pi/2, 0.1, [1,0,0], 8);
+    eval(x, true, 'Arc from center (expect True): {}".format(x)');
+
+    hSpline5 = qlabs_spline_line(qlabs);
+    hSpline5.spawn([5.045, 11.205, 0.005], [0,0,0],[1,1,1],1);
+    hSpline5.arc_from_center_degrees(1, 0, 90, 0.1, [1,0,0], 8);
+    eval(x, true, 'Arc from center degrees (expect True): {}".format(x)');
+
+    hSpline6 = qlabs_spline_line(qlabs);
+    hSpline6.spawn([3.178, 10.713, 0.01], [0,0,0],[1,1,1],hSpline6.CURVE)
+    hSpline6.rounded_rectangle_from_center(0.5, 2, 4, 0.1, [1,1,0]);
+    eval(x, true, 'Rounded rectangle (expect True): {}".format(x)');
+    
+
 %     vr.checkFunctionTestList("spline_line", "../docs/source/Objects/splines.rst", "actor")
-% 
-% 
-%     ### Animals
-%     vr.PrintWSHeader("Animals")
-%     print("\n\n---Animals---")
-% 
-%     hCameraAnimals = QLabsFreeCamera(qlabs)
-%     x = hCameraAnimals.spawn(location=[25.802, 47.9, 0.484], rotation=[-0, -0.195, 1.009])
-%     hCameraAnimals.possess()
-% 
-%     hGoat = QLabsAnimal(qlabs)
-%     hGoat.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hGoat.GOAT, waitForConfirmation=True)
-%     hGoat.move_to(location=[27.214, 49.286, 0], speed=hGoat.GOAT_RUN, waitForConfirmation=True)
-% 
-%     time.sleep(3)
-%     hGoat.move_to(location=[28.338, 47.826, 0], speed=hGoat.GOAT_WALK, waitForConfirmation=True)
-%     time.sleep(6)
-%     hGoat.destroy()
-% 
-% 
-%     hSheep = QLabsAnimal(qlabs)
-%     hSheep.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hSheep.SHEEP, waitForConfirmation=True)
-%     hSheep.move_to(location=[27.214, 49.286, 0], speed=hSheep.SHEEP_RUN, waitForConfirmation=True)
-%     time.sleep(3)
-%     hSheep.move_to(location=[28.338, 47.826, 0], speed=hSheep.SHEEP_WALK, waitForConfirmation=True)
-%     time.sleep(6)
-%     hSheep.destroy()
-% 
-% 
-%     hCow = QLabsAnimal(qlabs)
-%     hCow.spawn(location=[26.206, 57, 1], rotation=[0,0,0], scale=[1,1,1], configuration=hCow.COW, waitForConfirmation=True)
-%     hCow.move_to(location=[27.214, 49.286, 0], speed=hCow.COW_RUN, waitForConfirmation=True)
-%     time.sleep(3)
-%     hCow.move_to(location=[28.338, 47.826, 0], speed=hCow.COW_WALK, waitForConfirmation=True)
-%     time.sleep(6)
-% 
-% 
-% 
+%
+    fprintf('\n\n-------------------------------- Animals ----------------------------------\n\n');
+
+    hCameraAnimals = qlabs_free_camera(qlabs);
+    x = hCameraAnimals.spawn([25.802, 47.9, 0.484], [-0, -0.195, 1.009]);
+    hCameraAnimals.possess();
+
+    hGoat = qlabs_animal(qlabs);
+    hGoat.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hGoat.GOAT, true);
+    hGoat.move_to([27.214, 49.286, 0], hGoat.GOAT_RUN, true);
+
+    pause(3);
+    hGoat.move_to([28.338, 47.826, 0], hGoat.GOAT_WALK, true);
+    pause(6);
+    hGoat.destroy();
+
+
+    hSheep = qlabs_animal(qlabs);
+    hSheep.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hSheep.SHEEP, true);
+    hSheep.move_to([27.214, 49.286, 0], hSheep.SHEEP_RUN, true);
+    pause(3);
+    hSheep.move_to([28.338, 47.826, 0], hSheep.SHEEP_WALK, true);
+    pause(6);
+    hSheep.destroy();
+
+
+    hCow = qlabs_animal(qlabs);
+    hCow.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hCow.COW, true);
+    hCow.move_to([27.214, 49.286, 0], hCow.COW_RUN, true);
+    pause(3);
+    hCow.move_to([28.338, 47.826, 0], hCow.COW_WALK, true);
+    pause(6);
+
+    end
+
 %     vr.checkFunctionTestList("animal", "../docs/source/Objects/animal_library.rst", "character", "actor")
-% 
-% 
-% 
-%     ### Outdoor Environment
-%     vr.PrintWSHeader("Outdoor Environment")
-%     print("\n\n---Outdoor Environment---")
-% 
-%     hEnvironmentOutdoors2 = QLabsEnvironmentOutdoors(qlabs)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(0)
-% 
-%     hCameraWeather = QLabsFreeCamera(qlabs)
-%     x = hCameraWeather.spawn(location=[0.075, -8.696, 1.576], rotation=[0, -0.141, 1.908])
-%     hCameraWeather.possess()
-% 
-%     time.sleep(2.5)
-%     hSystem = QLabsSystem(qlabs)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLEAR_SKIES)
+
+    fprintf('\n\n-------------------------------- Outdoor Environment ----------------------------------\n\n');
+    
+    hEnvironmentOutdoors2 = qlabs_environment_outdoors(qlabs);
+    hEnvironmentOutdoors2.set_outdoor_lighting(0);
+
+    hCameraWeather = qlabs_free_camera(qlabs);
+    x = hCameraWeather.spawn([0.075, -8.696, 1.576], [0, -0.141, 1.908]);
+    hCameraWeather.possess();
+
+    pause(2.5);
+%    hSystem = qlabs_system(qlabs);
+
+     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLEAR_SKIES);
 %     hSystem.set_title_string('Clear skies')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.PARTLY_CLOUDY)
+     pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.PARTLY_CLOUDY);
 %     hSystem.set_title_string('Partly cloudy')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLOUDY)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLOUDY);
 %     hSystem.set_title_string('Cloudy')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.OVERCAST)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(1)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.OVERCAST);
+    hEnvironmentOutdoors2.set_outdoor_lighting(1);
 %     hSystem.set_title_string('Overcast')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.FOGGY)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.FOGGY);
 %     hSystem.set_title_string('Foggy')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.LIGHT_RAIN)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(0)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.LIGHT_RAIN);
+    hEnvironmentOutdoors2.set_outdoor_lighting(0)
 %     hSystem.set_title_string('Light rain')
-%     time.sleep(2.5)
+    pause(2.5);
 % 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.RAIN)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(1)
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.RAIN);
+    hEnvironmentOutdoors2.set_outdoor_lighting(1);
 %     hSystem.set_title_string('Rain')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.THUNDERSTORM)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.THUNDERSTORM);
 %     hSystem.set_title_string('Thunderstorm')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.LIGHT_SNOW)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(0)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.LIGHT_SNOW);
+    hEnvironmentOutdoors2.set_outdoor_lighting(0);
 %     hSystem.set_title_string('Light snow')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.SNOW)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(1)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.SNOW);
+    hEnvironmentOutdoors2.set_outdoor_lighting(1);
 %     hSystem.set_title_string('Snow')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.BLIZZARD)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.BLIZZARD);
 %     hSystem.set_title_string('Blizzard')
-%     time.sleep(2.5)
-% 
-%     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.PARTLY_CLOUDY)
-%     hEnvironmentOutdoors2.set_outdoor_lighting(0)
+    pause(2.5);
+
+    hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.PARTLY_CLOUDY);
+    hEnvironmentOutdoors2.set_outdoor_lighting(0);
 %     hSystem.set_title_string('QLABS VERIFICATION SCRIPT')
-% 
+
 %     ### Real-Time
 %     vr.PrintWSHeader("Real-Time")
 %     print("\n\n---Real-Time---")

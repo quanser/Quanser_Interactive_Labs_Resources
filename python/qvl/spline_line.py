@@ -103,7 +103,6 @@ class QLabsSplineLine(QLabsActor):
         """
 
         points = []
-        print(radius)
         for angle in range(0, numSplinePoints):
             points.append([radius*math.sin(angle/numSplinePoints*math.pi*2), radius*math.cos(angle/numSplinePoints*math.pi*2), 0, lineWidth])
 

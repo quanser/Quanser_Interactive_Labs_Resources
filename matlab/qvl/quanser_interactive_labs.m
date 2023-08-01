@@ -235,10 +235,20 @@ function container = wait_for_container(obj, classID, actorNumber, actorFunction
             obj.c.payload = [];
             obj.c.containerSize = 13 + length(obj.c.payload);
         
+
             if (send_container(obj, obj.c))
                 rc = wait_for_container(obj, obj.c.ID_GENERIC_ACTOR_SPAWNER, device_num, obj.c.FCN_GENERIC_ACTOR_SPAWNER_DESTROY_ALL_SPAWNED_ACTORS_ACK);
+                
+                if isempty(rc)
+                    fprintf('destroy_all_spawned_actors: Communication timeout.\n');
+                    return
+                end     
+                
                 num_destroyed = typecast(flip(rc.payload), 'int32');
+            else
+                fprintf('destroy_all_spawned_actors: Communication failure).\n');
             end
+
         end
     end
 end
