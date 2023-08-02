@@ -129,7 +129,7 @@ classdef qlabs_spline_line < qlabs_actor
             
             
             alignEndPointTangents = true;
-            success = obj.set_points(color, points, alignEndPointTangents);
+            success = obj.set_points(color, points, alignEndPointTangents, waitForConfirmation);
             return
         end
 

@@ -1,18 +1,18 @@
-classdef qlabs_stop_sign < qlabs_actor
+classdef qlabs_yield_sign < qlabs_actor
     properties
-        ID_STOP_SIGN = 10020;
+        ID_YIELD_SIGN = 10070
     end
-    methods
-        function obj = qlabs_stop_sign(qlabs, verbose)
 
+    methods
+        function obj = qlabs_yield_sign(qlabs, verbose)
             arguments
                 qlabs quanser_interactive_labs
                 verbose logical = false
-            end            
+            end
 
             obj = obj@qlabs_actor(qlabs, verbose);
 
-            obj.classID = obj.ID_STOP_SIGN;
+            obj.classID = obj.ID_YIELD_SIGN;
 
             return
         end

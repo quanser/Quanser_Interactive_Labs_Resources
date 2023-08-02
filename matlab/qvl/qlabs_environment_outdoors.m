@@ -60,24 +60,24 @@ classdef qlabs_environment_outdoors < handle
 %             :return: `True` if setting the time was successful, `False` otherwise
 %             :rtype: boolean
 
-            obj.c.classID = self.ID_ENVIRONMENT_OUTDOORS;
+            obj.c.classID = obj.ID_ENVIRONMENT_OUTDOORS;
             obj.c.actorNumber = 0;
-            obj.c.actorFunction = self.FCN_SET_TIME_OF_DAY;
+            obj.c.actorFunction = obj.FCN_SET_TIME_OF_DAY;
             obj.c.payload = [flip(typecast(single(time), 'uint8'))];
             obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
 
            if (obj.qlabs.send_container(obj.c))
-                if waitForConfirmation
-                    rc = obj.qlabs.wait_for_container(obj.ID_SPLINE_LINE, obj.actorNumber, obj.FCN_SET_TIME_OF_DAY_ACK);
-                    if isempty(rc)
-                        if (obj.verbose == true)
-                            fprintf('Timeout waiting for response.\n')
-                        end
-                        return
+%                if waitForConfirmation
+                rc = obj.qlabs.wait_for_container(obj.ID_ENVIRONMENT_OUTDOORS, 0, obj.FCN_SET_TIME_OF_DAY_ACK);
+                if isempty(rc)
+                    if (obj.verbose == true)
+                        fprintf('Timeout waiting for response.\n')
                     end
+                    return
                 end
+%                end
                 success = true;
                 return
             end

@@ -3,6 +3,9 @@ function library_verification_qcar()
     clear all;
     clc;
     addpath('../qvl')
+
+
+    require_user_input = false;
     
     fprintf('\n\n------------------------------ Communications --------------------------------\n\n');
     
@@ -25,9 +28,7 @@ function library_verification_qcar()
 
     use_verbose = true;
 
-
-
-
+    
 
 
 
@@ -46,7 +47,7 @@ function library_verification_qcar()
 %     vr.checkFunctionTestList("system", "../docs/source/System/system_library.rst")
 %     """
 
-    if (false)
+    if (true)
 %     ### Free Camera
     fprintf('\n\n-------------------------------- Free Camera ----------------------------------\n\n');
     
@@ -142,6 +143,7 @@ function library_verification_qcar()
         fprintf("Image decoding failure\n");
     end
     pause(1.0)
+    close all;
 
 
 %     print('Testing parenting.')
@@ -181,45 +183,39 @@ function library_verification_qcar()
  
 
 
-     
+fprintf('\n\n-------------------------------- Yield Sign ----------------------------------\n\n');
 
-%     ### Yield Sign
-% 
-% 
-%     vr.PrintWSHeader("Yield Sign")
-%     print("\n\n---Yield Sign---")
-% 
-%     hYield0 = QLabsYieldSign(qlabs)
-%     x = hYield0.spawn_id(actorNumber=0, location=[-17, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with radians")
-% 
-%     x = hYield0.spawn_id(actorNumber=0, location=[-17, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn sign with duplicate ID (return code 2)")
-% 
-%     hYield1 = QLabsYieldSign(qlabs)
-%     hYield1.spawn_id(actorNumber=1, location=[-16, 32.5, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     x = hYield1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing sign (expect return 1)")
-% 
-%     hYield1.actorNumber=1
-%     x = hYield1.destroy()
-%     vr.PrintWS(x == 0, "Destroy sign that doesn't exist (expect return 0)")
-% 
-%     hYield2 = QLabsYieldSign(qlabs)
-%     x = hYield2.spawn_id_degrees(actorNumber=2, location=[-15, 32.5, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn sign with degrees")
-% 
-%     x, loc, rot, scale = hYield2.get_world_transform()
+
+    hYield0 = qlabs_yield_sign(qlabs);
+    x = hYield0.spawn_id(0, [-17, 32.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(x, 0, 'Spawn sign with radians');
+
+    x = hYield0.spawn_id(0, [-17, 32.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    eval(x, 2, 'Spawn sign with duplicate ID (return code 2)');
+
+    hYield1 = qlabs_yield_sign(qlabs);
+    hYield1.spawn_id(1, [-16, 32.5, 0.0], [0,0,pi], [1,1,1], 0, true);
+    x = hYield1.destroy();
+    eval(x, 1, 'Spawn and destroy existing sign (expect return 1)');
+
+    hYield1.actorNumber=1;
+    x = hYield1.destroy();
+    eval(x, 0, 'Destroy sign that doesn"t exist (expect return 0)');
+
+    hYield2 = qlabs_yield_sign(qlabs);
+    x = hYield2.spawn_id_degrees(2, [-15, 32.5, 0.0], [0,0,180], [1,1,1], 0, true);
+    eval(x, 0, 'Spawn sign with degrees');
+
+    x, loc, rot, scale = hYield2.get_world_transform();
 %     vr.PrintWS(np.array_equal(loc, [-15, 32.5, 0.0]) and x == True, "Get world transform")
-% 
-%     x = hYield2.ping()
-%     vr.PrintWS(x == True, "Ping existing sign (expect True)")
-% 
-%     hYield1.actorNumber=1
-%     x = hYield1.ping()
-%     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
-% 
-% 
+
+    x = hYield2.ping();
+    eval(x, true, 'Ping existing sign (expect True)');
+
+    hYield1.actorNumber=1;
+    x = hYield1.ping();
+    eval(x, false, 'Ping sign that doesn"t exist (expect False)');
+
 %     vr.checkFunctionTestList("yield_sign", "../docs/source/Objects/road_signage.rst", "actor")
 % 
 %     ### Stop Sign
@@ -245,19 +241,18 @@ function library_verification_qcar()
     x = hStop2.spawn_id_degrees(2, [-15, 33.5, 0.0], [0,0,180], [1,1,1], 0, true);
     eval(x, 0, 'Spawn sign with degrees')
 
-%    x, loc, rot, scale = hStop2.get_world_transform();
+    x, loc, rot, scale = hStop2.get_world_transform();
 %    vr.PrintWS(np.array_equal(loc, [-15, 33.5, 0.0]) and x == True, "Get world transform")
-% 
-% 
-%     x = hStop2.ping()
-%     vr.PrintWS(x == True, "Ping existing sign (expect True)")
-% 
-%     hStop1.actorNumber=1
-%     x = hStop1.ping()
-%     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
-% 
-% 
-%     ### Roundabout Sign
+
+
+    x = hStop2.ping();
+    eval(x, true, 'Ping existing sign (expect True)');
+
+    hStop1.actorNumber=1;
+    x = hStop1.ping();
+    eval(x, false, 'Ping sign that doesn"t exist (expect False)');
+
+
     fprintf('\n\n-------------------------------- Roundabout Sign ----------------------------------\n\n');
     %Spawn a roundabout sign
     roundaboutSign = qlabs_roundabout_sign(qlabs, use_verbose);
@@ -282,23 +277,21 @@ function library_verification_qcar()
     
     hRoundabout2 = qlabs_roundabout_sign(qlabs);
     x = hRoundabout2.spawn_id_degrees(2, [-15, 31.5, 0.0], [0,0,180], [1,1,1], 0, true);
-    eval(status, 0, 'Spawn sign with degrees')
+    eval(status, 0, 'Spawn sign with degrees');
     
     
-%     x, loc, rot, scale = hRoundabout2.get_world_transform()
-%     vr.PrintWS(np.array_equal(loc, [-15, 31.5, 0.0]) and x == True, "Get world transform")
-% 
-% 
-%     x = hRoundabout2.ping()
-%     vr.PrintWS(x == True, "Ping existing sign (expect True)")
-% 
-%     hRoundabout1.actorNumber = 1
-%     x = hRoundabout1.ping()
-%     vr.PrintWS(x == False, "Ping sign that doesn't exist (expect False)")
-% 
+    x, loc, rot, scale = hRoundabout2.get_world_transform();
+    eval(status, 0, 'Spawn sign with degrees');
+    
+    x = hRoundabout2.ping();
+    eval(status, true, 'Ping existing sign (expect True)');
+    
+    hRoundabout1.actorNumber = 1;
+    x = hRoundabout1.ping();
+    eval(status, false, 'Ping sign that doesn"t exist (expect False)');
+
 %     vr.checkFunctionTestList("roundabout_sign", "../docs/source/Objects/road_signage.rst", "actor")
-% 
-%     ### Traffic Cone
+
 
     fprintf('\n\n-------------------------------- Traffic Cone ----------------------------------\n\n');
     %Spawn a traffic cone
@@ -323,37 +316,36 @@ function library_verification_qcar()
     x = hCone1.destroy();
     eval(status, 1, 'Spawn and destroy existing cone (expect return 1)')
 
-% 
-%     hCone1.actorNumber = 1
-%     x = hCone1.destroy()
-%     vr.PrintWS(x == 0, "Destroy cone that doesn't exist (expect return 0)")
-% 
-%     hCone2 = QLabsTrafficCone(qlabs)
-%     x = hCone2.spawn_id_degrees(actorNumber=2, location=[-15, 30.5, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn cone with degrees in config 1")
-% 
-%     x, loc, rot, scale = hCone2.get_world_transform()
-%     vr.PrintWS(x == True, "Get world transform")
-% 
-% 
-%     x = hCone2.ping()
-%     vr.PrintWS(x == True, "Ping existing cone (expect True)")
-% 
-%     hCone1.actorNumber = 1
-%     x = hCone1.ping()
-%     vr.PrintWS(x == False, "Ping cone that doesn't exist (expect False)")
-% 
+    hCone1.actorNumber = 1;
+    x = hCone1.destroy();
+    eval(status, 0, 'Destroy cone that doesn"t exist (expect return 0)');
+
+    hCone2 = qlabs_traffic_cone(qlabs);
+    x = hCone2.spawn_id_degrees(2, [-15, 30.5, 1.0], [0,0,180], [1,1,1], 1, true);
+    eval(status, 0, 'Spawn cone with degrees in config 1')
+
+    x, loc, rot, scale = hCone2.get_world_transform();
+    eval(status, true, 'Get world transform')
+
+
+    x = hCone2.ping();
+    eval(status, true, 'Ping existing cone (expect True)')
+
+    hCone1.actorNumber = 1;
+    x = hCone1.ping();
+    eval(status, false, 'Ping cone that doesn"t exist (expect False)')
+
 %     vr.checkFunctionTestList("traffic_cone", "../docs/source/Objects/road_signage.rst", "actor")
-% 
-% 
-% 
-%     ### Change view points
-% 
-%     time.sleep(0.5)
-%     hCamera0.possess()
-%     print("Possess camera 0")
-% 
-%     ### Crosswalk
+
+
+
+%     Change view points
+
+    pause(0.5)
+    hCamera0.possess()
+    fprintf('Possess camera 0')
+
+
     fprintf('\n\n-------------------------------- Crosswalk ----------------------------------\n\n');
     %Spawn a crosswalk 
     hCrosswalk = qlabs_crosswalk(qlabs, use_verbose);
@@ -437,104 +429,107 @@ function library_verification_qcar()
 %     ### QCar
     fprintf('\n\n-------------------------------- QCar ----------------------------------\n\n');
 
-%    hCameraQCars = qlabs_free_camera(qlabs);
-%    hCameraQCars.spawn_id(33, [-15.075, 26.703, 6.074], [0, 0.564, -1.586]);
-%    hCameraQCars.possess();
-% 
-%     vr.PrintWSHeader("QCar")
-%     print("\n\n---QCar---")
-% 
-%     hQCar0 = QLabsQCar(qlabs)
-%     x = hQCar0.spawn_id(actorNumber=0, location=[-8.700, 14.643, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn QCar with radians")
-% 
-%     hQCar0Duplicate = QLabsQCar(qlabs, True)
-%     x = hQCar0Duplicate.spawn_id(actorNumber=0, location=[-14.386, 17.445, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
-%     vr.PrintWS(x == 2, "Spawn QCar with duplicate ID (return code 2)")
-% 
-%     hQCar1 = QLabsQCar(qlabs)
-%     hQCar1.spawn_id(actorNumber=1, location=[-15.075, 26.703, 6.074], rotation=[0,0,math.pi/2], waitForConfirmation=True)
-%     x = hQCar1.destroy()
-%     vr.PrintWS(x == 1, "Spawn and destroy existing QCar (expect return 1)")
-% 
-%     hQCar1.actorNumber = 10
-%     x = hQCar1.destroy()
-%     vr.PrintWS(x == 0, "Destroy QCar that doesn't exist (expect return 0)")
-% 
-%     hQCar2 = QLabsQCar(qlabs)
-%     x = hQCar2.spawn_id_degrees(actorNumber=2, location=[-11.048, 14.643, 0.005], rotation=[0,0,90], waitForConfirmation=True)
-%     vr.PrintWS(x == 0, "Spawn QCar with degrees")
-% 
-% 
-%     # lights
-%     hEnvironmentOutdoors = QLabsEnvironmentOutdoors(qlabs)
-%     for env_time in range(60):
-%         hEnvironmentOutdoors.set_time_of_day(12+env_time/10*2)
-% 
-%     time.sleep(0.5)
-% 
-%     hQCar2.set_velocity_and_request_state(forward=1, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
-%     time.sleep(1)
-%     hQCar2.set_velocity_and_request_state(forward=0.0, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
-%     if require_user_input == True:
-%         x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%     vr.PrintWS(x == "", "Headlights")
-%     vr.PrintWS(x == "", "Set velocity")
-% 
-%     hQCar2.set_velocity_and_request_state_degrees(forward=1, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-%     time.sleep(1)
-%     success, location, rotation, frontHit, rearHit = hQCar2.set_velocity_and_request_state_degrees(forward=0.0, turn = 30, headlights=True, leftTurnSignal=True, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-%     print(rotation)
-%     if require_user_input == True:
-%         x = input("Moving forward towards the left of the screen? Enter yes, anything else no):")
-%     else:
-%         x = ""
-%     vr.PrintWS(x == "", "Set velocity degrees")
-% 
-% 
-%     x = hQCar2.possess()
-% 
-%     time.sleep(0.1)
-%     hQCar2.set_velocity_and_request_state(forward=1, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
-%     time.sleep(1)
-%     hQCar2.set_velocity_and_request_state(forward=0.0, turn = 0, headlights=True, leftTurnSignal=True, rightTurnSignal=True, brakeSignal=True, reverseSignal=True)
-% 
+   hCameraQCars = qlabs_free_camera(qlabs);
+   hCameraQCars.spawn_id(33, [-15.075, 26.703, 6.074], [0, 0.564, -1.586]);
+   hCameraQCars.possess();
+
+    hQCar0 = qlabs_qcar(qlabs);
+    x = hQCar0.spawn_id(0, [-8.700, 14.643, 0.005], [0,0,pi/2], true);
+    eval(x, 0, 'Spawn QCar with radians')
+
+    hQCar0Duplicate = qlabs_qcar(qlabs, true);
+    x = hQCar0Duplicate.spawn_id(0, [-14.386, 17.445, 0.005], [0,0,pi/2], true);
+    eval(x, 2, 'Spawn QCar with duplicate ID (return code 2)')
+
+    hQCar1 = qlabs_qcar(qlabs);
+    hQCar1.spawn_id(1, [-15.075, 26.703, 6.074], [0,0,pi/2], true);
+    x = hQCar1.destroy();
+    eval(x, 1, 'Spawn and destroy existing QCar (expect return 1)')
+
+    hQCar1.actorNumber = 10;
+    x = hQCar1.destroy();
+    eval(x, 0, 'Destroy QCar that doesn"t exist (expect return 0)')
+
+    hQCar2 = qlabs_qcar(qlabs);
+    x = hQCar2.spawn_id_degrees(2, [-11.048, 14.643, 0.005], [0,0,90], true);
+    eval(x, 0, 'Spawn QCar with degrees')
+
+%     lights
+    hEnvironmentOutdoors = qlabs_environment_outdoors(qlabs);
+    for env_time = 0:60
+        hEnvironmentOutdoors.set_time_of_day(12+env_time/10*2);
+    end
+
+    pause(0.5);
+
+    hQCar2.set_velocity_and_request_state(1, pi/6, true, false, true, false, false);
+    pause(1);
+    hQCar2.set_velocity_and_request_state(0.0, pi/6, true, false, true, false, false);
+    if require_user_input == true
+        x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):");
+    else
+        eval(x, '', 'Headlights')
+        eval(x, '', 'Set velocity')
+    end
+
+    hQCar2.set_velocity_and_request_state_degrees(0, 30, true, true, false, false, false);
+    pause(1);
+%     success, location, rotation, frontHit, rearHit = hQCar2.set_velocity_and_request_state_degrees(0.0, 30, true, true, false, false, false);
+%     fprintf(rotation)
+%     if require_user_input == true
+%         x = input("Moving forward towards the left of the screen? Enter yes, anything else no):");
+%     else
+%         x = "";
+%     end
+%     eval(x, '', 'Set velocity degrees')
+    
+
+
+    x = hQCar2.possess();
+
+    pause(0.1);
+    hQCar2.set_velocity_and_request_state(1, 0, true, true, true, true, true);
+    pause(1);
+    hQCar2.set_velocity_and_request_state(0.0, 0, true, true, true, true, true);
+
 %     if require_user_input == True:
 %         x = input("Brake lights on and casting red glow? (Enter yes, anything else no):")
 %     else:
 %         x = ""
 %     vr.PrintWS(x == "", "Brake lights")
-% 
-% 
-%     hQCar2.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-% 
-%     for env_time in range(60):
-%         hEnvironmentOutdoors.set_time_of_day(env_time/10*2)
-% 
-% 
-%     #bumper test
-%     print("Testing bumper response...")
-%     hCameraQCars.possess()
-%     hCameraQCars.set_transform(location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
-% 
-%     hCubeQCarBlocks = QLabsBasicShape(qlabs)
-%     hCubeQCarBlocks .spawn_id(100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=hCubeQCarBlocks.SHAPE_CUBE, waitForConfirmation=True)
-%     hCubeQCarBlocks .spawn_id(101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=hCubeQCarBlocks.SHAPE_CUBE, waitForConfirmation=True)
-% 
-%     hQCar3 = QLabsQCar(qlabs)
-%     hQCar3.spawn_id(actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
-% 
-%     for count in range(10):
-%         x, location, rotation, frontHit, rearHit  = hQCar3.set_velocity_and_request_state(forward=2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-% 
-%         time.sleep(0.25)
-% 
+
+
+    hQCar2.set_velocity_and_request_state(0, 0, false, false, false, false, false);
+
+    for env_time = 1:60
+        hEnvironmentOutdoors.set_time_of_day(env_time/10*2);
+    end
+
+
+%     bumper test
+    fprintf("Testing bumper response...")
+    % CAMERAS NOT IMPLEMENTED YET! %
+%     hCameraQCars.possess();
+%     hCameraQCars.set_transform([-17.045, 32.589, 6.042], [0, 0.594, -1.568]);
+
+    hCubeQCarBlocks = qlabs_basic_shape(qlabs);
+    hCubeQCarBlocks.spawn_id(100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], hCubeQCarBlocks.SHAPE_CUBE, true);
+    hCubeQCarBlocks.spawn_id(101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], hCubeQCarBlocks.SHAPE_CUBE, true);
+
+    hQCar3 = qlabs_qcar(qlabs);
+    hQCar3.spawn_id(3, [-13.424, 26.299, 0.005], [0,0,pi]);
+
+    for count = 0:10
+        %x, location, rotation, frontHit, rearHit = 
+        hQCar3.set_velocity_and_request_state(2, 0, false, false, false, false, false);
+
+        pause(0.25);
+    end
+
 %     vr.PrintWS(x == True and frontHit == True, "Front bumper hit")
 %     x = hQCar3.ghost_mode()
 %     vr.PrintWS(x == True, "Ghost Mode")
-% 
+
 % 
 %     for count in range(10):
 %         x, location, rotation, frontHit, rearHit  = hQCar3.set_velocity_and_request_state(forward=-2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
@@ -905,14 +900,14 @@ fprintf('\n\n-------------------------------- Widget ---------------------------
     hQLabsWidget = qlabs_widget(qlabs);
     hQLabsWidget.widget_spawn_shadow(true);
 
-%     for y = 0:100000
-%         x = hQLabsWidget.spawn([-0.974, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
-%         x = hQLabsWidget.spawn([-0.974, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
-%         x = hQLabsWidget.spawn([-0.474, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
-%         x = hQLabsWidget.spawn([-0.474, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', true);
-%         pause(0.01)
-%         fprintf("%u\n", y*4)
-%     end
+    for y = 0:600
+        x = hQLabsWidget.spawn([-0.974, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+        x = hQLabsWidget.spawn([-0.974, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+        x = hQLabsWidget.spawn([-0.474, 32.904, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
+        x = hQLabsWidget.spawn([-0.474, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', true);
+        pause(0.01)
+        fprintf("%u\n", y*4)
+    end
     
     for y= 0:500
         x = hQLabsWidget.spawn([-0.974, 32.404, 1], [0,0,0], [1,1,1], hQLabsWidget.METAL_CAN, [1,1,1], 0, 0, '', false);
@@ -933,7 +928,7 @@ fprintf('\n\n-------------------------------- Widget ---------------------------
     eval(x, true, 'Widget spawn degrees(expect True)')
 
     pause(3);
-
+    
     x = hQLabsWidget.destroy_all_spawned_widgets();
     eval(x, true, 'Widgets destroyed (expect True)')
     
