@@ -581,7 +581,7 @@ class QLabsQCar(QLabsActor):
                 return False, None, None
 
             if ((len(c.payload)-4)/2 != LIDAR_SAMPLES):
-                print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
+                #print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
                 return False, None, None
 
             distance = np.linspace(0,0,LIDAR_SAMPLES)

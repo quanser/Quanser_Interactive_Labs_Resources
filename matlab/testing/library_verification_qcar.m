@@ -104,7 +104,7 @@ function library_verification_qcar()
     x = hCamera2.possess();
     eval(x, true, 'Possess camera 2');
      
- 
+
 %      for y = 0:25
 %          x = hCamera2.set_transform(loc2, rot2/180*pi + [0, 0, y/25*pi*2] );
 %      end
@@ -426,6 +426,8 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 %     vr.checkFunctionTestList("person", "../docs/source/Objects/person_library.rst", "character", "actor")
 % 
 % 
+   
+
 %     ### QCar
     fprintf('\n\n-------------------------------- QCar ----------------------------------\n\n');
 
@@ -462,18 +464,19 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 
     pause(0.5);
 
-    hQCar2.set_velocity_and_request_state(1, pi/6, true, false, true, false, false);
+    hQCar2.set_velocity_and_request_state(1, -pi/6, true, false, true, false, false);
     pause(1);
-    hQCar2.set_velocity_and_request_state(0.0, pi/6, true, false, true, false, false);
-    if require_user_input == true
-        x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):");
-    else
-        eval(x, '', 'Headlights')
-        eval(x, '', 'Set velocity')
-    end
+    hQCar2.set_velocity_and_request_state(0.0, -pi/6, true, false, true, false, false);
+%     if require_user_input == true
+%         x = input("Moving forward towards the right of the screen, headlights on? (Enter yes, anything else no):");
+%     else
+%         eval(x, '', 'Headlights')
+%         eval(x, '', 'Set velocity')
+%     end
 
-    hQCar2.set_velocity_and_request_state_degrees(0, 30, true, true, false, false, false);
+    hQCar2.set_velocity_and_request_state_degrees(1, 30, true, true, false, false, false);
     pause(1);
+    hQCar2.set_velocity_and_request_state_degrees(0.0, 30, true, true, false, false, false);
 %     success, location, rotation, frontHit, rearHit = hQCar2.set_velocity_and_request_state_degrees(0.0, 30, true, true, false, false, false);
 %     fprintf(rotation)
 %     if require_user_input == true
@@ -527,36 +530,44 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
     end
 
 %     vr.PrintWS(x == True and frontHit == True, "Front bumper hit")
-%     x = hQCar3.ghost_mode()
-%     vr.PrintWS(x == True, "Ghost Mode")
+    x = hQCar3.ghost_mode();
+    eval(x, true, 'Ghost Mode');
+  
+    for count = 0:10
+        %x, location, rotation, frontHit, rearHit  = 
+        hQCar3.set_velocity_and_request_state(-2, 0, false, false, false, false, false);
 
-% 
-%     for count in range(10):
-%         x, location, rotation, frontHit, rearHit  = hQCar3.set_velocity_and_request_state(forward=-2, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-% 
-%         time.sleep(0.25)
-% 
-%     hQCar3.ghost_mode(enable=True, color=[1,0,0])
-% 
+        pause(0.25)
+    end
+
+    hQCar3.ghost_mode(true, [1,0,0])
+
 %     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit")
-%     hQCar3.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
-% 
-%     x, location, rotation, forward_vector, up_vector, frontHit, rearHit = hQCar3.set_transform_and_request_state(location=[-16.1, 26.299, 0.005], rotation=[0,0,math.pi-0.01], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
+    hQCar3.set_velocity_and_request_state(0, 0, false, false, false, false, false);
+
+%     x, location, rotation, forward_vector, up_vector, frontHit, rearHit = 
+    hQCar3.set_transform_and_request_state([-16.1, 26.299, 0.005], [0,0,pi-0.01], true, false, false, false, false, false);
 %     vr.PrintWS(x == True and frontHit == True, "Front bumper hit with transform")
-% 
-%     x, loc, rot, scale = hQCar3.get_world_transform()
+
+    x = hQCar3.get_world_transform();
+    loc = hQCar3.get_world_transform();
+    rot = hQCar3.get_world_transform();
+    scale = hQCar3.get_world_transform();
+    
+%     eval(x, abs(loc - [-16.1, 26.299, 0.005]) < 0.01 && abs(rot - [0, 0, pi-0.01]) < 0.01 && x == true, 'Get world transform');
+    
 %     vr.PrintWS(abs(np.sum(np.subtract(loc, [-16.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,math.pi-0.01]))) < 0.01 and x == True, "Get world transform")
-% 
-% 
+
+
 %     x, location, rotation, forward_vector, up_vector, frontHit, rearHit = hQCar3.set_transform_and_request_state_degrees(location=[-13.1, 26.299, 0.005], rotation=[0,0,179], enableDynamics=True, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
 %     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit with transform")
 % 
 %     x, loc, rot, scales = hQCar3.get_world_transform_degrees()
 %     vr.PrintWS(abs(np.sum(np.subtract(loc, [-13.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,179]))) < 0.01 and x == True, "Get world transform degrees")
-% 
-%     hQCar3.ghost_mode(enable=False, color=[1,0,0])
-% 
-% 
+
+    hQCar3.ghost_mode(false, [1,0,0])
+
+
 %     #camera tests
 %     print("\nQCar camera tests...")
 %     hQCar2.possess(hQCar2.CAMERA_OVERHEAD)
@@ -701,7 +712,7 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 % 
 %     #LIDAR
 % 
-%     hQCar3.possess(hQCar3.CAMERA_OVERHEAD)
+     hQCar3.possess(hQCar3.CAMERA_OVERHEAD)
 % 
 %     lidarPlot = pg.plot(title="LIDAR")
 %     squareSize = 100
@@ -715,12 +726,36 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 %     print("Reading from LIDAR... if QLabs crashes, make sure FPS > 100 or fix the crash bug!")
 % 
 % 
-%     for count in range(20):
-% 
-%         success, angle, distance = hQCar3.get_lidar(samplePoints=400)
-% 
-%         x = np.sin(angle)*distance
-%         y = np.cos(angle)*distance
+
+    hFigure = figure();
+    hQCar3.set_velocity_and_request_state(-1, 0, false, false, false, false, false);
+    
+    for count = 0:20
+
+        [success, angle, distance] = hQCar3.get_lidar(400);
+        %success
+        %x = angle;
+        %y = distance;
+
+%         for i = 1:length(distance)
+%             if (distance(i) == 0)
+%                 distance(i) = NaN;
+%             end
+%         end
+
+        x = sin(angle).*distance;
+        y = cos(angle).*distance;
+
+        plot(x,y, '.');
+        axis([-60 60 -60 60])
+        drawnow
+        pause(0.05);
+        
+    end
+
+    hQCar3.set_velocity_and_request_state(0, 0, false, false, false, false, false);
+    
+    close(hFigure);
 % 
 %         lidarData.setData(x,y)
 %         QtWidgets.QApplication.instance().processEvents()
@@ -734,6 +769,8 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 %     vr.checkFunctionTestList("qcar", "../docs/source/Objects/car_library.rst", "actor")
 % 
 % 
+
+
     fprintf('\n\n-------------------------------- Basic Shape ----------------------------------\n\n');
 
     x = hCamera2.possess();

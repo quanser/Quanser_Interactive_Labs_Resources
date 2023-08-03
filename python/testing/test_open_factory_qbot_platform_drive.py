@@ -45,22 +45,8 @@ def main():
 
 
     hQBot = QLabsQBotPlatform(qlabs)
-    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 3], rotation=[0,0,0], scale=[1,1,1], configuration=0)
+    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING)
-
-    stackBot = QLabsQBotPlatform(qlabs)
-    stackBot.spawn_id_degrees(actorNumber=1, location=[0.073, -2.743, 1], rotation=[0,180,90], scale=[1,1,1], configuration=0)
-
-    stackBot2 = QLabsQBotPlatform(qlabs)
-    stackBot2.spawn_id_degrees(actorNumber=2, location=[0.073, -2.743, 1.5], rotation=[0,0,90], scale=[1,1,1], configuration=0)
-
-    stackBot3 = QLabsQBotPlatform(qlabs)
-    stackBot3.spawn_id_degrees(actorNumber=3, location=[0.073, -2.743, 2], rotation=[0,180,90], scale=[1,1,1], configuration=0)
-
-    hcow = QLabsAnimal(qlabs)
-    hcow.spawn_id_degrees(actorNumber=0, location=[0.073, -2.743, 3], rotation=[0,0,90], scale=[1,1,1], configuration=hcow.COW, waitForConfirmation=False)
-
-
 
     hSpline = QLabsSplineLine(qlabs)
     hSpline.spawn(location=[0.073, -2.743, 0], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0, waitForConfirmation=True)
@@ -89,7 +75,7 @@ def main():
     while not done:
 
 
-        status, image_RGBD = hQBot.get_image_rgb()
+        status, image_RGBD = hQBot.get_image(hQBot.CAMERA_RGB)
 
         if status == True:
 

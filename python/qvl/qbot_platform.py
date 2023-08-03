@@ -18,15 +18,19 @@ class QLabsQBotPlatform(QLabsActor):
     FCN_QBOT_PLATFORM_COMMAND_AND_REQUEST_STATE_RESPONSE = 11
     FCN_QBOT_PLATFORM_POSSESS = 20
     FCN_QBOT_PLATFORM_POSSESS_ACK = 21
-    FCN_QBOT_PLATFORM_RGB_REQUEST = 100
-    FCN_QBOT_PLATFORM_RGB_RESPONSE = 101
-    FCN_QBOT_PLATFORM_DEPTH_REQUEST = 110
-    FCN_QBOT_PLATFORM_DEPTH_RESPONSE = 111
-
+    FCN_QBOT_PLATFORM_IMAGE_REQUEST = 100
+    FCN_QBOT_PLATFORM_IMAGE_RESPONSE = 101
+    
 
     VIEWPOINT_RGB = 0
     VIEWPOINT_DEPTH = 1
-    VIEWPOINT_TRAILING = 2
+    VIEWPOINT_DOWNWARD = 2
+    VIEWPOINT_TRAILING = 3
+ 
+    CAMERA_RGB = 0
+    CAMERA_DEPTH = 1
+    CAMERA_DOWNWARD = 2
+    
 
     def __init__(self, qlabs, verbose=False):
        """ Constructor Method
@@ -134,9 +138,13 @@ class QLabsQBotPlatform(QLabsActor):
             return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
 
 
-    def get_image_rgb(self):
+    def get_image(self, camera):
         """
         Request a JPG image from the QBot camera.
+
+        :param camera: Camera number to view from.
+        
+        :type camera: byte
 
         :return:
             - **status** - `True` and image data if successful, `False` and empty otherwise
@@ -151,14 +159,14 @@ class QLabsQBotPlatform(QLabsActor):
         c = CommModularContainer()
         c.classID = self.ID_QBOT_PLATFORM
         c.actorNumber = self.actorNumber
-        c.actorFunction = self.FCN_QBOT_PLATFORM_RGB_REQUEST
-        c.payload = bytearray()
+        c.actorFunction = self.FCN_QBOT_PLATFORM_IMAGE_REQUEST
+        c.payload = bytearray(struct.pack(">B", camera))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         self._qlabs.flush_receive()
 
         if (self._qlabs.send_container(c)):
-            c = self._qlabs.wait_for_container(self.ID_QBOT_PLATFORM, self.actorNumber, self.FCN_QBOT_PLATFORM_RGB_RESPONSE)
+            c = self._qlabs.wait_for_container(self.ID_QBOT_PLATFORM, self.actorNumber, self.FCN_QBOT_PLATFORM_IMAGE_RESPONSE)
 
             if (c == None):
                 return False, None
@@ -171,39 +179,4 @@ class QLabsQBotPlatform(QLabsActor):
         else:
             return False, None
 
-    def get_image_depth(self):
-        """
-        Request a JPG image from the QBot camera.
-
-        :return:
-            - **status** - `True` and image data if successful, `False` and empty otherwise
-            - **imageData** - Image in a JPG format
-        :rtype: boolean, byte array with jpg data
-
-        """
-
-        if (not self._is_actor_number_valid()):
-            return False, None
-
-        c = CommModularContainer()
-        c.classID = self.ID_QBOT_PLATFORM
-        c.actorNumber = self.actorNumber
-        c.actorFunction = self.FCN_QBOT_PLATFORM_DEPTH_REQUEST
-        c.payload = bytearray()
-        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
-
-        self._qlabs.flush_receive()
-
-        if (self._qlabs.send_container(c)):
-            c = self._qlabs.wait_for_container(self.ID_QBOT_PLATFORM, self.actorNumber, self.FCN_QBOT_PLATFORM_DEPTH_RESPONSE)
-
-            if (c == None):
-                return False, None
-
-
-            jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[4:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
-
-
-            return True, jpg_buffer
-        else:
-            return False, None
+    
