@@ -8,6 +8,7 @@ sys.path.insert(0, "../")
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.qbot_platform import QLabsQBotPlatform
+from qvl.qbot2e import QLabsQBot2e
 from qvl.spline_line import QLabsSplineLine
 
 from qvl.animal import QLabsAnimal
@@ -43,10 +44,16 @@ def main():
 
     qlabs.destroy_all_spawned_actors()
 
-
+    
     hQBot = QLabsQBotPlatform(qlabs)
     hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
-    hQBot.possess(hQBot.VIEWPOINT_TRAILING)
+    hQBot.possess(hQBot.VIEWPOINT_TRAILING,)
+    
+    '''
+    hQBot = QLabsQBot2e(qlabs)
+    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0)
+    hQBot.possess(qlabs, 0, hQBot.VIEWPOINT_TRAILING)
+    '''
 
     hSpline = QLabsSplineLine(qlabs)
     hSpline.spawn(location=[0.073, -2.743, 0], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0, waitForConfirmation=True)
@@ -63,20 +70,20 @@ def main():
 
     speed = 0
 
+    '''
     cv2.startWindowThread()
     cv2.namedWindow('image_stream', cv2.WINDOW_AUTOSIZE)
     image_RGBD = cv2.imread('Quanser640x480.jpg')
     cv2.imshow('image_stream', image_RGBD)
-
+    '''
     done = False
     counter = 0
 
     # -------- Main Program Loop -----------
     while not done:
 
-
+        '''
         status, image_RGBD = hQBot.get_image(hQBot.CAMERA_RGB)
-        print(status)
 
         if status == True:
 
@@ -89,7 +96,7 @@ def main():
 
             cv2.imshow('image_stream', image_RGBD)
             cv2.waitKey(1)
-
+        '''
         if (tank_drive):
             speedScale = 1
             leftWheelSpeed = 0
@@ -135,6 +142,8 @@ def main():
         print('{}, {}'.format(rightWheelSpeed, leftWheelSpeed))
 
         c = hQBot.command_and_request_state(rightWheelSpeed, leftWheelSpeed)
+        #actorNumber=0
+        #c = hQBot.command_and_request_state(qlabs, actorNumber, rightWheelSpeed, leftWheelSpeed)
         if c == False:
             done = True
 

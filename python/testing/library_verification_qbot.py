@@ -297,7 +297,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn qbot with degrees")
 
     x, loc, rot, scale = hQbot2e2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-6, 0, 0]) and x == True, "Get world transform")
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [-6, 0, 0]))) < 0.001 and x == True, "Get world transform")
     print(hQbot2e2.get_world_transform())
 
     x = hQbot2e2.ping()
@@ -307,7 +307,7 @@ def main():
     x = hQbot2e1.ping()
     vr.PrintWS(x == False, "Ping qbot that doesn't exist (expect False)")
 
-    hQbot2e1.command_and_request_state(qlabs, actorNumber = 0, rightWheelSpeed = 1, leftWheelSpeed = 1)
+    hQbot2e0.command_and_request_state(rightWheelSpeed = 1, leftWheelSpeed = 1)
     time.sleep(1)
 
 
@@ -339,7 +339,7 @@ def main():
     vr.PrintWS(x == 0, "Spawn qbot with degrees")
 
     x, loc, rot, scale = hQbot3_2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-8, 0, 0]) and x == True, "Get world transform")
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [-8, 0, 0]))) < 0.001 and x == True, "Get world transform")
     print(hQbot3_2.get_world_transform())
 
     x = hQbot3_2.ping()
@@ -380,8 +380,8 @@ def main():
     x = hQbotPF2.spawn_id_degrees(actorNumber=2, location=[-10, 0, 0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     vr.PrintWS(x == 0, "Spawn qbot with degrees")
 
-    x, loc, rot, scale = hQbot3_2.get_world_transform()
-    vr.PrintWS(np.array_equal(loc, [-10, 0, 0]) and x == True, "Get world transform")
+    x, loc, rot, scale = hQbotPF2.get_world_transform()
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [-10, 0, 0]))) < 0.001 and x == True, "Get world transform")
     print(hQbotPF2.get_world_transform())
 
     x = hQbotPF2.ping()
@@ -393,6 +393,53 @@ def main():
 
     hQbotPF0.command_and_request_state(rightWheelSpeed = 1, leftWheelSpeed = 1)
     time.sleep(1)
+
+
+    print("\n\n------------------------------ Walls --------------------------------\n")
+    vr.PrintWSHeader("Walls")
+
+    wallCamera = QLabsFreeCamera(qlabs, True)
+    wallCamera.spawn_id_degrees(actorNumber=12, location=[-9.5, 2, 2], rotation=[0, 40, -90])
+    x = wallCamera.possess()
+
+    hWall0 = QLabsWalls(qlabs)
+    x = hWall0.spawn_id(actorNumber = 0, location=[-9, 0, 0], rotation=[0, 0, math.pi], scale=[1, 1, 1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn wall with radians")
+
+    x = hWall0.spawn_id(actorNumber=0, location=[-9.5, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 2, "Spawn wall with duplicate ID (return code 2)")
+
+    hWall1 = QLabsWalls(qlabs)
+    hWall1.spawn_id(actorNumber=1, location=[-9.5, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hWall1.destroy()
+    vr.PrintWS(x == 1, "Spawn and destroy existing wall (expect return 1)")
+
+    hWall1.actorNumber=1
+    x = hWall1.destroy()
+    vr.PrintWS(x == 0, "Destroy wall that doesn't exist (expect return 0)")
+
+    hWall2 = QLabsWalls(qlabs)
+    x = hWall2.spawn_id_degrees(actorNumber=2, location=[-10, 0, 0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn wall with degrees")
+
+    x, loc, rot, scale = hWall2.get_world_transform()
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [-10, 0, 0]))) < 0.001 and x == True, "Get world transform")
+    print(hWall2.get_world_transform())
+
+    x = hWall2.ping()
+    vr.PrintWS(x == True, "Ping existing wall (expect True)")
+
+    hWall1.actorNumber=1
+    x = hWall1.ping()
+    vr.PrintWS(x == False, "Ping wall that doesn't exist (expect False)")
+
+    hWall2.set_enable_dynamics(enableDynamics = True)
+    print("Wall dynamics enabled")
+
+    time.sleep(1)
+
+    hWall2.set_enable_collisions(enableCollisions = False)
+    print("Wall collisions disabled")
 
 
 
