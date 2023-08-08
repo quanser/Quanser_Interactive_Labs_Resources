@@ -17,3 +17,8 @@ python/testing/Open Factory Validation Report.xlsx
 matlab/qvl/qlabs_free_camera.asv
 *.asv
 matlab/testing/frame.jpg
+spawn_models/QBotPlatform/QBotPlatform_Workspace.rt-win64
+*.autosave
+spawn_models/QBotPlatform/slprj/
+spawn_models/QBotPlatform/QBotPlatform_Workspace_quarc_win64/
+
