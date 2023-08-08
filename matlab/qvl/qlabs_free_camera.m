@@ -80,7 +80,7 @@ classdef qlabs_free_camera < qlabs_actor
             end
     
             obj.c.classID = obj.ID_FREE_CAMERA;
-            obj.c.actorNumber = actorNumber;
+            obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_FREE_CAMERA_SET_TRANSFORM;
             obj.c.payload = [flip(typecast(single(location(1)), 'uint8')) ...
                          flip(typecast(single(location(2)), 'uint8')) ...
@@ -94,7 +94,7 @@ classdef qlabs_free_camera < qlabs_actor
             obj.qlabs.flush_receive()
     
             if (obj.qlabs.send_container(obj.c))
-                rc = obj.qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_SET_TRANSFORM_ACK);
+                rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_SET_TRANSFORM_ACK);
                 if isempty(rc)
                     if (obj.verbose)
                             fprintf('possess: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);

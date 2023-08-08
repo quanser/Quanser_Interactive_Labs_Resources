@@ -398,9 +398,9 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
     hPersonRight.move_to([-4.5, 48, 0.005], hPersonRight.WALK, true);
     hPersonMiddle.move_to([-7.5, 48, 0.005], hPersonMiddle.JOG, true);
     hPersonLeft.move_to([-10.5, 48, 0.005], hPersonLeft.RUN, true);
-% 
-%     time.sleep(3)
-% 
+
+    pause(3);
+
 %     x, pos, rot, scale = hPersonLeft.get_world_transform()
 %     vr.PrintWS(x == True, "Got world transform ({}), ({}), ({})".format(pos, rot, scale))
 % 
@@ -511,9 +511,8 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 
 %     bumper test
     fprintf("Testing bumper response...")
-    % CAMERAS NOT IMPLEMENTED YET! %
-%     hCameraQCars.possess();
-%     hCameraQCars.set_transform([-17.045, 32.589, 6.042], [0, 0.594, -1.568]);
+    hCameraQCars.possess();
+    hCameraQCars.set_transform([-17.045, 32.589, 6.042], [0, 0.594, -1.568]);
 
     hCubeQCarBlocks = qlabs_basic_shape(qlabs);
     hCubeQCarBlocks.spawn_id(100, [-11.919, 26.289, 0.5], [0,0,0], [1,1,1], hCubeQCarBlocks.SHAPE_CUBE, true);
@@ -540,7 +539,7 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
         pause(0.25)
     end
 
-    hQCar3.ghost_mode(true, [1,0,0])
+    hQCar3.ghost_mode(true, [1,0,0]);
 
 %     vr.PrintWS(x == True and rearHit == True, "Rear bumper hit")
     hQCar3.set_velocity_and_request_state(0, 0, false, false, false, false, false);
@@ -565,7 +564,7 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 %     x, loc, rot, scales = hQCar3.get_world_transform_degrees()
 %     vr.PrintWS(abs(np.sum(np.subtract(loc, [-13.1, 26.299, 0.005]))) < 0.01 and abs(np.sum(np.subtract(rot, [0,0,179]))) < 0.01 and x == True, "Get world transform degrees")
 
-    hQCar3.ghost_mode(false, [1,0,0])
+    hQCar3.ghost_mode(false, [1,0,0]);
 
 
 %     #camera tests
@@ -711,8 +710,9 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 % 
 % 
 %     #LIDAR
-% 
-     hQCar3.possess(hQCar3.CAMERA_OVERHEAD)
+    fprintf('LIDAR')
+
+    hQCar3.possess(hQCar3.CAMERA_OVERHEAD);
 % 
 %     lidarPlot = pg.plot(title="LIDAR")
 %     squareSize = 100
@@ -747,8 +747,8 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
         y = cos(angle).*distance;
 
         plot(x,y, '.');
-        axis([-60 60 -60 60])
-        drawnow
+        axis([-60 60 -60 60]);
+        drawnow;
         pause(0.05);
         
     end

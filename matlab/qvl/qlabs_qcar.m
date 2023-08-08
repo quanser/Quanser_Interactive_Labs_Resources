@@ -745,7 +745,7 @@ classdef qlabs_qcar < qlabs_actor
                 index_raw = 513;
                 for count = 1:samplePoints
                     while (angles(index_raw) < sampled_angles(count))
-                        index_raw = mod((index_raw + 1), 4096)+1
+                        index_raw = mod((index_raw + 1), 4096)+1;
                     end
 
                     if (index_raw ~= 0)
