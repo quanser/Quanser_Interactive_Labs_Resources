@@ -117,6 +117,21 @@ function library_verification_qcar()
 % 
 % 
 
+
+    x = hCamera3.set_image_capture_resolution(820, 410);
+    eval(x, true, 'Set image capture resolution');
+
+    [success, data] = hCamera3.get_image();
+    eval(x, true, 'Read image 820x410');
+
+    if (success)
+        image(data);
+        truesize([size(data,1), size(data,2)])
+    else
+        fprintf("Image decoding failure\n");
+    end
+    pause(1.0)
+
     x = hCamera3.set_image_capture_resolution(640, 480);
     eval(x, true, 'Set image capture resolution');
 
@@ -125,25 +140,15 @@ function library_verification_qcar()
 
     if (success)
         image(data);
+        truesize([size(data,1), size(data,2)])
     else
         fprintf("Image decoding failure\n");
     end
     pause(1.0)
 
 
-    x = hCamera2.set_image_capture_resolution(820, 410);
-    eval(x, true, 'Set image capture resolution');
-
-    [success, data] = hCamera3.get_image();
-    eval(x, true, 'Read image 820x410');
-
-    if (success)
-        image(data);
-    else
-        fprintf("Image decoding failure\n");
-    end
-    pause(1.0)
     close all;
+
 
 
 %     print('Testing parenting.')

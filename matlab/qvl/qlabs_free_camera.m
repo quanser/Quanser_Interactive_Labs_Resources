@@ -184,10 +184,11 @@ classdef qlabs_free_camera < qlabs_actor
                 height int32 = 480
             end
 
+            success = false;
+
             if (not(obj.is_actor_number_valid))
                 return
             end
-        
 
             obj.c.classID = obj.ID_FREE_CAMERA;
             obj.c.actorNumber = obj.actorNumber;
@@ -203,7 +204,7 @@ classdef qlabs_free_camera < qlabs_actor
                 rc = obj.qlabs.wait_for_container(obj.ID_FREE_CAMERA, obj.actorNumber, obj.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE);
                 if isempty(rc)
                     if (obj.verbose)
-                            fprintf('set_image_capture_resolution: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
+                        fprintf('set_image_capture_resolution: Communication timeout (classID %u, actorNumber %u).\n', obj.classID, obj.actorNumber);
                     end
                     return
                 else
@@ -252,15 +253,7 @@ classdef qlabs_free_camera < qlabs_actor
                             return
                         end
                         
-                        %fprintf("Payload size: %u", 4+ length(rc.payload(5:end)))
-
-                        fprintf("TODO: REPLACE WITH MEMORY-ONLY JPG DECODING\n")
-
-                        fid = fopen("frame.jpg", 'wb');
-                        fwrite(fid, typecast(rc.payload(5:end), 'uint8'));
-                        fclose(fid);
-
-                        data = imread("frame.jpg");
+                        [data, result] = qc_jpeg_decompress(rc.payload(5:end));
 
                         success = true;
                     else
