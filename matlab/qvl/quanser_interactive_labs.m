@@ -70,7 +70,7 @@ classdef quanser_interactive_labs < handle
                          uint8(container.actorFunction) ...
                          container.payload];
                      
-            [is_sent, would_block] = obj.qlabs_stream.send_int8_array(typecast(byte_data, 'int8'));           
+            [is_sent, would_block] = obj.qlabs_stream.send_uint8_array(byte_data);           
             obj.qlabs_stream.flush();
             success = is_sent;
         end
@@ -82,10 +82,9 @@ classdef quanser_interactive_labs < handle
 
             debug = false;
 
-            [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
+            [data, would_block] = obj.qlabs_stream.receive_uint8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
-            data = typecast(data, 'uint8');
-        
+            
             if (debug && (bytes_read > 0))
                 fprintf("New received data size: %u\n", bytes_read)
             end
@@ -95,10 +94,9 @@ classdef quanser_interactive_labs < handle
                 obj.receive_packet_buffer = [obj.receive_packet_buffer; data];
 
 
-                [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
+                [data, would_block] = obj.qlabs_stream.receive_uint8s(obj.BUFFER_SIZE);
                 bytes_read = length(data);
-                data = typecast(data, 'uint8');
-
+                
                 if (debug && (bytes_read > 0))
                     fprintf("Subsequent data received size: %u\n", bytes_read)
                 end
@@ -183,7 +181,7 @@ classdef quanser_interactive_labs < handle
 		end
           
 %%        
-function container = wait_for_container(obj, classID, actorNumber, actorFunction)
+		function container = wait_for_container(obj, classID, actorNumber, actorFunction)
             container = [];
             
 			tic
@@ -219,7 +217,7 @@ function container = wait_for_container(obj, classID, actorNumber, actorFunction
         function flush_receive(obj)
             % get any data still in the receive buffer out
             
-            [data, would_block] = obj.qlabs_stream.receive_int8s(obj.BUFFER_SIZE);
+            [data, would_block] = obj.qlabs_stream.receive_uint8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
         end
   
