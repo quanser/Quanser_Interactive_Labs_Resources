@@ -8,6 +8,8 @@ BumpLeft = uint8(0);
 BumpRight = uint8(0);
 Gyro = single(0);
 Heading = single(0);
+EncoderLeft = int32(0);
+EncoderRight = int32(0);
 
 Location(1) = typecast(uint8(flip(Payload(StartIndex:StartIndex+3))), 'single');
 Location(2) = typecast(uint8(flip(Payload(StartIndex+4:StartIndex+7))), 'single');
