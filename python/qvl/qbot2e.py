@@ -41,7 +41,7 @@ class QLabsQBot2e(QLabsActor):
 
     def possess(self, qlabs, actorNumber, camera):
         c = CommModularContainer()
-        c.classID = self.ID_QBOT
+        c.classID = self.ID_QBOT2e
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_QBOT_POSSESS
         c.payload = bytearray(struct.pack(">B", camera))
@@ -50,7 +50,7 @@ class QLabsQBot2e(QLabsActor):
         qlabs.flush_receive()
 
         if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QBOT, actorNumber, self.FCN_QBOT_POSSESS_ACK)
+            c = qlabs.wait_for_container(self.ID_QBOT2e, actorNumber, self.FCN_QBOT_POSSESS_ACK)
 
             return True
         else:
@@ -58,7 +58,7 @@ class QLabsQBot2e(QLabsActor):
 
     def command_and_request_state(self, qlabs, actorNumber, rightWheelSpeed, leftWheelSpeed):
         c = CommModularContainer()
-        c.classID = self.ID_QBOT
+        c.classID = self.ID_QBOT2e
         c.actorNumber = actorNumber
         c.actorFunction = self.FCN_QBOT_COMMAND_AND_REQUEST_STATE
         c.payload = bytearray(struct.pack(">ff", rightWheelSpeed, leftWheelSpeed))
@@ -67,7 +67,7 @@ class QLabsQBot2e(QLabsActor):
         qlabs.flush_receive()
 
         if (qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QBOT, actorNumber, self.FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE)
+            c = qlabs.wait_for_container(self.ID_QBOT2e, actorNumber, self.FCN_QBOT_COMMAND_AND_REQUEST_STATE_RESPONSE)
 
             return True
         else:

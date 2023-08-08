@@ -32,7 +32,12 @@ class QLabsQbot(QLabsActor):
     VIEWPOINT_TRAILING = 2
 
     # Initilize class
-    def __init__(self):
+    def __init__(self, qlabs, verbose=False):
+        self._qlabs = qlabs
+        self._verbose = verbose
+        self.classID = self.ID_QBOT
+        return
+    
     """
        return
 
@@ -43,10 +48,6 @@ class QLabsQbot(QLabsActor):
 
         return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
     """
-    self._qlabs = qlabs
-    self._verbose = verbose
-    self.classID = self.ID_QBOT
-    return
 
 
     def possess(self, camera):
