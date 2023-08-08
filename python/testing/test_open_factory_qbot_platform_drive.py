@@ -76,6 +76,7 @@ def main():
 
 
         status, image_RGBD = hQBot.get_image(hQBot.CAMERA_RGB)
+        print(status)
 
         if status == True:
 
