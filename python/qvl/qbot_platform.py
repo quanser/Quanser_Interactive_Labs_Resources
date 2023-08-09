@@ -76,14 +76,19 @@ class QLabsQBotPlatform(QLabsActor):
         else:
             return False
 
-    def command_and_request_state(self, rightWheelSpeed, leftWheelSpeed):
+    def command_and_request_state(self, rightWheelSpeed, leftWheelSpeed, leftLED=[1,0,0], rightLED=[1,0,0]):
         """Sets the velocity, turn angle in radians, and other car properties.
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in radians. Positive values turn right.
+        :param leftLED: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param rightLED: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        
 
         :type actorNumber: float
         :type turn: float
+        :type leftLED: float array[3]
+        :type rightLED: float array[3]
 
         :return:
             - **status** - `True` if successful, `False` otherwise
@@ -106,7 +111,7 @@ class QLabsQBotPlatform(QLabsActor):
         c.classID = self.ID_QBOT_PLATFORM
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QBOT_PLATFORM_COMMAND_AND_REQUEST_STATE
-        c.payload = bytearray(struct.pack(">ff", rightWheelSpeed, leftWheelSpeed))
+        c.payload = bytearray(struct.pack(">ffffffff", rightWheelSpeed, leftWheelSpeed, leftLED[0], leftLED[1], leftLED[2], rightLED[0], rightLED[1], rightLED[2]))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         location = [0,0,0]

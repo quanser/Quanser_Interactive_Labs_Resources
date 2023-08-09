@@ -11,7 +11,7 @@ from qvl.qbot_platform import QLabsQBotPlatform
 from qvl.qbot2e import QLabsQBot2e
 from qvl.spline_line import QLabsSplineLine
 
-from qvl.animal import QLabsAnimal
+#from qvl.animal import QLabsAnimal
 
 import sys
 import time
@@ -42,11 +42,14 @@ def main():
 
     # destroy the previous QBot and respawn it in a starting position
 
-    qlabs.destroy_all_spawned_actors()
-
+    #qlabs.destroy_all_spawned_actors()
     
+    pBot = QLabsQBotPlatform(qlabs)
+    pBot.actorNumber=20
+    pBot.destroy()
+
     hQBot = QLabsQBotPlatform(qlabs)
-    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
+    hQBot.spawn_id_degrees(actorNumber=20, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING,)
     
     '''

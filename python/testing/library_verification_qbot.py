@@ -10,13 +10,14 @@ from qvl.qbot_platform import QLabsQBotPlatform
 from qvl.walls import QLabsWalls
 from qvl.reference_frame import QLabsReferenceFrame
 from qvl.shredder import QLabsShredder
-from qvl.delivery_tube import QLabsDeliveryTube
+from qvl.delivery_tube import QLabsDeliveryTube, QLabsDeliveryTubeBottles
 from qvl.qarm import QLabsQArm
 from qvl.conveyor_curved import QLabsConveyorCurved
 from qvl.flooring import QLabsFlooring
 from qvl.conveyor_straight import QLabsConveyorStraight
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
+from qvl.widget import QLabsWidget
 
 from library_verification_report import verificationReport
 
@@ -91,7 +92,7 @@ def main():
     print(x)
     vr.PrintWS(2, x)
 
-
+    '''
     print("\n\n------------------------------ Free Camera --------------------------------\n")
 
     vr.PrintWSHeader("Free Camera")
@@ -436,13 +437,230 @@ def main():
     hWall2.set_enable_dynamics(enableDynamics = True)
     print("Wall dynamics enabled")
 
+    time.sleep(5)
+
+    hWall2.set_transform_degrees(location=[-10, 3, 0], rotation=[0, 0, 0], scale=[1,1,1])
+
+    print("\n\n------------------------------ Reference Frame --------------------------------\n")
+    vr.PrintWSHeader("Reference Frame")
+
+    frameCamera = QLabsFreeCamera(qlabs, True)
+    frameCamera.spawn_id_degrees(actorNumber=13, location=[-12, 2, 2], rotation=[0, 40, -90])
+    x = frameCamera.possess()
+
+    hFrame0 = QLabsReferenceFrame(qlabs)
+    x = hFrame0.spawn_id(actorNumber = 0, location = [-12, 2, 0], rotation = [0, 0, 0], scale = [1, 1, 1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn invisible frame with radians")
+    
+    hFrame1 = QLabsReferenceFrame(qlabs)
+    x = hFrame1.spawn_id(actorNumber = 1, location = [-12, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1], configuration=1, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn frame with radians")
+
+    hFrame2 = QLabsReferenceFrame(qlabs)
+    x = hFrame2.spawn_id(actorNumber = 2, location = [-12, -2, 0], rotation = [0, 0, 0], scale = [1, 1, 1], configuration=2, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn second frame with radians")
+
+    x = hFrame0.spawn_id(actorNumber=0, location=[-12, 2, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 2, "Spawn frame with duplicate ID (return code 2)")
+
+    hFrame3 = QLabsReferenceFrame(qlabs)
+    hFrame3.spawn_id(actorNumber=3, location=[-13, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hFrame3.destroy()
+    vr.PrintWS(x == 1, "Spawn and destroy existing frame (expect return 1)")
+
+    hFrame1.actorNumber=4
+    x = hFrame1.destroy()
+    vr.PrintWS(x == 0, "Destroy frame that doesn't exist (expect return 0)")
+
+    hFrame4 = QLabsReferenceFrame(qlabs)
+    hFrame4.spawn_id_degrees(actorNumber = 5, location = [-13, 0, 0], rotation = [0,0,0], scale = [1,1,1], configuration=1)
+    vr.PrintWS(x == 0, "Spawn frame with degrees")
+
+    x, loc, rot, scale = hFrame0.get_world_transform()
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [-12, 2, 0]))) < 0.001 and x == True, "Get world transform")
+    print(hFrame0.get_world_transform())
+
+    # Custom functions:
+
     time.sleep(1)
+    hFrame4.set_transform_degrees(location = [-13, -2, 0], rotation = [0,0,0], scale = [1,4,1])
 
-    hWall2.set_enable_collisions(enableCollisions = False)
-    print("Wall collisions disabled")
+    time.sleep(0.5)
+
+    hFrame4.set_icon_scale(scale = [2,2,2])
 
 
+    print("\n\n------------------------------ Shredder --------------------------------\n")
+    vr.PrintWSHeader("Shredder")
 
+    shredderCamera = QLabsFreeCamera(qlabs, True)
+    shredderCamera.spawn_id_degrees(actorNumber=14, location=[4, 2, 2], rotation=[0, 40, -90])
+    x = shredderCamera.possess()
+
+    hShredder0 = QLabsShredder(qlabs)
+    x = hShredder0.spawn_id(actorNumber = 0, location = [3, 0, 0], rotation = [0, 0, 0], scale = [1,1,1], configuration=0)
+    vr.PrintWS(x == 0, "Spawn shredder in configuration 0 with radians")
+
+    hShredder1 = QLabsShredder(qlabs)
+    x = hShredder1.spawn_id(actorNumber = 1, location = [4, 0, 0], rotation = [0, 0, 0], scale = [3,3,3], configuration=1)
+    vr.PrintWS(x == 0, "Spawn shredder in configuration 1 with radians")
+
+    hShredder2 = QLabsShredder(qlabs)
+    x = hShredder2.spawn_id(actorNumber = 2, location = [5, 0, 0], rotation = [0, 0, 0], scale = [2,2,2], configuration=2)
+    vr.PrintWS(x == 0, "Spawn shredder in configuration 2 with radians")
+
+    hShredder3 = QLabsShredder(qlabs)
+    x = hShredder3.spawn_id(actorNumber = 3, location = [6, 0, 0], rotation = [0, 0, 0], scale = [2,0.5,0.5], configuration=3)
+    vr.PrintWS(x == 0, "Spawn shredder in configuration 3 with radians")
+
+    hShredder4 = QLabsShredder(qlabs)
+    hShredder4.spawn_id(actorNumber=4, location=[6, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hShredder4.destroy()
+    vr.PrintWS(x == 1, "Spawn and destroy existing shredder (expect return 1)")
+
+    hShredder1.actorNumber=5
+    x = hShredder1.destroy()
+    vr.PrintWS(x == 0, "Destroy shredder that doesn't exist (expect return 0)")
+
+    hShredder5 = QLabsShredder(qlabs)
+    hShredder5.spawn_id_degrees(actorNumber = 6, location = [3, -2, 0], rotation = [0,0,0], scale = [10,10,10], configuration=2)
+    vr.PrintWS(x == 0, "Spawn shredder with degrees")
+
+    x, loc, rot, scale = hShredder5.get_world_transform()
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [3, -2, 0]))) < 0.001 and x == True, "Get world transform")
+    print(hShredder5.get_world_transform())
+
+    for i in range(0, 50):
+        sacrificialCube = QLabsWidget(qlabs)
+        sacrificialCube.spawn_degrees(location = [3, -2, 4], rotation = [0,0,0], scale = [1,1,1], configuration = 4, color=[0,1,1])
+
+    for i in range(0, 500):
+        sacrificialCube = QLabsWidget(qlabs)
+        sacrificialCube.spawn_degrees(location = [3, -2, 4+(i*0.1)], rotation = [0,0,0], scale = [1,1,1], configuration = 4, color=[0,1,1])
+
+    time.sleep(0.2)
+
+    # Shredder currently has NO internal functions for setting transform
+
+
+    print("\n\n------------------------------ Delivery Tube --------------------------------\n")
+    vr.PrintWSHeader("Delivery Tube")
+
+    shredderCamera = QLabsFreeCamera(qlabs, True)
+    shredderCamera.spawn_id_degrees(actorNumber=15, location=[8, 1.5, 2.5], rotation=[0, 10, -90])
+    x = shredderCamera.possess()
+
+    hTube0 = QLabsDeliveryTube(qlabs)
+    x = hTube0.spawn_id(actorNumber = 0, location = [7, 0, 0], scale = [1,1,1])
+    vr.PrintWS(x == 0, "Spawn delivery tube with radians")
+    hTube0.set_height(height = 2)
+
+    hTube1 = QLabsDeliveryTubeBottles(qlabs)
+    x = hTube1.spawn_id(actorNumber = 0, location = [8, 0, 2], scale = [1,1,1])
+    vr.PrintWS(x == 0, "Spawn delivery tube bottles with radians")
+    hTube1.set_height(height = 2)
+
+    hTube2 = QLabsDeliveryTube(qlabs)
+    x = hTube2.spawn_id_degrees(actorNumber = 1, location = [9, 0, 0], scale = [1,1,1])
+    vr.PrintWS(x == 0, "Spawn delivery tube with degrees")
+    hTube2.set_height(height = 2)
+
+    #Custom Funcitons
+
+    hTube0.spawn_block(blockType = hTube0.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
+
+    hTube1.spawn_container(metallic = False, color = [0,1,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+
+    hTube2.spawn_block(blockType = hTube2.BLOCK_GEOSPHERE, mass = 10, yawRotation = 0, color = [1,0,0])
+
+    time.sleep(2)
+
+
+    print("\n\n------------------------------ QArm --------------------------------\n")
+    vr.PrintWSHeader("QArm")
+
+    qArmCamera = QLabsFreeCamera(qlabs, True)
+    qArmCamera.spawn_id_degrees(actorNumber=16, location=[12, 2, 2], rotation=[0, 40, -90])
+    x = qArmCamera.possess()
+
+    hQArm0 = QLabsQArm(qlabs)
+    x = hQArm0.spawn_id(actorNumber = 0, location = [11, 0, 0], rotation = [0, 0, 0], scale = [1,1,1], configuration=0)
+    vr.PrintWS(x == 0, "Spawn QArm with radians")
+
+    x = hQArm0.spawn_id(actorNumber=0, location=[11, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 2, "Spawn QArm with duplicate ID (return code 2)")
+
+    hQArm1 = QLabsQArm(qlabs)
+    hQArm1.spawn_id(actorNumber=1, location=[12, 0, 0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    x = hQArm1.destroy()
+    vr.PrintWS(x == 1, "Spawn and destroy existing QArm (expect return 1)")
+
+    hQArm1.actorNumber=2
+    x = hQArm1.destroy()
+    vr.PrintWS(x == 0, "Destroy QArm that doesn't exist (expect return 0)")
+
+    hQArm3 = QLabsQArm(qlabs)
+    x = hQArm3.spawn_id_degrees(actorNumber=3, location=[12, 0, 0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    vr.PrintWS(x == 0, "Spawn QArm with degrees")
+
+    x, loc, rot, scale = hQArm3.get_world_transform()
+    vr.PrintWS(abs(np.sum(np.subtract(loc, [12, 0, 0]))) < 0.001 and x == True, "Get world transform")
+    print(hQArm3.get_world_transform())
+
+    x = hQArm3.ping()
+    vr.PrintWS(x == True, "Ping existing QArm (expect True)")
+
+    hWall1.actorNumber=4
+    x = hWall1.ping()
+    vr.PrintWS(x == False, "Ping QArm that doesn't exist (expect False)")
+    '''
+
+    print("\n\n------------------------------ Conveyor Curved --------------------------------\n")
+    vr.PrintWSHeader("Conveyor Curved")
+
+    conveyorCurvedCam = QLabsFreeCamera(qlabs, True)
+    conveyorCurvedCam.spawn_id_degrees(actorNumber=17, location=[16, 2, 2], rotation=[0, 40, -90])
+    x = conveyorCurvedCam.possess()
+
+    hBeltCurve0 = QLabsConveyorCurved(qlabs)
+    x = hBeltCurve0.spawn_id(actorNumber=0, location = [15, 0, 0], rotation = [0, 0, 0], scale = [1,1,1])
+    vr.PrintWS(x == 0, "Spawn conveyor with radians")
+
+    #hFrame0 = QLabsReferenceFrame(qlabs)
+    #x = hFrame0.spawn_id(actorNumber = 0, location = [-12, 2, 0], rotation = [0, 0, 0], scale = [1, 1, 1], configuration=0, waitForConfirmation=True)
+    #vr.PrintWS(x == 0, "Spawn invisible frame with radians")
+
+    conveyorPoint = QLabsReferenceFrame(qlabs)
+    conveyorPoint.spawn_id(actorNumber = 20, location = [16, 0, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 0)
+    
+    for i in range (0, 12):
+        hBeltCurve1 = QLabsConveyorCurved(qlabs)
+        hBeltCurve1.spawn_id_and_parent_with_relative_transform_degrees(actorNumber = 1+i, location = [0,0,0], rotation = [0,0,i*30], scale = [2,2,2], configuration=0, parentClassID = conveyorPoint.classID, parentActorNumber = 20, parentComponent=0)
+        hBeltCurve1.set_speed(7)
+        
+        x, loc, rot, scale = hBeltCurve1.get_world_transform()
+        
+        print("Conveyor Spawned")
+
+    hCubeTube = QLabsDeliveryTube(qlabs)
+    hCubeTube.spawn(location = [loc[0]-1, loc[1], loc[2]+0.5], rotation = [0,0,0], scale = [1,1,1])
+    hCubeTube.set_height(height = 10)
+
+    for i in range (0, 5000):
+        hCubeTube.spawn_container(metallic = False, color = [0,1,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        time.sleep(0.5)
+    
+    '''   
+    for i in range (0, 5000):
+        beltBox = QLabsWidget(qlabs)
+        beltBox.spawn_degrees(location = [loc[0]-1, loc[2], loc[2]+0.5], rotation = [0,0,0], scale = [0.1,0.1,0.1], configuration = 0, color=[0,1,0])
+        time.sleep(0.1)
+    '''
+
+    hBeltCurve2 = QLabsConveyorCurved(qlabs)
+    hBeltCurve2.spawn_id(blockType = hTube0.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
+
+ 
 vr = verificationReport('QBot Validation Report.xlsx', 'library_verification_qbot.py', library_path)
 vr.ignore_list = ignore_list
 
