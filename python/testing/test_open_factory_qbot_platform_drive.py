@@ -21,6 +21,11 @@ import numpy as np
 import cv2
 import keyboard
 
+import pyqtgraph as pg
+from pyqtgraph.Qt import QtCore, QtWidgets
+
+lidar_rate = 0.01
+
 
 ########### Main program #################
 
@@ -48,7 +53,7 @@ def main():
     pBot.actorNumber=20
     pBot.destroy()
 
-    hQBot = QLabsQBotPlatform(qlabs)
+    hQBot = QLabsQBotPlatform(qlabs, True)
     hQBot.spawn_id_degrees(actorNumber=20, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING,)
     
@@ -73,19 +78,26 @@ def main():
 
     speed = 0
 
-    '''
+    
     cv2.startWindowThread()
     cv2.namedWindow('image_stream', cv2.WINDOW_AUTOSIZE)
     image_RGBD = cv2.imread('Quanser640x480.jpg')
     cv2.imshow('image_stream', image_RGBD)
-    '''
+    
     done = False
     counter = 0
+
+
+    lidarPlot = pg.plot(title="LIDAR")
+    squareSize = 100
+    lidarPlot.setXRange(-squareSize, squareSize)
+    lidarPlot.setYRange(-squareSize, squareSize)
+    lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=2)
 
     # -------- Main Program Loop -----------
     while not done:
 
-        '''
+        
         status, image_RGBD = hQBot.get_image(hQBot.CAMERA_RGB)
 
         if status == True:
@@ -97,9 +109,12 @@ def main():
             
             image_RGBD = cv2.putText(img = image_RGBD, text = "ESC to exit", org = (0, 45), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
 
+            current_image_size = "Image size: {}x{}".format(image_RGBD.shape[1], image_RGBD.shape[0])
+            image_RGBD = cv2.putText(img = image_RGBD, text = current_image_size, org = (0, 60), fontFace = cv2.FONT_HERSHEY_DUPLEX, fontScale = 0.5, color = (255, 255, 255), thickness = 1)
+
             cv2.imshow('image_stream', image_RGBD)
             cv2.waitKey(1)
-        '''
+        
         if (tank_drive):
             speedScale = 1
             leftWheelSpeed = 0
@@ -149,6 +164,25 @@ def main():
         #c = hQBot.command_and_request_state(qlabs, actorNumber, rightWheelSpeed, leftWheelSpeed)
         if c == False:
             done = True
+
+
+
+        
+
+        print("Reading from LIDAR... if QLabs crashes, make sure FPS > 100 or fix the crash bug!")
+
+
+        #for count in range(20):
+
+        success, angle, distance = hQBot.get_lidar(samplePoints=400)
+        print(success)
+
+        x = np.sin(angle)*distance
+        y = np.cos(angle)*distance
+
+        lidarData.setData(x,y)
+        QtWidgets.QApplication.instance().processEvents()
+        time.sleep(lidar_rate)
 
 
     cv2.destroyAllWindows()

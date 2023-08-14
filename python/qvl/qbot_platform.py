@@ -10,7 +10,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsQBotPlatform(QLabsActor):
-
+    """This class is for spawning QBotPlatforms."""
 
     ID_QBOT_PLATFORM = 23
 
@@ -20,6 +20,8 @@ class QLabsQBotPlatform(QLabsActor):
     FCN_QBOT_PLATFORM_POSSESS_ACK = 21
     FCN_QBOT_PLATFORM_IMAGE_REQUEST = 100
     FCN_QBOT_PLATFORM_IMAGE_RESPONSE = 101
+    FCN_QBOT_PLATFORM_LIDAR_DATA_REQUEST = 120
+    FCN_QBOT_PLATFORM_LIDAR_DATA_RESPONSE = 121
     
 
     VIEWPOINT_RGB = 0
@@ -30,6 +32,8 @@ class QLabsQBotPlatform(QLabsActor):
     CAMERA_RGB = 0
     CAMERA_DEPTH = 1
     CAMERA_DOWNWARD = 2
+
+    _sensor_scaling = 1
     
 
     def __init__(self, qlabs, verbose=False):
@@ -185,3 +189,102 @@ class QLabsQBotPlatform(QLabsActor):
             return False, None
 
     
+    def get_lidar(self, samplePoints=400):
+        """
+        Request LIDAR data from a QbotPlatform.
+
+        :param samplePoints: (Optional) Change the number of points per revolution of the LIDAR.
+        :type samplePoints: uint32
+        :return: `True`, angles in radians, and distances in m if successful, `False`, none, and none otherwise
+        :rtype: boolean, float array, float array
+
+        """
+
+        if (not self._is_actor_number_valid()):
+            if (self._verbose):
+                print('actorNumber object variable None. Use a spawn function to assign an actor or manually assign the actorNumber variable.')
+            return False, None, None
+            
+
+        LIDAR_SAMPLES = 4096
+        LIDAR_RANGE = 80*self._sensor_scaling
+
+        # The LIDAR is simulated by using 4 orthogonal virtual cameras that are 1 pixel high. The
+        # lens distortion of these cameras must be removed to accurately calculate the XY position
+        # of the depth samples.
+        quarter_angle = np.linspace(0, 45, int(LIDAR_SAMPLES/8))
+        lens_curve = -0.0077*quarter_angle*quarter_angle + 1.3506*quarter_angle
+        lens_curve_rad = lens_curve/180*np.pi
+
+        angles = np.concatenate((np.pi*4/2-1*np.flip(lens_curve_rad), \
+                                 lens_curve_rad, \
+                                 (np.pi/2 - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi/2 + lens_curve_rad), \
+                                 (np.pi - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi + lens_curve_rad), \
+                                 (np.pi*3/2 - 1*np.flip(lens_curve_rad)), \
+                                 (np.pi*3/2 + lens_curve_rad)))
+
+
+
+        c = CommModularContainer()
+        c.classID = self.ID_QBOT_PLATFORM
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_QBOT_PLATFORM_LIDAR_DATA_REQUEST
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QBOT_PLATFORM, self.actorNumber, self.FCN_QBOT_PLATFORM_LIDAR_DATA_RESPONSE)
+
+            if (c == None):
+                if (self._verbose):
+                    print('Failed to receive return container.')
+                return False, None, None
+
+            if ((len(c.payload)-4)/2 != LIDAR_SAMPLES):
+                
+                if (self._verbose):
+                    print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
+
+                return False, None, None
+
+            distance = np.linspace(0,0,LIDAR_SAMPLES)
+
+            for count in range(LIDAR_SAMPLES-1):
+                # clamp any value at 65535 to 0
+                raw_value = ((c.payload[4+count*2] * 256 + c.payload[5+count*2] )) %65535
+
+                # scale to LIDAR range
+                distance[count] = (raw_value/65535)*LIDAR_RANGE
+
+
+            # Resample the data using a linear radial distribution to the desired number of points
+            # and realign the first index to be 0 (forward)
+            sampled_angles = np.linspace(0,2*np.pi, num=samplePoints, endpoint=False)
+            sampled_distance = np.linspace(0,0, samplePoints)
+
+            index_raw = 512
+            for count in range(samplePoints):
+                while (angles[index_raw] < sampled_angles[count]):
+                    index_raw = (index_raw + 1) % 4096
+
+
+                if index_raw != 0:
+                    if (angles[index_raw]-angles[index_raw-1]) == 0:
+                        sampled_distance[count] = distance[index_raw]
+                    else:
+                        sampled_distance[count] = (distance[index_raw]-distance[index_raw-1])*(sampled_angles[count]-angles[index_raw-1])/(angles[index_raw]-angles[index_raw-1]) + distance[index_raw-1]
+
+
+                else:
+                    sampled_distance[count] = distance[index_raw]
+
+
+            return True, sampled_angles, sampled_distance
+        else:
+            if (self._verbose):
+                print('Communications request for LIDAR data failed.')
+            return False, None, None

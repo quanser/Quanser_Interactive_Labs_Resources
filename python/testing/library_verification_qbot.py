@@ -92,7 +92,7 @@ def main():
     print(x)
     vr.PrintWS(2, x)
 
-    '''
+    #''
     print("\n\n------------------------------ Free Camera --------------------------------\n")
 
     vr.PrintWSHeader("Free Camera")
@@ -613,7 +613,7 @@ def main():
     hWall1.actorNumber=4
     x = hWall1.ping()
     vr.PrintWS(x == False, "Ping QArm that doesn't exist (expect False)")
-    '''
+    #''
 
     print("\n\n------------------------------ Conveyor Curved --------------------------------\n")
     vr.PrintWSHeader("Conveyor Curved")
@@ -642,11 +642,11 @@ def main():
         
         print("Conveyor Spawned")
 
-    hCubeTube = QLabsDeliveryTube(qlabs)
+    hCubeTube = QLabsDeliveryTubeBottles(qlabs)
     hCubeTube.spawn(location = [loc[0]-1, loc[1], loc[2]+0.5], rotation = [0,0,0], scale = [1,1,1])
     hCubeTube.set_height(height = 10)
 
-    for i in range (0, 5000):
+    for i in range (0, 15):
         hCubeTube.spawn_container(metallic = False, color = [0,1,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
         time.sleep(0.5)
     
@@ -658,7 +658,7 @@ def main():
     '''
 
     hBeltCurve2 = QLabsConveyorCurved(qlabs)
-    hBeltCurve2.spawn_id(blockType = hTube0.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
+    hBeltCurve2.spawn_id(blockType = hCubeTube.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
 
  
 vr = verificationReport('QBot Validation Report.xlsx', 'library_verification_qbot.py', library_path)
