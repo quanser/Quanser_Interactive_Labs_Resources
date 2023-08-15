@@ -13,8 +13,8 @@ from qvl.shredder import QLabsShredder
 from qvl.delivery_tube import QLabsDeliveryTube, QLabsDeliveryTubeBottles
 from qvl.qarm import QLabsQArm
 from qvl.conveyor_curved import QLabsConveyorCurved
-from qvl.flooring import QLabsFlooring
 from qvl.conveyor_straight import QLabsConveyorStraight
+from qvl.flooring import QLabsFlooring
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
 from qvl.widget import QLabsWidget
@@ -92,7 +92,7 @@ def main():
     print(x)
     vr.PrintWS(2, x)
 
-    #''
+    #'''
     print("\n\n------------------------------ Free Camera --------------------------------\n")
 
     vr.PrintWSHeader("Free Camera")
@@ -613,7 +613,7 @@ def main():
     hWall1.actorNumber=4
     x = hWall1.ping()
     vr.PrintWS(x == False, "Ping QArm that doesn't exist (expect False)")
-    #''
+
 
     print("\n\n------------------------------ Conveyor Curved --------------------------------\n")
     vr.PrintWSHeader("Conveyor Curved")
@@ -643,23 +643,165 @@ def main():
         print("Conveyor Spawned")
 
     hCubeTube = QLabsDeliveryTubeBottles(qlabs)
-    hCubeTube.spawn(location = [loc[0]-1, loc[1], loc[2]+0.5], rotation = [0,0,0], scale = [1,1,1])
+    hCubeTube.spawn(location = [loc[0]-1, loc[1]+0.2, loc[2]+1], rotation = [0,0,0], scale = [1,1,1])
     hCubeTube.set_height(height = 10)
 
-    for i in range (0, 15):
+    for i in range (0, 5):
         hCubeTube.spawn_container(metallic = False, color = [0,1,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
         time.sleep(0.5)
     
-    '''   
-    for i in range (0, 5000):
-        beltBox = QLabsWidget(qlabs)
-        beltBox.spawn_degrees(location = [loc[0]-1, loc[2], loc[2]+0.5], rotation = [0,0,0], scale = [0.1,0.1,0.1], configuration = 0, color=[0,1,0])
-        time.sleep(0.1)
-    '''
+
+    # Single section conveyor
+
+    conveyorCurvedCam2 = QLabsFreeCamera(qlabs, True)
+    conveyorCurvedCam2.spawn_id_degrees(actorNumber=18, location=[19, 2, 2], rotation=[0, 40, -90])
+    x = conveyorCurvedCam2.possess()
 
     hBeltCurve2 = QLabsConveyorCurved(qlabs)
-    hBeltCurve2.spawn_id(blockType = hCubeTube.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
+    x = hBeltCurve2.spawn_id_degrees(actorNumber = 20, location = [19, 0, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 12)
+    vr.PrintWS(x == 0, "Spawn Q-belt with degrees and 12 sections (configurations)")
 
+
+
+    print("\n\n------------------------------ Conveyor Straight --------------------------------\n")
+    vr.PrintWSHeader("Conveyor Straight")
+
+    conveyorStraightCam = QLabsFreeCamera(qlabs, True)
+    conveyorStraightCam.spawn_id_degrees(actorNumber=19, location=[21, 2.5, 2], rotation=[0, 40, -90])
+    x = conveyorStraightCam.possess()
+
+    hBeltS0 = QLabsConveyorStraight(qlabs)
+    x = hBeltS0.spawn_id(actorNumber=0, location = [22, 0, 0], rotation = [0, 0, 0], scale = [1,1,1])
+    vr.PrintWS(x == 0, "Spawn conveyor with radians")
+
+    hBeltS1 = QLabsConveyorStraight(qlabs)
+    x = hBeltS1.spawn_id_degrees(actorNumber=1, location = [20, 0, 0], rotation = [0, 0, 0], scale = [2,2,2])
+    vr.PrintWS(x == 0, "Spawn conveyor with degrees & at a larger scale")
+
+    time.sleep(0.5)
+    hBeltS1.set_speed(0.1)
+
+    time.sleep(2)
+    hBeltS1.set_speed(0.5)
+
+    conveyorLength = 3
+
+    hBeltS2 = QLabsConveyorStraight(qlabs)
+    x = hBeltS2.spawn_id_degrees(actorNumber=2, location = [20, 1, 0], rotation = [0, 0, 0], scale = [2,2,2], configuration = conveyorLength)
+    vr.PrintWS(x == 0, "Spawn conveyor with degrees & with multipule sections")
+
+    hCubeTube1 = QLabsDeliveryTubeBottles(qlabs)
+    hCubeTube1.spawn(location = [conveyorLength + 19.3, 1, 0.5], rotation = [0,0,0], scale = [1,1,1])
+    hCubeTube1.set_height(height = 10)
+
+    #Spawn bottles on conveyor at different speeds
+
+    time.sleep(0.5)
+    hBeltS2.set_speed(0.5)
+    for i in range (0, 4):
+        hCubeTube1.spawn_container(metallic = False, color = [1,0.5,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        print("Bottle Spawned")
+        time.sleep(0.5)
+
+    time.sleep(0.5)
+    hBeltS2.set_speed(1)
+    for i in range (0, 4):
+        hCubeTube1.spawn_container(metallic = False, color = [1,0.5,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        print("Bottle Spawned")
+        time.sleep(0.5)
+
+    time.sleep(0.5)
+    hBeltS2.set_speed(2)
+    for i in range (0, 4):
+        hCubeTube1.spawn_container(metallic = False, color = [1,0.5,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        print("Bottle Spawned")
+        time.sleep(0.5)
+
+    time.sleep(0.5)
+    hBeltS2.set_speed(10)
+    for i in range (0, 4):
+        hCubeTube1.spawn_container(metallic = False, color = [1,0.5,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        print("Bottle Spawned")
+        time.sleep(0.5)
+
+    time.sleep(0.5)
+    hBeltS2.set_speed(100)
+    for i in range (0, 4):
+        hCubeTube1.spawn_container(metallic = False, color = [1,0.5,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+        print("Bottle Spawned")
+        time.sleep(0.5)
+
+    print("\n\n------------------------------ Both Conveyors --------------------------------\n")
+
+    conveyorCurvedCam2.possess()
+
+    hBeltBoth0 = QLabsConveyorStraight(qlabs)
+    hBeltBoth0.spawn_id_degrees(actorNumber = 3, location = [18.5,0,0], rotation = [0,0,-90], scale = [1,1,1], configuration = 10)
+
+    hBeltBoth1 = QLabsConveyorStraight(qlabs)
+    hBeltBoth1.spawn_id_degrees(actorNumber = 4, location = [19.5,0,0], rotation = [0,0,-90], scale = [1,1,1], configuration = 10)
+
+    hBeltBoth2 = QLabsConveyorCurved(qlabs)
+    x = hBeltBoth2.spawn_id_degrees(actorNumber = 21, location = [19, -3, 0], rotation = [0,0,-180], scale = [1,1,1], configuration = 12)
+
+    def loopSpeed(QBspeed=0):
+        hBeltBoth0.set_speed(QBspeed*-1)
+        hBeltBoth1.set_speed(QBspeed)
+        hBeltBoth2.set_speed(QBspeed)
+        hBeltCurve2.set_speed(QBspeed)
+    def spawnBottleBC(quantity = 4):
+        for i in range (0, quantity):
+            hCubeTube2.spawn_container(metallic = False, color = [1,0,1], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+            print("Bottle Spawned")
+            time.sleep(0.5)
+
+    hCubeTube2 = QLabsDeliveryTubeBottles(qlabs)
+    hCubeTube2.spawn(location = [19, 0.5, 0.5], rotation = [0,0,0], scale = [1,1,1])
+    hCubeTube2.set_height(height = 10)
+
+    time.sleep(0.5)
+    loopSpeed(0.1)
+    spawnBottleBC()
+
+    time.sleep(1)
+    loopSpeed(0.5)
+    spawnBottleBC()
+
+    time.sleep(0.5)
+    loopSpeed(1)
+    spawnBottleBC()
+
+    time.sleep(2)
+    loopSpeed(2)
+    spawnBottleBC()
+
+    time.sleep(0.5)
+    loopSpeed(-1)
+    spawnBottleBC()
+
+    time.sleep(2)
+    
+
+    print("\n\n------------------------------ Flooring --------------------------------\n")
+    vr.PrintWSHeader("Flooring")
+
+    floorCam0 = QLabsFreeCamera(qlabs, True)
+    floorCam0.spawn_id_degrees(actorNumber=20, location=[19, 7, 2], rotation=[0, 40, -90])
+    x = floorCam0.possess()
+
+    hFloor0 = QLabsFlooring(qlabs)
+    x = hFloor0.spawn_id(actorNumber = 0, location = [19, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 0)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 0 with radians")
+
+    time.sleep(0.2)
+
+    floorCam1 = QLabsFreeCamera(qlabs, True)
+    floorCam1.spawn_id_degrees(actorNumber=21, location=[14, 7, 2], rotation=[0, 40, -90])
+    x = floorCam1.possess()
+
+    hFloor0 = QLabsFlooring(qlabs)
+    x = hFloor0.spawn_id_degrees(actorNumber = 1, location = [14, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 1)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 1 with degrees")
  
 vr = verificationReport('QBot Validation Report.xlsx', 'library_verification_qbot.py', library_path)
 vr.ignore_list = ignore_list

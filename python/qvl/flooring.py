@@ -9,7 +9,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsFlooring(QLabsActor):
-    """ This class is for spawning both static and dynamic walls."""
+    """ This class is for spawning static floors."""
 
     ID_FLOORING = 10090
     """Class ID"""
@@ -31,5 +31,3 @@ class QLabsFlooring(QLabsActor):
        self._verbose = verbose
        self.classID = self.ID_FLOORING
        return
-
-
