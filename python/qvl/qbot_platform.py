@@ -181,10 +181,10 @@ class QLabsQBotPlatform(QLabsActor):
                 return False, None
 
 
-            jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
+            imageData = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
 
 
-            return True, jpg_buffer
+            return True, imageData
         else:
             return False, None
 
