@@ -354,8 +354,8 @@ def main():
     time.sleep(1)
 
 
-    print("\n\n------------------------------ QLabsQBotPlatform --------------------------------\n")
-    vr.PrintWSHeader("QLabsQBotPlatform")
+    print("\n\n------------------------------ QBot Platform --------------------------------\n")
+    vr.PrintWSHeader("QBot Platform")
 
     hQbotPFCamera = QLabsFreeCamera(qlabs, True)
     hQbotPFCamera.spawn_id_degrees(actorNumber=11, location=[-9.5, 2, 2], rotation=[0, 40, -90])
@@ -546,9 +546,9 @@ def main():
     print("\n\n------------------------------ Delivery Tube --------------------------------\n")
     vr.PrintWSHeader("Delivery Tube")
 
-    shredderCamera = QLabsFreeCamera(qlabs, True)
-    shredderCamera.spawn_id_degrees(actorNumber=15, location=[8, 1.5, 2.5], rotation=[0, 10, -90])
-    x = shredderCamera.possess()
+    tubeCamera = QLabsFreeCamera(qlabs, True)
+    tubeCamera.spawn_id_degrees(actorNumber=15, location=[8, 1.5, 2.5], rotation=[0, 10, -90])
+    x = tubeCamera.possess()
 
     hTube0 = QLabsDeliveryTube(qlabs)
     x = hTube0.spawn_id(actorNumber = 0, location = [7, 0, 0], scale = [1,1,1])
@@ -569,7 +569,7 @@ def main():
 
     hTube0.spawn_block(blockType = hTube0.BLOCK_CUBE, mass = 10, yawRotation = 0, color = [1,0,0])
 
-    hTube1.spawn_container(metallic = False, color = [0,1,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
+    hTube1.spawn_container(metallic = False, color = [1,0,0], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
 
     hTube2.spawn_block(blockType = hTube2.BLOCK_GEOSPHERE, mass = 10, yawRotation = 0, color = [1,0,0])
 
@@ -625,10 +625,6 @@ def main():
     hBeltCurve0 = QLabsConveyorCurved(qlabs)
     x = hBeltCurve0.spawn_id(actorNumber=0, location = [15, 0, 0], rotation = [0, 0, 0], scale = [1,1,1])
     vr.PrintWS(x == 0, "Spawn conveyor with radians")
-
-    #hFrame0 = QLabsReferenceFrame(qlabs)
-    #x = hFrame0.spawn_id(actorNumber = 0, location = [-12, 2, 0], rotation = [0, 0, 0], scale = [1, 1, 1], configuration=0, waitForConfirmation=True)
-    #vr.PrintWS(x == 0, "Spawn invisible frame with radians")
 
     conveyorPoint = QLabsReferenceFrame(qlabs)
     conveyorPoint.spawn_id(actorNumber = 20, location = [16, 0, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 0)

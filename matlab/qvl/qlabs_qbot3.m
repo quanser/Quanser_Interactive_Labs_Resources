@@ -20,7 +20,7 @@ classdef qlabs_qbot3 < qlabs_actor
         function obj = qlabs_qbot3(qlabs, verbose)
             arguments
                 qlabs quanser_interactive_labs
-                verbose logical = False
+                verbose logical = false
             end
             obj = obj@qlabs_actor(qlabs, verbose);
     
@@ -172,12 +172,67 @@ classdef qlabs_qbot3 < qlabs_actor
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_QBOT3_RGB_REQUEST;
             obj.c.payload = [];
-            obj.c.containerSize = c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
 
             if (obj.qlabs.send_container(obj.c))
-                rc = obj.qlabs.wait_for_container
+                rc = obj.qlabs.wait_for_container(obj.ID_QBOT3, obj.actorNumber, obj.FCN_QBOT3_RGB_RESPONSE);
+
+                if isempty(rc)
+                    return
+                end
+
+                [imageData, result] = qc_jpeg_decompress(rc.payload(5:end));
+
+                success = true;
+                return
+
+            else
+                return
+            end
+        end
+
+        function [success, imageData] = get_image_depth(obj)
+            arguments
+                obj qlabs_qbot3
+            end
+            success = false;
+            imageData = [];
+
+%             Request a JPG image from the QBot camera.
+% 
+%             :return:
+%                 - **status** - `True` and image data if successful, `False` and empty otherwise
+%                 - **imageData** - Image in a JPG format
+%             :rtype: boolean, byte array with jpg data
+
+            if isempty(obj.is_actor_number_valid())
+                return
+            end
+
+            obj.c.classID = obj.ID_QBOT3;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_QBOT3_DEPTH_REQUEST;
+            obj.c.payload = [];
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+
+            obj.qlabs.flush_receive();
+
+            if (obj.qlabs.send_container(obj.c))
+                rc = obj.qlabs.wait_for_container(obj.ID_QBOT3, obj.actorNumber, obj.FCN_QBOT3_DEPTH_RESPONSE);
+
+                if isempty(rc)
+                    return
+                end
+
+                [imageData, result] = qc_jpeg_decompress(rc.payload(5:end));
+
+                success = true;
+                return
+
+            else
+                return
             end
         end
     end

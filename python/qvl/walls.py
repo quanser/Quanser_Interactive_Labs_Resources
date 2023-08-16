@@ -47,7 +47,7 @@ class QLabsWalls(QLabsActor):
 
 
     def set_enable_dynamics(self, enableDynamics, waitForConfirmation=True):
-        """Sets the visual surface properties of the wall.
+        """Sets the physics properties of the wall.
 
         :param enableDynamics: Enable (True) or disable (False) the wall dynamics. A dynamic actor can be pushed with other static or dynamic actors.  A static actor will generate collisions, but will not be affected by interactions with other actors.
         :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.

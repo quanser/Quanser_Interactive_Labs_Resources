@@ -29,7 +29,7 @@ classdef qlabs_qbot_platform < qlabs_actor
         function obj = qlabs_qbot_platform(qlabs, verbose)
             arguments
                 qlabs quanser_interactive_labs
-                verbose logical = False
+                verbose logical = false
             end
             obj = obj@qlabs_actor(qlabs, verbose);
     
@@ -191,11 +191,11 @@ classdef qlabs_qbot_platform < qlabs_actor
                 return
             end
 
-            obj.c.classID = self.ID_QBOT_PLATFORM;
-            obj.c.actorNumber = self.actorNumber;
-            obj.c.actorFunction = self.FCN_QBOT_PLATFORM_IMAGE_REQUEST;
+            obj.c.classID = obj.ID_QBOT_PLATFORM;
+            obj.c.actorNumber = obj.actorNumber;
+            obj.c.actorFunction = obj.FCN_QBOT_PLATFORM_IMAGE_REQUEST;
             obj.c.payload = uint8(camera);
-            obj.c.containerSize = c.BASE_CONTAINER_SIZE + length(obj.c.payload);
+            obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
 
@@ -245,8 +245,8 @@ classdef qlabs_qbot_platform < qlabs_actor
             % lens distortion of these cameras must be removed to accurately calculate the XY position
             % of the depth samples.
 
-            quarter_angle = linspace(0, 45, int(LIDAR_SAMPLES/8));
-            lens_curve = -0.0077*quarter_angle*quarter_angle + 1.3506*quarter_angle;
+            quarter_angle = linspace(0, 45, int32(LIDAR_SAMPLES/8));
+            lens_curve = -0.0077*quarter_angle.*quarter_angle + 1.3506*quarter_angle;
             lens_curve_rad = lens_curve/180*pi;
 
             angles = [pi*4/2-1*flip(lens_curve_rad) ...
@@ -261,13 +261,13 @@ classdef qlabs_qbot_platform < qlabs_actor
             obj.c.classID = obj.ID_QBOT_PLATFORM;
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_QBOT_PLATFORM_LIDAR_DATA_REQUEST;
-            obj.c.payload = uint8;
+            obj.c.payload = [];
             obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
 
             if (obj.qlabs.send_container(obj.c))
-                rc = self.qlabs.wait_for_container(obj.ID_QBOT_PLATFORM, obj.actorNumber, obj.FCN_QBOT_PLATFORM_LIDAR_DATA_RESPONSE);
+                rc = obj.qlabs.wait_for_container(obj.ID_QBOT_PLATFORM, obj.actorNumber, obj.FCN_QBOT_PLATFORM_LIDAR_DATA_RESPONSE);
 
                 if isempty(rc)
                     if (obj.verbose)
