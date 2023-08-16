@@ -53,6 +53,7 @@ Workspace Spawnable Objects
     Roundabout sign  License   License        License License
     Product Walls    No        No             License License
     Product Flooring No        No             License License
+    Weather          Yes       No             No      No
     ================ ========= ============== ======= =======
     
 Licensed actors require an applicable product license as part of your QLabs subscription to spawn.
