@@ -110,7 +110,7 @@ class QLabsEnvironmentOutdoors:
         """
         Set the weather conditions for an outdoor environment with a preset value
 
-        :param time: A preset index (see defined constants for weather types)
+        :param weather_preset: A preset index (see defined constants for weather types)
         :type time: int32
         :return: `True` if setting the time was successful, `False` otherwise
         :rtype: boolean
