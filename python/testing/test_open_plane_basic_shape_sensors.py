@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../qvl/")
+sys.path.insert(0, "../")
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
@@ -20,6 +20,8 @@ import numpy as np
 import cv2
 import xlsxwriter
 import os
+
+library_path = '.../qvl'
 
 
 def sigmoid(t):

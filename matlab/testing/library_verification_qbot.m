@@ -26,7 +26,15 @@ function library_verification_qbot()
     use_verbose = true;
 
     fp = false;
-    if fp == true
+
+
+
+    fprintf('\n\n-------------------------------- System ----------------------------------\n\n');
+    
+    hSys = qlabs_system(qlabs);
+    hSys.set_title_string('QBot Verification');
+
+
     fprintf('\n\n-------------------------------- Free Camera ----------------------------------\n\n');
     
     hCamera0 = qlabs_free_camera(qlabs, use_verbose);
@@ -407,15 +415,15 @@ function library_verification_qbot()
     [x, loc, rot, scale] = hShredder5.get_world_transform()
     eval((sum(loc - loc2) < 0.001) && (x == true), true, 'Get world transform');
 
-    for i = 0:50
-        sacrificialCube = qlabs_widget(qlabs);
-        sacrificialCube.spawn_degrees([3, -2, 4], [0,0,0], [1,1,1], 4, [0,1,1]);
-    end
-
-    for i = 0:500
-        sacrificialCube = qlabs_widget(qlabs);
-        sacrificialCube.spawn_degrees([3, -2, 4+(i*0.1)], [0,0,0], [1,1,1], 4, [0,1,1]);
-    end
+%     for i = 0:50
+%         sacrificialCube = qlabs_widget(qlabs);
+%         sacrificialCube.spawn_degrees([3, -2, 4], [0,0,0], [1,1,1], 4, [0,1,1]);
+%     end
+% 
+%     for i = 0:500
+%         sacrificialCube = qlabs_widget(qlabs);
+%         sacrificialCube.spawn_degrees([3, -2, 4+(i*0.1)], [0,0,0], [1,1,1], 4, [0,1,1]);
+%     end
 
     pause(0.2);
 
@@ -493,7 +501,7 @@ function library_verification_qbot()
     x = hWall1.ping();
     eval(x, false, 'Ping QArm that doesn"t exist (expect False)');
 
-    end
+
 
     fprintf("\n\n------------------------------ Conveyor Curved --------------------------------\n")
 
@@ -508,9 +516,17 @@ function library_verification_qbot()
     conveyorPoint = qlabs_reference_frame(qlabs);
     conveyorPoint.spawn_id(20, [16, 0, 0], [0,0,0], [1,1,1], 0)
     
-    for i = 0:12
+%     for i = 0:12
+%         hBeltCurve1 = qlabs_conveyor_curved(qlabs);
+%         hBeltCurve1.spawn_id_and_parent_with_relative_transform_degrees(1+i, [0,0,0], [0,0,i*30], [2,2,2], 0, conveyorPoint.classID, 20, 0);
+%         hBeltCurve1.set_speed(7);
+%         
+%         fprintf("Conveyor Spawned\n")
+%     end 
+
+    for i = 0:3
         hBeltCurve1 = qlabs_conveyor_curved(qlabs);
-        hBeltCurve1.spawn_id_and_parent_with_relative_transform_degrees(1+i, [0,0,0], [0,0,i*30], [2,2,2], 0, conveyorPoint.classID, 20, 0);
+        hBeltCurve1.spawn_id_and_parent_with_relative_transform_degrees(1+i, [0,0,0], [0,0,i*90], [2,2,2], 6, conveyorPoint.classID, 20, 0);
         hBeltCurve1.set_speed(7);
         
         fprintf("Conveyor Spawned\n")
@@ -621,7 +637,7 @@ function library_verification_qbot()
     hBeltBoth2 = qlabs_conveyor_curved(qlabs);
     x = hBeltBoth2.spawn_id_degrees(21, [19, -3, 0], [0,0,-180], [1,1,1], 12);
 
-    function loopSpeed(QBspeed=0)
+    function loopSpeed(QBspeed)
         hBeltBoth0.set_speed(QBspeed*-1)
         hBeltBoth1.set_speed(QBspeed)
         hBeltBoth2.set_speed(QBspeed)
@@ -629,41 +645,83 @@ function library_verification_qbot()
     end
 
     function spawnBottleBC(quantity)
-        arguments
-            quantity single = 4
-        end
-        for i = 0:quantity
-            hCubeTube2.spawn_container(metallic = False, color = [1,0,1], mass = 10, height = 0.1, diameter = 0.65, roughness = 0.65)
-            print("Bottle Spawned")
-            time.sleep(0.5)
+        for i = 1:quantity
+            hCubeTube2.spawn_container(false, [1,0,1], 10, 0.1, 0.65, 0.65);
+            fprintf("Bottle Spawned")
+            pause(0.5);
         end
     end
 
-%     hCubeTube2 = QLabsDeliveryTubeBottles(qlabs)
-%     hCubeTube2.spawn(location = [19, 0.5, 0.5], rotation = [0,0,0], scale = [1,1,1])
-%     hCubeTube2.set_height(height = 10)
-% 
-%     time.sleep(0.5)
-%     loopSpeed(0.1)
-%     spawnBottleBC()
-% 
-%     time.sleep(1)
-%     loopSpeed(0.5)
-%     spawnBottleBC()
-% 
-%     time.sleep(0.5)
-%     loopSpeed(1)
-%     spawnBottleBC()
-% 
-%     time.sleep(2)
-%     loopSpeed(2)
-%     spawnBottleBC()
-% 
-%     time.sleep(0.5)
-%     loopSpeed(-1)
-%     spawnBottleBC()
-% 
-%     time.sleep(2)
+    hCubeTube2 = qlabs_delivery_tube_bottles(qlabs);
+    hCubeTube2.spawn([19, 0.5, 0.5], [0,0,0], [1,1,1]);
+    hCubeTube2.set_height(10);
+
+    pause(0.5);
+    loopSpeed(0.1);
+    spawnBottleBC(4);
+
+    pause(1);
+    loopSpeed(0.5);
+    spawnBottleBC(4);
+
+    pause(0.5);
+    loopSpeed(1);
+    spawnBottleBC(4);
+
+    pause(2);
+    loopSpeed(2);
+    spawnBottleBC(4);
+
+    pause(0.5);
+    loopSpeed(-1);
+    spawnBottleBC(4);
+
+    pause(2);
+
+
+
+    fprintf("\n\n------------------------------ Flooring --------------------------------\n")
+
+    floorCam0 = qlabs_free_camera(qlabs, true);
+    floorCam0.spawn_id_degrees(20, [19, 7, 2], [0, 40, -90]);
+    x = floorCam0.possess();
+
+    hFloor0 = qlabs_flooring(qlabs);
+    x = hFloor0.spawn_id(0, [19, 5, 0], [0,0,0], [1,1,1], 0);
+    eval(x, 0, 'Spawn floor in configuration 0 with radians');
+
+    pause(0.2);
+
+    floorCam1 = qlabs_free_camera(qlabs, true);
+    floorCam1.spawn_id_degrees(21, [14, 7, 2], [0, 40, -90]);
+    x = floorCam1.possess();
+
+    hFloor0 = qlabs_flooring(qlabs);
+    x = hFloor0.spawn_id_degrees(1, [14, 5, 0], [0,0,0], [1,1,1], 1);
+    eval(x, 0, 'Spawn floor in configuration 1 with degrees');
+
+
+
+    fprintf("\n\n------------------------------ Generic Sensor --------------------------------\n")
+
+    floorCam0 = qlabs_free_camera(qlabs, true);
+    floorCam0.spawn_id_degrees(22, [10, 7, 2], [0, 40, -90]);
+    x = floorCam0.possess();
+
+    hhitbox = qlabs_basic_shape(qlabs);
+    hhitbox.spawn_id_degrees(7, [11, 5, 1], [0,0,0], [1,1,1]);
+    hhitbox.set_material_properties([1,0,1], 0.2, false, true);
+
+    hSensor = qlabs_generic_sensor(qlabs);
+    hSensor.spawn_degrees([10, 5, 1], [0,0,0], [1,1,1]);
+    hSensor.show_sensor(true, true, 0.2);
+    hSensor.set_beam_size(1, 5, 0.2, 0.1);
+
+    [success, hit, actorClass, actorNumber, distance] = hSensor.test_beam_hit();
+
+    if hit == true
+        fprintf("Actor class: %u, Actor Number: %u, Distance: %u", actorClass, actorNumber, distance);
+    end
 
 end
 

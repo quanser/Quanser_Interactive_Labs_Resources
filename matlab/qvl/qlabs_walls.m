@@ -55,7 +55,8 @@ classdef qlabs_walls < qlabs_actor
             obj.c.classID = obj.ID_WALL;
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_WALLS_ENABLE_DYNAMICS;
-            obj.c.payload = flip(typecast(single(enableDynamics), 'uint8'));
+            %obj.c.payload = flip(typecast(single(enableDynamics), 'uint8'));
+            obj.c.payload = uint8(enableDynamics);
             obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             if waitForConfirmation

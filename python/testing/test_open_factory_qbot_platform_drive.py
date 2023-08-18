@@ -10,6 +10,7 @@ from qvl.free_camera import QLabsFreeCamera
 from qvl.qbot_platform import QLabsQBotPlatform
 from qvl.qbot2e import QLabsQBot2e
 from qvl.spline_line import QLabsSplineLine
+from qvl.basic_shape import QLabsBasicShape
 
 #from qvl.animal import QLabsAnimal
 
@@ -53,6 +54,8 @@ def main():
     pBot.actorNumber=20
     pBot.destroy()
 
+    qlabs.destroy_all_spawned_actors()
+
     hQBot = QLabsQBotPlatform(qlabs, True)
     hQBot.spawn_id_degrees(actorNumber=20, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING,)
@@ -93,6 +96,11 @@ def main():
     lidarPlot.setXRange(-squareSize, squareSize)
     lidarPlot.setYRange(-squareSize, squareSize)
     lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=2)
+
+    hQbotCube = QLabsBasicShape(qlabs);
+    hQbotCube.set_enable_collisions(False)
+    hQbotCube.spawn_id_and_parent_with_relative_transform(actorNumber=1, location=[0,0,0.051], rotation=[0,0,0], scale=[0.1,0.1,0.1], configuration=0, parentClassID=23, parentActorNumber=20, parentComponent=6, waitForConfirmation=True)
+
 
     # -------- Main Program Loop -----------
     while not done:
