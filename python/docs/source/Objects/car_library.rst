@@ -105,8 +105,6 @@ Connection Points
     1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
     ====================== ============ ====================================================== ===========
 
-.. image:: ../pictures/qcar_connection_points.png
-
 
 Component Extrinsics
 ^^^^^^^^^^^^^^^^^^^^
