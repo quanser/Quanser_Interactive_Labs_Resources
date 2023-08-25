@@ -14,7 +14,7 @@ from qvl.delivery_tube import QLabsDeliveryTube, QLabsDeliveryTubeBottles
 from qvl.qarm import QLabsQArm
 from qvl.conveyor_curved import QLabsConveyorCurved
 from qvl.conveyor_straight import QLabsConveyorStraight
-from qvl.flooring import QLabsFlooring
+from qvl.qbot_platform_flooring import QLabsQBotPlatformFlooring
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
 from qvl.widget import QLabsWidget
@@ -785,7 +785,7 @@ def main():
     floorCam0.spawn_id_degrees(actorNumber=20, location=[19, 7, 2], rotation=[0, 40, -90])
     x = floorCam0.possess()
 
-    hFloor0 = QLabsFlooring(qlabs)
+    hFloor0 = QLabsQBotPlatformFlooring(qlabs)
     x = hFloor0.spawn_id(actorNumber = 0, location = [19, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 0)
     vr.PrintWS(x == 0, "Spawn floor in configuration 0 with radians")
 
@@ -795,7 +795,7 @@ def main():
     floorCam1.spawn_id_degrees(actorNumber=21, location=[14, 7, 2], rotation=[0, 40, -90])
     x = floorCam1.possess()
 
-    #hFloor0 = QLabsFlooring(qlabs)
+    #hFloor0 = QLabsQBotPlatformFlooring(qlabs)
     #x = hFloor0.spawn_id_degrees(actorNumber = 1, location = [14, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 1)
     #vr.PrintWS(x == 0, "Spawn floor in configuration 1 with degrees")
 
