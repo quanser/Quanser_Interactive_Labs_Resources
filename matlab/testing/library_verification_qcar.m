@@ -574,70 +574,22 @@ fprintf('\n\n-------------------------------- Yield Sign -----------------------
 
 %     #camera tests
 %     print("\nQCar camera tests...")
-%     hQCar2.possess(hQCar2.CAMERA_OVERHEAD)
-%     if require_user_input == True:
-%         x = input("Overhead camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess overhead camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_TRAILING)
-%     if require_user_input == True:
-%         x = input("Trailing camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess trailing camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_CSI_FRONT)
-%     if require_user_input == True:
-%         x = input("Front camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess front camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_CSI_RIGHT)
-%     if require_user_input == True:
-%         x = input("Right camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess right camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_CSI_BACK)
-%     if require_user_input == True:
-%         x = input("Back camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess back camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_CSI_LEFT)
-%     if require_user_input == True:
-%         x = input("Left camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess left camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_RGB)
-%     if require_user_input == True:
-%         x = input("Real Sense RGB camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess Real Sense RGB camera")
-% 
-%     hQCar2.possess(hQCar2.CAMERA_DEPTH)
-%     if require_user_input == True:
-%         x = input("Real Sense Depth camera? (Enter yes, anything else no):")
-%     else:
-%         x = ""
-%         time.sleep(0.5)
-%     vr.PrintWS(x == "", "Possess Real Sense Depth camera")
-% 
+    hQCar2.possess(hQCar2.CAMERA_OVERHEAD);
+
+    hQCar2.possess(hQCar2.CAMERA_TRAILING);
+
+    hQCar2.possess(hQCar2.CAMERA_CSI_FRONT);
+
+    hQCar2.possess(hQCar2.CAMERA_CSI_RIGHT);
+
+    hQCar2.possess(hQCar2.CAMERA_CSI_BACK);
+
+    hQCar2.possess(hQCar2.CAMERA_CSI_LEFT);
+
+    hQCar2.possess(hQCar2.CAMERA_RGB);
+
+    hQCar2.possess(hQCar2.CAMERA_DEPTH);
+
 %     cv2.namedWindow('QCarImageStream', cv2.WINDOW_AUTOSIZE)
 %     camera_image = cv2.imread('Quanser640x480.jpg')
 %     cv2.imshow('QCarImageStream', camera_image)
