@@ -795,9 +795,34 @@ def main():
     floorCam1.spawn_id_degrees(actorNumber=21, location=[14, 7, 2], rotation=[0, 40, -90])
     x = floorCam1.possess()
 
-    hFloor0 = QLabsFlooring(qlabs)
-    x = hFloor0.spawn_id_degrees(actorNumber = 1, location = [14, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 1)
-    vr.PrintWS(x == 0, "Spawn floor in configuration 1 with degrees")
+    #hFloor0 = QLabsFlooring(qlabs)
+    #x = hFloor0.spawn_id_degrees(actorNumber = 1, location = [14, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 1)
+    #vr.PrintWS(x == 0, "Spawn floor in configuration 1 with degrees")
+
+    floorCam2 = QLabsFreeCamera(qlabs, True)
+    floorCam2.spawn_id_degrees(actorNumber=22, location=[10, 7, 2], rotation=[0, 40, -90])
+    x = floorCam2.possess()
+
+
+    #Modular flooring
+    x = hFloor0.spawn_id_degrees(actorNumber = 2, location = [10, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 2)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 2 with degrees")
+
+    x = hFloor0.spawn_id_degrees(actorNumber = 3, location = [10, 6.2, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 3)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 3 with degrees")
+
+    x = hFloor0.spawn_id_degrees(actorNumber = 4, location = [10, 3.8, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 4)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 4 with degrees")
+
+    x = hFloor0.spawn_id_degrees(actorNumber = 5, location = [11.2, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 5)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 5 with degrees")
+
+    x = hFloor0.spawn_id_degrees(actorNumber = 6, location = [12.4, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 6)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 6 with degrees")
+
+    x = hFloor0.spawn_id_degrees(actorNumber = 7, location = [8.8, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 7)
+    vr.PrintWS(x == 0, "Spawn floor in configuration 7 with degrees")
+
  
 vr = verificationReport('QBot Validation Report.xlsx', 'library_verification_qbot.py', library_path)
 vr.ignore_list = ignore_list

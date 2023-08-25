@@ -700,6 +700,28 @@ function library_verification_qbot()
     x = hFloor0.spawn_id_degrees(1, [14, 5, 0], [0,0,0], [1,1,1], 1);
     eval(x, 0, 'Spawn floor in configuration 1 with degrees');
 
+    %Modular QBot Platform Flooring
+    floorCam2 = qlabs_free_camera(qlabs, true);
+    floorCam2.spawn_id_degrees(21, [14, 7, 2], [0, 40, -90]);
+
+    x = hFloor0.spawn_id_degrees(2, [10, 5, 0], [0,0,0], [1,1,1], 2);
+    eval(x, 0, 'Spawn floor in configuration 2 with degrees');
+
+    x = hFloor0.spawn_id_degrees(3, [10, 6.2, 0], [0,0,0], [1,1,1], 3);
+    eval(x, 0, 'Spawn floor in configuration 3 with degrees');
+ 
+    x = hFloor0.spawn_id_degrees(4, [10, 3.8, 0], [0,0,0], [1,1,1], 4);
+    eval(x, 0, 'Spawn floor in configuration 4 with degrees');
+ 
+    x = hFloor0.spawn_id_degrees(5, [11.2, 5, 0], [0,0,0], [1,1,1], 5);
+    eval(x, 0, 'Spawn floor in configuration 5 with degrees');
+
+    x = hFloor0.spawn_id_degrees(6, [12.4, 5, 0], [0,0,0], [1,1,1], 6);
+    eval(x, 0, 'Spawn floor in configuration 6 with degrees');
+
+    x = hFloor0.spawn_id_degrees(7, [8.8, 5, 0], [0,0,0], [1,1,1], 7);
+    eval(x, 0, 'Spawn floor in configuration 7 with degrees');
+
 
 
     fprintf("\n\n------------------------------ Generic Sensor --------------------------------\n")
@@ -722,7 +744,6 @@ function library_verification_qbot()
     if hit == true
         fprintf("Actor class: %u, Actor Number: %u, Distance: %u", actorClass, actorNumber, distance);
     end
-
 end
 
 function eval(return_value, expected_value, message)

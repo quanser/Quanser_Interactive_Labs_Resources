@@ -97,9 +97,9 @@ def main():
     lidarPlot.setYRange(-squareSize, squareSize)
     lidarData = lidarPlot.plot([], [], pen=None, symbol='o', symbolBrush='r', symbolPen=None, symbolSize=2)
 
-    hQbotCube = QLabsBasicShape(qlabs);
-    hQbotCube.set_enable_collisions(False)
-    hQbotCube.spawn_id_and_parent_with_relative_transform(actorNumber=1, location=[0,0,0.051], rotation=[0,0,0], scale=[0.1,0.1,0.1], configuration=0, parentClassID=23, parentActorNumber=20, parentComponent=6, waitForConfirmation=True)
+    #hQbotCube = QLabsBasicShape(qlabs);
+    #hQbotCube.set_enable_collisions(False)
+    #hQbotCube.spawn_id_and_parent_with_relative_transform(actorNumber=1, location=[0,0,0.051], rotation=[0,0,0], scale=[0.1,0.1,0.1], configuration=0, parentClassID=23, parentActorNumber=20, parentComponent=6, waitForConfirmation=True)
 
 
     # -------- Main Program Loop -----------
