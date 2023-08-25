@@ -12,12 +12,12 @@ QBot Platform
 Description
 ^^^^^^^^^^^
 
-QBot Platforms are considered "actors" in Quanser Interactive Labs. 
+A QBot Platform is considered an "actor" in Quanser Interactive Labs. 
 The QBot Platform library can be used to acquire sensor data from the 
 virtual environment and control the motion of the robot(s).
 
-See the QBot Platform :ref:`qbotPlatformTutorial` to get a better understanding 
-of using QBot Platform in Quanser Interactive Labs.
+.. See the QBot Platform :ref:`qbotPlatformTutorial` to get a better understanding 
+.. of using QBot Platform in Quanser Interactive Labs.
 
 .. _qbotPlatformLibrary:
 
@@ -71,7 +71,7 @@ Configurations
 There is only one configuration of the QBotPlatform actor.
 
 .. image:: ../pictures/qbot_platform.png
-    :scale: 50%
+    :scale: 25%
     :align: center
 
 
@@ -80,11 +80,11 @@ There is only one configuration of the QBotPlatform actor.
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
-.. image:: ../pictures/qbotplatform_connection_points.png
+.. .. image:: ../pictures/qbotplatform_connection_points.png
     :scale: 50%
     :align: center
-
-.. table::
+..
+ .. table::
     :widths: 11, 11, 25, 53
     :align: center
 
@@ -141,14 +141,15 @@ Transformation Matrices
 
 All transformation matrices are built off of the body frame and camera frames
 for the QBot Platform.
+
 .. To read more about this check out our documentation
-.. to do: update this
-    `here <https://www.quanser.com/products/qbot-platform/>`__ 
-.. by clicking on resources button and looking inside the zip folder for
-.. User Guides/System Hardware.pdf
+    .. todo: update this `here <https://www.quanser.com/products/qbot-platform/>`__ 
+    .. by clicking on resources button and looking inside the zip folder for
+    .. User Guides/System Hardware.pdf
+
 
 .. image:: ../pictures/qbotplatform_extrinsic_matrices.png
-    :scale:  65%
+    :scale:  100%
     :align: center
 
 .. _qbotPlatformTutorial:

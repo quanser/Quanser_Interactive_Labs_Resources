@@ -9,7 +9,7 @@ variations in lighting. Spawnable products can be spawned at a scale of 1 to 1 t
 match the physical devices.  The QCar can be spawned at 1 to 1 or 1/10th scale.
 
 .. image:: ../pictures/warehouse.png
-    :align: center=
+    :align: center
 
 Warehouse World Size
 ^^^^^^^^^^^^^^^^^^^^

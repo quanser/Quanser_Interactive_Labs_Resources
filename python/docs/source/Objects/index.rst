@@ -14,14 +14,15 @@ This section documents the different types of actors that you can spawn and cont
 .. toctree::
    :maxdepth: 1
 
-   camera_library
-   car_library
-   person_library
-   animal_library
-   road_signage
-   widgets
-   basic_shapes
-   splines
-   reference_frame
+   camera_library.rst
+   car_library.rst
+   qbot_platform_library.rst
+   person_library.rst
+   animal_library.rst
+   road_signage.rst
+   widgets.rst
+   basic_shapes.rst
+   splines.rst
+   reference_frame.rst
 
 

@@ -11,9 +11,6 @@ can move freely and create and place objects to create custom scenarios.
 There are several different Open Worlds available in QLabs for different types
 of products.
 
-Workspaces
-==========
-
 .. toctree::
    :maxdepth: 1
 
@@ -24,15 +21,14 @@ Workspaces
    Warehouse.rst
 
 
-Workspace Spawnable Objects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Spawnable Objects
+=================
 .. table::
-    :widths: 11, 11, 11, 11
+    :widths: 11, 11, 11, 11, 11, 11
     :align: center
 
     ================ ========= ============== ======= ======= =========
-    Product          Cityscape Cityscape Lite Studio  Plane   Workspace
+    Product          Cityscape Cityscape Lite Studio  Plane   Warehouse
     ================ ========= ============== ======= ======= =========
     Cameras          Yes       Yes            Yes     Yes     Yes
     Widgets          Yes       Yes            Yes     Yes     Yes
@@ -55,17 +51,10 @@ Workspace Spawnable Objects
     Product Walls    No        No             License License License
     Product Flooring No        No             License License License
     Weather          Yes       No             No      No      No
-    ================ ========= ============== ======= ======= =======
+    ================ ========= ============== ======= ======= =========
     
 Licensed actors require an applicable product license as part of your QLabs subscription to spawn.
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
 
 
 
