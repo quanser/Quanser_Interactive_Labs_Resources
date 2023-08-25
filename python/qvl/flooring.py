@@ -17,6 +17,13 @@ class QLabsFlooring(QLabsActor):
     FLOORING_QCAR_MAP_LARGE = 0
     FLOORING_QCAR_MAP_SMALL = 1
 
+    FLOORING_QBOT_PLATFORM_0 = 2
+    FLOORING_QBOT_PLATFORM_1 = 3
+    FLOORING_QBOT_PLATFORM_2 = 4
+    FLOORING_QBOT_PLATFORM_3 = 5
+    FLOORING_QBOT_PLATFORM_4 = 6
+    FLOORING_QBOT_PLATFORM_5 = 7
+
 
     def __init__(self, qlabs, verbose=False):
        """ Constructor Method

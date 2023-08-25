@@ -10,7 +10,7 @@ import numpy as np
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsReferenceFrame(QLabsActor):
-    """ This class supports the spawning of reference frame actors in the  QLabs open worlds."""
+    """ This class supports the spawning of reference frame actors in the QLabs open worlds."""
 
     ID_REFERENCE_FRAME = 10040
     """Class ID"""

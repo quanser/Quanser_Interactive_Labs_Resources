@@ -62,7 +62,6 @@ classdef qlabs_traffic_light < qlabs_actor
 
                 success = true;
             end
-
         end
     end
 end
