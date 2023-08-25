@@ -46,7 +46,7 @@ def main():
 
 
     hQBot = QLabsQBotPlatform(qlabs)
-    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=0)
+    hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0,0,0], scale=[1,1,1], configuration=1)
     hQBot.possess(hQBot.VIEWPOINT_TRAILING,)
 
     '''
