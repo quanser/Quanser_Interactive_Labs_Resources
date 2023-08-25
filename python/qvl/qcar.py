@@ -85,7 +85,7 @@ class QLabsQCar(QLabsActor):
         """
 
         self._sensor_scaling = scale[0]
-        super().spawn_id(actorNumber, location, rotation, scale, configuration, waitForConfirmation)
+        return super().spawn_id(actorNumber, location, rotation, scale, configuration, waitForConfirmation)
         
 
     def spawn_id_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
@@ -156,7 +156,6 @@ class QLabsQCar(QLabsActor):
         :rtype: int32, int32
 
         """
-        print("Here in spawn degrees")
         self._sensor_scaling = scale[0]
         return super().spawn_degrees(location, rotation, scale, configuration, waitForConfirmation)
         
@@ -582,7 +581,7 @@ class QLabsQCar(QLabsActor):
                 return False, None, None
 
             if ((len(c.payload)-4)/2 != LIDAR_SAMPLES):
-                print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
+                #print("Received {} bytes, expected {}".format(len(c.payload), LIDAR_SAMPLES*2))
                 return False, None, None
 
             distance = np.linspace(0,0,LIDAR_SAMPLES)

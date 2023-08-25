@@ -101,15 +101,14 @@ class QLabsSplineLine(QLabsActor):
             - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
         """
-
+        _waitForConfirmation = waitForConfirmation;
         points = []
-        print(radius)
         for angle in range(0, numSplinePoints):
             points.append([radius*math.sin(angle/numSplinePoints*math.pi*2), radius*math.cos(angle/numSplinePoints*math.pi*2), 0, lineWidth])
 
         points.append(points[0])
 
-        return self.set_points(color, pointList=points, alignEndPointTangents=True, )
+        return self.set_points(color, pointList=points, alignEndPointTangents=True, waitForConfirmation=_waitForConfirmation)
 
 
     def arc_from_center(self, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, color=[1,0,0], numSplinePoints=8, waitForConfirmation=True):

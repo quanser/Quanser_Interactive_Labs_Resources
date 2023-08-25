@@ -120,7 +120,7 @@ class Tile():
                 configuration=1,
             )
             Tile._hSpline.set_points(
-                colour=Tile.edgeMarkerColor,
+                color=Tile.edgeMarkerColor,
                 pointList=points,
                 alignEndPointTangents=False,
                 waitForConfirmation=False
@@ -139,7 +139,7 @@ class Tile():
             configuration=1
         )
         Tile._hSpline.set_points(
-            colour=Tile.lineColor,
+            color=Tile.lineColor,
             pointList=points,
             alignEndPointTangents=False,
             waitForConfirmation=False
@@ -168,7 +168,7 @@ class Tile():
             startAngle=0,
             endAngle=th2 ,
             lineWidth=Tile.lineWidth,
-            colour=Tile.lineColor,
+            color=Tile.lineColor,
             numSplinePoints=8,
             waitForConfirmation=False
         )
@@ -186,7 +186,7 @@ class Tile():
             configuration=1
         )
         Tile._hSpline.set_points(
-            colour=Tile.markerColor,
+            color=Tile.markerColor,
             pointList=points,
             alignEndPointTangents=False,
             waitForConfirmation=False
