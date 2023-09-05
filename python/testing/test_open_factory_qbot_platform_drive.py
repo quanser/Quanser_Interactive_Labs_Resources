@@ -8,6 +8,7 @@ sys.path.insert(0, "../")
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.qbot_platform import QLabsQBotPlatform
+from qvl.qbot_platform_flooring import QLabsQBotPlatformFlooring
 from qvl.qbot2e import QLabsQBot2e
 from qvl.spline_line import QLabsSplineLine
 
@@ -54,6 +55,26 @@ def main():
     hQBot.spawn_id_degrees(actorNumber=0, location=[0, 0, 2], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0)
     hQBot.possess(qlabs, 0, hQBot.VIEWPOINT_TRAILING)
     '''
+    
+    print("\n\n------------------------------ Flooring --------------------------------\n")
+    
+    hFloor0 = QLabsQBotPlatformFlooring(qlabs)
+    x = hFloor0.spawn_id(actorNumber = 0, location = [19, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 0)
+    
+    #Modular flooring
+    x = hFloor0.spawn_id_degrees(actorNumber = 2, location = [10, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 2)
+    
+    x = hFloor0.spawn_id_degrees(actorNumber = 3, location = [10, 6.2, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 3)
+    
+    x = hFloor0.spawn_id_degrees(actorNumber = 4, location = [10, 3.8, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 4)
+    
+    x = hFloor0.spawn_id_degrees(actorNumber = 5, location = [11.2, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 5)
+    
+    x = hFloor0.spawn_id_degrees(actorNumber = 6, location = [12.4, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 6)
+    
+    x = hFloor0.spawn_id_degrees(actorNumber = 7, location = [8.8, 5, 0], rotation = [0,0,0], scale = [1,1,1], configuration = 7)
+    
+    
 
     hSpline = QLabsSplineLine(qlabs)
     hSpline.spawn(location=[0.073, -2.743, 0], rotation=[0, 0, 0], scale=[1, 1, 1], configuration=0, waitForConfirmation=True)
