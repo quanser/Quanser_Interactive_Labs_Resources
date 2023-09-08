@@ -139,11 +139,11 @@ Transformation Matrices
 """""""""""""""""""""""
 
 .. image:: ../pictures/qbot_platform_bodyframe.png
-    :scale:  65%
+    :scale:  35%
     :align: center
 
 .. image:: ../pictures/qbot_platform_cameraframe.png
-    :scale:  65%
+    :scale:  35%
     :align: center
 
 All transformation matrices are built off of the body frame and camera frames
