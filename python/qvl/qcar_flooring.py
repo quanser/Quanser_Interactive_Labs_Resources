@@ -8,7 +8,7 @@ import struct
 
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsFlooring(QLabsActor):
+class QLabsQCarFlooring(QLabsActor):
     """ This class is for spawning qcar floor maps."""
 
     ID_FLOORING = 10090
