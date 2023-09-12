@@ -36,3 +36,4 @@ spawn_models/Qube3/QubeServo3Disk_Workspace.rt-win64
 spawn_models/Qube3/QubeServo3Disk_Workspace.slxc
 spawn_models/Qube3/QubeServo3Disk_Workspace_quarc_win64/
 spawn_models/Qube3/slprj/
+*.rt-linux_x86_64
