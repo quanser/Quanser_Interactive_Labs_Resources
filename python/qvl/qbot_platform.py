@@ -32,8 +32,6 @@ class QLabsQBotPlatform(QLabsActor):
     CAMERA_RGB = 0
     CAMERA_DEPTH = 1
     CAMERA_DOWNWARD = 2
-
-    _sensor_scaling = 1
     
 
     def __init__(self, qlabs, verbose=False):
@@ -181,10 +179,10 @@ class QLabsQBotPlatform(QLabsActor):
                 return False, None
 
 
-            jpg_buffer = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
+            imageData = cv2.imdecode(np.frombuffer(bytearray(c.payload[8:len(c.payload)]), dtype=np.uint8, count=-1, offset=0), 1)
 
 
-            return True, jpg_buffer
+            return True, imageData
         else:
             return False, None
 
@@ -207,7 +205,7 @@ class QLabsQBotPlatform(QLabsActor):
             
 
         LIDAR_SAMPLES = 4096
-        LIDAR_RANGE = 80*self._sensor_scaling
+        LIDAR_RANGE = 80
 
         # The LIDAR is simulated by using 4 orthogonal virtual cameras that are 1 pixel high. The
         # lens distortion of these cameras must be removed to accurately calculate the XY position

@@ -8,8 +8,8 @@ import struct
 
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsFlooring(QLabsActor):
-    """ This is a deprecated class.  Please see the product-specific flooring classes."""
+class QLabsQCarFlooring(QLabsActor):
+    """ This class is for spawning qcar floor maps."""
 
     ID_FLOORING = 10090
     """Class ID"""

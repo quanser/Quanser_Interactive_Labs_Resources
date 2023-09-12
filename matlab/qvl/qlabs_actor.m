@@ -162,7 +162,7 @@ classdef qlabs_actor < handle
                 actorNumber int32
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 waitForConfirmation logical = true
             end  
@@ -252,7 +252,7 @@ classdef qlabs_actor < handle
                 actorNumber int32
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 waitForConfirmation logical = true
             end  
@@ -268,7 +268,7 @@ classdef qlabs_actor < handle
                 obj qlabs_actor
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 waitForConfirmation logical = true
             end  
@@ -351,7 +351,7 @@ classdef qlabs_actor < handle
                 obj qlabs_actor
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 waitForConfirmation logical = true
             end  
@@ -368,7 +368,7 @@ classdef qlabs_actor < handle
                 actorNumber int32
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 parentClassID int32 = 0
                 parentActorNumber int32 = 0
@@ -465,7 +465,7 @@ classdef qlabs_actor < handle
                 actorNumber int32
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 configuration int32 = 0 
                 parentClassID int32 = 0
                 parentActorNumber int32 = 0
@@ -473,7 +473,7 @@ classdef qlabs_actor < handle
                 waitForConfirmation logical = true
             end  
 
-            status = spawn_id_and_parent_with_relative_transform(obj, actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
+            status = spawn_id_and_parent_with_relative_transform(obj, actorNumber, location, rotation/180*pi, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
             
         end
     
@@ -535,7 +535,7 @@ classdef qlabs_actor < handle
     
             location = [0,0,0];
             rotation = [0,0,0];
-            scale = [0,0,0];
+            scale = [1,1,1];
             success = false;
     
             if (not(obj.is_actor_number_valid()))
@@ -619,7 +619,7 @@ classdef qlabs_actor < handle
                 obj qlabs_actor
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 parentClassID int32 = 0
                 parentActorNumber int32 = 0
                 parentComponent int32 = 0
@@ -710,7 +710,7 @@ classdef qlabs_actor < handle
                 obj qlabs_actor
                 location (1,3) double = [0 0 0]
                 rotation (1,3) double = [0 0 0]
-                scale (1,3) double = [0 0 0]
+                scale (1,3) double = [1 1 1]
                 parentClassID int32 = 0
                 parentActorNumber int32 = 0
                 parentComponent int32 = 0

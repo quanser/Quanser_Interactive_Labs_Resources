@@ -80,6 +80,8 @@ There is only one configuration of the QBotPlatform actor.
 Connection Points
 ^^^^^^^^^^^^^^^^^
 
+Details coming soon! 
+
 .. .. image:: ../pictures/qbotplatform_connection_points.png
     :scale: 50%
     :align: center
@@ -109,6 +111,7 @@ specific frame of reference (in this case the body center of the QBot Platform).
 Sometimes it's important to know specific distances and orientation of
 extrinsic components, for instance, this can be use for obstacle detection and
 camera calibration.
+
 You will find a list of the important extrinsics below.
 
 Distances From Body Center
@@ -135,8 +138,12 @@ Distances of the QBot Platform in it's virtual environment are 1 to 1.
 Transformation Matrices
 """""""""""""""""""""""
 
-.. .. image:: ../pictures/qbotplatform_bodyframe.png
-    :scale:  65%
+.. image:: ../pictures/qbot_platform_bodyframe.png
+    :scale:  35%
+    :align: center
+
+.. image:: ../pictures/qbot_platform_cameraframe.png
+    :scale:  35%
     :align: center
 
 All transformation matrices are built off of the body frame and camera frames
@@ -151,6 +158,7 @@ for the QBot Platform.
 .. image:: ../pictures/qbotplatform_extrinsic_matrices.png
     :scale:  100%
     :align: center
+
 
 .. _qbotPlatformTutorial:
 

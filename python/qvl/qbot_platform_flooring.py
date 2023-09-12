@@ -8,14 +8,18 @@ import struct
 
 ######################### MODULAR CONTAINER CLASS #########################
 
-class QLabsFlooring(QLabsActor):
-    """ This is a deprecated class.  Please see the product-specific flooring classes."""
+class QLabsQBotPlatformFlooring(QLabsActor):
+    """ This class is for spawning QBot Platform floor tiles."""
 
-    ID_FLOORING = 10090
+    ID_FLOORING = 10091
     """Class ID"""
 
-    FLOORING_QCAR_MAP_LARGE = 0
-    FLOORING_QCAR_MAP_SMALL = 1
+    FLOORING_QBOT_PLATFORM_0 = 0
+    FLOORING_QBOT_PLATFORM_1 = 1
+    FLOORING_QBOT_PLATFORM_2 = 2
+    FLOORING_QBOT_PLATFORM_3 = 3
+    FLOORING_QBOT_PLATFORM_4 = 4
+    FLOORING_QBOT_PLATFORM_5 = 5
 
 
     def __init__(self, qlabs, verbose=False):

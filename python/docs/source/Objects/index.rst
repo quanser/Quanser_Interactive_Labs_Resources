@@ -16,7 +16,9 @@ This section documents the different types of actors that you can spawn and cont
 
    camera_library.rst
    car_library.rst
+   qcar_flooring.rst
    qbot_platform_library.rst
+   qbot_platform_flooring.rst
    person_library.rst
    animal_library.rst
    road_signage.rst
