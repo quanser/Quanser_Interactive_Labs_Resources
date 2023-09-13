@@ -9,7 +9,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsGenericSensor(QLabsActor):
-    """ This class is for spawning both static and dynamic basic shapes."""
+    """ This class is for spawning both generic distance sensing sensors."""
 
     ID_GENERIC_SENSOR = 220
     """Class ID"""
