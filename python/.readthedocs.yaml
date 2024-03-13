@@ -13,9 +13,14 @@ version: 2
 # rust: "1.55"
 # golang: "1.17"
 
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.7"
+
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
-   configuration: docs/source/conf.py
+   configuration: python/docs/source/conf.py
    builder: html
    fail_on_warning: false
 
@@ -25,7 +30,6 @@ sphinx:
 
 # Optionally declare the Python requirements required to build your docs
 python:
-   version: 3.7
    install:
-      - requirements: docs/requirements.txt
+      - requirements: python/docs/requirements.txt
    

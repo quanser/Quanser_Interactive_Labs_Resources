@@ -80,21 +80,22 @@ API libraries are required.
     your Quanser Interactive Labs installation, and hence, you will need to have Quanser 
     Interactive Labs installed before running the following command.
 
-    On Windows computers, the required Quanser API libraries are provided by running 
-    the Quanser SDK for Windows installer. 
-    The Quanser SDK for Windows installer can be downloaded from its github repository:
-    | :download:`Quanser SDK for Windows Download <https://github.com/quanser/quanser_sdk_win64/>`
-
-    Make sure the files in the "%QSDK_DIR%python" folder below have the same date (for example, 
-    2024.3.7) as the date in the following code below before running it.  
-    To check this, go to the "%QSDK_DIR%python" folder, which is typically under the "C:\Program Files\" directory.
+    On Windows computers, the required Quanser API libraries are provided by installing  
+    the Quanser SDK for Windows. 
+    For more information about the Quanser SDK for Windows, please visit its 
+    `GitHub repository <https://github.com/quanser/quanser_sdk_win64>`__.     
+    To download the Quanser SDK for Windows installer, click on the following link  
+    :download:`Download Quanser SDK for Windows <https://download.quanser.com/sdk/latest/install_quanser_sdk.exe>`. 
+    After completing the installation, make sure the files in the "%QSDK_DIR%python" folder below have the same date (for example, 
+    2024.3.8) as the date in the following code below before running it.  
+    To check this, go to the "%QSDK_DIR%python" folder, which is typically under the "C:\\Program Files\\" directory.
 
 .. tabs::
     .. code-tab:: console Windows
 
         # Type this into your Windows Command Prompt
         python -m pip install --upgrade pip
-        python -m pip install --upgrade --find-links "%QSDK_DIR%python" "%QSDK_DIR%python\quanser_api-2024.3.7-py2.py3-none-any.whl"
+        python -m pip install --upgrade --find-links "%QSDK_DIR%python" "%QSDK_DIR%python\quanser_api-2024.3.8-py2.py3-none-any.whl"
 
     .. code-tab:: console Linux
 
@@ -109,7 +110,7 @@ API libraries are required.
 
         # Type this into your macOS Terminal
         python3 -m pip install --upgrade pip
-        python3 -m pip install --upgrade --find-links /opt/quanser/python /opt/quanser/python/quanser_api-2024.3.7-py2.py3-none-any.whl
+        python3 -m pip install --upgrade --find-links /opt/quanser/python /opt/quanser/python/quanser_api-2024.3.8-py2.py3-none-any.whl
 
 If you have trouble or for more information about our python APIs or 
 installing individual python APIs check out the documentation here:

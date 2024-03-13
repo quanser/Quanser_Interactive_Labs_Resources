@@ -21,7 +21,7 @@ print(sys.path)
 # -- Project information -----------------------------------------------------
 
 project = "Quanser's Virtual QCar Documentation"
-copyright = '2022, Quanser'
+copyright = '2024, Quanser'
 author = 'Quanser'
 
 # The full version, including alpha/beta/rc tags
