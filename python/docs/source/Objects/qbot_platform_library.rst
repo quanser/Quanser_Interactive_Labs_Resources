@@ -58,10 +58,13 @@ Methods
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_degrees
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_id
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_id_degrees
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform_degrees
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.command_and_request_state
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_image
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_lidar
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.possess
+
 
 .. _qbotPlatformConfig:
 

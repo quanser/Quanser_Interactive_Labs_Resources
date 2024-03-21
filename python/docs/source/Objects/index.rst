@@ -19,12 +19,14 @@ This section documents the different types of actors that you can spawn and cont
    qcar_flooring.rst
    qbot_platform_library.rst
    qbot_platform_flooring.rst
-   person_library.rst
    animal_library.rst
+   basic_shapes.rst
+   conveyors.rst
+   person_library.rst
    road_signage.rst
+   shredder.rst
    widgets.rst
    walls.rst
-   basic_shapes.rst
    splines.rst
    reference_frame.rst
 

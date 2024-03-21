@@ -27,8 +27,8 @@ If you are using a large number of dynamic shapes, consider using
 They have both limitations and additional features, but are more efficient when
 spawning large numbers of dynamic actors.
 
-See the :ref:`basicShapeTutorial` to get a better understanding of using people
-in Quanser Interactive Labs.
+See the :ref:`basicShapeTutorial` to get a better understanding of using basic 
+shapes in Quanser Interactive Labs.
 
 .. _basicshapelibrary:
 
@@ -101,7 +101,7 @@ Methods
 
 Configurations
 ^^^^^^^^^^^^^^
-There are 3 configurations (0-3) for the basic shape actor class.
+There are four configurations (0-3) for the basic shape actor class.
 0 - Sphere, 1 - Cylinder, 2 - Square, 3 - Cone
 
 .. image:: ../pictures/basicshapes.png

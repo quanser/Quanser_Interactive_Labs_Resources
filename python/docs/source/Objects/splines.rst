@@ -16,7 +16,7 @@ points.
 Depending on the configuration used when spawned, you can get variations on the
 curve shape or straight lines.
 
-See the :ref:`splineTutorial` to get a better understanding of using people in
+See the :ref:`splineTutorial` to get a better understanding of using splines in
 Quanser Interactive Labs.
 
 .. _splinelibrary:

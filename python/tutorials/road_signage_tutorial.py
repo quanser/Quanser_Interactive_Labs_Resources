@@ -146,7 +146,9 @@ def traffic_cone(qlabs):
     cone = QLabsTrafficCone(qlabs)
     cone1 = QLabsTrafficCone(qlabs)
     cone2 = QLabsTrafficCone(qlabs)
-
+    cone3 = QLabsTrafficCone(qlabs)
+    cone4 = QLabsTrafficCone(qlabs)
+    
     # spawns a small traffic cone we just initialized using radians
     cone.spawn(location=[-17, 28, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
     # waits so we can see the output
@@ -160,6 +162,32 @@ def traffic_cone(qlabs):
     # spawns a construction pylon using the cone we just initialized using degrees and generating
     # the actorNumber internally
     cone2.spawn_degrees(location=[-15, 28, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    # spawns a small cone with one color stripe initialized using actor number and a position in degrees
+    cone3.spawn_id_degrees(actorNumber=3, location=[-15, 26.5, 1.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+    # spawns a bigger cone with two color stripes using radians and generating the actorNumber internally
+    cone4.spawn(location=[-17, 26.5, 1.0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=3, waitForConfirmation=True)
+    
+    # waits so we can see the output
+    time.sleep(1.5)
+        
+    # change the color of the cones (materialSlot 0 is the base color, and 1 is the stripes)
+    cone1.set_material_properties(materialSlot=0, color=[0,0,1],metallic=True)
+    # waits so we can see the output
+    time.sleep(.5)
+
+    cone2.set_material_properties(materialSlot=0, color=[1,0,0],roughness=1,metallic=False)
+    cone2.set_material_properties(materialSlot=1, color=[1,.5,0])
+    time.sleep(.5)
+
+    cone3.set_material_properties(materialSlot=0, color=[0,1,1])
+    cone3.set_material_properties(materialSlot=1, color=[0,.3,1],roughness=1,metallic=True)
+    time.sleep(.5)
+
+    cone4.set_material_properties(materialSlot=0, color=[1,0,1],roughness=0,metallic=False)
+    cone4.set_material_properties(materialSlot=1, color=[.3,0,1])
+
+    # waits so we can see the output
+    time.sleep(3)
 
     # collecting the world transform coordinates of the traffic cone
     x, loc, rot, scale = cone2.get_world_transform()

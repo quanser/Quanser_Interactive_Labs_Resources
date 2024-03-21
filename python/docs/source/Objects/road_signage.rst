@@ -324,7 +324,7 @@ Methods
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform_degrees
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_current_world_transform
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_break
-
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.set_material_properties
 
 
 .. _trafficconeConfig:
@@ -332,7 +332,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There are two configurations (0-1) for the traffic cone actor class generated
+There are four configurations (0-3) for the traffic cone actor class generated
 in QLabs.
 
 .. image:: ../pictures/trafficCones.png
@@ -417,7 +417,7 @@ There are no connection points for this actor class.
 .. _roadsignageTutorial:
 
 Road Signage Tutorial
-^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 .. dropdown:: Example
 
