@@ -20,12 +20,13 @@ print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
-project = "Quanser's Virtual QCar Documentation"
+project = "Quanser Interactive Labs API Documentation"
 copyright = '2024, Quanser'
 author = 'Quanser'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1'
+# release number.year.dayInCalendar
+release = '1.24.81'
 
 
 # -- General configuration ---------------------------------------------------

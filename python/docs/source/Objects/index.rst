@@ -23,6 +23,7 @@ This section documents the different types of actors that you can spawn and cont
    animal_library.rst
    road_signage.rst
    widgets.rst
+   walls.rst
    basic_shapes.rst
    splines.rst
    reference_frame.rst
