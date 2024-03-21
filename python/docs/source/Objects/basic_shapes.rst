@@ -102,7 +102,12 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 There are four configurations (0-3) for the basic shape actor class.
-0 - Sphere, 1 - Cylinder, 2 - Square, 3 - Cone
+
+    * 0 - Cube
+    * 1 - Cylinder
+    * 2 - Sphere
+    * 3 - Cone
+
 
 .. image:: ../pictures/basicshapes.png
 

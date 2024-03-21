@@ -75,10 +75,10 @@ Configurations
 ^^^^^^^^^^^^^^
 There are four configurations (0-3) for the shredder actor class.
 
-    * 0 / shredder.RED
-    * 1 / shredder.GREEN
-    * 2 / shredder.BLUE
-    * 3 / shredder.WHITE
+    * 0 or shredder.RED
+    * 1 or shredder.GREEN
+    * 2 or shredder.BLUE
+    * 3 or shredder.WHITE
 
 .. image:: ../pictures/shredder.png
 

@@ -69,6 +69,12 @@ Configurations
 There are 5 different types of widgets that can be spawned in the widgets
 class.
 
+    * 0 - Cube
+    * 1 - Cylinder
+    * 2 - Sphere
+    * 4 - Plastic Bottle
+    * 5 - Metal Can
+
 .. image:: ../pictures/widgets.png
 
 
