@@ -15,15 +15,14 @@ Installation / Set Up
     .. tip:: Check the box "Remember Me" for QLabs to remember your account
 
 #.
-    Download Quanser Interactive Labs on
-    `Portal. <https://portal.quanser.com/Accounts/Login?returnUrl=/>`__
+    Download Quanser Interactive Labs
 
     .. note::
         All available content should be available to you on the main screen.
         If something is missing, try logging out and logging back in again.
     
     .. attention::
-        Alternatively, the below installer is only needed for Python-only 
+        Alternatively, the below installers are only needed for Python-only 
         Quanser Interactive Labs users, who do not intend to use Quanser 
         Interactive Labs with MATLAB® Simulink® and do not intend to use 
         Quanser virtual and physical systems on the same machine 
@@ -31,7 +30,9 @@ Installation / Set Up
 
         Virtual-Only Python-Only Quanser Interactive Labs Download Links:
         | :download:`Windows Download <https://download.quanser.com/qlabs/latest/Install QLabs.exe>`
-        | :download:`macOS Download <https://download.quanser.com/qlabs/latest/QLabs_Installer_maci64.zip>`
+        | :download:`macOS Download <https://download.quanser.com/qlabs/latest/QLabs_Installer_mac64.zip>`
+
+        On Linux computers, both the Quanser Interactive Labs for Linux and the Quanser SDK for Linux can be installed at the same time by running the commands shown on the Linux tab below.
 
 #.  
     Open Quanser Interactive Labs and log in.
@@ -74,11 +75,17 @@ Python Package Update
 For Quanser Interactive Labs to work with Python, certain base level Quanser
 API libraries are required.
 
-.. admonition:: Attention Windows & macOS Users
+.. admonition:: Attention Windows, Linux & macOS Users
 
     On macOS computers, the required Quanser API libraries are included with 
     your Quanser Interactive Labs installation, and hence, you will need to have Quanser 
-    Interactive Labs installed before running the following command.
+    Interactive Labs installed before running the commands shown on the macOS tab below.
+
+    On Linux computers, the required Quanser API libraries are provided by installing  
+    the Quanser SDK for Linux.
+    For more information about the Quanser SDK for Linux, please visit its 
+    `GitHub repository <https://github.com/quanser/quanser_sdk_linux>`__.     
+    To install both the Quanser Interactive Labs for Linux and the Quanser SDK for Linux, run the commands shown on the Linux tab below.
 
     On Windows computers, the required Quanser API libraries are provided by installing  
     the Quanser SDK for Windows. 
@@ -104,7 +111,7 @@ API libraries are required.
         ./configure_repo.sh
         rm -f ./configure_repo.sh
         sudo apt update
-        sudo apt install python3-quanser-apis
+        sudo apt install qlabs-unreal quanser-sdk
     
     .. code-tab:: console macOS
 
