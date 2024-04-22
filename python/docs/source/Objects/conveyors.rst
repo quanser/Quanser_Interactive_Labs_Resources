@@ -84,7 +84,7 @@ All types of conveyors can be connected to make a setup of your choosing.
 We recommend overlapping the position of the conveyors by 0.05 meters 
 to make sure objects can move between conveyors without any problem.
 
-.. image:: ../pictures/straightConveyor.png
+.. image:: ../pictures/configuration_straightConveyor.png
 
 .. _straightconveyorConnect:
 
@@ -111,7 +111,7 @@ Library
 Constants
 ^^^^^^^^^
 
-.. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_STRAIGHT
+.. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_CURVED
 
 .. _curvedconveyorVars:
 
@@ -164,7 +164,7 @@ We recommend overlapping the position of the conveyors by 0.05 meters
 to make sure objects can move between conveyors without any problem.
 
 
-.. image:: ../pictures/curvedConveyor.png
+.. image:: ../pictures/configuration_curvedConveyor.png
 
 .. _curvedconveyorConnect:
 

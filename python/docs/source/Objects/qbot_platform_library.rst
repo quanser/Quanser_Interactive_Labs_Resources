@@ -3,8 +3,8 @@
 QBot Platform
 -------------
 
-.. .. image:: ../pictures/qbotplatform_crop_banner.png
-    :scale: 120%
+.. image:: ../pictures/qbot_platform.png
+    :scale: 25%
     :align: center
 
 .. _qbotPlatformDescription:
@@ -71,41 +71,55 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-There is only one configuration of the QBotPlatform actor.
+There are two configurations (0-1) of the QBot Platform actor. Configuration 1 adds a cover
+on top to facilitate carrying other dynamic actors.
 
-.. image:: ../pictures/qbot_platform.png
-    :scale: 25%
-    :align: center
+.. image:: ../pictures/configuration_qbot_platform.png
+
 
 
 .. _qbotPlatformConnect:
 
 Connection Points
 ^^^^^^^^^^^^^^^^^
+.. |conn0| image:: ../pictures/connection_qbot_platform1_0.png
+   :height: 50pt
 
-Details coming soon! 
+.. |conn1| image:: ../pictures/connection_qbot_platform1_1.png
+   :height: 50pt
 
-.. .. image:: ../pictures/qbotplatform_connection_points.png
-    :scale: 50%
+.. |conn2| image:: ../pictures/connection_qbot_platform1_2.png
+   :height: 50pt
+
+.. |conn3| image:: ../pictures/connection_qbot_platform1_3.png
+   :height: 50pt
+
+.. |conn4| image:: ../pictures/connection_qbot_platform1_4.png
+   :height: 50pt
+
+.. |conn5| image:: ../pictures/connection_qbot_platform1_5.png
+   :height: 50pt
+
+.. |conn6| image:: ../pictures/connection_qbot_platform1_6.png
+   :height: 50pt
+
+
+
+.. table::
+    :widths: 20, 11, 11, 11, 53
     :align: center
-..
- .. table::
-    :widths: 11, 11, 25, 53
-    :align: center
 
-    .. change this and update it
-    ====================== ============ ====================================================== ===========
-    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation, Deg) Description
-    ====================== ============ ====================================================== ===========
-    0                                                                                          The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
-    1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.
-    2                      
-    3                      
-    4                      
-    5                      
-    6                                                                                          
-    ====================== ============ ====================================================== ===========
-
+    =============================== ====================== ============ ====================================================== ===========
+    Image (Click for enlarged view) Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation)      Description
+    =============================== ====================== ============ ====================================================== ===========
+    |conn0|                         0                                                                                          The base frame is located at ground level, centered between the two rear wheels.
+    |conn1|                         1                      0            [ 0.0450,0.155,0.190] [0,0,0]                          Front left magnet
+    |conn2|                         2                      0            [ 0.0450,-0.155,0.190] [0,0,0]                         Front right magnet
+    |conn3|                         3                      0            [-0.0450,0.155,0.190] [0,0,0]                          Back left magnet
+    |conn4|                         4                      0            [-0.0450,-0.155,0.190] [0,0,0]                         Back right magnet
+    |conn5|                         5                      0            [-0.0465,0,0.110] [0,0,0]                              Back middle magnet
+    |conn6|                         6                      0            [ 0.0435,0,0.110] [0,0,0]                              Front middle magnet
+    =============================== ====================== ============ ====================================================== ===========
 
 Component Extrinsics
 ^^^^^^^^^^^^^^^^^^^^
@@ -115,42 +129,48 @@ Sometimes it's important to know specific distances and orientation of
 extrinsic components, for instance, this can be use for obstacle detection and
 camera calibration.
 
-You will find a list of the important extrinsics below.
+You will find a list of the important extrinsics below relative to the actor base frame.
 
-Distances From Body Center
-""""""""""""""""""""""""""
-Distances of the QBot Platform in it's virtual environment are 1 to 1.
 
-..
-    .. table::
-        :widths: 11, 11, 11, 11
-        :align: center
-
-        ========== ====== ====== ======
-        Component  x (m)  y (m)  z (m)
-        ========== ====== ====== ======
-        CG           0.248 -0.074  0.606
-        Left Wheel   1.300  0      0.207
-        Right Wheel -1.300  0      0.207
-        RealSense    1.930  0      0.850
-        CSI bottom   0.140  0.438  0.850
-        IMU          1.278  0.223  0.792
-        M10PLIDAR   -0.108 -0.001  1.696
-        ========== ====== ====== ======
-
-Transformation Matrices
-"""""""""""""""""""""""
-
-.. image:: ../pictures/qbot_platform_bodyframe.png
-    :scale:  35%
+.. table:: 
+    :widths: 11, 11, 11, 11
     :align: center
 
-.. image:: ../pictures/qbot_platform_cameraframe.png
-    :scale:  35%
-    :align: center
+    ============================= ====== ====== ======
+    Component                     x (m)  y (m)  z (m)
+    ============================= ====== ====== ======
+    Geometric center (body frame) 0.000  0.000  0.112
+    Left wheel                    0.000  0.195  0.044
+    Right wheel                   0.000  -0.195 0.044
+    RealSense                     0.261  0.000  0.132
+    CSI bottom                    0.000  0.000  0.059
+    IMU                           0.000  0.000  0.089
+    LIDAR                         0.221  0.000  0.207
+    ============================= ====== ====== ======
 
-All transformation matrices are built off of the body frame and camera frames
-for the QBot Platform.
+.. figure:: ../pictures/connection_qbot_platform_base_frame.png
+    :align: center
+    :scale: 50%
+
+    QBot Platform geometric base frame centered on the floor between the two wheels.
+
+
+.. figure:: ../pictures/connection_qbot_platform_body_frame.png
+    :align: center
+    :scale: 50%
+
+    QBot Platform geometric center/body frame.
+
+.. Transformation Matrices
+.. """""""""""""""""""""""
+
+
+
+    
+
+
+.. All transformation matrices are built off of the body frame and camera frames
+.. for the QBot Platform.
 
 .. To read more about this check out our documentation
     .. todo: update this `here <https://www.quanser.com/products/qbot-platform/>`__ 
@@ -158,7 +178,7 @@ for the QBot Platform.
     .. User Guides/System Hardware.pdf
 
 
-.. image:: ../pictures/qbotplatform_extrinsic_matrices.png
+.. .. image:: ../pictures/qbotplatform_extrinsic_matrices.png
     :scale:  100%
     :align: center
 

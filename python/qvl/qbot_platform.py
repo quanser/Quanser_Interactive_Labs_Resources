@@ -16,6 +16,8 @@ class QLabsQBotPlatform(QLabsActor):
 
     FCN_QBOT_PLATFORM_COMMAND_AND_REQUEST_STATE = 10
     FCN_QBOT_PLATFORM_COMMAND_AND_REQUEST_STATE_RESPONSE = 11
+    FCN_QBOT_PLATFORM_SET_TRANSFORM = 14
+    FCN_QBOT_PLATFORM_SET_TRANSFORM_RESPONSE = 15
     FCN_QBOT_PLATFORM_POSSESS = 20
     FCN_QBOT_PLATFORM_POSSESS_ACK = 21
     FCN_QBOT_PLATFORM_IMAGE_REQUEST = 100
@@ -79,16 +81,16 @@ class QLabsQBotPlatform(QLabsActor):
             return False
 
     def command_and_request_state(self, rightWheelSpeed, leftWheelSpeed, leftLED=[1,0,0], rightLED=[1,0,0]):
-        """Sets the velocity, turn angle in radians, and other car properties.
+        """Sets the wheel speeds and LED colors.
 
-        :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
-        :param turn: Turn angle in radians. Positive values turn right.
+        :param rightWheelSpeed: Speed in m/s
+        :param leftWheelSpeed: Speed in m/s
         :param leftLED: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         :param rightLED: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
         
 
-        :type actorNumber: float
-        :type turn: float
+        :type rightWheelSpeed: float
+        :type leftWheelSpeed: float
         :type leftLED: float array[3]
         :type rightLED: float array[3]
 
@@ -143,7 +145,105 @@ class QLabsQBotPlatform(QLabsActor):
                 return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
         else:
             return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
+            
+            
+    def set_transform(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], leftLED=[1,0,0], rightLED=[1,0,0], enableDynamics=True, waitForConfirmation=True):
+        """Sets the transform, LED colors, and enabling/disabling of physics dynamics
 
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in radians
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param leftLED: (Optional) Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param rightLED: (Optional) Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
+        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
+        
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type leftLED: float array[3]
+        :type rightLED: float array[3
+        :type enableDynamics: boolean
+        :type waitForConfirmation: boolean
+
+        :return:
+            - **status** - True if successful or False otherwise
+            - **location** - world location in m
+            - **forward vector** - unit scale vector
+            - **up vector** - unit scale vector
+
+        :rtype: boolean, float array[3], float array[3], float array[3]
+
+
+        """
+        c = CommModularContainer()
+        c.classID = self.ID_QBOT_PLATFORM
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_QBOT_PLATFORM_SET_TRANSFORM
+        c.payload = bytearray(struct.pack(">fffffffffffffffB", location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], scale[0], scale[1], scale[2], leftLED[0], leftLED[1], leftLED[2], rightLED[0], rightLED[1], rightLED[2], enableDynamics))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        location = [0,0,0]
+        forward = [0,0,0]
+        up = [0,0,0]
+        
+
+        if waitForConfirmation:
+            self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(self.ID_QBOT_PLATFORM, self.actorNumber, self.FCN_QBOT_PLATFORM_SET_TRANSFORM_RESPONSE)
+
+                if (c == None):
+                    return False, location, forward, up
+
+                if len(c.payload) == 36:
+
+                    location[0], location[1], location[2], forward[0], forward[1], forward[2], up[0], up[1], up[2], = struct.unpack(">fffffffff", c.payload[0:36])
+                    return True, location, forward, up
+                else:
+                    return False, location, forward, up
+            else:
+                return True, location, forward, up
+        else:
+            return False, location, forward, up
+
+    def set_transform_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], leftLED=[1,0,0], rightLED=[1,0,0], enableDynamics=True, waitForConfirmation=True):
+        """Sets the transform, LED colors, and enabling/disabling of physics dynamics
+
+        :param location: (Optional) An array of floats for x, y and z coordinates
+        :param rotation: (Optional) An array of floats for the roll, pitch, and yaw in degrees
+        :param scale: (Optional) An array of floats for the scale in the x, y, and z directions. Scale values of 0.0 should not be used.
+        :param leftLED: (Optional) Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param rightLED: (Optional) Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
+        :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
+        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
+        
+        :type location: float array[3]
+        :type rotation: float array[3]
+        :type scale: float array[3]
+        :type leftLED: float array[3]
+        :type rightLED: float array[3
+        :type enableDynamics: boolean
+        :type waitForConfirmation: boolean
+
+        :return:
+            - **status** - True if successful or False otherwise
+            - **location** - world location in m
+            - **forward vector** - unit scale vector
+            - **up vector** - unit scale vector
+
+        :rtype: boolean, float array[3], float array[3], float array[3]
+
+
+        """
+        
+        
+        success, location, forward, up = self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, leftLED, rightLED, enableDynamics, waitForConfirmation)
+
+        return success, location, forward, up
+        
 
     def get_image(self, camera):
         """
@@ -189,7 +289,7 @@ class QLabsQBotPlatform(QLabsActor):
     
     def get_lidar(self, samplePoints=400):
         """
-        Request LIDAR data from a QbotPlatform.
+        Request LIDAR data from a QBotPlatform.
 
         :param samplePoints: (Optional) Change the number of points per revolution of the LIDAR.
         :type samplePoints: uint32
@@ -205,7 +305,7 @@ class QLabsQBotPlatform(QLabsActor):
             
 
         LIDAR_SAMPLES = 4096
-        LIDAR_RANGE = 80
+        LIDAR_RANGE = 8
 
         # The LIDAR is simulated by using 4 orthogonal virtual cameras that are 1 pixel high. The
         # lens distortion of these cameras must be removed to accurately calculate the XY position

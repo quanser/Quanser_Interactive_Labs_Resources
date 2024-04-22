@@ -28,6 +28,8 @@ author = 'Quanser'
 # release number.year.dayInCalendar
 release = '1.24.81'
 
+# To deal with all the "duplicate label errors"
+suppress_warnings = ['autosectionlabel.*']
 
 # -- General configuration ---------------------------------------------------
 

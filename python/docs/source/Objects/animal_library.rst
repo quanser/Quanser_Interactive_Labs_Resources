@@ -116,7 +116,7 @@ Configurations
 
 There are 3 configurations (0-2) for a animal generated in QLabs.
 
-.. TODO: Add image of 3 configurations
+.. image:: ../pictures/configuration_animals.png
 
 .. _animalConnect:
 

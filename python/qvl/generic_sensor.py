@@ -23,7 +23,9 @@ class QLabsGenericSensor(QLabsActor):
     FCN_GENERIC_SENSOR_TEST_BEAM_HIT_RESPONSE = 15
     FCN_GENERIC_SENSOR_SET_TRANSFORM = 16
     FCN_GENERIC_SENSOR_SET_TRANSFORM_ACK = 17
-
+    FCN_GENERIC_SENSOR_TEST_BEAM_HIT_WIDGET = 18
+    FCN_GENERIC_SENSOR_TEST_BEAM_HIT_WIDGET_RESPONSE = 19
+    
 
     def __init__(self, qlabs, verbose=False):
        """ Constructor Method
@@ -184,7 +186,7 @@ class QLabsGenericSensor(QLabsActor):
 
 
     def test_beam_hit(self):
-        """Queries the beam to test if it hits another actor.
+        """Queries the beam to test if it hits something in its path.
 
         :return:
             - **status** - `True` communication was successful, `False` otherwise
@@ -192,7 +194,7 @@ class QLabsGenericSensor(QLabsActor):
             - **actorClass** - ID of the actor class.  If the value is 0 this indicates an actor which cannot be queried further or an environmental object.
             - **actorNumber** - If the actor is a valid actor class that can be queried, this will return the actor ID.
             - **distance** - Distance to the hit surface.
-        :rtype: boolean, int32, int32
+        :rtype: boolean, boolean, int32, int32, float
         """
 
         hit = False
@@ -225,3 +227,56 @@ class QLabsGenericSensor(QLabsActor):
         
         
         return False, hit, actorClass, actorNumber, distance
+        
+        
+    def test_beam_hit_widget(self):
+        """Queries the beam to test if it hits a widget and if so returns the widget properties
+
+        :return:
+            - **status** - `True` communication was successful, `False` otherwise
+            - **hit** - `True` if a hit occurred on a widget, `False` otherwise including non-widget actors
+            - **distance** - Distance to the hit surface.
+            - **IDTag** - User assigned byte identifier
+            - **mass** - User assigned mass value
+            - **properties** - User assigned custom property string
+        :rtype: boolean, boolean, float, byte, float, string
+        """
+
+        hit = False
+        distance = 0.0
+        IDTag = 0
+        mass = 0.0
+        properties = ""
+        
+
+        if (not self._is_actor_number_valid()):
+            return False, hit, distance, IDTag, mass, properties
+
+        c = CommModularContainer()
+        c.classID = self.ID_GENERIC_SENSOR
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_GENERIC_SENSOR_TEST_BEAM_HIT_WIDGET
+        c.payload = bytearray()
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+        
+            c = self._qlabs.wait_for_container(self.ID_GENERIC_SENSOR, self.actorNumber, self.FCN_GENERIC_SENSOR_TEST_BEAM_HIT_WIDGET_RESPONSE)
+            if (c == None):
+                pass
+            else:
+                if (len(c.payload) >= 14):
+                    hit, distance, IDTag, mass, properties_length, = struct.unpack(">?fBfI", c.payload[0:14])
+                    
+                    if properties_length > 0:
+                        if (len(c.payload) == (14 + properties_length)):
+                            properties = c.payload[14:(14+properties_length)].decode('utf-8')
+
+
+                    return True, hit, distance, IDTag, mass, properties
+
+        
+        
+        return False, hit, distance, IDTag, mass, properties

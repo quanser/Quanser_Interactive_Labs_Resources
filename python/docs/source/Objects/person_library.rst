@@ -3,6 +3,10 @@
 People
 ------
 
+.. image:: ../pictures/banner_people.jpg
+    :width: 800px
+    :align: center
+
 .. _personDescription:
 
 Description
@@ -109,7 +113,7 @@ Configurations
 
 There are 12 configurations (0-11) for a person generated in QLabs.
 
-.. image:: ../pictures/people.png
+.. image:: ../pictures/configuration_people.png
 
 .. _personConnect:
 

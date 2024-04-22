@@ -77,7 +77,7 @@ Methods
 Configurations
 ^^^^^^^^^^^^^^
 
-.. image:: ../pictures/spline_types.png
+.. image:: ../pictures/configuration_spline_types.png
     :scale: 75%
     :align: center
 

@@ -51,8 +51,8 @@ The following table will provide you with some coordinates of interest in citysc
     ================== ======= ======= ======= ======= ======= =========== ========== =========== =========
     Open World Origin  0       0       0       0       0       0           0          0           0
     Car Spawn Spot     0       -1.300  0.005   0       0       pi/2        0          0           90
-    Road Parking 1     -13.093 -7.572  0.005   0       0       42*pi/ 180  0          0           42
-    Road Parking 2     -18.078 -2.879  0.005   0       0       42*pi/ 180  0          0           42
+    Road Parking 1     -13.093 -7.572  0.005   0       0       -42*pi/ 180 0          0           -42
+    Road Parking 2     -18.078 -2.879  0.005   0       0       -42*pi/ 180 0          0           -42
     Parking Spot 1     -5.987  14.643  0.005   0       0       pi/2        0          0           90
     Parking Spot 2     -8.700  14.643  0.005   0       0       pi/2        0          0           90
     Parking Spot 3     -11.048 14.643  0.005   0       0       pi/2        0          0           90

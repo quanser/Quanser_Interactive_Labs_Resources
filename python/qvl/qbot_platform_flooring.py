@@ -9,7 +9,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsQBotPlatformFlooring(QLabsActor):
-    """ This class is for spawning QBot Platform floor tiles."""
+    """ This class is for spawning QBot Platform floor mats."""
 
     ID_FLOORING = 10091
     """Class ID"""

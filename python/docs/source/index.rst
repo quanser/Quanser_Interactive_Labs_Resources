@@ -41,21 +41,33 @@ our coding practices.
 Contents
 ========
 
-.. dropdown:: Table of Contents
+.. toctree::
+    :maxdepth: 2
 
-   .. toctree::
+    Get Started.rst
+    User Interface.rst
+    
+.. toctree::
+    :maxdepth: 3
 
-      Get Started.rst
-      Glossary.rst
-      Workspaces/index.rst
-      User Interface.rst
-      System/index.rst
-      Objects/index.rst
-      Code Style.rst
+    Workspaces/index.rst
 
-Indices and tables
-==================
+.. toctree::
+    :maxdepth: 2
+
+    System/index.rst
+
+.. toctree::
+    :maxdepth: 3
+
+    Objects/index.rst
+
+.. toctree::
+    :maxdepth: 1
+
+    Code Style.rst
+    Glossary.rst
 
 * :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+

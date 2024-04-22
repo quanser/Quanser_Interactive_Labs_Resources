@@ -30,21 +30,20 @@ class QLabsQCar(QLabsActor):
 
 
     CAMERA_CSI_RIGHT = 0
-    """Image capture resolution: 820x410"""
+    #Image capture resolution: 820x410
     CAMERA_CSI_BACK = 1
-    """Image capture resolution: 820x410"""
+    #Image capture resolution: 820x410
     CAMERA_CSI_LEFT = 2
-    """Image capture resolution: 820x410"""
+    #Image capture resolution: 820x410
     CAMERA_CSI_FRONT = 3
-    """Image capture resolution: 820x410"""
+    #Image capture resolution: 820x410
     CAMERA_RGB = 4
-    """Image capture resolution: 640x480"""
+    #Image capture resolution: 640x480
     CAMERA_DEPTH = 5
-    """Image capture resolution: 640x480"""
+    #Image capture resolution: 640x480
     CAMERA_OVERHEAD = 6
-    """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
     CAMERA_TRAILING = 7
-    """ Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
+    #Note: The mouse scroll wheel can be used to zoom in and out in this mode. """
 
     _sensor_scaling = 1
 
@@ -231,7 +230,7 @@ class QLabsQCar(QLabsActor):
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
+        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
@@ -302,7 +301,7 @@ class QLabsQCar(QLabsActor):
         :param rightTurnSignal: Enable the right turn signal
         :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
         :param reverseSignal: Play a honking sound
-        :param waitForConfirmation: (Optional) Wait for confirmation of the spawn before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
+        :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean

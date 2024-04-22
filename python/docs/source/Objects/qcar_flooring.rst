@@ -3,6 +3,10 @@
 QCar Floor Mats
 ---------------
 
+.. image:: ../pictures/banner_qcar_flooring.jpg
+    :width: 800px
+    :align: center
+
 .. _qcarFlooringDescription:
 
 Description

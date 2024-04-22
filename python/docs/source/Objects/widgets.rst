@@ -3,7 +3,7 @@
 Widgets
 -------
 
-.. image:: ../pictures/widget_banner.png
+.. image:: ../pictures/banner_widget.png
     :align: center
 
 Widgets work slightly differently then the other objects in the QLabs
@@ -75,7 +75,7 @@ class.
     * 4 - Plastic Bottle
     * 5 - Metal Can
 
-.. image:: ../pictures/widgets.png
+.. image:: ../pictures/configuration_widgets.png
 
 
 .. _widgetConnect:

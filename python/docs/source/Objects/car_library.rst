@@ -3,8 +3,8 @@
 QCars
 -----
 
-.. image:: ../pictures/qcar_crop_banner.png
-    :scale: 120%
+.. image:: ../pictures/banner_qcar.png
+    :width: 800px
     :align: center
 
 .. _carDescription:
@@ -32,12 +32,25 @@ Constants
 ^^^^^^^^^
 
 .. autoattribute:: qvl.qcar.QLabsQCar.ID_QCAR
+
+.. note::
+    CSI camera resolution is 820x410.
+
+
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_RIGHT
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_BACK
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_LEFT
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_FRONT
+
+.. note::
+    RGB and depth resolution is 640x480.
+
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_RGB
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_DEPTH
+
+.. note::
+    Overhead and trailing cameras support user zoom using the mouse wheel.
+
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_OVERHEAD
 .. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_TRAILING
 
@@ -99,7 +112,7 @@ Connection Points
     :align: center
 
     ====================== ============ ====================================================== ===========
-    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation, Deg) Description
+    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation)      Description
     ====================== ============ ====================================================== ===========
     0                                                                                          The base frame is located at ground level, centered between the two rear wheels. This represents the location of the car with no filtering, suspension, or dynamics. Collision detection is connected to this reference frame.
     1                      0            [0,0,0] [0,0,0]                                        The filtered frame is co-located with connection point 0, but it is a filtered position to simulated the suspension and dynamic effects. All the visual elements and sensors of the QCar are connected to this frame.

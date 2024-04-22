@@ -99,14 +99,6 @@ class QLabsBasicShape(QLabsActor):
     def get_material_properties(self):
         """Gets the visual surface properties of the shape.
 
-        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.
-        :param roughness: A value between 0.0 (completely smooth and reflective) to 1.0 (completely rough and diffuse). Note that reflections are rendered using screen space reflections. Only objects visible in the camera view will be rendered in the reflection of the object.
-        :param metallic: Metallic (True) or non-metallic (False)
-        :param waitForConfirmation: (Optional) Wait for confirmation of the operation before proceeding. This makes the method a blocking operation.
-        :type color: float array[3]
-        :type roughness: float
-        :type metallic: boolean
-        :type waitForConfirmation: boolean
         :return:
             - **status** - True if successful or False otherwise
             - **color** - Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale.

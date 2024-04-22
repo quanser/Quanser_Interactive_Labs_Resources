@@ -109,7 +109,7 @@ There are four configurations (0-3) for the basic shape actor class.
     * 3 - Cone
 
 
-.. image:: ../pictures/basicshapes.png
+.. image:: ../pictures/configuration_basicshapes.png
 
 .. _basicshapeConnect:
 

@@ -3,6 +3,10 @@
 Walls
 -----
 
+.. image:: ../pictures/banner_walls.jpg
+    :width: 800px
+    :align: center
+
 .. _wallsDescription:
 
 Description

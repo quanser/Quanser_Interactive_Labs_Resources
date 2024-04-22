@@ -118,7 +118,7 @@ Camera Tutorial
   There is a few easy steps to initializing a new camera in an environment
   using the interface as well as the code:
 
-  #. Pick a Location for your camera using the :ref:`Coordinate Helper (Determining Locations)` section.
+  #. Pick a Location for your camera using the :ref:`Coordinate Helper` section.
   #. Copy the location and rotation desired.
   #. Use spawn or spawn_degrees to initialize a new camera. Paste the copied location and rotation into their respective places.
 

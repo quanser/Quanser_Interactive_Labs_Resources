@@ -37,3 +37,14 @@ spawn_models/Qube3/QubeServo3Disk_Workspace.slxc
 spawn_models/Qube3/QubeServo3Disk_Workspace_quarc_win64/
 spawn_models/Qube3/slprj/
 *.rt-linux_x86_64
+spawn_models/QDrone2/QDrone2_Workspace.rt-win64
+spawn_models/QDrone2/QDrone2_Workspace.slxc
+spawn_models/QDrone2/QDrone2_Workspace_quarc_win64/
+spawn_models/QDrone2/slprj/
+spawn_models/Diagnostics/Diagnostics_Test.rt-win64
+spawn_models/Diagnostics/Diagnostics_Test.slxc
+spawn_models/Diagnostics/Diagnostics_Test_quarc_win64/
+spawn_models/Diagnostics/slprj/
+spawn_models/QBotPlatform/test/EncoderTest.slx.r2022b
+spawn_models/QBotPlatform/test/slprj/
+python/testing/temp.py

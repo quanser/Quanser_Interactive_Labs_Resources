@@ -3,6 +3,8 @@
 Shredder
 --------
 
+.. image:: ../pictures/configuration_shredder.png
+
 .. _shredderDescription:
 
 Description
@@ -37,14 +39,14 @@ Constants
 
 
 
-.. _basicshapeMemberVars:
+.. _shredderMemberVars:
 
 Member Variables
 ^^^^^^^^^^^^^^^^
 
 .. autoattribute:: qvl.shredder.QLabsShredder.actorNumber
 
-.. _basicshapeMethods:
+.. _shredderMethods:
 
 Methods
 ^^^^^^^
@@ -80,7 +82,7 @@ There are four configurations (0-3) for the shredder actor class.
     * 2 or shredder.BLUE
     * 3 or shredder.WHITE
 
-.. image:: ../pictures/shredder.png
+.. image:: ../pictures/configuration_shredder.png
 
 .. _shredderConnect:
 

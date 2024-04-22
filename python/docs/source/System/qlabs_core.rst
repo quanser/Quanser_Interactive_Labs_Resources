@@ -10,7 +10,7 @@ Description
 
 The QLabs Core library is the base library that manages all communications to
 the Quanser Interactive Labs software.
-Only the open and close methods are typically used.
+Only the :meth:`open <qvl.qlabs.QuanserInteractiveLabs.open>` and :meth:`close <qvl.qlabs.QuanserInteractiveLabs.close>` methods are typically used.
 The remaining methods are for advanced usage.
 
 
