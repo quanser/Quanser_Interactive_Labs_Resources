@@ -81,8 +81,6 @@ For example, a configuration of 3 will create a 1.25m conveyor.
 The configuration number accepts whole number between 0 and 20. 
 
 All types of conveyors can be connected to make a setup of your choosing.
-We recommend overlapping the position of the conveyors by 0.05 meters 
-to make sure objects can move between conveyors without any problem.
 
 .. image:: ../pictures/configuration_straightConveyor.png
 
@@ -160,8 +158,6 @@ The configuration number accepts whole numbers between 1 and 24.
 Using a configuration number of 24 will create a circular conveyor.
 
 All types of conveyors can be connected to make a setup of your choosing.
-We recommend overlapping the position of the conveyors by 0.05 meters 
-to make sure objects can move between conveyors without any problem.
 
 
 .. image:: ../pictures/configuration_curvedConveyor.png
