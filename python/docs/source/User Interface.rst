@@ -62,6 +62,11 @@ through API commands (see our :ref:`Design Philosophy` for more information).
 * **Main menu**
     Close all server connections and return to the main menu.
     
+* **Diagnostics tab**
+    On the left side of the screen, clicking on the red tab will open the diagnostics 
+    panel which can provide valuable information about why an actor does not spawn
+    when expected, licensing issues, and connectivity information.
+
 .. figure:: pictures/user_interface_diagnostics.png
     :alt: Diagnostics tab on the left side of the screen can show valuable tips to assist debugging.
     :align: center
@@ -69,12 +74,6 @@ through API commands (see our :ref:`Design Philosophy` for more information).
 
     Diagnostics tab on the left side of the screen.
     
-    
-* **Diagnostics tab**
-    On the left side of the screen, clicking on the red tab will open the diagnostics 
-    panel which can provide valuable information about why an actor does not spawn
-    when expected, licensing issues, and connectivity information.
-
 Navigation
 ==========
 
