@@ -699,13 +699,12 @@ class QLabsActor:
                         print("parent_break (classID {}, actorNumber {}): Communication error.".format(self.classID, self.actorNumber))
                     return -1
 
-            self.actorNumber = actorNumber
+            self.actorNumber = c.actorNumber
             return 0
         else:
             if (self._verbose):
                 print("parent_break (classID {}, actorNumber {}): Communication failed.".format(self.classID, self.actorNumber))
             return -1
-
 
     def set_custom_properties(self, measuredMass=0, IDTag=0, properties="", waitForConfirmation=True):
         """Assigns custom properties to an actor.

@@ -75,13 +75,13 @@ class QLabsSplineLine(QLabsActor):
                 c = self._qlabs.wait_for_container(self.ID_SPLINE_LINE, self.actorNumber, self.FCN_SPLINE_LINE_SET_POINTS_ACK)
                 if c == None:
                     if (self._verbose):
-                        print('spawn_id: Communication timeout (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
+                        print('spawn_id: Communication timeout (spline classID {}, actorNumber {}).'.format(self.classID, c.actorNumber))
                     return False
 
             return True
         else:
             if (self._verbose):
-                print('spawn_id: Communication failed (spline classID {}, actorNumber {}).'.format(self.classID, actorNumber))
+                print('spawn_id: Communication failed (spline classID {}, actorNumber {}).'.format(self.classID, c.actorNumber))
             return False
 
     def circle_from_center(self, radius, lineWidth=0.1, color=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
