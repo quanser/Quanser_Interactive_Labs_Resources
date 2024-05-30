@@ -138,7 +138,6 @@ class QuanserInteractiveLabs:
         except:
             pass
 
-
     def queue_add_container(self, container):
         """Queue a single container into a buffer for future transmission
 
@@ -148,7 +147,6 @@ class QuanserInteractiveLabs:
         """
 
         self._send_queue = self._send_queue + bytearray(struct.pack(">iiiB", container.containerSize, container.classID, container.actorNumber, container.actorFunction)) + container.payload
-
 
     def queue_send(self):
         """Package the containers in the queue and transmit immediately
@@ -292,8 +290,6 @@ class QuanserInteractiveLabs:
 
         self._wait_for_container_timeout = timeout
 
-
-
     def wait_for_container(self, classID, actorNumber, functionNumber):
         """Continually poll and parse incoming containers until a response from specific actor with a specific function response is received.
         Containers that do not match the class, actor number, and function number are discarded. This function blocks until the appropriate packet
@@ -421,7 +417,6 @@ class QuanserInteractiveLabs:
 
         else:
             return -1
-
 
     def __del__(self):
         """ Destructor Method """

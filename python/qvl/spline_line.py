@@ -110,7 +110,6 @@ class QLabsSplineLine(QLabsActor):
 
         return self.set_points(color, pointList=points, alignEndPointTangents=True, waitForConfirmation=_waitForConfirmation)
 
-
     def arc_from_center(self, radius, startAngle=0, endAngle=math.pi/2, lineWidth=1, color=[1,0,0], numSplinePoints=8, waitForConfirmation=True):
 
         """After spawning the origin of the spline actor, this method is used to create an arc. Configuration 1 is recommended when spawning the line.
@@ -190,8 +189,6 @@ class QLabsSplineLine(QLabsActor):
         points = self._spawn_spline_rounded_rectangle_from_center_point_list(cornerRadius, xWidth, yLength, lineWidth)
 
         return self.set_points(color, pointList=points, alignEndPointTangents=True)
-
-
 
     def _spawn_spline_rounded_rectangle_from_center_point_list(self, cornerRadius, xWidth, yLength, lineWidth=1):
         if (xWidth <= cornerRadius*2):

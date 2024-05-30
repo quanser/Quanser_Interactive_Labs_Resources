@@ -192,8 +192,6 @@ class QLabsActor:
                 print('spawn_id: Communication failed (classID {}, actorNumber {}).'.format(self.classID, actorNumber))
             return -1
 
-
-
     def spawn_id_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new actor.
 
@@ -485,7 +483,6 @@ class QLabsActor:
                 print("get_world_transform: Communication failed (classID {}, actorNumber {}).".format(self.classID, self.actorNumber))
             return False, location, rotation, scale
 
-
     def get_world_transform_degrees(self):
         """Get the location, rotation, and scale in world coordinates of the actor.
 
@@ -500,7 +497,6 @@ class QLabsActor:
         rotation_deg = [rotation[0]/math.pi*180, rotation[1]/math.pi*180, rotation[2]/math.pi*180]
 
         return  success, location, rotation_deg, scale
-
 
     def parent_with_relative_transform(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Parents one existing actor to another to create a kinematic relationship.
@@ -594,7 +590,6 @@ class QLabsActor:
         """
 
         return self.parent_with_relative_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
-
 
     def parent_with_current_world_transform(self, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Parents one existing actor to another to create a kinematic relationship while preserving the current world transform of the child actor.
@@ -755,7 +750,6 @@ class QLabsActor:
             return True
         else:
             return False
-
 
     def get_custom_properties(self):
         """Gets previously assigned custom properties to an actor.

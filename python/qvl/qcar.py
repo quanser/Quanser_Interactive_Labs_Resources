@@ -86,7 +86,6 @@ class QLabsQCar(QLabsActor):
         self._sensor_scaling = scale[0]
         return super().spawn_id(actorNumber, location, rotation, scale, configuration, waitForConfirmation)
         
-
     def spawn_id_degrees(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new QCar actor.
 
@@ -111,7 +110,6 @@ class QLabsQCar(QLabsActor):
         self._sensor_scaling = scale[0]
         return super().spawn_id_degrees(actorNumber, location, rotation, scale, configuration, waitForConfirmation)
         
-
     def spawn(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new QCar actor with the next available actor number within this class.
 
@@ -135,7 +133,6 @@ class QLabsQCar(QLabsActor):
         self._sensor_scaling = scale[0]
         return super().spawn(location, rotation, scale, configuration, waitForConfirmation)
                
-
     def spawn_degrees(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True):
         """Spawns a new QCar actor with the next available actor number within this class.
 
@@ -158,7 +155,6 @@ class QLabsQCar(QLabsActor):
         self._sensor_scaling = scale[0]
         return super().spawn_degrees(location, rotation, scale, configuration, waitForConfirmation)
         
-
     def spawn_id_and_parent_with_relative_transform(self, actorNumber, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], configuration=0, parentClassID=0, parentActorNumber=0, parentComponent=0, waitForConfirmation=True):
         """Spawns a new QCar actor relative to an existing actor and creates a kinematic relationship.
 
@@ -387,7 +383,6 @@ class QLabsQCar(QLabsActor):
                 return False, location, rotation, frontHit, rearHit
         else:
             return False, location, rotation, frontHit, rearHit
-
 
     def set_velocity_and_request_state_degrees(self, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal):
         """Sets the velocity, turn angle in degrees, and other car properties.

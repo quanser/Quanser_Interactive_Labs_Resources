@@ -27,8 +27,6 @@ class QLabsCharacter(QLabsActor):
        self._verbose = verbose
        return
 
-
-
     def move_to(self, location, speed, waitForConfirmation=True):
         """Commands an actor to move from the present location to a new target location by using AI path navigation.
 

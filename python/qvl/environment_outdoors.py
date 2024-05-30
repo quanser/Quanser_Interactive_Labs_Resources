@@ -49,7 +49,6 @@ class QLabsEnvironmentOutdoors:
        self._verbose = verbose
        return
 
-
     def set_time_of_day(self, time):
         """
         Set the time of day for an outdoor environment.

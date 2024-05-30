@@ -50,7 +50,6 @@ class QLabsDeliveryTube(QLabsActor):
         return qlabs.spawn(actorNumber, self.ID_DELIVERY_TUBE, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
     '''
 
-
     def spawn_block(self, blockType, mass, yawRotation, color):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE
@@ -126,7 +125,6 @@ class QLabsDeliveryTubeBottles(QLabsActor):
         return qlabs.spawn(actorNumber, self.ID_DELIVERY_TUBE_BOTTLES, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, configuration, waitForConfirmation)
     '''
 
-
     def spawn_container(self, metallic, color, mass, propertyString="", height = 0.1, diameter = 0.65, roughness = 0.65):
         c = CommModularContainer()
         c.classID = self.ID_DELIVERY_TUBE_BOTTLES
@@ -144,8 +142,6 @@ class QLabsDeliveryTubeBottles(QLabsActor):
             return True
         else:
             return False
-
-
 
     def set_height(self, height):
         c = CommModularContainer()

@@ -75,7 +75,6 @@ class QLabsBottleTableSupport:
     def spawn_and_parent_with_relative_transform(self, qlabs, actorNumber, location, rotation, parentClass, parentActorNumber, parentComponent, waitForConfirmation=True):
         return qlabs.spawn_and_parent_with_relative_transform(actorNumber, self.ID_BOTTLE_TABLE_SUPPORT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, 0, parentClass, parentActorNumber, parentComponent, waitForConfirmation)
 
-
 class QLabsBottleTableSensorTowerShort:
 
 
@@ -129,7 +128,6 @@ class QLabsBottleTableSensorTowerShort:
                     properties = c.payload[16:(16+properties_size)].decode("utf-8")
 
         return [relative_x, relative_y, relative_z], properties
-
 
 class QLabsBottleTableSensorTowerTall:
 

@@ -147,7 +147,6 @@ class QLabsWidget:
         else:
             return False
 
-
     def widget_spawn_shadow(self, enableShadow=True):
         """If spawning a large number of widgets causes performance degradation, you can try disabling the widget shadows. This function must be called in advance of widget spawning and all subsequence widgets will be spawned with the specified shadow setting.
 

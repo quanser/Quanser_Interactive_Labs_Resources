@@ -35,7 +35,6 @@ class QLabsQBotHopper:
 
         return qlabs.spawn(actorNumber, self.ID_QBOT_DUMPING_MECHANISM, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
 
-
     def command(self, qlabs, actorNumber, angle):
         c = CommModularContainer()
         c.classID = self.ID_QBOT_DUMPING_MECHANISM

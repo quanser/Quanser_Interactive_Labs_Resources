@@ -50,7 +50,6 @@ class QLabsQBotPlatform(QLabsActor):
        self.classID = self.ID_QBOT_PLATFORM
        return
 
-
     def possess(self, camera):
         """
         Possess (take control of) a QBot in QLabs with the selected camera.
@@ -145,8 +144,7 @@ class QLabsQBotPlatform(QLabsActor):
                 return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
         else:
             return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
-            
-            
+               
     def set_transform(self, location=[0,0,0], rotation=[0,0,0], scale=[1,1,1], leftLED=[1,0,0], rightLED=[1,0,0], enableDynamics=True, waitForConfirmation=True):
         """Sets the transform, LED colors, and enabling/disabling of physics dynamics
 
@@ -244,7 +242,6 @@ class QLabsQBotPlatform(QLabsActor):
 
         return success, location, forward, up
         
-
     def get_image(self, camera):
         """
         Request a JPG image from the QBot camera.
@@ -286,7 +283,6 @@ class QLabsQBotPlatform(QLabsActor):
         else:
             return False, None
 
-    
     def get_lidar(self, samplePoints=400):
         """
         Request LIDAR data from a QBotPlatform.

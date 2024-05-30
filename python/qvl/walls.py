@@ -44,8 +44,6 @@ class QLabsWalls(QLabsActor):
        self.classID = self.ID_WALL
        return
 
-
-
     def set_enable_dynamics(self, enableDynamics, waitForConfirmation=True):
         """Sets the physics properties of the wall.
 
@@ -171,9 +169,6 @@ class QLabsWalls(QLabsActor):
         else:
             return False
 
-
-
-
     def set_transform(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in radians, and scale. If a wall is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
@@ -212,8 +207,6 @@ class QLabsWalls(QLabsActor):
             return True
         else:
             return False
-
-
 
     def set_transform_degrees(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in degrees, and scale. If a wall is parented to another actor then the location, rotation, and scale are relative to the parent actor.

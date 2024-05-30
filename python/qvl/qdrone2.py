@@ -59,7 +59,6 @@ class QLabsQDrone2(QLabsActor):
        self.classID = self.ID_QDRONE2
        return
 
-
     def possess(self, camera=VIEWPOINT_TRAILING):
         """
         Possess (take control of) a QDrone in QLabs with the selected camera.
@@ -166,7 +165,6 @@ class QLabsQDrone2(QLabsActor):
                 print("QDrone 2 command_velocity_and_request_state: Communications failure.")
             return False, location, orientation, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce
 
-
     def command_velocity_and_request_state_degrees(self, motorsEnabled=False, velocity=[0,0,0], orientation=[0,0,0]):
         """Sets the velocity, turn angle in radians, and other properties.
 
@@ -199,7 +197,6 @@ class QLabsQDrone2(QLabsActor):
         orientation_d = [orientation_r[0]/math.pi*180, orientation_r[1]/math.pi*180, orientation_r[2]/math.pi*180]
         
         return success, location, orientation_d, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce
-
 
     def set_transform_and_dynamics(self, location, rotation, enableDynamics, waitForConfirmation=True):
         """Sets the location, rotation, and other properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
@@ -242,7 +239,6 @@ class QLabsQDrone2(QLabsActor):
             return True
         else:
             return False
-
 
     def get_image(self, camera):
         """
@@ -305,7 +301,6 @@ class QLabsQDrone2(QLabsActor):
                 print("QDrone 2 get_image: Communications failure.")
             return False, -1, None
 
-    
     def set_image_capture_resolution(self, width=640, height=480):
         """Change the default width and height of image resolution for capture
 

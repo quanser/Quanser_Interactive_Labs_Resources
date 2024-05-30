@@ -42,7 +42,6 @@ class QLabsFreeCamera(QLabsActor):
        self.classID = self.ID_FREE_CAMERA
        return
 
-
     def possess(self):
         """
         Possess (take control of) a camera in QLabs.
@@ -156,7 +155,6 @@ class QLabsFreeCamera(QLabsActor):
         """
         return self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi])
 
-
     def set_image_capture_resolution(self, width=640, height=480):
         """Change the default width and height of image resolution for capture
 
@@ -187,8 +185,6 @@ class QLabsFreeCamera(QLabsActor):
                 return True
         else:
             return False
-
-
 
     def get_image(self):
         """Request an image from the camera actor. Note, set_image_capture_resolution must be set once per camera otherwise this method will fail.

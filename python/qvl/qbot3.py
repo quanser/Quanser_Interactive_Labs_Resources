@@ -42,7 +42,6 @@ class QLabsQBot3(QLabsActor):
        self.classID = self.ID_QBOT3
        return
 
-
     def possess(self, camera):
         """
         Possess (take control of) a QBot in QLabs with the selected camera.
@@ -132,7 +131,6 @@ class QLabsQBot3(QLabsActor):
                 return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
         else:
             return False, location, forward, up, frontHit, leftHit, rightHit, gyro, heading, encoderLeft, encoderRight
-
 
     def get_image_rgb(self):
         """

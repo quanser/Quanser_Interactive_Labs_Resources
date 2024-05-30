@@ -34,7 +34,6 @@ class QLabsReferenceFrame(QLabsActor):
        self.classID = self.ID_REFERENCE_FRAME
        return
 
-
     def set_transform(self, location, rotation, scale, waitForConfirmation=True):
         """
         Change the location, rotation, and scale of a spawned reference frame in radians
@@ -91,7 +90,6 @@ class QLabsReferenceFrame(QLabsActor):
 
         """
         return self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, waitForConfirmation)
-
 
     def set_icon_scale(self, scale, waitForConfirmation=True):
         """

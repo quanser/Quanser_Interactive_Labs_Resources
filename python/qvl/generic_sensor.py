@@ -41,9 +41,6 @@ class QLabsGenericSensor(QLabsActor):
        self.classID = self.ID_GENERIC_SENSOR
        return
 
-
-
-
     def set_transform(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in radians, and scale. If a sensor is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
@@ -83,8 +80,6 @@ class QLabsGenericSensor(QLabsActor):
         else:
             return False
 
-
-
     def set_transform_degrees(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
@@ -101,7 +96,6 @@ class QLabsGenericSensor(QLabsActor):
         """
 
         return self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, waitForConfirmation)
-
 
     def show_sensor(self, showBeam=True, showOriginIcon=True, iconScale=0.1, waitForConfirmation=True):
         """Displays the beam and sensor location for debugging purposes.
@@ -141,7 +135,6 @@ class QLabsGenericSensor(QLabsActor):
             return True
         else:
             return False
-
 
     def set_beam_size(self, startDistance=0.0, endDistance=1.0, heightOrRadius=0.1, width=0.1, waitForConfirmation=True):
         """Adjusts the beam shape parameters
@@ -183,7 +176,6 @@ class QLabsGenericSensor(QLabsActor):
             return True
         else:
             return False
-
 
     def test_beam_hit(self):
         """Queries the beam to test if it hits something in its path.
@@ -227,8 +219,7 @@ class QLabsGenericSensor(QLabsActor):
         
         
         return False, hit, actorClass, actorNumber, distance
-        
-        
+           
     def test_beam_hit_widget(self):
         """Queries the beam to test if it hits a widget and if so returns the widget properties
 

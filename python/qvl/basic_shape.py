@@ -54,8 +54,6 @@ class QLabsBasicShape(QLabsActor):
        self.classID = self.ID_BASIC_SHAPE
        return
 
-
-
     def set_material_properties(self, color, roughness=0.4, metallic=False, waitForConfirmation=True):
         """Sets the visual surface properties of the shape.
 
@@ -134,7 +132,6 @@ class QLabsBasicShape(QLabsActor):
         
 
         return False, color, roughness, metallic          
-
 
     def set_enable_dynamics(self, enableDynamics, waitForConfirmation=True):
         """Sets the visual surface properties of the shape.
@@ -261,9 +258,6 @@ class QLabsBasicShape(QLabsActor):
         else:
             return False
 
-
-
-
     def set_transform(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in radians, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
@@ -303,8 +297,6 @@ class QLabsBasicShape(QLabsActor):
         else:
             return False
 
-
-
     def set_transform_degrees(self, location, rotation, scale, waitForConfirmation=True):
         """Sets the location, rotation in degrees, and scale. If a shape is parented to another actor then the location, rotation, and scale are relative to the parent actor.
 
@@ -321,7 +313,6 @@ class QLabsBasicShape(QLabsActor):
         """
 
         return self.set_transform(location, [rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi], scale, waitForConfirmation)
-
 
     def _rotate_vector_2d_degrees(self, vector, angle):
         """Internal helper function to rotate a vector on the z plane.
@@ -379,8 +370,6 @@ class QLabsBasicShape(QLabsActor):
 
         else:
             return False
-
-
 
     def spawn_id_box_walls_from_center(self, actorNumbers, centerLocation, yaw, xSize, ySize, zHeight, wallThickness, floorThickness=0, wallColor=[1,1,1], floorColor=[1,1,1], waitForConfirmation=True):
         """Creates a container-like box with 4 walls and an optional floor.
