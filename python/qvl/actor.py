@@ -251,7 +251,7 @@ class QLabsActor:
                 if (c == None):
                     if (self._verbose):
                         print('spawn: Communication timeout (classID {}).'.format(self.classID))
-                    return -1
+                    return -1, -1
                 if len(c.payload) == 5:
                     status, actorNumber, = struct.unpack(">BI", c.payload[0:5])
                     if (status == 0):

@@ -19,15 +19,16 @@ class QLabsFlooring(QLabsActor):
 
 
     def __init__(self, qlabs, verbose=False):
-       """ Constructor Method
+        """ Constructor Method
 
-       :param qlabs: A QuanserInteractiveLabs object
-       :param verbose: (Optional) Print error information to the console.
-       :type qlabs: object
-       :type verbose: boolean
-       """
-
-       self._qlabs = qlabs
-       self._verbose = verbose
-       self.classID = self.ID_FLOORING
-       return
+        :param qlabs: A QuanserInteractiveLabs object
+        :param verbose: (Optional) Print error information to the console.
+        :type qlabs: object
+        :type verbose: boolean
+        """
+        print('The class QLabsFlooring will be deprecated starting 2025. Please use QLabsQCarFlooring or QLabsQBotPlatformFlooring.')
+        self._qlabs = qlabs
+        self._qlabs = qlabs
+        self._verbose = verbose
+        self.classID = self.ID_FLOORING
+        return
