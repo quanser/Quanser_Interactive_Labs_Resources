@@ -10,7 +10,7 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsQbot(QLabsActor):
-    """
+    """ This is a deprecated class.  Please see the product-specific qbot classes.
     # Define class-level variables
     containerSize = 0
     classID = 0       # What device type is this?
@@ -36,6 +36,8 @@ class QLabsQbot(QLabsActor):
         self._qlabs = qlabs
         self._verbose = verbose
         self.classID = self.ID_QBOT
+        print('The class QLabsQbot will be deprecated starting 2025. Please use product specific classes (QLabsQBot2e/QLabsQBot3/QLabsQBotPlatform).')
+        
         return
    
     def possess(self, camera):
