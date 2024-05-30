@@ -37,19 +37,7 @@ class QLabsQbot(QLabsActor):
         self._verbose = verbose
         self.classID = self.ID_QBOT
         return
-    
-    """
-       return
-
-    def spawn(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-
-        return qlabs.spawn(actorNumber, self.ID_QBOT, location[0], location[1], location[2]+0.1, rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-    """
-
-
+   
     def possess(self, camera):
         c = CommModularContainer()
         c.classID = self.ID_QBOT
@@ -68,15 +56,3 @@ class QLabsQbot(QLabsActor):
                 return True
         else:
             return False
-
-    """
-    def start_RT_model(self, actorNumber=0, QLabsHostname='localhost'):
-        cmdString="quarc_run -D -r -t tcpip://{}:17000 QBot2e_Spawn.rt-win64 -hostname localhost -devicenum {}".format(QLabsHostname, actorNumber)
-        os.system(cmdString)
-        return cmdString
-
-    def terminate_RT_model(self, QLabsHostname):
-        cmdString="quarc_run -q -t tcpip://{}:17000 QBot2e_Spawn.rt-win64".format(QLabsHostname)
-        os.system(cmdString)
-        return cmdString
-    """

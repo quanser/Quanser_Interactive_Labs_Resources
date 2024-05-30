@@ -32,14 +32,6 @@ class QLabsConveyorStraight(QLabsActor):
         self.classID = self.ID_CONVEYOR_STRAIGHT
         return
 
-    '''
-    def spawn(self, qlabs, actorNumber, location, rotation, sections=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_CONVEYOR_STRAIGHT, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1, 1, 1, sections, waitForConfirmation)
-
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, sections=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_CONVEYOR_STRAIGHT, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1, 1, 1, sections, waitForConfirmation)
-    '''
-
     def set_speed(self, speed):
         c = CommModularContainer()
         c.classID = self.ID_CONVEYOR_STRAIGHT

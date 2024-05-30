@@ -30,12 +30,3 @@ class QLabsQArm(QLabsActor):
         self.classID = self.ID_QARM
         return
 
-
-    '''
-    def spawn(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-        return qlabs.spawn(actorNumber, self.ID_QARM, location[0], location[1], location[2], rotation[0], rotation[1], rotation[2], 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-
-    def spawn_degrees(self, qlabs, actorNumber, location, rotation, configuration=0, waitForConfirmation=True):
-
-        return qlabs.spawn(actorNumber, self.ID_QARM, location[0], location[1], location[2], rotation[0]/180*math.pi, rotation[1]/180*math.pi, rotation[2]/180*math.pi, 1.0, 1.0, 1.0, configuration, waitForConfirmation)
-    '''
