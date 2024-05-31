@@ -68,8 +68,8 @@ class CommModularContainer:
 class QuanserInteractiveLabs:
     """This class establishes a server connection with QLabs and manages the communications."""
     _stream = None
-    #_client_connection = None
-    _BUFFER_SIZE = 65537
+    
+    _BUFFER_SIZE = 100000
 
     _readBuffer = bytearray(_BUFFER_SIZE)
     _sendBuffer = bytearray()
