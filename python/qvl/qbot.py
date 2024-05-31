@@ -10,15 +10,8 @@ import struct
 ######################### MODULAR CONTAINER CLASS #########################
 
 class QLabsQbot(QLabsActor):
-    """ This is a deprecated class.  Please see the product-specific qbot classes.
-    # Define class-level variables
-    containerSize = 0
-    classID = 0       # What device type is this?
-    actorNumber = 0   # Increment if there are more than one of the same device ID
-    actorFunction = 0 # Command/reponse
-    payload = bytearray()
-    """
-
+    # This is a deprecated class.  Please see the product-specific qbot classes.
+    
     ID_QBOT = 20
 
     FCN_QBOT_COMMAND_AND_REQUEST_STATE = 10
@@ -31,7 +24,7 @@ class QLabsQbot(QLabsActor):
     VIEWPOINT_DEPTH = 1
     VIEWPOINT_TRAILING = 2
 
-    # Initilize class
+    # Initialize class
     def __init__(self, qlabs, verbose=False):
         self._qlabs = qlabs
         self._verbose = verbose
@@ -49,12 +42,12 @@ class QLabsQbot(QLabsActor):
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         self._qlabs.flush_receive()
-
-        if (self.qlabs.send_container(c)):
-            c = qlabs.wait_for_container(self.ID_QBOT, self.actorNumber, self.FCN_QBOT_POSSESS_ACK)
+            
+        if (self._qlabs.send_container(c)):
+            c = self._qlabs.wait_for_container(self.ID_QBOT, self.actorNumber, self.FCN_QBOT_POSSESS_ACK)
             if (c == None):
                 return False
             else:
                 return True
         else:
-            return False
+            return False            
