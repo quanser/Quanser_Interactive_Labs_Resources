@@ -96,21 +96,39 @@ Connection Points
 
 There are no connection points for the free camera actor.
 
+-------------------------------------------------------------------------------
+
 .. _cameraTutorial:
 
 Camera Tutorial
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |camera_tutorial.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |camera_tutorial.py| replace::
-        :download:`Camera Tutorial <../../../tutorials/camera_tutorial.py>`
-    
-    .. literalinclude:: ../../../tutorials/camera_tutorial.py
-        :language: python
-        :linenos:
+            Raw to download this tutorial: |camera_tutorial.py|.
+
+            .. |camera_tutorial.py| replace::
+                :download:`Camera Tutorial (.py) <../../../tutorials/camera_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/camera_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |camera_tutorial.m|.
+
+            .. |camera_tutorial.m| replace::
+                :download:`Camera Tutorial (.m) <../../../tutorials/camera_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/camera_tutorial.m
+                :language: Matlab
+                :linenos:
 
 
 .. tip::

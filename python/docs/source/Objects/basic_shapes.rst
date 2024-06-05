@@ -27,7 +27,7 @@ If you are using a large number of dynamic shapes, consider using
 They have both limitations and additional features, but are more efficient when
 spawning large numbers of dynamic actors.
 
-See the :ref:`basicShapeTutorial` to get a better understanding of using basic 
+See the :ref:`basicshapesTutorial` to get a better understanding of using basic 
 shapes in Quanser Interactive Labs.
 
 .. _basicshapelibrary:
@@ -118,19 +118,37 @@ Connection Points
 
 There are no connection points for this actor class.
 
-.. _basicshapeTutorial:
+-------------------------------------------------------------------------------
+
+.. _basicshapesTutorial:
 
 Basic Shapes Tutorial
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |basic_shapes_tutorial.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |basic_shapes_tutorial.py| replace::
-        :download:`Basic Shapes Tutorial <../../../tutorials/basic_shapes_tutorial.py>`
+            Raw to download this tutorial: |basic_shapes_tutorial.py|.
 
-    .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.py
-        :language: python
-        :linenos:
+            .. |basic_shapes_tutorial.py| replace::
+                :download:`Basic Shapes Tutorial (.py) <../../../tutorials/basic_shapes_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |basic_shapes_tutorial.m|.
+
+            .. |basic_shapes_tutorial.m| replace::
+                :download:`Basic Shapes Tutorial (.m) <../../../tutorials/basic_shapes_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/basic_shapes_tutorial.m
+                :language: Matlab
+                :linenos:
 

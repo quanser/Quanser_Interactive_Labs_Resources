@@ -122,21 +122,37 @@ Connection Points
 
 There are no connections points for the person actor.
 
+-------------------------------------------------------------------------------
+
 .. _personTutorial:
 
-People Tutorial
-^^^^^^^^^^^^^^^
+person Tutorial
+^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |person_tutorial.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |person_tutorial.py| replace::
-        :download:`Person Tutorial <../../../tutorials/person_tutorial.py>`
+            Raw to download this tutorial: |person_tutorial.py|.
 
-    .. literalinclude:: ../../../tutorials/person_tutorial.py
-        :language: python
-        :linenos:
+            .. |person_tutorial.py| replace::
+                :download:`person Tutorial (.py) <../../../tutorials/person_tutorial.py>`
 
+            .. literalinclude:: ../../../tutorials/person_tutorial.py
+                :language: python
+                :linenos:
 
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |person_tutorial.m|.
+
+            .. |person_tutorial.m| replace::
+                :download:`person Tutorial (.m) <../../../tutorials/person_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/person_tutorial.m
+                :language: Matlab
+                :linenos:
 .. **See Also:**

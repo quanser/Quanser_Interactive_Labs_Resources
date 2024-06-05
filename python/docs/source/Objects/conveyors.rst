@@ -169,21 +169,37 @@ Connection Points
 
 There are no connection points for this actor class.
 
-
 -------------------------------------------------------------------------------
 
 .. _conveyorTutorial:
 
 Conveyors Tutorial
-----------------------
+--------------------
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |conveyor_tutorial.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |conveyor_tutorial.py| replace::
-        :download:`Conveyor Tutorial <../../../tutorials/conveyor_tutorial.py>`
+            Raw to download this tutorial: |conveyor_tutorial.py|.
 
-    .. literalinclude:: ../../../tutorials/conveyor_tutorial.py
-        :language: python
-        :linenos:
+            .. |conveyor_tutorial.py| replace::
+                :download:`Conveyor Tutorial (.py) <../../../tutorials/conveyor_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/conveyor_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |conveyor_tutorial.m|.
+
+            .. |conveyor_tutorial.m| replace::
+                :download:`Conveyor Tutorial (.m) <../../../tutorials/conveyor_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/conveyor_tutorial.m
+                :language: guess
+                :linenos:
+

@@ -213,7 +213,7 @@ def main():
 
     time.sleep(1)
 
-    print("Reading from LIDAR... if QLabs crashes or output isn't great, make sure FPS > 100 or fix the crash bug!")
+    print("Reading from LIDAR... if QLabs crashes or output isn't great, make sure FPS > 100")
 
     # Obtaining and plotting lidar data for 0.2s
     for count in range(20):

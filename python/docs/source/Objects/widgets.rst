@@ -85,19 +85,37 @@ Connection Points
 
 There are no connection points for this actor class.
 
+-------------------------------------------------------------------------------
+
 .. _widgetTutorial:
 
-Widgets Tutorial
-^^^^^^^^^^^^^^^^
+widget Tutorial
+^^^^^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |widgets_tutorial.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |widgets_tutorial.py| replace::
-        :download:`Widgets Tutorial <../../../tutorials/widgets_tutorial.py>`
+            Raw to download this tutorial: |widgets_tutorial.py|.
 
+            .. |widgets_tutorial.py| replace::
+                :download:`Widget Tutorial (.py) <../../../tutorials/widgets_tutorial.py>`
 
-    .. literalinclude:: ../../../tutorials/widgets_tutorial.py
-        :language: python
-        :linenos:
+            .. literalinclude:: ../../../tutorials/widgets_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |widget_tutorial.m|.
+
+            .. |widget_tutorial.m| replace::
+                :download:`Widget Tutorial (.m) <../../../tutorials/widgets_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/widgets_tutorial.m
+                :language: Matlab
+                :linenos:
+

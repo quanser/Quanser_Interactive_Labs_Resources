@@ -16,7 +16,7 @@ QCars are considered "actors" in Quanser Interactive Labs.The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
 motion of the vehicles.
 
-See the QCar :ref:`carTutorial` to get a better understanding of using QCars in
+See the QCar :ref:`QCarTutorial` to get a better understanding of using QCars in
 Quanser Interactive Labs.
 
 .. _carLibrary:
@@ -172,21 +172,39 @@ User Guides/System Hardware.pdf
     :scale:  65%
     :align: center
 
-.. _carTutorial:
+-------------------------------------------------------------------------------
+
+.. _QCarTutorial:
 
 QCar Tutorial
-^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Raw to download this tutorial: |qcar_tutorial1.py|.
+        .. dropdown:: Python Tutorial
 
-    .. |qcar_tutorial1.py| replace::
-        :download:`QCar Tutorial <../../../tutorials/qcar_tutorial1.py>`
-    
-    .. literalinclude:: ../../../tutorials/qcar_tutorial1.py
-        :language: python
-        :linenos:
+            Raw to download this tutorial: |qcar_tutorial.py|.
+
+            .. |qcar_tutorial.py| replace::
+                :download:`QCar Tutorial (.py) <../../../tutorials/qcar_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/qcar_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |qcar_tutorial.m|.
+
+            .. |qcar_tutorial.m| replace::
+                :download:`QCar Tutorial (.m) <../../../tutorials/qcar_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/qcar_tutorial.m
+                :language: Matlab
+                :linenos:
     
 
 .. **See Also:**
