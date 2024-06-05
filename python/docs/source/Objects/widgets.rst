@@ -89,7 +89,7 @@ There are no connection points for this actor class.
 
 .. _widgetTutorial:
 
-widget Tutorial
+Widget Tutorial
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabs::

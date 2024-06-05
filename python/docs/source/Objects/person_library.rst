@@ -126,7 +126,7 @@ There are no connections points for the person actor.
 
 .. _personTutorial:
 
-person Tutorial
+People Tutorial
 ^^^^^^^^^^^^^^^^^^^
 
 .. tabs::
@@ -134,12 +134,12 @@ person Tutorial
 
         .. dropdown:: Python Tutorial
 
-            Raw to download this tutorial: |person_tutorial.py|.
+            Raw to download this tutorial: |people_tutorial.py|.
 
-            .. |person_tutorial.py| replace::
-                :download:`person Tutorial (.py) <../../../tutorials/person_tutorial.py>`
+            .. |people_tutorial.py| replace::
+                :download:`People Tutorial (.py) <../../../tutorials/people_tutorial.py>`
 
-            .. literalinclude:: ../../../tutorials/person_tutorial.py
+            .. literalinclude:: ../../../tutorials/people_tutorial.py
                 :language: python
                 :linenos:
 
@@ -147,12 +147,12 @@ person Tutorial
 
         .. dropdown:: Matlab Tutorial
 
-            Raw to download this tutorial: |person_tutorial.m|.
+            Raw to download this tutorial: |people_tutorial.m|.
 
-            .. |person_tutorial.m| replace::
-                :download:`person Tutorial (.m) <../../../tutorials/person_tutorial.m>`
+            .. |people_tutorial.m| replace::
+                :download:`People Tutorial (.m) <../../../tutorials/people_tutorial.m>`
 
-            .. literalinclude:: ../../../tutorials/person_tutorial.m
+            .. literalinclude:: ../../../tutorials/people_tutorial.m
                 :language: Matlab
                 :linenos:
 .. **See Also:**

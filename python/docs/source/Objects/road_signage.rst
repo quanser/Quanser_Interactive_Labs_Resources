@@ -229,7 +229,7 @@ Road Signage Tutorial
             Raw to download this tutorial: |road_signage_tutorial.py|.
 
             .. |road_signage_tutorial.py| replace::
-                :download:`Road signage Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
+                :download:`Road Signage Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
                 :language: python
@@ -242,7 +242,7 @@ Road Signage Tutorial
             Raw to download this tutorial: |road_signage_tutorial.m|.
 
             .. |road_signage_tutorial.m| replace::
-                :download:`Road signage Tutorial (.m) <../../../tutorials/road_signage_tutorial.m>`
+                :download:`Road Signage Tutorial (.m) <../../../tutorials/road_signage_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/road_signage_tutorial.m
                 :language: Matlab

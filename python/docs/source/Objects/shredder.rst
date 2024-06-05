@@ -106,7 +106,7 @@ Shredder Tutorial
             Raw to download this tutorial: |shredder_tutorial.py|.
 
             .. |shredder_tutorial.py| replace::
-                :download:`shredder Tutorial (.py) <../../../tutorials/shredder_tutorial.py>`
+                :download:`Shredder Tutorial (.py) <../../../tutorials/shredder_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/shredder_tutorial.py
                 :language: python

@@ -48,11 +48,38 @@ Methods
 .. automethod:: qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_outdoor_lighting
 .. automethod:: qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_weather_preset
 
-Methods Tutorial
-^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+-------------------------------------------------------------------------------
 
-    .. literalinclude:: ../../../tutorials/weather.py
-        :language: python
-        :linenos:
+.. _environmentOutdoorsTutorial:
+
+Weather Tutorial 
+^^^^^^^^^^^^^^^^^^
+
+.. tabs::
+    .. tab:: Python
+
+        .. dropdown:: Python Tutorial
+
+            Raw to download this tutorial: |weather_tutorial.py|.
+
+            .. |weather_tutorial.py| replace::
+                :download:`Weather Tutorial (.py) <../../../tutorials/weather_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/weather_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |weather_tutorial.m|.
+
+            .. |weather_tutorial.m| replace::
+                :download:`Weather Tutorial (.m) <../../../tutorials/weather_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/weather_tutorial.m
+                :language: Matlab
+                :linenos:
+

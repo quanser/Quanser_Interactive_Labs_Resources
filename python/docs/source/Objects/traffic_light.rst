@@ -95,7 +95,7 @@ Traffic Light Tutorial
             Raw to download this tutorial: |road_signage_tutorial.py|.
 
             .. |road_signage_tutorial.py| replace::
-                :download:`Road signage Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
+                :download:`Traffic Lights Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
                 :language: python
@@ -108,7 +108,7 @@ Traffic Light Tutorial
             Raw to download this tutorial: |traffic_lights_tutorial.m|.
 
             .. |traffic_lights_tutorial.m| replace::
-                :download:`Traffic lights Tutorial (.m) <../../../tutorials/traffic_lights_tutorial.m>`
+                :download:`Traffic Lights Tutorial (.m) <../../../tutorials/traffic_lights_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/traffic_lights_tutorial.m
                 :language: Matlab

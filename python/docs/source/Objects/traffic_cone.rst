@@ -99,7 +99,7 @@ Traffic Cone Tutorial
             Raw to download this tutorial: |road_signage_tutorial.py|.
 
             .. |road_signage_tutorial.py| replace::
-                :download:`Road signage Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
+                :download:`Traffic Cones Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
                 :language: python
@@ -112,11 +112,11 @@ Traffic Cone Tutorial
             Raw to download this tutorial: |traffic_cones_tutorial.m|.
 
             .. |traffic_cones_tutorial.m| replace::
-                :download:`Traffic cones Tutorial (.m) <../../../tutorials/traffic_cones_tutorial.m>`
+                :download:`Traffic Cones Tutorial (.m) <../../../tutorials/traffic_cones_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/traffic_cones_tutorial.m
                 :language: Matlab
                 :linenos:
 
-                
+
 
