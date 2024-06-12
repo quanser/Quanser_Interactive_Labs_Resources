@@ -125,11 +125,36 @@ Connection Points
 
 There are no connection points for the animal actor.
 
+-------------------------------------------------------------------------------
+
 .. _animalTutorial:
 
-Animal Tutorial
-^^^^^^^^^^^^^^^
+Animals Tutorial
+^^^^^^^^^^^^^^^^^^
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Coming Soon!
+        .. dropdown:: Python Tutorial
+
+            Raw to download this tutorial: |animal_tutorial.py|.
+
+            .. |animal_tutorial.py| replace::
+                :download:`Animals Tutorial (.py) <../../../tutorials/animals_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/animals_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |animals_tutorial.m|.
+
+            .. |animals_tutorial.m| replace::
+                :download:`Animals Tutorial (.m) <../../../tutorials/animals_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/animals_tutorial.m
+                :language: Matlab
+                :linenos:
