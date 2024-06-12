@@ -10,7 +10,23 @@ close all;
 clear all;
 clc;
 
-fprintf('\n\n------------------------------ Communications --------------------------------\n\n');
+% Setting MATLAB Path for the libraries
+% Always keep at the start, it will make sure it finds the correct references
+
+newPathEntry = fullfile(getenv('QAL_DIR'), 'libraries', 'matlab', 'qvl');
+pathCell = regexp(path, pathsep, 'split');
+if ispc  % Windows is not case-sensitive
+  onPath = any(strcmpi(newPathEntry, pathCell));
+else
+  onPath = any(strcmp(newPathEntry, pathCell));
+end
+
+if onPath == 0
+    path(path, newPathEntry)
+    savepath
+end
+
+fprintf('\n\n----------------- Communications -------------------\n\n');
 
 qlabs = QuanserInteractiveLabs();
 connection_established = qlabs.open('localhost');
