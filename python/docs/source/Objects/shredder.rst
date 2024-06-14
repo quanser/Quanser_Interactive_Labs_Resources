@@ -121,7 +121,7 @@ Shredder Tutorial
             .. |shredder_tutorial.m| replace::
                 :download:`Shredder Tutorial (.m) <../../../tutorials/shredder_tutorial.m>`
 
-            .. literalinclude:: ../../../tutorials/Shredder_tutorial.m
+            .. literalinclude:: ../../../tutorials/shredder_tutorial.m
                 :language: Matlab
                 :linenos:
 
