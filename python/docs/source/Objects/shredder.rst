@@ -119,7 +119,7 @@ Shredder Tutorial
             Raw to download this tutorial: |shredder_tutorial.m|.
 
             .. |shredder_tutorial.m| replace::
-                :download:`Shredder Tutorial (.m) <../../../tutorials/Shredder_tutorial.m>`
+                :download:`Shredder Tutorial (.m) <../../../tutorials/shredder_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/Shredder_tutorial.m
                 :language: Matlab

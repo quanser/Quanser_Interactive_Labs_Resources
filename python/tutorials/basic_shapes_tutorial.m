@@ -10,9 +10,9 @@ close all;
 clear all;
 clc;
 
+% --------------------------------------------------------------
 % Setting MATLAB Path for the libraries
 % Always keep at the start, it will make sure it finds the correct references
-
 newPathEntry = fullfile(getenv('QAL_DIR'), 'libraries', 'matlab', 'qvl');
 pathCell = regexp(path, pathsep, 'split');
 if ispc  % Windows is not case-sensitive
@@ -25,6 +25,7 @@ if onPath == 0
     path(path, newPathEntry)
     savepath
 end
+% --------------------------------------------------------------
 
 fprintf('\n\n----------------- Communications -------------------\n\n');
 
@@ -134,9 +135,8 @@ sphere13.set_enable_dynamics(1, 1);
 boxSpawn = QLabsBasicShape(qlabs);
 boxSpawn.spawn_id_box_walls_from_center([210, 211, 212, 213, 214], [-9.35, 26.5, 0.005], pi/4, 2, 2, 0.5, 0.1, 0.1, [1, 0, 0], [0, 0, 0], 1);
 
-
 boxSpawn.spawn_id_box_walls_from_center_degrees([270, 271, 272, 273, 274], [-11.35, 28.5, 0.005], 45, 2, 2, 0.5, 0.1, 0.1, [1, 0, 0], [0, 0, 0], 1);
-
+                                                
 
 boxSpawn.spawn_id_box_walls_from_end_points(280, [-10.5, 32.5, 0.005], [-10.5, 30.5, 0.005], 0.1, 0.1, [0.2, 0.2, 0.2], 1);
 

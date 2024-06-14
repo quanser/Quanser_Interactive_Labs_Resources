@@ -61,8 +61,6 @@ def crosswalk(qlabs):
     # pinging existing sign - this should return True if we printed it
     crosswalk.ping()
 
-
-
 def roundabout_sign(qlabs):
     """This method demonstrates some basic commands with the roundabout sign class"""
 
@@ -87,7 +85,6 @@ def roundabout_sign(qlabs):
 
     # destroying the sign we just created
     roundabout.destroy()
-
 
 def yield_sign(qlabs):
     """This method demonstrates some basic commands with the yield sign class"""
@@ -114,7 +111,6 @@ def yield_sign(qlabs):
     # destroying the sign we just created
     yieldsign.destroy()
 
-
 def stop_sign(qlabs):
     """This method demonstrates some basic commands with the stop sign class"""
 
@@ -137,7 +133,6 @@ def stop_sign(qlabs):
 
     # destroying the sign we just created
     stop.destroy()
-
 
 def traffic_cone(qlabs):
     """This method demonstrates some basic commands with the traffic cone class"""
@@ -196,7 +191,6 @@ def traffic_cone(qlabs):
     # pinging existing cone - this should return True if we printed it
     cone2.ping()
 
-
 def traffic_light(qlabs):
     """This method demonstrates some basic commands with the traffic light class"""
 
@@ -243,7 +237,6 @@ def traffic_light(qlabs):
     # destroying a traffic light
     trafficLight.destroy()
 
-
 def main():
 
     # creates a server connection with Quanser Interactive Labs and manages the communications
@@ -289,7 +282,6 @@ def main():
 
     if TRAFFICLIGHT_FLAG:
         traffic_light(qlabs)
-
 
 if __name__ == "__main__":
     main()

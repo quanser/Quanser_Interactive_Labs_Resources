@@ -1,4 +1,4 @@
-% Road signage Library traffic cones Example
+% Road signage Library Traffic Cones Example
 % -------------------------
 % 
 % .. note::
@@ -11,9 +11,9 @@ close all;
 clear all;
 clc;
 
+% --------------------------------------------------------------
 % Setting MATLAB Path for the libraries
 % Always keep at the start, it will make sure it finds the correct references
-
 newPathEntry = fullfile(getenv('QAL_DIR'), 'libraries', 'matlab', 'qvl');
 pathCell = regexp(path, pathsep, 'split');
 if ispc  % Windows is not case-sensitive
@@ -26,31 +26,25 @@ if onPath == 0
     path(path, newPathEntry)
     savepath
 end
+% --------------------------------------------------------------
 
-fprintf('\n\n----------------- Communications -------------------\n\n');
+% Set any of these flags to False if you don't want to see the output
+global CROSSWALK_FLAG;
+global ROUNDABOUT_FLAG;
+global YIELDSIGN_FLAG;
+global STOPSIGN_FLAG;
+global TRAFFICCONE_FLAG;
+global TRAFFICLIGHT_FLAG;
 
-qlabs = QuanserInteractiveLabs();
-connection_established = qlabs.open('localhost');
+% Flags for different types of objects
+CROSSWALK_FLAG = true;  % Set this flag to true if crosswalk is enabled
+ROUNDABOUT_FLAG = true;  % Set this flag to true if roundabout sign is enabled
+YIELDSIGN_FLAG = true;   % Set this flag to true if yield sign is enabled
+STOPSIGN_FLAG = true;    % Set this flag to true if stop sign is enabled
+TRAFFICCONE_FLAG = true; % Set this flag to true if traffic cone is enabled
+TRAFFICLIGHT_FLAG = true; % Set this flag to true if traffic light is enabled
 
-if connection_established == false
-    disp("Failed to open connection.")
-    return
-end
-
-
-disp('Connected')
-
-num_destroyed = qlabs.destroy_all_spawned_actors();
-
-fprintf('%d actors destroyed', num_destroyed);
-
-%set any of these flags to False if you don't want to see the output
-CROSSWALK_FLAG = 1;
-ROUNDABOUT_FLAG = 1;
-YIELDSIGN_FLAG = 1;
-STOPSIGN_FLAG = 1;
-TRAFFICCONE_FLAG = 1;
-TRAFFICLIGHT_FLAG = 1;
+main();
 
 function crosswalk(qlabs)
     % This function demonstrates some basic commands with the crosswalk class
@@ -210,7 +204,7 @@ function traffic_cone(qlabs)
     % cone4.set_material_properties(1, [0.3, 0, 1]);
     
     % Wait to see the output
-    pause(3);
+    %pause(3);
 
     % Collecting the world transform coordinates of the traffic cone
     [x, loc, rot, scale] = cone2.get_world_transform();
@@ -270,30 +264,30 @@ function traffic_light(qlabs)
     trafficLight.destroy();
 end
 
+function main(qlabs)
+    
+    global CROSSWALK_FLAG;
+    global ROUNDABOUT_FLAG;
+    global YIELDSIGN_FLAG;
+    global STOPSIGN_FLAG;
+    global TRAFFICCONE_FLAG;
+    global TRAFFICLIGHT_FLAG;
 
-    % Create a server connection with Quanser Interactive Labs and manage communications
+    fprintf('\n\n----------------- Communications -------------------\n\n');
+
     qlabs = QuanserInteractiveLabs();
-
-    disp('Connecting to QLabs...');
-    % Try to connect to QLabs and open the instance we have created
-    try
-        qlabs.open('localhost');
-    catch
-        disp('Unable to connect to QLabs');
-        return;
+    connection_established = qlabs.open('localhost');
+    
+    if connection_established == false
+        disp("Failed to open connection.")
+        return
     end
-
-    % Destroy any spawned actors in our QLabs that currently exist
-    qlabs.destroy_all_spawned_actors();
-
-    % Flags for different types of objects
-    CROSSWALK_FLAG = true;  % Set this flag to true if crosswalk is enabled
-    ROUNDABOUT_FLAG = true;  % Set this flag to true if roundabout sign is enabled
-    YIELDSIGN_FLAG = true;   % Set this flag to true if yield sign is enabled
-    STOPSIGN_FLAG = true;    % Set this flag to true if stop sign is enabled
-    TRAFFICCONE_FLAG = true; % Set this flag to true if traffic cone is enabled
-    TRAFFICLIGHT_FLAG = true; % Set this flag to true if traffic light is enabled
-
+    
+    disp('Connected')
+    
+    num_destroyed = qlabs.destroy_all_spawned_actors();
+    fprintf('%d actors destroyed', num_destroyed);
+    
     if CROSSWALK_FLAG
         crosswalk(qlabs);
         pause(2);
@@ -334,3 +328,5 @@ end
     % Closing qlabs
     qlabs.close();
     disp('Done!');
+
+end

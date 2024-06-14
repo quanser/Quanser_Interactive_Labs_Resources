@@ -11,9 +11,9 @@ close all;
 clear all;
 clc;
 
+% --------------------------------------------------------------
 % Setting MATLAB Path for the libraries
 % Always keep at the start, it will make sure it finds the correct references
-
 newPathEntry = fullfile(getenv('QAL_DIR'), 'libraries', 'matlab', 'qvl');
 pathCell = regexp(path, pathsep, 'split');
 if ispc  % Windows is not case-sensitive
@@ -26,22 +26,10 @@ if onPath == 0
     path(path, newPathEntry)
     savepath
 end
+% --------------------------------------------------------------
 
-fprintf('\n\n----------------- Communications -------------------\n\n');
+main();
 
-qlabs = QuanserInteractiveLabs();
-connection_established = qlabs.open('localhost');
-
-if connection_established == false
-    disp("Failed to open connection.")
-    return
-end
-
-disp('Connected')
-
-num_destroyed = qlabs.destroy_all_spawned_actors();
-
-fprintf('%d actors destroyed\n', num_destroyed);
 
 function createCylinder(cylinder,location)
 
@@ -50,26 +38,24 @@ function createCylinder(cylinder,location)
 
     cylinder.spawn(location, [0, 0, 0.5], [0.05, 0.05, 0.05], cylinder.CYLINDER, color(position,:));
        
-
 end
 
 function main()
 
-    % Creates a server connection with Quanser Interactive Labs and manages the communications
+    fprintf('\n\n----------------- Communications -------------------\n\n');
+
     qlabs = QuanserInteractiveLabs();
-
-
-    disp('Connecting to QLabs...');
-    % Trying to connect to QLabs and open the instance we have created
-    try
-        connection_established = qlabs.open('localhost');
-        if ~connection_established
-            error('Unable to connect to QLabs');
-        end
-    catch
-        disp('Unable to connect to QLabs');
-        return;
+    connection_established = qlabs.open('localhost');
+    
+    if connection_established == false
+        disp("Failed to open connection.")
+        return
     end
+    
+    disp('Connected')
+    num_destroyed = qlabs.destroy_all_spawned_actors();
+    fprintf('%d actors destroyed\n', num_destroyed);
+
 
     % create the widget instance
     cylinder = QLabsWidget(qlabs);
@@ -113,7 +99,3 @@ function main()
     end
 
 end
-
-main
-
-

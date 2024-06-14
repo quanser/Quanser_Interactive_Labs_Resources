@@ -11,9 +11,9 @@ close all;
 clear all;
 clc;
 
+% --------------------------------------------------------------
 % Setting MATLAB Path for the libraries
 % Always keep at the start, it will make sure it finds the correct references
-
 newPathEntry = fullfile(getenv('QAL_DIR'), 'libraries', 'matlab', 'qvl');
 pathCell = regexp(path, pathsep, 'split');
 if ispc  % Windows is not case-sensitive
@@ -26,6 +26,7 @@ if onPath == 0
     path(path, newPathEntry)
     savepath
 end
+% --------------------------------------------------------------
 
 fprintf('\n\n----------------- Communications -------------------\n\n');
 
@@ -59,13 +60,13 @@ camera.possess();
 
 % The configuration argument is an integer associated with the length of the conveyors
 % For straight conveyor, configuration = 0 corresponds to a length of 0.5. With each
-% increase in configuration, the lengh is increased by 0.25, up to configuratoin = 20 
+% increase in configuration, the lenght is increased by 0.25, up to configuration = 20 
 straightConveyor = QLabsConveyorStraight(qlabs);
 straightConveyor.spawn_id_degrees(0,[0, 0, 0], [0, 0, 0], [1,1,1], 5);
 
 % For curved conveyor, configuration = 0 corresponds to a circular arc of 15 degree. 
 % With each increase in configuration, the arc length is increased by 15 degrees, up to 
-% configuratoin = 24.
+% configuration = 24.
 curvedConveyor = QLabsConveyorCurved(qlabs);
 curvedConveyor.spawn_id_degrees(1,[0.03, -0.5, 0], [0, 0, 0], [1,1,1], 6);
 
@@ -75,7 +76,7 @@ pause(2);
 straightConveyor.set_speed(0.3);
 curvedConveyor.set_speed(0.07);
 
-% drop one cylinder widget on top of the straight convoryer
+% drop one cylinder widget on top of the straight conveyor
 cylinder.spawn([1.6, 0, 1], [0, 0, 5], [0.05, 0.05, 0.05], cylinder.CYLINDER)
 
 pause(1);

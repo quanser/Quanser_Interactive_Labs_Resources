@@ -10,6 +10,7 @@ close all;
 clear all;
 clc;
 
+% --------------------------------------------------------------
 % Setting MATLAB Path for the libraries
 % Always keep at the start, it will make sure it finds the correct references
 
@@ -25,9 +26,11 @@ if onPath == 0
     path(path, newPathEntry)
     savepath
 end
+% --------------------------------------------------------------
 
 fprintf('\n\n----------------- Communications -------------------\n\n');
 
+% Creates a server connection with Quanser Interactive Labs and manages the communications
 qlabs = QuanserInteractiveLabs();
 connection_established = qlabs.open('localhost');
 
@@ -36,12 +39,14 @@ if connection_established == false
     return
 end
 
-
 disp('Connected')
 
 num_destroyed = qlabs.destroy_all_spawned_actors();
-
 fprintf('%d actors destroyed', num_destroyed);
+
+main(qlabs);
+
+% ------------ functions ----------
 
 function widgets(qlabs)
     % Initialize the widget class in qlabs
@@ -86,29 +91,11 @@ function widgets(qlabs)
     % widget.destroy_all_spawned_widgets(); % Uncomment this line if destroy function is defined
 end
 
-function main()
-    % Creates a server connection with Quanser Interactive Labs and manages the communications
-    qlabs = QuanserInteractiveLabs();
-
+function main(qlabs)
+    
     % Initialize desired camera location and rotation
     loc = [-18.783, 30.023, 2.757];
     rot = [0, 8.932, -2.312];
-
-    disp('Connecting to QLabs...');
-    % Trying to connect to QLabs and open the instance we have created
-    try
-        connection_established = qlabs.open('localhost');
-        if ~connection_established
-            error('Unable to connect to QLabs');
-        end
-    catch
-        disp('Unable to connect to QLabs');
-        return;
-    end
-
-    % Destroy any spawned actors in our QLabs that currently exist
-    num_destroyed = qlabs.destroy_all_spawned_actors();
-    fprintf('%d actors destroyed\n', num_destroyed);
 
     % Create a camera in this qlabs instance
     camera = QLabsFreeCamera(qlabs);
@@ -126,4 +113,3 @@ function main()
     qlabs.close();
 end
 
-main
