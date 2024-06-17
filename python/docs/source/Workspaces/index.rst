@@ -12,7 +12,7 @@ There are several different Open Worlds available in QLabs for different types
 of products.
 
 Workspaces
-==========
+============
 
 .. toctree::
    :maxdepth: 1

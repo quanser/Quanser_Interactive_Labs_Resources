@@ -1,12 +1,13 @@
 .. _Animal_Library:
 
+***********
 Animals
--------
+***********
 
 .. _animalDescription:
 
 Description
-^^^^^^^^^^^
+==============
 
 Animals are considered "actors" in the Open World Workspaces.
 The animal library controls the animals placed in Quanser Interactive Labs.
@@ -26,14 +27,14 @@ impression of "slipping" at certain speeds outside the recommended values.
 .. _animalLibrary:
 
 Library
-^^^^^^^
+==============
 
 .. autoclass:: qvl.animal.QLabsAnimal
 
 .. _animalConstants:
 
 Constants
-^^^^^^^^^
+==============
 
 .. autoattribute:: qvl.animal.QLabsAnimal.ID_ANIMAL
 .. autoattribute:: qvl.animal.QLabsAnimal.GOAT
@@ -52,14 +53,14 @@ Constants
 .. _animalMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.animal.QLabsAnimal.actorNumber
 
 .. _animalMethods:
 
 Methods
-^^^^^^^
+=========
 
 .. automethod:: qvl.animal.QLabsAnimal.__init__
 .. automethod:: qvl.animal.QLabsAnimal.spawn
@@ -112,7 +113,7 @@ Methods
 .. _animalConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There are 3 configurations (0-2) for a animal generated in QLabs.
 
@@ -121,7 +122,7 @@ There are 3 configurations (0-2) for a animal generated in QLabs.
 .. _animalConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for the animal actor.
 
@@ -130,7 +131,7 @@ There are no connection points for the animal actor.
 .. _animalTutorial:
 
 Animals Tutorial
-^^^^^^^^^^^^^^^^^^
+==================
 
 .. tabs::
     .. tab:: Python

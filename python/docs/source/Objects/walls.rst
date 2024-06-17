@@ -1,7 +1,10 @@
 .. _walls_Library:
 
+
+********
 Walls
------
+********
+
 
 .. image:: ../pictures/banner_walls.jpg
     :width: 800px
@@ -10,7 +13,7 @@ Walls
 .. _wallsDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 Walls are considered an "actor" in Quanser Interactive Labs Open Worlds.
 Walls can be spawned anywhere in the Open Worlds and accompany several 
@@ -19,14 +22,14 @@ different products including the QCar Studio and the QBot Platform.
 .. _wallsLibrary:
 
 Library
-^^^^^^^
+=========
 
 .. autoclass:: qvl.walls.QLabsWalls
 
 .. _wallsConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.walls.QLabsWalls.ID_WALL
 
@@ -34,14 +37,14 @@ Constants
 .. _wallsVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+==================
 
 .. autoattribute:: qvl.walls.QLabsWalls.actorNumber
 
 .. _wallsMethods:
 
 Methods
-^^^^^^^
+=========
 
 .. automethod:: qvl.walls.QLabsWalls.spawn
 .. automethod:: qvl.walls.QLabsWalls.spawn_degrees
@@ -68,12 +71,13 @@ Methods
 .. _wallsConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
+
 There is only one configuration for the walls class.
 
 .. _wallsConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.

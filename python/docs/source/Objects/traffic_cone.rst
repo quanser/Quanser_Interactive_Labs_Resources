@@ -1,7 +1,9 @@
 .. _Traffic_Cone:
 
+*****************
 Traffic Cone
-------------
+*****************
+
 
 .. image:: ../pictures/traffic_cone_banner.png
     :width: 800px
@@ -10,7 +12,7 @@ Traffic Cone
 .. _trafficconedescription:
 
 Description
-^^^^^^^^^^^
+============
 
 Traffic cones are considered an "actor" in Quanser Interactive Labs Open Worlds.
 Traffic cones can be spawned anywhere in the Open Worlds and they only exist
@@ -24,28 +26,28 @@ cones in Quanser Interactive Labs.
 .. _trafficconelibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.traffic_cone.QLabsTrafficCone
 
 .. _trafficconeConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE
 
 .. _trafficconeVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.traffic_cone.QLabsTrafficCone.actorNumber
 
 .. _trafficconeMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_degrees
@@ -64,11 +66,10 @@ Methods
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_break
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.set_material_properties
 
-
 .. _trafficconeConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
 
 There are four configurations (0-3) for the traffic cone actor class generated
 in QLabs. For the purpose of the :meth:`set_material_properties <qvl.traffic_cone.QLabsTrafficCone.set_material_properties>` method, configuration 0
@@ -79,7 +80,7 @@ has a single material slot (0), and configurations 1-3 have two material slots (
 .. _trafficconeConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+====================
 
 There are no connection points for this actor class.
 
@@ -89,7 +90,7 @@ There are no connection points for this actor class.
 .. _trafficConeTutorial:
 
 Traffic Cone Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 .. tabs::
     .. tab:: Python

@@ -1,13 +1,13 @@
 .. _Reference_Frame_Library:
 
+*****************
 Reference Frames
-----------------
-
+*****************
 
 .. _referenceFrameDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 The reference frame is an actor that, by default, is hidden, but can still be used to create parent-child
 kinematic relationships, or simply for tracking points of interest that can be queried to get the world
@@ -19,28 +19,28 @@ transformation of child actors.
 .. _referenceFrameLibrary:
 
 Reference Frame Library
-^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 .. autoclass:: qvl.reference_frame.QLabsReferenceFrame
 
 .. _referenceFrameConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.reference_frame.QLabsReferenceFrame.ID_REFERENCE_FRAME
 
 .. _referenceFrameMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.reference_frame.QLabsReferenceFrame.actorNumber
 
 .. _referenceFrameMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.reference_frame.QLabsReferenceFrame.__init__
 .. automethod:: qvl.reference_frame.QLabsReferenceFrame.spawn
@@ -65,14 +65,14 @@ Methods
 .. _referenceFrameConfigs:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There are 3 configurations (0-2) for the reference actor class. 0 - Hidden, 1 - Axes arrows, 2 - Axes arrows with labels
 
 .. _referenceFrameConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for the reference frame.
 

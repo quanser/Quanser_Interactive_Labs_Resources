@@ -1,14 +1,16 @@
 .. _Shredder:
 
+*****************
 Shredder
---------
+*****************
+
 
 .. image:: ../pictures/configuration_shredder.png
 
 .. _shredderDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 Shredders are considered an "actor" in Quanser Interactive Labs Open Worlds.
 They can be spawned anywhere in the Open Worlds and will delete widgets
@@ -22,14 +24,14 @@ in Quanser Interactive Labs.
 .. _shredderlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.shredder.QLabsShredder
 
 .. _shredderConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.shredder.QLabsShredder.ID_SHREDDER
 .. autoattribute:: qvl.shredder.QLabsShredder.RED
@@ -42,14 +44,14 @@ Constants
 .. _shredderMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+==================
 
 .. autoattribute:: qvl.shredder.QLabsShredder.actorNumber
 
 .. _shredderMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.shredder.QLabsShredder.__init__
 .. automethod:: qvl.shredder.QLabsShredder.spawn
@@ -74,7 +76,8 @@ Methods
 .. _shredderConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
+
 There are four configurations (0-3) for the shredder actor class.
 
     * 0 or shredder.RED
@@ -87,7 +90,7 @@ There are four configurations (0-3) for the shredder actor class.
 .. _shredderConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+====================
 
 There are no connection points for this actor class.
 
@@ -96,7 +99,7 @@ There are no connection points for this actor class.
 .. _shredderTutorial:
 
 Shredder Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+====================
 
 .. tabs::
     .. tab:: Python

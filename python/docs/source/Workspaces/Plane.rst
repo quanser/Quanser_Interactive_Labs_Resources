@@ -11,7 +11,7 @@ users to spawn and test scenarios in an empty environment.
     :align: center
 
 Plane World Size
-^^^^^^^^^^^^^^^^
+==================
 
 The world is 20,000m x 20,000m (10km in each direction from the origin) with 
 the ground located at 0m elevation. Note that actors and objects placed very far from the 
@@ -19,7 +19,8 @@ origin may start to suffer some accuracy issues for their position.
 
 
 Plane Navigation Area
-^^^^^^^^^^^^^^^^^^^^^
+========================
+
 The navigation area is the area in which actors supporting path-finding travel can traverse. 
 In other words an actor can freely walk around in this area unobstructed by 
 barriers that are part of the Open World.
@@ -32,10 +33,8 @@ direction from the origin). The entire area is traversable.
     animals, etc.
 
 
-
-
 Coordinates of Interest
-^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 The following table will provide you with some coordinates of interest in the plane.
 

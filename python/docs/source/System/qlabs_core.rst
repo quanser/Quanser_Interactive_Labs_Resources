@@ -1,12 +1,14 @@
 .. _QLabs_Core_Library:
 
+********************
 QLabs Core Library
-------------------
+********************
+
 
 .. _qlabsCoreDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 The QLabs Core library is the base library that manages all communications to
 the Quanser Interactive Labs software.
@@ -17,7 +19,7 @@ The remaining methods are for advanced usage.
 .. _qlabsCoreLibrary:
 
 QLabs Core Library
-^^^^^^^^^^^^^^^^^^
+==================
 
 .. autoclass:: qvl.qlabs.QuanserInteractiveLabs
 
@@ -25,7 +27,7 @@ QLabs Core Library
 .. _qlabsCoreConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 This library has no user constants.
 
@@ -33,7 +35,7 @@ This library has no user constants.
 .. _qlabsCoreMethodsBasic:
 
 Basic Methods
-^^^^^^^^^^^^^
+===============
 .. automethod:: qvl.qlabs.QuanserInteractiveLabs.open
 .. automethod:: qvl.qlabs.QuanserInteractiveLabs.close
 .. automethod:: qvl.qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
@@ -43,7 +45,7 @@ Basic Methods
 .. _qlabsCoreMethodsAdvanced:
 
 Advanced Methods
-^^^^^^^^^^^^^^^^
+==================
 
 To help manage the volume of data in the communications channel and help
 maintain real-time performance, the system is built on a request/response

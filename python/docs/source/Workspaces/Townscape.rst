@@ -12,14 +12,15 @@ an alternate environment to the cityscape.
     :align: center
 
 Townscape World Size
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 The world is approximately 500m x 500m (250m in each direction from the
 origin) with the ground located at 0m elevation.
 
 
 Townscape Navigation Area
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
+
 The navigation area is the area in which actors supporting path-finding travel can traverse.
 In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.
@@ -32,15 +33,13 @@ create breaks in the navigation area.
     :align: center
 
 
-
 .. note::
     The navigation area only applies to traversable actors such as people,
     animals, etc.
 
 
-
 Common Location Coordinates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==============================
 
 The following table will provide you with some coordinates of interest in the townscape.
 

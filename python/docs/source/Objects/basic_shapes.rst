@@ -1,12 +1,13 @@
 .. _Basic_Shapes:
 
+*************
 Basic Shapes
-------------
+*************
 
 .. _basicshapeDescription:
 
 Description
-^^^^^^^^^^^
+=============
 
 Basic shapes are building blocks to modify and customize your environment.
 All shapes are spawned by default as static objects complete with collision
@@ -33,14 +34,14 @@ shapes in Quanser Interactive Labs.
 .. _basicshapelibrary:
 
 Library
-^^^^^^^
+=============
 
 .. autoclass:: qvl.basic_shape.QLabsBasicShape
 
 .. _basicshapeConstants:
 
 Constants
-^^^^^^^^^
+=============
 
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.ID_BASIC_SHAPE
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.SHAPE_CUBE
@@ -57,14 +58,14 @@ Constants
 .. _basicshapeMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.actorNumber
 
 .. _basicshapeMethods:
 
 Methods
-^^^^^^^
+=============
 
 .. automethod:: qvl.basic_shape.QLabsBasicShape.__init__
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn
@@ -100,7 +101,7 @@ Methods
 .. _basicshapeConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 There are four configurations (0-3) for the basic shape actor class.
 
     * 0 - Cube
@@ -114,7 +115,7 @@ There are four configurations (0-3) for the basic shape actor class.
 .. _basicshapeConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+====================
 
 There are no connection points for this actor class.
 
@@ -123,7 +124,7 @@ There are no connection points for this actor class.
 .. _basicshapesTutorial:
 
 Basic Shapes Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+=======================
 
 .. tabs::
     .. tab:: Python

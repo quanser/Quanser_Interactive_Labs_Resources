@@ -1,8 +1,8 @@
 .. _Conveyors:
 
-*********
+##########
 Conveyors
-*********
+##########
 
 .. _conveyorDescription:
 
@@ -21,34 +21,35 @@ conveyors in Quanser Interactive Labs.
 
 -------------------------------------------------------------------------------
 
+******************
 Straight Conveyor
------------------
+******************
 
 .. _straightconveyorlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.conveyor_straight.QLabsConveyorStraight
 
 .. _straightconveyorConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.ID_CONVEYOR_STRAIGHT
 
 .. _straightconveyorMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.actorNumber
 
 .. _straightconveyorMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.__init__
 .. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn
@@ -73,7 +74,8 @@ Methods
 .. _straightconveyorConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
+
 A spawned straight conveyor with configuration set to 0 will create a conveyor
 of 0.5 m in length. For each number you increase the configuration the length
 will increase by .25m. 
@@ -87,42 +89,42 @@ All types of conveyors can be connected to make a setup of your choosing.
 .. _straightconveyorConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.
 
 
 -------------------------------------------------------------------------------
 
+****************
 Curved Conveyor
------------------
+****************
 
 .. _curvedconveyorlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.conveyor_curved.QLabsConveyorCurved
 
 .. _curvedconveyorConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_CURVED
 
 .. _curvedconveyorVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
-
+=================
 .. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.actorNumber
 
 
 .. _curvedconveyorMethods:
 
 Methods
-^^^^^^^
+=========
 
 .. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.__init__
 .. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn
@@ -147,7 +149,8 @@ Methods
 .. _curvedconveyorConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
+
 By default, the curved conveyor is spawned from the center and has a radius of 0.5m.
 When configuration is set to 1, it will create a 15 degree conveyor. 
 For each number you increase the configuration the length will increase by 15 degrees. 
@@ -165,7 +168,7 @@ All types of conveyors can be connected to make a setup of your choosing.
 .. _curvedconveyorConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.
 
@@ -173,8 +176,9 @@ There are no connection points for this actor class.
 
 .. _conveyorTutorial:
 
+*********************
 Conveyors Tutorial
---------------------
+*********************
 
 .. tabs::
     .. tab:: Python

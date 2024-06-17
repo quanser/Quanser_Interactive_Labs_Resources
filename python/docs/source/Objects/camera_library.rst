@@ -1,7 +1,8 @@
 .. _Camera_Library:
 
+********
 Cameras
--------
+********
 
 .. image:: ../pictures/camera_header.png
     :scale: 75%
@@ -11,7 +12,7 @@ Cameras
 .. _cameraDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 Cameras in the Open Worlds are used for observing the workspace from different
 views and capturing image data.
@@ -28,28 +29,28 @@ in Quanser Interactive Labs.
 .. _cameraLibrary:
 
 Camera Library
-^^^^^^^^^^^^^^
+===============
 
 .. autoclass:: qvl.free_camera.QLabsFreeCamera
 
 .. _cameraConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.free_camera.QLabsFreeCamera.ID_FREE_CAMERA
 
 .. _cameraMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.free_camera.QLabsFreeCamera.actorNumber
 
 .. _cameraMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.free_camera.QLabsFreeCamera.__init__
 .. automethod:: qvl.free_camera.QLabsFreeCamera.spawn
@@ -85,14 +86,14 @@ Methods
 .. _cameraConfigs:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There are no configuration options for the camera actor.
 
 .. _cameraConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+===================
 
 There are no connection points for the free camera actor.
 
@@ -101,7 +102,7 @@ There are no connection points for the free camera actor.
 .. _cameraTutorial:
 
 Camera Tutorial
-^^^^^^^^^^^^^^^^^^^
+=================
 
 .. tabs::
     .. tab:: Python

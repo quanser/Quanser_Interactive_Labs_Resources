@@ -26,7 +26,7 @@ author = 'Quanser'
 
 # The full version, including alpha/beta/rc tags
 # release number.year.dayInCalendar
-release = '1.24.81'
+release = '1.24.166'
 
 # To deal with all the "duplicate label errors"
 suppress_warnings = ['autosectionlabel.*']

@@ -1,7 +1,8 @@
 .. _Car_Flooring_Library:
 
+*****************
 QCar Floor Mats
----------------
+*****************
 
 .. image:: ../pictures/banner_qcar_flooring.jpg
     :width: 800px
@@ -10,7 +11,7 @@ QCar Floor Mats
 .. _qcarFlooringDescription:
 
 Description
-^^^^^^^^^^^
+===========
 
 The QCar is accompanied by floor mats.  These tiles are considered
 an "actor" in Quanser Interactive Labs.  These tiles are created to help 
@@ -19,14 +20,14 @@ students with self-driving car skills.
 .. _qcarFlooringLibrary:
 
 Library
-^^^^^^^
+=======
 
 .. autoclass:: qvl.qcar_flooring.QLabsQCarFlooring
 
 .. _qcarFlooringConstants:
 
 Constants
-^^^^^^^^^
+=========
 
 .. autoattribute:: qvl.qcar_flooring.QLabsQCarFlooring.ID_FLOORING
 .. autoattribute:: qvl.qcar_flooring.QLabsQCarFlooring.FLOORING_QCAR_MAP_LARGE
@@ -36,14 +37,14 @@ Constants
 .. _qCarFlooringVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.qcar_flooring.QLabsQCarFlooring.actorNumber
 
 .. _qCarFlooringMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.qcar_flooring.QLabsQCarFlooring.spawn
 .. automethod:: qvl.qcar_flooring.QLabsQCarFlooring.spawn_degrees
@@ -64,12 +65,13 @@ Methods
 .. _qCarFlooringConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
+
 There is only one configuration for the QCar flooring class.
 
 .. _qCarFlooringConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.

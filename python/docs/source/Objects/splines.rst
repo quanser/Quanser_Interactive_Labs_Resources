@@ -1,12 +1,13 @@
 .. _Spline_Base:
 
+*****************
 Splines
--------
+*****************
 
 .. _splineDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 The spline actor can be used to create both curves and straight lines.
 Line color can be set for the entire line, and line width can be set on a
@@ -22,14 +23,14 @@ Quanser Interactive Labs.
 .. _splinelibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.spline_line.QLabsSplineLine
 
 .. _splineConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.spline_line.QLabsSplineLine.ID_SPLINE_LINE
 .. autoattribute:: qvl.spline_line.QLabsSplineLine.LINEAR
@@ -41,14 +42,14 @@ Constants
 .. _splineMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.spline_line.QLabsSplineLine.actorNumber
 
 .. _splineMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.spline_line.QLabsSplineLine.__init__
 .. automethod:: qvl.spline_line.QLabsSplineLine.spawn
@@ -75,7 +76,7 @@ Methods
 .. _splineConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
 
 .. image:: ../pictures/configuration_spline_types.png
     :scale: 75%
@@ -100,14 +101,14 @@ same set of control points.
 .. _splineConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+====================
 
 There are no connection points for this actor class.
 
 .. _splineTutorial:
 
 Splines Tutorial
-^^^^^^^^^^^^^^^^
+====================
 
 .. dropdown:: Example
 

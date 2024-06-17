@@ -12,12 +12,14 @@ scale applications of self-driving.
 
 
 Cityscape Lite World Size
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
+
 The world is 500m x 500m (250m in each direction from the origin) with
 the ground located at 0m elevation.
 
 Cityscape Lite Navigation Area
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+================================
+
 The navigation area is the area in which actors supporting path-finding travel can traverse.
 In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.
@@ -35,7 +37,7 @@ the locations of the buildings.
     animals, etc.
 
 Coordinates of Interest
-^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 The following table will provide you with some coordinates of interest in cityscape lite.
 

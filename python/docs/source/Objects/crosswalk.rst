@@ -1,12 +1,14 @@
 .. _Crosswalk:
 
+
+***********
 Crosswalk
----------
+***********
 
 .. _crosswalkdescription:
 
 Description
-^^^^^^^^^^^
+===============
 
 Crosswalks are considered an "actor" in Quanser Interactive Labs Open Worlds.
 Crosswalks can be spawned anywhere in the Open Worlds.
@@ -19,21 +21,21 @@ signage in Quanser Interactive Labs.
 .. _crosswalklibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.crosswalk.QLabsCrosswalk
 
 .. _crosswalkConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.crosswalk.QLabsCrosswalk.ID_CROSSWALK
 
 .. _crosswalkVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.crosswalk.QLabsCrosswalk.actorNumber
 
@@ -41,7 +43,7 @@ Member Variables
 .. _crosswalkMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.crosswalk.QLabsCrosswalk.spawn
 .. automethod:: qvl.crosswalk.QLabsCrosswalk.spawn_degrees
@@ -62,7 +64,7 @@ Methods
 .. _crosswalkConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
 There are 3 different configurations (0-2) available for crosswalks generated
 in QLabs.
 
@@ -71,7 +73,7 @@ in QLabs.
 .. _crosswalkConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+===================
 
 There are no connection points for this actor class.
 
@@ -80,7 +82,7 @@ There are no connection points for this actor class.
 .. _crosswalkTutorial:
 
 Crosswalk Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+===================
 
 .. tabs::
     .. tab:: Python

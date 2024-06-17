@@ -1,7 +1,10 @@
 .. _Person_Library:
 
+
+*********
 People
-------
+*********
+
 
 .. image:: ../pictures/banner_people.jpg
     :width: 800px
@@ -10,7 +13,7 @@ People
 .. _personDescription:
 
 Description
-^^^^^^^^^^^
+=============
 
 People are considered "actors" in QLabs Open Worlds.
 The person library controls the people placed in Workspaces in Quanser
@@ -31,14 +34,14 @@ Quanser Interactive Labs.
 .. _personLibrary:
 
 Library
-^^^^^^^
+=======
 
 .. autoclass:: qvl.person.QLabsPerson
 
 .. _personConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.person.QLabsPerson.ID_PERSON
 .. autoattribute:: qvl.person.QLabsPerson.STANDING
@@ -49,14 +52,14 @@ Constants
 .. _personMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.person.QLabsPerson.actorNumber
 
 .. _personMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.person.QLabsPerson.__init__
 .. automethod:: qvl.person.QLabsPerson.spawn
@@ -109,7 +112,7 @@ Methods
 .. _personConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There are 12 configurations (0-11) for a person generated in QLabs.
 
@@ -118,7 +121,7 @@ There are 12 configurations (0-11) for a person generated in QLabs.
 .. _personConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connections points for the person actor.
 
@@ -127,7 +130,7 @@ There are no connections points for the person actor.
 .. _personTutorial:
 
 People Tutorial
-^^^^^^^^^^^^^^^^^^^
+================
 
 .. tabs::
     .. tab:: Python

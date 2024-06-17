@@ -1,7 +1,8 @@
 .. _widgets:
 
+*********
 Widgets
--------
+*********
 
 .. image:: ../pictures/banner_widget.png
     :align: center
@@ -30,19 +31,19 @@ Quanser Interactive Labs.
 .. _widgetDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 .. _widgetlibrary:
 
 Library
-^^^^^^^
+=========
 
 .. autoclass:: qvl.widget.QLabsWidget
 
 .. _widgetConstants:
 
 Constants
-^^^^^^^^^
+============
 
 .. autoattribute:: qvl.widget.QLabsWidget.CUBE
 .. autoattribute:: qvl.widget.QLabsWidget.CYLINDER
@@ -54,7 +55,7 @@ Constants
 .. _widgetMethods:
 
 Methods
-^^^^^^^
+=========
 
 .. automethod:: qvl.widget.QLabsWidget.__init__
 .. automethod:: qvl.widget.QLabsWidget.spawn
@@ -65,7 +66,7 @@ Methods
 .. _widgetConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 There are 5 different types of widgets that can be spawned in the widgets
 class.
 
@@ -81,7 +82,7 @@ class.
 .. _widgetConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.
 
@@ -90,7 +91,7 @@ There are no connection points for this actor class.
 .. _widgetTutorial:
 
 Widget Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+==================
 
 .. tabs::
     .. tab:: Python

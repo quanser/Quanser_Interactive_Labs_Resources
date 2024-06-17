@@ -49,6 +49,8 @@ well as versioning.
     * Rationale: It is easier to read to get an overview about the structure when screening the document.
 
 * *[.rst only]* In restructured Text the headings should follow the hierarchy described in the `Sphinx style guide <'https://documentation-style-guide-sphinx.readthedocs.io/en/latest/style-guide.html#headings>`__:
+    .. currently using https://lpn-doc-sphinx-primer.readthedocs.io/en/stable/concepts/heading.html 
+    
 
     * ``#`` with overline (only once, used for the document title)
     * ``*`` with overline

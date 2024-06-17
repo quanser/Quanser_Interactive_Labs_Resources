@@ -1,7 +1,8 @@
 .. _Car_Library:
 
+*******
 QCars
------
+*******
 
 .. image:: ../pictures/banner_qcar.png
     :width: 800px
@@ -10,7 +11,7 @@ QCars
 .. _carDescription:
 
 Description
-^^^^^^^^^^^
+=============
 
 QCars are considered "actors" in Quanser Interactive Labs.The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
@@ -22,14 +23,14 @@ Quanser Interactive Labs.
 .. _carLibrary:
 
 Library
-^^^^^^^
+=========
 
 .. autoclass:: qvl.qcar.QLabsQCar
 
 .. _carConstants:
 
 Constants
-^^^^^^^^^
+===========
 
 .. autoattribute:: qvl.qcar.QLabsQCar.ID_QCAR
 
@@ -58,14 +59,14 @@ Constants
 .. _carMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.qcar.QLabsQCar.actorNumber
 
 .. _carMethods:
 
 Methods
-^^^^^^^
+=========
 
 .. automethod:: qvl.qcar.QLabsQCar.__init__
 .. automethod:: qvl.qcar.QLabsQCar.spawn
@@ -89,7 +90,7 @@ Methods
 .. _carConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There is only one configuration of the QCar actor.
 
@@ -101,7 +102,7 @@ There is only one configuration of the QCar actor.
 .. _carConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+===================
 
 .. image:: ../pictures/qcar_connection_points.png
     :scale: 50%
@@ -120,7 +121,8 @@ Connection Points
 
 
 Component Extrinsics
-^^^^^^^^^^^^^^^^^^^^
+=======================
+
 "Extrinsics" refer to the external relationship of an object with respect to a
 specific frame of reference (in this case the body center of the QCar).
 Sometimes it's important to know specific distances and orientation of
@@ -129,7 +131,7 @@ camera calibration.
 You will find a list of the important extrinsics below.
 
 Distances From Body Center
-""""""""""""""""""""""""""
+***************************
 Distances of the QCar in its virtual environment are 10 times larger then in
 real life when scaled at [1,1,1].
 Therefore the distances to important components have been scaled accordingly
@@ -155,7 +157,7 @@ below to match a scale of [1,1,1]:
     ========== ====== ====== ======
 
 Transformation Matrices
-"""""""""""""""""""""""
+************************
 
 .. image:: ../pictures/bodyframe.png
     :scale:  65%
@@ -177,7 +179,7 @@ User Guides/System Hardware.pdf
 .. _QCarTutorial:
 
 QCar Tutorial
-^^^^^^^^^^^^^^^^^^^
+===============
 
 .. tabs::
     .. tab:: Python

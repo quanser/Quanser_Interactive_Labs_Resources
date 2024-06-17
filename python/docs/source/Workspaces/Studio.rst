@@ -15,13 +15,14 @@ devices.
 
 
 Studio World Size
-^^^^^^^^^^^^^^^^^
+==================
 
 The studio is 15m x 14m (+/-7.5m along x, +/-7.0m along y) with
 the ground located at 0m and the ceiling at 2.5m elevation.
 
 Studio Navigation Area
-^^^^^^^^^^^^^^^^^^^^^^
+========================
+
 The navigation area is the area in which an actor can traverse.
 In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.
@@ -36,7 +37,7 @@ barriers that are part of the Open World.
 
 
 Studio Coordinates of Interest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+================================
 
 The following table will provide you with some coordinates of interest in the studio workspace.
 

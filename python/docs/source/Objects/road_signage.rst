@@ -1,8 +1,9 @@
 .. _Road_Signage:
 
-************
+
+#############
 Road Signage
-************
+#############
 
 .. _roadsignagedescription:
 
@@ -22,34 +23,35 @@ signage in Quanser Interactive Labs.
 
 -------------------------------------------------------------------------------
 
+****************
 Roundabout Sign
----------------
+****************
 
 .. _roundaboutlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.roundabout_sign.QLabsRoundaboutSign
 
 .. _roundaboutConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
 
 .. _roundaboutVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.roundabout_sign.QLabsRoundaboutSign.actorNumber
 
 .. _roundaboutMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn
 .. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_degrees
@@ -71,7 +73,7 @@ Methods
 .. _roundaboutConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There is only one configuration (0) of the roundabout sign actor generated in
 QLabs.
@@ -81,40 +83,41 @@ QLabs.
 .. _roundaboutConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.
 
 -------------------------------------------------------------------------------
 
+***********
 Stop Sign
----------
+***********
 
 .. _stopsignlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.stop_sign.QLabsStopSign
 
 .. _stopsignConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.stop_sign.QLabsStopSign.ID_STOP_SIGN
 
 .. _stopsignVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+==================
 
 .. autoattribute:: qvl.stop_sign.QLabsStopSign.actorNumber
 
 .. _stopsignMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.stop_sign.QLabsStopSign.spawn
 .. automethod:: qvl.stop_sign.QLabsStopSign.spawn_degrees
@@ -135,7 +138,7 @@ Methods
 .. _stopsignConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
 
 There is only one configuration (0) of the stop sign actor generated in QLabs.
 
@@ -144,41 +147,42 @@ There is only one configuration (0) of the stop sign actor generated in QLabs.
 .. _stopsignConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+====================
 
 There are no connection points for this actor class.
 
 
 -------------------------------------------------------------------------------
 
+***********
 Yield Sign
-----------
+***********
 
 .. _yieldsignlibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.yield_sign.QLabsYieldSign
 
 .. _yieldsignConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.yield_sign.QLabsYieldSign.ID_YIELD_SIGN
 
 .. _yieldsignVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+==================
 
 .. autoattribute:: qvl.yield_sign.QLabsYieldSign.actorNumber
 
 .. _yieldsignMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.yield_sign.QLabsYieldSign.spawn
 .. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_degrees
@@ -201,7 +205,7 @@ Methods
 .. _yieldsignConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+===============
 
 There is only one configuration (0) of the yield sign actor generated in QLabs.
 
@@ -210,7 +214,7 @@ There is only one configuration (0) of the yield sign actor generated in QLabs.
 .. _yieldsignConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.
 
@@ -218,8 +222,9 @@ There are no connection points for this actor class.
 
 .. _roadsignageTutorial:
 
+**********************
 Road Signage Tutorial
-^^^^^^^^^^^^^^^^^^^^^^^
+**********************
 
 .. tabs::
     .. tab:: Python

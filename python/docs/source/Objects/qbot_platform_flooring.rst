@@ -1,12 +1,14 @@
 .. _QBotPlatform_Flooring:
 
+
+*************************
 QBot Platform Floor Mats
-------------------------
+*************************
 
 .. _qbotPlatformFlooringDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 The QBot Platform is accompanied by floor mats.  These mats are considered
 an "actor" in Quanser Interactive Labs.  These mats are created to help easily
@@ -16,14 +18,14 @@ skills.
 .. _qbotPlatformFlooringLibrary:
 
 Library
-^^^^^^^
+========
 
 .. autoclass:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring
 
 .. _qbotPlatformFlooringConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ID_FLOORING
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_0
@@ -36,14 +38,14 @@ Constants
 .. _qbotPlatformFlooringVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+=================
 
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.actorNumber
 
 .. _qbotPlatformFlooringMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn
 .. automethod:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_degrees
@@ -64,7 +66,7 @@ Methods
 .. _qbotPlatformFlooringConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+================
 There 6 configurations (0-5) for the QBot Platform flooring class. Each mat is 1.2m x 1.2m.
 
 .. image:: ../pictures/configuration_qbot_platform_flooring.png
@@ -74,6 +76,6 @@ There 6 configurations (0-5) for the QBot Platform flooring class. Each mat is 1
 .. _qbotPlatformFlooringConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 
 There are no connection points for this actor class.

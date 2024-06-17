@@ -12,13 +12,13 @@ match the physical devices.  The QCar can be spawned at 1 to 1 or 1/10th scale.
     :align: center
 
 Warehouse World Size
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 The warehouse is 50m x 30m (+/-25m along x, +/-15m along y) with
 the ground located at 0m and the ceiling at 5.5m elevation.
 
 Warehouse Navigation Area
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 The navigation area is the area in which an actor can traverse.
 In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.  In the warehouse workspace the
@@ -32,7 +32,7 @@ navigation areas covers the full floor of the warehouse.
     :align: center
 
 Warehouse Coordinates of Interest
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==================================
 
 The following table will provide you with any coordinates of interest in the studio workspace.
 

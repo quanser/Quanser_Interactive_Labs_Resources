@@ -1,7 +1,9 @@
 .. _QBotPlatform_Library:
 
+
+**************
 QBot Platform
--------------
+**************
 
 .. image:: ../pictures/qbot_platform.png
     :scale: 25%
@@ -10,7 +12,7 @@ QBot Platform
 .. _qbotPlatformDescription:
 
 Description
-^^^^^^^^^^^
+============
 
 A QBot Platform is considered an "actor" in Quanser Interactive Labs. 
 The QBot Platform library can be used to acquire sensor data from the 
@@ -22,14 +24,14 @@ virtual environment and control the motion of the robot(s).
 .. _qbotPlatformLibrary:
 
 Library
-^^^^^^^
+=========
 
 .. autoclass:: qvl.qbot_platform.QLabsQBotPlatform
 
 .. _qbotPlatformConstants:
 
 Constants
-^^^^^^^^^
+==========
 
 .. autoattribute:: qvl.qbot_platform.QLabsQBotPlatform.ID_QBOT_PLATFORM
 .. autoattribute:: qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_RGB
@@ -44,14 +46,14 @@ Constants
 .. _qbotPlatformMemberVars:
 
 Member Variables
-^^^^^^^^^^^^^^^^
+==================
 
 .. autoattribute:: qvl.qbot_platform.QLabsQBotPlatform.actorNumber
 
 .. _qbotPlatformMethods:
 
 Methods
-^^^^^^^
+========
 
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.__init__
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn
@@ -69,7 +71,7 @@ Methods
 .. _qbotPlatformConfig:
 
 Configurations
-^^^^^^^^^^^^^^
+==============
 
 There are two configurations (0-1) of the QBot Platform actor. Configuration 1 adds a cover
 on top to facilitate carrying other dynamic actors.
@@ -81,7 +83,7 @@ on top to facilitate carrying other dynamic actors.
 .. _qbotPlatformConnect:
 
 Connection Points
-^^^^^^^^^^^^^^^^^
+==================
 .. |conn0| image:: ../pictures/connection_qbot_platform1_0.png
    :height: 50pt
 
@@ -122,7 +124,8 @@ Connection Points
     =============================== ====================== ============ ====================================================== ===========
 
 Component Extrinsics
-^^^^^^^^^^^^^^^^^^^^
+=====================
+
 "Extrinsics" refer to the external relationship of an object with respect to a
 specific frame of reference (in this case the body center of the QBot Platform).
 Sometimes it's important to know specific distances and orientation of
@@ -162,7 +165,7 @@ You will find a list of the important extrinsics below relative to the actor bas
     QBot Platform geometric center/body frame.
 
 .. Transformation Matrices
-.. """""""""""""""""""""""
+.. ************************
 
 
 
@@ -186,7 +189,7 @@ You will find a list of the important extrinsics below relative to the actor bas
 .. _qbotPlatformTutorial:
 
 QBot Platform Tutorial
-^^^^^^^^^^^^^^^^^^^^^^
+=======================
 
 .. dropdown:: Example
 

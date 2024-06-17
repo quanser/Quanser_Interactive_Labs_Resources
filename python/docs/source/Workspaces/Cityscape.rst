@@ -11,14 +11,15 @@ deploying large-scale applications of self-driving.
     :align: center
 
 Cityscape World Size
-^^^^^^^^^^^^^^^^^^^^
+====================
 
 The world is approximately 500m x 500m (250m in each direction from the
 origin) with the ground located at 0m elevation.
 
 
 Cityscape Navigation Area
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
+
 The navigation area is the area in which actors supporting path-finding travel can traverse.
 In other words an actor can freely walk around in this area unobstructed by
 barriers that are part of the Open World.
@@ -30,8 +31,6 @@ create breaks in the navigation area.
 .. image:: ../pictures/cityscape_nav_area.png
     :align: center
 
-
-
 .. note::
     The navigation area only applies to traversable actors such as people,
     animals, etc.
@@ -39,7 +38,7 @@ create breaks in the navigation area.
 
 
 Common Location Coordinates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==============================
 
 The following table will provide you with some coordinates of interest in the cityscape.
 
