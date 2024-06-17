@@ -48,9 +48,7 @@ well as versioning.
 
     * Rationale: It is easier to read to get an overview about the structure when screening the document.
 
-* *[.rst only]* In restructured Text the headings should follow the hierarchy described in the `Sphinx style guide <'https://documentation-style-guide-sphinx.readthedocs.io/en/latest/style-guide.html#headings>`__:
-    .. currently using https://lpn-doc-sphinx-primer.readthedocs.io/en/stable/concepts/heading.html 
-    
+* *[.rst only]* In restructured Text the headings should follow the hierarchy described in the `Sphinx style guide <https://documentation-style-guide-sphinx.readthedocs.io/en/latest/style-guide.html#headings>`__:   
 
     * ``#`` with overline (only once, used for the document title)
     * ``*`` with overline
@@ -63,8 +61,8 @@ well as versioning.
 * *[.md only]* In Markdown the headings should follow the ATX-style described in the `Markdown syntax documentation <https://daringfireball.net/projects/markdown/syntax#header>`__
 
     * ATX-style headers use 1-6 hash characters (``#``) at the start of the line to denote header levels 1-6.
-    * A space between the hases and the header title should be used (such as ``# Heading 1``) to make it easier to visually seperate them.
-    * Justifiication for the ATX-style preference comes from the `Google Mardown style guide <https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings>`__
+    * A space between the hashes and the header title should be used (such as ``# Heading 1``) to make it easier to visually separate them.
+    * Justification for the ATX-style preference comes from the `Google Mardown style guide <https://github.com/google/styleguide/blob/gh-pages/docguide/style.md#atx-style-headings>`__
     * Rationale: ATX-style headers are easier to search and maintain, and make the first two header levels consistent with the other levels.
 
 * *[any]* Each sentence must start on a new line.
@@ -75,7 +73,7 @@ well as versioning.
 * *[any]* The lines should not have any trailing white spaces.
 * *[.md, .rst only]* A code block must be preceded and succeeded by an empty line.
 
-    * Rationale: Whitespace is significant only directly before and directly after fenced code blocks. Following these instructions will ensure that highlighting works properly and consistantly.
+    * Rationale: Whitespace is significant only directly before and directly after fenced code blocks. Following these instructions will ensure that highlighting works properly and consistently.
 
 * *[.md, .rst only]* A code block should specify a syntax (e.g. ``bash``).
 
