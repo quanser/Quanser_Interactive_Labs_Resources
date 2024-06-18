@@ -30,7 +30,7 @@ for code format.
 
 We chose the following more precise rule where PEP 8 leaves some freedom:
 
-* `We allow up to 79 characters per line for comments or docstrings(fifth paragraph) <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
+* `We allow up to 79 characters per line for comments or docstrings (fifth paragraph) <https://www.python.org/dev/peps/pep-0008/#maximum-line-length>`_.
 * `We pick double quotes over single quotes (as long as no escaping is necessary) <https://www.python.org/dev/peps/pep-0008/#string-quotes>`_.
 * `We prefer hanging indents for continuation lines <https://www.python.org/dev/peps/pep-0008/#indentation>`_.
 
