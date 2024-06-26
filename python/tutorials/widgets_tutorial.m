@@ -44,6 +44,10 @@ disp('Connected')
 num_destroyed = qlabs.destroy_all_spawned_actors();
 fprintf('%d actors destroyed', num_destroyed);
 
+% Use hSystem to set the tutorial title on the qlabs printlay screen
+hSystem = QLabsSystem(qlabs);
+hSystem.set_title_string('Widgets Tutorial')
+
 main(qlabs);
 
 % ------------ functions ----------
@@ -109,7 +113,9 @@ function main(qlabs)
     % Run the code for using widgets
     widgets(qlabs);
 
-    % Close our connection to qlabs
+    % Close qlabs
     qlabs.close();
+    disp('Done!');
+
 end
 

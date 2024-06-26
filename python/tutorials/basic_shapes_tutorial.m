@@ -44,6 +44,10 @@ num_destroyed = qlabs.destroy_all_spawned_actors();
 
 fprintf('%d actors destroyed', num_destroyed);
 
+% Use hSystem to set the tutorial title on the qlabs display screen
+hSystem = QLabsSystem(qlabs);
+hSystem.set_title_string('Basic Shapes Tutorial')
+
 % initialize our desired variables
 % note that you can use the coordinate helper to pick locations for your camera.
 loc = [-17.801, 31.145, 1.783];
@@ -158,4 +162,8 @@ boxSpawn.actorNumber = shapeHandle3;
 boxSpawn.set_material_properties([0.5, 0.5, 0.5], 0.0, 0, 1);
 boxSpawn.actorNumber = shapeHandle4;
 boxSpawn.set_material_properties([0, 0, 0], 0.0, 0, 1);
+
+% close qlabs
+qlabs.close();
+disp('Done !')
 

@@ -86,20 +86,31 @@ There are no connection points for this actor class.
 
 .. _trafficlightTutorial:
 
-Traffic Light Tutorial
-========================
+Traffic lights Tutorial
+=========================
 
 .. tabs::
     .. tab:: Python
 
         .. dropdown:: Python Tutorial
 
-            Raw to download this tutorial: |road_signage_tutorial.py|.
+            Raw to download this tutorial: |traffic_lights_tutorial.py|.
 
-            .. |road_signage_tutorial.py| replace::
-                :download:`Traffic Lights Tutorial (.py) <../../../tutorials/road_signage_tutorial.py>`
+            .. |traffic_lights_tutorial.py| replace::
+                :download:`Traffic Lights Tutorial (.py) <../../../tutorials/traffic_lights_tutorial.py>`
 
-            .. literalinclude:: ../../../tutorials/road_signage_tutorial.py
+            .. literalinclude:: ../../../tutorials/traffic_lights_tutorial.py
+                :language: python
+                :linenos:
+
+        .. dropdown:: Complete Road Signage Python Tutorial
+
+            Raw to download this tutorial: |complete_road_signage_tutorial.py|.
+
+            .. |complete_road_signage_tutorial.py| replace::
+                :download:`Complete Road Signage Tutorial (.py) <../../../tutorials/complete_road_signage_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/complete_road_signage_tutorial.py
                 :language: python
                 :linenos:
 
@@ -113,6 +124,17 @@ Traffic Light Tutorial
                 :download:`Traffic Lights Tutorial (.m) <../../../tutorials/traffic_lights_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/traffic_lights_tutorial.m
+                :language: Matlab
+                :linenos:
+
+        .. dropdown:: Complete Road Signage Matlab Tutorial
+
+            Raw to download this tutorial: |complete_road_signage_tutorial.m|.
+
+            .. |complete_road_signage_tutorial.m| replace::
+                :download:`Complete Road Signage Tutorial (.m) <../../../tutorials/complete_road_signage_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/complete_road_signage_tutorial.m
                 :language: Matlab
                 :linenos:
 

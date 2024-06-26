@@ -1,11 +1,13 @@
 % QCar Library Example
 % -------------------------
+% This example will show you how to spawn cars, and use the qvl library commands
+% to control the car and its related functions.
 % 
 % .. note::
 % 
 %     Make sure you have Quanser Interactive Labs open before running this
-%     example.  This example is designed to best be run in any of the open
-%     world environments.
+%     example.  This example is designed to best be run in QCar Cityscape.
+
 
 close all;
 clear all;
@@ -45,6 +47,10 @@ num_destroyed = qlabs.destroy_all_spawned_actors();
 
 fprintf('%d actors destroyed', num_destroyed);
 
+% Use hSystem to set the tutorial title on the qlabs display screen
+hSystem = QLabsSystem(qlabs);
+hSystem.set_title_string('QCar Tutorial')
+
 % Initialize QLabs
 hCameraQCars = QLabsFreeCamera(qlabs);
 hCameraQCars.spawn_id(1, [-15.075, 26.703, 6.074], [0, 0.564, -1.586]);
@@ -68,13 +74,7 @@ x = hQCar2.spawn_id_degrees(2, [-11.048, 14.643, 0.005], [0, 0, 90], 1);
 % Pinging the QCar
 hQCar2.ping();
 
-% Change the lighting in qlabs to turn on the car lights
-hEnvironmentOutdoors = QLabsEnvironmentOutdoors(qlabs);
-for env_time = 0:59
-    hEnvironmentOutdoors.set_time_of_day(12 + env_time / 10 * 2);
-end
 
-pause(0.5);
 
 % Set the velocity and direction of the QCar in radians while also turning on the headlights and right turn signal
 hQCar2.set_velocity_and_request_state(1, -pi/6, true, false, true, false, false);
@@ -105,13 +105,7 @@ hQCar2.set_velocity_and_request_state(0.0, 0, true, true, true, true, true);
 % Turn all the lights off
 hQCar2.set_velocity_and_request_state(0, 0, false, false, false, false, false);
 
-% Set the time of day to change to light outside again
-for env_time = 0:59
-    hEnvironmentOutdoors.set_time_of_day(env_time / 10 * 2);
-end
-
 % Car bumper test
-disp('Testing bumper response...');
 hCameraQCars.possess();
 
 % Change the camera view to see the bumper test
@@ -169,8 +163,6 @@ pause(0.5);
 % Turning off ghost mode for the QCar
 hQCar3.ghost_mode(false, [1, 0, 0]);
 
-% QCar Camera Tests
-disp('QCar Camera Tests...');
 
 % Possessing the overhead camera on the QCar
 hQCar2.possess(hQCar2.CAMERA_OVERHEAD);
@@ -223,7 +215,13 @@ hFigure = figure();
 
 disp('Reading from LIDAR... if QLabs crashes or output isn''t great, make sure FPS > 100')
 
-for count = 0:20
+% Have the QCar drive forward to hit the front block to show the live lidar
+% speed can be changed by increasing or decreasing sthe value in the first
+% parameter "forward" 
+hQCar3.set_velocity_and_request_state(1, 0, false, false, false, false, false);
+lidar_rate = 0.05;
+
+for count = 0:25
 
     [success, angle, distance] = hQCar3.get_lidar(400);
 
@@ -233,13 +231,13 @@ for count = 0:20
     plot(x,y, '.');
     axis([-60 60 -60 60]);
     drawnow;
-    pause(0.05);
+    pause(lidar_rate);
     
 end
 
-close(hFigure);
 pause(5);
 
 % Closing qlabs
 qlabs.close();
 disp('Done!');
+close(hFigure);

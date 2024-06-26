@@ -17,6 +17,7 @@ import time
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
+from qvl.system import QLabsSystem
 from qvl.widget import QLabsWidget
 from qvl.conveyor_curved import QLabsConveyorCurved
 from qvl.conveyor_straight import QLabsConveyorStraight
@@ -31,10 +32,17 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
-    cylinder = QLabsWidget(qlabs)
+    
+    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('Conveyor Tutorial')
+    
     # destroy any spawned actors (this is useful if you are running the same script over and over)
     qlabs.destroy_all_spawned_actors()
 
+
+    
+    cylinder = QLabsWidget(qlabs)
     # create a camera in this qlabs instance
     camera = QLabsFreeCamera(qlabs)
     # place the custom camera at a specified location and rotation using radians
@@ -46,7 +54,7 @@ def main():
     ### Create conveyors
     # The configuration argument is an integer associated with the length of the conveyors
     # For straight conveyor, configuration = 0 corresponds to a length of 0.5. With each 
-    # increase in configuration, the length is increased by 0.25, up to configuration = 20  
+    # increase in configuration, the lengh is increased by 0.25, up to configuratoin = 20  
     straightConveyor = QLabsConveyorStraight(qlabs)
     straightConveyor.spawn_id_degrees(actorNumber = 0,
                                     location = [0, 0, 0],
@@ -55,7 +63,7 @@ def main():
                                     configuration = 5)
     # For curved conveyor, configuration = 0 corresponds to a circular arc of 15 degree. 
     # With each increase in configuration, the arc length is increased by 15 degrees, up to 
-    # configuration = 24.
+    # configuratoin = 24.
     curvedConveyor = QLabsConveyorCurved(qlabs)
     curvedConveyor.spawn_id_degrees(actorNumber = 1,
                                     location = [0.03, -0.5, 0],
@@ -70,7 +78,7 @@ def main():
 
     time.sleep(2)
 
-    ### drop one cylinder widget on top of the straight conveyor
+    ### drop one cylinder widget on top of the straight convoryer
     cylinder.spawn(location = [1.6, 0, 1],
                rotation = [0, 0, .5],
                scale = [.05, .05, .05],

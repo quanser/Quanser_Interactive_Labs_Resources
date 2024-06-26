@@ -74,4 +74,38 @@ There is only one configuration for the QCar flooring class.
 Connection Points
 ==================
 
-There are no connection points for this actor class.
+There are no connections points for the person actor.
+
+-------------------------------------------------------------------------------
+
+.. _qcarFlooringTutorial:
+
+QCar Flooring Tutorial
+========================
+
+.. tabs::
+    .. tab:: Python
+
+        .. dropdown:: Python Tutorial
+
+            Raw to download this tutorial: |qcar_floor_mats_tutorial.py|.
+
+            .. |qcar_floor_mats_tutorial.py| replace::
+                :download:`QCar Floor Mats Tutorial (.py) <../../../tutorials/qcar_floor_mats_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/qcar_floor_mats_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |qcar_floor_mats_tutorial.m|.
+
+            .. |qcar_floor_mats_tutorial.m| replace::
+                :download:`QCar Floor Mats Tutorial (.m) <../../../tutorials/qcar_floor_mats_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/qcar_floor_mats_tutorial.m
+                :language: Matlab
+                :linenos:

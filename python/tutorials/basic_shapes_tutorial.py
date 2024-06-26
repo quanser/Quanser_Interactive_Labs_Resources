@@ -16,6 +16,7 @@ import time
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
+from qvl.system import QLabsSystem
 
 def main():
 
@@ -35,6 +36,10 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
+    
+    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('Basic Shapes Tutorial')
 
     # destroy any spawned actors in our QLabs that currently exist
     qlabs.destroy_all_spawned_actors()
@@ -143,7 +148,9 @@ def main():
     boxSpawn.actorNumber = shapeHandle4
     boxSpawn.set_material_properties(color=[0,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
 
-
+    # Close qlabs
+    qlabs.close()
+    print('Done !')
 
 if __name__ == "__main__":
     main()

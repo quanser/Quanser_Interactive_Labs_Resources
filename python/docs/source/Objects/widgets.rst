@@ -101,7 +101,7 @@ Widget Tutorial
             Raw to download this tutorial: |widgets_tutorial.py|.
 
             .. |widgets_tutorial.py| replace::
-                :download:`Widget Tutorial (.py) <../../../tutorials/widgets_tutorial.py>`
+                :download:`Widgets Tutorial (.py) <../../../tutorials/widgets_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/widgets_tutorial.py
                 :language: python
@@ -111,10 +111,10 @@ Widget Tutorial
 
         .. dropdown:: Matlab Tutorial
 
-            Raw to download this tutorial: |widget_tutorial.m|.
+            Raw to download this tutorial: |widgets_tutorial.m|.
 
-            .. |widget_tutorial.m| replace::
-                :download:`Widget Tutorial (.m) <../../../tutorials/widgets_tutorial.m>`
+            .. |widgets_tutorial.m| replace::
+                :download:`Widgets Tutorial (.m) <../../../tutorials/widgets_tutorial.m>`
 
             .. literalinclude:: ../../../tutorials/widgets_tutorial.m
                 :language: Matlab

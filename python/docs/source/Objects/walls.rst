@@ -81,3 +81,37 @@ Connection Points
 ==================
 
 There are no connection points for this actor class.
+
+-------------------------------------------------------------------------------
+
+.. _wallsTutorial:
+
+Walls Tutorial
+==================
+
+.. tabs::
+    .. tab:: Python
+
+        .. dropdown:: Python Tutorial
+
+            Raw to download this tutorial: |walls_tutorial.py|.
+
+            .. |walls_tutorial.py| replace::
+                :download:`Walls Tutorial (.py) <../../../tutorials/walls_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/walls_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |walls_tutorial.m|.
+
+            .. |walls_tutorial.m| replace::
+                :download:`Walls Tutorial (.m) <../../../tutorials/walls_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/walls_tutorial.m
+                :language: Matlab
+                :linenos:

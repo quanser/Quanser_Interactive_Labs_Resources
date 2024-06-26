@@ -138,9 +138,9 @@ Animals Tutorial
 
         .. dropdown:: Python Tutorial
 
-            Raw to download this tutorial: |animal_tutorial.py|.
+            Raw to download this tutorial: |animals_tutorial.py|.
 
-            .. |animal_tutorial.py| replace::
+            .. |animals_tutorial.py| replace::
                 :download:`Animals Tutorial (.py) <../../../tutorials/animals_tutorial.py>`
 
             .. literalinclude:: ../../../tutorials/animals_tutorial.py

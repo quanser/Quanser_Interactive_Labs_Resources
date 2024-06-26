@@ -43,6 +43,10 @@ num_destroyed = qlabs.destroy_all_spawned_actors();
 
 fprintf('%d actors destroyed', num_destroyed);
 
+% Use hSystem to set the tutorial title on the qlabs display screen
+hSystem = QLabsSystem(qlabs);
+hSystem.set_title_string('Animals Tutorial')
+
 % initialize our variables
 % Note that you can use the 
 % Coordinate Helper to pick locations for your actor.
@@ -67,40 +71,57 @@ camera.spawn([-0., 43.807, 8.82], [-0, 0.606, 3.127]);
 
 % to switch our view from our current camera
 % to the new camera we just initialized 
-% to be able to view where our people will spawn
+% to be able to view where our animals will spawn
 camera.possess();
 
 % creates an instance of the Animal
-animal1 = QLabsAnimal(qlabs);
+goat = QLabsAnimal(qlabs);
+
+% Animal configurations 
+%
+%   Goat = 0
+%   Sheep = 1
+%   Cow =2
 
 % place the animal at a specified location and rotation using radians
 % spawn_id allows us to specify the internal number for the actor
-animal1.spawn_id(0, LOCATION_START_P1, ROTATION_P1P2, SCALE, 0, 1);
+goat.spawn_id(0, LOCATION_START_P1, ROTATION_P1P2, SCALE, 0, 1);
 
-% creates a second instance of a person
-animal2 = QLabsAnimal(qlabs);
+% creates a second instance of a animal 
+sheep = QLabsAnimal(qlabs);
 
 % place the animal at a specified location and rotation using radians
 % spawn creates the internal number for the actor automatically using
 % the next available actor number
-animal2.spawn(LOCATION_START_P2, ROTATION_P1P2, SCALE, 1, 1)
+sheep.spawn(LOCATION_START_P2, ROTATION_P1P2, SCALE, 1, 1)
 
-% creates a third instance of a person
-animal3 = QLabsAnimal(qlabs, 1);
+% creates a third instance of a animal
+cow = QLabsAnimal(qlabs, 1);
 
 % place the animal at a specified location and rotation using degrees
 % spawn_degrees creates the internal actor number
 % automatically using the next available number 
 % this function also takes the input rotation as degrees
-animal3.spawn_degrees(LOCATION_START_P3, ROTATION_P3, SCALE, 2, 1);
+cow.spawn_degrees(LOCATION_START_P3, ROTATION_P3, SCALE, 2, 1);
 
 % move the 3 animals created to a new location
-animal1.move_to(LOCATION_END_P1, animal1.GOAT_WALK, 1);
-animal2.move_to(LOCATION_END_P2, animal2.SHEEP_RUN, 1);
-animal3.move_to(LOCATION_END_P3, animal3.COW_RUN, 1);
+goat.move_to(LOCATION_END_P1, goat.GOAT_WALK, 1);
+sheep.move_to(LOCATION_END_P2, sheep.SHEEP_RUN, 1);
+cow.move_to(LOCATION_END_P3, cow.COW_RUN, 1);
 
-% pause to change camera angle 
-pause(8);
+% pause to change camera
+pause(9);
+
+% destroy each animal one by one 
+
+goat.destroy();
+pause(1);
+
+sheep.destroy();
+pause(1);
+
+cow.destroy();
+pause(2);
 
 % re position camera
 hCameraAnimals = QLabsFreeCamera(qlabs);
@@ -118,25 +139,27 @@ hGoat.move_to([28.338, 47.826, 0], hGoat.GOAT_WALK, true);
 pause(4);
 hGoat.destroy();
 
-% Spawn a Sheep in a specific location
+% Spawn a Sheep and make it run to a specific location
 hSheep = QLabsAnimal(qlabs);
 hSheep.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hSheep.SHEEP, true);
 hSheep.move_to([27.214, 49.286, 0], hSheep.SHEEP_RUN, true);
 pause(3);
 
-% Move the Sheep to your desired loaction 
+% Move the Sheep at walking speed to your desired loaction 
 hSheep.move_to([28.338, 47.826, 0], hSheep.SHEEP_WALK, true);
 pause(4);
 hSheep.destroy();
 
-% Spawn a Cow in a specific location
+% Spawn a Cow and make it run to a specific location
 hCow = QLabsAnimal(qlabs);
 hCow.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hCow.COW, true);
 hCow.move_to([27.214, 49.286, 0], hCow.COW_RUN, true);
 pause(3);
 
-% Move the Cow to your desired loaction 
+% Move the Cow at walking speed to your desired loaction
 hCow.move_to([28.338, 47.826, 0], hCow.COW_WALK, true);
 pause(6);
 
+% close qlabs
 qlabs.close();
+disp('Done !')

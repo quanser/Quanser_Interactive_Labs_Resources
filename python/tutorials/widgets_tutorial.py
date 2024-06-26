@@ -15,9 +15,14 @@ import time
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
+from qvl.system import QLabsSystem
 from qvl.widget import QLabsWidget
 
 def widgets(qlabs):
+
+    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('Widgets Tutorial')
 
     # initialize the widget class in qlabs
     widget = QLabsWidget(qlabs)
@@ -89,8 +94,9 @@ def main():
     # run the code for using widgets
     widgets(qlabs)
 
-    # close our connection to qlabs
+    # close qlabs
     qlabs.close()
+    print('Done!')
 
 if __name__ == "__main__":
     main()

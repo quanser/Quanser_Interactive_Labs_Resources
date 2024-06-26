@@ -26,7 +26,9 @@ import os
 import pyqtgraph as pg
 from pyqtgraph.Qt import QtWidgets
 
-lidar_rate = 0.01
+from qvl.system import QLabsSystem
+
+
 
 def main():
     os.system('cls')
@@ -46,6 +48,10 @@ def main():
     print("Connected")
 
     qlabs.destroy_all_spawned_actors()
+
+    # Use hSystem to set the tutorial title on the qlabs display screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('QCar Tutorial')
 
     ### QCar
 
@@ -70,11 +76,6 @@ def main():
 
     #pinging the QCar
     hQCar2.ping()
-
-    # change the lighting in qlabs to turn on the car lights
-    hEnvironmentOutdoors = QLabsEnvironmentOutdoors(qlabs)
-    for env_time in range(60):
-        hEnvironmentOutdoors.set_time_of_day(12+env_time/10*2)
 
     time.sleep(0.5)
 
@@ -102,12 +103,7 @@ def main():
     # Turn all the lights off
     hQCar2.set_velocity_and_request_state(forward=0, turn = 0, headlights=False, leftTurnSignal=False, rightTurnSignal=False, brakeSignal=False, reverseSignal=False)
 
-    # Set the time of day to change to light outside again
-    for env_time in range(60):
-        hEnvironmentOutdoors.set_time_of_day(env_time/10*2)
-
     # Car bumper test
-    print("Testing bumper response...")
     hCameraQCars.possess()
     # Change the camera view to see the bumper test
     hCameraQCars.set_transform(location=[-17.045, 32.589, 6.042], rotation=[0, 0.594, -1.568])
@@ -155,10 +151,6 @@ def main():
     #Turning off ghost mode for the QCar
     hQCar3.ghost_mode(enable=False, color=[1,0,0])
 
-
-    # QCar Camera Tests
-    print("\nQCar Camera Tests...")
-    
     # Possessing the overhead camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_OVERHEAD)
     time.sleep(0.5)
@@ -214,10 +206,16 @@ def main():
     time.sleep(1)
 
     print("Reading from LIDAR... if QLabs crashes or output isn't great, make sure FPS > 100")
+    
+    # Have the QCar drive forward to hit the front block to show the live lidar
+    # speed can be changed by increasing or decreasing sthe value in the first
+    # parameter "forward"
+    hQCar3.set_velocity_and_request_state(1, 0, False, False, False, False, False)
+    lidar_rate = 0.05
 
     # Obtaining and plotting lidar data for 0.2s
-    for count in range(20):
-
+    for count in range(25): 
+        
         success, angle, distance = hQCar3.get_lidar(samplePoints=400)
 
         x = np.sin(angle)*distance
@@ -227,8 +225,6 @@ def main():
         QtWidgets.QApplication.instance().processEvents()
         time.sleep(lidar_rate) #lidar_rate is set at the top of this example
 
-    print("LIDAR successful")
-    print(lidar_rate == 0.01, "Passed LIDAR test with 100Hz (lidar_rate = 0.01 expected)")
 
     time.sleep(5)
 

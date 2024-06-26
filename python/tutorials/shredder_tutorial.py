@@ -17,6 +17,7 @@ import time
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
+from qvl.system import QLabsSystem
 from qvl.widget import QLabsWidget
 from qvl.shredder import QLabsShredder
 from random import randrange
@@ -43,6 +44,11 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
+    
+    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('Shredder Tutorial')
+    
     # create the widget instance
     cylinder = QLabsWidget(qlabs)
     # destroy any spawned actors (this is useful if you are running the same script over and over)

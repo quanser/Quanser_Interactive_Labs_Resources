@@ -17,6 +17,7 @@ import time
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.person import QLabsPerson
+from qvl.system import QLabsSystem
 
 def main():
 
@@ -42,6 +43,10 @@ def main():
     except:
         print("Unable to connect to QLabs")
         return
+
+    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    hSystem = QLabsSystem(qlabs)
+    hSystem.set_title_string('People Tutorial')
 
     # destroy any spawned actors (this is useful if you are running the same script over and over)
     qlabs.destroy_all_spawned_actors()
