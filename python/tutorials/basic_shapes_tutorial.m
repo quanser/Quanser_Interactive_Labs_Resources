@@ -114,7 +114,7 @@ sphere11.spawn_id(11, [-13.75, 31.5, 1], [0, 0, 0], [0.6, 0.6, 0.6], sphere11.SH
 sphere12.spawn_id(12, [-13.75, 30.5, 0.25], [0, 0, 0], [0.7, 0.7, 0.7], sphere12.SHAPE_SPHERE, 1);
 
 % in qlabs, the color of shapes uses the RGB color space with 0 to 255 represented between 0 and 1.
-% if you know what color you'd like to set your shape in RGB simply devide the red, green and blue numbers by 255.
+% if you know what color you'd like to set your shape in RGB simply divide the red, green and blue numbers by 255.
 % this script sets these spheres to red, green and blue respectively while increasing in roughness
 sphere10.set_material_properties([1, 0, 0], 0.0, 0, 1);
 sphere11.set_material_properties([0, 1, 0], 0.5, 0, 1);

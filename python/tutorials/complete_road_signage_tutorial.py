@@ -52,7 +52,7 @@ def crosswalk(qlabs):
     crosswalk.spawn_id_degrees(actorNumber=1, location=[-6.788, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
     # waits so we can see the output
     time.sleep(1)
-    # spawn crosswalk with degress in config 2
+    # spawn crosswalk with degrees in config 2
     crosswalk.spawn_id_degrees(actorNumber=2, location=[-2.8, 45, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
 
     # collecting the world transform coordinates of the crosswalk
@@ -93,7 +93,7 @@ def roundabout_sign(qlabs):
 def yield_sign(qlabs):
     """This method demonstrates some basic commands with the yield sign class"""
 
-    # create two yieldsigns in this qlabs instance
+    # create two yield signs in this qlabs instance
     yieldsign = QLabsYieldSign(qlabs)
     yieldsign2 = QLabsYieldSign(qlabs)
 

@@ -49,7 +49,7 @@ def main():
 
     qlabs.destroy_all_spawned_actors()
 
-    # Use hSystem to set the tutorial title on the qlabs display screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('QCar Tutorial')
 
@@ -159,27 +159,27 @@ def main():
     hQCar2.possess(hQCar2.CAMERA_TRAILING)
     time.sleep(0.5)
     
-    #Possessing the front csi camera on the QCar
+    #Possessing the front CSI camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_CSI_FRONT)
     time.sleep(0.5)
 
-    # Possessing the right csi camera on the QCar
+    # Possessing the right CSI camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_CSI_RIGHT)
     time.sleep(0.5)
 
-    # Possessing the back csi camera on the QCar
+    # Possessing the back CSI camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_CSI_BACK)
     time.sleep(0.5)
 
-    # Possessing the left csi camera on the QCar
+    # Possessing the left CSI camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_CSI_LEFT)
     time.sleep(0.5)
 
-    # Possessing the front Realsense RGB camera on the QCar
+    # Possessing the front RealSense RGB camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_RGB)
     time.sleep(0.5)
 
-    # Possessing the Realsense depth camera on the QCar
+    # Possessing the RealSense depth camera on the QCar
     hQCar2.possess(hQCar2.CAMERA_DEPTH)
     time.sleep(0.5)
 
@@ -207,8 +207,8 @@ def main():
 
     print("Reading from LIDAR... if QLabs crashes or output isn't great, make sure FPS > 100")
     
-    # Have the QCar drive forward to hit the front block to show the live lidar
-    # speed can be changed by increasing or decreasing sthe value in the first
+    # Have the QCar drive forward to hit the front block to show the live lidar.
+    # Speed can be changed by increasing or decreasing the value in the first
     # parameter "forward"
     hQCar3.set_velocity_and_request_state(1, 0, False, False, False, False, False)
     lidar_rate = 0.05

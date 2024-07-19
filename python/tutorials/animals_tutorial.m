@@ -81,7 +81,7 @@ goat = QLabsAnimal(qlabs);
 %
 %   Goat = 0
 %   Sheep = 1
-%   Cow =2
+%   Cow = 2
 
 % place the animal at a specified location and rotation using radians
 % spawn_id allows us to specify the internal number for the actor
@@ -110,7 +110,7 @@ sheep.move_to(LOCATION_END_P2, sheep.SHEEP_RUN, 1);
 cow.move_to(LOCATION_END_P3, cow.COW_RUN, 1);
 
 % pause to change camera
-pause(9);
+pause(7);
 
 % destroy each animal one by one 
 
@@ -121,7 +121,7 @@ sheep.destroy();
 pause(1);
 
 cow.destroy();
-pause(2);
+pause(1);
 
 % re position camera
 hCameraAnimals = QLabsFreeCamera(qlabs);
@@ -134,7 +134,7 @@ hGoat.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hGoat.GOAT, true);
 hGoat.move_to([27.214, 49.286, 0], hGoat.GOAT_RUN, true);
 pause(3);
 
-% Move the Goat at walking speed to your desired loaction 
+% Move the Goat at walking speed to your desired location 
 hGoat.move_to([28.338, 47.826, 0], hGoat.GOAT_WALK, true);
 pause(4);
 hGoat.destroy();
@@ -145,7 +145,7 @@ hSheep.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hSheep.SHEEP, true);
 hSheep.move_to([27.214, 49.286, 0], hSheep.SHEEP_RUN, true);
 pause(3);
 
-% Move the Sheep at walking speed to your desired loaction 
+% Move the Sheep at walking speed to your desired location 
 hSheep.move_to([28.338, 47.826, 0], hSheep.SHEEP_WALK, true);
 pause(4);
 hSheep.destroy();
@@ -156,7 +156,7 @@ hCow.spawn([26.206, 57, 1], [0,0,0], [1,1,1], hCow.COW, true);
 hCow.move_to([27.214, 49.286, 0], hCow.COW_RUN, true);
 pause(3);
 
-% Move the Cow at walking speed to your desired loaction
+% Move the Cow at walking speed to your desired location
 hCow.move_to([28.338, 47.826, 0], hCow.COW_WALK, true);
 pause(6);
 

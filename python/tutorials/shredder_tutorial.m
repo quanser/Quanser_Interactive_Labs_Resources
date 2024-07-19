@@ -56,7 +56,7 @@ function main()
     num_destroyed = qlabs.destroy_all_spawned_actors();
     fprintf('%d actors destroyed\n', num_destroyed);
 
-    % Use hSystem to set the tutorial title on the qlabs printlay screen
+    % Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs);
     hSystem.set_title_string('Shredder Tutorial')
 

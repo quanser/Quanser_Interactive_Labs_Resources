@@ -44,7 +44,7 @@ def main():
         print("Unable to connect to QLabs")
         return
 
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('People Tutorial')
 

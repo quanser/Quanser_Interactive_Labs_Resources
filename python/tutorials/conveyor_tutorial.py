@@ -33,7 +33,7 @@ def main():
         print("Unable to connect to QLabs")
         return
     
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Conveyor Tutorial')
     
@@ -54,7 +54,7 @@ def main():
     ### Create conveyors
     # The configuration argument is an integer associated with the length of the conveyors
     # For straight conveyor, configuration = 0 corresponds to a length of 0.5. With each 
-    # increase in configuration, the lengh is increased by 0.25, up to configuratoin = 20  
+    # increase in configuration, the length is increased by 0.25, up to configuration = 20  
     straightConveyor = QLabsConveyorStraight(qlabs)
     straightConveyor.spawn_id_degrees(actorNumber = 0,
                                     location = [0, 0, 0],
@@ -63,7 +63,7 @@ def main():
                                     configuration = 5)
     # For curved conveyor, configuration = 0 corresponds to a circular arc of 15 degree. 
     # With each increase in configuration, the arc length is increased by 15 degrees, up to 
-    # configuratoin = 24.
+    # configuration = 24.
     curvedConveyor = QLabsConveyorCurved(qlabs)
     curvedConveyor.spawn_id_degrees(actorNumber = 1,
                                     location = [0.03, -0.5, 0],
@@ -78,7 +78,7 @@ def main():
 
     time.sleep(2)
 
-    ### drop one cylinder widget on top of the straight convoryer
+    ### drop one cylinder widget on top of the straight conveyor
     cylinder.spawn(location = [1.6, 0, 1],
                rotation = [0, 0, .5],
                scale = [.05, .05, .05],

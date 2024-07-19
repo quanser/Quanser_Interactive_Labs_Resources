@@ -70,6 +70,12 @@ def main():
     # be able to view where our animals will spawn
     camera.possess()
 
+    # Animal configurations 
+    #
+    #   Goat = 0
+    #   Sheep = 1
+    #   Cow = 2
+
     # creates an instance of the Animal
     goat = QLabsAnimal(qlabs)
 
@@ -99,7 +105,7 @@ def main():
     cow.move_to(LOCATION_END_P3, cow.COW_RUN, True)
 
     # time.sleep to change camera angle 
-    time.sleep(9)
+    time.sleep(7)
 
     # destroy each animal one by one 
     goat.destroy()
@@ -109,7 +115,7 @@ def main():
     time.sleep(1)
 
     cow.destroy()
-    time.sleep(2)
+    time.sleep(1)
 
     # re position camera
     hCameraAnimals = QLabsFreeCamera(qlabs)
@@ -122,7 +128,7 @@ def main():
     hGoat.move_to([27.214, 49.286, 0], hGoat.GOAT_RUN, True)
     time.sleep(3)
 
-    # Move the Goat at walking speed to your desired loaction 
+    # Move the Goat at walking speed to your desired location 
     hGoat.move_to([28.338, 47.826, 0], hGoat.GOAT_WALK, True)
     time.sleep(4)
     hGoat.destroy()
@@ -133,7 +139,7 @@ def main():
     hSheep.move_to([27.214, 49.286, 0], hSheep.SHEEP_RUN, True)
     time.sleep(3)
 
-    # Move the Sheep at walking speed to your desired loaction
+    # Move the Sheep at walking speed to your desired location
     hSheep.move_to([28.338, 47.826, 0], hSheep.SHEEP_WALK, True)
     time.sleep(4)
     hSheep.destroy()
@@ -144,7 +150,7 @@ def main():
     hCow.move_to([27.214, 49.286, 0], hCow.COW_RUN, True)
     time.sleep(3)
 
-    # Move the Cow at walking speed to your desired loaction
+    # Move the Cow at walking speed to your desired location
     hCow.move_to([28.338, 47.826, 0], hCow.COW_WALK, True)
     time.sleep(6)
     

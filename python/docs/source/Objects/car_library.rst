@@ -1,7 +1,7 @@
 .. _Car_Library:
 
 *******
-QCars
+QCar
 *******
 
 .. image:: ../pictures/banner_qcar.png

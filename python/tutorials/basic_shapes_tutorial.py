@@ -37,7 +37,7 @@ def main():
         print("Unable to connect to QLabs")
         return
     
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Basic Shapes Tutorial')
 
@@ -97,7 +97,7 @@ def main():
     sphere12.spawn_id(actorNumber=12, location=[-13.75, 30.5, 0.25], rotation=[0,0,0], scale=[0.7,0.7,0.7], configuration=sphere12.SHAPE_SPHERE, waitForConfirmation=True)
 
     # in qlabs, the color of shapes uses the RGB color space with 0 to 255 represented between 0 and 1.
-    # if you know what color you'd like to set your shape in RGB simply devide the red, green and blue numbers by 255.
+    # if you know what color you'd like to set your shape in RGB simply divide the red, green and blue numbers by 255.
     # this script sets these spheres to red, green and blue respectively while increasing in roughness
     sphere10.set_material_properties(color=[1,0,0], roughness=0.0, metallic=False, waitForConfirmation=True)
     sphere11.set_material_properties(color=[0,1,0], roughness=0.5, metallic=False, waitForConfirmation=True)

@@ -70,7 +70,7 @@ pause(1.5);
 crosswalk1.spawn_id_degrees(1, [-6.788, 45, 0.00], [0, 0, 90], [1, 1, 1], 1, 1);
 % waits so we can see the output
 pause(1.5);
-% spawn crosswalk with degreesd in config 2
+% spawn crosswalk with degrees in config 2
 crosswalk2.spawn_id_degrees(2, [-2.8, 45, 0.0], [0, 0, 90], [1, 1, 1], 2, 1);
 pause(1.5);
 

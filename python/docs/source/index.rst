@@ -58,7 +58,7 @@ Contents
     System/index.rst
 
 .. toctree::
-    :maxdepth: 6
+    :maxdepth: 3
 
     Objects/index.rst
 

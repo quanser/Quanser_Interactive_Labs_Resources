@@ -45,7 +45,7 @@ def main():
         print("Unable to connect to QLabs")
         return
     
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Shredder Tutorial')
     
@@ -76,7 +76,7 @@ def main():
         # adding noise to the spawn location of the widgets
         noiseX = randrange(0,1)/20
         noiseY = randrange(0,1)/20
-        # spawn one cylindical widget for each shredder
+        # spawn one cylindrical widget for each shredder
         createCylinder(cylinder,[0+noiseX, -12-noiseY, 1])
         createCylinder(cylinder,[.5-noiseX, -12+noiseY, 1])
         time.sleep(0.7)

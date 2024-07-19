@@ -38,7 +38,7 @@ def main():
 
     print("Connected")
 
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title on the qlabs display screen
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Crosswalk Tutorial')
 

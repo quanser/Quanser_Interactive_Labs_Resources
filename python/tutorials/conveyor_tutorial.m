@@ -45,7 +45,7 @@ num_destroyed = qlabs.destroy_all_spawned_actors();
 
 fprintf('%d actors destroyed', num_destroyed);
 
-% Use hSystem to set the tutorial title on the qlabs printlay screen
+% Use hSystem to set the tutorial title in the upper left of the qlabs window 
 hSystem = QLabsSystem(qlabs);
 hSystem.set_title_string('Conveyor Tutorial')
 
@@ -63,7 +63,7 @@ camera.possess();
 
 % The configuration argument is an integer associated with the length of the conveyors
 % For straight conveyor, configuration = 0 corresponds to a length of 0.5. With each
-% increase in configuration, the lenght is increased by 0.25, up to configuration = 20 
+% increase in configuration, the length is increased by 0.25, up to configuration = 20 
 straightConveyor = QLabsConveyorStraight(qlabs);
 straightConveyor.spawn_id_degrees(0,[0, 0, 0], [0, 0, 0], [1,1,1], 5);
 

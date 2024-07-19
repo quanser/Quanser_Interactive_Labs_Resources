@@ -42,7 +42,7 @@ def main():
 
     print("Connected")
 
-    # Use hSystem to set the tutorial title on the qlabs printlay screen
+    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Road Signage Tutorial')
 
