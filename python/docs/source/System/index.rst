@@ -1,7 +1,7 @@
 .. _System:
 
 *********************************
-Python System & Utility Reference
+System & Utility Reference
 *********************************
 
 This section documents system, global, environmental and utility functions to

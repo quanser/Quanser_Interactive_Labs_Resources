@@ -6,7 +6,7 @@
 .. _Objects:
 
 ***********************
-Python Actors Reference
+Actors Reference
 ***********************
 
 This section documents the different types of actors that you can spawn and control in the QLabs Workspaces.
