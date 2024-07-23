@@ -17,14 +17,14 @@ window which are independent of the actor environment.
 System Library
 ==============
 
-.. autoclass::qvl.system.QLabsSystem
+.. autoclass:: qvl.system.QLabsSystem
 
 .. _systemConstants:
 
 Constants
 ============
 
-.. autoattribute::qvl.system.QLabsSystem.ID_SYSTEM
+.. autoattribute:: qvl.system.QLabsSystem.ID_SYSTEM
 
 
 .. _systemMethods:
@@ -32,6 +32,6 @@ Constants
 Methods
 =========
 
-.. automethod::qvl.system.QLabsSystem.set_title_string
+.. automethod:: qvl.system.QLabsSystem.set_title_string
 
 

@@ -38,30 +38,30 @@ Description
 Library
 =========
 
-.. autoclass::qvl.widget.QLabsWidget
+.. autoclass:: qvl.widget.QLabsWidget
 
 .. _widgetConstants:
 
 Constants
 ============
 
-.. autoattribute::qvl.widget.QLabsWidget.CUBE
-.. autoattribute::qvl.widget.QLabsWidget.CYLINDER
-.. autoattribute::qvl.widget.QLabsWidget.SPHERE
-.. .. autoattribute::qvl.widget.QLabsWidget.AUTOCLAVE_CAGE
-.. autoattribute::qvl.widget.QLabsWidget.PLASTIC_BOTTLE
-.. autoattribute::qvl.widget.QLabsWidget.METAL_CAN
+.. autoattribute:: qvl.widget.QLabsWidget.CUBE
+.. autoattribute:: qvl.widget.QLabsWidget.CYLINDER
+.. autoattribute:: qvl.widget.QLabsWidget.SPHERE
+.. .. autoattribute:: qvl.widget.QLabsWidget.AUTOCLAVE_CAGE
+.. autoattribute:: qvl.widget.QLabsWidget.PLASTIC_BOTTLE
+.. autoattribute:: qvl.widget.QLabsWidget.METAL_CAN
 
 .. _widgetMethods:
 
 Methods
 =========
 
-.. automethod::qvl.widget.QLabsWidget.__init__
-.. automethod::qvl.widget.QLabsWidget.spawn
-.. automethod::qvl.widget.QLabsWidget.spawn_degrees
-.. automethod::qvl.widget.QLabsWidget.destroy_all_spawned_widgets
-.. automethod::qvl.widget.QLabsWidget.widget_spawn_shadow
+.. automethod:: qvl.widget.QLabsWidget.__init__
+.. automethod:: qvl.widget.QLabsWidget.spawn
+.. automethod:: qvl.widget.QLabsWidget.spawn_degrees
+.. automethod:: qvl.widget.QLabsWidget.destroy_all_spawned_widgets
+.. automethod:: qvl.widget.QLabsWidget.widget_spawn_shadow
 
 .. _widgetConfig:
 

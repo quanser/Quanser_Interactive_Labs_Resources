@@ -28,43 +28,43 @@ cones in Quanser Interactive Labs.
 Library
 ========
 
-.. autoclass::qvl.traffic_cone.QLabsTrafficCone
+.. autoclass:: qvl.traffic_cone.QLabsTrafficCone
 
 .. _trafficconeConstants:
 
 Constants
 ============
 
-.. autoattribute::qvl.traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE
+.. autoattribute:: qvl.traffic_cone.QLabsTrafficCone.ID_TRAFFIC_CONE
 
 .. _trafficconeVars:
 
 Member Variables
 =================
 
-.. autoattribute::qvl.traffic_cone.QLabsTrafficCone.actorNumber
+.. autoattribute:: qvl.traffic_cone.QLabsTrafficCone.actorNumber
 
 .. _trafficconeMethods:
 
 Methods
 ========
 
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn_degrees
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn_id
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn_id_degrees
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.destroy
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.destroy_all_actors_of_class
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.ping
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.get_world_transform
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.get_world_transform_degrees
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform_degrees
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.parent_with_current_world_transform
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.parent_break
-.. automethod::qvl.traffic_cone.QLabsTrafficCone.set_material_properties
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_degrees
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_id
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_id_degrees
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.destroy
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.destroy_all_actors_of_class
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.ping
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.get_world_transform
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.get_world_transform_degrees
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform_degrees
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_current_world_transform
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_break
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.set_material_properties
 
 .. _trafficconeConfig:
 

@@ -29,41 +29,41 @@ impression of "slipping" at certain speeds outside the recommended values.
 Library
 ==============
 
-.. autoclass::qvl.animal.QLabsAnimal
+.. autoclass:: qvl.animal.QLabsAnimal
 
 .. _animalConstants:
 
 Constants
 ==============
 
-.. autoattribute::qvl.animal.QLabsAnimal.ID_ANIMAL
-.. autoattribute::qvl.animal.QLabsAnimal.GOAT
-.. autoattribute::qvl.animal.QLabsAnimal.SHEEP
-.. autoattribute::qvl.animal.QLabsAnimal.COW
-.. autoattribute::qvl.animal.QLabsAnimal.GOAT_STANDING
-.. autoattribute::qvl.animal.QLabsAnimal.GOAT_WALK
-.. autoattribute::qvl.animal.QLabsAnimal.GOAT_RUN
-.. autoattribute::qvl.animal.QLabsAnimal.SHEEP_STANDING
-.. autoattribute::qvl.animal.QLabsAnimal.SHEEP_WALK
-.. autoattribute::qvl.animal.QLabsAnimal.SHEEP_RUN
-.. autoattribute::qvl.animal.QLabsAnimal.COW_STANDING
-.. autoattribute::qvl.animal.QLabsAnimal.COW_WALK
-.. autoattribute::qvl.animal.QLabsAnimal.COW_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.ID_ANIMAL
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP
+.. autoattribute:: qvl.animal.QLabsAnimal.COW
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.GOAT_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.SHEEP_RUN
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_STANDING
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_WALK
+.. autoattribute:: qvl.animal.QLabsAnimal.COW_RUN
 
 .. _animalMemberVars:
 
 Member Variables
 =================
 
-.. autoattribute::qvl.animal.QLabsAnimal.actorNumber
+.. autoattribute:: qvl.animal.QLabsAnimal.actorNumber
 
 .. _animalMethods:
 
 Methods
 =========
 
-.. automethod::qvl.animal.QLabsAnimal.__init__
-.. automethod::qvl.animal.QLabsAnimal.spawn
+.. automethod:: qvl.animal.QLabsAnimal.__init__
+.. automethod:: qvl.animal.QLabsAnimal.spawn
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -73,7 +73,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod::qvl.animal.QLabsAnimal.spawn_degrees
+.. automethod:: qvl.animal.QLabsAnimal.spawn_degrees
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -83,7 +83,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod::qvl.animal.QLabsAnimal.spawn_id
+.. automethod:: qvl.animal.QLabsAnimal.spawn_id
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -93,7 +93,7 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned in
     a valid nav area.
 
-.. automethod::qvl.animal.QLabsAnimal.spawn_id_degrees
+.. automethod:: qvl.animal.QLabsAnimal.spawn_id_degrees
 .. tip::
     The origin of the animal is in the center of the body so by default, it
     will be spawned 1m above the surface of the target.
@@ -103,12 +103,12 @@ Methods
     If you would like to use the `move_to` method, the actor must be spawned
     in a valid nav area.
 
-.. automethod::qvl.animal.QLabsAnimal.move_to
-.. automethod::qvl.animal.QLabsAnimal.destroy
-.. automethod::qvl.animal.QLabsAnimal.destroy_all_actors_of_class
-.. automethod::qvl.animal.QLabsAnimal.ping
-.. automethod::qvl.animal.QLabsAnimal.get_world_transform
-.. automethod::qvl.animal.QLabsAnimal.get_world_transform_degrees
+.. automethod:: qvl.animal.QLabsAnimal.move_to
+.. automethod:: qvl.animal.QLabsAnimal.destroy
+.. automethod:: qvl.animal.QLabsAnimal.destroy_all_actors_of_class
+.. automethod:: qvl.animal.QLabsAnimal.ping
+.. automethod:: qvl.animal.QLabsAnimal.get_world_transform
+.. automethod:: qvl.animal.QLabsAnimal.get_world_transform_degrees
 
 .. _animalConfig:
 

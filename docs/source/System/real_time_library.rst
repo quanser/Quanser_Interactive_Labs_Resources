@@ -21,7 +21,7 @@ models designed to interface with QLabs.
 System Library
 ===============
 
-.. autoclass::qvl.real_time.QLabsRealTime
+.. autoclass:: qvl.real_time.QLabsRealTime
 
 .. _realTimeConstants:
 
@@ -36,6 +36,6 @@ This class has no public constants.
 Methods
 =========
 
-.. automethod::qvl.real_time.QLabsRealTime.start_real_time_model
-.. automethod::qvl.real_time.QLabsRealTime.terminate_real_time_model
-.. automethod::qvl.real_time.QLabsRealTime.terminate_all_real_time_models
+.. automethod:: qvl.real_time.QLabsRealTime.start_real_time_model
+.. automethod:: qvl.real_time.QLabsRealTime.terminate_real_time_model
+.. automethod:: qvl.real_time.QLabsRealTime.terminate_all_real_time_models

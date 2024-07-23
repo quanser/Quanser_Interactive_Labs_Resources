@@ -31,57 +31,57 @@ in Quanser Interactive Labs.
 Camera Library
 ===============
 
-.. autoclass::qvl.free_camera.QLabsFreeCamera
+.. autoclass:: qvl.free_camera.QLabsFreeCamera
 
 .. _cameraConstants:
 
 Constants
 ==========
 
-.. autoattribute::qvl.free_camera.QLabsFreeCamera.ID_FREE_CAMERA
+.. autoattribute:: qvl.free_camera.QLabsFreeCamera.ID_FREE_CAMERA
 
 .. _cameraMemberVars:
 
 Member Variables
 =================
 
-.. autoattribute::qvl.free_camera.QLabsFreeCamera.actorNumber
+.. autoattribute:: qvl.free_camera.QLabsFreeCamera.actorNumber
 
 .. _cameraMethods:
 
 Methods
 ========
 
-.. automethod::qvl.free_camera.QLabsFreeCamera.__init__
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn
+.. automethod:: qvl.free_camera.QLabsFreeCamera.__init__
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn
 .. tip::
     Scale will not affect the camera, but will affect attached children.
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_degrees
 .. tip::
     Scale will not affect the camera, but will affect attached children.
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn_id
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id
 .. tip::
     Scale will not affect the camera, but will affect attached children.
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn_id_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id_degrees
 .. tip::
     Scale will not affect the camera, but will affect attached children.
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform
-.. automethod::qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod::qvl.free_camera.QLabsFreeCamera.possess
-.. automethod::qvl.free_camera.QLabsFreeCamera.set_camera_properties
-.. automethod::qvl.free_camera.QLabsFreeCamera.set_transform
-.. automethod::qvl.free_camera.QLabsFreeCamera.set_transform_degrees
-.. automethod::qvl.free_camera.QLabsFreeCamera.destroy
-.. automethod::qvl.free_camera.QLabsFreeCamera.destroy_all_actors_of_class
-.. automethod::qvl.free_camera.QLabsFreeCamera.ping
-.. automethod::qvl.free_camera.QLabsFreeCamera.get_world_transform
-.. automethod::qvl.free_camera.QLabsFreeCamera.get_world_transform_degrees
-.. automethod::qvl.free_camera.QLabsFreeCamera.set_image_capture_resolution
-.. automethod::qvl.free_camera.QLabsFreeCamera.get_image
-.. automethod::qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform
-.. automethod::qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform_degrees
-.. automethod::qvl.free_camera.QLabsFreeCamera.parent_with_current_world_transform
-.. automethod::qvl.free_camera.QLabsFreeCamera.parent_break
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.possess
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_camera_properties
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.destroy
+.. automethod:: qvl.free_camera.QLabsFreeCamera.destroy_all_actors_of_class
+.. automethod:: qvl.free_camera.QLabsFreeCamera.ping
+.. automethod:: qvl.free_camera.QLabsFreeCamera.get_world_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.get_world_transform_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_image_capture_resolution
+.. automethod:: qvl.free_camera.QLabsFreeCamera.get_image
+.. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_current_world_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.parent_break
 
 .. _cameraConfigs:
 

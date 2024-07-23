@@ -30,46 +30,46 @@ Straight Conveyor
 Library
 ========
 
-.. autoclass::qvl.conveyor_straight.QLabsConveyorStraight
+.. autoclass:: qvl.conveyor_straight.QLabsConveyorStraight
 
 .. _straightconveyorConstants:
 
 Constants
 ==========
 
-.. autoattribute::qvl.conveyor_straight.QLabsConveyorStraight.ID_CONVEYOR_STRAIGHT
+.. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.ID_CONVEYOR_STRAIGHT
 
 .. _straightconveyorMemberVars:
 
 Member Variables
 =================
 
-.. autoattribute::qvl.conveyor_straight.QLabsConveyorStraight.actorNumber
+.. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.actorNumber
 
 .. _straightconveyorMethods:
 
 Methods
 ========
 
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.__init__
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn_degrees
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn_id
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_degrees
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.set_speed
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.destroy
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.destroy_all_actors_of_class
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform_degrees
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.ping
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform_degrees
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.parent_with_current_world_transform
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.parent_break
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.set_custom_properties
-.. automethod::qvl.conveyor_straight.QLabsConveyorStraight.get_custom_properties
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.__init__
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_degrees
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_degrees
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.set_speed
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.destroy
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.destroy_all_actors_of_class
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform_degrees
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.ping
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform_degrees
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_current_world_transform
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_break
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.set_custom_properties
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_custom_properties
 
 .. _straightconveyorConfig:
 
@@ -105,20 +105,20 @@ Curved Conveyor
 Library
 ========
 
-.. autoclass::qvl.conveyor_curved.QLabsConveyorCurved
+.. autoclass:: qvl.conveyor_curved.QLabsConveyorCurved
 
 .. _curvedconveyorConstants:
 
 Constants
 ==========
 
-.. autoattribute::qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_CURVED
+.. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_CURVED
 
 .. _curvedconveyorVars:
 
 Member Variables
 =================
-.. autoattribute::qvl.conveyor_curved.QLabsConveyorCurved.actorNumber
+.. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.actorNumber
 
 
 .. _curvedconveyorMethods:
@@ -126,25 +126,25 @@ Member Variables
 Methods
 =========
 
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.__init__
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn_degrees
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn_id
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_degrees
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.set_speed
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.destroy
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.destroy_all_actors_of_class
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform_degrees
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.ping
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform_degrees
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.parent_with_current_world_transform
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.parent_break
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.set_custom_properties
-.. automethod::qvl.conveyor_curved.QLabsConveyorCurved.get_custom_properties
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.__init__
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_degrees
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_degrees
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.set_speed
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.destroy
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.destroy_all_actors_of_class
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform_degrees
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.ping
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform_degrees
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_current_world_transform
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_break
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.set_custom_properties
+.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_custom_properties
 
 .. _curvedconveyorConfig:
 

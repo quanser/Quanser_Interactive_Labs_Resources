@@ -21,7 +21,7 @@ The remaining methods are for advanced usage.
 QLabs Core Library
 ==================
 
-.. autoclass::qvl.qlabs.QuanserInteractiveLabs
+.. autoclass:: qvl.qlabs.QuanserInteractiveLabs
 
 
 .. _qlabsCoreConstants:
@@ -36,10 +36,10 @@ This library has no user constants.
 
 Basic Methods
 ===============
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.open
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.close
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.destroy_all_spawned_actors
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.open
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.close
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.set_wait_for_container_timeout
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.destroy_all_spawned_actors
 
 
 .. _qlabsCoreMethodsAdvanced:
@@ -103,12 +103,12 @@ communication process, but it provides a higher level of control and optimizes
 the transaction process to improve the data throughput.
 
 
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.send_container
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.queue_add_container
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.queue_send
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.queue_destroy
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.receive_new_data
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.get_next_container
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.wait_for_container
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.flush_receive
-.. automethod::qvl.qlabs.QuanserInteractiveLabs.ping
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.send_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_add_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_send
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.queue_destroy
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.receive_new_data
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.get_next_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.wait_for_container
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.flush_receive
+.. automethod:: qvl.qlabs.QuanserInteractiveLabs.ping
