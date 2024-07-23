@@ -17,7 +17,7 @@ QCars are considered "actors" in Quanser Interactive Labs.The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
 motion of the vehicles.
 
-See the QCar :ref:`QCarTutorial` to get a better understanding of using QCars in
+See the :ref:`QCarTutorial` to get a better understanding of using QCars in
 Quanser Interactive Labs.
 
 .. _carLibrary:
@@ -25,35 +25,35 @@ Quanser Interactive Labs.
 Library
 =========
 
-.. autoclass:: python.qvl.qcar.QLabsQCar
+.. autoclass:: qvl.qcar.QLabsQCar
 
 .. _carConstants:
 
 Constants
 ===========
 
-.. autoattribute:: python.qvl.qcar.QLabsQCar.ID_QCAR
+.. autoattribute:: qvl.qcar.QLabsQCar.ID_QCAR
 
 .. note::
     CSI camera resolution is 820x410.
 
 
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_CSI_RIGHT
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_CSI_BACK
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_CSI_LEFT
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_CSI_FRONT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_RIGHT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_BACK
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_LEFT
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_FRONT
 
 .. note::
     RGB and depth resolution is 640x480.
 
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_RGB
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_DEPTH
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_RGB
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_DEPTH
 
 .. note::
     Overhead and trailing cameras support user zoom using the mouse wheel.
 
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_OVERHEAD
-.. autoattribute:: python.qvl.qcar.QLabsQCar.CAMERA_TRAILING
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_OVERHEAD
+.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_TRAILING
 
 
 .. _carMemberVars:
@@ -61,31 +61,31 @@ Constants
 Member Variables
 =================
 
-.. autoattribute:: python.qvl.qcar.QLabsQCar.actorNumber
+.. autoattribute:: qvl.qcar.QLabsQCar.actorNumber
 
 .. _carMethods:
 
 Methods
 =========
 
-.. automethod:: python.qvl.qcar.QLabsQCar.__init__
-.. automethod:: python.qvl.qcar.QLabsQCar.spawn
-.. automethod:: python.qvl.qcar.QLabsQCar.spawn_degrees
-.. automethod:: python.qvl.qcar.QLabsQCar.spawn_id
-.. automethod:: python.qvl.qcar.QLabsQCar.spawn_id_degrees
-.. automethod:: python.qvl.qcar.QLabsQCar.set_transform_and_request_state
-.. automethod:: python.qvl.qcar.QLabsQCar.set_transform_and_request_state_degrees
-.. automethod:: python.qvl.qcar.QLabsQCar.set_velocity_and_request_state
-.. automethod:: python.qvl.qcar.QLabsQCar.set_velocity_and_request_state_degrees
-.. automethod:: python.qvl.qcar.QLabsQCar.possess
-.. automethod:: python.qvl.qcar.QLabsQCar.ghost_mode
-.. automethod:: python.qvl.qcar.QLabsQCar.get_image
-.. automethod:: python.qvl.qcar.QLabsQCar.get_lidar
-.. automethod:: python.qvl.qcar.QLabsQCar.destroy
-.. automethod:: python.qvl.qcar.QLabsQCar.destroy_all_actors_of_class
-.. automethod:: python.qvl.qcar.QLabsQCar.ping
-.. automethod:: python.qvl.qcar.QLabsQCar.get_world_transform
-.. automethod:: python.qvl.qcar.QLabsQCar.get_world_transform_degrees
+.. automethod:: qvl.qcar.QLabsQCar.__init__
+.. automethod:: qvl.qcar.QLabsQCar.spawn
+.. automethod:: qvl.qcar.QLabsQCar.spawn_degrees
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id_degrees
+.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state
+.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state_degrees
+.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state
+.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state_degrees
+.. automethod:: qvl.qcar.QLabsQCar.possess
+.. automethod:: qvl.qcar.QLabsQCar.ghost_mode
+.. automethod:: qvl.qcar.QLabsQCar.get_image
+.. automethod:: qvl.qcar.QLabsQCar.get_lidar
+.. automethod:: qvl.qcar.QLabsQCar.destroy
+.. automethod:: qvl.qcar.QLabsQCar.destroy_all_actors_of_class
+.. automethod:: qvl.qcar.QLabsQCar.ping
+.. automethod:: qvl.qcar.QLabsQCar.get_world_transform
+.. automethod:: qvl.qcar.QLabsQCar.get_world_transform_degrees
 
 .. _carConfig:
 
