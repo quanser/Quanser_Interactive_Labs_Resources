@@ -15,9 +15,13 @@ class QLabsBasicShape(QLabsActor):
     """Class ID"""
 
     SHAPE_CUBE = 0
+    """See configurations"""
     SHAPE_CYLINDER = 1
+    """See configurations"""
     SHAPE_SPHERE = 2
+    """See configurations"""
     SHAPE_CONE = 3
+    """See configurations"""
 
     COMBINE_AVERAGE = 0
     COMBINE_MIN = 1
