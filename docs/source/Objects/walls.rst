@@ -10,6 +10,8 @@ Walls
     :width: 800px
     :align: center
 
+|
+
 .. _wallsDescription:
 
 Description

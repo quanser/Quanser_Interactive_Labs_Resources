@@ -6,6 +6,10 @@ Conveyors
 
 .. _conveyorDescription:
 
+******************
+Description
+******************
+
 Conveyors are considered an "actor" in Quanser Interactive Labs Open Worlds.
 The conveyor library controls the conveyors available to be placed in
 the QLabs environment.
@@ -14,10 +18,10 @@ Conveyors can be straight or curved and can be spawned anywhere in the Open Worl
 See the :ref:`conveyorTutorial` to get a better understanding of using 
 conveyors in Quanser Interactive Labs.
 
+
 .. contents:: Table of Contents
-    :depth: 1
-    :local:
     :backlinks: none
+    :depth: 2
 
 -------------------------------------------------------------------------------
 

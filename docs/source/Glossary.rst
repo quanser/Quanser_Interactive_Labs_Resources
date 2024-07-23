@@ -108,8 +108,7 @@ Glossary
         credible, academically appropriate experiences on desktops, laptops, or
         smart devices.
         See more on our
-        `website <https://www.quanser.com/digital/quanser-interactive-labs/>`__
-        .
+        `website <https://www.quanser.com/products/quanser-interactive-labs/>`__.
 
     Reference Frame
         Reference Frames are used to specify the relationship between a moving

@@ -86,7 +86,7 @@ There are no connection points for this actor class.
 
 .. _trafficlightTutorial:
 
-Traffic lights Tutorial
+Traffic Lights Tutorial
 =========================
 
 .. tabs::

@@ -18,11 +18,16 @@ class QLabsWidget:
 
 
     CUBE = 0
+    """See configurations"""
     CYLINDER = 1
+    """See configurations"""
     SPHERE = 2
+    """See configurations"""
     AUTOCLAVE_CAGE = 3
     PLASTIC_BOTTLE = 4
+    """See configurations"""
     METAL_CAN = 5
+    """See configurations"""
 
     _qlabs = None
     _verbose = False

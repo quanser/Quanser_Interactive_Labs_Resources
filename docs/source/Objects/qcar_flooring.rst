@@ -8,6 +8,8 @@ QCar Floor Mats
     :width: 800px
     :align: center
 
+|
+
 .. _qcarFlooringDescription:
 
 Description
@@ -66,8 +68,13 @@ Methods
 
 Configurations
 ===============
+There are 2 configurations (0-1) for the QCar flooring class. 
 
-There is only one configuration for the QCar flooring class.
+    * 0 - Large QCar Map
+    * 1 - Small QCar Map
+
+.. tip::
+    See :ref:`qcarFlooringTutorial` to see the different flooring options.
 
 .. _qCarFlooringConnect:
 

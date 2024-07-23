@@ -10,6 +10,8 @@ users to spawn and test scenarios in an empty environment.
 .. image:: ../pictures/qcar_plane.png
     :align: center
 
+|
+
 Plane World Size
 ==================
 

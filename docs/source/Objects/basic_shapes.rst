@@ -16,8 +16,7 @@ Dynamics can be enabled and disabled to facilitate dynamic events that are
 triggered by actor locations such as the sudden appearance of an obstacle
 crossing the path.
 The physics properties can also be modified to tune the physics response
-depending 9on the number of interacting actors and what they are colliding with
-.
+depending on the number of interacting actors and what they are colliding with.
 
 Basic shapes include full support for parenting to build long kinematic chains
 or simply to group multiple shapes together so they can be moved by
@@ -25,8 +24,8 @@ manipulating a single parent actor.
 
 If you are using a large number of dynamic shapes, consider using
 :ref:`Widgets` instead.
-They have both limitations and additional features, but are more efficient when
-spawning large numbers of dynamic actors.
+They have both limitations and additional features, but widgets are more 
+efficient when spawning large numbers of dynamic actors.
 
 See the :ref:`basicshapesTutorial` to get a better understanding of using basic 
 shapes in Quanser Interactive Labs.

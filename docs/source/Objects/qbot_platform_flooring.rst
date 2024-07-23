@@ -27,6 +27,9 @@ Library
 Constants
 ==========
 
+.. tip::
+    See :ref:`qbotPlatformFlooringConfig` to see the different flooring options.
+
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ID_FLOORING
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_0
 .. autoattribute:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_1
@@ -67,7 +70,8 @@ Methods
 
 Configurations
 ================
-There 6 configurations (0-5) for the QBot Platform flooring class. Each mat is 1.2m x 1.2m.
+There are 6 configurations (0-5) for the QBot Platform flooring class. 
+Each mat is 1.2m x 1.2m.
 
 .. image:: ../pictures/configuration_qbot_platform_flooring.png
     :align: center

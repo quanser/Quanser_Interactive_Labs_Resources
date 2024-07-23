@@ -1,4 +1,4 @@
-.. _Car_Library:
+.. _QCar1_Library:
 
 *******
 QCar
@@ -10,10 +10,12 @@ QCar
 
 .. _carDescription:
 
+|
+
 Description
 =============
 
-QCars are considered "actors" in Quanser Interactive Labs.The QCar library can
+QCars are considered "actors" in Quanser Interactive Labs. The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
 motion of the vehicles.
 
@@ -108,6 +110,8 @@ Connection Points
     :scale: 50%
     :align: center
 
+|
+
 .. table::
     :widths: 11, 11, 25, 53
     :align: center
@@ -155,6 +159,8 @@ below to match a scale of [1,1,1]:
     RealSense   0.822  0.003  1.479
     RPLIDAR    -0.108 -0.001  1.696
     ========== ====== ====== ======
+
+|
 
 Transformation Matrices
 ************************

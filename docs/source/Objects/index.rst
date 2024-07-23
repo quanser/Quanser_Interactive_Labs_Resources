@@ -18,7 +18,7 @@ Quanser Products
 .. toctree::
    :maxdepth: 1
 
-   car_library.rst
+   qcar1_library.rst
    qcar_flooring.rst
    qbot_platform_library.rst
    qbot_platform_flooring.rst

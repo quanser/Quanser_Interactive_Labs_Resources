@@ -10,6 +10,7 @@ scale applications of self-driving.
 .. image:: ../pictures/qcar_cityscape_lite.png
     :align: center
 
+|
 
 Cityscape Lite World Size
 ==========================
@@ -31,6 +32,8 @@ the locations of the buildings.
 .. image:: ../pictures/cityscape_lite_nav_area.png
     :align: center
     :width: 500
+
+|
 
 .. note::
     The navigation area only applies to traversable actors such as people,

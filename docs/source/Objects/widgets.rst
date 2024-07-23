@@ -7,10 +7,17 @@ Widgets
 .. image:: ../pictures/banner_widget.png
     :align: center
 
+|
+
+.. _widgetDescription:
+
+Description
+============
+
 Widgets work slightly differently then the other objects in the QLabs
 Workspaces.
-They are special actors that cannot be addressed after they have been spawned
-therefore they cannot be deleted individually, they do not support parenting
+They are special actors that cannot be addressed after they have been spawned;
+therefore they cannot be deleted individually, they do not support parenting,
 and all actor properties must be set when they are spawned.
 The advantage of widgets is that they are highly efficient dynamic actors so
 it is possible to spawn thousands of widgets while maintaining performance.
@@ -28,11 +35,6 @@ See the :ref:`widgetTutorial` to get a better understanding of using people in
 Quanser Interactive Labs.
 
 
-.. _widgetDescription:
-
-Description
-============
-
 .. _widgetlibrary:
 
 Library
@@ -44,6 +46,9 @@ Library
 
 Constants
 ============
+
+.. tip::
+    See :ref:`widgetTutorial` to see the different flooring options.
 
 .. autoattribute:: qvl.widget.QLabsWidget.CUBE
 .. autoattribute:: qvl.widget.QLabsWidget.CYLINDER

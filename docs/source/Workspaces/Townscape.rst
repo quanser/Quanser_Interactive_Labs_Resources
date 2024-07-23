@@ -11,6 +11,8 @@ an alternate environment to the cityscape.
 .. image:: ../pictures/qcar_townscape.png
     :align: center
 
+|
+
 Townscape World Size
 ====================
 
@@ -32,6 +34,7 @@ create breaks in the navigation area.
 .. image:: ../pictures/townscape_nav_area.png
     :align: center
 
+|
 
 .. note::
     The navigation area only applies to traversable actors such as people,

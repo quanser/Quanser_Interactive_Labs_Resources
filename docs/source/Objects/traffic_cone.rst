@@ -9,6 +9,8 @@ Traffic Cone
     :width: 800px
     :align: center
 
+|
+
 .. _trafficconedescription:
 
 Description
@@ -89,7 +91,7 @@ There are no connection points for this actor class.
 
 .. _trafficConeTutorial:
 
-Traffic cones Tutorial
+Traffic Cones Tutorial
 ========================
 
 .. tabs::

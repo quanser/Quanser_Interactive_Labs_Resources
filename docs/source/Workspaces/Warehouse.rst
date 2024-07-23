@@ -11,6 +11,8 @@ match the physical devices.  The QCar can be spawned at 1 to 1 or 1/10th scale.
 .. image:: ../pictures/warehouse.png
     :align: center
 
+|
+
 Warehouse World Size
 ====================
 
@@ -30,6 +32,8 @@ navigation areas covers the full floor of the warehouse.
 
 .. image:: ../pictures/warehouse_nav_area.png
     :align: center
+
+|
 
 Warehouse Coordinates of Interest
 ==================================

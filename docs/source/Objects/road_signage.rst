@@ -5,7 +5,12 @@
 Road Signage
 #############
 
+
 .. _roadsignagedescription:
+
+******************
+Description
+******************
 
 Road signage is considered an "actor" in Quanser Interactive Labs Open Worlds.
 The road signage library controls the road signage available to be placed in
@@ -15,10 +20,11 @@ Road signage can be spawned anywhere in the Open Worlds.
 See the :ref:`roadsignageTutorial` to get a better understanding of using road
 signage in Quanser Interactive Labs.
 
+
 .. contents:: Table of Contents
-    :depth: 1
-    :local:
     :backlinks: none
+    :depth: 2
+
 
 
 -------------------------------------------------------------------------------

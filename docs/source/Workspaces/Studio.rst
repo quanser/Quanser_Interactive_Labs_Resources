@@ -13,6 +13,7 @@ devices.
 .. image:: ../pictures/studio.png
     :align: center
 
+|
 
 Studio World Size
 ==================

@@ -45,21 +45,23 @@ Workspace Spawnable Actors
     Basic shapes     Yes       Yes            Yes       Yes     Yes     Yes
     Splines          Yes       Yes            Yes       Yes     Yes     Yes
     Reference frames Yes       Yes            Yes       Yes     Yes     Yes
+    Shredder         No         No            No        Yes     Yes     Yes
+    Weather          Yes       No             Yes       No      No      No
     QCar             License   License        License   License License License
     QBot 2e          No        No             No        License License License
     QBot 3           No        No             No        License License License
     QBot Platform    No        No             No        License License License
     QArm             No        No             No        License License License
     SRV02            No        No             No        License License License
+    Product walls    No        No             No        License License License
+    Product flooring No        No             No        License License License
     Traffic light    License   License        License   License License License
     Traffic cones    License   License        License   License License License
     Crosswalks       License   License        License   License License License
     Stop sign        License   License        License   License License License
     Yield sign       License   License        License   License License License
     Roundabout sign  License   License        License   License License License
-    Product walls    No        No             No        License License License
-    Product flooring No        No             No        License License License
-    Weather          Yes       No             Yes       No      No      No
+    Conveyors (both) No         No            No        License License License
     ================ ========= ============== ========= ======= ======= =========
     
 Licensed actors require an applicable product license as part of your QLabs subscription to spawn.

@@ -10,6 +10,9 @@ People
     :width: 800px
     :align: center
 
+
+|
+
 .. _personDescription:
 
 Description

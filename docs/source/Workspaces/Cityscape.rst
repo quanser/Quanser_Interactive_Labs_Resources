@@ -10,6 +10,8 @@ deploying large-scale applications of self-driving.
 .. image:: ../pictures/qcar_cityscape.png
     :align: center
 
+|
+
 Cityscape World Size
 ====================
 
@@ -30,6 +32,8 @@ create breaks in the navigation area.
 
 .. image:: ../pictures/cityscape_nav_area.png
     :align: center
+
+|
 
 .. note::
     The navigation area only applies to traversable actors such as people,

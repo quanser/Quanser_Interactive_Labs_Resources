@@ -15,11 +15,17 @@ class QLabsQBotPlatformFlooring(QLabsActor):
     """Class ID"""
 
     FLOORING_QBOT_PLATFORM_0 = 0
+    """See configurations"""
     FLOORING_QBOT_PLATFORM_1 = 1
+    """See configurations"""
     FLOORING_QBOT_PLATFORM_2 = 2
+    """See configurations"""
     FLOORING_QBOT_PLATFORM_3 = 3
+    """See configurations"""
     FLOORING_QBOT_PLATFORM_4 = 4
+    """See configurations"""
     FLOORING_QBOT_PLATFORM_5 = 5
+    """See configurations"""
 
 
     def __init__(self, qlabs, verbose=False):
