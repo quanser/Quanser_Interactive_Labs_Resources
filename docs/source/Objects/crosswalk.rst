@@ -23,21 +23,21 @@ signage in Quanser Interactive Labs.
 Library
 ========
 
-.. autoclass:: python.qvl.crosswalk.QLabsCrosswalk
+.. autoclass::qvl.crosswalk.QLabsCrosswalk
 
 .. _crosswalkConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.crosswalk.QLabsCrosswalk.ID_CROSSWALK
+.. autoattribute::qvl.crosswalk.QLabsCrosswalk.ID_CROSSWALK
 
 .. _crosswalkVars:
 
 Member Variables
 =================
 
-.. autoattribute:: python.qvl.crosswalk.QLabsCrosswalk.actorNumber
+.. autoattribute::qvl.crosswalk.QLabsCrosswalk.actorNumber
 
 
 .. _crosswalkMethods:
@@ -45,21 +45,21 @@ Member Variables
 Methods
 ========
 
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn_degrees
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn_id
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn_id_degrees
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.destroy
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.destroy_all_actors_of_class
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.ping
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.get_world_transform
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.get_world_transform_degrees
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.parent_with_relative_transform
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.parent_with_current_world_transform
-.. automethod:: python.qvl.crosswalk.QLabsCrosswalk.parent_break
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn_degrees
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn_id
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn_id_degrees
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.crosswalk.QLabsCrosswalk.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.crosswalk.QLabsCrosswalk.destroy
+.. automethod::qvl.crosswalk.QLabsCrosswalk.destroy_all_actors_of_class
+.. automethod::qvl.crosswalk.QLabsCrosswalk.ping
+.. automethod::qvl.crosswalk.QLabsCrosswalk.get_world_transform
+.. automethod::qvl.crosswalk.QLabsCrosswalk.get_world_transform_degrees
+.. automethod::qvl.crosswalk.QLabsCrosswalk.parent_with_relative_transform
+.. automethod::qvl.crosswalk.QLabsCrosswalk.parent_with_relative_transform_degrees
+.. automethod::qvl.crosswalk.QLabsCrosswalk.parent_with_current_world_transform
+.. automethod::qvl.crosswalk.QLabsCrosswalk.parent_break
 
 .. _crosswalkConfig:
 

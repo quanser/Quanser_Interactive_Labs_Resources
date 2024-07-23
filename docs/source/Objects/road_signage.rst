@@ -32,42 +32,42 @@ Roundabout Sign
 Library
 ========
 
-.. autoclass:: python.qvl.roundabout_sign.QLabsRoundaboutSign
+.. autoclass::qvl.roundabout_sign.QLabsRoundaboutSign
 
 .. _roundaboutConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
+.. autoattribute::qvl.roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
 
 .. _roundaboutVars:
 
 Member Variables
 =================
 
-.. autoattribute:: python.qvl.roundabout_sign.QLabsRoundaboutSign.actorNumber
+.. autoattribute::qvl.roundabout_sign.QLabsRoundaboutSign.actorNumber
 
 .. _roundaboutMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn_degrees
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_degrees
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.destroy
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.destroy_all_actors_of_class
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.ping
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform_degrees
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_current_world_transform
-.. automethod:: python.qvl.roundabout_sign.QLabsRoundaboutSign.parent_break
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn_degrees
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_degrees
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.destroy
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.destroy_all_actors_of_class
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.ping
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform_degrees
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform_degrees
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_current_world_transform
+.. automethod::qvl.roundabout_sign.QLabsRoundaboutSign.parent_break
 
 
 .. _roundaboutConfig:
@@ -98,42 +98,42 @@ Stop Sign
 Library
 ========
 
-.. autoclass:: python.qvl.stop_sign.QLabsStopSign
+.. autoclass::qvl.stop_sign.QLabsStopSign
 
 .. _stopsignConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.stop_sign.QLabsStopSign.ID_STOP_SIGN
+.. autoattribute::qvl.stop_sign.QLabsStopSign.ID_STOP_SIGN
 
 .. _stopsignVars:
 
 Member Variables
 ==================
 
-.. autoattribute:: python.qvl.stop_sign.QLabsStopSign.actorNumber
+.. autoattribute::qvl.stop_sign.QLabsStopSign.actorNumber
 
 .. _stopsignMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn_degrees
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn_id
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn_id_degrees
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.destroy
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.destroy_all_actors_of_class
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.ping
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.get_world_transform
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.get_world_transform_degrees
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.parent_with_relative_transform
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.parent_with_current_world_transform
-.. automethod:: python.qvl.stop_sign.QLabsStopSign.parent_break
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn_degrees
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn_id
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn_id_degrees
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.stop_sign.QLabsStopSign.destroy
+.. automethod::qvl.stop_sign.QLabsStopSign.destroy_all_actors_of_class
+.. automethod::qvl.stop_sign.QLabsStopSign.ping
+.. automethod::qvl.stop_sign.QLabsStopSign.get_world_transform
+.. automethod::qvl.stop_sign.QLabsStopSign.get_world_transform_degrees
+.. automethod::qvl.stop_sign.QLabsStopSign.parent_with_relative_transform
+.. automethod::qvl.stop_sign.QLabsStopSign.parent_with_relative_transform_degrees
+.. automethod::qvl.stop_sign.QLabsStopSign.parent_with_current_world_transform
+.. automethod::qvl.stop_sign.QLabsStopSign.parent_break
 
 .. _stopsignConfig:
 
@@ -163,42 +163,42 @@ Yield Sign
 Library
 ========
 
-.. autoclass:: python.qvl.yield_sign.QLabsYieldSign
+.. autoclass::qvl.yield_sign.QLabsYieldSign
 
 .. _yieldsignConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.yield_sign.QLabsYieldSign.ID_YIELD_SIGN
+.. autoattribute::qvl.yield_sign.QLabsYieldSign.ID_YIELD_SIGN
 
 .. _yieldsignVars:
 
 Member Variables
 ==================
 
-.. autoattribute:: python.qvl.yield_sign.QLabsYieldSign.actorNumber
+.. autoattribute::qvl.yield_sign.QLabsYieldSign.actorNumber
 
 .. _yieldsignMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn_degrees
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn_id
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn_id_degrees
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.destroy
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.destroy_all_actors_of_class
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.ping
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.get_world_transform
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.get_world_transform_degrees
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.parent_with_current_world_transform
-.. automethod:: python.qvl.yield_sign.QLabsYieldSign.parent_break
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn_degrees
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn_id
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn_id_degrees
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.yield_sign.QLabsYieldSign.destroy
+.. automethod::qvl.yield_sign.QLabsYieldSign.destroy_all_actors_of_class
+.. automethod::qvl.yield_sign.QLabsYieldSign.ping
+.. automethod::qvl.yield_sign.QLabsYieldSign.get_world_transform
+.. automethod::qvl.yield_sign.QLabsYieldSign.get_world_transform_degrees
+.. automethod::qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform
+.. automethod::qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform_degrees
+.. automethod::qvl.yield_sign.QLabsYieldSign.parent_with_current_world_transform
+.. automethod::qvl.yield_sign.QLabsYieldSign.parent_break
 
 
 

@@ -20,48 +20,48 @@ skills.
 Library
 ========
 
-.. autoclass:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring
+.. autoclass::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring
 
 .. _qbotPlatformFlooringConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ID_FLOORING
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_0
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_1
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_2
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_3
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_4
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_5
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ID_FLOORING
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_0
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_1
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_2
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_3
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_4
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.FLOORING_QBOT_PLATFORM_5
 
 .. _qbotPlatformFlooringVars:
 
 Member Variables
 =================
 
-.. autoattribute:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.actorNumber
+.. autoattribute::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.actorNumber
 
 .. _qbotPlatformFlooringMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_degrees
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_degrees
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.destroy
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.destroy_all_actors_of_class
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ping
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.get_world_transform
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.get_world_transform_degrees
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_relative_transform
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_current_world_transform
-.. automethod:: python.qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_break
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_degrees
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_degrees
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.destroy
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.destroy_all_actors_of_class
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.ping
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.get_world_transform
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.get_world_transform_degrees
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_relative_transform
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_relative_transform_degrees
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_with_current_world_transform
+.. automethod::qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.parent_break
 
 .. _qbotPlatformFlooringConfig:
 

@@ -21,46 +21,46 @@ transformation of child actors.
 Reference Frame Library
 ========================
 
-.. autoclass:: python.qvl.reference_frame.QLabsReferenceFrame
+.. autoclass::qvl.reference_frame.QLabsReferenceFrame
 
 .. _referenceFrameConstants:
 
 Constants
 ============
 
-.. autoattribute:: python.qvl.reference_frame.QLabsReferenceFrame.ID_REFERENCE_FRAME
+.. autoattribute::qvl.reference_frame.QLabsReferenceFrame.ID_REFERENCE_FRAME
 
 .. _referenceFrameMemberVars:
 
 Member Variables
 =================
 
-.. autoattribute:: python.qvl.reference_frame.QLabsReferenceFrame.actorNumber
+.. autoattribute::qvl.reference_frame.QLabsReferenceFrame.actorNumber
 
 .. _referenceFrameMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.__init__
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn_id
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn_id_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.set_transform
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.set_transform_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.set_icon_scale
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.destroy
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.destroy_all_actors_of_class
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.ping
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.get_world_transform
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.get_world_transform_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.parent_with_current_world_transform
-.. automethod:: python.qvl.reference_frame.QLabsReferenceFrame.parent_break
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.__init__
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn_id
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn_id_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.set_transform
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.set_transform_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.set_icon_scale
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.destroy
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.destroy_all_actors_of_class
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.ping
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.get_world_transform
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.get_world_transform_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.parent_with_relative_transform_degrees
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.parent_with_current_world_transform
+.. automethod::qvl.reference_frame.QLabsReferenceFrame.parent_break
 
 .. _referenceFrameConfigs:
 

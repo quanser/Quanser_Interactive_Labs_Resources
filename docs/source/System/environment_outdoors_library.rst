@@ -18,26 +18,26 @@ Not all Open World environments support all environmental features.
 Outdoor Environment Library
 ============================
 
-.. autoclass:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors
+.. autoclass::qvl.environment_outdoors.QLabsEnvironmentOutdoors
 
 .. _environmentOutdoorsConstants:
 
 Constants
 ============
 
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.ID_ENVIRONMENT_OUTDOORS
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.ID_ENVIRONMENT_OUTDOORS
 
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.CLEAR_SKIES
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.PARTLY_CLOUDY
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.CLOUDY
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.OVERCAST
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.FOGGY
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.LIGHT_RAIN
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.RAIN
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.THUNDERSTORM
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.LIGHT_SNOW
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.SNOW
-.. autoattribute:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.BLIZZARD
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.CLEAR_SKIES
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.PARTLY_CLOUDY
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.CLOUDY
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.OVERCAST
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.FOGGY
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.LIGHT_RAIN
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.RAIN
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.THUNDERSTORM
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.LIGHT_SNOW
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.SNOW
+.. autoattribute::qvl.environment_outdoors.QLabsEnvironmentOutdoors.BLIZZARD
 
 
 .. _environmentOutdoorsMethods:
@@ -45,9 +45,9 @@ Constants
 Methods
 =========
 
-.. automethod:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_time_of_day
-.. automethod:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_outdoor_lighting
-.. automethod:: python.qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_weather_preset
+.. automethod::qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_time_of_day
+.. automethod::qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_outdoor_lighting
+.. automethod::qvl.environment_outdoors.QLabsEnvironmentOutdoors.set_weather_preset
 
 
 -------------------------------------------------------------------------------

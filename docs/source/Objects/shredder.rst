@@ -26,18 +26,18 @@ in Quanser Interactive Labs.
 Library
 ========
 
-.. autoclass:: python.qvl.shredder.QLabsShredder
+.. autoclass::qvl.shredder.QLabsShredder
 
 .. _shredderConstants:
 
 Constants
 ============
 
-.. autoattribute:: python.qvl.shredder.QLabsShredder.ID_SHREDDER
-.. autoattribute:: python.qvl.shredder.QLabsShredder.RED
-.. autoattribute:: python.qvl.shredder.QLabsShredder.GREEN
-.. autoattribute:: python.qvl.shredder.QLabsShredder.BLUE
-.. autoattribute:: python.qvl.shredder.QLabsShredder.WHITE
+.. autoattribute::qvl.shredder.QLabsShredder.ID_SHREDDER
+.. autoattribute::qvl.shredder.QLabsShredder.RED
+.. autoattribute::qvl.shredder.QLabsShredder.GREEN
+.. autoattribute::qvl.shredder.QLabsShredder.BLUE
+.. autoattribute::qvl.shredder.QLabsShredder.WHITE
 
 
 
@@ -46,31 +46,31 @@ Constants
 Member Variables
 ==================
 
-.. autoattribute:: python.qvl.shredder.QLabsShredder.actorNumber
+.. autoattribute::qvl.shredder.QLabsShredder.actorNumber
 
 .. _shredderMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.shredder.QLabsShredder.__init__
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn_degrees
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn_id
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn_id_degrees
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn_id_and_parent_with_relative_transform
-.. automethod:: python.qvl.shredder.QLabsShredder.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: python.qvl.shredder.QLabsShredder.destroy
-.. automethod:: python.qvl.shredder.QLabsShredder.destroy_all_actors_of_class
-.. automethod:: python.qvl.shredder.QLabsShredder.get_world_transform
-.. automethod:: python.qvl.shredder.QLabsShredder.get_world_transform_degrees
-.. automethod:: python.qvl.shredder.QLabsShredder.ping
-.. automethod:: python.qvl.shredder.QLabsShredder.parent_with_relative_transform
-.. automethod:: python.qvl.shredder.QLabsShredder.parent_with_relative_transform_degrees
-.. automethod:: python.qvl.shredder.QLabsShredder.parent_with_current_world_transform
-.. automethod:: python.qvl.shredder.QLabsShredder.parent_break
-.. automethod:: python.qvl.shredder.QLabsShredder.set_custom_properties
-.. automethod:: python.qvl.shredder.QLabsShredder.get_custom_properties
+.. automethod::qvl.shredder.QLabsShredder.__init__
+.. automethod::qvl.shredder.QLabsShredder.spawn
+.. automethod::qvl.shredder.QLabsShredder.spawn_degrees
+.. automethod::qvl.shredder.QLabsShredder.spawn_id
+.. automethod::qvl.shredder.QLabsShredder.spawn_id_degrees
+.. automethod::qvl.shredder.QLabsShredder.spawn_id_and_parent_with_relative_transform
+.. automethod::qvl.shredder.QLabsShredder.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod::qvl.shredder.QLabsShredder.destroy
+.. automethod::qvl.shredder.QLabsShredder.destroy_all_actors_of_class
+.. automethod::qvl.shredder.QLabsShredder.get_world_transform
+.. automethod::qvl.shredder.QLabsShredder.get_world_transform_degrees
+.. automethod::qvl.shredder.QLabsShredder.ping
+.. automethod::qvl.shredder.QLabsShredder.parent_with_relative_transform
+.. automethod::qvl.shredder.QLabsShredder.parent_with_relative_transform_degrees
+.. automethod::qvl.shredder.QLabsShredder.parent_with_current_world_transform
+.. automethod::qvl.shredder.QLabsShredder.parent_break
+.. automethod::qvl.shredder.QLabsShredder.set_custom_properties
+.. automethod::qvl.shredder.QLabsShredder.get_custom_properties
 
 
 .. _shredderConfig:

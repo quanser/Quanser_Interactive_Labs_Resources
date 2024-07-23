@@ -26,21 +26,21 @@ virtual environment and control the motion of the robot(s).
 Library
 =========
 
-.. autoclass:: python.qvl.qbot_platform.QLabsQBotPlatform
+.. autoclass::qvl.qbot_platform.QLabsQBotPlatform
 
 .. _qbotPlatformConstants:
 
 Constants
 ==========
 
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.ID_QBOT_PLATFORM
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_RGB
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_DEPTH
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_DOWNWARD
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_TRAILING
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.CAMERA_RGB
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.CAMERA_DEPTH
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.CAMERA_DOWNWARD
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.ID_QBOT_PLATFORM
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_RGB
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_DEPTH
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_DOWNWARD
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.VIEWPOINT_TRAILING
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.CAMERA_RGB
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.CAMERA_DEPTH
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.CAMERA_DOWNWARD
 
 
 .. _qbotPlatformMemberVars:
@@ -48,24 +48,24 @@ Constants
 Member Variables
 ==================
 
-.. autoattribute:: python.qvl.qbot_platform.QLabsQBotPlatform.actorNumber
+.. autoattribute::qvl.qbot_platform.QLabsQBotPlatform.actorNumber
 
 .. _qbotPlatformMethods:
 
 Methods
 ========
 
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.__init__
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.spawn
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.spawn_degrees
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.spawn_id
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.spawn_id_degrees
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.set_transform
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.set_transform_degrees
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.command_and_request_state
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.get_image
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.get_lidar
-.. automethod:: python.qvl.qbot_platform.QLabsQBotPlatform.possess
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.__init__
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.spawn
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.spawn_degrees
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.spawn_id
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.spawn_id_degrees
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.set_transform
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.set_transform_degrees
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.command_and_request_state
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.get_image
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.get_lidar
+.. automethod::qvl.qbot_platform.QLabsQBotPlatform.possess
 
 
 .. _qbotPlatformConfig:
