@@ -79,44 +79,44 @@ cone3.spawn_id_degrees(3, [-15, 26.5, 1.0], [0, 0, 90], [1, 1, 1], 2, 1);
 % Spawn a bigger cone with two color stripes using radians and generating the actorNumber internally
 cone4.spawn([-17, 26.5, 1.0], [0, 0, pi/4], [1, 1, 1], 3, 1);
 
-% Wait to see the output
+%Wait to see the output
 pause(1.5);
 
-% The color changing 'set_material_properties' does not yet exist in matlab
-%
-% % Change the color of the cones (materialSlot 0 is the base color, and 1 is the stripes)
-% cone1.set_material_properties(0, [0, 0, 1], 1); % Blue
-% % Wait to see the output
-% pause(0.5);
-% 
-% cone2.set_material_properties(0, [1, 0, 0], 1, 0); % Red
-% cone2.set_material_properties(1, [1, 0.5, 0]);
-% pause(0.5);
-% 
-% cone3.set_material_properties(0, [0, 1, 1]); % Cyan
-% cone3.set_material_properties(1, [0, 0.3, 1], 1, 1);
-% pause(0.5);
-% 
-% cone4.set_material_properties(0, [1, 0, 1], 0, 0); % Magenta
-% cone4.set_material_properties(1, [0.3, 0, 1]);
-% pause(0.5);
-%
-% cone1.set_material_properties(0, [0,1,0],0.5,0) # Green
-% cone1.set_material_properties(1, [1,.5,0],0)
-% pause(0.5)
-% 
-% cone2.set_material_properties(0, [1,1,0],1,1) # Yellow
-% cone2.set_material_properties(1, [0,0,0],0)
-% pause(0.5)
-% 
-% cone3.set_material_properties(0, [0.5,0.5,0.5],1,1) # Grey
-% cone3.set_material_properties(1, [0.6,0.2,0.6],1,1)
-% pause(0.5)
-% 
-% cone4.set_material_properties(0, [0.0,0.5,0.5],0,0) # Magenta
-% cone4.set_material_properties(1, [0.5,0.5,0.0],1,1)
-%
-% pause(3);
+% Change the color of the cones (materialSlot 0 is the base color, and 1 is the stripes)
+
+% set_material_properties(materialSlot, color, roughness, metallic, waitForConfirmation)
+cone1.set_material_properties(0, [0, 0, 1], 1); % Blue
+% Wait to see the output
+pause(0.5);
+
+cone2.set_material_properties(0, [1, 0, 0], 1, 0); % Red
+cone2.set_material_properties(1, [1, 0.5, 0]);
+pause(0.5);
+
+cone3.set_material_properties(0, [0, 1, 1]); % Cyan
+cone3.set_material_properties(1, [0, 0.3, 1], 1, 1);
+pause(0.5);
+
+cone4.set_material_properties(0, [1, 0, 1], 0, 0); % Magenta
+cone4.set_material_properties(1, [0.3, 0, 1]);
+pause(0.5);
+
+cone1.set_material_properties(0, [0,1,0],0.5,0) % Green
+cone1.set_material_properties(1, [1,.5,0],0)
+pause(0.5)
+
+cone2.set_material_properties(0, [1,1,0],1,1) % Yellow
+cone2.set_material_properties(1, [0,0,0],0)
+pause(0.5)
+
+cone3.set_material_properties(0, [0.5,0.5,0.5],1,1) % Grey
+cone3.set_material_properties(1, [0.6,0.2,0.6],1,1)
+pause(0.5)
+
+cone4.set_material_properties(0, [0.5,0.0,0.7],0,0) % Magenta
+cone4.set_material_properties(1, [0.5,0.2,0.0],1,1)
+
+pause(3);
 
 cone1.destroy();
 pause(1);
