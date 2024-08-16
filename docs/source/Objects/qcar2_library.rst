@@ -1,14 +1,14 @@
-.. _QCar1_Library:
+.. _QCar2_Library:
 
 *******
-QCar
+QCar 2
 *******
 
 .. image:: ../pictures/banner_qcar.png
     :width: 800px
     :align: center
 
-.. _carDescription:
+.. _car2Description:
 
 |
 
@@ -19,77 +19,77 @@ QCars are considered "actors" in Quanser Interactive Labs. The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
 motion of the vehicles.
 
-See the :ref:`QCarTutorial` to get a better understanding of using QCars in
+See the :ref:`QCar2Tutorial` to get a better understanding of using QCars in
 Quanser Interactive Labs.
 
-.. _carLibrary:
+.. _car2Library:
 
 Library
 =========
 
-.. autoclass:: qvl.qcar.QLabsQCar
+.. autoclass:: qvl.qcar2.QLabsQCar2
 
-.. _carConstants:
+.. _car2Constants:
 
 Constants
 ===========
 
-.. autoattribute:: qvl.qcar.QLabsQCar.ID_QCAR
+.. autoattribute:: qvl.qcar2.QLabsQCar2.ID_QCAR
 
 .. note::
     CSI camera resolution is 820x410.
 
 
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_RIGHT
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_BACK
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_LEFT
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_CSI_FRONT
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_CSI_RIGHT
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_CSI_BACK
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_CSI_LEFT
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_CSI_FRONT
 
 .. note::
     RGB and depth resolution is 640x480.
 
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_RGB
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_DEPTH
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_RGB
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_DEPTH
 
 .. note::
     Overhead and trailing cameras support user zoom using the mouse wheel.
 
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_OVERHEAD
-.. autoattribute:: qvl.qcar.QLabsQCar.CAMERA_TRAILING
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_OVERHEAD
+.. autoattribute:: qvl.qcar2.QLabsQCar2.CAMERA_TRAILING
 
 
-.. _carMemberVars:
+.. _car2MemberVars:
 
 Member Variables
 =================
 
-.. autoattribute:: qvl.qcar.QLabsQCar.actorNumber
+.. autoattribute:: qvl.qcar2.QLabsQCar2.actorNumber
 
-.. _carMethods:
+.. _car2Methods:
 
 Methods
 =========
 
-.. automethod:: qvl.qcar.QLabsQCar.__init__
-.. automethod:: qvl.qcar.QLabsQCar.spawn
-.. automethod:: qvl.qcar.QLabsQCar.spawn_degrees
-.. automethod:: qvl.qcar.QLabsQCar.spawn_id
-.. automethod:: qvl.qcar.QLabsQCar.spawn_id_degrees
-.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state
-.. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state_degrees
-.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state
-.. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state_degrees
-.. automethod:: qvl.qcar.QLabsQCar.possess
-.. automethod:: qvl.qcar.QLabsQCar.ghost_mode
-.. automethod:: qvl.qcar.QLabsQCar.get_image
-.. automethod:: qvl.qcar.QLabsQCar.get_lidar
-.. automethod:: qvl.qcar.QLabsQCar.destroy
-.. automethod:: qvl.qcar.QLabsQCar.destroy_all_actors_of_class
-.. automethod:: qvl.qcar.QLabsQCar.ping
-.. automethod:: qvl.qcar.QLabsQCar.get_world_transform
-.. automethod:: qvl.qcar.QLabsQCar.get_world_transform_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.__init__
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.set_transform_and_request_state
+.. automethod:: qvl.qcar2.QLabsQCar2.set_transform_and_request_state_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.set_velocity_and_request_state
+.. automethod:: qvl.qcar2.QLabsQCar2.set_velocity_and_request_state_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.possess
+.. automethod:: qvl.qcar2.QLabsQCar2.ghost_mode
+.. automethod:: qvl.qcar2.QLabsQCar2.get_image
+.. automethod:: qvl.qcar2.QLabsQCar2.get_lidar
+.. automethod:: qvl.qcar2.QLabsQCar2.destroy
+.. automethod:: qvl.qcar2.QLabsQCar2.destroy_all_actors_of_class
+.. automethod:: qvl.qcar2.QLabsQCar2.ping
+.. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform
+.. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform_degrees
 
-.. _carConfig:
+.. _car2Config:
 
 Configurations
 ===============
@@ -101,7 +101,7 @@ There is only one configuration of the QCar actor.
     :align: center
 
 
-.. _carConnect:
+.. _car2Connect:
 
 Connection Points
 ===================
@@ -173,8 +173,8 @@ All transformation matrices are built off of the body frame and camera frames
 for the QCar.
 To read more about this check out our documentation
 `here <https://www.quanser.com/products/self-driving-car-studio/>`__
-by clicking on Research Resources link and looking inside the zip folder for
-src/user_manuals/qcar/user_manual_system_hardware.pdf
+by clicking on resources button and looking inside the zip folder for
+src/user_manuals/qcar2/user_manual_system_hardware.pdf
 
 .. image:: ../pictures/qcar_extrinsic_matrices.png
     :scale:  65%
@@ -182,9 +182,9 @@ src/user_manuals/qcar/user_manual_system_hardware.pdf
 
 -------------------------------------------------------------------------------
 
-.. _QCarTutorial:
+.. _QCar2Tutorial:
 
-QCar Tutorial
+QCar 2 Tutorial
 ===============
 
 .. tabs::
@@ -192,12 +192,12 @@ QCar Tutorial
 
         .. dropdown:: Python Tutorial
 
-            Raw to download this tutorial: |qcar_tutorial.py|.
+            Raw to download this tutorial: |qcar2_tutorial.py|.
 
-            .. |qcar_tutorial.py| replace::
-                :download:`QCar Tutorial (.py) <../../../tutorials/qcar_tutorial.py>`
+            .. |qcar2_tutorial.py| replace::
+                :download:`QCar 2 Tutorial (.py) <../../../tutorials/qcar2_tutorial.py>`
 
-            .. literalinclude:: ../../../tutorials/qcar_tutorial.py
+            .. literalinclude:: ../../../tutorials/qcar2_tutorial.py
                 :language: python
                 :linenos:
 
@@ -205,12 +205,12 @@ QCar Tutorial
 
         .. dropdown:: Matlab Tutorial
 
-            Raw to download this tutorial: |qcar_tutorial.m|.
+            Raw to download this tutorial: |qcar2_tutorial.m|.
 
-            .. |qcar_tutorial.m| replace::
-                :download:`QCar Tutorial (.m) <../../../tutorials/qcar_tutorial.m>`
+            .. |qcar2_tutorial.m| replace::
+                :download:`QCar 2 Tutorial (.m) <../../../tutorials/qcar2_tutorial.m>`
 
-            .. literalinclude:: ../../../tutorials/qcar_tutorial.m
+            .. literalinclude:: ../../../tutorials/qcar2_tutorial.m
                 :language: Matlab
                 :linenos:
     
