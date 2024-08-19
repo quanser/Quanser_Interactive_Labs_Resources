@@ -96,11 +96,6 @@ Configurations
 
 There is only one configuration of the QCar actor.
 
-.. image:: ../pictures/qcar.png
-    :scale: 50%
-    :align: center
-
-
 .. _carConnect:
 
 Connection Points
@@ -136,10 +131,16 @@ You will find a list of the important extrinsics below.
 
 Distances From Body Center
 ***************************
-Distances of the QCar in its virtual environment are 10 times larger then in
-real life when scaled at [1,1,1].
-Therefore the distances to important components have been scaled accordingly
-below to match a scale of [1,1,1]:
+The body frame is located between the front and rear axles on the ground plane.
+Distances of the QCar in its virtual environment are 10 times larger than on the 
+physical system so a QCar spawned at a scale of 1 is equivalent size to a full-scale
+automobile. A QCar spawned at a scale of 0.1 will be equivalent to the size of a
+physical QCar.
+
+
+.. image:: ../pictures/qcar_bodyframe.png
+    :scale:  65%
+    :align: center
 
 .. table::
     :widths: 11, 11, 11, 11
@@ -164,10 +165,6 @@ below to match a scale of [1,1,1]:
 
 Transformation Matrices
 ************************
-
-.. image:: ../pictures/bodyframe.png
-    :scale:  65%
-    :align: center
 
 All transformation matrices are built off of the body frame and camera frames
 for the QCar.
