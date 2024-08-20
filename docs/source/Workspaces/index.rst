@@ -91,13 +91,29 @@ Licensed actors require an applicable product license as part of your QLabs subs
     table-layout: fixed;
     width: 100%;
     /* the prevents the th scrolling up by the default border size before "sticking" */
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     }
 
-    table, th, td {
-    border-spacing: 0;
-    border: 1px solid #E1E4E5;
+    table th {
+    /* Apply both top and bottom borders to the <th> */
+    border-top: 1px solid #E1E4E5;
+    border-bottom: 1px solid #E1E4E5;
+    border-right: 1px solid #E1E4E5;
     }
+
+    table td {
+    /* For cells, apply the border to one of each side only (right but not left, bottom but not top) */
+    border-bottom: 1px solid #E1E4E5;
+    border-right: 1px solid #E1E4E5;
+    }
+
+    table th:first-child,
+    table td:first-child {
+    /* Apply a left border on the first <td> or <th> in a row */
+    border-left: 1px solid #E1E4E5;
+    }
+
 
     th, td {
     width: 100px;
