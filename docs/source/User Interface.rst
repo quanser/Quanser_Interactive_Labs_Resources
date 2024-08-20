@@ -33,7 +33,7 @@ through API commands (see our :ref:`Design Philosophy` for more information).
 
 * **Camera selection**
     A drop-down dialog listing all the active cameras.  Any actor that has built-in
-    cameras such as :ref:`Car_Library` or :ref:`QBotPlatform_Library` will automatically
+    cameras such as :ref:`QCar1_Library` or :ref:`QBotPlatform_Library` will automatically
     add their cameras to the list when they are spawned in the world. User cameras
     can also be manually added here. See :ref:`Adding Cameras in the UI` for more
     information.
