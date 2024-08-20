@@ -74,7 +74,87 @@ Licensed actors require an applicable product license as part of your QLabs subs
 
 .. raw:: html
 
-    <div style="overflow-x: auto;">
+    <html>
+    <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    thead {
+    border-bottom: 2px solid rgb(160 160 160);
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
+    }
+
+    table {
+    table-layout: fixed;
+    width: 100%;
+    /* the prevents the th scrolling up by the default border size before "sticking" */
+    border-collapse: collapse;
+    }
+
+    table, th, td {
+    border-spacing: 0;
+    border: 1px solid #E1E4E5;
+    }
+
+    th, td {
+    width: 100px;
+    min-width: 100px;
+    }
+
+    th {
+    position: sticky;
+    top: 0;
+    background: #FFF;
+    
+    }
+
+    th, td {
+    text-align: left;
+    padding: 8px;
+    }
+
+    tbody td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #ffffff; /* Adjust as needed */
+    z-index: 2; /* Ensure it's above other content */
+    }
+
+    thead th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #ffffff; /* Adjust as needed */
+    z-index: 4; /* Ensure it's above other content */
+    }
+
+    tbody tr:nth-child(odd){background-color: #f3f6f6}
+    tbody tr:nth-child(even){background-color: #f2f2f2}
+
+    .fa-check {
+    color: green;
+    }
+
+    .fa-remove {
+    color: red;
+    }
+
+    .fa-question {
+    color: black;
+    }
+    
+    </style>
+    
+    </head>
+    <body>
+
+    <h2>Responsive Table</h2>
+    <p>If you have a table that is too wide, you can add a container element with overflow-x:auto around the table, and it will display a horizontal scroll bar when needed.</p>
+    <p>Resize the browser window to see the effect. Try to remove the div element and see what happens to the table.</p>
+
+    <div style="height:500px; overflow: auto;">
     <table>
         <thead>
             <tr>
@@ -381,10 +461,321 @@ Licensed actors require an applicable product license as part of your QLabs subs
     </div>
 
 
+    <h2>SUPER TABLE 2</h2>
+    <p>If you have a table that is too wide, you can add a container element with overflow-x:auto around the table, and it will display a horizontal scroll bar when needed.</p>
+    <p>Resize the browser window to see the effect. Try to remove the div element and see what happens to the table.</p>
 
+    <div style="height:500px; overflow: auto;">
+    <table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Cityscape</th>
+            <th>Cityscape Lite</th>
+            <th>Townscape</th>
+            <th>Townscape Lite</th>
+            <th>Open Road</th>
+            <th>Studio</th>
+            <th>Plane</th>
+            <th>Warehouse</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cameras</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Widgets</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Animals</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>People</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Basic shapes</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Splines</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Reference frames</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Shredder</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+        </tr>
+        <tr>
+            <td>Weather</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>Time of Day</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>QCar</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>QCar 2</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>QBot 2e</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>QBot 3</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>QBot Platform</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>QArm</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>SRV02</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Product walls</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Product flooring</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Traffic light</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Traffic cones</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Crosswalks</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Stop sign</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Yield sign</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Roundabout sign</td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+        <tr>
+            <td>Conveyors straight</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-asterisk"></i></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
 
+    <br>
+    <br>
+    <br>
 
-
-
+    </body>
+    </html>
 
 
