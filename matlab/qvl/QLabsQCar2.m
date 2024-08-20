@@ -41,7 +41,7 @@ classdef QLabsQCar2 < QLabsActor
 
     methods
         
-        function obj = QLabsQCar(qlabs, verbose)
+        function obj = QLabsQCar2(qlabs, verbose)
             arguments
                 qlabs QuanserInteractiveLabs
                 verbose logical = false
@@ -53,7 +53,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn_id(obj, actorNumber, location, rotation, scale, configuration, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 actorNumber single
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
@@ -71,7 +71,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn_id_degrees(obj, actorNumber, location, rotation, scale, configuration, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 actorNumber single
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
@@ -89,7 +89,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn(obj, location, rotation, scale, configuration, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
                 scale (1,3) single = [1 1 1]
@@ -106,7 +106,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn_degrees(obj, location, rotation, scale, configuration, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
                 scale (1,3) single = [1 1 1]
@@ -123,7 +123,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn_id_and_parent_with_relative_transform(obj, actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 actorNumber single
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
@@ -144,7 +144,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = spawn_id_and_parent_with_relative_transform_degrees(obj, actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 actorNumber single
                 location (1,3) single = [0 0 0]
                 rotation (1,3) single = [0 0 0]
@@ -165,7 +165,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function [success, location, rotation, forward_vector, up_vector, front_bumper_hit, rear_bumper_hit] = set_transform_and_request_state(obj, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 location (1,3) single
                 rotation (1,3) single
                 enableDynamics logical
@@ -254,7 +254,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function [success, location, rotation, forward_vector, up_vector, front_bumper_hit, rear_bumper_hit] = set_transform_and_request_state_degrees(obj, location, rotation, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 location (1,3) single
                 rotation (1,3) single
                 enableDynamics logical
@@ -274,7 +274,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function [success, location, rotation, front_bumper_hit, rear_bumper_hit] = set_velocity_and_request_state(obj, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 forward single
                 turn single
                 headlights logical
@@ -347,7 +347,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function [success, location, rotation, front_bumper_hit, rear_bumper_hit] = set_velocity_and_request_state_degrees(obj, forward, turn, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 forward single
                 turn single
                 headlights logical
@@ -365,7 +365,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = possess(obj, camera)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 camera uint8 = obj.CAMERA_TRAILING
             end
             success = false;
@@ -401,7 +401,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function success = ghost_mode(obj, enable, color)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 enable logical = true
                 color (1,3) single = [0 1 0]
             end
@@ -442,7 +442,7 @@ classdef QLabsQCar2 < QLabsActor
 
         function [success, imageData] = get_image(obj, camera)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 camera single
             end
             success = false;
@@ -481,7 +481,7 @@ classdef QLabsQCar2 < QLabsActor
         % FUNCTION GET LIDAR %
         function [success, sampled_angles, sampled_distance] = get_lidar(obj, samplePoints)
             arguments
-                obj QLabsQCar
+                obj QLabsQCar2
                 samplePoints single = 400
             end
             success = false;

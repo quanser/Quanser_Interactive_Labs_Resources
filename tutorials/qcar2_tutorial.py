@@ -11,6 +11,9 @@ to control the car and its related functions.
 
 """
 
+import sys
+sys.path.insert(0, "C:/Users/jwight/Desktop/Github/QLabsPublic/python")
+
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
@@ -62,7 +65,7 @@ def main():
     print("\n\n---QCar---")
 
     #spawning the QCar with radians
-    hQCar0 = QLabsQCar(qlabs)
+    hQCar0 = QLabsQCar2(qlabs)
     hQCar0.spawn_id(actorNumber=0, location=[-8.700, 14.643, 0.005], rotation=[0,0,math.pi/2], waitForConfirmation=True)
 
     #Spawn and destroy the existing QCar
@@ -71,7 +74,7 @@ def main():
     hQCar1.destroy()
 
     #spawn a QCar with degrees
-    hQCar2 = QLabsQCar(qlabs)
+    hQCar2 = QLabsQCar2(qlabs)
     x = hQCar2.spawn_id_degrees(actorNumber=2, location=[-11.048, 14.643, 0.005], rotation=[0,0,90], waitForConfirmation=True)
 
     #pinging the QCar
@@ -114,7 +117,7 @@ def main():
     hCubeQCarBlocks .spawn_id(101, [-19.919, 26.289, 0.5], [0,0,0], [1,1,1], configuration=hCubeQCarBlocks.SHAPE_CUBE, waitForConfirmation=True)
 
     # Create another QCar
-    hQCar3 = QLabsQCar(qlabs)
+    hQCar3 = QLabsQCar2(qlabs)
     hQCar3.spawn_id(actorNumber=3, location=[-13.424, 26.299, 0.005], rotation=[0,0,math.pi])
 
     # Have the QCar drive forward to hit the front block
