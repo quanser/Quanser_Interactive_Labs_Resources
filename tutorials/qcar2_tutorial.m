@@ -63,12 +63,12 @@ hQCar0 = QLabsQCar2(qlabs);
 hQCar0.spawn_id(0, [-8.700, 14.643, 0.005], [0, 0, pi/2], 1);
 
 % Spawn and destroy the existing QCar
-hQCar1 = QLabsQCar(qlabs);
+hQCar1 = QLabsQCar2(qlabs);
 hQCar1.spawn_id(1, [-15.075, 26.703, 6.074], [0, 0, pi/2], 1);
 hQCar1.destroy();
 
 % Spawn a QCar with degrees
-hQCar2 = QLabsQCar(qlabs);
+hQCar2 = QLabsQCar2(qlabs);
 x = hQCar2.spawn_id_degrees(2, [-11.048, 14.643, 0.005], [0, 0, 90], 1);
 
 % Pinging the QCar
@@ -117,7 +117,7 @@ hCubeQCarBlocks.spawn_id(100, [-11.919, 26.289, 0.5], [0, 0, 0], [1, 1, 1], hCub
 hCubeQCarBlocks.spawn_id(101, [-19.919, 26.289, 0.5], [0, 0, 0], [1, 1, 1], hCubeQCarBlocks.SHAPE_CUBE, true);
 
 % Create another QCar
-hQCar3 = QLabsQCar(qlabs);
+hQCar3 = QLabsQCar2(qlabs);
 hQCar3.spawn_id(3, [-13.424, 26.299, 0.005], [0, 0, pi]);
 
 % Have the QCar drive forward to hit the front block
