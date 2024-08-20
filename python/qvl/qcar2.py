@@ -250,23 +250,23 @@ class QLabsQCar2(QLabsActor):
         if (not self._is_actor_number_valid()):
             return False, [0,0,0], [0,0,0], [0,0,0], [0,0,0], False, False
 
-        if type(headlights) == 'bool':
+        if type(headlights) == bool:
             if (headlights):
                 headlights = 0xFF
 
-        if type(leftTurnSignal) == 'bool':
+        if type(leftTurnSignal) == bool:
             if (leftTurnSignal):
                 leftTurnSignal = 0xFF
 
-        if type(rightTurnSignal) == 'bool':
+        if type(rightTurnSignal) == bool:
             if (rightTurnSignal):
                 rightTurnSignal = 0xFF
 
-        if type(brakeSignal) == 'bool':
+        if type(brakeSignal) == bool:
             if (brakeSignal):
                 brakeSignal = 0xFF
 
-        if type(reverseSignal) == 'bool':
+        if type(reverseSignal) == bool:
             if (reverseSignal):
                 reverseSignal = 0xFF
 
@@ -374,23 +374,23 @@ class QLabsQCar2(QLabsActor):
         if (not self._is_actor_number_valid()):
             return False, [0,0,0], [0,0,0], False, False
 
-        if type(headlights) == 'bool':
+        if type(headlights) == bool:
             if (headlights):
                 headlights = 0xFF
 
-        if type(leftTurnSignal) == 'bool':
+        if type(leftTurnSignal) == bool:
             if (leftTurnSignal):
                 leftTurnSignal = 0xFF
 
-        if type(rightTurnSignal) == 'bool':
+        if type(rightTurnSignal) == bool:
             if (rightTurnSignal):
                 rightTurnSignal = 0xFF
 
-        if type(brakeSignal) == 'bool':
+        if type(brakeSignal) == bool:
             if (brakeSignal):
                 brakeSignal = 0xFF
 
-        if type(reverseSignal) == 'bool':
+        if type(reverseSignal) == bool:
             if (reverseSignal):
                 reverseSignal = 0xFF
 
