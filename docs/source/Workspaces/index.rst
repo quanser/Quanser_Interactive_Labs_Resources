@@ -72,5 +72,319 @@ Licensed actors require an applicable product license as part of your QLabs subs
 
 
 
+.. raw:: html
+
+    <div style="overflow-x: auto;">
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Cityscape</th>
+                <th>Cityscape Lite</th>
+                <th>Townscape</th>
+                <th>Townscape Lite</th>
+                <th>Open Road</th>
+                <th>Studio</th>
+                <th>Plane</th>
+                <th>Warehouse</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cameras</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Widgets</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Animals</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>People</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Basic shapes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Splines</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Reference frames</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Shredder</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Weather</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>Time of Day</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>QCar</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>QCar 2</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>QBot 2e</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>QBot 3</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>QBot Platform</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>QArm</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>SRV02</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Product walls</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Product flooring</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Traffic light</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Traffic cones</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Crosswalks</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Stop sign</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Yield sign</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Roundabout sign</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+            <tr>
+                <td>Conveyors straight</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>No</td>
+                <td>License</td>
+                <td>License</td>
+                <td>License</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+
+
+
+
+
 
 
