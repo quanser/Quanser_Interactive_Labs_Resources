@@ -220,21 +220,21 @@ class QLabsQCar2(QLabsActor):
 
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
-        :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
+        :param enableDynamics: Enables or disables gravity for set transform requests.
+        :param headlights: If the type is a boolean set all the headlights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left middle, b2: left inside, b3: right outside, b4: right middle, b5: right inside).
+        :param leftTurnSignal: If the type is a boolean set all the left turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param rightTurnSignal: If the type is a boolean set all the right turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param brakeSignal: This does not affect the motion of the vehicle. If the type is a boolean set all the brake lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left inside, b2: right outside, b3: right inside).
+        :param reverseSignal: If the type is a boolean set all the reverse lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left, b1: right).
         :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
-        :type enableDynamics: boolean
-        :type headlights: boolean
-        :type leftTurnSignal: boolean
-        :type rightTurnSignal: boolean
-        :type brakeSignal: boolean
-        :type reverseSignal: boolean
+        :type enableDynamics: boolean/int
+        :type headlights: boolean/int
+        :type leftTurnSignal: boolean/int
+        :type rightTurnSignal: boolean/int
+        :type brakeSignal: boolean/int
+        :type reverseSignal: boolean/int
         :type waitForConfirmation: boolean
         :return:
             - **status** - True if successful or False otherwise
@@ -249,6 +249,26 @@ class QLabsQCar2(QLabsActor):
         """
         if (not self._is_actor_number_valid()):
             return False, [0,0,0], [0,0,0], [0,0,0], [0,0,0], False, False
+
+        if type(headlights) == 'bool':
+            if (headlights):
+                headlights = 0xFF
+
+        if type(leftTurnSignal) == 'bool':
+            if (leftTurnSignal):
+                leftTurnSignal = 0xFF
+
+        if type(rightTurnSignal) == 'bool':
+            if (rightTurnSignal):
+                rightTurnSignal = 0xFF
+
+        if type(brakeSignal) == 'bool':
+            if (brakeSignal):
+                brakeSignal = 0xFF
+
+        if type(reverseSignal) == 'bool':
+            if (reverseSignal):
+                reverseSignal = 0xFF
 
         c = CommModularContainer()
         c.classID = self.ID_QCAR
@@ -292,20 +312,20 @@ class QLabsQCar2(QLabsActor):
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
         :param rotation: An array of floats for the roll, pitch, and yaw in degrees
         :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
+        :param headlights: If the type is a boolean set all the headlights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left middle, b2: left inside, b3: right outside, b4: right middle, b5: right inside).
+        :param leftTurnSignal: If the type is a boolean set all the left turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param rightTurnSignal: If the type is a boolean set all the right turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param brakeSignal: This does not affect the motion of the vehicle. If the type is a boolean set all the brake lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left inside, b2: right outside, b3: right inside).
+        :param reverseSignal: If the type is a boolean set all the reverse lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left, b1: right).
         :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
         :type enableDynamics: boolean
-        :type headlights: boolean
-        :type leftTurnSignal: boolean
-        :type rightTurnSignal: boolean
-        :type brakeSignal: boolean
-        :type reverseSignal: boolean
+        :type headlights: boolean/int
+        :type leftTurnSignal: boolean/int
+        :type rightTurnSignal: boolean/int
+        :type brakeSignal: boolean/int
+        :type reverseSignal: boolean/int
         :type waitForConfirmation: boolean
         :return:
             - **status** - True if successful or False otherwise
@@ -328,19 +348,18 @@ class QLabsQCar2(QLabsActor):
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in radians. Positive values turn right.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
-        :type actorNumber: float
+        :param headlights: If the type is a boolean set all the headlights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left middle, b2: left inside, b3: right outside, b4: right middle, b5: right inside).
+        :param leftTurnSignal: If the type is a boolean set all the left turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param rightTurnSignal: If the type is a boolean set all the right turn signals. If the type is an int, it will be treated as a bit mask for individual light control (b0: front, b1: rear).
+        :param brakeSignal: This does not affect the motion of the vehicle. If the type is a boolean set all the brake lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left outside, b1: left inside, b2: right outside, b3: right inside).
+        :param reverseSignal: If the type is a boolean set all the reverse lights. If the type is an int, it will be treated as a bit mask for individual light control (b0: left, b1: right).
+        :type forward: float
         :type turn: float
-        :type enableDynamics: boolean
-        :type headlights: boolean
-        :type leftTurnSignal: boolean
-        :type rightTurnSignal: boolean
-        :type brakeSignal: boolean
-        :type reverseSignal: boolean
+        :type headlights: boolean/int
+        :type leftTurnSignal: boolean/int
+        :type rightTurnSignal: boolean/int
+        :type brakeSignal: boolean/int
+        :type reverseSignal: boolean/int
         :return:
             - **status** - True if successful, False otherwise
             - **location**
@@ -354,6 +373,26 @@ class QLabsQCar2(QLabsActor):
 
         if (not self._is_actor_number_valid()):
             return False, [0,0,0], [0,0,0], False, False
+
+        if type(headlights) == 'bool':
+            if (headlights):
+                headlights = 0xFF
+
+        if type(leftTurnSignal) == 'bool':
+            if (leftTurnSignal):
+                leftTurnSignal = 0xFF
+
+        if type(rightTurnSignal) == 'bool':
+            if (rightTurnSignal):
+                rightTurnSignal = 0xFF
+
+        if type(brakeSignal) == 'bool':
+            if (brakeSignal):
+                brakeSignal = 0xFF
+
+        if type(reverseSignal) == 'bool':
+            if (reverseSignal):
+                reverseSignal = 0xFF
 
         c = CommModularContainer()
         c.classID = self.ID_QCAR
