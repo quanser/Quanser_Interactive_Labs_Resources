@@ -33,44 +33,6 @@ Workspaces
 Workspace Spawnable Actors
 ==========================
 
-.. table::
-    :widths: 11, 11, 11, 11, 11, 11, 11, 11, 11
-    :align: center
-
-    ================== ========= ============== ========= ============== ========= ======= ======= =========
-    Product            Cityscape Cityscape Lite Townscape Townscape Lite Open Road Studio  Plane   Warehouse
-    ================== ========= ============== ========= ============== ========= ======= ======= =========
-    Cameras            Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Widgets            Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Animals            Yes       Yes            Yes       Yes            Yes       No      Yes     No
-    People             Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Basic shapes       Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Splines            Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Reference frames   Yes       Yes            Yes       Yes            Yes       Yes     Yes     Yes
-    Shredder           No        No             No        No             No        Yes     Yes     Yes
-    Weather            Yes       No             Yes       No             Yes       No      No      No
-    Time of Day        Yes       No             Yes       No             Yes       No      No      No
-    QCar               License   License        License   License        License   License License License
-    QCar 2             License   License        License   License        License   License License License
-    QBot 2e            No        No             No        No             No        License License License
-    QBot 3             No        No             No        No             No        License License License
-    QBot Platform      No        No             No        No             No        License License License
-    QArm               No        No             No        No             No        License License License
-    SRV02              No        No             No        No             No        License License License
-    Product walls      No        No             No        No             No        License License License
-    Product flooring   No        No             No        No             No        License License License
-    Traffic light      License   License        License   License        License   License License License
-    Traffic cones      License   License        License   License        License   License License License
-    Crosswalks         License   License        License   License        License   License License License
-    Stop sign          License   License        License   License        License   License License License
-    Yield sign         License   License        License   License        License   License License License
-    Roundabout sign    License   License        License   License        License   License License License
-    Conveyors straight No        No             No        No             No        License License License
-    ================== ========= ============== ========= ============== ========= ======= ======= =========
-    
-Licensed actors require an applicable product license as part of your QLabs subscription to spawn.
-
-
 
 .. raw:: html
 
@@ -165,321 +127,6 @@ Licensed actors require an applicable product license as part of your QLabs subs
     
     </head>
     <body>
-
-    <h2>Responsive Table</h2>
-    <p>If you have a table that is too wide, you can add a container element with overflow-x:auto around the table, and it will display a horizontal scroll bar when needed.</p>
-    <p>Resize the browser window to see the effect. Try to remove the div element and see what happens to the table.</p>
-
-    <div style="height:500px; overflow: auto;">
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Cityscape</th>
-                <th>Cityscape Lite</th>
-                <th>Townscape</th>
-                <th>Townscape Lite</th>
-                <th>Open Road</th>
-                <th>Studio</th>
-                <th>Plane</th>
-                <th>Warehouse</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Cameras</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Widgets</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Animals</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>People</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Basic shapes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Splines</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Reference frames</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Shredder</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>Yes</td>
-                <td>Yes</td>
-            </tr>
-            <tr>
-                <td>Weather</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Time of Day</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>Yes</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>QCar</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>QCar 2</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>QBot 2e</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>QBot 3</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>QBot Platform</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>QArm</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>SRV02</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Product walls</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Product flooring</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Traffic light</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Traffic cones</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Crosswalks</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Stop sign</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Yield sign</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Roundabout sign</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-            <tr>
-                <td>Conveyors straight</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>No</td>
-                <td>License</td>
-                <td>License</td>
-                <td>License</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-
-
-    <h2>SUPER TABLE 2</h2>
-    <p>If you have a table that is too wide, you can add a container element with overflow-x:auto around the table, and it will display a horizontal scroll bar when needed.</p>
-    <p>Resize the browser window to see the effect. Try to remove the div element and see what happens to the table.</p>
 
     <div style="height:500px; overflow: auto;">
     <table>
@@ -609,46 +256,24 @@ Licensed actors require an applicable product license as part of your QLabs subs
         </tr>
         <tr>
             <td>QCar</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
             <td><i class="fa fa-asterisk"></i></td>
         </tr>
         <tr>
             <td>QCar 2</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-        </tr>
-        <tr>
-            <td>QBot 2e</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-        </tr>
-        <tr>
-            <td>QBot 3</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
             <td><i class="fa fa-asterisk"></i></td>
         </tr>
         <tr>
@@ -658,9 +283,9 @@ Licensed actors require an applicable product license as part of your QLabs subs
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
         </tr>
         <tr>
             <td>QArm</td>
@@ -670,18 +295,7 @@ Licensed actors require an applicable product license as part of your QLabs subs
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-        </tr>
-        <tr>
-            <td>SRV02</td>
             <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
             <td><i class="fa fa-asterisk"></i></td>
         </tr>
         <tr>
@@ -691,9 +305,9 @@ Licensed actors require an applicable product license as part of your QLabs subs
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
         </tr>
         <tr>
             <td>Product flooring</td>
@@ -702,90 +316,84 @@ Licensed actors require an applicable product license as part of your QLabs subs
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
         </tr>
         <tr>
             <td>Traffic light</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
             <td>Traffic cones</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
             <td>Crosswalks</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
             <td>Stop sign</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
             <td>Yield sign</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
             <td>Roundabout sign</td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-        </tr>
-        <tr>
-            <td>Conveyors straight</td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
+            <td><i class="fa fa-check"></i></td>
             <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
-            <td><i class="fa fa-asterisk"></i></td>
         </tr>
     </tbody>
     </table>
     </div>
+
+    <br>
+    Quanser Products are licensed and require an applicable product license as part of your QLabs subscription to spawn. <br>
+
+    * Custom solutions are available, please contact Quanser (https://www.quanser.com/contact-us/) for more information.
 
     <br>
     <br>
