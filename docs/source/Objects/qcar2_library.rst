@@ -131,52 +131,55 @@ You will find a list of the important extrinsics below.
 Distances From Body Frame
 ***************************
 The body frame is located between the front and rear axles on the ground plane.
-Distances of the QCar in its virtual environment are 10 times larger than on the 
-physical system so a QCar spawned at a scale of 1 is equivalent size to a full-scale
+Distances of the QCar 2 in its virtual environment are 10 times larger than on the 
+physical system so a QCar 2 spawned at a scale of 1 is equivalent size to a full-scale
 automobile. A QCar spawned at a scale of 0.1 will be equivalent to the size of a
 physical QCar.
 
+The RealSense camera distance is considered from the front face of the camera 
+at the location of the RGB sensor.
 
 .. image:: ../pictures/qcar2_bodyframe.png
     :scale:  65%
     :align: center
 
-.. .. table::
-..     :widths: 11, 11, 11, 11
-..     :align: center
-.. 
-..     ========== ====== ====== ======
-..     Component  x (m)  y (m)  z (m)
-..     ========== ====== ====== ======
-..     CG          0.248 -0.074 0.709
-..     Front axle  1.300  0     0.310
-..     Rear axle  -1.300  0     0.310
-..     CSI front   1.930  0     0.953
-..     CSI left    0.140  0.438 0.953
-..     CSI rear   -1.650  0     0.953
-..     CSI right   0.140 -0.674 0.953
-..     IMU         1.278  0.223 0.895
-..     RealSense   0.822  0.003 1.582
-..     RPLIDAR    -0.108 -0.001 1.799
-..     ========== ====== ====== ======
-.. 
-.. 
-.. 
-.. |
-.. 
-.. Transformation Matrices
-.. ************************
-.. 
-.. All transformation matrices are built off of the fody frame and camera frames
-.. for the QCar.
-.. To read more about this check out our documentation
-.. `here <https://www.quanser.com/products/self-driving-car-studio/>`__
-.. by clicking on resources button and looking inside the zip folder for
-.. src/user_manuals/qcar2/user_manual_system_hardware.pdf
-.. 
-.. .. image:: ../pictures/qcar_extrinsic_matrices.png
-..     :scale:  65%
-..     :align: center
+.. table::
+    :widths: 11, 11, 11, 11
+    :align: center
+
+    ========== ====== ====== ======
+    Component  x (m)  y (m)  z (m)
+    ========== ====== ====== ======
+    CG          -0.11  0.029 0.814
+    Front axle  1.30   0     0.31
+    Rear axle  -1.30   0     0.31
+    CSI front   1.83   0     1.10
+    CSI left    0.12   0.33  1.10
+    CSI rear   -1.52   0     1.10
+    CSI right   0.12  -0.53  1.10
+    IMU         0.11   0     0.89
+    RealSense   0.95   0.32  1.72
+    RPLIDAR    -0.12  -0     1.93
+    ========== ====== ====== ======
+
+
+
+|
+
+Transformation Matrices
+************************
+
+All transformation matrices are built off of the body frame and sensor frames
+for the QCar 2.
+
+To read more about this check out our documentation
+`here <https://www.quanser.com/products/self-driving-car-studio/>`__
+by clicking on resources button and looking inside the zip folder for
+src/user_manuals/qcar2/user_manual_system_hardware.pdf
+
+.. image:: ../pictures/extrinsics_qc2.png
+    :scale:  65%
+    :align: center
 
 -------------------------------------------------------------------------------
 

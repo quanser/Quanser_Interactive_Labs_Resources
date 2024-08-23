@@ -12,7 +12,6 @@ to control the car and its related functions.
 """
 
 import sys
-sys.path.insert(0, "C:/Users/jwight/Desktop/Github/QLabsPublic/python")
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
