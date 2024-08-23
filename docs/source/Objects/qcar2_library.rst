@@ -15,11 +15,11 @@ QCar 2
 Description
 =============
 
-QCar 2s are considered "actors" in Quanser Interactive Labs. The QCar 2 library can
+QCars are considered "actors" in Quanser Interactive Labs. The QCar library can
 be used to acquire sensor data from the virtual environment and controls the
 motion of the vehicles.
 
-See the :ref:`QCar2Tutorial` to get a better understanding of using QCar 2s in
+See the :ref:`QCar2Tutorial` to get a better understanding of using QCars in
 Quanser Interactive Labs.
 
 .. _car2Library:
