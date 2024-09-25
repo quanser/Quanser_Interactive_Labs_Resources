@@ -458,7 +458,7 @@ class QLabsQCar(QLabsActor):
         :type enable: boolean
         :type color: float array[3]
         :return:
-            - **status** - `True` if possessing the camera was successful, `False` otherwise
+            - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
 
         """

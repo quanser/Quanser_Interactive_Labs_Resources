@@ -81,6 +81,8 @@ Methods
 .. automethod:: qvl.qcar2.QLabsQCar2.set_velocity_and_request_state_degrees
 .. automethod:: qvl.qcar2.QLabsQCar2.possess
 .. automethod:: qvl.qcar2.QLabsQCar2.ghost_mode
+.. automethod:: qvl.qcar2.QLabsQCar2.set_led_strip_uniform
+.. automethod:: qvl.qcar2.QLabsQCar2.set_led_strip_individual
 .. automethod:: qvl.qcar2.QLabsQCar2.get_image
 .. automethod:: qvl.qcar2.QLabsQCar2.get_lidar
 .. automethod:: qvl.qcar2.QLabsQCar2.destroy
@@ -88,6 +90,7 @@ Methods
 .. automethod:: qvl.qcar2.QLabsQCar2.ping
 .. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform
 .. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform_degrees
+
 
 .. _car2Config:
 
