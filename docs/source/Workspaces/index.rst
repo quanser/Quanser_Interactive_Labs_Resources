@@ -28,6 +28,26 @@ Workspaces
      
 ..
 
+
+.. _openWorkspaceFromCommandLine:
+
+Opening Workspaces from the Command Line
+========================================
+
+QLabs and any of the Open Worlds can be opened directly from your scripts by
+using the command switch ``-loadmodule`` followed by the module name.  For
+example on Windows:
+
+``"%QUARC_DIR%\..\Quanser Interactive Labs\Quanser Interactive Labs.exe" -loadmodule Cityscape``
+
+See the individual workspace pages for the corresponding command line name.
+
+If you have not logged into QLabs previously or you did not save the user
+credentials then you will be required to enter this information before the
+module is loaded. If you are not licensed for the specified module then
+the ``-loadmodule`` command will be ignored.
+
+
 .. _spawnableactorsWorkspaces:
 
 Workspace Spawnable Actors
@@ -52,7 +72,7 @@ Workspace Spawnable Actors
     table {
     table-layout: fixed;
     width: 100%;
-    /* the prevents the th scrolling up by the default border size before "sticking" */
+    /* This prevents the scrolling up by the default border size before "sticking" */
     border-collapse: separate;
     border-spacing: 0;
     }

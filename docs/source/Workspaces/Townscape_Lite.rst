@@ -61,3 +61,8 @@ The following table will provide you with some coordinates of interest in the to
     Road Parking 1     -13.093 -7.572  0.005   0       0       -42*pi/ 180 0          0           -42
     Road Parking 2     -18.078 -2.879  0.005   0       0       -42*pi/ 180 0          0           -42
     ================== ======= ======= ======= ======= ======= =========== ========== =========== =========
+
+Command Line Switch
+===================
+
+This workspace can be loaded directly by running QLabs from the command line or terminal by using the arguments ``-loadmodule TownscapeLite``.

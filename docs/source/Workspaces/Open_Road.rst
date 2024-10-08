@@ -67,3 +67,8 @@ The following table will provide you with some coordinates of interest in the ci
     Nav Origin North      3005.7  -4165.4 172.9   0       0       0           0          0           0
     Nav Origin North-East -4454.1 -3761.0 172.9   0       0       0           0          0           0
     ===================== ======= ======= ======= ======= ======= =========== ========== =========== =========
+
+Command Line Switch
+===================
+
+This workspace can be loaded directly by running QLabs from the command line or terminal by using the arguments ``-loadmodule OpenRoad``.    
