@@ -101,24 +101,33 @@ There is only one configuration of the QCar actor.
 
 .. _car2Connect:
 
+
 Connection Points
-===================
+==================
+.. |conn0| image:: ../pictures/connection_qcar2_base_frame.png
+   :height: 50pt
 
-.. image:: ../pictures/qcar2_connection_points.png
-    :scale: 50%
-    :align: center
+.. |conn1| image:: ../pictures/connection_qcar2_1.png
+   :height: 50pt
 
-|
+.. |conn2| image:: ../pictures/connection_qcar2_2.png
+   :height: 50pt
+
+
+
 
 .. table::
-    :widths: 11, 11, 25, 53
+    :widths: 20, 11, 11, 11, 53
     :align: center
 
-    ====================== ============ ====================================================== ===========
-    Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation)      Description
-    ====================== ============ ====================================================== ===========
-    0                                                                                          The base frame is located at ground level, centered between the two rear wheels.
-    ====================== ============ ====================================================== ===========
+    =============================== ====================== ============ ====================================================== ===========
+    Image (Click for enlarged view) Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation)      Description
+    =============================== ====================== ============ ====================================================== ===========
+    |conn0|                         0                                                                                          The base frame is located at ground level, centered between the two rear wheels.
+    |conn1|                         1                      0            [ 1.300,0,0] [0,0,0]                                   Centered between the front and rear axles on the ground.
+    |conn2|                         2                      0            [ 1.207,0,1.880] [0,0,0]                               Top center of the LIDAR
+    =============================== ====================== ============ ====================================================== ===========
+
 
 
 Component Extrinsics
