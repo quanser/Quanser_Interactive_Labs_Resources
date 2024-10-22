@@ -48,17 +48,20 @@ classdef QLabsQDrone2 < QLabsActor
         
         function success = possess(obj, camera)
             arguments
-                obj QLabsQBotPlatform
+                obj QLabsQDrone2
                 camera single
             end
             success = false;
 %             Possess (take control of) a QDrone in QLabs with the selected camera.
-
+            
+            if isempty(obj.is_actor_number_valid)
+                return
+            end
 
             obj.c.classID = obj.ID_QDRONE2;
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_QDRONE2_POSSESS;
-            obj.c.payload = uint32(camera);            
+            obj.c.payload = flip(typecast(int32(camera), 'uint8'));          
             obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
 
             obj.qlabs.flush_receive();
@@ -78,13 +81,17 @@ classdef QLabsQDrone2 < QLabsActor
 
         function [success, location, orientation, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce] = command_velocity_and_request_state(obj, motorsEnabled, velocity, orientation)
             arguments
-                obj QLabsQBotPlatform
+                obj QLabsQDrone2
                 motorsEnabled single
                 velocity (1,3) single = [0 0 0]
                 orientation (1,3) single = [0 0 0]
             end
             success = false;
 			% Sets the velocity, turn angle in radians, and other properties.
+
+            if isempty(obj.is_actor_number_valid)
+                return
+            end            
 
             obj.c.classID = obj.ID_QDRONE2;
             obj.c.actorNumber = obj.actorNumber;
@@ -151,7 +158,7 @@ classdef QLabsQDrone2 < QLabsActor
 
         function [success, cameraNumber, imageData] = get_image(obj, camera)
             arguments
-                obj QLabsQBotPlatform
+                obj QLabsQDrone2
                 camera single
             end
             success = false;
