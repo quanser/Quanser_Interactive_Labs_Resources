@@ -23,6 +23,10 @@ class QLabsQCar2(QLabsActor):
     FCN_QCAR_POSSESS_ACK = 21
     FCN_QCAR_GHOST_MODE = 22
     FCN_QCAR_GHOST_MODE_ACK = 23
+    FCN_QCAR_SET_LED_STRIP_UNIFORM = 30
+    FCN_QCAR_SET_LED_STRIP_UNIFORM_ACK = 31
+    FCN_QCAR_SET_LED_STRIP_INDIVIDUAL = 32
+    FCN_QCAR_SET_LED_STRIP_INDIVIDUAL_ACK = 33
     FCN_QCAR_CAMERA_DATA_REQUEST = 100
     FCN_QCAR_CAMERA_DATA_RESPONSE = 101
     FCN_QCAR_LIDAR_DATA_REQUEST = 110
@@ -498,7 +502,7 @@ class QLabsQCar2(QLabsActor):
         :type enable: boolean
         :type color: float array[3]
         :return:
-            - **status** - `True` if possessing the camera was successful, `False` otherwise
+            - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
 
         """
@@ -653,4 +657,95 @@ class QLabsQCar2(QLabsActor):
         else:
             return False, None, None
 
+
+    def set_led_strip_uniform(self, color=[0, 0, 0], waitForConfirmation=True):
+        """Sets the entire LED color strip to the RGB value specified.
+
+        :param color: Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale. Values greater than 1 can be used to enhance the glow or bloom effect (try 50).
+        :type color: float array[3]
+        :return:
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean                   
+
+
+        """
+
+        if (not self._is_actor_number_valid()):
+            return False
+
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_QCAR_SET_LED_STRIP_UNIFORM
+        c.payload = bytearray(struct.pack(">fff", color[0], color[1], color[2]))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        if waitForConfirmation:
+            self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_SET_LED_STRIP_INDIVIDUAL_ACK)
+
+                if (c == None):
+                    return False
+
+
+            return True
+        else:
+            return False
+        
+
+    def set_led_strip_individual(self, color, waitForConfirmation=True):
+        """Sets the entire LED color strip to the RGB value specified. Note that specifying individual LED's has a slight impact on performance versus set_led_strip_uniform.
+
+        :param color: A 2D array Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale by 33 rows. Values greater than 1 can be used to enhance the glow or bloom effect (try 50).
+        :type color: float array[3][33]
+        :return:
+            - **status** - `True` if successful, `False` otherwise
+        :rtype: boolean                   
+
+
+        """
+
+        if (not self._is_actor_number_valid()):
+            return False
+        
+        if (len(color) != 33):
+            if self._verbose == True:
+                print("The color array was of length {} instead of the expected length of 33.".format(len(color)))
+
+            return False
+        
+        if (len(color[0]) != 3):
+            if self._verbose == True:
+                print("Each row of the color array should be 3 elements (received {}).".format(len(color[0])))
+
+            return False
+
+        c = CommModularContainer()
+        c.classID = self.ID_QCAR
+        c.actorNumber = self.actorNumber
+        c.actorFunction = self.FCN_QCAR_SET_LED_STRIP_INDIVIDUAL
+        c.payload = bytearray()
+
+        for LED in color:
+            c.payload = c.payload + bytearray(struct.pack(">fff", LED[0], LED[1], LED[2]))        
+
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        if waitForConfirmation:
+            self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_SET_LED_STRIP_INDIVIDUAL_ACK)
+
+                if (c == None):
+                    return False
+
+            return True
+        else:
+            return False        
+        
 
