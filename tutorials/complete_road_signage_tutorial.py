@@ -254,11 +254,12 @@ def main():
 
     print("Connecting to QLabs...")
     # trying to connect to QLabs and open the instance we have created - program will end if this fails
-    try:
-        qlabs.open("localhost")
-    except:
+    print("Connecting to QLabs...")
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        return
+        return    
+
+    print("Connected") 
 
     # destroying any spawned actors in our QLabs that currently exist
     qlabs.destroy_all_spawned_actors()

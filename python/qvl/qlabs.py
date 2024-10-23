@@ -104,24 +104,29 @@ class QuanserInteractiveLabs:
         self._stream = Stream()
 
         result = self._stream.connect(address, True, self._BUFFER_SIZE, self._BUFFER_SIZE)
-        if ((result < 0) and (result != -ErrorCode.WOULD_BLOCK)):
-            print("Connection failure.")
-            return False
+        if (result == False):
+            # Connection was not immediate so poll the stream to determine what might be wrong
+            pollResult = 0
 
-        pollResult = self._stream.poll(Timeout(1), PollFlag.CONNECT)
+            while (((pollResult & PollFlag.CONNECT) != PollFlag.CONNECT) and (timeout > 0)):
+                try:
+                    pollResult = self._stream.poll(Timeout(1), PollFlag.CONNECT)
+                except StreamError as e:
+                    if e.error_code == -33:
+                        self._stream.close()
+                        return False
+                    
+                timeout = timeout - 1
 
-        while (((pollResult & PollFlag.CONNECT) != PollFlag.CONNECT) and (timeout > 0)):
-            pollResult = self._stream.poll(Timeout(1), PollFlag.CONNECT)
-            timeout = timeout - 1
-
-        if pollResult & PollFlag.CONNECT == PollFlag.CONNECT:
-            #print("Connection accepted")
-            pass
-        else:
-            if (timeout == 0):
-                print("Connection timeout")
-
-            return False
+            if pollResult & PollFlag.CONNECT == PollFlag.CONNECT:
+                #print("Connection accepted")
+                pass
+            else:
+                if (timeout == 0):
+                    print("Connection timeout")
+                    
+                self._stream.close()
+                return False
 
         return True
 

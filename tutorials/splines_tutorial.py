@@ -31,12 +31,9 @@ def main():
 
     # Ensure that QLabs is running on your local machine
     print("Connecting to QLabs...")
-    try:
-        qlabs.open("localhost")
-    except:
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-
-    qlabs.destroy_all_spawned_actors()
+        return    
 
     print("Connected")
 

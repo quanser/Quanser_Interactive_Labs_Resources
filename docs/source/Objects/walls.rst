@@ -19,7 +19,9 @@ Description
 
 Walls are considered an "actor" in Quanser Interactive Labs Open Worlds.
 Walls can be spawned anywhere in the Open Worlds and accompany several 
-different products including the QCar Studio and the QBot Platform.
+different products including the QCar Studio and the QBot Platform. The
+origin of the wall is at the bottom center. Walls are static by default
+but dynamics can be optionally enabled.
 
 .. _wallsLibrary:
 
@@ -89,7 +91,7 @@ There are no connection points for this actor class.
 .. _wallsTutorial:
 
 Walls Tutorial
-==================
+==============
 
 .. tabs::
     .. tab:: Python
@@ -116,4 +118,21 @@ Walls Tutorial
 
             .. literalinclude:: ../../../tutorials/walls_tutorial.m
                 :language: Matlab
+                :linenos:
+
+Maze Tutorial
+=============
+
+.. tabs::
+    .. tab:: Python
+
+        .. dropdown:: Python Tutorial
+
+            Raw to download this tutorial: |wall_maze_tutorial.py|.
+
+            .. |wall_maze_tutorial.py| replace::
+                :download:`Wall Maze Tutorial (.py) <../../../tutorials/wall_maze_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/wall_maze_tutorial.py
+                :language: python
                 :linenos:
