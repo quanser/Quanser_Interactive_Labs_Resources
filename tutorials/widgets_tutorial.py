@@ -5,7 +5,7 @@ Widget Library Example
 .. note::
 
     Make sure you have Quanser Interactive Labs open before running this
-    example.  This example is designed to best be run in Cityscape.
+    example.  This example is designed to best be run in Cityscape or Plane.
 
 """
 # imports to important libraries
@@ -19,10 +19,6 @@ from qvl.system import QLabsSystem
 from qvl.widget import QLabsWidget
 
 def create_widgets(qlabs):
-
-    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
-    hSystem = QLabsSystem(qlabs)
-    hSystem.set_title_string('Widgets Tutorial')
 
     # Create the widget class object in qlabs
     widget = QLabsWidget(qlabs)

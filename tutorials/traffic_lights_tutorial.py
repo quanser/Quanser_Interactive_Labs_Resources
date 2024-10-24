@@ -25,8 +25,6 @@ from qvl.traffic_light import QLabsTrafficLight
 
 def main():
 
-    print("\n\n------------------------------ Communications --------------------------------\n")
-
     # Creates a server connection with Quanser Interactive Labs and manages
     # the communications
     qlabs = QuanserInteractiveLabs()
@@ -39,10 +37,6 @@ def main():
 
     print("Connected")
 
-    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
-    hSystem = QLabsSystem(qlabs)
-    hSystem.set_title_string('Traffic Lights Tutorial')
-
     num_destroyed = qlabs.destroy_all_spawned_actors()
 
     # initialize a camera - See Camera Actor Library Reference for more information
@@ -51,61 +45,38 @@ def main():
     cameraTraffic.possess()
 
     # initialize three traffic light instances in qlabs
-    trafficLight = QLabsTrafficLight(qlabs)
+    trafficLight1 = QLabsTrafficLight(qlabs)
     trafficLight2 = QLabsTrafficLight(qlabs)
     trafficLight3 = QLabsTrafficLight(qlabs)
 
-    # Initialize two crosswalk instances in qlabs
-    crosswalk = QLabsCrosswalk(qlabs)
-    crosswalk1 = QLabsCrosswalk(qlabs)
-
+    
     # spawn a traffic light in config 1 - vertical using radians and specifying a specific actorNumber
-    trafficLight.spawn_id(actorNumber=0, location=[5.616, 14.131, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-
+    trafficLight1.spawn_id(actorNumber=0, location=[5.616, 14.131, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
+    trafficLight1.set_color(color=trafficLight1.COLOR_GREEN)
+    
     # spawn a second traffic light using degrees in config 1 - vertical and specifying a specific actorNumber
     trafficLight2.spawn_id_degrees(actorNumber=2, location=[-3.078, 14.136, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
+    trafficLight2.set_color(color=trafficLight2.COLOR_GREEN)
 
     # spawn traffic light using degrees in config 2 - horizontal and generating the actorNumber internally
     trafficLight3.spawn_degrees(location=[6.703, 5.6, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-
-    time.sleep(0.5)
-
-    # Spawn crosswalk with radians in configuration 0
-    crosswalk.spawn_id(actorNumber = 0, location= [1.3, 16.7, 0.005], rotation= [0, 0, 0], scale=[1, 1, 1], configuration= 0, waitForConfirmation= 1)
-
-    time.sleep(1)
-
-    # Spawn crosswalk with radians in configuration 1
-    crosswalk1.spawn_id(actorNumber = 1, location= [8.5, 10.21, 0.01], rotation= [0, 0, math.pi/2], scale=[1, 1, 1], configuration= 1, waitForConfirmation= 1)
+    trafficLight3.set_color(color=trafficLight3.COLOR_RED)
 
     # changing the state of the traffic lights from green to red
-    
     time.sleep(2)
 
-    trafficLight.set_state(state=trafficLight.STATE_YELLOW, waitForConfirmation=True)
-    trafficLight2.set_state(state=trafficLight2.STATE_YELLOW, waitForConfirmation=True)
+    trafficLight1.set_color(color=trafficLight1.COLOR_YELLOW)
+    trafficLight2.set_color(color=trafficLight2.COLOR_YELLOW)
 
     time.sleep(1)
 
-    trafficLight.set_state(state=trafficLight.STATE_RED, waitForConfirmation=True)
-    trafficLight2.set_state(state=trafficLight2.STATE_RED, waitForConfirmation=True)
+    trafficLight1.set_color(color=trafficLight1.COLOR_RED)
+    trafficLight2.set_color(color=trafficLight2.COLOR_RED)
 
     time.sleep(1)
 
-    trafficLight3.set_state(state=trafficLight3.STATE_GREEN, waitForConfirmation=True)
+    trafficLight3.set_color(color=trafficLight3.COLOR_GREEN)
 
-    # Destroying a traffic light
-    trafficLight.destroy()
-
-    time.sleep(1)
-
-    # Destroy the first crosswalk 
-    crosswalk.destroy()
-
-    time.sleep(1)
-
-    # Destroy the first crosswalk 
-    crosswalk1.destroy()
 
     # Closing qlabs
     qlabs.close()
