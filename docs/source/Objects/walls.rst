@@ -136,3 +136,16 @@ Maze Tutorial
             .. literalinclude:: ../../../tutorials/wall_maze_tutorial.py
                 :language: python
                 :linenos:
+				
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |wall_maze_tutorial.m|.
+
+            .. |wall_maze_tutorial.m| replace::
+                :download:`Wall Maze Tutorial (.m) <../../../tutorials/wall_maze_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/wall_maze_tutorial.m
+                :language: Matlab
+                :linenos:				
