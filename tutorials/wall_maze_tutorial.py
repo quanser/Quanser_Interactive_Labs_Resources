@@ -16,13 +16,14 @@ from qvl.system import QLabsSystem
 
 import numpy as np
 import random
+import time
 
 from qvl.walls import QLabsWalls
 
 # Use the ramdom seed if you want the same maze every time (uncomment the following line)
 #random.seed(12)
 
-# Do you want the walls to be able to fall over if hit? (Maze generatio will take slightly longer.)
+# Do you want the walls to be able to fall over if hit? (Maze generation will take slightly longer.)
 dynamic_walls = False
 
 # Maze size
@@ -126,22 +127,31 @@ def draw_maze(qlabs):
                 place_wall(wall, count_x, count_y, South)
 
             if (maze_data[count_x, count_y] & East):
-                place_wall(wall, count_x, count_y, East)             
+                place_wall(wall, count_x, count_y, East)       
+
+        if (not dynamic_walls):
+            # If we're not waiting for any responses from QLabs, add
+            # a slight delay after each row to ensure we don't overflow
+            # the buffers for really large mazes.
+            time.sleep(0.01)
+        
 
         
 def place_wall(wall, x, y, direction):
-    # Walls are static by default so we only need to wait for confirmation if the dynamic_walls flag is set.
+    # You can tweak the global x/y offset of the maze generation here by entering a position in meters.
+    offset = [0, 0]
 
+    # Walls are static by default so we only need to wait for confirmation if the dynamic_walls flag is set.    
     if direction == North:
-        wall.spawn_degrees(location=[x*wall_length, -(y*wall_length), 0.001], rotation=[0, 0, 90], waitForConfirmation=dynamic_walls)
+        wall.spawn_degrees(location=[x*wall_length + offset[0], -(y*wall_length) + offset[1], 0.001], rotation=[0, 0, 90], waitForConfirmation=dynamic_walls)
 
     elif direction == East:
-        wall.spawn_degrees(location=[x*wall_length + wall_length/2, -(y*wall_length + wall_length/2), 0.001], rotation=[0, 0, 0], waitForConfirmation=dynamic_walls)
+        wall.spawn_degrees(location=[x*wall_length + wall_length/2 + offset[0], -(y*wall_length + wall_length/2) + offset[1], 0.001], rotation=[0, 0, 0], waitForConfirmation=dynamic_walls)
 
     elif direction == South:
-        wall.spawn_degrees(location=[x*wall_length, -(y*wall_length + wall_length), 0.001], rotation=[0, 0, 90], waitForConfirmation=dynamic_walls)
+        wall.spawn_degrees(location=[x*wall_length + offset[0], -(y*wall_length + wall_length) + offset[1], 0.001], rotation=[0, 0, 90], waitForConfirmation=dynamic_walls)
     else:
-        wall.spawn_degrees(location=[x*wall_length-wall_length/2, -(y*wall_length + wall_length/2), 0.001], rotation=[0, 0, 0], waitForConfirmation=dynamic_walls)
+        wall.spawn_degrees(location=[x*wall_length-wall_length/2 + offset[0], -(y*wall_length + wall_length/2) + offset[1], 0.001], rotation=[0, 0, 0], waitForConfirmation=dynamic_walls)
         
     if (dynamic_walls):
         wall.set_enable_dynamics(dynamic_walls)

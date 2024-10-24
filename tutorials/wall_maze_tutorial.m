@@ -19,8 +19,8 @@ global maze_y;
 
 load_qvl_path()
 
-% Do you want the walls to be able to fall over if hit? (Maze generatio will take slightly longer.)
-dynamic_walls = true;
+% Do you want the walls to be able to fall over if hit? (Maze generation will take slightly longer.)
+dynamic_walls = false;
 
 % Maze size
 maze_x = 10;
@@ -212,6 +212,13 @@ function draw_maze(qlabs, dynamic_walls)
                 place_wall(wall, count_x, count_y, East, dynamic_walls);            
             end
         end
+
+        if (~dynamic_walls)
+            % If we're not waiting for any responses from QLabs, add
+            % a slight delay after each row to ensure we don't overflow
+            % the buffers for really large mazes.
+            pause(0.01);
+        end
     end
 end
 
@@ -222,21 +229,24 @@ function place_wall(wall, x, y, direction, dynamic_walls)
     global South;
     global West; %#ok<NUSED>
 
+    % You can tweak the global x/y offset of the maze generation here by entering a position in meters.
+    offset = [0, 0];
+
     % Length of a wall segment plus a bit of padding
     wall_length = 1.05;
 
     % Walls are static by default so we only need to wait for confirmation if the dynamic_walls flag is set.
 
     if direction == North
-        wall.spawn_degrees([x*wall_length, -(y*wall_length), 0.001], [0, 0, 90], [1,1,1], 0, dynamic_walls);
+        wall.spawn_degrees([x*wall_length + offset(1), -(y*wall_length) + offset(2), 0.001], [0, 0, 90], [1,1,1], 0, dynamic_walls);
     
     elseif direction == East
-        wall.spawn_degrees([x*wall_length + wall_length/2, -(y*wall_length + wall_length/2), 0.001], [0, 0, 0], [1,1,1], 0, dynamic_walls);
+        wall.spawn_degrees([x*wall_length + wall_length/2 + offset(1), -(y*wall_length + wall_length/2) + offset(2), 0.001], [0, 0, 0], [1,1,1], 0, dynamic_walls);
 
     elseif direction == South
-        wall.spawn_degrees([x*wall_length, -(y*wall_length + wall_length), 0.001], [0, 0, 90], [1,1,1], 0, dynamic_walls);
+        wall.spawn_degrees([x*wall_length + offset(1), -(y*wall_length + wall_length) + offset(2), 0.001], [0, 0, 90], [1,1,1], 0, dynamic_walls);
     else
-        wall.spawn_degrees([x*wall_length-wall_length/2, -(y*wall_length + wall_length/2), 0.001], [0, 0, 0], [1,1,1], 0, dynamic_walls);
+        wall.spawn_degrees([x*wall_length-wall_length/2 + offset(1), -(y*wall_length + wall_length/2) + offset(2), 0.001], [0, 0, 0], [1,1,1], 0, dynamic_walls);
     end
 
     if (dynamic_walls)
