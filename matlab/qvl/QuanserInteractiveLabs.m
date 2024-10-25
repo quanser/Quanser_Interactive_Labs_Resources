@@ -233,6 +233,9 @@ classdef QuanserInteractiveLabs < handle
             
             [data, ~] = obj.qlabs_stream.receive_uint8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
+
+            obj.receive_packet_container_index = 0;
+            obj.receive_packet_buffer = [];
         end
   
 %%

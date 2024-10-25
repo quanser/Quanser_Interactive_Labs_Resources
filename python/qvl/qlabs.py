@@ -333,6 +333,8 @@ class QuanserInteractiveLabs:
 
         """
         bytesRead = self._stream.receive(self._readBuffer, self._BUFFER_SIZE) # returns -ErrorCode.WOULD_BLOCK if it would block
+        self._receivePacketBuffer = bytearray()
+        self._receivePacketContainerIndex = 0
 
     def regenerate_cache_list(self):
         """Advanced function for actor indexing.

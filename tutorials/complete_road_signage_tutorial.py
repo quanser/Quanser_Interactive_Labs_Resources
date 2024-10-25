@@ -73,7 +73,7 @@ def spawn_crosswalk(qlabs):
 
     crosswalk = QLabsCrosswalk(qlabs)
 
-    # spawn crosswalk with radians in config 0
+    # spawn crosswalk with degrees in config 0
     crosswalk.spawn_degrees(location=[-12.992, -7.407, 0.005], rotation=[0,0,48], scale=[1,1,1], configuration=0, waitForConfirmation=False)
     
     # spawn crosswalk with degrees in config 1
@@ -103,8 +103,7 @@ def spawn_signs(qlabs, right_hand_driving):
         roundabout_sign.spawn_degrees([10.938, 28.824, 0.215], [0,0,-135])
         roundabout_sign.spawn_degrees([24.289, 32.591, 0.192], [0,0,-90])
 
-        # spawn the actor with waitForConfirmation=True to confirm everything is flushed from the send buffers
-        yield_sign.spawn_degrees(location=[-2.169, -12.594, 0.2], rotation=[0,0,180], waitForConfirmation=True)
+        yield_sign.spawn_degrees([-2.169, -12.594, 0.2], [0,0,180])
     else:
         stop_sign.spawn_degrees([24.333, 17.677, 0.215], [0,0,90])
         stop_sign.spawn_degrees([18.03, 1.772, 0.2], [0,0,-90])
@@ -114,8 +113,7 @@ def spawn_signs(qlabs, right_hand_driving):
         roundabout_sign.spawn_degrees([6.987, 34.293, 0.215], [0,0,-130])
         roundabout_sign.spawn_degrees([9.96, 46.79, 0.2], [0,0,-180])
 
-        # spawn the actor with waitForConfirmation=True to confirm everything is flushed from the send buffers
-        yield_sign.spawn_degrees(location=[-21.716, 7.596, 0.2], rotation=[0,0,-90], waitForConfirmation=True)
+        yield_sign.spawn_degrees([-21.716, 7.596, 0.2], [0,0,-90])
 
 
 def spawn_traffic_lights(qlabs, right_hand_driving):
