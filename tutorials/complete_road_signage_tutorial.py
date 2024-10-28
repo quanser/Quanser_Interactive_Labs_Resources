@@ -249,9 +249,9 @@ def fly_through_animation(qlabs):
             fy = fy*(1-filter_translation_weight) + y*filter_translation_weight
             fz = fz*(1-filter_translation_weight) + z*filter_translation_weight
 
-            froll = froll*(1-filter_translation_weight) + roll*filter_translation_weight
-            fpitch = fpitch*(1-filter_translation_weight) + pitch*filter_translation_weight
-            fyaw = fyaw*(1-filter_translation_weight) + yaw*filter_translation_weight            
+            froll = froll*(1-filter_rotation_weight) + roll*filter_rotation_weight
+            fpitch = fpitch*(1-filter_rotation_weight) + pitch*filter_rotation_weight
+            fyaw = fyaw*(1-filter_rotation_weight) + yaw*filter_rotation_weight            
 
 
             # To try to make the animation as consistent as possible across different
@@ -261,8 +261,8 @@ def fly_through_animation(qlabs):
             start_time = time.time()
             camera.set_transform(location=[fx, fy, fz], rotation=[froll, fpitch, fyaw])
             end_time = time.time()
-            if (start_time - end_time < 0.03):
-                time.sleep(0.03 - (start_time - end_time))
+            while (end_time - start_time < 0.03):
+                end_time = time.time()
 
 def dist(v1, v2):
     return pow( pow(v1[0]-v2[0], 2) + pow(v1[1]-v2[1], 2) + pow(v1[2]-v2[2], 2), 0.5 )
