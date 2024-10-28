@@ -6,14 +6,15 @@ Road Signage Library Example
 
     Make sure you have Quanser Interactive Labs open before running this
     example.  This example is designed to best be run in QCar Cityscape 
-    or Cityscape Lite.
+    or Cityscape Lite. This is an example of a typical setup script
+    to populate the city with signage for subsequent use in a vehicle
+    simulation.
 
 """
 
 # imports to important libraries
-import sys
-import math
 import time
+import math
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
@@ -25,240 +26,22 @@ from qvl.stop_sign import QLabsStopSign
 from qvl.traffic_cone import QLabsTrafficCone
 from qvl.traffic_light import QLabsTrafficLight
 
-# set any of these flags to False if you don't want to see the output
-CROSSWALK_FLAG = True
-ROUNDABOUT_FLAG = True
-YIELDSIGN_FLAG = True
-STOPSIGN_FLAG = True
-TRAFFICCONE_FLAG = True
-TRAFFICLIGHT_FLAG = True
 
-def crosswalk(qlabs):
-    """This method demonstrates some basic commands with the crosswalk class"""
+# specify if you want the signage on the left or right side of the road.
+right_hand_driving = True
 
-    # initialize a camera - See Camera Actor Library Reference for more information
-    cameraCrosswalk = QLabsFreeCamera(qlabs)
-    cameraCrosswalk.spawn(location=[-19.286, 43, 5.5], rotation=[-0, 0.239, -0.043])
-    cameraCrosswalk.possess()
-
-    # create a crosswalk in this qlabs instance
-    crosswalk = QLabsCrosswalk(qlabs)
-
-    # spawn crosswalk with radians in config
-    crosswalk.spawn_id(actorNumber=0, location=[-10.788, 45, 0.00], rotation=[0,0,math.pi/2], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # waits so we can see the output
-    time.sleep(1)
-    # spawn crosswalk with degrees in config 1
-    crosswalk.spawn_id_degrees(actorNumber=1, location=[-6.788, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-    # waits so we can see the output
-    time.sleep(1)
-    # spawn crosswalk with degrees in config 2
-    crosswalk.spawn_id_degrees(actorNumber=2, location=[-2.8, 45, 0.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-
-    # collecting the world transform coordinates of the crosswalk
-    x, loc, rot, scale = crosswalk.get_world_transform()
-    print( x, loc, rot, scale)
-
-    # pinging existing sign - this should return True if we printed it
-    crosswalk.ping()
-
-
-
-def roundabout_sign(qlabs):
-    """This method demonstrates some basic commands with the roundabout sign class"""
-
-    # create two roundabouts in this qlabs instance
-    roundabout = QLabsRoundaboutSign(qlabs)
-    roundabout2 = QLabsRoundaboutSign(qlabs)
-
-    # spawns the sign we just created using radians and specifying the actorNumber
-    roundabout.spawn_id(actorNumber=0, location=[-17, 29, 0.0], rotation=[0, 0, math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns the second sign we just created using degrees and allowing the computer to
-    # generate an actorNumber internally
-    roundabout2.spawn_id_degrees(actorNumber=2, location=[-15, 29, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-
-    # collecting the world transform coordinates of the roundabout sign
-    x, loc, rot, scale = roundabout2.get_world_transform()
-    print( x, loc, rot, scale)
-
-    # pinging existing sign - this should return True if we printed it
-    roundabout2.ping()
-    # waits so we can see the output
-    time.sleep(1)
-
-    # destroying the sign we just created
-    roundabout.destroy()
-
-
-def yield_sign(qlabs):
-    """This method demonstrates some basic commands with the yield sign class"""
-
-    # create two yield signs in this qlabs instance
-    yieldsign = QLabsYieldSign(qlabs)
-    yieldsign2 = QLabsYieldSign(qlabs)
-
-    # spawns the sign we just created using radians and specifying the actorNumber
-    yieldsign.spawn_id(actorNumber=0, location=[-17, 31, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns the second sign we just created using degrees and allowing the computer to
-    # generate an actorNumber internally
-    yieldsign2.spawn_degrees(location=[-15, 31, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-
-    # collecting the world transform coordinates of the yield sign
-    x, loc, rot, scale = yieldsign2.get_world_transform()
-    print( x, loc, rot, scale)
-
-    # pinging existing sign - this should return "True" if we printed it
-    yieldsign2.ping()
-    # waits so we can see the output
-    time.sleep(1)
-
-    # destroying the sign we just created
-    yieldsign.destroy()
-
-
-def stop_sign(qlabs):
-    """This method demonstrates some basic commands with the stop sign class"""
-
-    # create two stop signs in this qlabs instance
-    stop = QLabsStopSign(qlabs)
-    stop2 = QLabsStopSign(qlabs)
-    # spawns the sign we just created using radians
-    stop.spawn_id(actorNumber=1, location=[-16, 30, 0.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns the second sign we just created using degrees and generating the actorNumber internally
-    stop2.spawn_degrees(location=[-15, 30, 0.0], rotation=[0,0,180], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-
-    # collecting the world transform coordinates of the stop sign
-    x, loc, rot, scale = stop2.get_world_transform()
-    print(x, loc, rot, scale)
-
-    # pinging existing sign - this should return True if we printed it
-    stop2.ping()
-    # waits so we can see the output
-    time.sleep(1)
-
-    # destroying the sign we just created
-    stop.destroy()
-
-
-def traffic_cone(qlabs):
-    """This method demonstrates some basic commands with the traffic cone class"""
-
-    # creates 3 cones in this qlabs instance
-    cone = QLabsTrafficCone(qlabs)
-    cone1 = QLabsTrafficCone(qlabs)
-    cone2 = QLabsTrafficCone(qlabs)
-    cone3 = QLabsTrafficCone(qlabs)
-    cone4 = QLabsTrafficCone(qlabs)
-    
-    # spawns a small traffic cone we just initialized using radians
-    cone.spawn(location=[-17, 28, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # waits so we can see the output
-    time.sleep (1)
-    # destroy the cone we just made
-    cone.destroy()
-    # waits so we can see the output
-    time.sleep(1)
-    # spawns another small traffic cone we just initialized using radians in the same place
-    cone1.spawn_id(actorNumber=1, location=[-17, 28, 1.0], rotation=[0,0,math.pi], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawns a construction pylon using the cone we just initialized using degrees and generating
-    # the actorNumber internally
-    cone2.spawn_degrees(location=[-15, 28, 1.0], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-    # spawns a small cone with one color stripe initialized using actor number and a position in degrees
-    cone3.spawn_id_degrees(actorNumber=3, location=[-15, 26.5, 1.0], rotation=[0,0,90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-    # spawns a bigger cone with two color stripes using radians and generating the actorNumber internally
-    cone4.spawn(location=[-17, 26.5, 1.0], rotation=[0,0,math.pi/4], scale=[1,1,1], configuration=3, waitForConfirmation=True)
-    
-    # waits so we can see the output
-    time.sleep(1.5)
-
-    
-    # change the color of the cones (materialSlot 0 is the base color, and 1 is the stripes)
-    cone1.set_material_properties(materialSlot=0, color=[0,0,1],metallic=True)
-    # waits so we can see the output
-    time.sleep(.5)
-
-    cone2.set_material_properties(materialSlot=0, color=[1,0,0],roughness=1,metallic=False)
-    cone2.set_material_properties(materialSlot=1, color=[1,.5,0])
-    time.sleep(.5)
-
-    cone3.set_material_properties(materialSlot=0, color=[0,1,1])
-    cone3.set_material_properties(materialSlot=1, color=[0,.3,1],roughness=1,metallic=True)
-    time.sleep(.5)
-
-    cone4.set_material_properties(materialSlot=0, color=[1,0,1],roughness=0,metallic=False)
-    cone4.set_material_properties(materialSlot=1, color=[.3,0,1])
-    
-    
-    # waits so we can see the output
-    time.sleep(3)
-
-    # collecting the world transform coordinates of the traffic cone
-    x, loc, rot, scale = cone2.get_world_transform()
-    print(x, loc, rot, scale)
-
-    # pinging existing cone - this should return True if we printed it
-    cone2.ping()
-
-
-def traffic_light(qlabs):
-    """This method demonstrates some basic commands with the traffic light class"""
-
-    # initialize a camera - See Camera Actor Library Reference for more information
-    cameraTraffic = QLabsFreeCamera(qlabs)
-    cameraTraffic.spawn(location=[0.131, 2.05, 2.047], rotation=[-0, -0.068, 1.201])
-    cameraTraffic.possess()
-
-    # initialize three traffic light instances in qlabs
-    trafficLight = QLabsTrafficLight(qlabs)
-    trafficLight2 = QLabsTrafficLight(qlabs)
-    trafficLight3 = QLabsTrafficLight(qlabs)
-
-    # spawn a traffic light in config 1 - vertical using radians and specifying a specific actorNumber
-    trafficLight.spawn_id(actorNumber=0, location=[5.616, 14.131, 0.215], rotation=[0,0,0], scale=[1,1,1], configuration=0, waitForConfirmation=True)
-    # spawn a second traffic light using degrees in config 1 - vertical and specifying a specific actorNumber
-    trafficLight2.spawn_id_degrees(actorNumber=2, location=[-3.078, 14.136, 0.215], rotation=[0,0,180], scale=[1,1,1], configuration=1, waitForConfirmation=True)
-    # spawn traffic light using degrees in config 2 - horizontal and generating the actorNumber internally
-    trafficLight3.spawn_degrees(location=[6.703, 5.6, 0.215], rotation=[0,0,-90], scale=[1,1,1], configuration=2, waitForConfirmation=True)
-
-    # collecting the world transform coordinates of the traffic light
-    x, loc, rot, scale = trafficLight2.get_world_transform()
-    print(x, loc, rot, scale)
-
-    # pinging existing traffic light - this should return True if we printed it
-    trafficLight2.ping()
-
-    # changing the state of the traffic lights from green to red
-    
-    time.sleep(2)
-
-    trafficLight.set_state(state=trafficLight.STATE_YELLOW, waitForConfirmation=True)
-    trafficLight2.set_state(state=trafficLight2.STATE_YELLOW, waitForConfirmation=True)
-
-    time.sleep(1)
-
-    trafficLight.set_state(state=trafficLight.STATE_RED, waitForConfirmation=True)
-    trafficLight2.set_state(state=trafficLight2.STATE_RED, waitForConfirmation=True)
-
-    time.sleep(1)
-
-    trafficLight3.set_state(state=trafficLight3.STATE_GREEN, waitForConfirmation=True)
-
-    # destroying a traffic light
-    trafficLight.destroy()
-
-
-def main():
+def main(right_hand_driving):
 
     # creates a server connection with Quanser Interactive Labs and manages the communications
     qlabs = QuanserInteractiveLabs()
 
-    print("Connecting to QLabs...")
     # trying to connect to QLabs and open the instance we have created - program will end if this fails
-    try:
-        qlabs.open("localhost")
-    except:
+    print("Connecting to QLabs...")
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        return
+        return    
+
+    print("Connected") 
 
     # destroying any spawned actors in our QLabs that currently exist
     qlabs.destroy_all_spawned_actors()
@@ -266,41 +49,226 @@ def main():
     # Use hSystem to set the tutorial title on the qlabs display screen
     hSystem = QLabsSystem(qlabs)
     hSystem.set_title_string('Complete Road Signage Tutorial')
+    
+    spawn_crosswalk(qlabs)
+    spawn_signs(qlabs, right_hand_driving)
+    spawn_traffic_lights(qlabs, right_hand_driving)
+    spawn_cones(qlabs)
 
-    if CROSSWALK_FLAG == True:
-        crosswalk(qlabs)
-        time.sleep(2)
-
-    # switch the camera angle from whatever it was previous to be able to see where we will be
-    # spawning the rest of the objects - see Camera Actor Library Reference for more information
-    if ROUNDABOUT_FLAG or YIELDSIGN_FLAG or STOPSIGN_FLAG or TRAFFICCONE_FLAG:
-        camera0 = QLabsFreeCamera(qlabs)
-        camera0.spawn(location=[-20.14, 29.472, 2.071], rotation=[0, 0.203, -0.024])
-        camera0.possess()
-
-        if ROUNDABOUT_FLAG:
-            roundabout_sign(qlabs)
-            time.sleep(1)
-
-        if YIELDSIGN_FLAG:
-            yield_sign(qlabs)
-            time.sleep(1)
-
-        if STOPSIGN_FLAG:
-            stop_sign(qlabs)
-            time.sleep(1)
-
-        if TRAFFICCONE_FLAG:
-            traffic_cone(qlabs)
-            time.sleep(1)
-
-    if TRAFFICLIGHT_FLAG:
-        traffic_light(qlabs)
-
+    fly_through_animation(qlabs)
+    
     # Closing qlabs
     qlabs.close()
     print('Done!')
 
 
+
+
+def spawn_crosswalk(qlabs):
+    # Create a crosswalk in this qlabs instance. Since we don't need
+    # to access the actors again after creating them, we can use a single
+    # class object to spawn all the varieties. We also don't need to use
+    # the waitForConfirmation because we don't need to store the actor ID
+    # for future reference.
+
+    crosswalk = QLabsCrosswalk(qlabs)
+
+    # spawn crosswalk with degrees in config 0
+    crosswalk.spawn_degrees(location=[-12.992, -7.407, 0.005], rotation=[0,0,48], scale=[1,1,1], configuration=0, waitForConfirmation=False)
+    
+    # spawn crosswalk with degrees in config 1
+    crosswalk.spawn_degrees(location=[-6.788, 45, 0.00], rotation=[0,0,90], scale=[1,1,1], configuration=1, waitForConfirmation=False)
+    
+    # spawn crosswalk with degrees in config 2
+    crosswalk.spawn_degrees(location=[21.733, 3.347, 0.005], rotation=[0,0,0], scale=[1,1,1], configuration=2, waitForConfirmation=False)
+
+    # spawn the last crosswalk with waitForConfirmation=True to confirm everything is flushed from the send buffers
+    crosswalk.spawn_degrees(location=[21.733, 16, 0.005], rotation=[0,0,0], scale=[1,1,1], configuration=2, waitForConfirmation=True)
+
+
+def spawn_signs(qlabs, right_hand_driving):
+    # Like the crosswalks, we don't need to access the actors again after
+    # creating them.
+
+    roundabout_sign = QLabsRoundaboutSign(qlabs)
+    yield_sign = QLabsYieldSign(qlabs)
+    stop_sign = QLabsStopSign(qlabs)
+
+    if (right_hand_driving):
+        stop_sign.spawn_degrees([17.561, 17.677, 0.215], [0,0,90])
+        stop_sign.spawn_degrees([24.3, 1.772, 0.2], [0,0,-90])
+        stop_sign.spawn_degrees([14.746, 6.445, 0.215], [0,0,180])
+
+        roundabout_sign.spawn_degrees([3.551, 40.353, 0.215], [0,0,180])
+        roundabout_sign.spawn_degrees([10.938, 28.824, 0.215], [0,0,-135])
+        roundabout_sign.spawn_degrees([24.289, 32.591, 0.192], [0,0,-90])
+
+        yield_sign.spawn_degrees([-2.169, -12.594, 0.2], [0,0,180])
+    else:
+        stop_sign.spawn_degrees([24.333, 17.677, 0.215], [0,0,90])
+        stop_sign.spawn_degrees([18.03, 1.772, 0.2], [0,0,-90])
+        stop_sign.spawn_degrees([14.746, 13.01, 0.215], [0,0,180])
+
+        roundabout_sign.spawn_degrees([16.647, 28.404, 0.215], [0,0,-45])
+        roundabout_sign.spawn_degrees([6.987, 34.293, 0.215], [0,0,-130])
+        roundabout_sign.spawn_degrees([9.96, 46.79, 0.2], [0,0,-180])
+
+        yield_sign.spawn_degrees([-21.716, 7.596, 0.2], [0,0,-90])
+
+
+def spawn_traffic_lights(qlabs, right_hand_driving):
+    # In this case, we want to track each traffic light individually so we
+    # can subsequently set the color state.  By using spawning with an ID,
+    # we'll know exactly which one is which and this will allow us to also
+    # reference them in separate programs, and we can also spawn without
+    # waiting for confirmation because the object already knows its own ID.
+
+
+    # initialize four traffic light instances in qlabs
+    trafficLight1 = QLabsTrafficLight(qlabs)
+    trafficLight2 = QLabsTrafficLight(qlabs)
+    trafficLight3 = QLabsTrafficLight(qlabs)
+    trafficLight4 = QLabsTrafficLight(qlabs)
+
+    if (right_hand_driving):
+        
+        trafficLight1.spawn_id_degrees(actorNumber=0, location=[5.889, 16.048, 0.215], rotation=[0,0,0], configuration=0, waitForConfirmation=False)
+        trafficLight2.spawn_id_degrees(actorNumber=1, location=[-2.852, 1.65, 0], rotation=[0,0,180], configuration=0, waitForConfirmation=False)
+        trafficLight1.set_color(color=trafficLight1.COLOR_GREEN, waitForConfirmation=False)
+        trafficLight2.set_color(color=trafficLight2.COLOR_GREEN, waitForConfirmation=False)
+
+        trafficLight3.spawn_id_degrees(actorNumber=3, location=[8.443, 5.378, 0], rotation=[0,0,-90], configuration=0, waitForConfirmation=False)
+        trafficLight4.spawn_id_degrees(actorNumber=4, location=[-4.202, 13.984, 0.186], rotation=[0,0,90], configuration=0, waitForConfirmation=False)
+        trafficLight3.set_color(color=trafficLight3.COLOR_RED, waitForConfirmation=False)
+        trafficLight4.set_color(color=trafficLight4.COLOR_RED, waitForConfirmation=False)  
+
+    else:
+        trafficLight1.spawn_id_degrees(actorNumber=0, location=[-2.831, 16.643, 0.186], rotation=[0,0,180], configuration=1, waitForConfirmation=False)
+        trafficLight2.spawn_id_degrees(actorNumber=1, location=[5.653, 1.879, 0], rotation=[0,0,0], configuration=1, waitForConfirmation=False)
+        trafficLight1.set_color(color=trafficLight1.COLOR_GREEN, waitForConfirmation=False)
+        trafficLight2.set_color(color=trafficLight2.COLOR_GREEN, waitForConfirmation=False)
+
+        trafficLight3.spawn_id_degrees(actorNumber=3, location=[8.779, 13.7, 0.215], rotation=[0,0,90], configuration=1, waitForConfirmation=False)
+        trafficLight4.spawn_id_degrees(actorNumber=4, location=[-4.714, 4.745, 0], rotation=[0,0,-90], configuration=1, waitForConfirmation=False)
+        trafficLight3.set_color(color=trafficLight3.COLOR_RED, waitForConfirmation=False)
+        trafficLight4.set_color(color=trafficLight4.COLOR_RED, waitForConfirmation=False)                
+
+
+
+def spawn_cones(qlabs):
+    
+    # We'll assume the cones don't need to be referenced after they're spawned so a
+    # single class object will suffice for spawning.
+    
+    cone = QLabsTrafficCone(qlabs)
+
+    for count in range(10):
+        # Since we're going to set the color, we need to wait for QLabs to assign
+        # an actor number.  This can be executed more quickly if you spawn by ID
+        # instead and manually assign the numbers.
+        #
+        # Also note that since this are physics objects, it's a good idea to
+        # spawn the actors slight above the surface so they can fall into place.
+        # If you spawn exactly at ground level, they may "pop" up from the surface.
+
+        cone.spawn(location=[-15.313, 35.374+count*-1.3, 0.25], configuration=1, waitForConfirmation=True)
+        cone.set_material_properties(materialSlot=0, color=[0,0,0],roughness=1,metallic=False)
+        cone.set_material_properties(materialSlot=1, color=HSVtoRGB([count/10, 1, 1]))        
+
+
+def HSVtoRGB(hsv):
+
+    H = hsv[0]
+    S = hsv[1]
+    V = hsv[2]
+
+    kr = (5+H*6) % 6
+    kg = (3+H*6) % 6
+    kb = (1+H*6) % 6
+
+    r = 1 - max(min(min(kr, 4-kr), 1), 0)
+    g = 1 - max(min(min(kg, 4-kg), 1), 0)
+    b = 1 - max(min(min(kb, 4-kb), 1), 0)
+    
+    return [r, g, b]
+
+
+def fly_through_animation(qlabs):
+    # Linearly interpolate through a series of points to fly the camera
+    # around the map. For each source and destination, calculate the distance
+    # so the step size is an even multiple that is approximately equal to the 
+    # desired velocity. 
+
+    # Translation/rotation point pairs
+    points = [[[1.5, -12.558, 1.708], [-0, 0.023, 1.405]],
+              [[0.721, -0.922, 1.721], [-0, 0.027, 1.255]],
+              [[6.082, 7.208, 1.566], [-0, 0.027, -0.309]],
+              [[20.732, 3.179, 1.997], [0, 0.049, 1.452]],
+              [[26.083, 30.157, 2.459], [0, 0.153, 2.491]],
+              [[17.211, 46.775, 11.61], [-0, 0.348, -2.189+2*math.pi]],
+              [[-17.739, 38.866, 0.956], [0, 0.142, -1.385+2*math.pi]],
+              [[-16.068, 24.53, 0.628], [-0, -0.043, -1.484+2*math.pi]],
+              [[-20.302, 1.82, 1.815], [-0, 0.03, -0.872+2*math.pi]],
+              [[-3.261, -14.664, 1.597], [-0, -0.038, 0.894+2*math.pi]]]
+
+    speed = 0.3
+    filter_translation_weight = 0.1
+    filter_rotation_weight = 0.1
+
+
+    camera = QLabsFreeCamera(qlabs)
+    camera.spawn_id(0,points[0][0], points[0][1])
+    camera.possess()
+
+    fx = points[0][0][0]
+    fy = points[0][0][1]
+    fz = points[0][0][2]
+
+    froll  = points[0][1][0]
+    fpitch = points[0][1][1]
+    fyaw   = points[0][1][2]
+
+    for index in range(len(points) - 1):
+        # Calculate the integer number of steps by dividing the distance by speed
+        translation_distance = dist(points[index][0], points[index+1][0])
+        total_steps = int(round(translation_distance/speed,0))
+        
+
+        for step in range(total_steps):
+            # Linearly interpolate between each of the target points
+            x = interp(points[index][0][0], points[index+1][0][0], step, total_steps)
+            y = interp(points[index][0][1], points[index+1][0][1], step, total_steps)
+            z = interp(points[index][0][2], points[index+1][0][2], step, total_steps)
+
+            roll  = interp(points[index][1][0], points[index+1][1][0], step, total_steps)
+            pitch = interp(points[index][1][1], points[index+1][1][1], step, total_steps)
+            yaw   = interp(points[index][1][2], points[index+1][1][2], step, total_steps)
+
+            # Filter the calcuated values to smooth out the camera motion
+            fx = fx*(1-filter_translation_weight) + x*filter_translation_weight
+            fy = fy*(1-filter_translation_weight) + y*filter_translation_weight
+            fz = fz*(1-filter_translation_weight) + z*filter_translation_weight
+
+            froll = froll*(1-filter_rotation_weight) + roll*filter_rotation_weight
+            fpitch = fpitch*(1-filter_rotation_weight) + pitch*filter_rotation_weight
+            fyaw = fyaw*(1-filter_rotation_weight) + yaw*filter_rotation_weight            
+
+
+            # To try to make the animation as consistent as possible across different
+            # hardware, measure the elapsed time and delay a variable amount to try
+            # to maintain 33 fps.
+
+            start_time = time.time()
+            camera.set_transform(location=[fx, fy, fz], rotation=[froll, fpitch, fyaw])
+            end_time = time.time()
+            while (end_time - start_time < 0.03):
+                end_time = time.time()
+
+def dist(v1, v2):
+    return pow( pow(v1[0]-v2[0], 2) + pow(v1[1]-v2[1], 2) + pow(v1[2]-v2[2], 2), 0.5 )
+
+def interp(start, finish, step, total_steps):
+    return (finish-start)/total_steps*step + start
+
 if __name__ == "__main__":
-    main()
+    main(right_hand_driving)

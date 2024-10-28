@@ -12,6 +12,8 @@ class QLabsSystem:
     """Class ID."""
     FCN_SYSTEM_SET_TITLE_STRING = 10
     FCN_SYSTEM_SET_TITLE_STRING_ACK = 11
+    FCN_SYSTEM_EXIT_APP = 100
+    FCN_SYSTEM_EXIT_APP_ACK = 101
 
     _qlabs = None
     _verbose = False
@@ -63,3 +65,36 @@ class QLabsSystem:
             return True
         else:
             return False
+        
+    def exit_application(self, delay, waitForConfirmation=True):
+        """Requests QLabs to exit after the specified time delay.
+
+        :param delay: Delay time before the application exits
+        :param waitForConfirmation: (Optional) Wait for confirmation of the before proceeding. This makes the method a blocking operation.
+        :type titleString: float
+        :type waitForConfirmation: boolean
+        :return: `True` if successful, `False` otherwise.
+        :rtype: boolean
+        """
+        c = CommModularContainer()
+        c.classID = self.ID_SYSTEM
+        c.actorNumber = 0
+        c.actorFunction = self.FCN_SYSTEM_EXIT_APP
+        c.payload = bytearray(struct.pack(">f", delay))
+        c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
+
+        if waitForConfirmation:
+            self._qlabs.flush_receive()
+
+        if (self._qlabs.send_container(c)):
+
+            if waitForConfirmation:
+                c = self._qlabs.wait_for_container(self.ID_SYSTEM, 0, self.FCN_SYSTEM_SET_TITLE_STRING_ACK)
+                if (c == None):
+                    return False
+                else:
+                    return True
+
+            return True
+        else:
+            return False        

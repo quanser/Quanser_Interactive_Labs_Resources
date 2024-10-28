@@ -110,7 +110,30 @@ There are no connection points for this actor class.
 Splines Tutorial
 ====================
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Coming Soon!
+        .. dropdown:: Python Tutorial
 
+            Raw to download this tutorial: |splines_tutorial.py|.
+
+            .. |splines_tutorial.py| replace::
+                :download:`Splines Tutorial (.py) <../../../tutorials/splines_tutorial.py>`
+
+            .. literalinclude:: ../../../tutorials/splines_tutorial.py
+                :language: python
+                :linenos:
+
+    .. tab:: Matlab
+
+        .. dropdown:: Matlab Tutorial
+
+            Raw to download this tutorial: |splines_tutorial.m|.
+
+            .. |splines_tutorial.m| replace::
+                :download:`Splines tutorial (.m) <../../../tutorials/splines_tutorial.m>`
+
+            .. literalinclude:: ../../../tutorials/splines_tutorial.m
+                :language: Matlab
+                :linenos:
+    

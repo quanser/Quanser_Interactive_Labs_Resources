@@ -114,7 +114,7 @@ Connection Points
     =============================== ====================== ============ ====================================================== ===========
     Image (Click for enlarged view) Reference Frame Number Parent Frame Relative Transform to Parent (Location, Rotation)      Description
     =============================== ====================== ============ ====================================================== ===========
-    |conn0|                         0                                                                                          The base frame is located at ground level, centered between the two rear wheels.
+    |conn0|                         0                                                                                          The base frame is located at ground level, centered between the two drive wheels.
     |conn1|                         1                      0            [ 0.0450,0.155,0.190] [0,0,0]                          Front left magnet
     |conn2|                         2                      0            [ 0.0450,-0.155,0.190] [0,0,0]                         Front right magnet
     |conn3|                         3                      0            [-0.0450,0.155,0.190] [0,0,0]                          Back left magnet

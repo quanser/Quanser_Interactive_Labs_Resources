@@ -290,13 +290,13 @@ class QLabsQCar(QLabsActor):
         """Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
         :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
-        :param rotation: An array of floats for the roll, pitch, and yaw in degrees
+        :param rotation: An array of floats for the roll, pitch, and yaw in degrees.
         :param enableDynamics: (default True) Enables or disables gravity for set transform requests.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
+        :param headlights: Enable the headlights.
+        :param leftTurnSignal: Enable the left turn signal.
+        :param rightTurnSignal: Enable the right turn signal.
+        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle).
+        :param reverseSignal: Enable the reverse lights.
         :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation. NOTE: Return data will only be valid if waitForConfirmation is True.
         :type location: float array[3]
         :type rotation: float array[3]
@@ -328,14 +328,13 @@ class QLabsQCar(QLabsActor):
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in radians. Positive values turn right.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
-        :type actorNumber: float
+        :param headlights: Enable the headlights.
+        :param leftTurnSignal: Enable the left turn signal.
+        :param rightTurnSignal: Enable the right turn signal.
+        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle).
+        :param reverseSignal: Enable the reverse lights.
+        :type forward: float
         :type turn: float
-        :type enableDynamics: boolean
         :type headlights: boolean
         :type leftTurnSignal: boolean
         :type rightTurnSignal: boolean
@@ -389,13 +388,13 @@ class QLabsQCar(QLabsActor):
 
         :param forward: Speed in m/s of a full-scale car. Multiply physical QCar speeds by 10 to get full scale speeds.
         :param turn: Turn angle in degrees. Positive values turn right.
-        :param headlights: Enable the headlights
-        :param leftTurnSignal: Enable the left turn signal
-        :param rightTurnSignal: Enable the right turn signal
-        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle)
-        :param reverseSignal: Play a honking sound
+        :param headlights: Enable the headlights.
+        :param leftTurnSignal: Enable the left turn signal.
+        :param rightTurnSignal: Enable the right turn signal.
+        :param brakeSignal: Enable the brake lights (does not affect the motion of the vehicle).
+        :param reverseSignal: Enable the reverse lights.
+        :type forward: float
         :type turn: float
-        :type enableDynamics: boolean
         :type headlights: boolean
         :type leftTurnSignal: boolean
         :type rightTurnSignal: boolean
@@ -459,7 +458,7 @@ class QLabsQCar(QLabsActor):
         :type enable: boolean
         :type color: float array[3]
         :return:
-            - **status** - `True` if possessing the camera was successful, `False` otherwise
+            - **status** - `True` if successful, `False` otherwise
         :rtype: boolean
 
         """

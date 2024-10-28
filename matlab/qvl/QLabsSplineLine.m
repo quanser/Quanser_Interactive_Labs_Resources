@@ -124,10 +124,10 @@ classdef QLabsSplineLine < QLabsActor
 
             points = [];
 
-            for angle = 0:numSplinePoints+1
+            for angle = 0:numSplinePoints
                 points = [points
                           radius*cos(angle/numSplinePoints*(endAngle-startAngle)+startAngle), radius*sin(angle/numSplinePoints*(endAngle-startAngle)+startAngle), 0, lineWidth];
-            end
+            end  
 
             alignEndPointTangents = false;
             pointList = points;

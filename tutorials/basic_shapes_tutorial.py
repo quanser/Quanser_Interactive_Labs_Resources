@@ -31,11 +31,11 @@ def main():
 
     # trying to connect to QLabs and open the instance we have created - program will end if this fails
     print("Connecting to QLabs...")
-    try:
-        qlabs.open("localhost")
-    except:
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        return
+        return    
+
+    print("Connected")
     
     # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)

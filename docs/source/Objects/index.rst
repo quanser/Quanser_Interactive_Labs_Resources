@@ -19,6 +19,7 @@ Quanser Products
    :maxdepth: 1
 
    qcar1_library.rst
+   qcar2_library.rst
    qcar_flooring.rst
    qbot_platform_library.rst
    qbot_platform_flooring.rst

@@ -5,7 +5,7 @@ Weather Example
 .. note::
 
     Make sure you have Quanser Interactive Labs open before running this
-    example.  This example is designed to run in the QCar Cityscape.
+    example.  This example is designed to run in the Cityscape.
 
 """
 
@@ -18,23 +18,15 @@ import time
 import os
 
 def main():
-
-    # Clears the screen in Windows
-    os.system('cls')
-
-    print("\n\n------------------------------ Communications --------------------------------\n")
-
     # Creates a server connection with Quanser Interactive Labs and manages
     # the communications
     qlabs = QuanserInteractiveLabs()
 
     # Ensure that QLabs is running on your local machine
     print("Connecting to QLabs...")
-    try:
-        qlabs.open("localhost")
-    except:
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        return
+        return    
 
     print("Connected")
 
@@ -42,9 +34,9 @@ def main():
 
 
     ### Outdoor Environment
-    print("\n\n---Outdoor Environment---")
-
     hEnvironmentOutdoors2 = QLabsEnvironmentOutdoors(qlabs)
+
+    # Force outdoor lighting (buildings, street lights) off
     hEnvironmentOutdoors2.set_outdoor_lighting(0)
 
     # Create a camera at spawn location to allow us to see the weather changes
@@ -68,6 +60,7 @@ def main():
     time.sleep(2.5)
 
     hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.OVERCAST)
+    # Force outdoor lighting (buildings, street lights) on
     hEnvironmentOutdoors2.set_outdoor_lighting(1)
     hSystem.set_title_string('Overcast')
     time.sleep(2.5)

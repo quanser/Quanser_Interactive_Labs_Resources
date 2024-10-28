@@ -27,11 +27,12 @@ def main():
     # creates a server connection with Quanser Interactive Labs and manages the communications
     qlabs = QuanserInteractiveLabs()
 
-    try:
-        qlabs.open("localhost")
-    except:
+    print("Connecting to QLabs...")
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        return
+        return    
+
+    print("Connected")
     
     # Use hSystem to set the tutorial title in the upper left of the qlabs window 
     hSystem = QLabsSystem(qlabs)

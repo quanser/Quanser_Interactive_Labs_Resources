@@ -52,3 +52,8 @@ The following table will provide you with some coordinates of interest in the pl
     ================= ======= ======= =======
     Open World Origin 0       0       0
     ================= ======= ======= =======
+
+Command Line Switch
+===================
+
+This workspace can be loaded directly by running QLabs from the command line or terminal by using the arguments ``-loadmodule Plane``.    

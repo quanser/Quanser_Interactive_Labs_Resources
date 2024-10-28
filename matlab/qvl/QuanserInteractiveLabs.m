@@ -35,15 +35,29 @@ classdef QuanserInteractiveLabs < handle
             defaultTimeout = timeout;
             
             % create a client connection
-            obj.qlabs_stream = quanser.communications.stream.connect(['tcpip://' hostname ':18000'], true);
-            
-            poll_result = obj.qlabs_stream.poll(1, 'connect');
-            while ((poll_result == false) && (defaultTimeout > 0))
-                poll_result = obj.qlabs_stream.poll(1, 'connect');
-                defaultTimeout = defaultTimeout - 1;
+            [obj.qlabs_stream, would_block] = quanser.communications.stream.connect(['tcpip://' hostname ':18000'], true);
+
+            satisfied = false;
+
+            try
+                if would_block
+                    while ((satisfied == false) && (defaultTimeout > 0))
+                        satisfied = obj.qlabs_stream.poll(1, 'connect');
+                        defaultTimeout = defaultTimeout - 1;
+
+                        if any(satisfied)
+                            break;
+                        end
+                    end
+                else
+                    satisfied = true;
+                end
+
+            catch me
+                %fprintf(2, 'Exception occurred. %s\n', me.message);
             end
             
-            success = poll_result;
+            success = satisfied;
             
         end
 %%        
@@ -219,6 +233,9 @@ classdef QuanserInteractiveLabs < handle
             
             [data, ~] = obj.qlabs_stream.receive_uint8s(obj.BUFFER_SIZE);
             bytes_read = length(data);
+
+            obj.receive_packet_container_index = 0;
+            obj.receive_packet_buffer = [];
         end
   
 %%

@@ -28,8 +28,6 @@ if onPath == 0
 end
 % --------------------------------------------------------------
 
-fprintf('\n\n----------------- Communications -------------------\n\n');
-
 % Creates a server connection with Quanser Interactive Labs and manages the communications
 qlabs = QuanserInteractiveLabs();
 connection_established = qlabs.open('localhost');
@@ -44,11 +42,10 @@ disp('Connected')
 num_destroyed = qlabs.destroy_all_spawned_actors();
 fprintf('%d actors destroyed', num_destroyed);
 
-% Use hSystem to set the tutorial title in the upper left of the qlabs window 
-hSystem = QLabsSystem(qlabs);
-hSystem.set_title_string('Widgets Tutorial')
-
 main(qlabs);
+
+qlabs.close()
+disp('Done!')
 
 % ------------ functions ----------
 
@@ -65,7 +62,7 @@ function widgets(qlabs)
             widget.CUBE, [1, 0 + count*0.03, 0 + count*0.02], 0, 0, '', 1);
     end
 
-    pause(2);
+    pause(1);
 
     % Create 20 grey metal cans at different locations
     for count = 0:19

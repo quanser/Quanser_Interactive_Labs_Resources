@@ -65,3 +65,8 @@ The following table will provide you with some coordinates of interest in citysc
     Parking Spot 5     2.007   31.476  0.005   0       0       133*pi/ 180 0          0           133
     Parking Spot 6     0.04    29.733  0.005   0       0       133*pi/ 180 0          0           133
     ================== ======= ======= ======= ======= ======= =========== ========== =========== =========
+
+Command Line Switch
+===================
+
+This workspace can be loaded directly by running QLabs from the command line or terminal by using the arguments ``-loadmodule CityscapeLite``.    

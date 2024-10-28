@@ -31,11 +31,9 @@ def main():
 
     # Ensure that QLabs is running on your local machine
     print("Connecting to QLabs...")
-    try:
-        qlabs.open("localhost")
-    except:
+    if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
-        
+        return    
 
     print("Connected")
 

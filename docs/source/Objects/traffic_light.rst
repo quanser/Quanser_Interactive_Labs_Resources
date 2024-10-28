@@ -30,9 +30,13 @@ Constants
 ===========
 
 .. autoattribute:: qvl.traffic_light.QLabsTrafficLight.ID_TRAFFIC_LIGHT
-.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_RED
-.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_GREEN
-.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_YELLOW
+.. .. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_RED
+.. .. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_GREEN
+.. .. autoattribute:: qvl.traffic_light.QLabsTrafficLight.STATE_YELLOW
+.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.COLOR_NONE
+.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.COLOR_RED
+.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.COLOR_YELLOW
+.. autoattribute:: qvl.traffic_light.QLabsTrafficLight.COLOR_GREEN
 
 .. _trafficlightVars:
 
@@ -53,7 +57,6 @@ Methods
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.spawn_id_degrees
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.traffic_light.QLabsTrafficLight.set_state
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.destroy
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.destroy_all_actors_of_class
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.ping
@@ -63,6 +66,9 @@ Methods
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.parent_with_relative_transform_degrees
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.parent_with_current_world_transform
 .. automethod:: qvl.traffic_light.QLabsTrafficLight.parent_break
+.. .. automethod:: qvl.traffic_light.QLabsTrafficLight.set_state
+.. automethod:: qvl.traffic_light.QLabsTrafficLight.set_color
+.. automethod:: qvl.traffic_light.QLabsTrafficLight.get_color
 
 
 .. _trafficlightConfig:

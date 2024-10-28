@@ -96,11 +96,6 @@ Configurations
 
 There is only one configuration of the QCar actor.
 
-.. image:: ../pictures/qcar.png
-    :scale: 50%
-    :align: center
-
-
 .. _carConnect:
 
 Connection Points
@@ -136,10 +131,16 @@ You will find a list of the important extrinsics below.
 
 Distances From Body Center
 ***************************
-Distances of the QCar in its virtual environment are 10 times larger then in
-real life when scaled at [1,1,1].
-Therefore the distances to important components have been scaled accordingly
-below to match a scale of [1,1,1]:
+The body frame is located between the front and rear axles on the ground plane.
+Distances of the QCar in its virtual environment are 10 times larger than on the 
+physical system so a QCar spawned at a scale of 1 is equivalent size to a full-scale
+automobile. A QCar spawned at a scale of 0.1 will be equivalent to the size of a
+physical QCar.
+
+
+.. image:: ../pictures/qcar_bodyframe.png
+    :scale:  65%
+    :align: center
 
 .. table::
     :widths: 11, 11, 11, 11
@@ -148,16 +149,16 @@ below to match a scale of [1,1,1]:
     ========== ====== ====== ======
     Component  x (m)  y (m)  z (m)
     ========== ====== ====== ======
-    CG          0.248 -0.074  0.606
-    Front axle  1.300  0      0.207
-    Rear axle  -1.300  0      0.207
-    CSI front   1.930  0      0.850
-    CSI left    0.140  0.438  0.850
-    CSI rear   -1.650  0      0.850
-    CSI right   0.140 -0.674  0.850
-    IMU         1.278  0.223  0.792
-    RealSense   0.822  0.003  1.479
-    RPLIDAR    -0.108 -0.001  1.696
+    CG          0.248 -0.074 0.709
+    Front axle  1.300  0     0.310
+    Rear axle  -1.300  0     0.310
+    CSI front   1.930  0     0.953
+    CSI left    0.140  0.438 0.953
+    CSI rear   -1.650  0     0.953
+    CSI right   0.140 -0.674 0.953
+    IMU         1.278  0.223 0.895
+    RealSense   0.822  0.003 1.582
+    RPLIDAR    -0.108 -0.001 1.799
     ========== ====== ====== ======
 
 |
@@ -165,16 +166,12 @@ below to match a scale of [1,1,1]:
 Transformation Matrices
 ************************
 
-.. image:: ../pictures/bodyframe.png
-    :scale:  65%
-    :align: center
-
 All transformation matrices are built off of the body frame and camera frames
 for the QCar.
 To read more about this check out our documentation
 `here <https://www.quanser.com/products/self-driving-car-studio/>`__
-by clicking on resources button and looking inside the zip folder for
-User Guides/System Hardware.pdf
+by clicking on Research Resources link and looking inside the zip folder for
+src/user_manuals/qcar/user_manual_system_hardware.pdf
 
 .. image:: ../pictures/qcar_extrinsic_matrices.png
     :scale:  65%

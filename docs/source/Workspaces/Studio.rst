@@ -63,3 +63,8 @@ The following table will provide you with some coordinates of interest in the st
     Post 8             3.5     3.5     0
     Red pipe on wall   -4.3    6.8     0
     ================== ======= ======= =======
+
+Command Line Switch
+===================
+
+This workspace can be loaded directly by running QLabs from the command line or terminal by using the arguments ``-loadmodule Studio``.    
