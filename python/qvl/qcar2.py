@@ -685,7 +685,7 @@ class QLabsQCar2(QLabsActor):
 
         if (self._qlabs.send_container(c)):
             if waitForConfirmation:
-                c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_SET_LED_STRIP_INDIVIDUAL_ACK)
+                c = self._qlabs.wait_for_container(self.ID_QCAR, self.actorNumber, self.FCN_QCAR_SET_LED_STRIP_UNIFORM_ACK)
 
                 if (c == None):
                     return False
