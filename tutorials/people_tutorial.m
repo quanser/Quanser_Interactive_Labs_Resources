@@ -82,7 +82,7 @@ person1 = QLabsPerson(qlabs);
 
 % place the person at a specified location and rotation using radians
 % spawn_id allows us to specify the internal number for the actor
-person1.spawn_id(0, LOCATION_START_P1, ROTATION_P1P2, SCALE, 0, 1);
+person1.spawn_id(0, LOCATION_START_P1, ROTATION_P1P2, SCALE, 6, 1);
 
 % creates a second instance of a person
 person2 = QLabsPerson(qlabs);
@@ -90,7 +90,7 @@ person2 = QLabsPerson(qlabs);
 % place the person at a specified location and rotation using radians
 % spawn creates the internal number for the actor automatically using
 % the next available actor number
-person2.spawn(LOCATION_START_P2, ROTATION_P1P2, SCALE, 1, 1)
+person2.spawn(LOCATION_START_P2, ROTATION_P1P2, SCALE, 7, 1)
 
 % creates a third instance of a person
 person3 = QLabsPerson(qlabs, 1);
@@ -98,7 +98,7 @@ person3 = QLabsPerson(qlabs, 1);
 % place the person at a specified location and rotation using degrees
 % spawn_degrees creates the internal number for the actor automatically using the next
 % available number and takes the inputted rotation as degrees
-person3.spawn_degrees(LOCATION_START_P3, ROTATION_P3, SCALE, 2, 1);
+person3.spawn_degrees(LOCATION_START_P3, ROTATION_P3, SCALE, 8, 1);
 
 % move the 3 people created to a new location
 person1.move_to(LOCATION_END_P1, person1.WALK, 1);
