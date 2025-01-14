@@ -55,23 +55,23 @@ hSystem.set_title_string('People Tutorial')
 
 % initialize our variables
 % note that you can use the ..Coordinate Helper to pick locations for your actor.
-LOCATION_START_P1 = [-6.85, 40.396, 0.005];
+LOCATION_START_P1 = [-6.8, 40.7, 0.005];
 ROTATION_P1P2 = [0,0,pi/2];
 SCALE = [1,1,1];
 
-LOCATION_START_P2 = [-8.53, 40.641, 0.005];
-LOCATION_START_P3 = [-11.884, 40.292, 0.005];
+LOCATION_START_P2 = [-8.5, 40.7, 0.005];
+LOCATION_START_P3 = [-11.9, 40.7,0.005];
 ROTATION_P3 = [0,0,90];
 
-LOCATION_END_P1 = [-7.637, 51, 0.005];
-LOCATION_END_P2 = [-11.834, 51, 0.005];
-LOCATION_END_P3 = [-23.71, 43.245, 0.005];
+LOCATION_END_P1 = [-7.6, 51, 0.005];
+LOCATION_END_P2 = [-11.0, 48, 0.005];
+LOCATION_END_P3 = [-23.7, 43, 0.005];
 
 % create a camera in this qlabs instance
 camera = QLabsFreeCamera(qlabs);
 
 %place the custom camera at a specified location and rotation using radians
-camera.spawn([-0.457, 43.807, 8.82], [-0, 0.606, 3.127]);
+camera.spawn([-2.061, 43.916, 4.348], [0, 0.383, -3.097]);
 
 % to switch our view from our current camera to the new camera we just initialized to
 % be able to view where our people will spawn
