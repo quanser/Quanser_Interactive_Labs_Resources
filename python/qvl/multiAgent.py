@@ -26,6 +26,8 @@ class MultiAgent():
         os.path.join(__qalDirPath, 'QCar2'))
     _QBPDir = os.path.normpath(
         os.path.join(__qalDirPath, 'QBotPlatform'))
+    _QBPDriverDir = os.path.normpath(
+        os.path.join(__qalDirPath, 'QBotPlatforms'))
     _QD2Dir = os.path.normpath(
         os.path.join(__qalDirPath, 'QDrone2'))
     _directory = os.path.normpath(
@@ -49,9 +51,14 @@ class MultiAgent():
 
         print("Connected")
 
-        QLabsRealTime().terminate_all_real_time_models()
-
+        cmd = QLabsRealTime().terminate_all_real_time_models()
+        print(cmd)
         time.sleep(1)
+        cmd = QLabsRealTime().terminate_all_real_time_models()
+        print(cmd)
+        time.sleep(1)
+        # QLabsRealTime().terminate_all_real_time_models()
+        # time.sleep(1)
 
         #self.qlabs.destroy_all_spawned_actors()
 
@@ -68,6 +75,7 @@ class MultiAgent():
         self._fileType = '.rt-win64' # will need a check once we have multiple OS support
         self._portNumber = 18799
         self._uriPortNumber = 17010
+        self._driverPortNumber = 18949 
 
         created = self._createMultiAgentDir()
 
@@ -220,23 +228,31 @@ class MultiAgent():
 
         workspacePath, ext = os.path.splitext(workspacePath)
 
-        hilPort = self._nextNumber()
+        driverPath, ext = os.path.splitext(driverPath)
+
         videoPort = self._nextNumber()
         video3dPort = self._nextNumber()
         lidarPort = self._nextNumber()
         uriPort = self._nextURINumber()
 
+        # hilPort, driverPort = self._nextDriverNumber()
+        hilPort = 18950 + actorNumber
+        driverPort = 18970 + actorNumber
+        uriPortDriver = self._nextURINumber()
     
         arguments = '-uri_hil tcpip://localhost:'    + str(hilPort) + ' ' + \
                     '-uri_video tcpip://localhost:' + str(videoPort) + ' ' + \
                     '-uri_video3d tcpip://localhost:'+ str(video3dPort) + ' ' + \
-                    '-uri_lidar tcpip://localhost:'  + str(lidarPort) 
+                    '-uri_lidar tcpip://localhost:'  + str(lidarPort)  
         
         display = 'QBP ' + str(actorNumber) + ' spawned as ' + arguments
         print(display)
 
         #Start spawn model
         QLabsRealTime().start_real_time_model(workspacePath, actorNumber=actorNumber, uriPort = uriPort, additionalArguments=arguments)
+
+        arguments = '-uri tcpip://localhost:'+ str(uriPortDriver) 
+        QLabsRealTime().start_real_time_model(driverPath, actorNumber=actorNumber, uriPort = uriPortDriver, additionalArguments= arguments)
 
         name = 'QBP_' + str(actorNumber)
         robotDict = {
@@ -246,7 +262,8 @@ class MultiAgent():
             "hilPort" : hilPort,
             "videoPort" : videoPort,
             "video3dPort" : video3dPort,
-            "lidarPort" : lidarPort
+            "lidarPort" : lidarPort,
+            "driverPort" : driverPort
         }
 
         return name, robotDict
@@ -358,7 +375,7 @@ class MultiAgent():
 
     def _copyQBP_files(self,actorNumber):
         rtFile = 'QBotPlatform_Workspace'
-        driverFile = 'qbot_platform_driver_virtual'
+        driverFile = 'qbot_platform_driver_virtual' + str(actorNumber)
 
         # create copy of rt file workspace
         originalFile = rtFile + self._fileType
@@ -367,10 +384,10 @@ class MultiAgent():
         newPathWorkspace = os.path.join(MultiAgent._directory,newFile)
         shutil.copy(originalPath, newPathWorkspace)
 
-        # create copy of driver
+        # create copy of driver _QBPDriverDir
         originalFile = driverFile + self._fileType
-        originalPath = os.path.join(MultiAgent._QBPDir,originalFile)
-        newFile = driverFile + str(actorNumber) + self._fileType
+        originalPath = os.path.join(MultiAgent._QBPDriverDir,originalFile)
+        newFile = driverFile + self._fileType
         newPathDriver = os.path.join(MultiAgent._directory,newFile)
         shutil.copy(originalPath, newPathDriver)
 
@@ -410,8 +427,13 @@ class MultiAgent():
     def _nextURINumber(self):
         self._uriPortNumber = self._uriPortNumber + 1
         return self._uriPortNumber
-
-
+    
+    def _nextDriverNumber(self):
+        self._driverPortNumber = self._driverPortNumber + 1
+        driverPort = self._driverPortNumber + 20
+        return self._driverPortNumber, driverPort
+    
+    
 def readRobots():
     directory = os.path.normpath(
         os.path.join(os.environ['RTMODELS_DIR'], 'MultiAgent'))
