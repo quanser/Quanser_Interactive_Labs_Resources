@@ -252,7 +252,7 @@ class MultiAgent():
         QLabsRealTime().start_real_time_model(workspacePath, actorNumber=actorNumber, uriPort = uriPort, additionalArguments=arguments)
 
         arguments = '-uri tcpip://localhost:'+ str(uriPortDriver) 
-        QLabsRealTime().start_real_time_model(driverPath, actorNumber=actorNumber, uriPort = uriPortDriver, additionalArguments= arguments)
+        QLabsRealTime().start_real_time_model(driverPath, actorNumber=actorNumber, userArguments=False, additionalArguments= arguments)
 
         name = 'QBP_' + str(actorNumber)
         robotDict = {
@@ -374,7 +374,7 @@ class MultiAgent():
         return newPath
 
     def _copyQBP_files(self,actorNumber):
-        rtFile = 'QBotPlatform_Workspace'
+        rtFile = 'QBotPlatform_Workspace_debug'
         driverFile = 'qbot_platform_driver_virtual' + str(actorNumber)
 
         # create copy of rt file workspace
@@ -391,7 +391,7 @@ class MultiAgent():
         newPathDriver = os.path.join(MultiAgent._directory,newFile)
         shutil.copy(originalPath, newPathDriver)
 
-        time.sleep(0.2)
+        time.sleep(2) # change! back to 0.2
         return newPathWorkspace, newPathDriver
 
     def _copyQC2_files(self, actorNumber):
