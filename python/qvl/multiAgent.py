@@ -52,10 +52,8 @@ class MultiAgent():
         print("Connected")
 
         cmd = QLabsRealTime().terminate_all_real_time_models()
-        print(cmd)
         time.sleep(1)
         cmd = QLabsRealTime().terminate_all_real_time_models()
-        print(cmd)
         time.sleep(1)
         # QLabsRealTime().terminate_all_real_time_models()
         # time.sleep(1)
@@ -149,14 +147,14 @@ class MultiAgent():
         x = 0
         for robot in agentList:
             qlabsRobot = 0
-
-            if robot["RobotType"] == "QArm" or robot["RobotType"] == "QA":
+            robotType = robot["RobotType"].lower()
+            if robotType == "qarm" or robotType == "qa":
                 qlabsRobot = QLabsQArm(self.qlabs)
-            if robot["RobotType"] == "QCar2" or robot["RobotType"] == "QC2":
+            if robotType == "qcar2" or robotType == "qcar 2" or robotType == "qc2":
                 qlabsRobot = QLabsQCar2(self.qlabs)
-            if robot["RobotType"] == "QBotPlatform" or robot["RobotType"] == "QBP":
+            if robotType == "qbotplatform" or robotType == "qbot platform" or robotType == "qbp":
                 qlabsRobot = QLabsQBotPlatform(self.qlabs)
-            if robot["RobotType"] == "QDrone2" or robot["RobotType"] == "QD2":
+            if robotType == "qdrone2" or robotType == "qdrone 2" or robotType == "qd2":
                 qlabsRobot = QLabsQDrone2(self.qlabs)
             
             location = robot["Location"]
@@ -374,7 +372,7 @@ class MultiAgent():
         return newPath
 
     def _copyQBP_files(self,actorNumber):
-        rtFile = 'QBotPlatform_Workspace_debug'
+        rtFile = 'QBotPlatform_Workspace' # change _debug
         driverFile = 'qbot_platform_driver_virtual' + str(actorNumber)
 
         # create copy of rt file workspace
@@ -391,7 +389,7 @@ class MultiAgent():
         newPathDriver = os.path.join(MultiAgent._directory,newFile)
         shutil.copy(originalPath, newPathDriver)
 
-        time.sleep(2) # change! back to 0.2
+        time.sleep(0.2) # change! back to 0.2
         return newPathWorkspace, newPathDriver
 
     def _copyQC2_files(self, actorNumber):
@@ -440,7 +438,6 @@ def readRobots():
     
     filePath = os.path.join(directory,"RobotAgents.json")
     tmpPath = os.path.join(directory,"tmp.csv")
-    
     
     wait = True
 
