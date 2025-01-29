@@ -23,6 +23,7 @@ Quanser Products
    qcar_flooring.rst
    qbot_platform_library.rst
    qbot_platform_flooring.rst
+   qdrone2_library.rst
 
    
 Supporting Actors
