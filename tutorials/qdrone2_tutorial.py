@@ -11,21 +11,15 @@ to control the drone and its related functions.
 
 """
 
-import sys
-
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
 from qvl.qdrone2 import QLabsQDrone2
 
 import time
-import math
 import numpy as np
 import cv2
 import os
-
-import pyqtgraph as pg
-from pyqtgraph.Qt import QtWidgets
 
 from qvl.system import QLabsSystem
 
@@ -69,6 +63,7 @@ def main():
     x = myQDrone2.ping()
     print('QDrone 2 ping test:', x)
     time.sleep(2)
+
     myQDrone2.destroy()
     x = myQDrone2.ping()
     print('QDrone 2 ping test:', x)
@@ -89,21 +84,21 @@ def main():
     rectangle = QLabsBasicShape(qlabs)
     rectangle.spawn(location=[0,0,0], rotation=[0,0,0], scale=[.2,.2,1], configuration=rectangle.SHAPE_CUBE, waitForConfirmation=True)
     rectangle.set_material_properties(color=[1,0,0])
-    time.sleep(1)
+    time.sleep(.25)
     rectangle2 = QLabsBasicShape(qlabs)
     rectangle2.spawn(location=[-4,-3,0], rotation=[0,0,0], scale=[.2,.2,1], configuration=rectangle.SHAPE_CUBE, waitForConfirmation=True)
     rectangle2.set_material_properties(color=[0,1,0])
-    time.sleep(1)
+    time.sleep(.25)
     cone = QLabsBasicShape(qlabs)
     cone.spawn(location=[-1.4,0,0], rotation=[0,0,0], scale=[.2,.2,1], configuration=rectangle.SHAPE_CONE, waitForConfirmation=True)
     cone.set_material_properties(color=[0,0,1])
-    time.sleep(1)
+    time.sleep(.25)
     rectangle3 = QLabsBasicShape(qlabs)
     rectangle3.spawn(location=[-2,1.5,0], rotation=[0,0,0], scale=[.2,.2,1], configuration=rectangle.SHAPE_CUBE, waitForConfirmation=True)
-    time.sleep(1)
+    time.sleep(.25)
 
     myQDrone.set_transform_and_dynamics(location=[-2,0,1], rotation=[0,0,np.pi/2], enableDynamics=True)
-    time.sleep(1)
+    time.sleep(1.5)
 
     # cycle through camera views
     
