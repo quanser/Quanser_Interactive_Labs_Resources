@@ -95,7 +95,7 @@ def main():
     time.sleep(.25)
     rectangle3 = QLabsBasicShape(qlabs)
     rectangle3.spawn(location=[-2,1.5,0], rotation=[0,0,0], scale=[.2,.2,1], configuration=rectangle.SHAPE_CUBE, waitForConfirmation=True)
-    time.sleep(.25)
+    time.sleep(1)
 
     myQDrone.set_transform_and_dynamics(location=[-2,0,1], rotation=[0,0,np.pi/2], enableDynamics=True)
     time.sleep(1.5)
