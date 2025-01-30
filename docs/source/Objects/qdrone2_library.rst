@@ -34,6 +34,11 @@ Library
 Constants
 ===========
 
+.. autoattribute:: qvl.qdrone2.QLabsQDrone2.ID_QDRONE2
+
+.. note::
+VIEWPOINT constants are for the possess method. CAMERA constants are for the get_image method.
+
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_CSI_LEFT
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_CSI_BACK
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_CSI_RIGHT
@@ -41,16 +46,35 @@ Constants
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_DEPTH
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_DOWNWARD
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_OPTICAL_FLOW
+
+.. note::
+Overhead and trailing cameras support user zoom using the mouse wheel.
+
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_OVERHEAD
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_TRAILING
+
+.. note::
+    CSI camera resolution is 820x410.
 
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_CSI_LEFT
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_CSI_BACK
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_CSI_RIGHT
+
+.. note::
+    RGB and depth resolution is 640x480.
+
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_RGB
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_DEPTH
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_DOWNWARD
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.CAMERA_OPTICAL_FLOW
+
+
+.. _car2MemberVars:
+
+Member Variables
+=================
+
+.. autoattribute:: qvl.qdrone2.QLabsQDrone2.actorNumber
 
 .. _drone2Methods:
 
