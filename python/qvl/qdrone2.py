@@ -96,7 +96,7 @@ class QLabsQDrone2(QLabsActor):
                 print("QDrone 2 possess: Communications failure.")
             return False
 
-    def command_velocity_and_request_state(self, motorsEnabled=False, velocity=[0,0,0], orientation=[0,0,0]):
+    def set_velocity_and_request_state(self, motorsEnabled=False, velocity=[0,0,0], orientation=[0,0,0]):
         """Sets the velocity, turn angle in radians, and other properties.
 
         :param motorsEnabled: Enable the motors. Disabled by default immediately after spawning.
@@ -165,7 +165,7 @@ class QLabsQDrone2(QLabsActor):
                 print("QDrone 2 command_velocity_and_request_state: Communications failure.")
             return False, location, orientation, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce
 
-    def command_velocity_and_request_state_degrees(self, motorsEnabled=False, velocity=[0,0,0], orientation=[0,0,0]):
+    def set_velocity_and_request_state_degrees(self, motorsEnabled=False, velocity=[0,0,0], orientation=[0,0,0]):
         """Sets the velocity, turn angle in radians, and other properties.
 
         :param motorsEnabled: Enable the motors. Disabled by default immediately after spawning.
@@ -192,7 +192,7 @@ class QLabsQDrone2(QLabsActor):
 
         """   
 
-        success, location, orientation_r, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce = command_velocity_and_request_state(self, motorsEnabled, velocity, [orientation[0]/180*math.pi, orientation[1]/180*math.pi, orientation[2]/180*math.pi])
+        success, location, orientation_r, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce = self.set_velocity_and_request_state(motorsEnabled, velocity, [orientation[0]/180*math.pi, orientation[1]/180*math.pi, orientation[2]/180*math.pi])
         
         orientation_d = [orientation_r[0]/math.pi*180, orientation_r[1]/math.pi*180, orientation_r[2]/math.pi*180]
         
@@ -201,7 +201,7 @@ class QLabsQDrone2(QLabsActor):
     def set_transform_and_dynamics(self, location, rotation, enableDynamics, waitForConfirmation=True):
         """Sets the location, rotation, and other properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-        :param location: An array of floats for x, y and z coordinates in full-scale units. Multiply physical QCar locations by 10 to get full scale locations.
+        :param location: An array of floats for x, y and z coordinates in full-scale units. 
         :param rotation: An array of floats for the roll, pitch, and yaw in radians
         :param enableDynamics: Enables or disables dynamics. The velocity commands will have no effect when the dynamics are disabled.
         :param waitForConfirmation: (Optional) Wait for confirmation before proceeding. This makes the method a blocking operation.

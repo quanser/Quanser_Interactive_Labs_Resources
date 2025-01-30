@@ -37,7 +37,7 @@ Constants
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.ID_QDRONE2
 
 .. note::
-VIEWPOINT constants are for the possess method. CAMERA constants are for the get_image method.
+    VIEWPOINT constants are for the possess method. CAMERA constants are for the get_image method.
 
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_CSI_LEFT
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_CSI_BACK
@@ -48,7 +48,7 @@ VIEWPOINT constants are for the possess method. CAMERA constants are for the get
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_OPTICAL_FLOW
 
 .. note::
-Overhead and trailing cameras support user zoom using the mouse wheel.
+    Overhead and trailing cameras support user zoom using the mouse wheel.
 
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_OVERHEAD
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.VIEWPOINT_TRAILING
@@ -87,8 +87,8 @@ Methods
 .. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id
 .. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id_degrees
 .. automethod:: qvl.qdrone2.QLabsQDrone2.possess
-.. automethod:: qvl.qdrone2.QLabsQDrone2.command_velocity_and_request_state
-.. automethod:: qvl.qdrone2.QLabsQDrone2.command_velocity_and_request_state_degrees
+.. automethod:: qvl.qdrone2.QLabsQDrone2.set_velocity_and_request_state
+.. automethod:: qvl.qdrone2.QLabsQDrone2.set_velocity_and_request_state_degrees
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_transform_and_dynamics
 .. automethod:: qvl.qdrone2.QLabsQDrone2.get_image
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_image_capture_resolution
@@ -111,36 +111,34 @@ There is only one configuration of the QDrone 2 actor.
 QDrone 2 Tutorial
 ==================
 
-.. dropdown:: Example
+.. tabs::
+    .. tab:: Python
 
-    Coming Soon!
+        .. dropdown:: Python Tutorial
 
-..
-    .. tabs::
-        .. tab:: Python
+            Raw to download this tutorial: |qdrone2_tutorial.py|.
 
-            .. dropdown:: Python Tutorial
+            .. |qdrone2_tutorial.py| replace::
+                :download:`QDrone 2 Tutorial (.py) <../../../tutorials/qdrone2_tutorial.py>`
 
-                Raw to download this tutorial: |qcar2_tutorial.py|.
+            .. literalinclude:: ../../../tutorials/qdrone2_tutorial.py
+                :language: python
+                :linenos:
 
-                .. |qcar2_tutorial.py| replace::
-                    :download:`QCar 2 Tutorial (.py) <../../../tutorials/qcar2_tutorial.py>`
+    .. tab:: Matlab
 
-                .. literalinclude:: ../../../tutorials/qcar2_tutorial.py
-                    :language: python
-                    :linenos:
+        Coming Soon!
 
-        .. tab:: Matlab
-
+        ..
             .. dropdown:: Matlab Tutorial
 
-                Raw to download this tutorial: |qcar2_tutorial.m|.
+            Raw to download this tutorial: |qcar2_tutorial.m|.
 
-                .. |qcar2_tutorial.m| replace::
-                    :download:`QCar 2 Tutorial (.m) <../../../tutorials/qcar2_tutorial.m>`
+            .. |qcar2_tutorial.m| replace::
+                :download:`QCar 2 Tutorial (.m) <../../../tutorials/qcar2_tutorial.m>`
 
-                .. literalinclude:: ../../../tutorials/qcar2_tutorial.m
-                    :language: Matlab
-                    :linenos:
-    
+            .. literalinclude:: ../../../tutorials/qcar2_tutorial.m
+                :language: Matlab
+                :linenos:
+
 

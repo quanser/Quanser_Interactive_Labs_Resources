@@ -79,7 +79,7 @@ classdef QLabsQDrone2 < QLabsActor
             end
         end
 
-        function [success, location, orientation, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce] = command_velocity_and_request_state(obj, motorsEnabled, velocity, orientation)
+        function [success, location, orientation, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce] = set_velocity_and_request_state(obj, motorsEnabled, velocity, orientation)
             arguments
                 obj QLabsQDrone2
                 motorsEnabled single
