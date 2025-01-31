@@ -657,7 +657,6 @@ class QLabsQCar2(QLabsActor):
         else:
             return False, None, None
 
-
     def set_led_strip_uniform(self, color=[0, 0, 0], waitForConfirmation=True):
         """Sets the entire LED color strip to the RGB value specified.
 
@@ -695,9 +694,8 @@ class QLabsQCar2(QLabsActor):
         else:
             return False
         
-
     def set_led_strip_individual(self, color, waitForConfirmation=True):
-        """Sets the entire LED color strip to the RGB value specified. Note that specifying individual LED's has a slight impact on performance versus set_led_strip_uniform.
+        """Sets the 33 LEDs in the color strip individually. Note that specifying individual LED's has a slight impact on performance versus set_led_strip_uniform.
 
         :param color: A 2D array Red, Green, Blue components of the RGB color on a 0.0 to 1.0 scale by 33 rows. Values greater than 1 can be used to enhance the glow or bloom effect (try 50).
         :type color: float array[3][33]

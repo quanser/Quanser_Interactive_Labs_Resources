@@ -79,6 +79,22 @@ def main():
 
     time.sleep(0.5)
 
+    LEDCam = QLabsFreeCamera(qlabs)
+    LEDCam.spawn(location=[-12.705, 19.139, 1.748], rotation=[0, 0.357, -0.803])
+    LEDCam.possess()
+    time.sleep(1)
+    # sets LEDS of the QCar to blue on different brightness and sets as green at the end.
+    hQCar2.set_led_strip_uniform(color=[0,0,.2])
+    time.sleep(1)
+    hQCar2.set_led_strip_uniform(color=[0,0,1], waitForConfirmation=True)
+    time.sleep(1)
+    hQCar2.set_led_strip_uniform(color=[0,0,30])
+    time.sleep(1)
+    hQCar2.set_led_strip_uniform(color=[0,1,0])
+    time.sleep(1)
+
+    hCameraQCars.possess()
+
     # Set the velocity and direction of the QCar in radians while also turning on the headlights and right turn signal
     hQCar2.set_velocity_and_request_state(forward=1, turn = -math.pi/6, headlights=True, leftTurnSignal=False, rightTurnSignal=True, brakeSignal=False, reverseSignal=False)
     time.sleep(1)
