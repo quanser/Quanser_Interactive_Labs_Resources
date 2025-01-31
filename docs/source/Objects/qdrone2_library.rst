@@ -8,10 +8,6 @@ QDrone 2
     :width: 800px
     :align: center
 
-.. image:: ../pictures/QDrone2_Banner2.png
-    :width: 800px
-    :align: center
-
 .. _drone2Description:
 
 |
