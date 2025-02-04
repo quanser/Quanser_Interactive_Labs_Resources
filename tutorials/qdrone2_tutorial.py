@@ -122,14 +122,14 @@ def main():
 
 
     # Getting images from the different cameras 
-    status, cameraNumber ,camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_LEFT)
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_RIGHT)
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_BACK)
-
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_RGB)
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_DEPTH)
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_DOWNWARD)
-    status, cameraNumber, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_OPTICAL_FLOW)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_LEFT)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_RIGHT)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_CSI_BACK)
+    
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_RGB)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_DEPTH)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_DOWNWARD)
+    status, camera_image = myQDrone.get_image(camera=myQDrone.CAMERA_OPTICAL_FLOW)
 
 
     # Closing qlabs

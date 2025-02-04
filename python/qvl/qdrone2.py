@@ -250,7 +250,6 @@ class QLabsQDrone2(QLabsActor):
 
         :return:
             - **status** - `True` and image data if successful, `False` and empty otherwise
-            - **cameraNumber** - Camera number of the image. A value of -1 indicates an invalid camera was selected.
             - **imageData** - Image in a JPG format
         :rtype: boolean, int32, byte array with jpg data
 
@@ -291,15 +290,15 @@ class QLabsQDrone2(QLabsActor):
                             print("QDrone 2 get_image: Camera number was invalid.")
                         else:
                             print("Camera number was valid, but no image data was returned. Check that the image size is valid.")
-                    return False, camera_number, None                    
+                    return False,  None                    
             else:
                 if self._verbose:
                     print("QDrone 2 get_image: Returned data was not in the expected format.")
-                return False, -1, None
+                return False,  None
         else:
             if self._verbose:
                 print("QDrone 2 get_image: Communications failure.")
-            return False, -1, None
+            return False, None
 
     def set_image_capture_resolution(self, width=640, height=480):
         """Change the default width and height of image resolution for capture

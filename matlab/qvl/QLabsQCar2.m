@@ -87,7 +87,7 @@ classdef QLabsQCar2 < QLabsActor
             return
         end
 
-        function success = spawn(obj, location, rotation, scale, configuration, waitForConfirmation)
+        function [status, actorNumber] = spawn(obj, location, rotation, scale, configuration, waitForConfirmation)
             arguments
                 obj QLabsQCar2
                 location (1,3) single = [0 0 0]
@@ -100,11 +100,11 @@ classdef QLabsQCar2 < QLabsActor
 %             Spawns a new QCar actor with the next available actor number within this class.
 
             obj.sensor_scaling = double(scale(1));
-            success = spawn@QLabsActor(obj, location, rotation, scale, configuration, waitForConfirmation);
+            [status, actorNumber] = spawn@QLabsActor(obj, location, rotation, scale, configuration, waitForConfirmation);
             return
         end
 
-        function success = spawn_degrees(obj, location, rotation, scale, configuration, waitForConfirmation)
+        function [status, actorNumber] = spawn_degrees(obj, location, rotation, scale, configuration, waitForConfirmation)
             arguments
                 obj QLabsQCar2
                 location (1,3) single = [0 0 0]
@@ -117,7 +117,7 @@ classdef QLabsQCar2 < QLabsActor
 %             Spawns a new QCar actor with the next available actor number within this class.
 
             obj.sensor_scaling = double(scale(1));
-            success = spawn_degrees@QLabsActor(obj, location, rotation, scale, configuration, waitForConfirmation);
+            [status, actorNumber] = spawn_degrees@QLabsActor(obj, location, rotation, scale, configuration, waitForConfirmation);
             return
         end
 
