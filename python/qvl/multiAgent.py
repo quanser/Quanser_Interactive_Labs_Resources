@@ -33,7 +33,7 @@ class MultiAgent():
     _directory = os.path.normpath(
         os.path.join(__qalDirPath, 'MultiAgent'))
 
-    def __init__(self, agentList, spawnAfter = False, sendActor = False):
+    def __init__(self, agentList):
 
         # agentList is a list of dictionaries with the following keys
         #"RobotType": (string, can be "QC2"or"QCar2" /"QBP"/ "QArm"or"QA" /"QDrone2"or"QD2") 
@@ -82,33 +82,33 @@ class MultiAgent():
         #     print ('Directory not created successfully. Aborting.')
         #     return []
         
-        if not sendActor:
-            # remove robot if not RobotType or Location defined
-            for robot in agentList[:]:
-                if "RobotType" not in robot:
-                    agentList.remove(robot)
-                    print("Removed the following entry due to no RobotType defined:")
-                    print(robot)
-                if "Location" not in robot:
-                    agentList.remove(robot)
-                    print("Removed the following entry due to no Location defined:")
-                    print(robot)
+        
+        # remove robot if not RobotType or Location defined
+        for robot in agentList[:]:
+            if "RobotType" not in robot:
+                agentList.remove(robot)
+                print("Removed the following entry due to no RobotType defined:")
+                print(robot)
+            if "Location" not in robot:
+                agentList.remove(robot)
+                print("Removed the following entry due to no Location defined:")
+                print(robot)
 
-            # fill empty rotation, radians and scaling if not defined
-            for robot in agentList:
-                if "Rotation" not in robot:
-                    # If "Rotation" is not defined, set it to the default value
-                    robot["Rotation"] = [0,0,0]
-                if "Radians" not in robot:
-                    # If "Radians" is not defined, set it to the default value of False
-                    robot["Radians"] = False
-                if "Scale" not in robot:
-                    # If "Scaling" is not defined, set it to the default value
-                    robot["Scale"] = 1
-            
-            robotActors = self._spawnRobots(agentList)
+        # fill empty rotation, radians and scaling if not defined
+        for robot in agentList:
+            if "Rotation" not in robot:
+                # If "Rotation" is not defined, set it to the default value
+                robot["Rotation"] = [0,0,0]
+            if "Radians" not in robot:
+                # If "Radians" is not defined, set it to the default value of False
+                robot["Radians"] = False
+            if "Scale" not in robot:
+                # If "Scaling" is not defined, set it to the default value
+                robot["Scale"] = 1
+        
+        robotActors = self._spawnRobots(agentList)
 
-            #print("FinishSpawn")
+        #print("FinishSpawn")
 
         self.robotActors = robotActors
 
