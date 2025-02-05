@@ -94,11 +94,11 @@ MultiAgent Tutorial
 
         .. dropdown:: Matlab Tutorial
 
-        Raw to download this tutorial: |multiagent_tutorial.m|.
+            Raw to download this tutorial: |multiagent_tutorial.m|.
 
-        .. |multiagent_tutorial.m| replace::
-            :download:`Multi Agent Tutorial (.m) <../../../tutorials/multiagent_tutorial.m>`
+            .. |multiagent_tutorial.m| replace::
+                :download:`Multi Agent Tutorial (.m) <../../../tutorials/multiagent_tutorial.m>`
 
-        .. literalinclude:: ../../../tutorials/multiagent_tutorial.m
-            :language: Matlab
-            :linenos:
+            .. literalinclude:: ../../../tutorials/multiagent_tutorial.m
+                :language: Matlab
+                :linenos:
