@@ -17,7 +17,7 @@ MultiAgent Example
 #imports to necessary libraries
 import time
 import numpy as np
-from qvl.multiAgent import MultiAgent, readRobots
+from qvl.multi_agent import MultiAgent, readRobots
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape

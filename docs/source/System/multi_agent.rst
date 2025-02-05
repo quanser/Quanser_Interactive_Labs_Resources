@@ -35,7 +35,7 @@ the MultiAgent class to spawn multiple agents.
 Library
 =========
 
-.. autoclass:: qvl.multiAgent.MultiAgent
+.. autoclass:: qvl.multi_agent.MultiAgent
 
 
 .. _multiAgentMemberVars:
@@ -43,15 +43,15 @@ Library
 Member Variables
 =================
 
-.. autoattribute:: qvl.multiAgent.MultiAgent.robotActors
-.. autoattribute:: qvl.multiAgent.MultiAgent.robotsDict
+.. autoattribute:: qvl.multi_agent.MultiAgent.robotActors
+.. autoattribute:: qvl.multi_agent.MultiAgent.robotsDict
 
 .. _multiAgentMethods:
 
 Methods
 =========
 
-.. automethod:: qvl.multiAgent.MultiAgent.__init__
+.. automethod:: qvl.multi_agent.MultiAgent.__init__
 
 .. note::
     The dictionaries can have the following keys (one per robot that will be spawned):
@@ -64,7 +64,7 @@ Methods
         
 
 
-.. automethod:: qvl.multiAgent.readRobots
+.. automethod:: qvl.multi_agent.readRobots
 
 
 -------------------------------------------------------------------------------
@@ -79,12 +79,12 @@ MultiAgent Tutorial
 
         .. dropdown:: Python Tutorial
 
-            Raw to download this tutorial: |multiAgent_tutorial.py|.
+            Raw to download this tutorial: |multiagent_tutorial.py|.
 
-            .. |multiAgent_tutorial.py| replace::
-                :download:`Multi Agent Tutorial (.py) <../../../tutorials/multiAgent_tutorial.py>`
+            .. |multiagent_tutorial.py| replace::
+                :download:`Multi Agent Tutorial (.py) <../../../tutorials/multiagent_tutorial.py>`
 
-            .. literalinclude:: ../../../tutorials/multiAgent_tutorial.py
+            .. literalinclude:: ../../../tutorials/multiagent_tutorial.py
                 :language: python
                 :linenos:
 
