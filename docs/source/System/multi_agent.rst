@@ -7,7 +7,7 @@ Multi Agent Class
 .. _multiAgentDescription:
 
 .. note::
-    This class is for advanced users wanting to control multiple robots through QUARC or Quanser SKD.
+    This class is for advanced users wanting to control multiple robots through QUARC or Quanser SDK.
     Make sure you have installed the academic resources from the Quanser website.
     It will only work with Quanser robots that you have a valid Quanser Interactive Labs license for.
 
