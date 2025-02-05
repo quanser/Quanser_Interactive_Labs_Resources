@@ -456,7 +456,9 @@ class MultiAgent():
     
     
 def readRobots():
-    """ Function to read the json file created after spawning the robots. 
+    """ 
+    This function is not part of the MultiAgent class. Do not initialize a MultiAgent object only to use this function.
+    Function to read the JSON file created after spawning the robots. 
     The file contains all necessary port/URI numbers to initialize the robots.
     The function will return the dictionary that was created when spawning the robots
     it contains the the robots and their properties.
