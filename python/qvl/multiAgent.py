@@ -1,10 +1,8 @@
 import json
-import sys
 import os
 import time
 import numpy as np
-from quanser.hardware import HIL, HILError, MAX_STRING_LENGTH, Clock
-from pal.utilities.vision import Camera3D
+
 from qvl.actor import QLabsActor
 import shutil
 from qvl.real_time import QLabsRealTime
