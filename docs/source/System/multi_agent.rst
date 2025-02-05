@@ -53,7 +53,7 @@ Methods
 
 .. automethod:: qvl.multi_agent.MultiAgent.__init__
 
-.. note::
+.. tip::
     The dictionaries can have the following keys (one per robot that will be spawned):
         - "RobotType": string - can be "QC2", "QCar2", "QBP", "QArm", "QA", "QDrone2", or "QD2"
         - "Location": float array[3] - for spawning in x, y, z of the QLabs environment
@@ -66,11 +66,9 @@ Methods
 
 .. automethod:: qvl.multi_agent.readRobots
 
-.. note::
-    This function is not part of the MultiAgent class. Do not initialize a MultiAgent object only to use this function.
+.. important::
+    This function is not part of the MultiAgent class. Do not initialize a MultiAgent object only to use this function. It can be called directly from the library.
         
-
-
 -------------------------------------------------------------------------------
 
 .. _MultiAgentTutorial:
