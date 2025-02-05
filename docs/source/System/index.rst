@@ -15,6 +15,7 @@ support the QLabs Workspaces.
    system_library
    environment_outdoors_library
    real_time_library
+   multi_agent
 
 
 

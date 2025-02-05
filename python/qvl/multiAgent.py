@@ -16,6 +16,11 @@ from qvl.qdrone2 import QLabsQDrone2
 
 
 class MultiAgent():
+    """This class is for spawning multiple agents in Quanser Interactive Labs that will then
+    be controlled through the HIL interface. 
+
+    When initializing the class, it will delete all QArms, QCar 2s, QBot Platforms and QDrone 2s in the space.
+    """
 
     # location of RT models and creation of new MultiAgent folder
     __qalDirPath = os.environ['RTMODELS_DIR']
@@ -32,18 +37,29 @@ class MultiAgent():
         os.path.join(__qalDirPath, 'QDrone2'))
     _directory = os.path.normpath(
         os.path.join(__qalDirPath, 'MultiAgent'))
+    
+    robotActors = None
+    """ List of qlabs actor objects of the robots that were spawned. 
+    Use when using functions from qlabs library."""
+
+    robotsDict = {}
+    """ Dictionary of dictionaries of all spawned robots. Includes the information that is saved
+    into the JSON file. Including robotType, actorNumber, classID as well as all ports used for the RT file."""
 
     def __init__(self, agentList):
+        """ Constructor Method
 
-        # agentList is a list of dictionaries with the following keys
-        #"RobotType": (string, can be "QC2"or"QCar2" /"QBP"/ "QArm"or"QA" /"QDrone2"or"QD2") 
-        #"Location": for spawning in x,y,z of the QLabs environment
-        #"Rotation": for spawning, in x,y,z. Can be in Degrees or Radians, if it is radians, set the "Radians" key to true. If not defined, will spawn with [0, 0, 0] rotation
-        #"Radians" : True  # Only needed if rotation is in Radians
-        #"Scale": (float) if you want to change the scaling of the spawned object, if not defined, will spawn with scaling of 1
-        #"actorNumber" : 9 , set only if you want a predefined actor number for your robot. If not, it will use the next available number for the type of robot. If the number 
-        # is already in use, it will overwrite it. We recommend not using it unless tracking of actors is done manually by the user.
-
+         :param agentList: A list of dictionaries with the following keys (one per robot that will be spawned):
+            "RobotType": string - can be "QC2"or"QCar2" /"QBP"/ "QArm"or"QA" /"QDrone2"or"QD2"
+            "Location": float array[3] - for spawning in x,y,z of the QLabs environment
+            "Rotation": (Optional) float array[3] - for spawning, in x,y,z. Can be in Degrees or Radians, if it is radians, set the "Radians" key to True. If not defined, will spawn with [0, 0, 0] rotation
+            "Radians": (Optional) boolean -  defaults to False  # Only needed if rotation is in Radians
+            "Scale": (Optional) float - if you want to change the scaling of the spawned object, if not defined, will spawn with scaling of 1. The scaling will apply in x,y and z
+            "actorNumber": (Optional) int , set only if you want a predefined actor number for your robot. If not, it will use the next available number for the type of robot. If the number
+            is already in use, it will overwrite it. We do not recommend using it unless tracking of actors is done manually by the user.
+        :type agentList: list of dictionaries
+        :return: None
+       """
         self.qlabs = QuanserInteractiveLabs()
         print("Connecting to QLabs...")
         if (not self.qlabs.open("localhost")):
@@ -55,20 +71,13 @@ class MultiAgent():
         time.sleep(1)
         cmd = QLabsRealTime().terminate_all_real_time_models()
         time.sleep(1)
-        # QLabsRealTime().terminate_all_real_time_models()
-        # time.sleep(1)
 
-        #self.qlabs.destroy_all_spawned_actors()
 
         QLabsQArm(self.qlabs).destroy_all_actors_of_class()
         QLabsQCar2(self.qlabs).destroy_all_actors_of_class()
         QLabsQBotPlatform(self.qlabs).destroy_all_actors_of_class()
         QLabsQDrone2(self.qlabs).destroy_all_actors_of_class()
-        
-        # x = self.qlabs.destroy_all_spawned_actors()
 
-        # print(x)
-        
 
         self._fileType = '.rt-win64' # will need a check once we have multiple OS support
         self._portNumber = 18799
@@ -80,7 +89,7 @@ class MultiAgent():
         time.sleep(.5)
         # if not created:
         #     print ('Directory not created successfully. Aborting.')
-        #     return []
+        #     break/continue?
         
         
         # remove robot if not RobotType or Location defined
@@ -107,24 +116,25 @@ class MultiAgent():
                 robot["Scale"] = 1
         
         robotActors = self._spawnRobots(agentList)
-
-        #print("FinishSpawn")
+        # finished spawning
 
         self.robotActors = robotActors
+        # dictionary of qlabs actors
 
-        robotsDict = {}
+        
 
         for robot in robotActors:
             name, robotDict = self.createRobot(robot)
-            #print(robotDict)
-            robotsDict[name] = robotDict
+            self.robotsDict[name] = robotDict
+            # dictionary of robots and their properties for the json file
 
         filePath = os.path.join(MultiAgent._directory,"RobotAgents.json")
         with open(filePath, "w") as outfile: 
-            json.dump(robotsDict, outfile)
+            json.dump(self.robotsDict, outfile)
 
         
     def _createMultiAgentDir(self):
+        """ Internal method to create the MultiAgent directory in the RTMODELS_DIR directory"""
         try:
             os.mkdir(MultiAgent._directory)
             print(f"Directory '{MultiAgent._directory}' created successfully.")
@@ -143,6 +153,8 @@ class MultiAgent():
             return False
       
     def _spawnRobots(self, agentList):
+        """ Internal method to spawn the robots in the QLabs environment.
+            returns a list of the qlabs objects (spawned robots)"""
         robotActors = [0] * len(agentList)
         x = 0
         for robot in agentList:
@@ -180,6 +192,7 @@ class MultiAgent():
         return robotActors
 
     def createRobot(self, QLabsActor):
+        """ Internal method to call functions to copy rt files and start them to be able to control the robots"""
         classID = QLabsActor.classID
         actorNumber = QLabsActor.actorNumber
         if classID == 10: #QArm
@@ -194,6 +207,8 @@ class MultiAgent():
         return name, robotDict
 
     def _createQArm(self, actorNumber):
+        """ Internal method to initialize the rt model for the QArm. Calls function to create
+        copy of the rt files into the MultiAgent folder and then starts the rt model"""
         path = self._copyQArm_files(actorNumber)
         path, ext = os.path.splitext(path)
 
@@ -222,6 +237,8 @@ class MultiAgent():
         return name, robotDict
 
     def _createQBP(self, actorNumber):
+        """ Internal method to initialize the rt model and driver for the QBot Platform. Calls function to create
+        copy of the rt files into the MultiAgent folder and then starts the rt model"""
         workspacePath, driverPath = self._copyQBP_files(actorNumber)
 
         workspacePath, ext = os.path.splitext(workspacePath)
@@ -267,6 +284,8 @@ class MultiAgent():
         return name, robotDict
 
     def _createQC2(self, actorNumber):
+        """ Internal method to initialize the rt model for the QCar 2. Calls function to create
+        copy of the rt files into the MultiAgent folder and then starts the rt model"""
         path = self._copyQC2_files(actorNumber)
         path, ext = os.path.splitext(path)
 
@@ -317,6 +336,8 @@ class MultiAgent():
         return name, robotDict
   
     def _createQD2(self, actorNumber):
+        """ Internal method to initialize the rt model for the QDrone 2. Calls function to create
+        copy of the rt files into the MultiAgent folder and then starts the rt model"""
         path = self._copyQD2_files(actorNumber)
         path, ext = os.path.splitext(path)
 
@@ -433,6 +454,11 @@ class MultiAgent():
     
     
 def readRobots():
+    """ Function to read the json file created after spawning the robots. 
+    The file contains all necessary port/uri numbers to initialize the robots.
+     The function will return the dictionary that was created when spawning the robots
+     it contains the the robots and their properties.
+     The function makes sure that the file is not being used by another process before reading it.""" 
     directory = os.path.normpath(
         os.path.join(os.environ['RTMODELS_DIR'], 'MultiAgent'))
     
