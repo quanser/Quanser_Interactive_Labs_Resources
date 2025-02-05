@@ -66,6 +66,10 @@ Methods
 
 .. automethod:: qvl.multi_agent.readRobots
 
+.. note::
+    This function is not part of the MultiAgent class. Do not initialize a MultiAgent object only to use this function.
+        
+
 
 -------------------------------------------------------------------------------
 
