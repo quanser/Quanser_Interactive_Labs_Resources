@@ -15,15 +15,13 @@ from qvl.qdrone2 import QLabsQDrone2
 
 class MultiAgent():
     """This class is for spawning multiple agents in Quanser Interactive Labs that will then
-    be controlled through the HIL interface. 
+    be controlled through QUARC/Quanser SKD. 
 
     When initializing the class, it will delete all QArms, QCar 2s, QBot Platforms and QDrone 2s in the space.
 
     """
 
     # location of RT models and creation of new MultiAgent folder
-    #__qalDirPath = os.environ['RTMODELS_DIR']
-
     __qalDirPath = os.environ.get('RTMODELS_DIR', 'READTHEDOCS')
     
     _QArmDir = os.path.normpath(
