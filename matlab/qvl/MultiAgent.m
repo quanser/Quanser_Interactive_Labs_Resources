@@ -23,7 +23,8 @@ classdef MultiAgent < handle
     properties (Access = public)
         % Existing properties remain the same
         qlabs = [];
-        robotActors = {};
+        robotActors = {};  % cell array with of qlabs actor objects of the robots that were spawned. Use when using functions from qlabs library.
+        robotsDict = struct(); % struct of structs of all spawned robots. Includes the information that is saved into the JSON file.
     end
     
     methods
@@ -79,17 +80,16 @@ classdef MultiAgent < handle
             robotActors = obj.spawnRobots(agentList);
             obj.robotActors = robotActors;
             
-            robotsDict = struct();
 
             for i = 1:length(robotActors)
                 robot = robotActors{i};
                 [name, robotDict] = obj.createRobot(robot);
-                robotsDict.(name) = robotDict;                
+                obj.robotsDict.(name) = robotDict;                
             end
 
             % Save robot configurations to JSON
             filePath = fullfile(obj.directory, 'RobotAgents.json');
-            jsonStr = jsonencode(robotsDict);
+            jsonStr = jsonencode(obj.robotsDict);
             fid = fopen(filePath, 'w');
             fprintf(fid, '%s', jsonStr);
             fclose(fid);

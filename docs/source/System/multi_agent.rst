@@ -92,16 +92,13 @@ MultiAgent Tutorial
 
     .. tab:: Matlab
 
-        Coming Soon!
+        .. dropdown:: Matlab Tutorial
 
-        ..
-            .. dropdown:: Matlab Tutorial
+        Raw to download this tutorial: |multiagent_tutorial.m|.
 
-            Raw to download this tutorial: |qcar2_tutorial.m|.
+        .. |multiagent_tutorial.m| replace::
+            :download:`Multi Agent Tutorial (.m) <../../../tutorials/multiagent_tutorial.m>`
 
-            .. |qcar2_tutorial.m| replace::
-                :download:`QCar 2 Tutorial (.m) <../../../tutorials/qcar2_tutorial.m>`
-
-            .. literalinclude:: ../../../tutorials/qcar2_tutorial.m
-                :language: Matlab
-                :linenos:
+        .. literalinclude:: ../../../tutorials/multiagent_tutorial.m
+            :language: Matlab
+            :linenos:

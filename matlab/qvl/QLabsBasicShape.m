@@ -1,5 +1,5 @@
 classdef QLabsBasicShape < QLabsActor
-    properties
+    properties (Constant)
         ID_BASIC_SHAPE = 200;
 
         SHAPE_CUBE = 0
