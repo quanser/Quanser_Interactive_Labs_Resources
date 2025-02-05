@@ -23,6 +23,8 @@ class MultiAgent():
 
     # location of RT models and creation of new MultiAgent folder
     __qalDirPath = os.environ['RTMODELS_DIR']
+
+    __qalDirPath = os.environ.get('RTMODELS_DIR', '	READTHEDOCS')
     
     _QArmDir = os.path.normpath(
         os.path.join(__qalDirPath, 'QArm'))
