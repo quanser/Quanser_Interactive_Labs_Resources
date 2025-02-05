@@ -20,6 +20,7 @@ class MultiAgent():
     be controlled through the HIL interface. 
 
     When initializing the class, it will delete all QArms, QCar 2s, QBot Platforms and QDrone 2s in the space.
+
     """
 
     # location of RT models and creation of new MultiAgent folder
@@ -47,19 +48,22 @@ class MultiAgent():
     into the JSON file. Including robotType, actorNumber, classID as well as all ports used for the RT file."""
 
     def __init__(self, agentList):
-        """ Constructor Method
+        """
+        Constructor Method
 
-         :param agentList: A list of dictionaries with the following keys (one per robot that will be spawned):
-            "RobotType": string - can be "QC2"or"QCar2" /"QBP"/ "QArm"or"QA" /"QDrone2"or"QD2"
-            "Location": float array[3] - for spawning in x,y,z of the QLabs environment
-            "Rotation": (Optional) float array[3] - for spawning, in x,y,z. Can be in Degrees or Radians, if it is radians, set the "Radians" key to True. If not defined, will spawn with [0, 0, 0] rotation
-            "Radians": (Optional) boolean -  defaults to False  # Only needed if rotation is in Radians
-            "Scale": (Optional) float - if you want to change the scaling of the spawned object, if not defined, will spawn with scaling of 1. The scaling will apply in x,y and z
-            "actorNumber": (Optional) int , set only if you want a predefined actor number for your robot. If not, it will use the next available number for the type of robot. If the number
-            is already in use, it will overwrite it. We do not recommend using it unless tracking of actors is done manually by the user.
+        :param agentList: A list of dictionaries of the spawned robots.  
         :type agentList: list of dictionaries
-        :return: None
-       """
+        """
+
+        # The dictionaries can have the following keys (one per robot that will be spawned):
+        # - "RobotType": string - can be "QC2", "QCar2", "QBP", "QArm", "QA", "QDrone2", or "QD2"
+        # - "Location": float array[3] - for spawning in x, y, z of the QLabs environment
+        # - "Rotation": (Optional) float array[3] - for spawning in x, y, z. Can be in Degrees or Radians. If it is radians, set the "Radians" key to True. If not defined, will spawn with [0, 0, 0] rotation
+        # - "Radians": (Optional) boolean - defaults to False. Only needed if rotation is in Radians
+        # - "Scale": (Optional) float - if you want to change the scaling of the spawned object. If not defined, will spawn with scaling of 1. The scaling will apply in x, y, and z
+        # - "actorNumber": (Optional) int - set only if you want a predefined actor number for your robot. If not, it will use the next available number for the type of robot. If the number is already in use, it will overwrite it. We do not recommend using it unless tracking of actors is done manually by the user.
+        
+        
         self.qlabs = QuanserInteractiveLabs()
         print("Connecting to QLabs...")
         if (not self.qlabs.open("localhost")):
@@ -455,10 +459,10 @@ class MultiAgent():
     
 def readRobots():
     """ Function to read the json file created after spawning the robots. 
-    The file contains all necessary port/uri numbers to initialize the robots.
-     The function will return the dictionary that was created when spawning the robots
-     it contains the the robots and their properties.
-     The function makes sure that the file is not being used by another process before reading it.""" 
+    The file contains all necessary port/URI numbers to initialize the robots.
+    The function will return the dictionary that was created when spawning the robots
+    it contains the the robots and their properties.
+    The function makes sure that the file is not being used by another process before reading it.""" 
     directory = os.path.normpath(
         os.path.join(os.environ['RTMODELS_DIR'], 'MultiAgent'))
     
