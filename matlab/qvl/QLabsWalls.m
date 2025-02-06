@@ -1,5 +1,5 @@
 classdef QLabsWalls < QLabsActor
-    properties
+    properties (Constant)
         % This class is for spawning both static and dynamic walls.
         
         ID_WALL = 10080
@@ -21,6 +21,7 @@ classdef QLabsWalls < QLabsActor
         FCN_WALLS_SET_PHYSICS_PROPERTIES = 20
         FCN_WALLS_SET_PHYSICS_PROPERTIES_ACK = 21
     end
+    
     methods
         function obj = QLabsWalls(qlabs, verbose)
             arguments

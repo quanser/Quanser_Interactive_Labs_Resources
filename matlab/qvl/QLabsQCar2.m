@@ -1,5 +1,5 @@
 classdef QLabsQCar2 < QLabsActor
-    properties
+    properties (Constant)
 %         This class is for spawning QCars.
 
         ID_QCAR = 161
@@ -35,8 +35,10 @@ classdef QLabsQCar2 < QLabsActor
         CAMERA_TRAILING = 7
 %         Note: The mouse scroll wheel can be used to zoom in and out in this mode.
     
-        sensor_scaling = 1
+    end
 
+    properties
+        sensor_scaling = 1
     end
 
     methods

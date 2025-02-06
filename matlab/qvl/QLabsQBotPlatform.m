@@ -1,5 +1,5 @@
 classdef QLabsQBotPlatform < QLabsActor
-    properties
+    properties (Constant)
         %This class is for spawning QBotPlatforms.
 
         ID_QBOT_PLATFORM = 23

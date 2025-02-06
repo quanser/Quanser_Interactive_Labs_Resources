@@ -1,5 +1,5 @@
 classdef QLabsQbot3 < QLabsActor
-    properties
+    properties (Constant)
         ID_QBOT3 = 22
 
         FCN_QBOT3_COMMAND_AND_REQUEST_STATE = 10

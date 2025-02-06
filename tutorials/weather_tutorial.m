@@ -61,15 +61,16 @@ hCameraWeather.possess()
 pause(2.5);
 
 % Run through different weather possibilities in QLabs
-hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLEAR_SKIES)
+% the constants can come from both the object or directly from QLabsEnvironmentOutdoors
+hEnvironmentOutdoors2.set_weather_preset(QLabsEnvironmentOutdoors.CLEAR_SKIES)
 hSystem.set_title_string('Clear skies')
 pause(2.5);
 
-hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.PARTLY_CLOUDY)
+hEnvironmentOutdoors2.set_weather_preset(QLabsEnvironmentOutdoors.PARTLY_CLOUDY)
 hSystem.set_title_string('Partly cloudy')
 pause(2.5);
 
-hEnvironmentOutdoors2.set_weather_preset(hEnvironmentOutdoors2.CLOUDY)
+hEnvironmentOutdoors2.set_weather_preset(QLabsEnvironmentOutdoors.CLOUDY)
 hSystem.set_title_string('Cloudy')
 pause(2.5);
 

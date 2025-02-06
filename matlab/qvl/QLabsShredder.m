@@ -1,5 +1,5 @@
 classdef QLabsShredder < QLabsActor
-    properties
+    properties (Constant)
         ID_SHREDDER = 190
 
         RED = 0

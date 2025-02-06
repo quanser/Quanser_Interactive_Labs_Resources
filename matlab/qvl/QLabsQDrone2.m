@@ -1,5 +1,5 @@
 classdef QLabsQDrone2 < QLabsActor
-    properties
+    properties (Constant)
         %This class is for spawning QBotPlatforms.
 
     ID_QDRONE2 = 231

@@ -1,5 +1,5 @@
 classdef QLabsDeliveryTube < QLabsActor
-    properties
+    properties (Constant)
         ID_DELIVERY_TUBE = 80
 
         FCN_DELIVERY_TUBE_SPAWN_BLOCK = 10

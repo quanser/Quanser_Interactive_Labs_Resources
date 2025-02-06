@@ -65,9 +65,10 @@ function widgets(qlabs)
     pause(1);
 
     % Create 20 grey metal cans at different locations
+    % the constants can come from both the object or directly from QLabsWidget
     for count = 0:19
         widget.spawn([-11.000, 29.000, 1 + count*0.2], [0, 0, 0], [1, 1, 1], ...
-            widget.METAL_CAN, [1, 1, 1], 0, 0, '', 1);
+            QLabsWidget.METAL_CAN, [1, 1, 1], 0, 0, '', 1);
     end
 
     pause(1);

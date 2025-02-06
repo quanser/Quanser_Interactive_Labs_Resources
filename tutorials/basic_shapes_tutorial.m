@@ -46,7 +46,7 @@ fprintf('%d actors destroyed', num_destroyed);
 
 % Use hSystem to set the tutorial title on the qlabs display screen
 hSystem = QLabsSystem(qlabs);
-hSystem.set_title_string('Basic Shapes Tutorial')
+hSystem.set_title_string('Basic Shapes Tutorial');
 
 % initialize our desired variables
 % note that you can use the coordinate helper to pick locations for your camera.
@@ -76,7 +76,8 @@ cube0.ping();
 [success, loc, rot, scale] = cube0.get_world_transform();
 
 % spawn a second cube using degrees
-cube1.spawn_id_degrees(1, [-13.503, 33.677, 0.5], [0, 0, 45], [0.5, 0.5, 0.5], cube1.SHAPE_CUBE, 1);
+% the constants can come from both the object or directly from QLabsBasicShape
+cube1.spawn_id_degrees(1, [-13.503, 33.677, 0.5], [0, 0, 45], [0.5, 0.5, 0.5], QLabsBasicShape.SHAPE_CUBE, 1);
 
 % wait to see visualization
 pause(1);

@@ -1,11 +1,17 @@
 classdef QLabsEnvironmentOutdoors < handle
     properties
         c = [];
-        
-%         This class modifies QLabs open worlds with outdoor environments.
+
+        qlabs = [];
+        verbose = false;
+        classID = 0;
+    end
+
+    properties (Constant)
+        %  This class modifies QLabs open worlds with outdoor environments.
 
         ID_ENVIRONMENT_OUTDOORS = 1100
-%         Class ID
+        %  Class ID
     
         FCN_SET_TIME_OF_DAY = 10
         FCN_SET_TIME_OF_DAY_ACK = 11
@@ -26,9 +32,6 @@ classdef QLabsEnvironmentOutdoors < handle
         SNOW = 9
         BLIZZARD = 10
         
-        qlabs = [];
-        verbose = false;
-        classID = 0;
     end
 
     methods

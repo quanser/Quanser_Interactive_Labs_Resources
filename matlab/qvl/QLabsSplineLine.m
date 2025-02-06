@@ -1,5 +1,5 @@
 classdef QLabsSplineLine < QLabsActor
-    properties
+    properties (Constant)
         ID_SPLINE_LINE = 180
 %       Class ID
     

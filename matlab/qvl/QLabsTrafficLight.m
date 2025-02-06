@@ -1,5 +1,5 @@
 classdef QLabsTrafficLight < QLabsActor
-    properties
+    properties  (Constant)
         ID_TRAFFIC_LIGHT = 10051;
 
         FCN_TRAFFIC_LIGHT_SET_STATE = 10
@@ -16,8 +16,6 @@ classdef QLabsTrafficLight < QLabsActor
         STATE_YELLOW = 2
         % State constant for yellow light
 
-        deprecation_warned = false;
-
         COLOR_NONE = 0
         % Color constant for all lights off
         COLOR_RED = 1
@@ -28,6 +26,12 @@ classdef QLabsTrafficLight < QLabsActor
         % Color constant for green light
 
     end
+
+    properties
+        deprecation_warned = false;
+    end
+
+
     methods
         function obj = QLabsTrafficLight(qlabs, verbose)
 

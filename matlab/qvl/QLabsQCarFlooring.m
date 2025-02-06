@@ -1,5 +1,5 @@
 classdef QLabsQCarFlooring < QLabsActor
-    properties
+    properties (Constant)
 %         This class is for spawning static floors.
 
         ID_FLOORING = 10090
