@@ -73,14 +73,6 @@ myRobots.append({
     "ActorNumber" : 5 # set actor number to 5
 })
 
-# To spawn a QArm, a special license of Quanser Interactive Labs is required.
-# myRobots.append({
-#     "RobotType": "QA", 
-#     "Location": [-1, 0, 0], 
-#     "Radians": True,
-#     "Rotation": [0, 0, -np.pi/5], 
-#     "Scale": 1
-# })
 
 myRobots.append({
     "RobotType": "QD2", 
