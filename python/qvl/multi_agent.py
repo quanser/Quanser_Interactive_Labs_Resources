@@ -54,7 +54,7 @@ class MultiAgent():
         """
 
         # The dictionaries can have the following keys (one per robot that will be spawned):
-        # - "RobotType": string - can be "QC2", "QCar2", "QBP", "QArm", "QA", "QDrone2", or "QD2"
+        # - "RobotType": string - can be "QC2"/"QCar2", "QBP", "QArm"/"QA", or "QDrone2"/"QD2"
         # - "Location": float array[3] - for spawning in x, y, z of the QLabs environment
         # - "Rotation": (Optional) float array[3] - for spawning in x, y, z. Can be in Degrees or Radians. If it is radians, set the "Radians" key to True. If not defined, will spawn with [0, 0, 0] rotation
         # - "Radians": (Optional) boolean - defaults to False. Only needed if rotation is in Radians
