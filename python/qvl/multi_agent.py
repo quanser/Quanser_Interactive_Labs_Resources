@@ -122,13 +122,14 @@ class MultiAgent():
 
         self.robotActors = robotActors
         # dictionary of qlabs actors
-
         
-
-        for robot in robotActors:
-            name, robotDict = self.createRobot(robot)
+        x = 0
+        for actor in robotActors:
+            scale = agentList[x]["Scale"] 
+            name, robotDict = self.createRobot(actor, scale)
             self.robotsDict[name] = robotDict
             # dictionary of robots and their properties for the json file
+            x=x+1
 
         filePath = os.path.join(MultiAgent._directory,"RobotAgents.json")
         with open(filePath, "w") as outfile: 
@@ -193,7 +194,7 @@ class MultiAgent():
 
         return robotActors
 
-    def createRobot(self, QLabsActor):
+    def createRobot(self, QLabsActor, scale):
         """ Internal method to call functions to copy rt files and start them to be able to control the robots"""
         classID = QLabsActor.classID
         actorNumber = QLabsActor.actorNumber
@@ -202,7 +203,7 @@ class MultiAgent():
         if classID == 23: # QBP
             name, robotDict = self._createQBP(actorNumber)
         if classID == 161: #QCar2
-            name, robotDict = self._createQC2(actorNumber)
+            name, robotDict = self._createQC2(actorNumber, scale)
         if classID == 231: #QDrone2
             name, robotDict = self._createQD2(actorNumber)
         
@@ -285,10 +286,10 @@ class MultiAgent():
 
         return name, robotDict
 
-    def _createQC2(self, actorNumber):
+    def _createQC2(self, actorNumber, scale):
         """ Internal method to initialize the rt model for the QCar 2. Calls function to create
         copy of the rt files into the MultiAgent folder and then starts the rt model"""
-        path = self._copyQC2_files(actorNumber)
+        path = self._copyQC2_files(actorNumber, scale)
         path, ext = os.path.splitext(path)
 
         hilPort = self._nextNumber()
@@ -415,8 +416,10 @@ class MultiAgent():
         time.sleep(0.2) # change! back to 0.2
         return newPathWorkspace, newPathDriver
 
-    def _copyQC2_files(self, actorNumber):
+    def _copyQC2_files(self, actorNumber, scale):
         rtFile = 'QCar2_Workspace'
+        if scale == 0.1:
+            rtFile = 'QCar2_Workspace_studio'
 
         # create copy of rt file workspace
         originalFile = rtFile + self._fileType

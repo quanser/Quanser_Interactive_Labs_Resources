@@ -61,7 +61,8 @@ Methods
         - "Radians": (Optional) boolean - defaults to False. Only needed if rotation is in Radians
         - "Scale": (Optional) float - if you want to change the scaling of the spawned object. If not defined, will spawn with scaling of 1. The scaling will apply in x, y, and z
         - "actorNumber": (Optional) int - set only if you want a predefined actor number for your robot. If not, it will use the next available number for the type of robot. If the number is already in use, it will overwrite it. We do not recommend using it unless tracking of actors is done manually by the user.
-        
+    
+    If using a QCar 2, the file it will start will be different depending on the scale of 1 (QCar 2 real world car size) or .1 (QCar 2 actual size), to return measurements properly scaled.
 
 
 .. automethod:: qvl.multi_agent.readRobots
