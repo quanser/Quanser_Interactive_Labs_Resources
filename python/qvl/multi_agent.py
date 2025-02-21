@@ -263,7 +263,7 @@ class MultiAgent():
                     '-uri_video3d tcpip://localhost:'+ str(video3dPort) + ' ' + \
                     '-uri_lidar tcpip://localhost:'  + str(lidarPort)  
         
-        display = 'QBP ' + str(actorNumber) + ' spawned as ' + arguments
+        display = 'QBP ' + str(actorNumber) + ' spawned as ' + arguments + ' driverPort ' + str(driverPort)
         print(display)
 
         #Start spawn model
@@ -271,6 +271,7 @@ class MultiAgent():
 
         arguments = '-uri tcpip://localhost:'+ str(uriPortDriver) 
         QLabsRealTime().start_real_time_model(driverPath, actorNumber=actorNumber, userArguments=False, additionalArguments= arguments)
+        
 
         name = 'QBP_' + str(actorNumber)
         robotDict = {
