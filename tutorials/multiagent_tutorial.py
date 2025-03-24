@@ -21,13 +21,14 @@ from qvl.multi_agent import MultiAgent, readRobots
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
 from qvl.basic_shape import QLabsBasicShape
-import numpy as np 
+import sys
 
 qlabs = QuanserInteractiveLabs()
     
 print("Connecting to QLabs...")
 if (not qlabs.open("localhost")):
-    print("Unable to connect to QLabs")   
+    print("Unable to connect to QLabs") 
+    sys.exit()  
 
 print("Connected")  
 
