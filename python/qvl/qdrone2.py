@@ -290,15 +290,15 @@ class QLabsQDrone2(QLabsActor):
                             print("QDrone 2 get_image: Camera number was invalid.")
                         else:
                             print("Camera number was valid, but no image data was returned. Check that the image size is valid.")
-                    return False,  None                    
+                    return False, -1, None                    
             else:
                 if self._verbose:
                     print("QDrone 2 get_image: Returned data was not in the expected format.")
-                return False,  None
+                return False, -1, None
         else:
             if self._verbose:
                 print("QDrone 2 get_image: Communications failure.")
-            return False, None
+            return False, -1, None
 
     def set_image_capture_resolution(self, width=640, height=480):
         """Change the default width and height of image resolution for capture
