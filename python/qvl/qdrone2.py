@@ -250,6 +250,7 @@ class QLabsQDrone2(QLabsActor):
 
         :return:
             - **status** - `True` and image data if successful, `False` and empty otherwise
+            - **cameraNumber** - The number of the camera currently being read
             - **imageData** - Image in a JPG format
         :rtype: boolean, int32, byte array with jpg data
 
