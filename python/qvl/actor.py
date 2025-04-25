@@ -520,6 +520,13 @@ class QLabsActor:
         :rtype: int32
 
         """
+        if (self.actorNumber == None):
+            if (self._verbose):
+                print("This actor object has no actor number defined. If used with the spawn methods, ensure wait for confirmation is true to get the actor number assigned to this object.")
+
+            return 1
+        
+
         c = CommModularContainer()
         c.classID = CommModularContainer.ID_GENERIC_ACTOR_SPAWNER
         c.actorNumber = 0
