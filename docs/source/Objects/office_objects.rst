@@ -447,6 +447,19 @@ Office Objects Tutorial
                 :language: python
                 :linenos:
 
+            .. dropdown:: Python Tutorial Multiple Desks 
+
+            Raw to download this tutorial: |office_tutorial.py|.
+
+            This tutorial uses a function to simplify creating multiple desks set up the same way. 
+
+            .. |office_tutorial2.py| replace::
+                :download:`Office Objects Tutorial (.py) <../../../tutorials/office_tutorial2.py>`
+
+            .. literalinclude:: ../../../tutorials/office_tutorial2.py
+                :language: python
+                :linenos:
+
 
     .. tab:: Matlab
 
