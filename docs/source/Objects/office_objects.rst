@@ -171,42 +171,42 @@ Computer
 Library
 ========
 
-.. autoclass:: computer.QLabsComputer
+.. autoclass:: qvl.computer.QLabsComputer
 
 .. _computerConstants:
 
 Constants
 ==========
 
-.. autoattribute:: computer.QLabsComputer.ID_COMPUTER
+.. autoattribute:: qvl.computer.QLabsComputer.ID_COMPUTER
 
 .. _computerVars:
 
 Member Variables
 ==================
 
-.. autoattribute:: computer.QLabsComputer.actorNumber
+.. autoattribute:: qvl.computer.QLabsComputer.actorNumber
 
 .. _computerMethods:
 
 Methods
 ========
 
-.. automethod:: computer.QLabsComputer.spawn
-.. automethod:: computer.QLabsComputer.spawn_degrees
-.. automethod:: computer.QLabsComputer.spawn_id
-.. automethod:: computer.QLabsComputer.spawn_id_degrees
-.. automethod:: computer.QLabsComputer.spawn_id_and_parent_with_relative_transform
-.. automethod:: computer.QLabsComputer.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: computer.QLabsComputer.destroy
-.. automethod:: computer.QLabsComputer.destroy_all_actors_of_class
-.. automethod:: computer.QLabsComputer.ping
-.. automethod:: computer.QLabsComputer.get_world_transform
-.. automethod:: computer.QLabsComputer.get_world_transform_degrees
-.. automethod:: computer.QLabsComputer.parent_with_relative_transform
-.. automethod:: computer.QLabsComputer.parent_with_relative_transform_degrees
-.. automethod:: computer.QLabsComputer.parent_with_current_world_transform
-.. automethod:: computer.QLabsComputer.parent_break
+.. automethod:: qvl.computer.QLabsComputer.spawn
+.. automethod:: qvl.computer.QLabsComputer.spawn_degrees
+.. automethod:: qvl.computer.QLabsComputer.spawn_id
+.. automethod:: qvl.computer.QLabsComputer.spawn_id_degrees
+.. automethod:: qvl.computer.QLabsComputer.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.computer.QLabsComputer.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.computer.QLabsComputer.destroy
+.. automethod:: qvl.computer.QLabsComputer.destroy_all_actors_of_class
+.. automethod:: qvl.computer.QLabsComputer.ping
+.. automethod:: qvl.computer.QLabsComputer.get_world_transform
+.. automethod:: qvl.computer.QLabsComputer.get_world_transform_degrees
+.. automethod:: qvl.computer.QLabsComputer.parent_with_relative_transform
+.. automethod:: qvl.computer.QLabsComputer.parent_with_relative_transform_degrees
+.. automethod:: qvl.computer.QLabsComputer.parent_with_current_world_transform
+.. automethod:: qvl.computer.QLabsComputer.parent_break
 
 
 
@@ -217,7 +217,7 @@ Configurations
 
 There is only one configuration (0) of the computer actor generated in QLabs.
 
-.. image:: ../pictures/yieldsign.png
+.. image:: ../pictures/computer.png
 
 .. _computerConnect:
 
