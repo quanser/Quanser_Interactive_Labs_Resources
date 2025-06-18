@@ -1,25 +1,21 @@
 """
-Road Signage Library Crosswalk Example
+Office Objects Library Example
 ----------------------------
 
 .. note::
 
     Make sure you have Quanser Interactive Labs open before running this
-    example.  This example is designed to best be run in QCar Cityscape 
-    or Cityscape Lite.
+    example.  This example is designed to best be run in the Warehouse, Plane or 
+    Studio environment.
 
 """
 
 # imports to important libraries
-import sys
-import math
 import time
 
-import cv2
 
 from qvl.qlabs import QuanserInteractiveLabs
 from qvl.free_camera import QLabsFreeCamera
-from qvl.crosswalk import QLabsCrosswalk
 from qvl.system import QLabsSystem
 from qvl.desk import QLabsDesk
 from qvl.chair import QLabsChair
