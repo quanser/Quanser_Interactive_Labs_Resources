@@ -447,7 +447,7 @@ Office Objects Tutorial
                 :language: python
                 :linenos:
 
-            .. dropdown:: Python Tutorial Multiple Desks 
+        .. dropdown:: Python Tutorial Multiple Desks 
 
             Raw to download this tutorial: |office_tutorial.py|.
 
