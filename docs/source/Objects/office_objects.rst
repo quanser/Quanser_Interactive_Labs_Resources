@@ -21,8 +21,8 @@ The office objects library controls the office objects available to be placed in
 the QLabs environment.
 Office objects can be spawned anywhere in the Open Worlds.
 
-See the :ref:`officeTutorial` to get a better understanding of using road
-signage in Quanser Interactive Labs.
+See the :ref:`officeTutorial` to get a better understanding of 
+placing office objects in Quanser Interactive Labs.
 
 
 .. contents:: Table of Contents
