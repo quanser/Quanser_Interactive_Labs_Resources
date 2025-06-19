@@ -108,6 +108,9 @@ Methods
 .. automethod:: qvl.person.QLabsPerson.move_to
 .. automethod:: qvl.person.QLabsPerson.destroy
 .. automethod:: qvl.person.QLabsPerson.destroy_all_actors_of_class
+.. automethod:: qvl.person.QLabsPerson.enable_collsion
+.. automethod:: qvl.person.QLabsPerson.add_collision_filter
+.. automethod:: qvl.person.QLabsPerson.get_collision_count
 .. automethod:: qvl.person.QLabsPerson.ping
 .. automethod:: qvl.person.QLabsPerson.get_world_transform
 .. automethod:: qvl.person.QLabsPerson.get_world_transform_degrees

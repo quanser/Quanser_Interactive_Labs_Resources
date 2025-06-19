@@ -37,6 +37,7 @@ Supporting Actors
    camera_library.rst
    conveyors.rst
    crosswalk.rst
+   office_objects.rst
    person_library.rst
    reference_frame.rst
    road_signage.rst
