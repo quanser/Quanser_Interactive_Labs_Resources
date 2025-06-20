@@ -117,27 +117,43 @@ Member Variables
 =================
 
 .. autoattribute:: qvl.actor.QLabsActor.actorNumber
+    :noindex:
 
 .. _roadSignsMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.actor.QLabsActor.spawn
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.spawn_degrees
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.spawn_id
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.spawn_id_degrees
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform_degrees
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.destroy
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.destroy_all_actors_of_class
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.ping
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.get_world_transform
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.get_world_transform_degrees
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform_degrees
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.parent_with_current_world_transform
+    :noindex:
 .. automethod:: qvl.actor.QLabsActor.parent_break
+    :noindex:
 
 
 Configurations

@@ -53,22 +53,27 @@ Member Variables
 .. _qbotPlatformMethods:
 
 Methods
-========
+=========
+
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.command_and_request_state
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform_degrees
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_image
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_lidar
+.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.possess
+
+.. _qbotPlatformParentMethods:
+
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.__init__
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_degrees
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_id
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.spawn_id_degrees
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.set_transform_degrees
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_world_transform
 .. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_world_transform_degrees
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.command_and_request_state
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_image
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.get_lidar
-.. automethod:: qvl.qbot_platform.QLabsQBotPlatform.possess
-
 
 .. _qbotPlatformConfig:
 
@@ -168,11 +173,6 @@ You will find a list of the important extrinsics below relative to the actor bas
 
 .. Transformation Matrices
 .. ************************
-
-
-
-    
-
 
 .. All transformation matrices are built off of the body frame and camera frames
 .. for the QBot Platform.

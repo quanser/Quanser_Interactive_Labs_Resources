@@ -61,18 +61,12 @@ Member Variables
 
 .. autoattribute:: qvl.basic_shape.QLabsBasicShape.actorNumber
 
+
 .. _basicshapeMethods:
 
 Methods
 =============
 
-.. automethod:: qvl.basic_shape.QLabsBasicShape.__init__
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_degrees
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_degrees
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_material_properties
 .. automethod:: qvl.basic_shape.QLabsBasicShape.get_material_properties
 .. automethod:: qvl.basic_shape.QLabsBasicShape.set_enable_dynamics
@@ -83,6 +77,19 @@ Methods
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_end_points
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center
 .. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_box_walls_from_center_degrees
+
+.. _basicshapeParentMethods:
+
+Parent Class (actor.py) Methods
+================================
+
+.. automethod:: qvl.basic_shape.QLabsBasicShape.__init__
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_degrees
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.basic_shape.QLabsBasicShape.spawn_id_and_parent_with_relative_transform_degrees
 .. automethod:: qvl.basic_shape.QLabsBasicShape.destroy
 .. automethod:: qvl.basic_shape.QLabsBasicShape.destroy_all_actors_of_class
 .. automethod:: qvl.basic_shape.QLabsBasicShape.get_world_transform

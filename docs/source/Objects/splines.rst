@@ -51,6 +51,18 @@ Member Variables
 Methods
 ========
 
+.. automethod:: qvl.spline_line.QLabsSplineLine.set_points
+.. automethod:: qvl.spline_line.QLabsSplineLine.circle_from_center
+.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center
+.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center_degrees
+.. automethod:: qvl.spline_line.QLabsSplineLine.rounded_rectangle_from_center
+    
+
+.. _splineParentMethods:
+
+Parent Class (actor.py) Methods
+================================
+
 .. automethod:: qvl.spline_line.QLabsSplineLine.__init__
 .. automethod:: qvl.spline_line.QLabsSplineLine.spawn
 .. automethod:: qvl.spline_line.QLabsSplineLine.spawn_degrees
@@ -63,16 +75,13 @@ Methods
 .. automethod:: qvl.spline_line.QLabsSplineLine.ping
 .. automethod:: qvl.spline_line.QLabsSplineLine.get_world_transform
 .. automethod:: qvl.spline_line.QLabsSplineLine.get_world_transform_degrees
-.. automethod:: qvl.spline_line.QLabsSplineLine.set_points
-.. automethod:: qvl.spline_line.QLabsSplineLine.circle_from_center
-.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center
-.. automethod:: qvl.spline_line.QLabsSplineLine.arc_from_center_degrees
-.. automethod:: qvl.spline_line.QLabsSplineLine.rounded_rectangle_from_center
 .. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_relative_transform
 .. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_relative_transform_degrees
 .. automethod:: qvl.spline_line.QLabsSplineLine.parent_with_current_world_transform
 .. automethod:: qvl.spline_line.QLabsSplineLine.parent_break
 
+
+    
 .. _splineConfig:
 
 Configurations

@@ -25,6 +25,12 @@ conveyors in Quanser Interactive Labs.
 
 -------------------------------------------------------------------------------
 
+.. important::
+    All of the office objects have the same methods and member variables. 
+    To simplify this documentation, the methods and member variables are documented
+    only once, see :ref:`conveyorsShared` and the :ref:`conveyorTutorial`.
+    No office object has connection points or different configurations.
+
 ******************
 Straight Conveyor
 ******************
@@ -43,38 +49,6 @@ Constants
 
 .. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.ID_CONVEYOR_STRAIGHT
 
-.. _straightconveyorMemberVars:
-
-Member Variables
-=================
-
-.. autoattribute:: qvl.conveyor_straight.QLabsConveyorStraight.actorNumber
-
-.. _straightconveyorMethods:
-
-Methods
-========
-
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.__init__
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_degrees
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_degrees
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.set_speed
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.destroy
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.destroy_all_actors_of_class
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_world_transform_degrees
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.ping
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_relative_transform_degrees
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_with_current_world_transform
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.parent_break
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.set_custom_properties
-.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.get_custom_properties
-
 .. _straightconveyorConfig:
 
 Configurations
@@ -89,13 +63,6 @@ The configuration number accepts whole number between 0 and 20.
 All types of conveyors can be connected to make a setup of your choosing.
 
 .. image:: ../pictures/configuration_straightConveyor.png
-
-.. _straightconveyorConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
 
 
 -------------------------------------------------------------------------------
@@ -118,38 +85,6 @@ Constants
 
 .. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.ID_CONVEYOR_CURVED
 
-.. _curvedconveyorVars:
-
-Member Variables
-=================
-.. autoattribute:: qvl.conveyor_curved.QLabsConveyorCurved.actorNumber
-
-
-.. _curvedconveyorMethods:
-
-Methods
-=========
-
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.__init__
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_degrees
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_degrees
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.set_speed
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.destroy
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.destroy_all_actors_of_class
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_world_transform_degrees
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.ping
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_relative_transform_degrees
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_with_current_world_transform
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.parent_break
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.set_custom_properties
-.. automethod:: qvl.conveyor_curved.QLabsConveyorCurved.get_custom_properties
-
 .. _curvedconveyorConfig:
 
 Configurations
@@ -169,12 +104,81 @@ All types of conveyors can be connected to make a setup of your choosing.
 
 .. image:: ../pictures/configuration_curvedConveyor.png
 
-.. _curvedconveyorConnect:
+
+-------------------------------------------------------------------------------
+
+
+.. _conveyorsShared:
+
+******************************
+Shared Variables and Methods
+******************************
+
+.. contents:: 
+    :local:
+    :depth: 2
+    :backlinks: none
+
+
+.. _conveyorsVars:
+
+Member Variables
+=================
+
+.. autoattribute:: qvl.actor.QLabsActor.actorNumber
+    :noindex:
+
+.. _conveyorsMethods:
+
+Methods
+=========
+
+.. automethod:: qvl.conveyor_straight.QLabsConveyorStraight.set_speed
+.. note:: 
+    The `set_speed` method exists in both the straight 
+    and curved conveyor classes.
+
+.. _conveyorsParentsMethods:
+
+Parent Class (actor.py) Methods
+================================
+
+.. automethod:: qvl.actor.QLabsActor.spawn
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.destroy
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.destroy_all_actors_of_class
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.ping
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.get_world_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.get_world_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_current_world_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_break
+    :noindex:
+
 
 Connection Points
 ==================
 
-There are no connection points for this actor class.
+There are no connection points for any of these actor classes.
 
 -------------------------------------------------------------------------------
 

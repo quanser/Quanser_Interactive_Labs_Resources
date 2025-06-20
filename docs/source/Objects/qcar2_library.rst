@@ -10,7 +10,6 @@ QCar 2
 
 .. _car2Description:
 
-|
 
 Description
 =============
@@ -21,6 +20,8 @@ motion of the vehicles.
 
 See the :ref:`QCar2Tutorial` to get a better understanding of using QCars in
 Quanser Interactive Labs.
+
+
 
 .. _car2Library:
 
@@ -68,13 +69,8 @@ Member Variables
 .. _car2Methods:
 
 Methods
-=========
+==========
 
-.. automethod:: qvl.qcar2.QLabsQCar2.__init__
-.. automethod:: qvl.qcar2.QLabsQCar2.spawn
-.. automethod:: qvl.qcar2.QLabsQCar2.spawn_degrees
-.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id
-.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id_degrees
 .. automethod:: qvl.qcar2.QLabsQCar2.set_transform_and_request_state
 .. automethod:: qvl.qcar2.QLabsQCar2.set_transform_and_request_state_degrees
 .. automethod:: qvl.qcar2.QLabsQCar2.set_velocity_and_request_state
@@ -85,11 +81,23 @@ Methods
 .. automethod:: qvl.qcar2.QLabsQCar2.set_led_strip_individual
 .. automethod:: qvl.qcar2.QLabsQCar2.get_image
 .. automethod:: qvl.qcar2.QLabsQCar2.get_lidar
+
+.. _car2ParentsMethods:
+
+Parent Class (actor.py) Methods
+================================
+
+.. automethod:: qvl.qcar2.QLabsQCar2.__init__
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_degrees
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id
+.. automethod:: qvl.qcar2.QLabsQCar2.spawn_id_degrees
 .. automethod:: qvl.qcar2.QLabsQCar2.destroy
 .. automethod:: qvl.qcar2.QLabsQCar2.destroy_all_actors_of_class
 .. automethod:: qvl.qcar2.QLabsQCar2.ping
 .. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform
 .. automethod:: qvl.qcar2.QLabsQCar2.get_world_transform_degrees
+
 
 
 .. _car2Config:

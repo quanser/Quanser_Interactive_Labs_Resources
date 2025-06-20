@@ -76,22 +76,29 @@ Member Variables
 
 .. autoattribute:: qvl.qdrone2.QLabsQDrone2.actorNumber
 
+
 .. _drone2Methods:
 
 Methods
 ========
 
-.. automethod:: qvl.qdrone2.QLabsQDrone2.__init__
-.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn
-.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_degrees
-.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id
-.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id_degrees
 .. automethod:: qvl.qdrone2.QLabsQDrone2.possess
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_velocity_and_request_state
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_velocity_and_request_state_degrees
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_transform_and_dynamics
 .. automethod:: qvl.qdrone2.QLabsQDrone2.get_image
 .. automethod:: qvl.qdrone2.QLabsQDrone2.set_image_capture_resolution
+
+.. _drone2ParentMethods:
+
+Parent Class (actor.py) Methods
+================================
+
+.. automethod:: qvl.qdrone2.QLabsQDrone2.__init__
+.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn
+.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_degrees
+.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id
+.. automethod:: qvl.qdrone2.QLabsQDrone2.spawn_id_degrees
 .. automethod:: qvl.qdrone2.QLabsQDrone2.destroy
 .. automethod:: qvl.qdrone2.QLabsQDrone2.destroy_all_actors_of_class
 .. automethod:: qvl.qdrone2.QLabsQDrone2.ping
