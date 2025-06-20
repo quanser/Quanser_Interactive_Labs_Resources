@@ -29,7 +29,7 @@ print(sys.path)
 year = datetime.now().year
 
 project = "Quanser Interactive Labs API Documentation"
-copyright = year + ', Quanser'
+copyright = str(year) + ', Quanser'
 author = 'Quanser'
 
 # The full version, including alpha/beta/rc tags
