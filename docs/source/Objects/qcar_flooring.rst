@@ -45,8 +45,8 @@ Member Variables
 
 .. _qCarFlooringMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.qcar_flooring.QLabsQCarFlooring.spawn
 .. automethod:: qvl.qcar_flooring.QLabsQCarFlooring.spawn_degrees

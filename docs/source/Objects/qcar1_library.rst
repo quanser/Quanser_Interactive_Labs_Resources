@@ -70,11 +70,6 @@ Member Variables
 Methods
 =========
 
-.. automethod:: qvl.qcar.QLabsQCar.__init__
-.. automethod:: qvl.qcar.QLabsQCar.spawn
-.. automethod:: qvl.qcar.QLabsQCar.spawn_degrees
-.. automethod:: qvl.qcar.QLabsQCar.spawn_id
-.. automethod:: qvl.qcar.QLabsQCar.spawn_id_degrees
 .. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state
 .. automethod:: qvl.qcar.QLabsQCar.set_transform_and_request_state_degrees
 .. automethod:: qvl.qcar.QLabsQCar.set_velocity_and_request_state
@@ -83,12 +78,25 @@ Methods
 .. automethod:: qvl.qcar.QLabsQCar.ghost_mode
 .. automethod:: qvl.qcar.QLabsQCar.get_image
 .. automethod:: qvl.qcar.QLabsQCar.get_lidar
+
+
+.. _carParentMethods:
+
+Parent Class (actor.py) Methods
+================================
+
+.. automethod:: qvl.qcar.QLabsQCar.__init__
+.. automethod:: qvl.qcar.QLabsQCar.spawn
+.. automethod:: qvl.qcar.QLabsQCar.spawn_degrees
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id
+.. automethod:: qvl.qcar.QLabsQCar.spawn_id_degrees
 .. automethod:: qvl.qcar.QLabsQCar.destroy
 .. automethod:: qvl.qcar.QLabsQCar.destroy_all_actors_of_class
 .. automethod:: qvl.qcar.QLabsQCar.ping
 .. automethod:: qvl.qcar.QLabsQCar.get_world_transform
 .. automethod:: qvl.qcar.QLabsQCar.get_world_transform_degrees
 
+    
 .. _carConfig:
 
 Configurations

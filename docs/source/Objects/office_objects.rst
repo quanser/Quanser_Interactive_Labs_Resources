@@ -24,12 +24,17 @@ Office objects can be spawned anywhere in the Open Worlds.
 See the :ref:`officeTutorial` to get a better understanding of 
 placing office objects in Quanser Interactive Labs.
 
-
 .. contents:: Table of Contents
     :backlinks: none
     :depth: 2
 
 -------------------------------------------------------------------------------
+
+.. important::
+    All of the office objects have the same methods and member variables. 
+    To simplify this documentation, the methods and member variables are documented
+    only once, see :ref:`officeShared` and the :ref:`officeTutorial`.
+    No office object has connection points or different configurations.
 
 ****************
 Desk
@@ -49,51 +54,7 @@ Constants
 
 .. autoattribute:: qvl.desk.QLabsDesk.ID_DESK
 
-.. _deskVars:
-
-Member Variables
-=================
-
-.. autoattribute:: qvl.desk.QLabsDesk.actorNumber
-
-.. _deskMethods:
-
-Methods
-========
-
-.. automethod:: qvl.desk.QLabsDesk.spawn
-.. automethod:: qvl.desk.QLabsDesk.spawn_degrees
-.. automethod:: qvl.desk.QLabsDesk.spawn_id
-.. automethod:: qvl.desk.QLabsDesk.spawn_id_degrees
-.. automethod:: qvl.desk.QLabsDesk.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.desk.QLabsDesk.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.desk.QLabsDesk.destroy
-.. automethod:: qvl.desk.QLabsDesk.destroy_all_actors_of_class
-.. automethod:: qvl.desk.QLabsDesk.ping
-.. automethod:: qvl.desk.QLabsDesk.get_world_transform
-.. automethod:: qvl.desk.QLabsDesk.get_world_transform_degrees
-.. automethod:: qvl.desk.QLabsDesk.parent_with_relative_transform
-.. automethod:: qvl.desk.QLabsDesk.parent_with_relative_transform_degrees
-.. automethod:: qvl.desk.QLabsDesk.parent_with_current_world_transform
-.. automethod:: qvl.desk.QLabsDesk.parent_break
-
-
-.. _deskConfig:
-
-Configurations
-===============
-
-There is only one configuration (0) of the desk actor generated in
-QLabs.
-
 .. image:: ../pictures/desk.png
-
-.. _deskConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
 
 -------------------------------------------------------------------------------
 
@@ -115,50 +76,7 @@ Constants
 
 .. autoattribute:: qvl.chair.QLabsChair.ID_CHAIR
 
-.. _chairVars:
-
-Member Variables
-==================
-
-.. autoattribute:: qvl.chair.QLabsChair.actorNumber
-
-.. _chairMethods:
-
-Methods
-========
-
-.. automethod:: qvl.chair.QLabsChair.spawn
-.. automethod:: qvl.chair.QLabsChair.spawn_degrees
-.. automethod:: qvl.chair.QLabsChair.spawn_id
-.. automethod:: qvl.chair.QLabsChair.spawn_id_degrees
-.. automethod:: qvl.chair.QLabsChair.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.chair.QLabsChair.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.chair.QLabsChair.destroy
-.. automethod:: qvl.chair.QLabsChair.destroy_all_actors_of_class
-.. automethod:: qvl.chair.QLabsChair.ping
-.. automethod:: qvl.chair.QLabsChair.get_world_transform
-.. automethod:: qvl.chair.QLabsChair.get_world_transform_degrees
-.. automethod:: qvl.chair.QLabsChair.parent_with_relative_transform
-.. automethod:: qvl.chair.QLabsChair.parent_with_relative_transform_degrees
-.. automethod:: qvl.chair.QLabsChair.parent_with_current_world_transform
-.. automethod:: qvl.chair.QLabsChair.parent_break
-
-.. _chairConfig:
-
-Configurations
-================
-
-There is only one configuration (0) of the chair actor generated in QLabs.
-
 .. image:: ../pictures/chair.png
-
-.. _chairConnect:
-
-Connection Points
-====================
-
-There are no connection points for this actor class.
-
 
 -------------------------------------------------------------------------------
 
@@ -180,53 +98,10 @@ Constants
 
 .. autoattribute:: qvl.computer.QLabsComputer.ID_COMPUTER
 
-.. _computerVars:
-
-Member Variables
-==================
-
-.. autoattribute:: qvl.computer.QLabsComputer.actorNumber
-
-.. _computerMethods:
-
-Methods
-========
-
-.. automethod:: qvl.computer.QLabsComputer.spawn
-.. automethod:: qvl.computer.QLabsComputer.spawn_degrees
-.. automethod:: qvl.computer.QLabsComputer.spawn_id
-.. automethod:: qvl.computer.QLabsComputer.spawn_id_degrees
-.. automethod:: qvl.computer.QLabsComputer.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.computer.QLabsComputer.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.computer.QLabsComputer.destroy
-.. automethod:: qvl.computer.QLabsComputer.destroy_all_actors_of_class
-.. automethod:: qvl.computer.QLabsComputer.ping
-.. automethod:: qvl.computer.QLabsComputer.get_world_transform
-.. automethod:: qvl.computer.QLabsComputer.get_world_transform_degrees
-.. automethod:: qvl.computer.QLabsComputer.parent_with_relative_transform
-.. automethod:: qvl.computer.QLabsComputer.parent_with_relative_transform_degrees
-.. automethod:: qvl.computer.QLabsComputer.parent_with_current_world_transform
-.. automethod:: qvl.computer.QLabsComputer.parent_break
-
-
-
-.. _computerConfig:
-
-Configurations
-===============
-
-There is only one configuration (0) of the computer actor generated in QLabs.
-
 .. image:: ../pictures/computer.png
 
-.. _computerConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
-
 -------------------------------------------------------------------------------
+
 
 *****************
 Computer Monitor
@@ -246,51 +121,7 @@ Constants
 
 .. autoattribute:: qvl.computer_monitor.QLabsComputerMonitor.ID_COMPUTER_MONITOR
 
-.. _monitorVars:
-
-Member Variables
-==================
-
-.. autoattribute:: qvl.computer_monitor.QLabsComputerMonitor.actorNumber
-
-.. _monitorMethods:
-
-Methods
-========
-
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn_degrees
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn_id
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn_id_degrees
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.destroy
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.destroy_all_actors_of_class
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.ping
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.get_world_transform
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.get_world_transform_degrees
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.parent_with_relative_transform
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.parent_with_current_world_transform
-.. automethod:: qvl.computer_monitor.QLabsComputerMonitor.parent_break
-
-
-
-.. _monitorConfig:
-
-Configurations
-===============
-
-There is only one configuration (0) of the monitor actor generated in QLabs.
-
 .. image:: ../pictures/monitor.png
-
-.. _monitorConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
 
 -------------------------------------------------------------------------------
 
@@ -312,51 +143,7 @@ Constants
 
 .. autoattribute:: qvl.computer_keyboard.QLabsComputerKeyboard.ID_COMPUTER_KEYBOARD
 
-.. _keyboardVars:
-
-Member Variables
-==================
-
-.. autoattribute:: qvl.computer_keyboard.QLabsComputerKeyboard.actorNumber
-
-.. _keyboardMethods:
-
-Methods
-========
-
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn_degrees
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn_id
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn_id_degrees
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.destroy
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.destroy_all_actors_of_class
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.ping
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.get_world_transform
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.get_world_transform_degrees
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.parent_with_relative_transform
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.parent_with_current_world_transform
-.. automethod:: qvl.computer_keyboard.QLabsComputerKeyboard.parent_break
-
-
-
-.. _keyboardConfig:
-
-Configurations
-===============
-
-There is only one configuration (0) of the keyboard actor generated in QLabs.
-
 .. image:: ../pictures/keyboard.png
-
-.. _keyboardConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
 
 -------------------------------------------------------------------------------
 
@@ -378,54 +165,74 @@ Constants
 
 .. autoattribute:: qvl.computer_mouse.QLabsComputerMouse.ID_COMPUTER_MOUSE
 
-.. _mouseVars:
+.. image:: ../pictures/mouseActor.png
+    
+-------------------------------------------------------------------------------
+
+.. _officeShared:
+
+******************************
+Shared Variables and Methods
+******************************
+
+.. _officeVars:
 
 Member Variables
-==================
+=================
 
-.. autoattribute:: qvl.computer_mouse.QLabsComputerMouse.actorNumber
+.. autoattribute:: qvl.actor.QLabsActor.actorNumber
+    :noindex:
 
-.. _mouseMethods:
+.. _officeMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn_degrees
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn_id
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn_id_degrees
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.destroy
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.destroy_all_actors_of_class
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.ping
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.get_world_transform
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.get_world_transform_degrees
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.parent_with_relative_transform
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.parent_with_relative_transform_degrees
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.parent_with_current_world_transform
-.. automethod:: qvl.computer_mouse.QLabsComputerMouse.parent_break
+.. automethod:: qvl.actor.QLabsActor.spawn
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.destroy
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.destroy_all_actors_of_class
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.ping
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.get_world_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.get_world_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform_degrees
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_with_current_world_transform
+    :noindex:
+.. automethod:: qvl.actor.QLabsActor.parent_break
+    :noindex:
 
-
-
-.. _mouseConfig:
 
 Configurations
 ===============
 
-There is only one configuration (0) of the mouse actor generated in QLabs.
+There is only one configuration (0) for the office actors generated in
+QLabs.
 
-.. image:: ../pictures/mouseActor.png
-
-.. _mouseConnect:
 
 Connection Points
 ==================
 
-There are no connection points for this actor class.
+There are no connection points for any of these actor classes.
 
 -------------------------------------------------------------------------------
-..
     
 .. _officeTutorial:
 

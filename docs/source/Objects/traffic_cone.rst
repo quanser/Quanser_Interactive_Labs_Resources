@@ -51,6 +51,13 @@ Member Variables
 Methods
 ========
 
+.. automethod:: qvl.traffic_cone.QLabsTrafficCone.set_material_properties
+
+.. _trafficconeParentMethods:
+
+Parent Class (actor.py) Methods
+================================
+
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_degrees
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.spawn_id
@@ -66,7 +73,6 @@ Methods
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_relative_transform_degrees
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_with_current_world_transform
 .. automethod:: qvl.traffic_cone.QLabsTrafficCone.parent_break
-.. automethod:: qvl.traffic_cone.QLabsTrafficCone.set_material_properties
 
 .. _trafficconeConfig:
 

@@ -50,8 +50,8 @@ Member Variables
 
 .. _shredderMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.shredder.QLabsShredder.__init__
 .. automethod:: qvl.shredder.QLabsShredder.spawn

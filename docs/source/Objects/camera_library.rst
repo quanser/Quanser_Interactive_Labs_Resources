@@ -50,7 +50,19 @@ Member Variables
 .. _cameraMethods:
 
 Methods
-========
+=========
+
+.. automethod:: qvl.free_camera.QLabsFreeCamera.possess
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_camera_properties
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform_degrees
+.. automethod:: qvl.free_camera.QLabsFreeCamera.set_image_capture_resolution
+.. automethod:: qvl.free_camera.QLabsFreeCamera.get_image
+
+.. _cameraParentMethods:
+
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.free_camera.QLabsFreeCamera.__init__
 .. automethod:: qvl.free_camera.QLabsFreeCamera.spawn
@@ -67,21 +79,16 @@ Methods
     Scale will not affect the camera, but will affect attached children.
 .. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform
 .. automethod:: qvl.free_camera.QLabsFreeCamera.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.free_camera.QLabsFreeCamera.possess
-.. automethod:: qvl.free_camera.QLabsFreeCamera.set_camera_properties
-.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform
-.. automethod:: qvl.free_camera.QLabsFreeCamera.set_transform_degrees
 .. automethod:: qvl.free_camera.QLabsFreeCamera.destroy
 .. automethod:: qvl.free_camera.QLabsFreeCamera.destroy_all_actors_of_class
 .. automethod:: qvl.free_camera.QLabsFreeCamera.ping
 .. automethod:: qvl.free_camera.QLabsFreeCamera.get_world_transform
 .. automethod:: qvl.free_camera.QLabsFreeCamera.get_world_transform_degrees
-.. automethod:: qvl.free_camera.QLabsFreeCamera.set_image_capture_resolution
-.. automethod:: qvl.free_camera.QLabsFreeCamera.get_image
 .. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform
 .. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_relative_transform_degrees
 .. automethod:: qvl.free_camera.QLabsFreeCamera.parent_with_current_world_transform
 .. automethod:: qvl.free_camera.QLabsFreeCamera.parent_break
+
 
 .. _cameraConfigs:
 

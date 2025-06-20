@@ -47,8 +47,8 @@ Member Variables
 
 .. _qbotPlatformFlooringMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn
 .. automethod:: qvl.qbot_platform_flooring.QLabsQBotPlatformFlooring.spawn_degrees

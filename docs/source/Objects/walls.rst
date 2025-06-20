@@ -50,6 +50,18 @@ Member Variables
 Methods
 =========
 
+.. automethod:: qvl.walls.QLabsWalls.set_enable_dynamics
+.. automethod:: qvl.walls.QLabsWalls.set_enable_collisions
+.. automethod:: qvl.walls.QLabsWalls.set_physics_properties
+.. automethod:: qvl.walls.QLabsWalls.set_transform
+.. automethod:: qvl.walls.QLabsWalls.set_transform_degrees
+
+.. _wallsParentMethods:
+
+
+Parent Class (actor.py) Methods
+================================
+
 .. automethod:: qvl.walls.QLabsWalls.spawn
 .. automethod:: qvl.walls.QLabsWalls.spawn_degrees
 .. automethod:: qvl.walls.QLabsWalls.spawn_id
@@ -65,11 +77,7 @@ Methods
 .. automethod:: qvl.walls.QLabsWalls.parent_with_relative_transform_degrees
 .. automethod:: qvl.walls.QLabsWalls.parent_with_current_world_transform
 .. automethod:: qvl.walls.QLabsWalls.parent_break
-.. automethod:: qvl.walls.QLabsWalls.set_enable_dynamics
-.. automethod:: qvl.walls.QLabsWalls.set_enable_collisions
-.. automethod:: qvl.walls.QLabsWalls.set_physics_properties
-.. automethod:: qvl.walls.QLabsWalls.set_transform
-.. automethod:: qvl.walls.QLabsWalls.set_transform_degrees
+
 
 
 .. _wallsConfig:

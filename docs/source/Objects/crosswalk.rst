@@ -40,10 +40,10 @@ Member Variables
 .. autoattribute:: qvl.crosswalk.QLabsCrosswalk.actorNumber
 
 
-.. _crosswalkMethods:
+.. _crosswalkParentMethods:
 
-Methods
-========
+Parent Class (actor.py) Methods
+================================
 
 .. automethod:: qvl.crosswalk.QLabsCrosswalk.spawn
 .. automethod:: qvl.crosswalk.QLabsCrosswalk.spawn_degrees
