@@ -29,6 +29,12 @@ signage in Quanser Interactive Labs.
 
 -------------------------------------------------------------------------------
 
+.. important::
+    All of the office objects have the same methods and member variables. 
+    To simplify this documentation, the methods and member variables are documented
+    only once, see :ref:`roadSignsShared` and the :ref:`roadsignageTutorial`.
+    No office object has connection points or different configurations.
+
 ****************
 Roundabout Sign
 ****************
@@ -47,51 +53,8 @@ Constants
 
 .. autoattribute:: qvl.roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
 
-.. _roundaboutVars:
-
-Member Variables
-=================
-
-.. autoattribute:: qvl.roundabout_sign.QLabsRoundaboutSign.actorNumber
-
-.. _roundaboutMethods:
-
-Methods
-========
-
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_degrees
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_degrees
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.destroy
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.destroy_all_actors_of_class
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.ping
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.get_world_transform_degrees
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_relative_transform_degrees
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.parent_with_current_world_transform
-.. automethod:: qvl.roundabout_sign.QLabsRoundaboutSign.parent_break
-
-
-.. _roundaboutConfig:
-
-Configurations
-===============
-
-There is only one configuration (0) of the roundabout sign actor generated in
-QLabs.
 
 .. image:: ../pictures/roundaboutsign.png
-
-.. _roundaboutConnect:
-
-Connection Points
-==================
-
-There are no connection points for this actor class.
 
 -------------------------------------------------------------------------------
 
@@ -113,49 +76,8 @@ Constants
 
 .. autoattribute:: qvl.stop_sign.QLabsStopSign.ID_STOP_SIGN
 
-.. _stopsignVars:
-
-Member Variables
-==================
-
-.. autoattribute:: qvl.stop_sign.QLabsStopSign.actorNumber
-
-.. _stopsignMethods:
-
-Methods
-========
-
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn_degrees
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn_id
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn_id_degrees
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.stop_sign.QLabsStopSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.stop_sign.QLabsStopSign.destroy
-.. automethod:: qvl.stop_sign.QLabsStopSign.destroy_all_actors_of_class
-.. automethod:: qvl.stop_sign.QLabsStopSign.ping
-.. automethod:: qvl.stop_sign.QLabsStopSign.get_world_transform
-.. automethod:: qvl.stop_sign.QLabsStopSign.get_world_transform_degrees
-.. automethod:: qvl.stop_sign.QLabsStopSign.parent_with_relative_transform
-.. automethod:: qvl.stop_sign.QLabsStopSign.parent_with_relative_transform_degrees
-.. automethod:: qvl.stop_sign.QLabsStopSign.parent_with_current_world_transform
-.. automethod:: qvl.stop_sign.QLabsStopSign.parent_break
-
-.. _stopsignConfig:
-
-Configurations
-================
-
-There is only one configuration (0) of the stop sign actor generated in QLabs.
 
 .. image:: ../pictures/stopsign.png
-
-.. _stopsignConnect:
-
-Connection Points
-====================
-
-There are no connection points for this actor class.
 
 
 -------------------------------------------------------------------------------
@@ -178,51 +100,57 @@ Constants
 
 .. autoattribute:: qvl.yield_sign.QLabsYieldSign.ID_YIELD_SIGN
 
-.. _yieldsignVars:
+
+.. image:: ../pictures/yieldsign.png
+
+-------------------------------------------------------------------------------
+
+.. _roadSignsShared:
+
+******************************
+Shared Variables and Methods
+******************************
+
+.. _roadSignsVars:
 
 Member Variables
-==================
+=================
 
-.. autoattribute:: qvl.yield_sign.QLabsYieldSign.actorNumber
+.. autoattribute:: qvl.actor.QLabsActor.actorNumber
 
-.. _yieldsignMethods:
+.. _roadSignsMethods:
 
 Methods
 ========
 
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_degrees
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_id
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_id_degrees
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform
-.. automethod:: qvl.yield_sign.QLabsYieldSign.spawn_id_and_parent_with_relative_transform_degrees
-.. automethod:: qvl.yield_sign.QLabsYieldSign.destroy
-.. automethod:: qvl.yield_sign.QLabsYieldSign.destroy_all_actors_of_class
-.. automethod:: qvl.yield_sign.QLabsYieldSign.ping
-.. automethod:: qvl.yield_sign.QLabsYieldSign.get_world_transform
-.. automethod:: qvl.yield_sign.QLabsYieldSign.get_world_transform_degrees
-.. automethod:: qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform
-.. automethod:: qvl.yield_sign.QLabsYieldSign.parent_with_relative_transform_degrees
-.. automethod:: qvl.yield_sign.QLabsYieldSign.parent_with_current_world_transform
-.. automethod:: qvl.yield_sign.QLabsYieldSign.parent_break
+.. automethod:: qvl.actor.QLabsActor.spawn
+.. automethod:: qvl.actor.QLabsActor.spawn_degrees
+.. automethod:: qvl.actor.QLabsActor.spawn_id
+.. automethod:: qvl.actor.QLabsActor.spawn_id_degrees
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform
+.. automethod:: qvl.actor.QLabsActor.spawn_id_and_parent_with_relative_transform_degrees
+.. automethod:: qvl.actor.QLabsActor.destroy
+.. automethod:: qvl.actor.QLabsActor.destroy_all_actors_of_class
+.. automethod:: qvl.actor.QLabsActor.ping
+.. automethod:: qvl.actor.QLabsActor.get_world_transform
+.. automethod:: qvl.actor.QLabsActor.get_world_transform_degrees
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform
+.. automethod:: qvl.actor.QLabsActor.parent_with_relative_transform_degrees
+.. automethod:: qvl.actor.QLabsActor.parent_with_current_world_transform
+.. automethod:: qvl.actor.QLabsActor.parent_break
 
-
-
-.. _yieldsignConfig:
 
 Configurations
 ===============
 
-There is only one configuration (0) of the yield sign actor generated in QLabs.
+There is only one configuration (0) for the road sign actors generated in
+QLabs.
 
-.. image:: ../pictures/yieldsign.png
-
-.. _yieldsignConnect:
 
 Connection Points
 ==================
 
-There are no connection points for this actor class.
+There are no connection points for any of these actor classes.
 
 -------------------------------------------------------------------------------
 

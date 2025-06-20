@@ -12,6 +12,8 @@
 #
 import os
 import sys
+from datetime import datetime 
+
 sys.path.insert(0, os.path.abspath('../../'))
 sys.path.insert(0, os.path.abspath('../../python/'))
 # sys.path.insert(0, os.path.abspath('../../python/qvl'))
@@ -24,13 +26,15 @@ print(sys.path)
 
 # -- Project information -----------------------------------------------------
 
+year = datetime.now().year
+
 project = "Quanser Interactive Labs API Documentation"
-copyright = '2024, Quanser'
+copyright = year + ', Quanser'
 author = 'Quanser'
 
 # The full version, including alpha/beta/rc tags
 # release number.year.dayInCalendar
-release = '2.24.204'
+release = '2.25.171'
 
 # To deal with all the "duplicate label errors"
 suppress_warnings = ['autosectionlabel.*']
