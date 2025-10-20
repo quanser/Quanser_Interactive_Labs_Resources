@@ -7,7 +7,7 @@ Device Communication
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
 
-The X in the following table refers to types of ports that are not applicable or available.
+A blank in the following table refers to types of ports that are not available or applicable.
 
 .. raw:: html
 
@@ -103,7 +103,7 @@ The X in the following table refers to types of ports that are not applicable or
     </head>
     <body>
 
-    <div style="height:740px; overflow: auto;">
+    <div style="height:750px; overflow: auto;">
     <table>
         <colgroup>
            <col style="width:130px">
@@ -134,11 +134,11 @@ The X in the following table refers to types of ports that are not applicable or
                 <strong>Disc:</strong> 18920<br>
                 <strong>Pendulum:</strong> 18921
             </td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>Qube-Servo 3</td>
@@ -146,11 +146,11 @@ The X in the following table refers to types of ports that are not applicable or
                 <strong>Disc:</strong> 18922<br>
                 <strong>Pendulum:</strong> 18923
             </td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>Rotary Servo (SRV02)</td>
@@ -159,47 +159,47 @@ The X in the following table refers to types of ports that are not applicable or
                 <strong>Flexible Link:</strong><br> 18941<br>
                 <strong>Ball &amp; Beam:</strong><br> 18942
             </td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>Aero</td>
             <td>18930</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>Aero 2</td>
             <td>18950</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>QArm</td>
             <td>18900</td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
             <td>18901</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>QBot 2e & QBot 3</td>
             <td>18910</td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
             <td>18911</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>QBot Platform</td>
@@ -207,17 +207,17 @@ The X in the following table refers to types of ports that are not applicable or
             <td>18915</td>
             <td>18917</td>
             <td>18918</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>Coupled Tanks</td>
             <td>18950</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr>
             <td>QCar & QCar 2</td>
@@ -243,9 +243,9 @@ The X in the following table refers to types of ports that are not applicable or
                 <strong>Left:</strong> 18985
             </td>
             <td>18986</td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
             <td><strong>OptiTrack:</strong> 18967</td>
-            <td><i class="fa fa-remove"></i></td>
+            <td> </td>
         </tr>
     </tbody>
     </table>
