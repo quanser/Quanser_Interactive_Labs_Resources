@@ -93,7 +93,7 @@ Workspace Spawnable Actors
     }
 
     .fa-remove {
-    color: black;
+    color: rgb(121, 16, 16);
     }
 
     .fa-question {
@@ -105,8 +105,19 @@ Workspace Spawnable Actors
     </head>
     <body>
 
-    <div style="height:500px; overflow: auto;">
+    <div style="height:700px; overflow: auto;">
     <table>
+        <colgroup>
+           <col style="width:110px">
+           <col style="width:130px">
+           <col style="width:110px">
+           <col style="width:80px">
+           <col style="width:80px">
+           <col style="width:90px">
+           <col style="width:90px">
+       </colgroup>
+
+
     <thead>
         <tr>
             <th>Product</th>
@@ -114,7 +125,7 @@ Workspace Spawnable Actors
             <th>Video2D Port</th>
             <th>Video3D Port</th>
             <th>Lidar Port</th>
-            <th>Location (GPS/OptiTrack)</th>
+            <th>Location (GPS/ OptiTrack)</th>
             <th>Other</th>
         </tr>
     </thead>
