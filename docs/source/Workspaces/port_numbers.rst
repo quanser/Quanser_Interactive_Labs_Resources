@@ -7,7 +7,7 @@ Device Communication
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
 
-A blank in the following table refers to types of ports that are not available or applicable.
+The X in the following table refers to types of ports that are not available or applicable.
 
 .. raw:: html
 
@@ -94,6 +94,14 @@ A blank in the following table refers to types of ports that are not available o
     color: rgb(121, 16, 16);
     }
 
+    .fa-circle {
+    color: rgb(121, 16, 16);
+    }
+
+    .fa-window-minimize {
+    color: rgb(121, 16, 16);
+    }
+
     .fa-question {
     color: black;
     }
@@ -134,11 +142,11 @@ A blank in the following table refers to types of ports that are not available o
                 <strong>Disc:</strong> 18920<br>
                 <strong>Pendulum:</strong> 18921
             </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
         </tr>
         <tr>
             <td>Qube-Servo 3</td>
@@ -146,11 +154,11 @@ A blank in the following table refers to types of ports that are not available o
                 <strong>Disc:</strong> 18922<br>
                 <strong>Pendulum:</strong> 18923
             </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
         </tr>
         <tr>
             <td>Rotary Servo (SRV02)</td>
@@ -159,47 +167,47 @@ A blank in the following table refers to types of ports that are not available o
                 <strong>Flexible Link:</strong><br> 18941<br>
                 <strong>Ball &amp; Beam:</strong><br> 18942
             </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
         </tr>
         <tr>
             <td>Aero</td>
             <td>18930</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-circle"></i></td>
         </tr>
         <tr>
             <td>Aero 2</td>
             <td>18950</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>QArm</td>
             <td>18900</td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
             <td>18901</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>QBot 2e & QBot 3</td>
             <td>18910</td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
             <td>18911</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>QBot Platform</td>
@@ -207,17 +215,17 @@ A blank in the following table refers to types of ports that are not available o
             <td>18915</td>
             <td>18917</td>
             <td>18918</td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>Coupled Tanks</td>
             <td>18950</td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>QCar & QCar 2</td>
@@ -243,9 +251,9 @@ A blank in the following table refers to types of ports that are not available o
                 <strong>Left:</strong> 18985
             </td>
             <td>18986</td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
             <td><strong>OptiTrack:</strong> 18967</td>
-            <td> </td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
     </tbody>
     </table>
