@@ -4,14 +4,10 @@
 Device Communication
 ******************************
 
-
-.. _spawnableactorsWorkspaces:
-
-Port Numbers
-==========================
-
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
+
+The X in the table signify that the type of port is not applicable or availabe.
 
 .. raw:: html
 
