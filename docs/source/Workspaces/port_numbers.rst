@@ -1,7 +1,7 @@
 .. _PortNumbers:
 
 ******************************
-Communication Port Numbers
+Device Communication
 ******************************
 
 
@@ -11,7 +11,7 @@ Port Numbers
 ==========================
 
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
-workspaces where only 1 robot is spawned when opened or by default when spawning a single device. 
+workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
 
 .. raw:: html
 
@@ -161,8 +161,7 @@ workspaces where only 1 robot is spawned when opened or by default when spawning
             <td>
                 <strong>Base:</strong><br> 18940<br>
                 <strong>Flexible Link:</strong><br> 18941<br>
-                <strong>Ball &amp; Beam:</strong><br> 18942<br>
-                <strong>Pendulum:</strong><br> 18943
+                <strong>Ball &amp; Beam:</strong><br> 18942
             </td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>

@@ -11,6 +11,18 @@ can move freely and create and place objects to create custom scenarios.
 There are several different Open Worlds available in QLabs for different types
 of products.
 
+Device Communication
+========================
+
+For port numbers to communicate with the devices in their respective workspaces, see below:
+
+.. toctree::
+   :maxdepth: 1
+
+   port_numbers.rst
+     
+..
+
 Workspaces
 ============
 
