@@ -1,15 +1,17 @@
-.. _Workspaces:
+.. _PortNumbers:
 
-**********
-Workspaces
-**********
+******************************
+Communication Port Numbers
+******************************
 
 
 .. _spawnableactorsWorkspaces:
 
-Workspace Spawnable Actors
+Port Numbers
 ==========================
 
+These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
+workspaces where only 1 robot is spawned when opened or by default when spawning a single device. 
 
 .. raw:: html
 
@@ -131,65 +133,6 @@ Workspace Spawnable Actors
     </thead>
     <tbody>
         <tr>
-            <td>QArm</td>
-            <td>18900</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td>18901</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
-            <td>QBot 2e</td>
-            <td>18910</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td>18911</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
-            <td>QBot 3</td>
-            <td>18910</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td>18911</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
-            <td>QBot Platform</td>
-            <td>18914</td>
-            <td>18915</td>
-            <td>18917</td>
-            <td>18918</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
-            <td>Coupled Tanks</td>
-            <td>18950</td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
-            <td>Rotary Servo (SRV02) Base</td>
-            <td>
-                <strong>Base:</strong> 18940<br>
-                <strong>Flexible Link:</strong> 18941<br>
-                <strong>Ball &amp; Beam:</strong> 18942<br>
-                <strong>Pendulum:</strong> 18943
-            </td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-            <td><i class="fa fa-remove"></i></td>
-        </tr>
-        <tr>
             <td>QUBE-Servo 2</td>
             <td>
                 <strong>Disc:</strong> 18920<br>
@@ -214,6 +157,20 @@ Workspace Spawnable Actors
             <td><i class="fa fa-remove"></i></td>
         </tr>
         <tr>
+            <td>Rotary Servo (SRV02)</td>
+            <td>
+                <strong>Base:</strong><br> 18940<br>
+                <strong>Flexible Link:</strong><br> 18941<br>
+                <strong>Ball &amp; Beam:</strong><br> 18942<br>
+                <strong>Pendulum:</strong><br> 18943
+            </td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
             <td>Aero</td>
             <td>18930</td>
             <td><i class="fa fa-remove"></i></td>
@@ -224,6 +181,42 @@ Workspace Spawnable Actors
         </tr>
         <tr>
             <td>Aero 2</td>
+            <td>18950</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>QArm</td>
+            <td>18900</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td>18901</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>QBot 2e & QBot 3</td>
+            <td>18910</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td>18911</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>QBot Platform</td>
+            <td>18914</td>
+            <td>18915</td>
+            <td>18917</td>
+            <td>18918</td>
+            <td><i class="fa fa-remove"></i></td>
+            <td><i class="fa fa-remove"></i></td>
+        </tr>
+        <tr>
+            <td>Coupled Tanks</td>
             <td>18950</td>
             <td><i class="fa fa-remove"></i></td>
             <td><i class="fa fa-remove"></i></td>
