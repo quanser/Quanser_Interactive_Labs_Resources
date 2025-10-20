@@ -7,7 +7,7 @@ Device Communication
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically (virtual labs) or as reference when manually spawning a single device. 
 
-The blank spaces in the following table refers to types of ports that are not available or applicable.
+The blank spaces in the following table refer to types of ports that are not available or applicable.
 
 .. raw:: html
 
