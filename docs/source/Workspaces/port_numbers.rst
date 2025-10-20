@@ -103,7 +103,7 @@ The X in the following table refers to types of ports that are not applicable or
     </head>
     <body>
 
-    <div style="height:800px; overflow: auto;">
+    <div style="height:740px; overflow: auto;">
     <table>
         <colgroup>
            <col style="width:130px">
