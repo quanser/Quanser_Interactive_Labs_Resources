@@ -7,7 +7,7 @@ Device Communication
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
 
-The X in the table signify that the type of port is not applicable or availabe.
+The X in the following table refers to types of ports that are not applicable or available.
 
 .. raw:: html
 
@@ -103,7 +103,7 @@ The X in the table signify that the type of port is not applicable or availabe.
     </head>
     <body>
 
-    <div style="height:700px; overflow: auto;">
+    <div style="height:800px; overflow: auto;">
     <table>
         <colgroup>
            <col style="width:130px">

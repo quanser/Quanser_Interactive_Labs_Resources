@@ -14,7 +14,8 @@ of products.
 Device Communication
 ========================
 
-For port numbers to communicate with the devices in their respective workspaces, see below:
+To interact with products in fixed or open world environments, the communication port number of each device
+must be known. These port numbers are available in the page below:
 
 .. toctree::
    :maxdepth: 1
@@ -23,8 +24,8 @@ For port numbers to communicate with the devices in their respective workspaces,
      
 ..
 
-Workspaces
-============
+Open World Workspaces
+===========================
 
 .. toctree::
    :maxdepth: 1
