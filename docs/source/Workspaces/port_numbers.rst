@@ -109,7 +109,7 @@ Workspace Spawnable Actors
     <table>
         <colgroup>
            <col style="width:130px">
-           <col style="width:135px">
+           <col style="width:145px">
            <col style="width:110px">
            <col style="width:80px">
            <col style="width:80px">
