@@ -7,7 +7,7 @@ Device Communication
 These port numbers are used to communicate with the products in their respective workspaces. Use this as a reference for static
 workspaces where the device is opened automatically or as port number references when manually spawning a single device. 
 
-The X in the following table refers to types of ports that are not available or applicable.
+The blank spaces in the following table refers to types of ports that are not available or applicable.
 
 .. raw:: html
 
@@ -142,11 +142,11 @@ The X in the following table refers to types of ports that are not available or 
                 <strong>Disc:</strong> 18920<br>
                 <strong>Pendulum:</strong> 18921
             </td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>Qube-Servo 3</td>
@@ -154,11 +154,11 @@ The X in the following table refers to types of ports that are not available or 
                 <strong>Disc:</strong> 18922<br>
                 <strong>Pendulum:</strong> 18923
             </td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>Rotary Servo (SRV02)</td>
@@ -167,20 +167,20 @@ The X in the following table refers to types of ports that are not available or 
                 <strong>Flexible Link:</strong><br> 18941<br>
                 <strong>Ball &amp; Beam:</strong><br> 18942
             </td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>Aero</td>
             <td>18930</td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
-            <td><i class="fa fa-circle"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
+            <td><i class="fa fa-window-minimize"></i></td>
         </tr>
         <tr>
             <td>Aero 2</td>
