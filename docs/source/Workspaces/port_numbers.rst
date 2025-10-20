@@ -108,8 +108,8 @@ Workspace Spawnable Actors
     <div style="height:700px; overflow: auto;">
     <table>
         <colgroup>
-           <col style="width:120px">
            <col style="width:130px">
+           <col style="width:135px">
            <col style="width:110px">
            <col style="width:80px">
            <col style="width:80px">
