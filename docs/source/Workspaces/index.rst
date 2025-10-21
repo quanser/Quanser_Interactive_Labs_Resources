@@ -8,11 +8,26 @@ Workspaces in QLabs are specific virtual environments or lab modules.
 This environment could either be an open world or a virtual lab space with a
 more focused purpose. An Open World is a virtual world or map where the user
 can move freely and create and place objects to create custom scenarios.
+
+
+Device Communication
+========================
+
+To interact with products in fixed or open world environments, the communication port number of each device
+must be known. These port numbers are available in the page below:
+
+.. toctree::
+   :maxdepth: 1
+
+   port_numbers.rst
+     
+..
+
+Open World Workspaces
+===========================
+
 There are several different Open Worlds available in QLabs for different types
 of products.
-
-Workspaces
-============
 
 .. toctree::
    :maxdepth: 1
@@ -25,7 +40,6 @@ Workspaces
    Plane.rst
    Studio.rst
    Warehouse.rst
-     
 ..
 
 
