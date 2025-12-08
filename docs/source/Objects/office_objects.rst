@@ -22,8 +22,7 @@ the QLabs environment.
 Office objects can be spawned anywhere in the Open Worlds.
 
 See the :ref:`officeTutorial` to get a better understanding of 
-using office objects in Quanser Interactive Labs.
-
+placing office objects in Quanser Interactive Labs.
 
 .. contents:: Table of Contents
     :backlinks: none
