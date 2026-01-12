@@ -8,7 +8,7 @@ Animal Example
     example.  This example is designed to run in the QCar Cityscape.
 
 """
-
+ 
 from qvl import qlabs
 from qvl.animal import QLabsAnimal
 from qvl.qlabs import QuanserInteractiveLabs
