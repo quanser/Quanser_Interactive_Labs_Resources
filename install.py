@@ -12,7 +12,7 @@ os.chdir(os.path.dirname(__file__))
 
 #region: Check python version
 pythonVersion = platform.python_version_tuple()
-if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 8):
+if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 11):
     print('Error: Install requires python version 3.8 or newer.')
     print("The latest version of python can be downloaded "
           + "using the following link: https://www.python.org")

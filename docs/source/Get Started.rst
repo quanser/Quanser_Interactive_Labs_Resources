@@ -62,7 +62,7 @@ If you don't already have python installed on your computer, you can download
 it from `here <https://Python.org/downloads/>`__.
 
 .. important::
-    We have currently tested compatibility Python 3.8 or newer.  
+    We have currently tested compatibility Python 3.11 or newer.  
     It is advised to not use an earlier version.
 
 .. important::
@@ -88,7 +88,7 @@ API libraries are required.
     To install both the Quanser Interactive Labs for Linux and the Quanser SDK for Linux, run the commands shown on the Linux tab below.
 
     On Windows computers, the required Quanser API libraries are provided by installing  
-    the Quanser SDK for Windows. 
+    the Quanser SDK for Windows, if you have QUARC, it should have the necessary libraries too. 
     For more information about the Quanser SDK for Windows, please visit its 
     `GitHub repository <https://github.com/quanser/quanser_sdk_win64>`__.     
     To download the Quanser SDK for Windows installer, click on the following link  
@@ -126,17 +126,20 @@ installing individual python APIs check out the documentation here:
 GitHub QLabs Libraries Download
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you have purchased a hardware product with us, the Research Resources.zip file should 
-automatically include Quanser Interactive Labs Libraries in its setup file and you can skip this step.  
+If you have purchased a product with us, the `Quanser Academic Resources`_ GitHub page 
+includes instructions to download and set up your system to start using our resources. 
+The Quanser Interactive Labs Libraries are downloaded and set up during the setup process. 
 However, if you would like to only download the libraries by themselves you will 
 need to follow the steps below.
 
-Download our install.py script by entering the following in your command prompt:
+.. _Quanser Academic Resources: https://github.com/quanser/Quanser_Academic_Resources/
+
+Download our install.py script by entering the following command in your command prompt:
 
 .. tabs::
+
     .. code-tab:: console
-        
-        # Navigate to your downloads or where ever you would like this file to be downloaded to then run the below line 
+        # Navigate to your downloads or wherever you would like this file to be downloaded to, then run the below line 
         curl -L -o install.py https://raw.githubusercontent.com/quanser/Quanser_Interactive_Labs_Resources/main/install.py
 
 Navigate to the **install.py** file and run this in the command window using the following code:
