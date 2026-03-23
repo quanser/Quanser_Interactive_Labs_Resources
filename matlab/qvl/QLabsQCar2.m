@@ -270,7 +270,8 @@ classdef QLabsQCar2 < QLabsActor
 
 %             Sets the location, rotation, and other car properties. Note that setting the location ignores collisions so ensure that the location is free of obstacles that may trap the actor if it is subsequently used in a dynamic mode. This transform can also be used to "playback" previously recorded position data without the need for a full dynamic model.
 
-            [success, location, rotation, forward_vector, up_vector, front_bumper_hit, rear_bumper_hit] = obj.set_transform_and_request_state(location, rotation/180*pi, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation);
+            [success, location, rotation_r, forward_vector, up_vector, front_bumper_hit, rear_bumper_hit] = obj.set_transform_and_request_state(location, rotation/180*pi, enableDynamics, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal, waitForConfirmation);
+            rotation = rotation_r/180*pi;
             return
         end
 
