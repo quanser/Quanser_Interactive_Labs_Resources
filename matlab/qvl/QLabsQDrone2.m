@@ -253,14 +253,14 @@ classdef QLabsQDrone2 < QLabsActor
             obj.c.classID = obj.ID_QDRONE2;
             obj.c.actorNumber = obj.actorNumber;
             obj.c.actorFunction = obj.FCN_QDRONE2_IMAGE_REQUEST;
-            obj.c.payload = uint8(camera);
+            obj.c.payload = flip(typecast(int32(camera), 'uint8'));
             obj.c.containerSize = obj.c.BASE_CONTAINER_SIZE + length(obj.c.payload);
-
+            
             obj.qlabs.flush_receive();
 
             if (obj.qlabs.send_container(obj.c))
                 rc = obj.qlabs.wait_for_container(obj.ID_QDRONE2, obj.actorNumber, obj.FCN_QDRONE2_IMAGE_RESPONSE);
-
+                
                 if isempty(rc)
                     return
                 end
