@@ -134,17 +134,14 @@ QDrone 2 Tutorial
 
     .. tab:: Matlab
 
-        Coming Soon!
+        .. dropdown:: Matlab Tutorial
 
-        ..
-            .. dropdown:: Matlab Tutorial
+            Raw to download this tutorial: |qdrone2_tutorial.m|.
 
-            Raw to download this tutorial: |qcar2_tutorial.m|.
+            .. |qdrone2_tutorial.m| replace::
+                :download:`QDrone 2 Tutorial (.m) <../../../tutorials/qdrone2_tutorial.m>`
 
-            .. |qcar2_tutorial.m| replace::
-                :download:`QCar 2 Tutorial (.m) <../../../tutorials/qcar2_tutorial.m>`
-
-            .. literalinclude:: ../../../tutorials/qcar2_tutorial.m
+            .. literalinclude:: ../../../tutorials/qdrone2_tutorial.m
                 :language: Matlab
                 :linenos:
 
