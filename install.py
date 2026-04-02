@@ -13,7 +13,7 @@ os.chdir(os.path.dirname(__file__))
 #region: Check python version
 pythonVersion = platform.python_version_tuple()
 if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 11):
-    print('Error: Install requires python version 3.8 or newer.')
+    print('Error: Install requires python version 3.11 or newer.')
     print("The latest version of python can be downloaded "
           + "using the following link: https://www.python.org")
     print('')
@@ -21,11 +21,11 @@ if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 11):
     quit()
 #endregion
 
-#region: Check if QUARC is installed
+#region: Check if QUARC or Quanser SDK is installed
 try:
     import quanser
 except ImportError:
-    print('Error: Before running this installer, you must first install QUARC.')
+    print('Error: Before running this installer, you must first install QUARC or the Quanser SDK.')
     quit()
 #endregion
 
