@@ -63,7 +63,7 @@ Member Variables
 Methods
 =========
 
-.. automethod:: qvl.animal.QLabsAnimal.enable_collsion
+.. automethod:: qvl.animal.QLabsAnimal.enable_collision
 .. automethod:: qvl.animal.QLabsAnimal.add_collision_filter
 .. automethod:: qvl.animal.QLabsAnimal.get_collision_count
 

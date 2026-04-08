@@ -140,7 +140,7 @@ classdef QLabsQCar2 < QLabsActor
 %             Spawns a new QCar actor relative to an existing actor and creates a kinematic relationship.
 
             obj.sensor_scaling = double(scale(1));
-            success = spawn_id_and_parent_with_relative_transform(actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
+            success = spawn_id_and_parent_with_relative_transform@QLabsActor(actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
             return
         end
 
@@ -161,7 +161,7 @@ classdef QLabsQCar2 < QLabsActor
 %             Spawns a new QCar actor relative to an existing actor and creates a kinematic relationship.
 
             obj.sensor_scaling = double(scale(1));
-            success = spawn_id_and_parent_with_relative_transform_degrees(actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
+            success = spawn_id_and_parent_with_relative_transform_degrees@QLabsActor(actorNumber, location, rotation, scale, configuration, parentClassID, parentActorNumber, parentComponent, waitForConfirmation);
             return
         end
 
@@ -362,7 +362,8 @@ classdef QLabsQCar2 < QLabsActor
 
 %             Sets the velocity, turn angle in degrees, and other car properties.
 
-            [success, location, rotation, front_bumper_hit, rear_bumper_hit] = obj.set_velocity_and_request_state(forward, turn/180*pi, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal);
+            [success, location, rotation_r, front_bumper_hit, rear_bumper_hit] = obj.set_velocity_and_request_state(forward, turn/180*pi, headlights, leftTurnSignal, rightTurnSignal, brakeSignal, reverseSignal);
+            rotation = rotation_r/180*pi;
             return
         end
 

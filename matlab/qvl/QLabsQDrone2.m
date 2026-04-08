@@ -164,7 +164,7 @@ classdef QLabsQDrone2 < QLabsActor
                 orientation (1,3) single = [0 0 0]
             end
             
-            [success, location, orientation_r, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce] = set_velocity_and_request_state(obj, motorsEnabled, velocity, orientation/180*pi);
+            [success, location, orientation_r, quaternion, velocity, TOFDistance, collision, collisionLocation, collisionForce] = obj.set_velocity_and_request_state(motorsEnabled, velocity, orientation/180*pi);
             orientation = orientation_r/180*pi;
         end
 
