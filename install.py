@@ -6,67 +6,76 @@ import shutil
 import argparse
 import subprocess
 import site
+from pathlib import Path
 from importlib import reload
 
 os.chdir(os.path.dirname(__file__))
 
 #region: Check python version
 pythonVersion = platform.python_version_tuple()
-if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 11):
-    print('Error: Install requires python version 3.11 or newer.')
-    print("The latest version of python can be downloaded "
-          + "using the following link: https://www.python.org")
-    print('')
+if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 10):
+    print('Error: Install requires python version 3.10 or newer.')
+    print("We recommend one of the python versions here https://github.com/quanser/Quanser_Academic_Resources/blob/dev-windows/docs/pc_setup.md#if-you-are-using-python")
     print('Install unsuccessful.')
+    sys.exit(1)
     quit()
 #endregion
 
 #region: Check if QUARC or Quanser SDK is installed
 try:
-    import quanser
+    import quanser  
+
 except ImportError:
-    print('Error: Before running this installer, you must first install QUARC or the Quanser SDK.')
-    quit()
+    # if quarc or quanser sdk is installed, install quanser python sdk just in case it wasn't installed before
+    # for QUARC users, the files exist but are not installed by default
+    # Define paths
+
+    qsdk_dir = os.environ.get("QSDK_DIR")
+    if not qsdk_dir:
+        print('Error: Before running this installer, you must first install QUARC or the Quanser SDK.')
+        sys.exit(1)
+    
+    qsdk_python_dir = Path(qsdk_dir) / "python"
+
+    # Search for file starting with "quanser_api"
+    quanser_files = list(qsdk_python_dir.glob("quanser_api*"))
+    if not quanser_files:
+        print("No quanser_api file found")
+        sys.exit(1)
+
+    filename = quanser_files[0]
+
+    # Delete pip cache
+    subprocess.run([sys.executable, "-m", "pip", "cache", "purge"], check=True)
+
+    try:
+        # Install Quanser Python API
+        print(f"Installing Quanser Python API {filename.name}")
+        subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip"], check=True)
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "--upgrade", 
+            "--find-links", str(qsdk_python_dir), str(filename)],
+            check=True
+        )
+    except:
+        print("Error: Failed to install Quanser Python API.")
+        print("Install unsuccessful.")
+        sys.exit(1)
+
+    print("Quanser's Python API installed successfully.")
+    print('')
 #endregion
 
-#region: Parse Command Line Arguments
-parser = argparse.ArgumentParser()
 
-parser.add_argument(
-    "-i",
-    "--install_dir",
-    help="path to where QAL should be installed",
-    action="store"
-)
-parser.add_argument(
-    "-d",
-    "--ignore_dependencies",
-    help="skip installing required python packages",
-    action="store_true"
-)
-parser.add_argument(
-    "-e",
-    "--skip_envvar_setup",
-    help="skip setting up required environment variables",
-    action="store_true"
-)
-
-args = parser.parse_args()
-#endregion
-
-#region: Determine Install Location
-if args.install_dir is not None:
-    install_dir = args.install_dir # XXX Strip Quotes
+# Default install location is Quanser folder in home directory
+if (os.name == 'nt'):
+    install_dir = os.environ['USERPROFILE'] + '/Documents/Quanser/'
+elif (os.name == 'posix'):
+    install_dir = os.environ['HOME'] + '/Quanser/'
 else:
-    # Default install location is Quanser folder in home directory
-    if (os.name == 'nt'):
-        install_dir = os.environ['USERPROFILE'] + '/Documents/Quanser/'
-    elif (os.name == 'posix'):
-        install_dir = os.environ['HOME'] + '/Quanser/'
-    else:
-        print('Error: Unsupported OS')
-        print('Install unsuccessful.')
-        quit()
+    print('Error: Unsupported OS')
+    print('Install unsuccessful.')
+    quit()
 
 install_dir = os.path.normpath(install_dir)
 
@@ -95,17 +104,18 @@ if not os.path.isdir(install_dir):
     except:
         print('Error: Invalid install location.')
         print('Install unsuccessful.')
+        sys.exit(1)
         quit()
 #endregion
 
-#region: Install Dependencies
-print('Installing required python packages...')
-if not args.ignore_dependencies:
+if (os.name == 'nt'):
+
+    #region: Install Dependencies
+    print('Installing required python packages...')
+
     packages = [
-        'numpy',
+        'numpy<2.4',
         'opencv-python',
-        'PyQt6',
-        'pyqtgraph',
         'pygit2',
     ]
 
@@ -123,23 +133,32 @@ if not args.ignore_dependencies:
         )
         if 'y' not in confirmation.lower():
             print('Installation cancelled.')
+            sys.exit(1)
             quit()
-#endregion
+    #endregion
 
 #region: Install files from GitHub
 print('Installing Quanser virtual libraries...')
 try:
     tmpdir = tempfile.TemporaryDirectory()
+
     pygit2.clone_repository(
         'https://github.com/quanser/Quanser_Interactive_Labs_Resources.git',
         tmpdir.name
     )
     shutil.copytree(
         tmpdir.name + '/python/qvl/',
-        os.path.join(install_dir,'libraries/python/qvl'),
+        os.path.join(install_dir,'0_libraries/python/qvl'),
         dirs_exist_ok=True,
         ignore=shutil.ignore_patterns('.*')
     )
+    if (os.name == 'nt'):
+        shutil.copytree(
+            tmpdir.name + '/matlab/qvl/',
+            os.path.join(install_dir,'0_libraries/matlab/qvl'),
+            dirs_exist_ok=True,
+            ignore=shutil.ignore_patterns('.*')
+        )
     try:
         tmpdir.cleanup()
     except:
@@ -154,61 +173,63 @@ except:
     )
     if 'y' not in confirmation.lower():
         print('Installation cancelled.')
+        sys.exit(1)
         quit()
 #endregion
 
 #region: Setup Environment Variables
 environmentVariablesSet = False
-if not args.skip_envvar_setup:
 
-    pythonPath = os.path.normpath(install_dir + '/libraries/python/')
+pythonPath = os.path.normpath(install_dir + '/0_libraries/python/')
 
-    if os.name == 'nt':
-        if not('PYTHONPATH' in os.environ):
-            os.system('setx PYTHONPATH "' + pythonPath + '"')
-            environmentVariablesSet = True
+if os.name == 'nt':
+    if 'PYTHONPATH' not in os.environ:
+        os.system('setx PYTHONPATH "' + pythonPath + '"')
+        environmentVariablesSet = True
 
-        elif not(pythonPath in os.environ['PYTHONPATH']):
-            pythonPath = os.environ['PYTHONPATH'] + ';' + pythonPath
-            os.system('setx PYTHONPATH "' + pythonPath + '"')
-            environmentVariablesSet = True
+    elif pythonPath not in os.environ['PYTHONPATH']:
+        pythonPath = os.environ['PYTHONPATH'] + ';' + pythonPath
+        os.system('setx PYTHONPATH "' + pythonPath + '"')
+        environmentVariablesSet = True
 
-        if not('QAL_DIR' in os.environ):
-            os.system('setx QAL_DIR "' + install_dir + '"')
-            environmentVariablesSet = True
-    elif os.name == 'posix':
-        shell = os.environ.get('SHELL')
-        if shell and 'bash' in shell:
-            shellConfigFile = '.bashrc'
-        elif shell and 'zsh' in shell:
-            shellConfigFile = '.zshrc'
-        else:
-            print('Error: Unsupported shell interface. '
-                +'Only bash and zsh supported.'
-            )
-            quit()
-        configFilePath = os.path.join(os.environ['HOME'], shellConfigFile)
-
-        alreadySetup = False
-        if os.path.exists(configFilePath):
-            with open(configFilePath, 'r') as config_file:
-                for line in config_file.readlines():
-                    if 'QAL_DIR' in line.strip():
-                        alreadySetup = True
-                        break
-
-        if not alreadySetup:
-            msg = (
-                '\n# Environment variables for Quanser Application Libraries'
-                + '\nexport QAL_DIR="' + install_dir + '"'
-                + '\nexport PYTHONPATH="${PYTHONPATH}:'+ pythonPath + '"'
-            )
-            with open(configFilePath, 'a') as config_file:
-                config_file.write(msg)
-            environmentVariablesSet = True
+    if 'QAL_DIR' not in os.environ:
+        os.system('setx QAL_DIR "' + install_dir + '"')
+        environmentVariablesSet = True
+elif os.name == 'posix':
+    shell = os.environ.get('SHELL')
+    if shell and 'bash' in shell:
+        shellConfigFile = '.bashrc'
+    elif shell and 'zsh' in shell:
+        shellConfigFile = '.zshrc'
     else:
-        print('Error: unrecognized OS.')
+        print('Error: Unsupported shell interface. '
+            +'Only bash and zsh supported.'
+        )
+        sys.exit(1)
         quit()
+    configFilePath = os.path.join(os.environ['HOME'], shellConfigFile)
+
+    alreadySetup = False
+    if os.path.exists(configFilePath):
+        with open(configFilePath, 'r') as config_file:
+            for line in config_file.readlines():
+                if 'QAL_DIR' in line.strip():
+                    alreadySetup = True
+                    break
+
+    if not alreadySetup:
+        msg = (
+            '\n# Environment variables for Quanser Application Libraries'
+            + '\nexport QAL_DIR="' + install_dir + '"'
+            + '\nexport PYTHONPATH="${PYTHONPATH}:'+ pythonPath + '"'
+        )
+        with open(configFilePath, 'a') as config_file:
+            config_file.write(msg)
+        environmentVariablesSet = True
+else:
+    print('Error: unrecognized OS.')
+    sys.exit(1)
+    quit()
 #endregion
 
 
