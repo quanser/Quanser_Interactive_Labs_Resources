@@ -18,7 +18,6 @@ if (int(pythonVersion[0]) != 3) or (int(pythonVersion[1]) < 10):
     print("We recommend one of the python versions here https://github.com/quanser/Quanser_Academic_Resources/blob/dev-windows/docs/pc_setup.md#if-you-are-using-python")
     print('Install unsuccessful.')
     sys.exit(1)
-    quit()
 #endregion
 
 #region: Check if QUARC or Quanser SDK is installed
@@ -108,34 +107,33 @@ if not os.path.isdir(install_dir):
         quit()
 #endregion
 
-if (os.name == 'nt'):
+# for future releases, we need to check for windows vs linux for pip vs aptget downloads.
 
-    #region: Install Dependencies
-    print('Installing required python packages...')
+#region: Install Dependencies
+print('Installing required python packages...')
 
-    packages = [
-        'numpy<2.4',
-        'opencv-python',
-        'pygit2',
-    ]
+packages = [
+    'numpy<2.4',
+    'opencv-python',
+    'pygit2',
+]
 
-    try:
-        subprocess.check_call([sys.executable,'-m','pip','install'] + packages)
-        reload(site)
-        import pygit2 # < must be placed here since it gets installed earlier in script
-    except:
-        print('Error: Failed to install required python packages '
-            + '(Note: this requires a valid internet connection).'
-        )
-        confirmation = input(
-            'Would you like to skip installing dependencies for now '
-            + 'and finish with the rest of the installation? (y,[n])'
-        )
-        if 'y' not in confirmation.lower():
-            print('Installation cancelled.')
-            sys.exit(1)
-            quit()
-    #endregion
+try:
+    subprocess.check_call([sys.executable,'-m','pip','install'] + packages)
+    reload(site)
+    import pygit2 # < must be placed here since it gets installed earlier in script
+except:
+    print('Error: Failed to install required python packages '
+        + '(Note: this requires a valid internet connection).'
+    )
+    confirmation = input(
+        'Would you like to skip installing dependencies for now '
+        + 'and finish with the rest of the installation? (y,[n])'
+    )
+    if 'y' not in confirmation.lower():
+        print('Installation cancelled.')
+        sys.exit(1)
+#endregion
 
 #region: Install files from GitHub
 print('Installing Quanser virtual libraries...')
@@ -174,7 +172,6 @@ except:
     if 'y' not in confirmation.lower():
         print('Installation cancelled.')
         sys.exit(1)
-        quit()
 #endregion
 
 #region: Setup Environment Variables
