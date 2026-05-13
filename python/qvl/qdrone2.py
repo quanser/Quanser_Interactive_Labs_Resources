@@ -315,16 +315,16 @@ class QLabsQDrone2(QLabsActor):
             return False
 
         c = CommModularContainer()
-        c.classID = self.ID_FREE_CAMERA
+        c.classID = self.ID_QDRONE2
         c.actorNumber = self.actorNumber
-        c.actorFunction = self.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION
+        c.actorFunction = self.FCN_QDRONE2_SET_CAMERA_RESOLUTION
         c.payload = bytearray(struct.pack(">II", width, height))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         self._qlabs.flush_receive()
 
         if (self._qlabs.send_container(c)):
-            c = self._qlabs.wait_for_container(self.ID_FREE_CAMERA, self.actorNumber, self.FCN_FREE_CAMERA_SET_IMAGE_RESOLUTION_RESPONSE)
+            c = self._qlabs.wait_for_container(self.ID_QDRONE2, self.actorNumber, self.FCN_QDRONE2_SET_CAMERA_RESOLUTION_RESPONSE)
             if (c == None):
                 return False
             else:
