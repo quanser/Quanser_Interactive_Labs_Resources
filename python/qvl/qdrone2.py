@@ -301,11 +301,12 @@ class QLabsQDrone2(QLabsActor):
                 print("QDrone 2 get_image: Communications failure.")
             return False, -1, None
 
-    def set_image_capture_resolution(self, width=640, height=480):
+    def set_image_capture_resolution(self, camera, width=640, height=480):
         """Change the default width and height of image resolution for capture
-
+        :param camera: Camera number to view from. Use the CAMERA constants.
         :param width: Must be an even number. Default 640
         :param height: Must be an even number. Default 480
+        :type camera: int32
         :type width: uint32
         :type height: uint32
         :return: `True` if spawn was successful, `False` otherwise
@@ -318,7 +319,7 @@ class QLabsQDrone2(QLabsActor):
         c.classID = self.ID_QDRONE2
         c.actorNumber = self.actorNumber
         c.actorFunction = self.FCN_QDRONE2_SET_CAMERA_RESOLUTION
-        c.payload = bytearray(struct.pack(">II", width, height))
+        c.payload = bytearray(struct.pack(">III", camera, width, height))
         c.containerSize = c.BASE_CONTAINER_SIZE + len(c.payload)
 
         self._qlabs.flush_receive()
