@@ -36,6 +36,64 @@ signage in Quanser Interactive Labs.
     No office object has connection points or different configurations.
 
 ****************
+Crossing Sign
+****************
+
+.. _crossinglibrary:
+
+Library
+========
+
+.. autoclass:: qvl.crossing_sign.QLabsCrossingSign
+
+.. _crossingConstants:
+
+Constants
+==========
+
+.. autoattribute:: qvl.crossing_sign.QLabsCrossingSign.ID_CROSSING_SIGN
+
+
+Configurations
+===============
+
+Crossing signs have 3 configurations (0-2).
+
+
+.. image:: ../pictures/crossingsign.png
+
+-------------------------------------------------------------------------------
+
+****************
+Obstacle Sign
+****************
+
+.. _obstaclelibrary:
+
+Library
+========
+
+.. autoclass:: qvl.obstacle_sign.QLabsObstacleSign
+
+.. _obstacleConstants:
+
+Constants
+==========
+
+.. autoattribute:: qvl.obstacle_sign.QLabsObstacleSign.ID_OBSTACLE_SIGN
+
+
+Configurations
+===============
+
+Obstacle signs have 3 configurations (0-2).
+
+
+.. image:: ../pictures/obstaclesign.png
+
+-------------------------------------------------------------------------------
+
+****************
 Roundabout Sign
 ****************
 
@@ -57,11 +115,49 @@ Constants
 Configurations
 ===============
 
-There is only one configuration (0) for the road sign actors generated in
-QLabs.
+Roundabout signs have 3 configurations (0-2).
 
 
 .. image:: ../pictures/roundaboutsign.png
+
+-------------------------------------------------------------------------------
+
+***********
+Speed Sign
+***********
+
+.. _speedsignlibrary:
+
+Library
+========
+
+.. autoclass:: qvl.speed_sign.QLabsSpeedSign
+
+.. _speedsignConstants:
+
+Constants
+==========
+
+.. autoattribute:: qvl.speed_sign.QLabsSpeedSign.ID_SPEED_SIGN
+
+
+.. _speedsignMethods:
+
+Methods
+=========
+
+.. automethod:: qvl.speed_sign.QLabsSpeedSign.set_speed
+
+
+
+Configurations
+===============
+
+Speed signs only have a single configuration (0).
+
+.. image:: ../pictures/speedsign.png
+
+
 
 -------------------------------------------------------------------------------
 
@@ -90,6 +186,33 @@ Stop signs have 2 configurations (0-1).
 
 .. image:: ../pictures/stopsign.png
 
+-------------------------------------------------------------------------------
+
+***********
+Turn Sign
+***********
+
+.. _turnsignlibrary:
+
+Library
+========
+
+.. autoclass:: qvl.turn_sign.QLabsTurnSign
+
+.. _turnsignConstants:
+
+Constants
+==========
+
+.. autoattribute:: qvl.turn_sign.QLabsStopSign.ID_TURN_SIGN
+
+Configurations
+===============
+
+Turn signs have 8 configurations (0-7).
+
+.. image:: ../pictures/turnsign.png    
+
 
 -------------------------------------------------------------------------------
 
@@ -110,6 +233,11 @@ Constants
 ==========
 
 .. autoattribute:: qvl.yield_sign.QLabsYieldSign.ID_YIELD_SIGN
+
+Configurations
+===============
+
+Yield signs have 2 configurations (0-1).    
 
 
 .. image:: ../pictures/yieldsign.png
