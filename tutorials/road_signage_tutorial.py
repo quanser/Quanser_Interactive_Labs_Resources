@@ -4,9 +4,7 @@ Road Signage Library Example
 
 .. note::
 
-    Make sure you have Quanser Interactive Labs open before running this
-    example.  This example is designed to best be run in QCar Cityscape 
-    or Cityscape Lite.
+    This example will spawn one of each sign near the origin of the map.
 
 """
 
@@ -16,106 +14,90 @@ import math
 import time
 
 from qvl.qlabs import QuanserInteractiveLabs
-from qvl.free_camera import QLabsFreeCamera
-from qvl.roundabout_sign import QLabsRoundaboutSign
-from qvl.system import QLabsSystem
 from qvl.yield_sign import QLabsYieldSign
 from qvl.stop_sign import QLabsStopSign
+from qvl.roundabout_sign import QLabsRoundaboutSign
+from qvl.crossing_sign import QLabsCrossingSign
+from qvl.obstacle_sign import QLabsObstacleSign
+from qvl.turn_sign import QLabsTurnSign
+from qvl.speed_sign import QLabsSpeedSign
 
-# Clears the screen in Windows
 
 def main():
-
-    print("\n\n------------------------------ Communications --------------------------------\n")
-
-    # Creates a server connection with Quanser Interactive Labs and manages
-    # the communications
+   
     qlabs = QuanserInteractiveLabs()
 
-    # Ensure that QLabs is running on your local machine
     print("Connecting to QLabs...")
     if (not qlabs.open("localhost")):
         print("Unable to connect to QLabs")
         return    
 
+
     print("Connected")
+    
+    qlabs.destroy_all_spawned_actors()
 
-    # Use hSystem to set the tutorial title in the upper left of the qlabs window 
-    hSystem = QLabsSystem(qlabs)
-    hSystem.set_title_string('Road Signage Tutorial')
+    ### Stop Sign
 
-    num_destroyed = qlabs.destroy_all_spawned_actors()
-
-    # Switch the camera angle to see where we will be spawning the signs
-    camera0 = QLabsFreeCamera(qlabs)
-    camera0.spawn([-20.14, 29.472, 2.071], [0, 0.203, -0.024])
-    camera0.possess()
+    hSign = QLabsStopSign(qlabs)
+    hSign.spawn_degrees(location=[0, 0, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 0, 0], rotation=[0,0,180], configuration=1)
 
 
-    # Create two roundabouts in this qlabs instance
-    roundabout = QLabsRoundaboutSign(qlabs)
-    roundabout2 = QLabsRoundaboutSign(qlabs)
+    ### Yield Sign
 
-    # Spawn the sign using radians and specifying the actorNumber
-    roundabout.spawn_id(0, [-17, 29, 0.0], [0, 0, math.pi], [1, 1, 1], 0, 1)
-    # Spawn the second sign using degrees and allowing the computer to
-    # generate an actorNumber internally
-    roundabout2.spawn_id_degrees(2, [-15, 29, 0.0], [0, 0, 180], [1, 1, 1], 0, 1)
+    hSign = QLabsYieldSign(qlabs)
+    hSign.spawn_degrees(location=[0, 1, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 1, 0], rotation=[0,0,180], configuration=1)    
 
-    # Wait to see the output
-    time.sleep(1.5)
 
-    # Destroying the sign we just created
-    roundabout.destroy()
-    time.sleep(1.5)
+    ### Roundabout Sign
 
-    # Create two yield signs in this qlabs instance
-    yieldsign = QLabsYieldSign(qlabs)
-    yieldsign2 = QLabsYieldSign(qlabs)
+    hSign = QLabsRoundaboutSign(qlabs)
+    hSign.spawn_degrees(location=[0, 2, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 2, 0], rotation=[0,0,180], configuration=1)    
+    hSign.spawn_degrees(location=[4, 2, 0], rotation=[0,0,180], configuration=2)    
 
-    # Spawn the sign using radians and specifying the actorNumber
-    yieldsign.spawn_id(0, [-17, 31, 0.0], [0, 0, math.pi], [1, 1, 1], 0, 1)
-    # Spawn the second sign using degrees and allowing the computer to
-    # generate an actorNumber internally
-    yieldsign2.spawn_degrees([-15, 31, 0.0], [0, 0, 180], [1, 1, 1], 0, 1)
 
-    # Wait to see the output
-    time.sleep(1.5)
+    ### Crossing Sign
 
-    # Destroying the sign we just created
-    yieldsign.destroy()
-    time.sleep(1.5)
+    hSign = QLabsCrossingSign(qlabs)
+    hSign.spawn_degrees(location=[0, 3, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 3, 0], rotation=[0,0,180], configuration=1)    
+    hSign.spawn_degrees(location=[4, 3, 0], rotation=[0,0,180], configuration=2) 
 
-    # Create two stop signs in this qlabs instance
-    stop = QLabsStopSign(qlabs)
-    stop2 = QLabsStopSign(qlabs)
 
-    # Spawn the sign using radians
-    stop.spawn_id(1, [-16, 30, 0.0], [0, 0, math.pi], [1, 1, 1], 0, 1)
-    # Spawn the second sign using degrees and allowing the computer to
-    # generate an actorNumber internally
-    stop2.spawn_degrees([-15, 30, 0.0], [0, 0, 180], [1, 1, 1], 0, 1)
+    ### Obstacle Sign
 
-    # Wait to see the output
-    time.sleep(1.5)
+    hSign = QLabsObstacleSign(qlabs)
+    hSign.spawn_degrees(location=[0, 4, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 4, 0], rotation=[0,0,180], configuration=1)    
+    hSign.spawn_degrees(location=[4, 4, 0], rotation=[0,0,180], configuration=2)     
 
-    # Destroying the sign we just created
-    stop.destroy()
-    time.sleep(1.5)
 
-    # Destroy the signs one by one
-    roundabout2.destroy()
-    time.sleep(1)
+    ### Turn Sign
 
-    stop2.destroy()
-    time.sleep(1)
+    hSign = QLabsTurnSign(qlabs)
+    hSign.spawn_degrees(location=[0, 5, 0], rotation=[0,0,180], configuration=0)
+    hSign.spawn_degrees(location=[2, 5, 0], rotation=[0,0,180], configuration=1)    
+    hSign.spawn_degrees(location=[4, 5, 0], rotation=[0,0,180], configuration=2)        
+    hSign.spawn_degrees(location=[6, 5, 0], rotation=[0,0,180], configuration=3)        
+    hSign.spawn_degrees(location=[8, 5, 0], rotation=[0,0,180], configuration=4)
+    hSign.spawn_degrees(location=[10, 5, 0], rotation=[0,0,180], configuration=5)    
+    hSign.spawn_degrees(location=[12, 5, 0], rotation=[0,0,180], configuration=6)        
+    hSign.spawn_degrees(location=[14, 5, 0], rotation=[0,0,180], configuration=7)      
 
-    yieldsign2.destroy()
-    time.sleep(1)
 
-    # Closing qlabs
+    ### Speed Sign
+      
+    hSign = QLabsSpeedSign(qlabs)
+    
+    for count in range(12):
+        hSign.spawn_degrees(location=[2*count, 6, 0], rotation=[0,0,180], configuration=0)
+        hSign.set_speed((count+1)*10)
+    
     qlabs.close()
-    print('Done!')
+    print("Done!")
 
 
 if __name__ == "__main__":
