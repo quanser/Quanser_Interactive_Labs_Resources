@@ -54,6 +54,13 @@ Constants
 .. autoattribute:: qvl.roundabout_sign.QLabsRoundaboutSign.ID_ROUNDABOUT_SIGN
 
 
+Configurations
+===============
+
+There is only one configuration (0) for the road sign actors generated in
+QLabs.
+
+
 .. image:: ../pictures/roundaboutsign.png
 
 -------------------------------------------------------------------------------
@@ -156,17 +163,10 @@ Parent Class (actor.py) Methods
     :noindex:
 
 
-Configurations
-===============
-
-There is only one configuration (0) for the road sign actors generated in
-QLabs.
-
-
 Connection Points
 ==================
 
-There are no connection points for any of these actor classes.
+Signs do not have any connection points.
 
 -------------------------------------------------------------------------------
 
