@@ -83,6 +83,10 @@ Constants
 
 .. autoattribute:: qvl.stop_sign.QLabsStopSign.ID_STOP_SIGN
 
+Configurations
+===============
+
+Stop signs have 2 configurations (0-1).
 
 .. image:: ../pictures/stopsign.png
 
