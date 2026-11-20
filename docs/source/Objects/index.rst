@@ -24,6 +24,7 @@ Quanser Products
    qbot_platform_library.rst
    qbot_platform_flooring.rst
    qdrone2_library.rst
+   qube3_library.rst
 
    
 Supporting Actors
