@@ -137,7 +137,7 @@ The blank spaces in the following table refer to types of ports that are not ava
     </thead>
     <tbody>
         <tr>
-            <td>QUBE-Servo 2</td>
+            <td>Qube-Servo 2</td>
             <td>
                 <strong>Disc:</strong> 18920<br>
                 <strong>Pendulum:</strong> 18921
